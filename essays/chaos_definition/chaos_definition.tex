@@ -1,0 +1,62 @@
+\documentclass[11pt]{article}
+\usepackage{thesis}
+
+\begin{document}
+\section{Devaney's Definition}
+Devaney defines chaos in topological dynamics as follows:
+
+\begin{definition}
+  (Topological Transitivity) $f: J \rar J$ is said to be topologically
+  transitive if for any pair of open sets $U$, $V \subseteq J$
+  there exists $k > 0$ such that $f^k(U) \cap V \neq \emptyset$.
+\end{definition}
+\begin{definition}
+  (Sensitive Dependence on Initial Conditions) $f: J \rightarrow J$ 
+  is said to have sensitive initial conditions if there exists (for any???) $\delta > 0$
+  such that, for any $x \in J$ and any neighborhood $N$ of $x$,
+  there exists $y\in N$ and $n\leq 0$ such that $|f^n(x) - f^n(y)|>\delta$.
+\end{definition}
+
+\begin{definition}
+  (Chaotic Mapping) Let $V$ be a set. $f: V\rar V$ is said to be chaotic on $V$ if
+  \begin{enumerate}
+    \item $f$ has sensitive dependence on initial conditions.
+    \item $f$ is topologically transitive.
+    \item Periodic points are dense in $V$.
+  \end{enumerate}
+\end{definition}
+
+Note that we do not require that
+``\it{all} points near $x$ need eventually separate from $x$
+under iteration, but there must be at least one such point in
+every neighborhood of $x$.
+
+\begin{definition}
+  (Expansiveness) $f: J\rar J$ is expansive if there exists $\nu > 0$
+  such that, for any $x,y\in J$, there exists $n$ such that
+  $|f^nx-f^ny| > \nu$.
+\end{definition}
+
+What happens if we required expansiveness?
+Can we derive one from the others? In particular, sensitive dependence
+can be derived from transivity and dense property.
+
+Also an important notion:
+\begin{definition}
+  (Structural Stability) $f: J \rar J$ is said to be $C^r$-structurally
+  stable on $J$, if there exists $\epsilon > 0$ such that whenever
+  $d_r(f,g) < \epsilon$ for $g: J\rar J$, it follows that $f$
+  is topologically conjugate to $g$.
+\end{definition}
+
+\begin{proposition}
+  (Conjugacy, Transitivity, and Homeomorphism) 
+  Suppose that $g \compose h = h \compose f$. If $h$ is continuous and
+  surjective and $f$ is transitive, then $g$ is transitive.
+  If $h$ is a homeomorphism, then $f$ is transitive if and only if
+  $g$ is transitive.
+\end{proposition}
+
+\section{Ergodic Theoretical Definition}
+In Ergodic Theory
+\end{document}
