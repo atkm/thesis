@@ -2,6 +2,13 @@
 \usepackage{thesis}
 
 \begin{document}
+\section{Chaos in Li-Yorke sense}
+\begin{theorem}
+  Li, Yorke.
+\end{theorem}
+
+But this doesn't apply to baker's map.
+
 \section{Devaney's Definition}
 Devaney defines chaos in topological dynamics as follows:
 
@@ -38,8 +45,34 @@ every neighborhood of $x$.
 \end{definition}
 
 What happens if we required expansiveness?
-Can we derive one from the others? In particular, sensitive dependence
-can be derived from transivity and dense property.
+
+Can we derive one from the others? Yes. Sensitive dependence
+can be derived from transivity and dense property if the mapping
+is continuous and $X$ is a compact, invariant set. (Banks et al. 1992)
+Furthermore, for an interval, {\bf the only property necessary is
+topological transitivity} (Vellekoop-Berglund, 1994).
+
+There seems to be a connection between topological transitivity and
+``period three implies chaos''.
+
+A system is chaotic in $X$ in the sense of Devaney if and only if
+for every pair of open sets in $X$ there exists a periodic orbit 
+which visits both sets (Touhey, 1997).
+
+\begin{theorem}
+  (Martelli et al., 1998)
+  Let $X\subset \R^n$ be compact and $F: X\rar X$ be continuous.
+  Then $F$ is topologically transitive in $X$ if and only if
+  there exists $x_0\in X$ such that $O(x_0)$ is dense in $X$.
+  In addition, $F$ has sensitive dependence on initial conditions 
+  with respect to $X$ if and only if $O(x_0)$ is unstable in $X$.
+  \label{<++>}
+\end{theorem}
+
+Importantly, theorem still holds if the condition on $F$ is 
+weakened to {\it quasi-continuous} function, a class of functions
+where baker's map belongs to.
+
 
 Also an important notion:
 \begin{definition}
@@ -48,6 +81,21 @@ Also an important notion:
   $d_r(f,g) < \epsilon$ for $g: J\rar J$, it follows that $f$
   is topologically conjugate to $g$.
 \end{definition}
+
+Then, chaos can be defined in terms of stability.
+\begin{definition}
+  Let $U$ be open in $\R^n$, $F$ a continuous mapping $F: U\rar \R^n$ and $X\subset U$
+  closed, bounded (the two implies compact space), and invariant.
+  $F$ is said to be {\it chaotic} in $X$ if there exists $x_0\in X$
+  such that
+  \begin{enumerate}
+    \item $O(x_0)$ is dense in $X$.
+    \item $O(x_0)$ is unstable in $X$.
+  \end{enumerate}
+  \end{definition}
+
+It turns out structural stability is equivalent to sensitive dependence
+on initial conditions.
 
 \begin{proposition}
   (Conjugacy, Transitivity, and Homeomorphism) 
