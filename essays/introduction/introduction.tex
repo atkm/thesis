@@ -1,0 +1,37 @@
+\documentclass[11pt]{article}
+\usepackage{thesis}
+
+\begin{document}
+\section{Introduction}
+This is the equation for logistic map:
+\begin{equation}
+  L_{\mu}(x) = \mu x(1-x)
+  \label{logistic}
+\end{equation}
+, and the ``equivalent'' differential equation:
+\begin{equation}
+  \frac{dx}{dt} = \mu x(1-x)
+  \label{logisticdiffeq}
+\end{equation}
+This can be solved by separation of variables.
+\begin{align*}
+  \frac{dx}{x(1-x)} &= \mu dt \\  
+  \left( \frac{1}{x} + \frac{1}{1-x} \right) dx &= \mu dt
+\end{align*}
+Then, suppose that $x(0) = x_0$, and integrate from $t = 0$ to $T$
+\begin{align*}
+  \int_{x_0}^{x(T)} \frac{1}{x} + \frac{1}{1-x} dx &= \int_0^T \mu dt \\
+  \log{\frac{x(T)}{1-x(T)}} - \log{\frac{x_0}{1-x_0}} &= \mu T \\
+  \frac{x(T)}{1-x(T)} &= \frac{x_0 e^{\mu T}}{1-x_0} \\
+  (1-x_0)x(T) &= x_0 e^{\mu T} (1-x(T))
+  (1-x_0 + x_0 e^{\mu T})x(T) &= x_0 e^{\mu T}
+\end{align*}
+
+Thus, we have (with a slight change of notation)
+\begin{equation}
+  x(t) = \frac{x_0 e^{\mu t}}{1 - x_0 + x_0 e^{\mu t}}
+  \label{logisticdiffeqsoln}
+\end{equation}
+
+
+\end{document}
