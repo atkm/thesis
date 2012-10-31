@@ -1,5 +1,6 @@
 \documentclass[11pt]{article}
 \usepackage{thesis}
+\graphicspath{ {../../images/} }
 
 \begin{document}
 \section{Introduction}
@@ -32,6 +33,34 @@ Thus, we have (with a slight change of notation)
   x(t) = \frac{x_0 e^{\mu t}}{1 - x_0 + x_0 e^{\mu t}}
   \label{logisticdiffeqsoln}
 \end{equation}
+
+
+
+Change in the growth rate $\mu$ does not alter the bahaviour.
+\begin{figure}[htb]
+  \begin{center}
+    \includegraphics[scale=0.5]{logistic_diffeq_mu4_varyingx0.eps}
+  \end{center}
+  \caption{
+    Plot of equation (?) with $\mu = 4$ and various $x_0$. 
+  Note that regardless of the initial value, $x(t)$ converges to $1$.
+}
+  \label{fig:logistic_diffeq1}
+\end{figure}
+
+\begin{figure}[h]
+  \begin{center}
+    \includegraphics[scale=0.5]{logistic_diffeq_mu1234_x2.eps}
+  \end{center}
+  \caption{
+    Plot of equation (?) with $x_0 = 2$ and various $\mu$ (1,2,3,4).
+    As $\mu$ increases, $x(t)$ converges to $1$ faster.
+    However, it does not alter the overall behaviour.
+  }
+  \label{fig:logistic_diffeq2}
+\end{figure}
+
+
 
 
 \end{document}
