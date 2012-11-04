@@ -110,59 +110,6 @@ on initial conditions.
   $g$ is transitive.
 \end{proposition}
 
-\section{from Sternberg}
-
-\begin{definition}
-  (Dense Periodic Points) Let $f: I \rar I$. Define $P(f)$ to be the set of periodic points
-  of the map $f$. We say that $f$ has dense periodic points if $P(f)$ is
-  dense in $I$.
-\end{definition}
-
-\begin{proposition}
-  (Topological Transitivity and Dense Periodic Points Imply Sensitivity to Initial Conditions)
-  Let $f: X\rar X$ be a chaotic transformation. Then there is an $\delta > 0$ such that
-  for any $x\in X$ and any open set $J$ containing at least $x$ and another point, there is
-  a point $y\in J$ and $n\in \N$ with
-  \begin{equation*}
-    d(f^n(x),f^n(y)) > \delta.
-  \end{equation*}
-  \label{thm:sensitivity}
-\end{proposition}
-\begin{lemma}
-  Let $f: X\rar X$ be a mapping with (at least) two distinct periodic orbits.
-  Then there is a $c > 0$ such that for any $x\in X$ there exists a periodic
-  point $p$ with the property that for each $k$
-  \begin{equation*}
-    d(x, f^k(p)) > c.
-  \end{equation*}
-\end{lemma}
-\begin{proof}[Proof of the lemma]
-  Let $r$ and $s$ be periodic points with distinct orbits. For each $k$ and $l$ we have
-  \begin{equation*}
-    d(f^k(r), f^l(s)) > 0.
-  \end{equation*}
-  Choose $c$ so that $2c < \min d(f^k(r),f^l(s)) > 0$. Then by the triangle inequality
-  \begin{equation*}
-    2c < d(f^k(r),f^l(s)) \leq d(f^k(r),x) + d(x,f^l(s))
-  \end{equation*}
-  for all $k$ and $l$. Now suppose that $d(f^k(r),x)<c$ and $d(x,f^l(s))<c$. The supposition
-  violates the inequality just derived. Thus $d(f^k(r),x) \geq c$ or $d(x,f^l(s)) \geq c$ must hold.
-\end{proof}
-\begin{proof}[Proof of \ref{thm:sensitivity}]
-  Let $\delta = c/4$. Let $x$ be any point of $X$ and $J$ any open set containing $x$.
-  Since the periodic points of $f$ are dense (in $X$), we may introduce a periodic point
-  $q$ of $f$ in
-  \begin{equation*}
-    $U = J\cap B_\delta(x).
-  \end{equation*}
-  Let $n$ be the period of $q$.
-  
-  Let $p$ be a periodic point whose orbit is 
-  Let $m$ be the period of $q$.
-\end{proof}<++>
-
-
-
 \section{Ergodic Theoretical Definition}
 In Ergodic Theory
 
