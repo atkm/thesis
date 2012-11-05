@@ -1,0 +1,47 @@
+\documentclass[11pt]{book}
+\usepackage{thesis}
+
+\begin{document}
+
+\section{A list of chaotic maps}
+\begin{itemize}
+  \item Logistic map ($L_\mu(x) = \mu x(1-x)$)
+  \item Quadratic map ($Q_c(x) = x^2 + c$)
+  \item Tent map 
+    \begin{equation*}
+      T(x) = 
+      \begin{cases}
+        2x & 0 \leq x \leq \frac{1}{2}      \\
+        2 - 2x & \frac{1}{2} \leq x \leq 1
+      \end{cases}
+    \end{equation*}
+  \item Reverse tent map ($V(x) = 2|x| - 2$)
+  \item all quadratic maps ($p(x) = ax^2 + bx + d$)
+  \item Sawtooth transformation (Baker's transformation)
+    \begin{equation*}
+      S(x) = 
+      \begin{cases}
+        2x     & 0 \leq x \leq \frac{1}{2}      \\
+        2x - 1 & \frac{1}{2} \leq x \leq 1      \\
+        (0 & x = 1 \mbox{ in Martelli.})
+      \end{cases}
+    \end{equation*}
+  \item Shift map ($Sh: a_1a_2a_3\ldots \mapsto a_2a_3a_4\ldots$)
+  \item Doubling map ($D: \C \to \C$. $C: z \mapsto z^2$)
+  \item $F: I [-1,1] \to I$; $F: x \mapsto 2|x| - 1$ (period 3) (Martelli p95)
+  \item $F: I [0,1] \to I$; $F: x \mapsto 2x - \ceil{2x}$ (period 3, but not continuous) (Martelli p95)
+  \item Henon map
+    \begin{align*}
+      x_{n+1} &= y_n + 1 - ax_n^2 \\
+      y_{n+1} &= bx_n
+    \end{align*}
+  \item Kaplan-Yorke map
+    \begin{align*}
+      x_{n+1} &= 2x_n \mod 1    \\
+      y_{n+1} &= \alpha y_n + \cos(4\pi x_n)
+    \end{align*}
+  \item Arnold's cat map
+\end{itemize}
+
+\section{A list of chaotic (differential) equations}
+\end{document}
