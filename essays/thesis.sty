@@ -5,11 +5,19 @@
 \renewcommand{\rmdefault}{phv}
 
 % basic packages
-\usepackage{amsthm,enumerate,amsmath,graphicx}%textcomp
+\usepackage{amsthm,enumerate,amsmath,amssymb,graphicx}%textcomp
 \usepackage[matha]{mathabx}
+
+% pairs
+\usepackage{mathtools}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\set}{\{}{\}}
+\DeclarePairedDelimiter{\abs}{|}{|}
+
 % environments
 \newtheorem{proposition}{Proposition}
 \newtheorem{definition}{Definition}
+\newtheorem{lemma}{Lemma}
 % graphics
 %\graphicspath{{../images/}}
 
@@ -25,8 +33,11 @@
 \newcommand{\Z}{\mathbb{Z}} 
 \newcommand{\Q}{\mathbb{Q}} 
 \newcommand{\R}{\mathbb{R}} 
+\newcommand{\N}{\mathbb{N}} 
+\newcommand{\C}{\mathbb{C}} 
 \newcommand{\gen}[1]{\la #1 \ra} 
-\newcommand{\set}[1]{\{ #1 \}} 
+% replaced with paired delimiter
+%\newcommand{\set}[1]{\{ #1 \}} 
 \newcommand{\vectornorm}[1]{\left|\left|#1\right|\right|}
 \newcommand{\compose}{\circ}
 

@@ -1,0 +1,188 @@
+\documentclass[11pt]{book}
+\usepackage{thesis}
+
+\begin{document}
+\section{from Sternberg}
+
+\section{Definiton of Chaos}
+\begin{definition}
+  (Dense Periodic Points) Let $f: I \rar I$. Define $P(f)$ to be the set of periodic points
+  of the map $f$. We say that $f$ has dense periodic points if $P(f)$ is
+  dense in $I$.
+\end{definition}
+
+\begin{proposition}
+  (Topological Transitivity and Dense Periodic Points Imply Sensitivity to Initial Conditions)
+  Let $f: X\rar X$ be a chaotic transformation. Then there is an $\delta > 0$ such that
+  for any $x\in X$ and any open set $J$ containing at least $x$ and another point, there is
+  a point $y\in J$ and $n\in \N$ with
+  \begin{equation*}
+    d(f^n(x),f^n(y)) > \delta.
+  \end{equation*}
+  \label{thm:sensitivity}
+\end{proposition}
+\begin{lemma}
+  Let $f: X\rar X$ be a mapping with (at least) two distinct periodic orbits.
+  Then there is a $c > 0$ such that for any $x\in X$ there exists a periodic
+  point $p$ with the property that for each $k$
+  \begin{equation*}
+    d(x, f^k(p)) > c.
+  \end{equation*}
+\end{lemma}
+\begin{proof}[Proof of the lemma]
+  Let $r$ and $s$ be periodic points with distinct orbits. For each $k$ and $l$ we have
+  \begin{equation*}
+    d(f^k(r), f^l(s)) > 0.
+  \end{equation*}
+  Choose $c$ so that $2c < \min d(f^k(r),f^l(s)) > 0$. Then by the triangle inequality
+  \begin{equation*}
+    2c < d(f^k(r),f^l(s)) \leq d(f^k(r),x) + d(x,f^l(s))
+  \end{equation*}
+  for all $k$ and $l$. Now suppose that $d(f^k(r),x)<c$ and $d(x,f^l(s))<c$. The supposition
+  violates the inequality just derived. Thus $d(f^k(r),x) \geq c$ or $d(x,f^l(s)) \geq c$ must hold.
+\end{proof}
+\begin{proof}[Proof of \ref{thm:sensitivity}]
+  Let $\delta = c/4$. Let $x$ be any point of $X$ and $J$ any open set containing $x$.
+  Since the periodic points of $f$ are dense (in $X$), we may introduce a periodic point
+  $q$ of $f$ in
+  \begin{equation*}
+    U = J\cap B_\delta(x).
+  \end{equation*}
+  Let $n$ be the period of $q$.
+  
+  Let $p$ be a periodic point whose orbit is apart from $x$ by $4\delta$. Define
+  \begin{equation*}
+    W_i := B_i(f^i(p)) \text{ and } V := f^{-1}(W_1) \cap f^{-2}(W_2) \cap \cdots f^{-n}(W_n).
+  \end{equation*}
+  Since $f^i(p) \in W_i$, we see that $V$ is not empty. Note that $V$ is open.
+
+  By the transitivity property, we can find a $z\in U$ and a positive integer $k$ such that
+  $f^k(z) \in V$. Let $j$ be the smallest integer so that $k < nj$. That is,
+  \begin{equation*}
+    1 \leq nj - k \leq n.
+  \end{equation*}
+  Therefore,
+  \begin{equation*}
+    f^{nj - k} (V) = f^{nj - k} (f^k(z)) \in f^{nj-k}(V).
+  \end{equation*}
+  Also,
+  \begin{align*}
+     f^{nj - k}(V) &= f^{nj - k} (f^{-1}(W_1) \cap f^{-2}(W_2) \cap \cdots f^{-n}(W_n))
+     &\subset f^{nj - k}(f^{-(nj - k)} W_{nj-k})
+     &= W_{nj_k}
+  \end{align*}
+  In other words,
+  \begin{equation*}
+    d(f^{nj}(z), f^{nj - k}(p)) < \delta.
+  \end{equation*}
+  Furthermore, $f^{nj}(q) = q$, since $q$ is periodic with period $n$. Hence, 
+  \begin{equation*}
+    d(f^{nj}(q), f^{nj}(z)) = d(q, f^{nj}(z)) 
+  \end{equation*}
+  By the triangle inequality, we have
+  \begin{equation*}
+    d(x, f^{nj-k}(p)) \leq d(x,q) + d(q, f^{nj}(z)) + d(f^{nj}(z), f^{nj - k}(p)).
+  \end{equation*}
+  Finally, 
+  \begin{equation*}
+    d(f^{nj}(q), f^{nj}(z)) = d(q, f^{nj}(z)) \geq  d(x, f^{nj-k}(p)) - d(x,q) - d(f^{nj}(z), f^{nj - k}(p)) = 4\delta - \delta - \delta = 2\delta.
+  \end{equation*}
+  The inequality implies that $d(f^{nj}(x), f^{nj}(z)) \geq \delta$ or $d(f^{nj}(x), f^{nj}(q)) \geq \delta$ must hold.
+
+\end{proof}
+
+\section{Conjugacy}
+Iterations related by conjugation exhibit similar behaviors. From our perspective, they are pretty much the same.
+Here are the things shared among mappings that are in the same class.
+\begin{itemize}
+  \item Topological transitivity
+  \item Periodic points
+\end{itemize}
+\begin{proposition}
+  Suppose that $g\circ h = h\circ f$ where $h$ is continuous and surjective. If $f$ is transitive,
+  then it follows that $g$ is transitive.
+\end{proposition}
+
+It follows from the last two items in the list that mappings in the same conjugacy class are chaotic.
+\begin{proposition}
+  Let $h: X\rar Y$ be a surjective and continuous mapping. Suppose we have $h\circ f = g\circ f$. If $f: X\rar X$ is chaotic,
+  then $g$ is chaotic.
+\end{proposition}
+
+\section{Conjugacy of maps}
+
+\begin{itemize}
+  \item Logistic map ($L_\mu(x) = \mu x(1-x)$)
+  \item Quadratic map ($Q_c(x) = x^2 + c$)
+  \item Tent map 
+    \begin{equation*}
+      T(x) = 
+      \begin{cases}
+        2x & 0 \leq x \leq \frac{1}{2}      \\
+        2 - 2x & \frac{1}{2} \leq x \leq 1
+      \end{cases}
+    \end{equation*}
+  \item Reverse tent map ($V(x) = 2|x| - 2$)
+  \item all quadratic maps ($p(x) = ax^2 + bx + d$)
+  \item Sawtooth transformation 
+    \begin{equation*}
+      S(x) = 
+      \begin{cases}
+        2x     & 0 \leq x \leq \frac{1}{2}      \\
+        2x - 1 & \frac{1}{2} \leq x \leq 1
+      \end{cases}
+    \end{equation*}
+  \item Shift map ($Sh: a_1a_2a_3\ldots \mapsto a_2a_3a_4\ldots$)
+  \item Doubling map ()
+\end{itemize}
+
+\begin{proposition}
+  (Logistic Map and a quadratic map)
+  Any quadratic map $f = ax^2 + bx + d$ is conjugate to 
+\end{proposition}
+
+\begin{proposition}
+  (The doubling map and $Q_{-2}$)
+  Let $h: S \rar [-2,2]$
+  \begin{equation*}
+    h(\theta) = 2\cos\theta.
+  \end{equation*}
+  $h$ is clearly surjective and continuous.
+  The following equality establishes the conjugacy.
+  \begin{equation*}
+    h(D(\theta)) = 2\cos2\theta = 2(2\cos^2\theta - 1) = (2\cos\theta)^2 - 2 = Q_{-2}(h(\theta)).
+  \end{equation*}
+\end{proposition}
+
+\begin{proposition}
+  (The shift map and the sawtooth transformation)
+  First we need to reformulate the sawtooth transformation in terms of the binary representation.
+  It turns out to be easy. It's just a multiplication of a sequence of bits by 2, just like any computer scientist knows how to do:
+  \begin{equation*}
+    S: .a_1a_2a_3\ldots \mapsto .a_2a_3a_4\ldots
+  \end{equation*}
+  Then, let $h: X \rar [0,1)$ be a trivial transformation from a binary sequence into a binary representation of a number
+    \begin{equation*}
+      h: a_1a_2a_3\ldots \mapsto .a_1a_2a_3\ldots
+    \end{equation*}
+    (note the period to indicate fraction).
+  Thus conjugacy is established
+  \begin{equation*}
+    S \circ h = h \circ Sh
+  \end{equation*}
+  \end{proposition}
+
+  \begin{proposition}
+    (The sawtooth transformation and the shift map)
+    Let $h = T$, the tent map itself. We have four cases to verify:
+    \begin{enumerate}[$(i)$]
+      \item $[0,1/4)$
+      \item $[1/4, 1/2)$
+      \item $[1/2, 3/4)$
+      \item $[3/4, 1]$
+    \end{enumerate}
+    Computation is straightforward but tedious. One can easily verify that
+    for each case $T\circ T = T\circ S$ holds.
+  \end{proposition}
+
+\end{document}

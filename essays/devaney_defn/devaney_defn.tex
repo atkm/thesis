@@ -2,20 +2,10 @@
 \usepackage{thesis}
 
 \begin{document}
-\section{What do physicists say?}
-Although there is no universally accepted definition of chaos,
-most experts would concur that chaos is the {\it aperiodic,
-  long-term behavior of a bounded, deterministic system
-that exhibits sensitive dependence on initial conditions} (Sprott, p104)
-\section{Chaos in Li-Yorke sense}
-\begin{theorem}
-  Li, Yorke.
-\end{theorem}
-
-But this doesn't apply to baker's map.
 
 \section{Devaney's Definition}
 Devaney defines chaos in topological dynamics as follows:
+
 
 \begin{definition}
   (Topological Transitivity) $f: J \rar J$ is said to be topologically
@@ -64,20 +54,18 @@ A system is chaotic in $X$ in the sense of Devaney if and only if
 for every pair of open sets in $X$ there exists a periodic orbit 
 which visits both sets (Touhey, 1997).
 
-\begin{theorem}
-  (Martelli et al., 1998)
-  Let $X\subset \R^n$ be compact and $F: X\rar X$ be continuous.
+\begin{proposition}
+  (Martelli et al., 1998)(Equivalence of stability and transitivity)
+  Let $X\subset R^n$ be compact and $F: X\rar X$ be continuous.
   Then $F$ is topologically transitive in $X$ if and only if
   there exists $x_0\in X$ such that $O(x_0)$ is dense in $X$.
   In addition, $F$ has sensitive dependence on initial conditions 
   with respect to $X$ if and only if $O(x_0)$ is unstable in $X$.
-  \label{<++>}
-\end{theorem}
+\end{proposition}
 
 Importantly, theorem still holds if the condition on $F$ is 
 weakened to {\it quasi-continuous} function, a class of functions
 where baker's map belongs to.
-
 
 Also an important notion:
 \begin{definition}
@@ -110,7 +98,4 @@ on initial conditions.
   $g$ is transitive.
 \end{proposition}
 
-
-\section{Ergodic Theoretical Definition}
-In Ergodic Theory
 \end{document}
