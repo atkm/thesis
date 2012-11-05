@@ -1,0 +1,68 @@
+\documentclass[11pt]{book}
+\usepackage{thesis}
+
+\begin{document}
+\chapter{Ergodicity}
+
+Let $I = [0,1]$, and partition $I$ into $N$ subintervals given by
+\begin{align*}
+  I_k &= \left[\frac{k-1}{N}, \frac{k}{N} \right),\quad (k = 1, \ldots, N-1) \\
+    I_N &= \left[\frac{N-1}{N}, 1 \right].
+\end{align*}
+
+For any map $f: I \rar I$ and an initial value $x_0$, count the number
+of the iterates $x_0, x_1 = f(x_0), x_2 = f(f(x_0)), \ldots, x_m = f^m(x_0)$
+that lie in $I_k$ and call the number $n_k(m)$. Then define $p_k(m)$ as
+
+\begin{equation*}
+  p_k(m) := \frac{n_k(m)}{m+1},
+\end{equation*}
+and also let
+\begin{equation*}
+  p_k := \lim_{m \to \infty} p_k(m)
+\end{equation*}
+
+Roughly speaking, $p_k$ is the probability that an iterate lies in $I_k$.
+
+\subsection{Derivation of the Perron-Frobenius Equation}
+The goal of this section is to derive Perron-Frobenius equation.
+\begin{equation}
+  \sigma(y) = \sum\limits_{f(x) = y} \frac{\rho(x)}{|f'(x)|}
+  \label{pfeqn}
+\end{equation}
+
+A measure $\mu$ is called \textbf{absolutely continuous} with respect to Lebesgue measure if a non-negative integrable function, $\rho$ satisfying the following equation
+\begin{equation*}
+  \mu(I) = \int_I \rho(x) dx
+\end{equation*}
+exists.
+We refer to $\rho$ as the \textbf{density} of $\mu$. 
+For any continuous function $\phi$, we define the integral of $\phi$ with respect to $\mu$ as
+\begin{equation*}
+  \int \phi\mu \equiv \int \phi(x)\rho(x)dx  
+\end{equation*}
+
+Now let $F_*\mu$ be the push forward measure of $\mu$ by $F$.
+Suppose that $F$ is a piecewise differentiable mapping,which satisfies $|F'(x)| \neq 0$ for all $x$ except at a finite number of \textit{critical points}. 
+Suppose that $A$ is an interval containing no critical values, and $F^{-1}(A)$ is the union of a finite numberof intervals, i.e. $F^{-1}(A) = \bigcup\limits_{i}J_k$, where each $J_k$ is mapped monotonically onto $A$.
+
+In general, we have
+\begin{equation*}
+  \int_A g(y)dy = \int_{J_k} g(F(x))|F'(x)| dx,
+\end{equation*}
+where $y = F(x)$. Set
+\begin{equation*}
+  g(y) = \rho(x)\frac{1}{|F'(x)|}
+\end{equation*}
+then we get
+\begin{equation*}
+  \int \rho(x)\frac{1}{|F'(x)|}dy = \int_{J_k} \rho(x)dx = \mu(J_k).
+\end{equation*}
+
+Then we see that $F_*\mu$ has the density on $A$ given by
+\begin{equation*}
+  \sigma(y) = \sum\limits_{F(x) = y} \frac{\rho(x)}{|F'(x)|},
+\end{equation*}
+which is the desired result.
+
+\end{document}
