@@ -41,7 +41,27 @@
       y_{n+1} &= \alpha y_n + \cos(4\pi x_n)
     \end{align*}
   \item Arnold's cat map
+  \item (Martelli p215; Not chaotic in the sense of Devaney nor Marotto (generalized Li-Yorke chaos), 
+    but meets Martelli's definition)
+    \begin{equation*}
+      T(\rho, \theta) =
+      \begin{cases}
+        (2\rho, \theta + 1) \quad 0\leq \rho < 1/2 \\
+        (2 - 2\rho, \theta + 1) \quad 1/2 \leq \rho \leq 1
+      \end{cases}
+    \end{equation*}
+
 \end{itemize}
 
 \section{A list of chaotic (differential) equations}
+\begin{itemize}
+  \item Lorenz Model of Atmospheric Behavior
+    \begin{equation*}
+     \begin{cases}
+      \dot{x} = -ax + ay \\
+      \dot{y} = -xz + rx -y \\
+      \dot{z} = xy - bz.
+    \end{cases}
+    \end{equation*}
+    \end{itemize}
 \end{document}

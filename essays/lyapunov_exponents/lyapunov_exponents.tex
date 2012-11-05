@@ -2,5 +2,35 @@
 \usepackage{thesis}
 
 \begin{document}
+\section{Lyapunov Exponents}
+The technique of Lyapunov exponents was developed by Alexander M. Lyapunov
+to study stability of solutions for systems of differential equations.
+
+\begin{definition}
+  (Lyapunov number)
+  Given a map $F$ and a $p-$periodic point $x_p$, the Lyapunov number of the point $N(x_p)$ is
+  defined to be the spectral radius of the Jacobian matrix of the map.
+  \begin{equation*}
+    N(x_p) = \left[ \rho\left( F^p(x_p) \right) \right]^{1/p}
+  \end{equation*}
+  \label{def:lyapnum}
+\end{definition}
+
+\begin{definition}
+  (Lyapunov Number for an arbitrary orbit)
+  Let
+  \begin{equation*}
+    O(x_1) = \set{x_1, x_2, x_3, \ldots}
+  \end{equation*}
+  and define matrices
+  \begin{equation*}
+    A_1 = \frac{d}{dx}F(x_1),\; A_2 = \frac{d}{dx}F(x_2),\; \ldots,\; A_n = \frac{d}{dx}F(x_n).
+  \end{equation*}
+  Then consider their spectral radii
+  \begin{equation*}
+    \rho_1(x_1), \rho_2(x_1),\; \ldots,\; \rho_n(x_1).
+  \end{equation*}
+  
+\end{definition}
 
 \end{document}
