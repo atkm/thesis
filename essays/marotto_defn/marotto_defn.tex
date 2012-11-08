@@ -10,9 +10,9 @@
   A fixed point $x_s \in X$ is said to be a repelling if there exists $r > 0$
   such that 
   \begin{equation*}
-    0 < \norm{x_s - x_0} \leq r
+    0 < \norm{x_s - x_0} \leq r,
   \end{equation*}
-implies
+  where $\norm{.}$ is the Euclidean norm, implies
 \begin{equation*}
   r \leq \norm{x_s - F^m(x_0)}
 \end{equation*}
@@ -50,6 +50,7 @@ A repelling fixed point is sometimes referred to as a source.
 
 \begin{proposition}
   (Repeller implies Expanding fixed point)
+  (Martelli p188)
   Let $X \subset \R^n$ be open, and let $x_s$ be a repelling fixed point
   of a continuous function $F: X \to X$. Suppose that $F$ is
   differentiable in some neighborhood of $x_s$, and the derivative of $F$ at $x_s$ is continuous.
@@ -68,7 +69,48 @@ A repelling fixed point is sometimes referred to as a source.
   \end{equation*}
   For convenience, let $K = 1/\norm{M^{-1}}_a$.
   Note that $K > 1$.
-  (Martelli p188)
+  (fill in the blank)
+  \begin{equation*}
+    \frac{\norm{F(x) - F(x_s)}_a}{\norm{x - x_s}_a} \geq \frac{K+1}{2}.
+  \end{equation*}
+  Let $k \equiv \frac{K+1}{2}$.
+  (Lemma begin) Now suppose
+  \begin{equation*}
+    0 < \norm{x_0 - x_s}_a \leq r_1.
+  \end{equation*}
+  ($r_1$ just needs to be small enough that an open ball
+  of radius $r_1$ around $x_s$ does not distend over the
+  neighborhood where $F$ is differentiable.) Then
+  \begin{align*}
+    \norm{F^n(x_0) - x_s}_a &= \norm{F(F^{n-1}) - x_s}_a \geq k \norm{F^{n-1} - x_s}_a     \\
+    &= \norm{F(F^{n-2}) - x_s}_a \geq \cdots \\
+    &\geq k^n \norm{x_0 - x_s}_a.
+  \end{align*}
+  (Lemma end)
+  Since $k > 1$, we can find $n$ that satisfies the following inequality
+  \begin{equation*}
+    \norm{F^n(x_0) - x_s}_a > r_1.
+  \end{equation*}
+  By the equivalence of norms defined in $\R^n$, there exist $0 < b < c$ such that 
+  \begin{equation*}
+    b \norm{x_0 - x_s} \leq \norm{x_0 - x_s}_a \leq c \norm{x_0 - x_s}_a.
+  \end{equation*}
+  Finally, set $r \equiv r_1/c$. If we suppose that 
+  \begin{equation*}
+    \norm{x_0 - x_s} \leq r,
+  \end{equation*}
+  then
+  \begin{equation*}
+    \norm{x_0 - x_s}_a \leq c \norm{x_0 - x_s} \leq cr = r_1.
+  \end{equation*}
+  It follows by the lemma that there exists $m > 0$ such that 
+  \begin{equation*}
+    c \norm{F^m(x_0) - x_s} \geq \norm{F^m(x_0) - x_s}_a > r_1,
+  \end{equation*}
+  which implies
+  \begin{equation*}
+    \norm{F^{m}(x_0) - x_s} > \frac{r_1}{c} = r.
+  \end{equation*}
 \end{proof}
 
 % Let $\lambda$ be an eigenvalue of $M$. Note that
