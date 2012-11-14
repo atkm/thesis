@@ -3,9 +3,13 @@
 
 \begin{document}
 
+\chapter{Chaotic maps and equations}
 \section{A list of chaotic maps}
 \begin{itemize}
-  \item Logistic map ($L_\mu(x) = \mu x(1-x)$)
+  \item Logistic map (satisfies Devaney, Li-Yorke, Martelli, Wiggins \cite{martelli98})
+    \begin{equation*}
+      L_\mu(x) = \mu x(1-x)
+    \end{equation*}
   \item Quadratic map ($Q_c(x) = x^2 + c$)
   \item Tent map 
     \begin{equation*}
@@ -58,6 +62,14 @@
         (2 - 2\rho, \theta + 1) \quad 1/2 \leq \rho \leq 1
       \end{cases}
     \end{equation*}
+  \item Lorentz map (by one-step Euler method)
+    \begin{equation*}
+      \begin{cases}
+        x_{n+1} = x_n + ah(y_n - x_n) \\
+        y_{n+1} = y_n + h(-x_nu_n - ax_n - y_n) \\
+        z_{n+1} = u_n + h(x_ny_n - bu_n - b(a+r)).
+      \end{cases}
+    \end{equation*}
 
 \end{itemize}
 
@@ -71,9 +83,21 @@
       \dot{z} = xy - bz.
     \end{cases}
     \end{equation*}
+    which is equivalent to (by $u = z - a - r$)
+    \begin{equation*}
+     \begin{cases}
+      \dot{x} = -ax + ay \\
+      \dot{y} = -xu - ax -y \\
+      \dot{z} = xy - bu -ab -br.
+    \end{cases}
+    \end{equation*}
+
   \item Sinusoidally forced Duffing equation by Moon and Holmes (Ott p10)
     \begin{equation*}
       \ddot{y} + \nu \dot{y} + (y^3 - y) = g\sin t.
     \end{equation*}
     \end{itemize}
+
+\bibliographystyle{plain}
+\bibliography{../../bibliography/thesis}
 \end{document}
