@@ -11,6 +11,97 @@
     \item $O(x_0)$ is dense in $X$.
     \item $O(x_0)$ is unstable in $X$.
   \end{enumerate}
+  \label{defn:chaosmartelli}
 \end{definition}
+
+Wiggins came up with a definiton that is similar to Deveney's expect for not requiring dense periodic orbits.
+
+\begin{definition}
+  (Chaos in Wiggins's sense)
+   Let $U$ be open in $\R^n$, $F: U \to \R^n$, and $X\subset U$ be closed, bounded and invariant.
+  Assume that $F$ is continuous in $X$.
+  Then $F$ is chaotic in $X$ if the mapping satisfies the following conditions
+  \begin{enumerate}
+    \item $F$ is topologically transitive in $X$
+    \item $F$ has sensitive dependence on initial conditions on $X$.
+  \end{enumerate}
+  \label{defn:chaoswiggins}
+\end{definition}
+
+The outline of proof is in \cite{martelli98}.
+\begin{theorem}
+  (Equivalence of Martelli's and Wiggins's definitions)
+  Let $X$ be a compact invariant subset of $\R^n$ and $F: X\to X$ a continuous map.
+  Then $F$ is chaotic in Martelli's sense if and only if $F$ is chaotic in Wiggins's sense.
+  \label{thm:martelliwigginsequiv}
+\end{theorem}
+
+\begin{proof}
+   \begin{enumerate}[(i)]
+    \item $F$ is topologically transitive in $X$ if and only if there exists $x_0 \in X$ such that $L(x_0) = X$.
+
+    It is straightforward to show that topological transitivity implies the existence of an orbit whose limit set is $X$.
+    Suppose $U,V$ are open subsets of $X$.
+    The intersection of $U$ and $L(x_0)$ is clearly non-empty, so let $K = U \cap L(x_0)$.
+    For sufficiently large $n$, we obtain $F^n(K) = L(x_0)$ because $K$ contains a point in $O(x_0)$.
+    Therefore, $F^n(K) \cap V \neq \emptyset$.
+
+    Next, suppose that $L(x_0) = X$.
+    A finite open cover of $X$ exists because $X$ is compact.
+    Choose $m$ points from $X$ such that $X = \bigcup\limits_{i=1}^m N_{1/m}(x_i)$
+    so that the set $\set{N_{1/m}(x_1), \ldots, N_{1/m}(x_m)}$ forms a finite open cover of $X$.
+    (Note that choice of $x_1, \ldots, x_m$ depends on $m$.
+    So, for example, $x_1$ should be written as $x_{1,m}$.
+    However, we omit this $m$ to avoid cluttering up the argument.)
+    Define sets $Y_1, \ldots, Y_m$ as
+    \begin{align*}
+      Y_i &:= F^{n(i)}(N_{1/m}(Y_{i-1})) \cap N_{1/m}(x_{i+1}) \quad (\mbox{for } i \geq 2) \\
+      Y_1 &:= N_{1/m}(x_1),
+    \end{align*}
+    where $n(i)$ is an integer large enough to ensure each $Y_i$ is not empty, which is guaranteed to exist by topological transitivity.
+    Finally, let $T = F^{-\sum\limits_{i=1}^{m}n(i)}(Y_m) \cap Y_1$.
+    By construction, a point in $T$ visits every $N_{1/m}(x_i)$.
+    Furthermore, as we take $m \to \infty$, we may assume that $\set{x_{1,m}}_m$ converges to a point, 
+    since, if it doesn't, we can find a subsequence of $\set{x_{1,m}}_m$ that converges and replace the original sequence with the convergent subsequence.
+    In the limit $m \to \infty$, any point in $T$, say $x_0$, satisfies $L(x_0) = X$.
+
+    \item $F$ has sensitive dependence on initial conditions with respect to $X$ if and only if $O(x_0)$ is unstable with respect to $X$.
+
+      The ``only if'' part is obvious, since sensitive dependence on initial conditions is a stronger condition.
+      Of course, the ``if'' part is not true in general. We will show, however, 
+      that the two conditions are equivalent if $F$ has an unstable orbit
+      whose limit set fills up $X$.
+      So assume that $O(x_0)$ is an unstable orbit such that $L(x_0) = X$,
+      and let $r(x_0)$ be its separation constant.
+      It follows that for each $y_0\in X$ and $d > 0$ there exists $p>0$ such that $\metric{y_0, F^p(x_0)} \leq d/2$.
+      One case is that there exists $n$ such that $\metric{F^n(y_0), F^{p+n}(x_0)} > r(x_0)/2$.
+      In the other case (i.e. for each $n$, $\metric{F^n(y_0), F^{p+n}(x_0)} \leq r(x_0))/2$,
+      there must exist a different point $w_0$ in a neighborhood of $F^p(x_0)$ such that 
+      \begin{equation*}
+        \metric{w_0, F^p(x_0)} \leq \frac{d}{2} \quad \mbox{ and } \quad \metric{F^m(w_0), F^{m+p}(x_0)} > r(x_0).
+      \end{equation*}
+      Note that
+      \begin{equation*}
+        \metric{y_0, w_0} \leq \metric{y_0, F^p(x_0)} + \metric{F^p(x_0), w_0} \leq d
+      \end{equation*}
+      by the triangle inequality.
+      Moreover,
+      \begin{align*}
+        r(x_0) &< \metric{F^m(w_0), F^{m+p}(x_0)} \\
+        &\leq \metric{F^{m+p}(x_0), F^m(y_0)} + \metric{F^m(y_0), F^m(w_0)}  \\
+        &\leq \frac{r(x_0)}{2} + \metric{F^m(y_0), F^m(w_0)}
+      \end{align*}
+      Hence in both cases we have
+      \begin{equation*}
+        \frac{r(x_0)}{2} < \metric{F^m(y_0), F^m(w_0)}.
+      \end{equation*}
+      Thus, $F$ has sensitive dependence on initial conditions with respect to $X$, and 
+      $r(x_0)/2$ is the separation constant for any point in $X$.
+  \end{enumerate}
+ 
+\end{proof}
+
+\bibliographystyle{plain}
+\bibliography{../../bibliography/thesis}
 
 \end{document}
