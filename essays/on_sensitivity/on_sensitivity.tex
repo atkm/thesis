@@ -4,8 +4,35 @@
 \begin{document}
 \section{A note on sensitive dependence on initial conditions}
 Some mappings qualify to sensitive dependence, even if it seems simple and predictable.
+
+\begin{proposition}
+  (Rotation by magnitude is chaotic)
+
+  Let $D = \set{x \in \R^2: \norm{x} \leq 2}$, and $C_\rho = \set{x \in \R^2: \norm{x} = \rho}$.
+  Define $F: D \to D$, a rotation in $C_\rho$, by
+  \begin{equation*}
+    F(x) = F(\rho, \theta) = (\rho, \theta + \rho).
+  \end{equation*}
+  For every $\rho \in (0,2]$, $C_\rho$ is invariant.
+
+  We claim that the system has in $C_\rho$ sensitive dependence on initial conditions with $r_0 = \rho$.
+  Let $x_0 = (\rho_0, \theta_0)$ and $d > 0$.
+  Choose $n$ large enough that $\frac{\pi}{n} < d$ and $\rho_0 - \frac{\pi}{n} > 0$.
+  Let $y_0 = (\rho_0 - \frac{\pi}{n}, \theta_0)$.
+  Then,
+  \begin{equation*}
+    x_n = (\rho_0, \theta_0 + n\rho_0),\quad
+    y_n = (\rho_0 - \frac{\pi}{n}, \theta_0 + n\rho_0 - \pi),
+  \end{equation*}
+  so
+  \begin{equation*}
+    \norm{x_0 - y_0} < d \quad \mbox{and} \quad \norm{y_n - x_n} = \paren*{\frac{\pi}{n}}^2 + \pi^2 > 2 > r_0.
+  \end{equation*}
+\end{proposition}
  
-\bibliographystyle{plain}
-\bibliography{../../bibliography/thesis}
+! Create a plot !
+
+%\bibliographystyle{plain}
+%\bibliography{../../bibliography/thesis}
 \end{document}
 
