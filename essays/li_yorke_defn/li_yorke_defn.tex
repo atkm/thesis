@@ -45,45 +45,52 @@ Furthermore, the existence of a $2-$periodic orbit ensures the existence of a fi
   \end{equation*}
   It follows from the fixed point theorem that there exists a fixed point in $[p,q]$.
 \end{proof}
+
 This observation was extended to all natural numbers by Alexander N. Sarkovskii.
 \begin{definition}
   (Sarkovskii's ordering, 1964)
-  
+  \label{defn:sarkovskiiordering}
+  %\index{Sarkovskii's ordering}
 \end{definition}
 
 \subsection{Chaos in Li-Yorke sense}
 \begin{proposition}
-  (Li, Yorke. 1975)
+  (Li, Yorke. 1975 \cite{li-yorke})
   Let $I$ be an interval and $F: I\to I$ be continuous. Suppose $F$ has a periodic orbit of period 3.
   Then $F$ has a periodic orbit of every period and there is an infinite set $S$ contained in
   $I$ such that every orbit starting from a point of $S$ is aperiodic.
 \end{proposition}
 
-The existence of a periodic point of period 3 for continuous and one-dimensional maps is
-equivalent to the existence of a snapback repeller.
-\begin{definition}
-  (Marotto, Martelli, Snapback repeller)
- $F: R^n\to R^n \in C^1$ in some open ball centered at a stationary state $x_s$
-has uncountably many aperiodic and unstable orbits if $\rho(F'(x_s)) > 1$, and
-there exists $z_1$ in the unstable manifold $M_U$ of $x_s$ such that
-\begin{equation*}
-  det((F^m)'(z_1)) \neq 0, \quad F^m(z_1) = x_s.
-\end{equation*}
- 
-  Such $x_s$ is called a snapback repeller.
-\end{definition}
+We will see that Marotto's definition is equivalent to Li-Yorke's.
+Moreover, Marotto's definition is generalizable to $n$-space.
 
-But this doesn't apply to baker's map.
+But this doesn't apply to baker's map, because the transformation is not continuous.
 \begin{definition}
   (Baker's transformation)
   Let $I = [0,1]$, and $B: I \to I$. Baker's transformation is
   \begin{equation*}
     B(x) = 2x - \ceil{2x}.
   \end{equation*}
-  
 \end{definition}
+
+Also, there are mappings  (somewhat pathological) that is chaotic on negligible set.
+\begin{proposition}
+  Let $I = [0,1]$ and $f: I \to I$ defined as
+  \begin{equation*}
+    f(x) =
+    \begin{cases}
+      0 \quad & 0\leq x < \frac{1}{4} \\
+      4x - 1 \quad  & \frac{1}{4} \leq x < \frac{1}{2} \\
+      -4x + 3 \quad & \frac{1}{2} \leq x < \frac{3}{4} \\
+      0 \quad & \frac{3}{4} \leq x \leq 1. \\
+    \end{cases}
+  \end{equation*}
+  For each $x_0 \in I$, $O(x_0)$ converges to 0 almost everywhere.
+\end{proposition}
 
 Also, Li-Yorke's definition is limited to one-dimensional maps.
 However, the result was extended to higher-dimensional systems by Marotto (1978 ``Snapback repeller'')
 
+\bibliographystyle{plain}
+\bibliography{../../bibliography/thesis}
 \end{document}

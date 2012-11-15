@@ -113,6 +113,20 @@ A repelling fixed point is sometimes referred to as a source.
   \end{equation*}
 \end{proof}
 
+The existence of a periodic point of period 3 for continuous and one-dimensional maps is
+equivalent to the existence of a snapback repeller.
+\begin{definition}
+  (Marotto, Martelli, Snapback repeller)
+ $F: R^n\to R^n \in C^1$ in some open ball centered at a stationary state $x_s$
+has uncountably many aperiodic and unstable orbits if $\rho(F'(x_s)) > 1$, and
+there exists $z_1$ in the unstable manifold $M_U$ of $x_s$ such that
+\begin{equation*}
+  det((F^m)'(z_1)) \neq 0, \quad F^m(z_1) = x_s.
+\end{equation*}
+ 
+  Such $x_s$ is called a snapback repeller.
+\end{definition}
+
 % Let $\lambda$ be an eigenvalue of $M$. Note that
 %   \begin{equation*}
 %     (\lambda^{-1} I - M^{-1}) M = \lambda^{1-} M - I = \lambda^{-1} (M - \lambda I)
@@ -125,5 +139,8 @@ A repelling fixed point is sometimes referred to as a source.
 %   that $det(\lambda^{-1} I - M^{-1}) = 0$.
 %   This establishes the fact that $\lambda^{-1}$ is an eigenvalue of $M^{-1}$ if and only if $\lambda$ is an eigenvalue of $M$.
 % 
+\bibliographystyle{plain}
+\bibliography{../../bibliography/thesis}
+
 \end{document}
 
