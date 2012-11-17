@@ -19,6 +19,9 @@ def henon(init, args):
     y = b * x0
     return (x,y)
 
+def roessler(init, args):
+    pass
+
 def IterateList2D(g, init, N, args=()):
     """
     Iterate the function g(x, mu) N-1 times, starting at x0, so that the
