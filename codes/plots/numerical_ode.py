@@ -6,11 +6,17 @@ import numpy as np
 import pylab
 from mpl_toolkits.mplot3d import Axes3D
 
-
-def gravity(x, args):
+def gravity(t, x, args):
     return -9.8
 
-def Lorenz(xyz,args=(10, 28, 8.0/3)):
+def logistic(t, x, mu):
+    return mu * x * (1-x)
+
+def logistic_accuracy(x, end, dt, mu):
+    points = rk4_1D(logistic, x, end, dt, mu)
+    pylab.plot(np.linspace(0, end, len(points)), points)
+
+def Lorenz(t,xyz,args=(10, 28, 8.0/3)):
     """
     Lorenz system
     dx/dt = s * (y - x)
@@ -31,7 +37,37 @@ def Plot_rk4_3D(g, xyz, end, dt, args=()):
     result = rk4_3D(g, xyz, end, dt, args)
     fig = pylab.figure()
     ax = Axes3D(fig)
-    ax.scatter(result[:,0], result[:,1], result[:,2], s=1)
+    ax.scatter(result[:,0], result[:,1], result[:,2], s=1.4, color="gold")
+    ax.w_xaxis.set_pane_color((0.12, 0.12, 0.12, 1.0))
+    ax.w_yaxis.set_pane_color((0.12, 0.12, 0.12, 1.0))
+    ax.w_zaxis.set_pane_color((0.1, 0.1, 0.1, 1.0))
+    fig.show()
+
+def rk4_1D(g, x, end, dt, args=()):
+    """
+    RK4 1D version.
+    Accuracy verified using 
+    dx/dt = t^2, x(0) = 0;
+    and dx/dt = 1/x, x(0) = 1;
+    and dx/dt = x, x(0) = 1.
+    """
+    t = 0
+    result = [x]
+    iteration = int(np.ceil(end / dt))
+    for i in range(iteration):
+        x0 = result[-1]
+        result.append(rk4_1D_step(g, t, x0, dt, args))
+        t += dt
+
+    return np.array(result)
+
+def rk4_1D_step(g, t, x, dt, args=()):
+    k1 = dt * g(t, x, args)
+    k2 = dt * g(t + dt/2, x + k1/2, args)
+    k3 = dt * g(t + dt/2, x + k2/2, args)
+    k4 = dt * g(t + dt, x + k3,args)
+    newx = x + (k1/2 + k2 + k3 + k4/2)/3
+    return newx
 
 def rk4_3D(g, xyz, end, dt, args=()):
     x = xyz[0]
@@ -50,7 +86,7 @@ def rk4_3D(g, xyz, end, dt, args=()):
 
 def rk4_3D_step(g, x,y,z, dt, args=()):
     now = np.array((x,y,z))
-    k1 = dt * now
+    k1 = dt * g(now, args)
     k2 = dt * g(now + k1/2, args)
     k3 = dt * g(now + k2/2, args)
     k4 = dt * g(now + k3,args)
