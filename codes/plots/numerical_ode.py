@@ -70,6 +70,7 @@ def rk4_1D_step(g, t, x, dt, args=()):
     return newx
 
 def rk4_3D(g, xyz, end, dt, args=()):
+    t = 0
     x = xyz[0]
     y = xyz[1]
     z = xyz[2]
@@ -80,17 +81,17 @@ def rk4_3D(g, xyz, end, dt, args=()):
         x0 = result[-1][0]
         y0 = result[-1][1]
         z0 = result[-1][2]
-        result.append(rk4_3D_step(g, x0, y0, z0, dt, args))
+        result.append(rk4_3D_step(g, t, x0, y0, z0, dt, args))
 
     return np.vstack(result)
 
-def rk4_3D_step(g, x,y,z, dt, args=()):
+def rk4_3D_step(g, t, x,y,z, dt, args=()):
     now = np.array((x,y,z))
-    k1 = dt * g(now, args)
-    k2 = dt * g(now + k1/2, args)
-    k3 = dt * g(now + k2/2, args)
-    k4 = dt * g(now + k3,args)
-    new_xyz = np.array((x,y,z)) + (k1/2 + k2 + k3 + k4/2)/3
+    k1 = dt * g(t, now, args)
+    k2 = dt * g(t + dt/2, now + k1/2, args)
+    k3 = dt * g(t + dt/2, now + k2/2, args)
+    k4 = dt * g(t + dt, now + k3,args)
+    new_xyz = now + (k1/2 + k2 + k3 + k4/2)/3
     return new_xyz
 
 def verlet_solver(x0, v0, g, end, dt, args=()):
