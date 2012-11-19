@@ -16,9 +16,10 @@ def logistic_accuracy(x, end, dt, mu):
     points = rk4_1D(logistic, x, end, dt, mu)
     pylab.plot(np.linspace(0, end, len(points)), points)
 
-def Lorenz(t,xyz,args=(10, 28, 8.0/3)):
+def Lorenz(t, xyz, args):
     """
     Lorenz system
+    a chaotic args: (10, 28, 8.0/3)
     dx/dt = s * (y - x)
     dy/dt = x * (r - z) - y
     dz/dt = x * y - b * z
@@ -32,6 +33,19 @@ def Lorenz(t,xyz,args=(10, 28, 8.0/3)):
     r = args[1]
     b = args[2]
     return np.array((s * (y - x), x * (r - z) - y, x * y - b * z))
+
+def Rossler(t, xyz, args):
+    """
+    Rossler system
+    a chaotic args: (0.432, 2, 4)
+    """
+    x = xyz[0]
+    y = xyz[1]
+    z = xyz[2]
+    a = args[0]
+    b = args[1]
+    c = args[2]
+    return np.array(( -y - z, x + a*y, b + z*(x - c) ))
 
 def Plot_rk4_3D(g, xyz, end, dt, args=()):
     result = rk4_3D(g, xyz, end, dt, args)

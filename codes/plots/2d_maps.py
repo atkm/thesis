@@ -3,7 +3,7 @@ import numpy as np
 import scipy.optimize
 import matplotlib.pyplot
 
-def henon(init, args):
+def Henon(init, args):
     """
     args = (a,b)
     init = (x0, y0)
@@ -19,8 +19,16 @@ def henon(init, args):
     y = b * x0
     return (x,y)
 
-def roessler(init, args):
-    pass
+def baker(init, args):
+    """
+    'Unfolded' Baker's transformation (from Scholarpedia)
+    Map I2 \to I2, where I2 = [0,1) X [0,1) 
+    """
+    x0 = init[0]
+    y0 = init[1]
+    x = (x0 + np.floor(2* y0))
+    y = 2 * y0 - np.floor(2 * y0)
+    return (x,y)
 
 def IterateList2D(g, init, N, args=()):
     """
