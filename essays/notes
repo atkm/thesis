@@ -2,6 +2,20 @@ Meyer and Hall, Hamiltonian dynamcis and N-body problem
 
 Weigend and Gershenfeld, Time Series Prediction (about SFI Competition)
 
+Ljupco Kocarev: Application of chaos in Cryptography
+
+Ivan Zelinka: Application of chaos in Evolutionary Algorithms
+
+Yuming Shi/Guanrong Chen: Chaotification, Control of Chaos
+
+Roux et al. (1983): Chaos in BZ reaction
+
+Tomasz Downarwicz: cool Polish Dude in Wroclaw
+
+Attractor Reconstruction from a SINGLE ORBIT (dude!) (Packard et al. 1980; Takens 1981)
+
+Distributional chaos (Smital)
+
 Lacunarity - the 'texture' of a fractal
 
 Self-organized critical systems usually have negative Lyapunov exponent 
@@ -12,8 +26,6 @@ nonuniform hyperbolic theory (Pesin's theory)
 A stochastic system has a randomly distributed error
 In a chaotic system nearby initial values will be far
 away in t -> large.
-
-"In the beginning, there was only chaos, the Abyss" (Hesiod?)
 
 "Given for one instant an intelligence which
 could comprehend all the forces by which nature
@@ -39,10 +51,9 @@ produce very great ones in the final phenomena. A small error in the former
 will produce an enormous error in the latter. Prediction becomes impossible,
 and we have the fortuitous phenomenon." -- Henri Poincare
 
-
 "A strange attractor seems strange only to a stranger."
 (Boris Chirikov, Felix Izrailev in "The Essense of Chaos")
 
-Use "Garamond" font
+"In the beginning, there was only chaos, the Abyss" (Hesiod?)
 
-Distributional chaos (Smital)
+Use "Garamond" font
