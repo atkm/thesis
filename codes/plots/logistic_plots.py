@@ -21,6 +21,19 @@ def f(x, mu):
     """
     return 4 * mu * x * (1-x)
 
+def cubic(x, mu):
+    """
+    cubic map
+    mu <= 27/4
+    """
+    return mu*(x-1)*x*(x-1)
+
+def quartic(x, mu):
+    """
+    Quartic 
+    """
+    return mu*(-37.8671220000000*(x**4) + 68.3654940000000*(x**3) - 36.8028780000000*(x**2) + 6.30450600000000*x)
+
 # <codecell>
 def Iterate(g, x0, N, mu):
     """
