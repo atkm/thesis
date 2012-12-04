@@ -4,6 +4,7 @@
 
 \begin{document}
 \section{Introduction}
+\subsection{Our First Chaotic Map}
 This is the equation for logistic map:
 \begin{equation}
   L_{\mu}(x) = \mu x(1-x),
@@ -14,6 +15,20 @@ and the ``equivalent'' differential equation:
   \frac{dx}{dt} = \mu x(1-x)
   \label{logisticdiffeq}
 \end{equation}
+(In general, we can go between continuous and discrete models
+\begin{align*}
+  \frac{dx(t)}{dt} = G(x(t)) &\quad\mbox{(Continuous)} \\
+  x(t + 1) = F(x(t)) &\quad\mbox{(Discrete)}
+\end{align*}
+by using the following approximation of the differential equation by mapping
+\begin{equation*}
+  \frac{dx(t)}{dt} \approx \frac{x(t_0 + (n+1)\Delta t) - x(t_0 + n \Delta t)}{\Delta t},
+\end{equation*}
+which leads to an approximation of the mapping by the differential equation
+\begin{equation*}
+  F(x(n)) \approx x(n) + \Delta t \cdot G(x(n))
+\end{equation*}
+.)
 The only difference between equations \pref{logisticdiffeq} and \pref{logistic}
 
 The differential equation \pref{logisticdiffeq} can be easily solved by separation of variables.
@@ -73,7 +88,7 @@ Change in the growth rate $\mu$ does not alter the bahaviour.
 We tend to label a dynamical systems as ``chaotic'' on an intuitive ground.
 If the orbit looks (judged by our visual sense organ complex), the system is called chaotic.
 In 1986, the Royal Society held an international conference on chaos and defined ``chaos'' as ``Stochastic behavior occurring in a deterministic system.'' \cite{stewart}
-Two daunting Russian physicists famously said "A strange attractor seems strange only to a stranger."
+Two Russian physicists famously said "A strange attractor seems strange only to a stranger."
 (Boris Chirikov, Felix Izrailev)\cite{lorenzbook}
 
 \bibliographystyle{plain}

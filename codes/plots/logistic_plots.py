@@ -6,6 +6,7 @@
 import scipy as sp
 import numpy as np
 import scipy.optimize
+import scipy.fftpack
 import pylab
 
 # <markdowncell>
@@ -186,10 +187,23 @@ def PlotLogisticDiffEq(x0,mu,tbound):
     pylab.plot(xT)
     pylab.show()
 
+def PlotPowerSpectrum(g, x0, N, args=()):
+    """
+    Plot Fourier spectrum of N points (after 1000 transient points)
+    """
+    sig = IterateList(g, x0, N+1000, args)[1000:]
+    sig_freq = sp.fftpack.fftfreq(sig.size, d=1)
+    sig_fft  = sp.fftpack.fft(sig)
+    pidxs    = np.where(sig_freq > 0)
+    freqs, power = sig_freq[pidxs], np.abs(sig_fft)[pidxs]
+    pylab.plot(freqs, power)
+    pylab.xlabel('Frequency [Hz]')
+    pylab.ylabel('Power')
+    pylab.show()
+    print("Peak Frequency:")
+    print(freqs[power.argmax()])
 
-# <markdowncell>
+#  <markdowncell>
 # Copyright (C) Cornell University
 # All rights reserved.
 # Apache License, Version 2.0
-
-
