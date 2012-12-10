@@ -1,3 +1,24 @@
+Tinkerbell map
+
+Blanco, Garcia - snapback repeller implies positive topological entropy.
+
+A Li-Yorke chaotic map with zero topological entropy. (Smital)
+
+Misiurewicz, Horseshoes for mappings of the interval.
+
+Extensions of Li-Yorke chaos (from Oprocha): dense chaos - Józef Piórek, On the generic chaos in dynamical systems; generic chaos - Lubomír Snoha, Generic chaos; extreme chaos - A. M. Bruckner and Thakyin Hu, On scrambled sets for chaotic functions
+
+Michał Misiurewicz, Horseshoes for mappings of the interval
+(tools for studying topological entropy in terms of topological horseshoe)
+
+Applications of snapback repeller:
+-resource budget models (ecology)
+-neuron model (Zheng, Tonnelier)
+-wave equations (Chen, Hsu, Zhou)
+-Henon map (Marotto)
+
+omega-chaos implies Li-Yorke chaos. omega-chaos is equivalent to positive entropy as well as to Devaney's chaos.
+
 Shinbrot; Kostelich: Targeting using sensitivity.
 NASA 1985: ISEE3--chaotic nature of gravitational tree-body problem
 
@@ -22,10 +43,10 @@ Tomasz Downarwicz: cool Polish Dude in Wroclaw
 
 Attractor Reconstruction from a SINGLE ORBIT (dude!) (Packard et al. 1980; Takens 1981)
 
-Distributional chaos (Smital)
+Distributional chaos (Smital)  Measures of chaos and a spectral decomposition of dynamical systems on the interval
+DC3 implies positive topological entropy
 
-Lacunarity - the 'texture' of a fractal
-
+Lacunarity - the 'texture' of a fractal 
 Self-organized critical systems usually have negative Lyapunov exponent 
 e.g. Sand pile model [Caglioti and Loreto 1996]
 
