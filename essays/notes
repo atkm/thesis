@@ -1,3 +1,16 @@
+WolframMathWorld:
+  "'Chaos' is a tricky thing to define. In fact, it is much easier to list properties that a system described as "chaotic" has rather than to give a precise definition of chaos."
+
+Robinson: 
+uses Wiggin's definiton, over Devaney's (p 86)
+Transitivity = indecomposability
+To avoid circle map's non-sense, use: 1) 'chain transitive' 2) a positive Lyapunov exponent.
+definition in experimental setting = box dimension (p 87)
+a quantitative measurement of chaos = topological entropy
+
+Ruelle (1989) "Chaotic Evolution and Strange Attractors"
+
+
 Bifurcation ~ Going down in the Sarkovskii's ordering
 
 Tinkerbell map
