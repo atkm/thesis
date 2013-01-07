@@ -10,6 +10,9 @@ a quantitative measurement of chaos = topological entropy
 
 Ruelle (1989) "Chaotic Evolution and Strange Attractors"
 
+On a compact interval Devaney and Block-Coppel are equivalent.
+Devaney (or Block-Coppel) implies Li-Yorke
+But Li-Yorke does not imply Devaney.
 
 Bifurcation ~ Going down in the Sarkovskii's ordering
 

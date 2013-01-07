@@ -11,12 +11,6 @@
   The orbit $O(x_0)$ is said to be \textit{aperiodic} if its limit set $L(x_0)$ is not finite.
 \end{definition}
 
-\begin{proposition}
-  (Sarkovskii)
-  Let $F: I\to I$ be continuous. Assume that $F$ has a periodic orbit of period $p$.
-  Then $F$ has a periodic orbit of every period, which follows $p$ in the Sarkovskii
-  ordering of $N$.
-\end{proposition}
 
 The image of a map whose domain is a closed, bounded interval is also a bounded and closed interval.
 This implies the Intermediate Value Theorem (IVT), from which we derive the following theorem about
@@ -47,21 +41,81 @@ Furthermore, the existence of a $2-$periodic orbit ensures the existence of a fi
 \end{proof}
 
 This observation was extended to all natural numbers by Alexander N. Sarkovskii.
+\begin{proposition}
+  (Sarkovskii)
+  Let $F: I\to I$ be continuous. Assume that $F$ has a periodic orbit of period $p$.
+  Then $F$ has a periodic orbit of every period, which follows $p$ in the Sarkovskii
+  ordering of $N$.
+\end{proposition}
+
 \begin{definition}
   (Sarkovskii's ordering, 1964)
+  \[
+    \begin{array}{ccccccccc}
+    3, & 5, & 7, & 9, & 11, & 13, & \ldots & \ldots & \ldots\\
+    2\cdot 3, & 2\cdot 5, & 2\cdot 7, & 2\cdot 9, & 2\cdot 11, & \ldots & \ldots & \ldots\\
+    2^2\cdot 3, & 2^2\cdot 5, & 2^2\cdot 7, & 2^2\cdot 9, & \ldots & \ldots & \ldots\\
+    2^3\cdot 3, & 2^3\cdot 5, & 2^3\cdot 7, & \ldots & \ldots & \ldots\\
+    \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots  & \vdots \\
+    \\
+    \ldots & \ldots & \ldots & \ldots & 2^4, & 2^3, & 2^2, & 2, & 1.
+  \end{array}
+  \]
+  The $n$th row $(n = 0, 1, \ldots)$ contains all integers of the form $2^n\cdot (2m + 1),\; m \in \Z$ in increasing order.
+  The last row contains all powers of 2 in decreasing order.
   \label{defn:sarkovskiiordering}
   %\index{Sarkovskii's ordering}
 \end{definition}
 
 \subsection{Chaos in Li-Yorke sense}
+\begin{definition}
+  (Chaos in Li-Yorke sense)
+  Let $I$ be an interval and $F: I\to I$ be continuous. $F$ is said to be \textit{Li-Yorke chaotic}, or 
+  \textit{chaotic in Li-Yorke's sense} if there is an uncountable set $S \subseteq I$ containing no
+  periodic points, which satisfies the following conditions:
+  \begin{equation*}
+    \limsup\limits_{n \to \infty}\; \abs{F^n(p) - F^n(q)} > 0.
+  \end{equation*}
+  \begin{equation*}
+    \liminf\limits_{n \to \infty}\; \abs{F^n(p) - F^n(q)} = 0.
+  \end{equation*}
+
+\end{definition}
+
 \begin{proposition}
-  (Li, Yorke. 1975 \cite{li-yorke})
-  Let $I$ be an interval and $F: I\to I$ be continuous. Suppose $F$ has a periodic orbit of period 3.
-  Then $F$ has a periodic orbit of every period and there is an infinite set $S$ contained in
-  $I$ such that every orbit starting from a point of $S$ is aperiodic.
+  (Period three implies all periods. \cite{li-yorke})
+  Let $I$ be an interval and $F: I\to I$ be continuous. Suppose there is a point $a \in I$ for which
+  the points
+  \begin{equation*}
+  b = F(a), \quad c = F(b), \quad d = F(c)
+  \end{equation*}
+  satisfy
+  \begin{equation*}
+    d \leq a < b < c.
+  \end{equation*}
+  Then $F$ has a periodic orbit of every period.
+  (Note that the hypothesis is satisfied is $F$ has a periodic orbit of period 3.)
+  \label{thm:liyorke1}
 \end{proposition}
 
-We will see that Marotto's definition is equivalent to Li-Yorke's.
+\begin{proposition}
+  (Period three implies Li-Yorke Chaos. \cite{li-yorke})
+  Suppose the same hypothesis as Proposition~\ref{thm:liyorke1} for $F$,
+  a continuous map.
+  Then $F$ is chaotic in Li-Yorke's sense.
+\end{proposition}
+
+We already know that points in $S$ are not periodic.
+However, we may draw an even stronger conclusion.
+\begin{proposition}
+  (Points in $S$ are not asymptotically periodic)
+  For every $p \in S$ and periodic point $q \in I$,
+  \begin{equation*}
+    \limsup\limits_{n \to \infty}\; \abs{F^n(p) - F^n(q)} > 0.
+  \end{equation*}
+\end{proposition}
+
+  We will see that Marotto's definition is equivalent to Li-Yorke's.
 Moreover, Marotto's definition is generalizable to $n$-space.
 
 But this doesn't apply to baker's map, because the transformation is not continuous.
