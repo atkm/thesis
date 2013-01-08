@@ -1,17 +1,18 @@
-\documentclass[11pt]{book}
-\usepackage{thesis,graphicx}
+\documentclass{book}
+\usepackage{thesis}
 \graphicspath{{./images/}}
 
+
 % specify the chapters to be compiled
-%\includeonly{introduction}
+\includeonly{./src/src_introduction, ./src/src_physicists_defn}
 \begin{document}
 
 % Intro
-\include{./essays/introduction/introduction}
+\include{./src/src_introduction}
 
 % Physicist defn
-\include{./essays/physicists_defn/physicists_defn}
+\include{./src/src_physicists_defn}
 
-\bibliographystyle{plain}
+\bibliographystyle{siam}
 \bibliography{./bibliography/thesis}
 \end{document}
