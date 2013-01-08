@@ -1,12 +1,17 @@
-\documentclass[11pt]{article}
+\documentclass[11pt]{book}
 \usepackage{thesis,graphicx}
+\graphicspath{{./images/}}
 
+% specify the chapters to be compiled
+%\includeonly{introduction}
 \begin{document}
-\section{This is my awesome thesis on chaos theory}
-Contents\cite{Ott}\cite{Abarbanel}\cite{Eckmann}\cite{Devaney}
 
-$\colonequals$
+% Intro
+\include{./essays/introduction/introduction}
+
+% Physicist defn
+\include{./essays/physicists_defn/physicists_defn}
 
 \bibliographystyle{plain}
-\bibliography{../bibliography/thesis}
+\bibliography{./bibliography/thesis}
 \end{document}
