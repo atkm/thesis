@@ -1,0 +1,95 @@
+% thesis.sty
+% Thesis Style package for my senior thesis project at Reed College
+\ProvidesPackage{thesis}
+
+% non-T1 fonts
+%\renewcommand{\rmdefault}{phv}
+%\renewcommand{\sfdefault}{phv}
+
+% T1 fonts
+% with math:
+% \usepackage{fourier} % clean!
+% no math, sans:
+% \usepackage{libertine}
+% sansserif:
+%\usepackage[scaled]{helvet}
+%\usepackage[sfdefault]{cabin}
+%\renewcommand*\sfdefault{uop}
+
+% (Dont use) T1 fonts
+% \usepackage{boisik} % super funky!
+%\usepackage[sc]{mathpazo} % good but no integral sign
+% \usepackage[math]{anttor} % HUGE mess
+% doesn't work \usepackage{kmath,kerkis}
+%\usepackage{gfsartemisia}% this doesn't like mathtools
+% \usepackage[math]{kurier} % a mess
+% \usepackage{pxfonts} % this doesn't like mathtools
+% \usepackage[adobe-utopia]{mathdesign} % no math
+% \usepackage[light]{kurier} % too light, tight
+% \usepackage[default]{gfsneohellenic} % too stylized
+% \usepackage[default]{cantarell}
+% \usepackage{inconsolata} % joke
+% \usepackage[default]{droidserif} % mess
+% \usepackage[math]{iwona}
+% \usepackage[urw-garamond]{mathdesign} % no math
+% \usepackage{newtxtext,newtxmath} %this doesn't like mathtools
+
+% no-xelatex font
+%%\usepackage{kpfonts} % nice!
+%\renewcommand*\familydefault{\sfdefault}
+%\usepackage[scaled]{helvet}
+%\linespread{1.05} 
+%\usepackage[T1]{fontenc}
+%\usepackage{lmodern}
+% disable ligature
+%\usepackage{microtype}
+%\DisableLigatures{encoding = *, family = * }
+
+
+% xelatex font
+\usepackage{lmodern,fontspec,xltxtra,unicode-math}
+\setmainfont[Ligatures=TeX]{Minion Pro}
+\newfontfamily{\math}{Asana Math}
+%\usepackage[MnSymbol]{mathspec}
+
+% basic packages
+\usepackage{enumerate,graphicx,makeidx}
+% pairs
+\usepackage{mathtools} % : mathtools require amsmath
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\set}{\{}{\}}
+\DeclarePairedDelimiter{\abs}{|}{|}
+\DeclarePairedDelimiter{\paren}{(}{)}
+\DeclarePairedDelimiter{\metric}{\delta(}{)}
+
+% colonequals: come with mathtools
+\newcommand{\ceq}{\coloneqq}
+
+% reference with parentheses
+\newcommand{\pref}[1]{(\ref{#1})}
+
+% environments
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{theorem}{Theorem}
+
+% convenient shortcuts
+\newcommand{\rar}{\rightarrow}
+\newcommand{\lar}{\leftarrow}
+\newcommand{\Rar}{\Longrightarrow} 
+\newcommand{\Lar}{\Longleftarrow} 
+\newcommand{\LRar}{\Longleftrightarrow} 
+\newcommand{\lk}{\langle} 
+\newcommand{\rk}{\rangle} 
+\newcommand{\bs}{\backslash} 
+\newcommand{\Z}{\mathbb{Z}} 
+\newcommand{\Q}{\mathbb{Q}} 
+\newcommand{\R}{\mathbb{R}} 
+\newcommand{\N}{\mathbb{N}} 
+\newcommand{\C}{\mathbb{C}} 
+\newcommand{\gen}[1]{\la #1 \ra} 
+\newcommand{\norm}[1]{\left|\left|#1\right|\right|}
+\newcommand{\compose}{\circ}
+
+\listfiles % show the files that are being included

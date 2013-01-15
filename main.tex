@@ -2,17 +2,23 @@
 \usepackage{thesis}
 \graphicspath{{./images/}}
 
+\makeindex
 
 % specify the chapters to be compiled
-\includeonly{./src/src_introduction, ./src/src_physicists_defn}
+\includeonly{./src/src_introduction, ./src/src_physicists_defn, ./src/src_devaney_defn}
 \begin{document}
 
 % Intro
 \include{./src/src_introduction}
 
-% Physicist defn
+% Physicists' definitions
 \include{./src/src_physicists_defn}
+
+% Devaney's definition
+\include{./src/src_devaney_defn}
 
 \bibliographystyle{siam}
 \bibliography{./bibliography/thesis}
+
+\printindex
 \end{document}

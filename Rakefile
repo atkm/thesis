@@ -1,5 +1,5 @@
 # global. files to work with.
-files = ['introduction', 'physicists_defn']
+files = ['introduction', 'physicists_defn','devaney_defn']
 
 # strip the original and store it in ./src/
 def strip_tex(file)
@@ -57,4 +57,8 @@ task :genmain do
     end
     file.puts main_tmpl_tail
   end
+end
+
+task :clean do
+  system("rm main.aux main.log main.dvi main.bbl main.blg")
 end

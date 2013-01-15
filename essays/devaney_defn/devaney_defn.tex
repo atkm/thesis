@@ -1,9 +1,10 @@
-\documentclass[11pt]{article}
-\usepackage{thesis}
+\documentclass[11pt]{book}
+\usepackage{../../thesis}
 
+\makeindex
 \begin{document}
 
-\section{Devaney's Definition}
+\chapter{Devaney's Definition}
 Devaney defines chaos in topological dynamics as follows:
 
 \begin{definition}
@@ -11,7 +12,7 @@ Devaney defines chaos in topological dynamics as follows:
   transitive if for any pair of open sets $U$, $V \subseteq J$
   there exists $k > 0$ such that $f^k(U) \cap V \neq \emptyset$.
   \label{defn:transitivity}
-  %\index{topological transitivity}
+  \index{topological transitivity}
 \end{definition}
 
 Note that we do not require that
@@ -24,7 +25,7 @@ every neighborhood of $x$.
   such that, for any $x \in J$ and any neighborhood $N$ of $x$,
   there exists $y\in N$ and $n\leq 0$ such that $|f^n(x) - f^n(y)|>\delta$.
   \label{defn:sdic}
-  %\index{sensitive dependence on initial conditions}
+  \index{sensitive dependence on initial conditions}
 \end{definition}
 
 \begin{definition}
@@ -34,6 +35,7 @@ every neighborhood of $x$.
     \item $f$ is topologically transitive.
     \item Periodic points are dense in $V$.
   \end{enumerate}
+  \index{definition of chaos!Devaney}
 \end{definition}
 
 
@@ -41,6 +43,7 @@ every neighborhood of $x$.
   (Expansiveness) $f: J\rar J$ is expansive if there exists $\nu > 0$
   such that, for any $x,y\in J$, there exists $n$ such that
   $|f^nx-f^ny| > \nu$.
+  \index{expansiveness}
 \end{definition}
 
 Sensitive dependence on initial conditions can be derived from transivity and dense property if the mapping
@@ -74,6 +77,7 @@ Also an important notion:
   stable on $J$, if there exists $\epsilon > 0$ such that whenever
   $d_r(f,g) < \epsilon$ for $g: J\rar J$, it follows that $f$
   is topologically conjugate to $g$.
+  \index{structural stability}
 \end{definition}
 
 Then, chaos can be defined in terms of stability.
@@ -86,6 +90,7 @@ Then, chaos can be defined in terms of stability.
     \item $O(x_0)$ is dense in $X$.
     \item $O(x_0)$ is unstable in $X$.
   \end{enumerate}
+  \index{definition of chaos!Martelli}
 \end{definition}
 
 It turns out structural stability is equivalent to sensitive dependence
@@ -99,4 +104,8 @@ on initial conditions.
   $g$ is transitive.
 \end{proposition}
 
+\bibliographystyle{plain}
+\bibliography{../../bibliography/thesis}
+
+\printindex
 \end{document}

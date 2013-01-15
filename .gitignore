@@ -3,4 +3,7 @@
 **.dvi
 **.bbl
 **.blg
+**.idx
+**.ilg
+**.ind
 src/
