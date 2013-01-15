@@ -1,0 +1,57 @@
+% thesisx.sty
+% Thesis Style package for my senior thesis project at Reed College
+% Compile using xelatex
+\ProvidesPackage{xthesis}
+
+% non-T1 fonts
+%\renewcommand{\rmdefault}{phv}
+%\renewcommand{\sfdefault}{phv}
+
+% xelatex font
+\usepackage{lmodern,fontspec,xltxtra,unicode-math}
+\setmainfont[Ligatures=TeX]{Minion Pro}
+\newfontfamily{\math}{Asana Math}
+\setmonofont{Consolas}
+%\usepackage[MnSymbol]{mathspec} % to use minion math
+
+% basic packages
+\usepackage{amsmath,enumerate,graphicx,makeidx}
+
+% colonequals: come with unicode-math
+\newcommand{\ceq}{\coloneqq}
+
+% reference with parentheses
+\newcommand{\pref}[1]{(\ref{#1})}
+
+% environments
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{theorem}{Theorem}
+
+% convenient shortcuts
+\newcommand{\rar}{\rightarrow}
+\newcommand{\lar}{\leftarrow}
+\newcommand{\Rar}{\Longrightarrow} 
+\newcommand{\Lar}{\Longleftarrow} 
+\newcommand{\LRar}{\Longleftrightarrow} 
+\newcommand{\lan}{\langle} 
+\newcommand{\ran}{\rangle} 
+\newcommand{\bs}{\backslash} 
+\newcommand{\Z}{\mathbb{Z}} 
+\newcommand{\Q}{\mathbb{Q}} 
+\newcommand{\R}{\mathbb{R}} 
+\newcommand{\N}{\mathbb{N}} 
+\newcommand{\C}{\mathbb{C}} 
+\newcommand{\compose}{\circ}
+% pairs
+\newcommand{\norm}[1]{\left|\left| #1 \right|\right|} 
+\newcommand{\delimpair}[3]{\left #1 #2 \right #3}
+\newcommand{\gen}[1]{\delimpair{\lan}{#1}{\ran}} 
+\newcommand{\ceil}[1]{\delimpair{\lceil}{#1}{\rceil}}
+\newcommand{\set}[1]{\delimpair{\{}{#1}{\}}}
+\newcommand{\abs}[1]{\delimpair{|}{#1}{|}}
+\newcommand{\paren}[1]{\delimpair{(}{#1}{)}}
+\newcommand{\metric}[1]{\delimpair{\delta(}{#1}{)}}
+
+\listfiles % show the files that are being included
