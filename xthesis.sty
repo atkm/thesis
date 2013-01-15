@@ -8,20 +8,23 @@
 %\renewcommand{\sfdefault}{phv}
 
 % xelatex font
-\usepackage{lmodern,fontspec,xltxtra,unicode-math}
+% Use Asana Math (or XITS, etc. anything from unicode-math)
+%\usepackage{lmodern,fontspec,xltxtra,unicode-math,amsmath} % unicode-math lacks math environments (e.g. align), which are in amsmath
+%\setmainfont[Ligatures=TeX]{Minion Pro}
+%\newfontfamily{\math}{Asana Math}
+
+% Use mathspec
+\usepackage{amsfonts} % this loads mathbb fonts. don't do \setmathbb later
+\usepackage[MnSymbol]{mathspec} % MnSymbol is incompatible with amssymb. It loads amsmath and textcomp
+\usepackage{xltxtra}
 \setmainfont[Ligatures=TeX]{Minion Pro}
-\newfontfamily{\math}{Asana Math}
-\setmonofont{Consolas}
-%\usepackage[MnSymbol]{mathspec} % to use minion math
+\setallsansfonts[Scale=MatchLowercase,Numbers={Lining,Proportional}]{Myriad Pro}
+\setallmonofonts[Scale=MatchLowercase]{Consolas}
+\setmathsfont(Digits,Latin,Greek)[Scale=MatchLowercase,Numbers={Lining,Proportional}]{Minion Pro}
+\setmathrm{Minion Pro}
 
 % basic packages
-\usepackage{amsmath,enumerate,graphicx,makeidx}
-
-% colonequals: come with unicode-math
-\newcommand{\ceq}{\coloneqq}
-
-% reference with parentheses
-\newcommand{\pref}[1]{(\ref{#1})}
+\usepackage{enumerate,graphicx,makeidx}
 
 % environments
 \newtheorem{proposition}{Proposition}
@@ -29,7 +32,7 @@
 \newtheorem{lemma}{Lemma}
 \newtheorem{theorem}{Theorem}
 
-% convenient shortcuts
+% shortcuts
 \newcommand{\rar}{\rightarrow}
 \newcommand{\lar}{\leftarrow}
 \newcommand{\Rar}{\Longrightarrow} 
@@ -44,6 +47,9 @@
 \newcommand{\N}{\mathbb{N}} 
 \newcommand{\C}{\mathbb{C}} 
 \newcommand{\compose}{\circ}
+\newcommand{\ceq}{\coloneqq}% colonequals: come with unicode-math
+\newcommand{\pref}[1]{(\ref{#1})} % reference with parentheses
+
 % pairs
 \newcommand{\norm}[1]{\left|\left| #1 \right|\right|} 
 \newcommand{\delimpair}[3]{\left #1 #2 \right #3}

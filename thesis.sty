@@ -48,11 +48,6 @@
 % basic packages
 \usepackage{amsmath,enumerate,graphicx,makeidx}
 
-% colonequals: come with mathtools
-\newcommand{\ceq}{\coloneqq}
-
-% reference with parentheses
-\newcommand{\pref}[1]{(\ref{#1})}
 
 % environments
 \newtheorem{proposition}{Proposition}
@@ -66,17 +61,18 @@
 \newcommand{\Rar}{\Longrightarrow} 
 \newcommand{\Lar}{\Longleftarrow} 
 \newcommand{\LRar}{\Longleftrightarrow} 
-\newcommand{\lk}{\langle} 
-\newcommand{\rk}{\rangle} 
+\newcommand{\lan}{\langle} 
+\newcommand{\ran}{\rangle} 
 \newcommand{\bs}{\backslash} 
 \newcommand{\Z}{\mathbb{Z}} 
 \newcommand{\Q}{\mathbb{Q}} 
 \newcommand{\R}{\mathbb{R}} 
 \newcommand{\N}{\mathbb{N}} 
 \newcommand{\C}{\mathbb{C}} 
-\newcommand{\gen}[1]{\la #1 \ra} 
-\newcommand{\norm}[1]{\left|\left|#1\right|\right|}
 \newcommand{\compose}{\circ}
+\newcommand{\ceq}{\coloneqq}
+\newcommand{\pref}[1]{(\ref{#1})} % reference with parentheses
+
 % pairs
 \newcommand{\norm}[1]{\left|\left| #1 \right|\right|} 
 \newcommand{\delimpair}[3]{\left #1 #2 \right #3}

@@ -59,6 +59,13 @@ task :genmain do
   end
 end
 
+task :xelatex do
+  system('xelatex main.tex')
+  system('bibtex main.aux')
+  system('xelatex main.tex')
+  system('xelatex main.tex')
+end
+
 task :clean do
   system("rm main.aux main.log main.dvi main.bbl main.blg")
 end
