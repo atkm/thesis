@@ -1,5 +1,5 @@
 # global. files to work with.
-files = ['introduction', 'physicists_defn','devaney_defn','devaney_vs_wiggins','martelli_defn','li_yorke_defn','marotto_defn']
+files = ['introduction', 'physicists_defn','dimensions','lyapunov_exponents','devaney_defn','on_sensitivity','devaney_vs_wiggins','martelli_defn','li_yorke_defn','marotto_defn']
 
 # strip the original and store it in ./src/
 def strip_tex(file)
@@ -33,9 +33,9 @@ task :srcprep do
   puts "Done."
 end
 
-
+# create main.tex
 task :genmain do
-  main_tmpl_head = "\\documentclass{book}\n\\usepackage{thesis}\n\\graphicspath{{./images/}}\n\n"
+  main_tmpl_head = "\\documentclass[11pt,draft]{book}\n\\usepackage{xthesis}\n\\graphicspath{{./images/}}\n\n\\makeindex\n\n"
   
   main_includeonly = "%specify the chapters to be compiled\n\\includeonly{"
   files.each do |name|
@@ -44,27 +44,37 @@ task :genmain do
     main_includeonly += ','
   end
   main_includeonly.gsub!(/,$/,'')
-  main_includeonly += '}'
+  main_includeonly += "}\n\n"
 
-  main_tmpl_tail = "\n\\bibliographystyle{abbrvnat}\n\\bibliography{./bibliography/thesis}\n\\end{document}"
+  main_tmpl_tail = "\n% Bibliography\n\\bibliographystyle{pjgsm}\n\\bibliography{./bibliography/thesis}\n\n% Index\n\\printindex\n\n\\end{document}"
 
-  File.open('main.tex.test','w') do |file|
+  main_file = 'main.tex'
+  puts "Rolling out: #{main_file}."
+  File.open(main_file,'w') do |file|
     file.puts main_tmpl_head
     file.puts main_includeonly
-    file.puts '\begin{document}'
+    file.puts '\begin{document}' + "\n\n"
     files.each do |name|
-      file.puts '\include{./src/src_' + name + '}'
+      file.puts '\include{./src/src_' + name + "}\n\n"
     end
     file.puts main_tmpl_tail
   end
 end
 
+# compile main.pdf by xelatex
 task :make do
   system('xelatex main.tex')
   system('bibtex main')
   system('makeindex main')
   system('xelatex main.tex')
   system('xelatex main.tex')
+end
+
+# do it all at once
+task :fullmake do
+  Rake::Task['srcprep'].execute
+  Rake::Task['genmain'].execute
+  Rake::Task['make'].execute
 end
 
 task :clean do

@@ -4,43 +4,37 @@
 
 \makeindex
 
-% specify the chapters to be compiled
-%\includeonly{
-%  ./src/src_introduction,
-%  ./src/src_physicists_defn,
-%  ./src/src_devaney_defn,
-%  ./src/src_devaney_vs_wiggins,
-%  ./src/martelli_defn,
-%  ./src/src_li_yorke_defn,
-%  ./src/src_marotto_defn
-%}
+%specify the chapters to be compiled
+\includeonly{./src/src_introduction,./src/src_physicists_defn,./src/src_dimensions,./src/src_lyapunov_exponents,./src/src_devaney_defn,./src/src_on_sensitivity,./src/src_devaney_vs_wiggins,./src/src_martelli_defn,./src/src_li_yorke_defn,./src/src_marotto_defn}
+
 \begin{document}
 
-% Intro
 \include{./src/src_introduction}
 
-% Physicists' definitions (Intro 2)
 \include{./src/src_physicists_defn}
 
-% Most common one: Devaney's definition
+\include{./src/src_dimensions}
+
+\include{./src/src_lyapunov_exponents}
+
 \include{./src/src_devaney_defn}
 
-% Comparison of Devaney to Wiggins
+\include{./src/src_on_sensitivity}
+
 \include{./src/src_devaney_vs_wiggins}
 
-% Connect Wiggins to Martelli
 \include{./src/src_martelli_defn}
 
-% Introduce Li-Yorke
 \include{./src/src_li_yorke_defn}
 
-% Snap-back repeller
 \include{./src/src_marotto_defn}
+
 
 % Bibliography
 \bibliographystyle{pjgsm}
 \bibliography{./bibliography/thesis}
 
-% Indexing
+% Index
 \printindex
+
 \end{document}

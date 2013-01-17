@@ -6,4 +6,7 @@
 **.idx
 **.ilg
 **.ind
+main.pdf
 src/
+essays/*/*.pdf
+images/*.pdf

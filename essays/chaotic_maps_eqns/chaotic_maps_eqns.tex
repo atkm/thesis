@@ -1,5 +1,5 @@
 \documentclass[11pt]{book}
-\usepackage{thesis}
+\usepackage{../../thesis}
 
 \begin{document}
 
@@ -84,35 +84,36 @@
 \begin{itemize}
   \item Lorenz Model of Atmospheric Behavior
     \begin{equation*}
-     \begin{cases}
-      \dot{x} = -ax + ay \\
-      \dot{y} = -xz + rx -y \\
-      \dot{z} = xy - bz.
-    \end{cases}
+      \begin{cases}
+        \dot{x} = -ax + ay \\
+        \dot{y} = -xz + rx -y \\
+        \dot{z} = xy - bz.
+      \end{cases}
     \end{equation*}
     which is equivalent to (by $u = z - a - r$)
     \begin{equation*}
-     \begin{cases}
-      \dot{x} = -ax + ay \\
-      \dot{y} = -xu - ax -y \\
-      \dot{z} = xy - bu -ab -br.
-    \end{cases}
+      \begin{cases}
+        \dot{x} = -ax + ay \\
+        \dot{y} = -xu - ax -y \\
+        \dot{z} = xy - bu -ab -br.
+      \end{cases}
     \end{equation*}
 
   \item Sinusoidally forced Duffing equation by Moon and Holmes (Ott p10)
     \begin{equation*}
       \ddot{y} + \nu \dot{y} + (y^3 - y) = g\sin t.
     \end{equation*}
-    \end{itemize}
-\item Russler equations
-  \begin{equation*}
-    \begin{cases}
-      \ddot{x} = - y - z \\
-      \ddot{y} = x + Ay \\
-      \ddot{z} = B + z(x - C)
-    \end{cases}
-  \end{equation*}
+  \item Russler equations
+    \begin{equation*}
+      \begin{cases}
+        \ddot{x} = - y - z \\
+        \ddot{y} = x + Ay \\
+        \ddot{z} = B + z(x - C)
+      \end{cases}
+    \end{equation*}
+\end{itemize}
 
-\bibliographystyle{plain}
+\bibliographystyle{pjgsm}
 \bibliography{../../bibliography/thesis}
+\nocite{*}
 \end{document}
