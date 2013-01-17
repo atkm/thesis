@@ -14,7 +14,7 @@
 %\newfontfamily{\math}{Asana Math}
 
 % Use mathspec
-\usepackage{amsfonts} % this loads mathbb fonts. don't do \setmathbb later
+\usepackage{amsthm,amsfonts} % this loads mathbb fonts. don't do \setmathbb later
 \usepackage[MnSymbol]{mathspec} % MnSymbol is incompatible with amssymb. It loads amsmath and textcomp
 \usepackage{xltxtra}
 \setmainfont[Ligatures=TeX]{Minion Pro}
@@ -55,12 +55,12 @@
 
 % pairs
 \newcommand{\norm}[1]{\left|\left| #1 \right|\right|} 
+\newcommand{\metric}[1]{\delta\left( #1 \right)}
 \newcommand{\delimpair}[3]{\left #1 #2 \right #3}
 \newcommand{\gen}[1]{\delimpair{\lan}{#1}{\ran}} 
 \newcommand{\ceil}[1]{\delimpair{\lceil}{#1}{\rceil}}
 \newcommand{\set}[1]{\delimpair{\{}{#1}{\}}}
 \newcommand{\abs}[1]{\delimpair{|}{#1}{|}}
 \newcommand{\paren}[1]{\delimpair{(}{#1}{)}}
-\newcommand{\metric}[1]{\delimpair{\delta(}{#1}{)}}
 
 \listfiles % show the files that are being included

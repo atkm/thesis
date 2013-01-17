@@ -1,5 +1,5 @@
 # global. files to work with.
-files = ['introduction', 'physicists_defn','devaney_defn','devaney_vs_wiggins','martelli_defn','li_yorke_defn']
+files = ['introduction', 'physicists_defn','devaney_defn','devaney_vs_wiggins','martelli_defn','li_yorke_defn','marotto_defn']
 
 # strip the original and store it in ./src/
 def strip_tex(file)
@@ -13,7 +13,7 @@ def strip_tex(file)
   orig.delete_at(0)
   # take everything before the bibliography
   src = orig.take_while do |line|
-    not line.strip.include?('bibliographystyle{plain}')
+    not line.strip.include?('bibliographystyle{')
   end
   
   File.open(File.expand_path(src_name,'./src'), 'w') {|file| file.puts src}
@@ -46,7 +46,7 @@ task :genmain do
   main_includeonly.gsub!(/,$/,'')
   main_includeonly += '}'
 
-  main_tmpl_tail = "\n\\bibliographystyle{siam}\n\\bibliography{./bibliography/thesis}\n\\end{document}"
+  main_tmpl_tail = "\n\\bibliographystyle{abbrvnat}\n\\bibliography{./bibliography/thesis}\n\\end{document}"
 
   File.open('main.tex.test','w') do |file|
     file.puts main_tmpl_head
@@ -61,11 +61,13 @@ end
 
 task :make do
   system('xelatex main.tex')
-  system('bibtex main.aux')
+  system('bibtex main')
+  system('makeindex main')
   system('xelatex main.tex')
   system('xelatex main.tex')
 end
 
 task :clean do
-  system("rm main.aux main.log main.dvi main.bbl main.blg main.idx main.ind main.ilg")
+  system('rm main.aux main.log main.dvi main.bbl main.blg main.idx main.ind main.ilg')
+  system('rm src/*.aux')
 end
