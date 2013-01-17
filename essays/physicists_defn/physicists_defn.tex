@@ -1,60 +1,66 @@
 \documentclass[11pt]{book}
-\usepackage{thesis}
+\usepackage{../../thesis}
 \graphicspath{ {../../images/} }
 
 \begin{document}
 
-\chapter{What do physicists say?}
-(Abarbanel)
-In the same way power spectrum with a sharp peak characterizes a linear system,
-invariants such as Lyapunov exponents, fractal dimension, and (KS or topological) entropy
-characterize nonlinear systems.
-Each orbit is sensitive to initial conditions; however, these invariants
-are preserved under small perturbations, which are prevalent in real-life situations.
+\chapter{Our intuition on chaos}
+\section{Chaos in nature}
 
-Two complementary attributes sometimes used to define chaos are
-(i) exponentially sensitive dependence and
-(ii) complex orbit structure.
-A quantifier for attribute (i) is the largest Lyapunov exponent, while
-a quantifier for attribute (ii) is the entropy (e.g, the metric entropy
-or the topological entropy).
-(Ott, p379)
+\section{Chaos in physics}
+\subsection{Introduction to chaos}
+\begin{quote}
+In the same way power spectrum with a sharp peak characterizes a linear system, invariants such as Lyapunov exponents, fractal dimension, and (KS or topological) entropy characterize nonlinear systems.
+Each orbit is sensitive to initial conditions; however, these invariants are preserved under small perturbations, which are prevalent in real-life situations.
+\end{quote}
+``[B]road (Fourier) power spectrum is a first indication of chaotic behavior, though it alone does not characterize chaos'' (p1338)
+\citep{abarbanel}
 
-Although there is no universally accepted definition of chaos,
-most experts would concur that chaos is the {\it aperiodic,
-  long-term behavior of a bounded, deterministic system
-that exhibits sensitive dependence on initial conditions} (Sprott, p104)
+Two complementary attributes sometimes used to define chaos are (\cite[p.~379]{Ott}, )
+\begin{enumerate}
+  \item exponentially sensitive dependence
+  \item complex orbit structure
+\end{enumerate}
+Quantifiers for these attributes
+\begin{enumerate}
+  \item exponentially sensitive dependence: the largest Lyapunov exponent  
+  \item entropy, (metric, topological, or others)
+\end{enumerate}
 
-broad (Fourier) power spectrum is a first indication of chaotic behavior,
-though it alone does not characterize chaos (Abarbanel p1338)
+Although there is no universally accepted definition of chaos, most experts would concur that chaos is the {\it aperiodic, long-term behavior of a bounded, deterministic system that exhibits sensitive dependence on initial conditions} (Sprott, p104)
 
-Positive Lyapunov exponent, (Kantz)
+\citet{kantz-schreiber} cite positive Lyapunov exponent.
+
+``We say that motion on an attractor is chaotic if it displays sensitive dependence on initial conditions.'' \citep[p~11]{ott1994}
+``[\ldots] two key aspects of chaos are the stretching of infinitesimal displacements and the complex orbit structure in the form of a vast variety of possible orbits.'' \citep[p~31]{ott2002}
+
+\citet[p~51]{kantz-schreiber}:
+\begin{quotation}
+Noise reduction means that one tries to decompose a time series into two components, one of which supposedly contains the signal and the other one contains random fluctuations.
+Thus we always assume that the data can be thought of as an additive superposition of two different components which have to be distinguishable by some objective criterion.
+The classical statistical tool for obtaining this distinction is the power spectrum.
+
+Random noise has a flat, or at least a broad, spectrum, whereas periodic or quasi-periodic signals have sharp spectral lines.
+After both components have been identified in the spectrum, a Wiener filter can be used to separate the time series accordingly.
+This approach fails for deterministic chaotic dynamics because the output of such systems usually leads to broad band spectra itself and thus possesses spectral properties generally attributed to random noise.
+Even if parts of the spectrum can be clearly associated with the signal, a separation into signal and noise fails for most parts of the frequency domain. Chaotic deterministic systems are of particular interest because the determinism yields an alternative criterion to distinguish the signal and the noise. 
+\end{quotation}
+
+\subsection{Invariants}
+p.xiii
+  By symmetry we mean an invariance against change: something stays the same, in spite of some potentially consequential alteration.
+p.xv
+  The workd \textit{symmetric} is of ancient Greek parentage and means well-proportioned, well-ordered--certainly nothing even remotely chaotic.
+  Yet, paradoxically, self-similarity, the topic of this tome, alone among all the symmetries gives birth to its very antithesis: \textit{chaos},
+  a state of utter confusion and disorder.
+
+\subsection{Lyapunov Exponent}
+
+\subsection{Fractal Dimension}
+
 Aperiodic and unstable orbits (claim by Martelli)
 
-``We say that motion on an attractor is chaotic if
-it displays sensitive dependence on initial conditions.'' (\cite{ott-sauer} p11)
-``[\ldots] two key aspects of chaos are the stretching of infinitesimal displacements
-and the complex orbit structure in the form of a vast variety of possible orbits.'' (Ott p31)
-
-Noise reduction means that one tries to decompose a time series into
-two components, one of which supposedly contains the signal and the other
-one contains random fluctuations. Thus we always assume that the data
-can be thought of as an additive superposition of two different components which
-have to be distinguishable by some objective criterion. The classical statistical
-tool for obtaining this distinction is the power spectrum. Random noise has
-a flat, or at least a broad, spectrum, whereas periodic or quasi-periodic
-signals have sharp spectral lines. After both components have been identified
-in teh spectrum, a Wiener filter can be used to separate the time series
-accordingly.
-This approach fails for deterministic chaotic dynamics because the output
-of such systems usually leads to broad band spectra itself and thus possesses
-spectral properties generally attributed to random noise. Even if parts of the
-spectrum can be clearly associated with the signal, a separation into signal and
-noise fails for most parts of the frequency domain. Chaotic deterministic systems
-are of particular interest because the determinism yields an alternative criterion
-to distinguish the signal and the noise. (Kantz p51)
-
-\bibliographystyle{plain}
+\bibliographystyle{abbrvnat}
 \bibliography{../../bibliography/thesis}
 
 \end{document}

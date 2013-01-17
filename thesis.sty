@@ -40,14 +40,16 @@
 \usepackage[scaled]{helvet}
 \linespread{1.05} 
 \usepackage[T1]{fontenc}
-\usepackage{lmodern}
+%\usepackage{lmodern}
 % disable ligature
 \usepackage{microtype}
 \DisableLigatures{encoding = *, family = * }
 
+% Use NatBiB (the options are default)
+\usepackage[round, colon, authoryear]{natbib}
+
 % basic packages
 \usepackage{amsmath,enumerate,graphicx,makeidx}
-
 
 % environments
 \newtheorem{proposition}{Proposition}
@@ -83,4 +85,5 @@
 \newcommand{\paren}[1]{\delimpair{(}{#1}{)}}
 \newcommand{\metric}[1]{\delimpair{\delta(}{#1}{)}}
 
-\listfiles % show the files that are being included
+% show the files that are being included
+\listfiles 

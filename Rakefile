@@ -1,5 +1,5 @@
 # global. files to work with.
-files = ['introduction', 'physicists_defn','devaney_defn']
+files = ['introduction', 'physicists_defn','devaney_defn','devaney_vs_wiggins','martelli_defn','li_yorke_defn']
 
 # strip the original and store it in ./src/
 def strip_tex(file)
@@ -59,7 +59,7 @@ task :genmain do
   end
 end
 
-task :xelatex do
+task :make do
   system('xelatex main.tex')
   system('bibtex main.aux')
   system('xelatex main.tex')
@@ -67,5 +67,5 @@ task :xelatex do
 end
 
 task :clean do
-  system("rm main.aux main.log main.dvi main.bbl main.blg")
+  system("rm main.aux main.log main.dvi main.bbl main.blg main.idx main.ind main.ilg")
 end
