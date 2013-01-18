@@ -1,13 +1,54 @@
-\documentclass[11pt,draft]{book}
+\documentclass[12pt,twoside,draft]{reedthesis}
 \usepackage{xthesis}
 \graphicspath{{./images/}}
-
+  
 \makeindex
+  
+\title{カオス理論}
+\author{Atsuya Kumano - 熊野睦也}
+% The month and year that you submit your FINAL draft TO THE LIBRARY (May or December)
+\date{May 2013}
+\division{Mathematics and Natural Sciences}
+\advisor{Thomas W. Wieting}
+\altadvisor{Rao V. Potluri}
+\department{Mathematics}
+% if you want the approval page to say "Approved for the Committee",
+% uncomment the next line
+%\approvedforthe{Committee} 
 
-%specify the chapters to be compiled
-\includeonly{./src/src_introduction,./src/src_physicists_defn,./src/src_dimensions,./src/src_lyapunov_exponents,./src/src_devaney_defn,./src/src_on_sensitivity,./src/src_devaney_vs_wiggins,./src/src_martelli_defn,./src/src_li_yorke_defn,./src/src_marotto_defn}
+%specify the chapters to be compiled.
+  \includeonly{./src/src_introduction,./src/src_physicists_defn,./src/src_dimensions,./src/src_lyapunov_exponents,./src/src_devaney_defn,./src/src_on_sensitivity,./src/src_conjugacy,./src/src_devaney_vs_wiggins,./src/src_martelli_defn,./src/src_li_yorke_defn,./src/src_marotto_defn}
 
 \begin{document}
+% from reed-thesis.tex
+\maketitle
+\frontmatter % this stuff will be roman-numbered
+\pagestyle{empty} % this removes page numbers from the frontmatter
+
+\chapter*{Acknowledgements}
+皆さんどーもありがとう。
+
+\tableofcontents
+% if you want a list of tables, optional
+%\listoftables
+% if you want a list of figures, also optional
+%\listoffigures
+
+% The abstract is not required if you're writing a creative thesis (but aren't they all?)
+% If your abstract is longer than a page, there may be a formatting issue.
+%    \chapter*{Abstract}
+%	\chapter*{Dedication} % You can have a dedication here if you wish.
+
+\mainmatter % here the regular arabic numbering starts
+\pagestyle{fancyplain} % turns page numbering back on
+
+%Introduction. If I need one.
+%\chapter*{Introduction}
+%\addcontentsline{toc}{chapter}{Introduction}
+%\chaptermark{Introduction}
+%\markboth{Introduction}{Introduction}
+
+% end reed-thesis.tex
 
 \include{./src/src_introduction}
 
@@ -21,6 +62,8 @@
 
 \include{./src/src_on_sensitivity}
 
+\include{./src/src_conjugacy}
+
 \include{./src/src_devaney_vs_wiggins}
 
 \include{./src/src_martelli_defn}
@@ -29,11 +72,24 @@
 
 \include{./src/src_marotto_defn}
 
+%Conclusion. if I need one.
+%\chapter*{Conclusion}
+%\addcontentsline{toc}{chapter}{Conclusion}
+%\chaptermark{Conclusion}
+%\markboth{Conclusion}{Conclusion}
+
+\appendix
+\chapter{The First Appendix}
+\chapter{The Second Appendix, for Fun}
+
+\backmatter % backmatter makes the index and bibliography appear properly in the t.o.c...
 
 % Bibliography
-\bibliographystyle{pjgsm}
+\renewcommand{\bibname}{References}
+\bibliographystyle{bibliography/pjgsm}
+\nocite{*}
 \bibliography{./bibliography/thesis}
-
+  
 % Index
 \printindex
 

@@ -1,35 +1,35 @@
-\documentclass[11pt]{book}
+\documentclass[12pt,draft,twoside]{book}
 \usepackage{../../thesis}
 
 \makeindex
 \begin{document}
 
 \chapter{Devaney's Definition}
-Devaney defines chaos in topological dynamics as follows:
+\citet{devaney} defines chaos in topological dynamics using three properties.
 
 \begin{definition}
-  (Topological Transitivity) $f: J \rar J$ is said to be topologically
-  transitive if for any pair of open sets $U$, $V \subseteq J$
-  there exists $k > 0$ such that $f^k(U) \cap V \neq \emptyset$.
+  (Topological Transitivity) 
+  $f: J \rar J$ is said to be topologically transitive if for any pair of open sets $U$, $V \subseteq J$ there exists $k > 0$ such that $f^k(U) \cap V \neq \emptyset$.
   \label{defn:transitivity}
   \index{topological transitivity}
 \end{definition}
 
-Note that we do not require that
-``\it{all} points near $x$ need eventually separate from $x$
-under iteration, but there must be at least one such point in
-every neighborhood of $x$.
+Note that we do \textit{not} require that \textit{all} points near $x$ need eventually separate from $x$ under iteration.
+The existence of one such point in every neighborhood of $x$ suffices in this definition of chaos.
+
 \begin{definition}
-  (Sensitive Dependence on Initial Conditions) $f: J \rightarrow J$ 
-  is said to have sensitive initial conditions if there exists (for any???) $\delta > 0$
+  (Sensitive Dependence on Initial Conditions) 
+  $f: J \rightarrow J$ is said to have sensitive initial conditions if there exists (for any???) $\delta > 0$
   such that, for any $x \in J$ and any neighborhood $N$ of $x$,
-  there exists $y\in N$ and $n\leq 0$ such that $|f^n(x) - f^n(y)|>\delta$.
+  there exists $y\in N$ and $n\leq 0$ such that $|f^{\circ n}(x) - f^n(y)|>\delta$.
   \label{defn:sdic}
   \index{sensitive dependence on initial conditions}
 \end{definition}
 
 \begin{definition}
-  (Chaos in the sense of Devaney) Let $V$ be a set. $f: V\rar V$ is said to be chaotic on $V$ if
+  (Chaos in the sense of Devaney) 
+  Let $V$ be a set.
+  $f: V\rar V$ is said to be chaotic on $V$ if
   \begin{enumerate}
     \item $f$ has sensitive dependence on initial conditions.
     \item $f$ is topologically transitive.
@@ -39,62 +39,14 @@ every neighborhood of $x$.
 \end{definition}
 
 
-\begin{definition}
-  (Expansiveness) $f: J\rar J$ is expansive if there exists $\nu > 0$
-  such that, for any $x,y\in J$, there exists $n$ such that
-  $|f^nx-f^ny| > \nu$.
-  \index{expansiveness}
-\end{definition}
-
-Sensitive dependence on initial conditions can be derived from transivity and dense property if the mapping
-is continuous and $X$ is a compact, invariant set. \cite{banks}
-Furthermore, for an interval, {\bf the only property necessary is
+We will show Sensitive dependence on initial conditions can be derived from transivity and dense property if the mapping is continuous and $X$ is a compact, invariant set later in this chapter. \citep{banks}
+Furthermore, for an interval, \textbf{the only property necessary is
 topological transitivity} (Vellekoop-Berglund, 1994).
-
-There seems to be a connection between topological transitivity and
-``period three implies chaos''.
 
 A system is chaotic in $X$ in the sense of Devaney if and only if
 for every pair of open sets in $X$ there exists a periodic orbit 
 which visits both sets (Touhey, 1997).
 
-\begin{proposition}
-  (Martelli et al., 1998)(Equivalence of stability and transitivity)
-  Let $X\subset R^n$ be compact and $F: X\rar X$ be continuous.
-  Then $F$ is topologically transitive in $X$ if and only if
-  there exists $x_0\in X$ such that $O(x_0)$ is dense in $X$.
-  In addition, $F$ has sensitive dependence on initial conditions 
-  with respect to $X$ if and only if $O(x_0)$ is unstable in $X$.
-\end{proposition}
-
-Importantly, theorem still holds if the condition on $F$ is 
-weakened to {\it quasi-continuous} function, a class of functions
-where baker's map belongs to.
-
-Also an important notion:
-\begin{definition}
-  (Structural Stability) $f: J \rar J$ is said to be $C^r$-structurally
-  stable on $J$, if there exists $\epsilon > 0$ such that whenever
-  $d_r(f,g) < \epsilon$ for $g: J\rar J$, it follows that $f$
-  is topologically conjugate to $g$.
-  \index{structural stability}
-\end{definition}
-
-Then, chaos can be defined in terms of stability.
-\begin{definition}
-  Let $U$ be open in $\mathbb{R}^n$, $F$ a continuous mapping $F: U\rar \R^n$ and $X\subset U$
-  closed, bounded (the two implies compact space), and invariant.
-  $F$ is said to be {\it chaotic} in $X$ if there exists $x_0\in X$
-  such that
-  \begin{enumerate}
-    \item $O(x_0)$ is dense in $X$.
-    \item $O(x_0)$ is unstable in $X$.
-  \end{enumerate}
-  \index{definition of chaos!Martelli}
-\end{definition}
-
-It turns out structural stability is equivalent to sensitive dependence
-on initial conditions.
 
 \begin{proposition}
   (Conjugacy, Transitivity, and Homeomorphism) 
@@ -104,7 +56,7 @@ on initial conditions.
   $g$ is transitive.
 \end{proposition}
 
-\bibliographystyle{pjgsm}
+\bibliographystyle{../../bibliography/pjgsm}
 \bibliography{../../bibliography/thesis}
 
 \printindex

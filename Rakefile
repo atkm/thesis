@@ -1,5 +1,7 @@
+#!/usr/bin/env ruby
+# encoding: utf-8
 # global. files to work with.
-files = ['introduction', 'physicists_defn','dimensions','lyapunov_exponents','devaney_defn','on_sensitivity','conjugacy','devaney_vs_wiggins','martelli_defn','li_yorke_defn','marotto_defn']
+files = ['introduction', 'physicists_defn','dimensions','lyapunov_exponents','devaney_defn','on_sensitivity','conjugacy','wiggins_defn','martelli_defn','li_yorke_defn','marotto_defn']
 
 # strip the original and store it in ./src/
 def strip_tex(file)
@@ -35,9 +37,26 @@ end
 
 # create main.tex
 task :genmain do
-  main_tmpl_head = "\\documentclass[11pt,draft]{book}\n\\usepackage{xthesis}\n\\graphicspath{{./images/}}\n\n\\makeindex\n\n"
+  main_tmpl_head = "\\documentclass[12pt,twoside,draft]{reedthesis}
+\\usepackage{xthesis}
+\\graphicspath{{./images/}}
   
-  main_includeonly = "%specify the chapters to be compiled\n\\includeonly{"
+\\makeindex
+  
+\\title{カオス理論}
+\\author{Atsuya Kumano - 熊野睦也}
+% The month and year that you submit your FINAL draft TO THE LIBRARY (May or December)
+\\date{May 2013}
+\\division{Mathematics and Natural Sciences}
+\\advisor{Thomas W. Wieting}
+\\altadvisor{Rao V. Potluri}
+\\department{Mathematics}
+% if you want the approval page to say \"Approved for the Committee\",
+% uncomment the next line
+%\\approvedforthe{Committee} \n\n"
+
+  main_includeonly = "%specify the chapters to be compiled.
+  \\includeonly{"
   files.each do |name|
     main_includeonly += './src/src_'
     main_includeonly += name 
@@ -46,14 +65,65 @@ task :genmain do
   main_includeonly.gsub!(/,$/,'')
   main_includeonly += "}\n\n"
 
-  main_tmpl_tail = "\n% Bibliography\n\\bibliographystyle{pjgsm}\n\\bibliography{./bibliography/thesis}\n\n% Index\n\\printindex\n\n\\end{document}"
+  main_tmpl_tail = "%Conclusion. if I need one.
+%\\chapter*{Conclusion}
+%\\addcontentsline{toc}{chapter}{Conclusion}
+%\\chaptermark{Conclusion}
+%\\markboth{Conclusion}{Conclusion}
+
+\\appendix
+\\chapter{The First Appendix}
+\\chapter{The Second Appendix, for Fun}
+
+\\backmatter % backmatter makes the index and bibliography appear properly in the t.o.c...
+
+% Bibliography
+\\renewcommand{\\bibname}{References}
+\\bibliographystyle{bibliography/pjgsm}
+\\nocite{*}
+\\bibliography{./bibliography/thesis}
+  
+% Index
+\\printindex
+
+\\end{document}"
 
   main_file = 'main.tex'
   puts "Rolling out: #{main_file}."
   File.open(main_file,'w') do |file|
     file.puts main_tmpl_head
     file.puts main_includeonly
-    file.puts '\begin{document}' + "\n\n"
+    file.puts "\\begin{document}
+% from reed-thesis.tex
+\\maketitle
+\\frontmatter % this stuff will be roman-numbered
+\\pagestyle{empty} % this removes page numbers from the frontmatter
+
+\\chapter*{Acknowledgements}
+皆さんどーもありがとう。
+
+\\tableofcontents
+% if you want a list of tables, optional
+%\\listoftables
+% if you want a list of figures, also optional
+%\\listoffigures
+
+% The abstract is not required if you're writing a creative thesis (but aren't they all?)
+% If your abstract is longer than a page, there may be a formatting issue.
+%    \\chapter*{Abstract}
+%	\\chapter*{Dedication} % You can have a dedication here if you wish.
+
+\\mainmatter % here the regular arabic numbering starts
+\\pagestyle{fancyplain} % turns page numbering back on
+
+%Introduction. If I need one.
+%\\chapter*{Introduction}
+%\\addcontentsline{toc}{chapter}{Introduction}
+%\\chaptermark{Introduction}
+%\\markboth{Introduction}{Introduction}
+
+% end reed-thesis.tex\n\n"
+
     files.each do |name|
       file.puts '\include{./src/src_' + name + "}\n\n"
     end
@@ -78,6 +148,6 @@ task :all do
 end
 
 task :clean do
-  system('rm main.aux main.log main.dvi main.bbl main.blg main.idx main.ind main.ilg main.toc')
+  system('rm main.aux main.log main.dvi main.bbl main.blg main.idx main.ind main.ilg main.toc main.lof main.lot')
   system('rm src/*.aux')
 end

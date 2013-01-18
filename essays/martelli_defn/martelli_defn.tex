@@ -3,16 +3,47 @@
 
 \begin{document}
 \section{Martelli's Definition}
+
+\begin{definition}
+  (Expansiveness) $f: J\rar J$ is expansive if there exists $\nu > 0$
+  such that, for any $x,y\in J$, there exists $n$ such that
+  $|f^{n}(x)-f^{n}(y)| > \nu$.
+  \index{expansiveness}
+\end{definition}
+
+Let us remind ourselves of the definition of chaos due to Devaney.
+
+It turns out structural stability is equivalent to sensitive dependence on initial conditions.
+\begin{proposition}
+  (Martelli et al., 1998)(Equivalence of stability and transitivity)
+  Let $X\subset R^n$ be compact and $F: X\rar X$ be continuous.
+  Then $F$ is topologically transitive in $X$ if and only if there exists $x_0\in X$ such that $O(x_0)$ is dense in $X$.
+  In addition, $F$ has sensitive dependence on initial conditions with respect to $X$ if and only if $O(x_0)$ is unstable in $X$.
+\end{proposition}
+
+Importantly, theorem still holds if the condition on $F$ is weakened to {\it quasi-continuous} function, a class of functions where baker's map belongs to.
+
+\begin{definition}
+  (Structural Stability) $f: J \rar J$ is said to be $C^r$-structurally
+  stable on $J$, if there exists $\epsilon > 0$ such that whenever
+  $d_r(f,g) < \epsilon$ for $g: J\rar J$, it follows that $f$
+  is topologically conjugate to $g$.
+  \index{structural stability}
+\end{definition}
+
+Then, chaos can be defined in terms of stability.
+
 \begin{definition}
   (Chaos in Martelli's sense)
   Let $U$ be open in $\R^n$, $F: U \to \R^n$, and $X\subset U$ be closed, bounded and invariant.
   Assume that $F$ is continuous in $X$.
-  Then $F$ is chaotic in $X$ if there exists $x_0 \in X$ that meets the following conditions
+  Then $F$ is said to be \textit{chaotic} in $X$ if there exists $x_0 \in X$ that meets the following conditions
   \begin{enumerate}
     \item $O(x_0)$ is dense in $X$.
     \item $O(x_0)$ is unstable in $X$.
   \end{enumerate}
   \label{defn:chaosmartelli}
+  \index{definition of chaos!Martelli}
 \end{definition}
 
 Wiggins came up with a definiton that is similar to Deveney's expect for not requiring dense periodic orbits.
