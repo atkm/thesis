@@ -9,7 +9,7 @@
 
 \begin{definition}
   (Topological Transitivity) 
-  $f: J \rar J$ is said to be topologically transitive if for any pair of open sets $U$, $V \subseteq J$ there exists $k > 0$ such that $f^k(U) \cap V \neq \emptyset$.
+  $f: J \rar J$ is said to be topologically transitive if for any pair of open sets $U$, $V \subseteq J$ there exists $k > 0$ such that $\itr{f}{k}(U) \cap V \neq \emptyset$.
   \label{defn:transitivity}
   \index{topological transitivity}
 \end{definition}
@@ -21,7 +21,7 @@ The existence of one such point in every neighborhood of $x$ suffices in this de
   (Sensitive Dependence on Initial Conditions) 
   $f: J \rightarrow J$ is said to have sensitive initial conditions if there exists (for any???) $\delta > 0$
   such that, for any $x \in J$ and any neighborhood $N$ of $x$,
-  there exists $y\in N$ and $n\leq 0$ such that $|f^{\circ n}(x) - f^n(y)|>\delta$.
+  there exists $y\in N$ and $n\leq 0$ such that $|\itr{f}{n}(x) - \itr{f}{n}(y)|>\delta$.
   \label{defn:sdic}
   \index{sensitive dependence on initial conditions}
 \end{definition}
