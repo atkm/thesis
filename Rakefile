@@ -1,5 +1,5 @@
 # global. files to work with.
-files = ['introduction', 'physicists_defn','dimensions','lyapunov_exponents','devaney_defn','on_sensitivity','devaney_vs_wiggins','martelli_defn','li_yorke_defn','marotto_defn']
+files = ['introduction', 'physicists_defn','dimensions','lyapunov_exponents','devaney_defn','on_sensitivity','conjugacy','devaney_vs_wiggins','martelli_defn','li_yorke_defn','marotto_defn']
 
 # strip the original and store it in ./src/
 def strip_tex(file)
@@ -71,13 +71,13 @@ task :make do
 end
 
 # do it all at once
-task :fullmake do
+task :all do
   Rake::Task['srcprep'].execute
   Rake::Task['genmain'].execute
   Rake::Task['make'].execute
 end
 
 task :clean do
-  system('rm main.aux main.log main.dvi main.bbl main.blg main.idx main.ind main.ilg')
+  system('rm main.aux main.log main.dvi main.bbl main.blg main.idx main.ind main.ilg main.toc')
   system('rm src/*.aux')
 end

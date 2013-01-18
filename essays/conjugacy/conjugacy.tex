@@ -1,6 +1,104 @@
-\documentclass[11pt]{article}
-\usepackage{thesis}
+\documentclass[12pt]{book}
+\usepackage{../../thesis}
 
 \begin{document}
+\section{Conjugacy}
+from Sternberg chap4
+Iterations related by conjugation exhibit similar behaviors. From our perspective, they are pretty much the same.
+Here are the things shared among mappings that are in the same class.
+\begin{itemize}
+  \item Topological transitivity
+  \item Periodic points
+\end{itemize}
+\begin{proposition}
+  Suppose that $g\circ h = h\circ f$ where $h$ is continuous and surjective. If $f$ is transitive,
+  then it follows that $g$ is transitive.
+\end{proposition}
+
+It follows from the last two items in the list that mappings in the same conjugacy class are chaotic.
+\begin{proposition}
+  Let $h: X\rar Y$ be a surjective and continuous mapping. Suppose we have $h\circ f = g\circ f$. If $f: X\rar X$ is chaotic,
+  then $g$ is chaotic.
+\end{proposition}
+
+\subsection{Conjugacy of maps}
+These happen to be all conjugate to each other.
+\begin{itemize}
+  \item Logistic map ($L_\mu(x) = \mu x(1-x)$)
+  \item Quadratic map ($Q_c(x) = x^2 + c$)
+  \item Tent map 
+    \begin{equation*}
+      T(x) = 
+      \begin{cases}
+        2x & 0 \leq x \leq \frac{1}{2}      \\
+        2 - 2x & \frac{1}{2} \leq x \leq 1
+      \end{cases}
+    \end{equation*}
+  \item Reverse tent map ($V(x) = 2|x| - 2$)
+  \item all quadratic maps ($p(x) = ax^2 + bx + d$)
+  \item Sawtooth transformation 
+    \begin{equation*}
+      S(x) = 
+      \begin{cases}
+        2x     & 0 \leq x \leq \frac{1}{2}      \\
+        2x - 1 & \frac{1}{2} \leq x \leq 1
+      \end{cases}
+    \end{equation*}
+  \item Shift map ($Sh: a_1a_2a_3\ldots \mapsto a_2a_3a_4\ldots$)
+  \item Doubling map ()
+\end{itemize}
+
+\begin{proposition}
+  (Logistic Map and a quadratic map)
+  Any quadratic map $f = ax^2 + bx + d$ is conjugate to 
+\end{proposition}
+
+\begin{proposition}
+  (The doubling map and $Q_{-2}$)
+  Let $h: S \rar [-2,2]$
+  \begin{equation*}
+    h(\theta) = 2\cos\theta.
+  \end{equation*}
+  $h$ is clearly surjective and continuous.
+  The following equality establishes the conjugacy.
+  \begin{equation*}
+    h(D(\theta)) = 2\cos2\theta = 2(2\cos^2\theta - 1) = (2\cos\theta)^2 - 2 = Q_{-2}(h(\theta)).
+  \end{equation*}
+\end{proposition}
+
+\begin{proposition}
+  (The shift map and the sawtooth transformation)
+  First we need to reformulate the sawtooth transformation in terms of the binary representation.
+  It turns out to be easy. It's just a multiplication of a sequence of bits by 2, just like any computer scientist knows how to do:
+  \begin{equation*}
+    S: .a_1a_2a_3\ldots \mapsto .a_2a_3a_4\ldots
+  \end{equation*}
+  Then, let $h: X \rar [0,1)$ be a trivial transformation from a binary sequence into a binary representation of a number
+    \begin{equation*}
+      h: a_1a_2a_3\ldots \mapsto .a_1a_2a_3\ldots
+    \end{equation*}
+    (note the period to indicate fraction).
+  Thus conjugacy is established
+  \begin{equation*}
+    S \circ h = h \circ Sh
+  \end{equation*}
+  \end{proposition}
+
+  \begin{proposition}
+    (The sawtooth transformation and the shift map)
+    Let $h = T$, the tent map itself. We have four cases to verify:
+    \begin{enumerate}[$(i)$]
+      \item $[0,1/4)$
+      \item $[1/4, 1/2)$
+      \item $[1/2, 3/4)$
+      \item $[3/4, 1]$
+    \end{enumerate}
+    Computation is straightforward but tedious. One can easily verify that
+    for each case $T\circ T = T\circ S$ holds.
+  \end{proposition}
+
+\bibliographystyle{../../pjgsm}
+\bibliography{../../bibliography/thesis}
+
 
 \end{document}

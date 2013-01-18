@@ -23,8 +23,17 @@
 \setmathsfont(Digits,Latin,Greek)[Scale=MatchLowercase,Numbers={Lining,Proportional}]{Minion Pro}
 \setmathrm{Minion Pro}
 
+% Japanese language
+\usepackage{xeCJK}
+\setCJKmainfont{IPAMincho} % for \rmfamily
+\setCJKfamilyfont{songti}{SimSun} % used as \CJKfamily{songti}
+
+
 % basic packages
 \usepackage{enumerate,graphicx,makeidx}
+
+% recommended by reed
+% \usepackage{longtable,booktabs,setspace}
 
 % Use NatBiB (the options are default)
 \usepackage[round, colon, authoryear]{natbib}
