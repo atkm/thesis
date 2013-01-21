@@ -1,56 +1,113 @@
-\documentclass[11pt]{article}
-\usepackage{thesis}
+\documentclass[12pt,twoside,draft]{book}
+\usepackage{../../thesis}
 
+\makeindex
 \begin{document}
+
+\chapter{Preliminaries}
+A metric space underlies a dynamical system.
+I will start this chapter with a discussion of metric space.
+Then I will define dynamical systems, and introduce notions that will be used frequently.
+The purpose of this chapter is to introduce concepts and notations used in the subsequent chapters. 
+The reader may prefer to come back to this chapter as he/she encounters unfamiliar notations.
+
+%%% Metric
+\section{Metric Spaces}
+\begin{definition}
+  (Metric space)
+  A binary operation $\delta$ is called a \textit{metric} if it satisfies the following properties for each $x,y,z \in X$:
+  \begin{enumerate}
+    \item $\metric{x,x} = 0$
+    \item $\metric{x,y} = \metric{y,x}$
+    \item $\metric{x,y} \leq \metric{x,z} + \metric{z,y}$.
+  \end{enumerate}
+  A \textit{metric space} $X$ is a set equipped with a metric.
+  \index{metric}
+\end{definition}
+
+\begin{definition}
+  (Neighborhood)
+  Let $X$ be a metric space, and $\delta$ be a metric on $X$.
+  For $\epsilon \in \R$, and $x \in X$, a (open) \textit{neighborhood} $\oball{\epsilon}{x}$ is defined as 
+  \begin{equation*}
+    \oball{\epsilon}{x} \ceq \setst{y}{\metric{y,x} < \epsilon}
+  \end{equation*}
+  I shall use the terms ``open ball'' and ``neighborhood'' interchangeably.
+\end{definition}
+
+\begin{definition}
+  (Closed neighborhood)
+  Let $X$ be a metric space, and $\delta$ be a metric on $X$.
+  For $\epsilon \in \R$, and $x,y \in X$, a \textit{closed neighborhood} $\cball{\epsilon}{x}$ is defined as the closure of the corresponding open neighborhood, i.e.
+  \begin{equation*}
+    \cball{\epsilon}{x} \ceq \cl(\oball{\epsilon}{x}).
+  \end{equation*}
+\end{definition}
+
 \section{Dynamical Systems}
+
 \begin{definition}
   (Orbit)
   Let $F: \R^n \to \R^n$. 
   The \textbf{orbit of $F$} for (initial value) $x_0$ is defined as
   \begin{equation*}
-    O_F(x_0) = \set{x \; | \; x = F^n(x_0) \mbox{ for some } n\in \N}
+    O_F(x_0) = \setst{x}{x = F^n(x_0) \mbox{ for some } n\in \N}
   \end{equation*}
   \label{def:orbit}
+  \index{definition of!orbit}
 \end{definition}
 $O_F$ will simply be denoted as $O$ when there is no ambiguity in the choice of $F$ in the context.
 
 \begin{definition}
-  (Periodic Orbits)
+  (Periodic orbits)
   \label{def:porbit}
+  \index{periodic!orbit}
 \end{definition}
 
 The usual notion of limit points are extended to limit set of an orbit.
 \begin{definition}
-  (Limit Set)
-  Limit set, $L_F(x_0)$ of $O_F(x_0)$ is the set of limit points of $x \in O_F(x_0)$.
+  (Limit set)
+  The \textit{limit set}, $L_F(x_0)$, of $O_F(x_0)$ is the set of limit points of $x \in O_F(x_0)$.
   \label{def:limset}
+  \index{limit set}
 \end{definition}
 
-With the notion of limit sets, we may speak of aympototical periodicity.
+With the notion of limit sets, we may speak of aympototical periodicity of an orbit.
 \begin{definition}
   (Asymptotically periodic orbit)
-  An orbit $O(x_0)$ is said to be asymptotically periodic if its limit set is a periodic orbit.
+  An orbit $O(x_0)$ is said to be \textit{asymptotically periodic} if its limit set is a periodic orbit.
   \label{def:asymporb}
+  \index{asymptotically periodic!orbit}
 \end{definition}
 
 \begin{definition}
   (Aperiodic orbit)
-  The orbit $O_F(x_0)$ is said to be aperiodic if its limit set $L_F(x_0)$ is not finite.
+  The orbit $O_F(x_0)$ is said to be \textit{aperiodic} if its limit set $L_F(x_0)$ is not finite.
   \label{def:aporbit}
+  \index{aperiodic!orbit}
 \end{definition}
 
-
-\section{Metric Spaces}
+Although we have encountered the concept of iteration in the preceding chapter, I formally define the notion here.
 \begin{definition}
-  (Metric)
+  (Iteration)
+  Let $X$ be a metric space, and $F$ a mapping.
+  \textit{The $n$th iteration of F}, denoted $\itr{F}{n}$, is defined as follows
+  \begin{equation*}
+    \itr{F}{n} \ceq \underbrace{F \circ F \circ \cdots \circ F}_{n} .
+  \end{equation*}
 \end{definition}
-\begin{definition}
-  (Open balls)
-\end{definition}
+%
+It is convenient for our purpose to extend the notion of metric to a point and an orbit.
 \begin{definition}
   (Distance between a point and an orbit)
+  Let $X$ be a metric space, and $F$ a mapping.
+  For each $x,y \in X$, the metric between $O_F(x)$ and $y$ is defined as follows
+  \begin{equation*}
+    \metric{O_F(x),y} \ceq \sup\limits_{x' \in O_F(x)} \metric{y,x'}
+  \end{equation*}
 \end{definition}
 
+%%% Measure
 \section{Measure Spaces}
 \begin{definition}
   (Null Set)
@@ -58,4 +115,9 @@ With the notion of limit sets, we may speak of aympototical periodicity.
 \begin{definition}
   (Measure)
 \end{definition}
+
+\bibliographystyle{../../pjgsm}
+\bibliography{../../bibliography/thesis}
+
+\printindex
 \end{document}
