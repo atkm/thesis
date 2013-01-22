@@ -1,0 +1,70 @@
+\documentclass[12pt,twoside,draft]{book}
+\usepackage{../../thesis}
+\graphicspath{ {../../images/} }
+
+\makeindex
+\begin{document}
+
+\section{Alexander Mykolaiovych Sarkovskii}
+Definition of aperiodic orbit: refer to%~\ref{def:aporbit}
+
+The image of a map whose domain is a closed, bounded interval is also a bounded and closed interval.
+This implies the Intermediate Value Theorem (IVT), from which we derive the following theorem about
+fixed points of a mapping.
+\begin{proposition}
+  (Fixed point theorem)
+  Let $F: [a,b] \to \R$ be continuous and suppose one of the following facts holds
+  \begin{itemize}
+    \item $F(a), F(b)\in [a,b]$
+    \item $a, b\in F([a,b])$.
+  \end{itemize}
+  Then $F$ has a fixed point in $[a,b]$.
+\end{proposition}
+
+The theorem can be extended to show the existence of $p-$periodic points by applying the theorem to
+$\itr{F}{p}$. In such case, however, we must be sure that fixed points found are \textbf{not} also fixed by
+$\itr{F}{m}$ ($m < p$).
+Furthermore, the existence of a $2-$periodic orbit ensures the existence of a fixed point.
+\begin{proposition}
+  Suppose $F: I\to I$ has a $2-$periodic orbit, $\set{p,q}$ ($p<q$). Then $F$ has a fixed point in $[p,q]$.
+\end{proposition}
+\begin{proof}
+  By definition of a periodic orbit, 
+  \begin{equation*}
+    F(p) = q > p, \quad F(q) = p < q.
+  \end{equation*}
+  It follows from the fixed point theorem that there exists a fixed point in $[p,q]$.
+\end{proof}
+
+This observation was extended to all natural numbers by Alexander N. Sarkovskii.
+\begin{proposition}
+  (Sarkovskii)
+  Let $F: I\to I$ be continuous. Assume that $F$ has a periodic orbit of period $p$.
+  Then $F$ has a periodic orbit of every period, which follows $p$ in the Sarkovskii
+  ordering of $N$.
+\end{proposition}
+
+\begin{definition}
+  (Sarkovskii's ordering, 1964)
+  \[
+    \begin{array}{ccccccccc}
+    3, & 5, & 7, & 9, & 11, & 13, & \ldots & \ldots & \ldots\\
+    2\cdot 3, & 2\cdot 5, & 2\cdot 7, & 2\cdot 9, & 2\cdot 11, & \ldots & \ldots & \ldots\\
+    2^2\cdot 3, & 2^2\cdot 5, & 2^2\cdot 7, & 2^2\cdot 9, & \ldots & \ldots & \ldots\\
+    2^3\cdot 3, & 2^3\cdot 5, & 2^3\cdot 7, & \ldots & \ldots & \ldots\\
+    \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots  & \vdots \\
+    \\
+    \ldots & \ldots & \ldots & \ldots & 2^4, & 2^3, & 2^2, & 2, & 1.
+  \end{array}
+  \]
+  The $n$th row $(n = 0, 1, \ldots)$ contains all integers of the form $2^n\cdot (2m + 1),\; m \in \Z$ in increasing order.
+  The last row contains all powers of 2 in decreasing order.
+  \label{defn:sarkovskiiordering}
+  \index{Sarkovskii's ordering}
+\end{definition}
+ 
+\bibliographystyle{../../pjgsm}
+\bibliography{../../bibliography/thesis}
+
+\printindex
+\end{document}
