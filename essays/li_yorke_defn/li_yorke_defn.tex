@@ -21,6 +21,7 @@ This section follows the treatment in \citet{li-yorke}, a seminal paper in the e
   \begin{equation*}
     \liminf\limits_{n \to \infty}\; \abs{\itr{F}{n}(p) - \itr{F}{n}(q)} = 0.
   \end{equation*}
+  \index{Li-Yorke!definition of!chaos}
 \end{definition}
 
 The definition says that the two points are separated by some (perhaps very small) constant infinitely many times, and, at the same time, come arbitrarily close to each other infinitely many times (the second condition). 
@@ -77,9 +78,34 @@ We shall start with proving three lemmas.
 \begin{lemma}
   Let $I$ be an interval, and $F: I\to I$ be a continuous map.
   Suppose that for each $n$, $\seq{I_n}{\infty}{n=0}$ is a sequence of compact intervals with $I_n \subseteq I$ and $I_{n+1} \subseteq F(I_n)$.
+  Then, there exists a sequence $\seq{Q_n}{\infty}{n=0}$ of compact intervals such that 
+  \begin{equation*}
+    Q_{n+1} \subseteq Q_{n} \subseteq I_0,
+  \end{equation*}
+and, for each $n$,
+  \begin{equation*}
+    \itr{F}{n}(Q_n) = I_n.
+  \end{equation*}
+  Furthermore, for any $x \in Q \equiv \bigcap\limits_{n=0}^{\infty}Q_n$, we have for each $n$
+  \begin{equation*}
+    \itr{F}{n}(x) \in I_n.
+  \end{equation*}
   \label{lem:liyorke2}
+  %%%
+  \begin{proof}
+    Proof by induction.
+    Let $Q_0 = I_0$.
+    Clearly, we have $\itr{F}{0}(Q_0) = I_0$.
+    For each $n$, define $Q_{n-1}$ as a compact interval such that $\itr{F}{n-1}(Q_{n-1}) = I_{n-1}$.
+    Note that $I_n \subseteq F(I_{n-1}) = \itr{F}{n}(Q_{n-1})$.
+    Lemma~\ref{lem:liyorke1} applied to $\itr{F}{n}$ on $Q_{n-1}$ proves the existence of a compact interval $Q_n \subseteq Q_{n-1}$ such that $\itr{F}{n}(Q_n) = I_n$.
+  \end{proof}
 \end{lemma}
 
+\begin{lemma}
+  Let $I$ be an interval, and $F: I\to I$ be a continuous map.
+  \label{lem:liyorke3}
+\end{lemma}
 We already know that points in $S$ are not periodic.
 However, we may draw an even stronger conclusion.
 \begin{theorem}
