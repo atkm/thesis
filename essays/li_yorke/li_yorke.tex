@@ -21,7 +21,7 @@ This section follows the treatment in \citet{li-yorke}, a seminal paper in the e
   \begin{equation*}
     \liminf\limits_{n \to \infty}\; \abs{\itr{F}{n}(p) - \itr{F}{n}(q)} = 0.
   \end{equation*}
-  \index{Li-Yorke!definition of!chaos}
+  \index{chaos!definition of!Li-Yorke}
 \end{definition}
 
 The definition says that the two points are separated by some (perhaps very small) constant infinitely many times, and, at the same time, come arbitrarily close to each other infinitely many times (the second condition). 
@@ -60,8 +60,8 @@ Sarkovskii's theorem extends Li-Yorke's theorem~\ref{thm:liyorke1} by proving an
 Then, Sarkovskii's shows that there exists an ordering of $\mathbb{N}$---called \textit{Sarkovskii's ordering}---such that if a mapping has a $k$-periodic orbit, then it has periodic orbits of \textit{all} periods that come after $k$ in the ordering.
 Appendix contains a proof of Sarkovskii's ordering.
 
-Now we proceed to prove theorem~\ref{thm:liyorke1} and theorem~\ref{thm:liyorke2}.
-We shall start with proving three lemmas.
+Now we proceed to prove Theorem~\ref{thm:liyorke1} and Theorem~\ref{thm:liyorke2}.
+We shall start with proving three lemmas that we require for proving the theorems.
 
 \begin{lemma}
   Let $I$ be an interval, $F: I \to \R$ a continuous map.
@@ -103,9 +103,40 @@ and, for each $n$,
 \end{lemma}
 
 \begin{lemma}
-  Let $I$ be an interval, and $F: I\to I$ be a continuous map.
+  Let $I$ be an interval, and $F: I\to \R$ be a continuous map.
+  Suppose $J \subseteq I$ is a compact interval and $J \subseteq F(J)$. 
+  Then, there exists a point $p \in I$ such that $G(p) = p$.
+  \begin{proof}
+    This is a special case of the contraction fixed point theorem proved in Preliminaries.
+  \end{proof}
   \label{lem:liyorke3}
 \end{lemma}
+
+Lemma~\ref{lem:liyorke2} will be used frequently in the proofs.
+The proof of Theorem~\ref{thm:liyorke1} introduces ideas that are used in proving the other theorem.
+
+\begin{proof}[Proof of Theorem~\ref{thm:liyorke1}.]
+  We will prove the theorem for $d \leq a < b < c$.
+  Define two intervals $L,K$ as
+  \begin{equation*}
+    L = [b,c] \mbox{ and } K = [a,b].
+  \end{equation*}
+  Let $k$ be a positive integer.
+  For each $k > 1$, let $\set{I_n}$ be the sequence of intervals $I_n = L$ for $n = 0, \ldots, k-2$, and $I_{k-1} = K$.
+  Furthermore, define $I_n$ for $n \geq k$ by $I_{n+k} = I_n$.
+  Let $Q_n$ be the sets (as in the proof of Lemma~\ref{lem:liyorke2}).
+  Note that $Q_k \subseteq Q_0$ and $\itr{F}{k}(Q_k) = Q_0$.
+  By Lemma~\ref{lem:liyorke3}, $\itr{F}{k}$ has a fixed point $p_k$ in $Q_k$.
+  We claim that $p_k$ does not have period less than $k$.
+  Otherwise, we would have $\itr{F}{k-1}(p_k) = b$, even though $\itr{F}{k+1}(p_k) \in L$.
+  Thus, $p_k$ is a $k$-periodic point for $F$.
+\end{proof}
+
+Finally, we prove the main result of this chapter.
+\begin{proof}[Proof of Theorem~\ref{thm:liyorke2}.]
+  Let $\mathcal{M}$ be the set of sequences $M = \seq{M_n}{n=1}{\infty}$.
+\end{proof}
+
 We already know that points in $S$ are not periodic.
 However, we may draw an even stronger conclusion.
 \begin{theorem}

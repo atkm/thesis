@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # encoding: utf-8
 # global. files to work with.
-files = ['introduction', 'physicists_defn','dimensions','lyapunov_exponents','devaney','on_sensitivity','conjugacy','wiggins','martelli','li_yorke','marotto']
+files = ['introduction', 'physicists_defn','dimensions','lyapunov_exponents','devaney','on_sensitivity','conjugacy','wiggins','martelli','li_yorke','marotto','sarkovskii']
 
 # strip the original and store it in ./src/
 def strip_tex(file)

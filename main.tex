@@ -17,7 +17,7 @@
 %\approvedforthe{Committee} 
 
 %specify the chapters to be compiled.
-  \includeonly{./src/src_introduction,./src/src_physicists_defn,./src/src_dimensions,./src/src_lyapunov_exponents,./src/src_devaney,./src/src_on_sensitivity,./src/src_conjugacy,./src/src_devaney_vs_wiggins,./src/src_martelli,./src/src_li_yorke,./src/src_marotto}
+  \includeonly{./src/src_introduction,./src/src_physicists_defn,./src/src_dimensions,./src/src_lyapunov_exponents,./src/src_devaney,./src/src_on_sensitivity,./src/src_conjugacy,./src/src_wiggins,./src/src_martelli,./src/src_li_yorke,./src/src_marotto,./src/src_sarkovskii}
 
 \begin{document}
 % from reed-thesis.tex
@@ -64,13 +64,14 @@
 
 \include{./src/src_conjugacy}
 
-\include{./src/src_devaney_vs_wiggins}
+\include{./src/src_wiggins}
 
 \include{./src/src_martelli}
 
 \include{./src/src_li_yorke}
 
 \include{./src/src_marotto}
+
 
 %Conclusion. if I need one.
 %\chapter*{Conclusion}
@@ -79,7 +80,7 @@
 %\markboth{Conclusion}{Conclusion}
 
 \appendix
-\chapter{The First Appendix}
+\include{./src/src_sarkovskii}
 \chapter{The Second Appendix, for Fun}
 
 \backmatter % backmatter makes the index and bibliography appear properly in the t.o.c...
