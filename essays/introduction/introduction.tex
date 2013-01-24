@@ -1,10 +1,13 @@
-\documentclass[11pt]{book}
+\documentclass[12pt,twoside]{book}
 \usepackage{../../thesis}
 \graphicspath{ {../../images/} }
 
 \begin{document}
 
 \chapter{Introduction}
+In this chapter, I will introduce the logistic map as an example of a chaotic system.
+Also, I will discuss the origin of chaos.
+
 \section{Our First Chaotic Map}
 This is the equation for logistic map:
 \begin{equation}
@@ -53,7 +56,7 @@ Thus, we have (with a slight change of notation)
 \end{equation}
 
 Change in the growth rate $\mu$ does not alter the bahaviour.
-\begin{figure}[htb]
+\begin{figure}[ht]
   \begin{center}
     \includegraphics[scale=0.5]{logistic_diffeq_mu4_varyingx0}
   \end{center}
@@ -64,17 +67,17 @@ Change in the growth rate $\mu$ does not alter the bahaviour.
   \label{fig:logistic_diffeq1}
 \end{figure}
 
-\begin{figure}[h]
-  \begin{center}
-    \includegraphics[scale=0.5]{logistic_diffeq_mu1234_x2}
-  \end{center}
-  \caption{
-    Plot of equation \pref{eq:logisticdiffeqsoln} with $x_0 = 2$ and various $\mu$ (1,2,3,4).
-    As $\mu$ increases, $x(t)$ converges to $1$ faster.
-    However, it does not alter the overall behaviour.
-  }
-  \label{fig:logistic_diffeq2}
-\end{figure}
+%\begin{figure}[h]
+%  \begin{center}
+%    \includegraphics[scale=0.5]{logistic_diffeq_mu1234_x2}
+%  \end{center}
+%  \caption{
+%    Plot of equation \pref{eq:logisticdiffeqsoln} with $x_0 = 2$ and various $\mu$ (1,2,3,4).
+%    As $\mu$ increases, $x(t)$ converges to $1$ faster.
+%    However, it does not alter the overall behaviour.
+%  }
+%  \label{fig:logistic_diffeq2}
+%\end{figure}
 
 \begin{figure}[h]
   \begin{center}
@@ -86,11 +89,34 @@ Change in the growth rate $\mu$ does not alter the bahaviour.
   \label{fig:logistic_map_chaotic}
 \end{figure}
 
+\section{The Origin of Chaos}
+Edward Lorentz is commonly known as the first discoverer of chaos.
+\begin{figure}[t]
+  \begin{center}
+    \includegraphics[scale=0.5]{golden_lorentz_attractor}
+  \end{center}
+  \caption{Lorentz Attractor}
+  \label{fig:lorentz}
+\end{figure}
+He found chaotic behaviours through atmospheric simulations using twelve differential equations.
+In his seminal article ``Deterministic Nonperiodic Flow'', Lorentz discusses the chaotic behavior of three differential equations, which were reduced from the original twelve equations.
+However, I would like to introduce Yoshisuke Ueda, who, though lesser known, was the first scientist to notice chaos in 1961, while Lorentz's paper was published in 1963.
+David Ruelle, a prominent French chaos researcher, introduced Ueda in 1978 (in Thermodynamic Formalism?).
+\footnote{Doubtful of Ueda's result, Ueda's mentor did not allow publication of Ueda's result until 1970, seven years after the publication of ``Deterministic Nonperiodic Flow.''
+Because of the strict hierarchical structure of the Japanese academia, the first author of Ueda's paper, ``On the Behavior of Self-Oscillatory Systems with External Force'', is his mentor.%\cite[p89]{sprott}
+He left the following remark: ``Chaos, though common phenomena in the nature, has been dismissed because of the difficulty to grasp its full notion.''\citep[p533]{gleick}
+Either way, vigorous research activities on chaos only started in the 70's.}
+The reason that I would like to discuss this scientist instead of Lorentz is not because he is the first scientist to see chaos.
+%「カオス現象は、われわれが、日常、目にしているありふれた実在の自然現象であるにもかかわらず、その概念把握の困難さのために、かっては見過ごされてきた」
+The true value in Ueda's findings lies in its settings.
+While Lorentz's discovery of chaos was through computer simulation of a hypothetical model, Ueda's was through a physical, real-world system.
+
+\section{So What Is Chaos, After All?}
 We tend to label a dynamical systems as ``chaotic'' on an intuitive ground.
 If the orbit looks (judged by our visual sense organ complex), the system is called chaotic.
 In 1986, the Royal Society held an international conference on chaos and defined ``chaos'' as ``Stochastic behavior occurring in a deterministic system.'' \cite{stewart}
 Two Russian physicists famously said "A strange attractor seems strange only to a stranger."
-(Boris Chirikov, Felix Izrailev)\cite{lorenzbook}
+(Boris Chirikov, Felix Izrailev)\cite{lorentzbook}
 
 \bibliographystyle{../../bibliography/pjgsm}
 \bibliography{../../bibliography/thesis}

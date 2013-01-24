@@ -27,7 +27,7 @@ This section follows the treatment in \citet{li-yorke}, a seminal paper in the e
 The definition says that the two points are separated by some (perhaps very small) constant infinitely many times, and, at the same time, come arbitrarily close to each other infinitely many times (the second condition). 
 Thus, even if $p$ and $q$ are very close to each other at some time $t$, after some time, say $t + t_0$, the two points can be far apart.
 The main results of \citet{li-yorke} are theorem~\ref{thm:liyorke1} and theorem~\ref{thm:liyorke2}.
-Both theorems assume that $F$, a continuous map, has a 3-periodic orbit.
+The hypotheses for the theorems are satisfied if $F$, a continuous map, has a 3-periodic orbit.
 
 \begin{theorem}
   (Period three implies all periods)
@@ -38,7 +38,7 @@ Both theorems assume that $F$, a continuous map, has a 3-periodic orbit.
   \end{equation*}
   satisfy
   \begin{equation*}
-    d \leq a < b < c.
+    d \leq a < b < c \quad(\mbox{or } d \geq a > b > c).
   \end{equation*}
   Then $F$ has a periodic orbit of every period.
   (Note that the hypothesis is satisfied is $F$ has a periodic orbit of period 3.)
@@ -117,19 +117,22 @@ The proof of Theorem~\ref{thm:liyorke1} introduces ideas that are used in provin
 
 \begin{proof}[Proof of Theorem~\ref{thm:liyorke1}.]
   We will prove the theorem for $d \leq a < b < c$.
-  Define two intervals $L,K$ as
+  Define two intervals $K,L$ as follows
   \begin{equation*}
-    L = [b,c] \mbox{ and } K = [a,b].
+    K = [a,b] \mbox{ and } L = [b,c].
   \end{equation*}
   Let $k$ be a positive integer.
   For each $k > 1$, let $\set{I_n}$ be the sequence of intervals $I_n = L$ for $n = 0, \ldots, k-2$, and $I_{k-1} = K$.
   Furthermore, define $I_n$ for $n \geq k$ by $I_{n+k} = I_n$.
-  Let $Q_n$ be the sets (as in the proof of Lemma~\ref{lem:liyorke2}).
-  Note that $Q_k \subseteq Q_0$ and $\itr{F}{k}(Q_k) = Q_0$.
-  By Lemma~\ref{lem:liyorke3}, $\itr{F}{k}$ has a fixed point $p_k$ in $Q_k$.
+  Check hypotheses for Lemma~\ref{lem:liyorke2}.
+  By Lemma~\ref{lem:liyorke2}, there exists a sequence of compact intervals $Q_n$ such that $Q_{n+1} \subseteq Q_{n}$; in particular $Q_k \subseteq Q_0$.
+  Also by the lemma, we have $\itr{F}{k}(Q_k) = Q_0$.
+  Notice $K, L \subseteq F(L)$.
+  The hypotheses in Lemma~\ref{lem:liyorke3} is satisfied, so $\itr{F}{k}$ has a fixed point $p_k$ in $Q_k$.
   We claim that $p_k$ does not have period less than $k$.
   Otherwise, we would have $\itr{F}{k-1}(p_k) = b$, even though $\itr{F}{k+1}(p_k) \in L$.
   Thus, $p_k$ is a $k$-periodic point for $F$.
+  The other case, $d \leq a < b < c$, can be proved in the same manner.
 \end{proof}
 
 Finally, we prove the main result of this chapter.
