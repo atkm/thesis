@@ -15,7 +15,8 @@
 
 % Use mathspec
 \usepackage{amsthm,amsfonts} % this loads mathbb fonts. don't do \setmathbb later
-\usepackage[MnSymbol]{mathspec} % MnSymbol is incompatible with amssymb. It loads amsmath and textcomp
+%\usepackage[MnSymbol]{mathspec} % MnSymbol is incompatible with amssymb. It loads amsmath and textcomp
+\usepackage{mathspec}\usepackage{amssymb,amsmath,colonequals} % alternative to line above
 \usepackage{xltxtra}
 \setmainfont[Ligatures=TeX]{Minion Pro}
 \setallsansfonts[Scale=MatchLowercase,Numbers={Lining,Proportional}]{Myriad Pro}
@@ -38,6 +39,8 @@
 % Use NatBiB (the options are default)
 \usepackage[round, colon, authoryear]{natbib}
 
+% theorem environment (from amsthm)
+\theoremstyle{definition} % no italics in theorem environment
 % environments
 \newtheorem{proposition}{Proposition}
 \newtheorem{definition}{Definition}
@@ -59,10 +62,11 @@
 \newcommand{\N}{\mathbb{N}} 
 \newcommand{\C}{\mathbb{C}} 
 \newcommand{\compose}{\circ}
-\newcommand{\ceq}{\coloneqq}% colonequals: come with unicode-math
+\newcommand{\ceq}{\colonequals} %coloneqq: come with unicode-math/coloneq: with mnsymbol
 \newcommand{\pref}[1]{(\ref{#1})} % reference with parentheses
 \newcommand{\itr}[2]{#1^{\compose #2}} % \itr{f}{n} = f iterated n times
-\newcommand{\cl}{\mathrm{cl} } %closure
+\newcommand{\cl}{\mathrm{cl}} %closure
+\newcommand{\Lip}{\mathrm{Lip}} %lipschitz constant
 
 % pairs
 \newcommand{\norm}[1]{\left|\left| #1 \right|\right|} 

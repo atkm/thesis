@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # encoding: utf-8
 # global. files to work with.
-files = ['introduction', 'physicists_defn','dimensions','lyapunov_exponents','devaney','on_sensitivity','conjugacy','wiggins','martelli','li_yorke','marotto','sarkovskii']
+files = ['introduction', 'physicists_defn','dimensions','lyapunov_exponents','prelims','devaney','on_sensitivity','conjugacy','wiggins','martelli','li_yorke','marotto','sarkovskii','other_defns']
 
 # strip the original and store it in ./src/
 def strip_tex(file)
@@ -73,7 +73,6 @@ task :genmain do
 
 \\appendix
 \\chapter{The First Appendix}
-\\chapter{The Second Appendix, for Fun}
 
 \\backmatter % backmatter makes the index and bibliography appear properly in the t.o.c...
 
