@@ -13,11 +13,14 @@ The reader may prefer to come back to this chapter as he/she encounters unfamili
 
 %%% Metric
 \section{Metric Spaces}
+This section introduces notations used in the rest of the book.
+Also, we prove the contraction fixed point theorem.
+
 \begin{definition}
   (Metric space)
   A binary operation $\delta$ is called a \textit{metric} if it satisfies the following properties for each $x,y,z \in X$:
   \begin{enumerate}
-    \item $\metric{x,x} = 0$
+    \item $\metric{x,y} = 0 \mbox{ iff } x = y$
     \item $\metric{x,y} = \metric{y,x}$
     \item $\metric{x,y} \leq \metric{x,z} + \metric{z,y}$.
   \end{enumerate}
@@ -43,6 +46,60 @@ The reader may prefer to come back to this chapter as he/she encounters unfamili
     \cball{\epsilon}{x} \ceq \cl(\oball{\epsilon}{x}).
   \end{equation*}
 \end{definition}
+
+\begin{definition}
+  (Lipschitz constant; Contraction)
+  Let $X, Y$ be metric spaces, and $\delta_X$ and $\delta_Y$ be corresponding metrics.
+  A map $F: X \to Y$ is said to be a \textit{Lipschitz map} or to satisfy the \textit{Lipschitz condition} iff there exists a $C \in \R$ such that for each $x_1, x_2 \in X$,
+  \begin{equation}
+    \delta_Y(F(x_1),F(x_2)) \leq C \delta_X(x_1, x_2). 
+    \label{eqn:lipcond}
+  \end{equation}
+  Clearly, a Lipschitz map is uniformly continuous.
+  We define the \textit{Lipschitz constant}, $\Lip(F)$, of $F$ as the greatest lower bound of the set of all $C$, i.e.
+  \begin{equation*}
+    \Lip(F) \ceq \inf\setst{C}{C \mbox{ satisfies } \eqref{eqn:lipcond}}.
+  \end{equation*}
+  Furthermore, $F$ is called a \textit{contraction} if $\Lip(F) < 1$.
+  \index{Lipschitz constant}
+\end{definition}
+
+\begin{theorem}
+  Let $(X,\delta)$ be a complete metric space, and $K: X \to X$ a contraction with $\Lip(K) = C$.
+  Then, $K$ has a unique fixed point.
+  \label{thm:cfp}
+  \index{contraction fixed point theorem}
+  %
+  \begin{proof}
+    For any point $x_0 \in X$, define
+    \begin{equation*}
+      x_n \ceq \itr{K}{n}(x_0).
+    \end{equation*}
+    We have
+    \begin{equation*}
+      \delta(x_{n+1}, x_n) \leq C \delta(x_n, x_{n-1}),
+    \end{equation*}
+    which implies
+    \begin{equation*}
+      \delta(x_{n+1}, x_n) \leq C^n \delta(x_1, x_0).
+    \end{equation*}
+    For any $m > n$, we have
+    \begin{align*}
+      \delta(x_m, x_n) &\leq \sum\limits_n^{m-1} \delta(x_{i+1}, x_i) 
+        \leq (C^n + C^{n+1} + \cdots + C^{m-1}) \cdot \delta(x_1, x_0) \\
+        & = C^n (C^{0} + \cdots + C^{m-n-1} ) \cdot \delta(x_1, x_0) \\
+        & = \frac{C^n(1 - C^{m-n})}{1-C} \cdot \delta(x_1, x_0)
+        \leq \frac{C^n}{1-C} \cdot \delta(x_1, x_0).
+    \end{align*}
+    Therefore, $\set{x_n}$ is Cauchy.
+    Since $X$ is complete, the sequence converges to a point in $X$, say $x$.
+    Finally, 
+    \begin{equation*}
+      Kx = \lim\limits_{n\to \infty} Kx_n = \lim\limits_{n\to \infty} x_{n+1} = x.
+    \end{equation*}
+    Thus, $x$ is a fixed point for $F$.
+  \end{proof}
+\end{theorem}
 
 \section{Dynamical Systems}
 
