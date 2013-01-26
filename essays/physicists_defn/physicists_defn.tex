@@ -2,39 +2,26 @@
 \usepackage{../../thesis}
 \graphicspath{ {../../images/} }
 
+\makeindex
+
 \begin{document}
+\chapter{``The'' Definition of Chaos}
+The chapter aims to develop descriptive, intuitive notion of chaos, without involved mathematics.
+We will let go of mathematical rigor for the time being.
+Discussion of precise mathematical definitions of chaos starts the chapter after this one.
+The present chapter should prepare the reader for such abstract definitions.
 
-\chapter{Our intuition on chaos}
-\section{Chaos in nature}
+\section{Invariants}
+``By symmetry we mean an invariance against change: something stays the same, in spite of some potentially consequential alteration.''
+%
+``The word \textit{symmetric} is of ancient Greek parentage and means well-proportioned, well-ordered--certainly nothing even remotely chaotic.
+Yet, paradoxically, self-similarity, the topic of this tome, alone among all the symmetries gives birth to its very antithesis: \textit{chaos}, a state of utter confusion and disorder.''
+\cite[p.xiii-xv]{schroeder}
 
-\section{Chaos in physics}
-\subsection{Introduction to chaos}
-\begin{quote}
-In the same way power spectrum with a sharp peak characterizes a linear system, invariants such as Lyapunov exponents, fractal dimension, and (KS or topological) entropy characterize nonlinear systems.
-Each orbit is sensitive to initial conditions; however, these invariants are preserved under small perturbations, which are prevalent in real-life situations.
-\end{quote}
-``[B]road (Fourier) power spectrum is a first indication of chaotic behavior, though it alone does not characterize chaos'' (p1338)
-\citep{abarbanel}
+In subsequent sections, we will discuss two invariants of dynamical systems: \textit{Lyapunov exponents} and \textit{fractal dimension}.
+Why are we interested in invariants?
 
-Two complementary attributes sometimes used to define chaos are (\cite[p.~379]{ott1994}, )
-\begin{enumerate}
-  \item exponentially sensitive dependence
-  \item complex orbit structure
-\end{enumerate}
-Quantifiers for these attributes
-\begin{enumerate}
-  \item exponentially sensitive dependence: the largest Lyapunov exponent  
-  \item entropy, (metric, topological, or others)
-\end{enumerate}
-
-Although there is no universally accepted definition of chaos, most experts would concur that chaos is the {\it aperiodic, long-term behavior of a bounded, deterministic system that exhibits sensitive dependence on initial conditions} (Sprott, p104)
-
-\citet{kantz-schreiber} cite positive Lyapunov exponent.
-
-``We say that motion on an attractor is chaotic if it displays sensitive dependence on initial conditions.'' \citep[p~11]{ott1994}
-``[\ldots] two key aspects of chaos are the stretching of infinitesimal displacements and the complex orbit structure in the form of a vast variety of possible orbits.'' \citep[p~31]{ott2002}
-
-\citet[p~51]{kantz-schreiber}:
+\citet[p.51]{kantz-schreiber}:
 \begin{quotation}
 Noise reduction means that one tries to decompose a time series into two components, one of which supposedly contains the signal and the other one contains random fluctuations.
 Thus we always assume that the data can be thought of as an additive superposition of two different components which have to be distinguishable by some objective criterion.
@@ -46,21 +33,62 @@ This approach fails for deterministic chaotic dynamics because the output of suc
 Even if parts of the spectrum can be clearly associated with the signal, a separation into signal and noise fails for most parts of the frequency domain. Chaotic deterministic systems are of particular interest because the determinism yields an alternative criterion to distinguish the signal and the noise. 
 \end{quotation}
 
-\subsection{Invariants}
-p.xiii
-  By symmetry we mean an invariance against change: something stays the same, in spite of some potentially consequential alteration.
-p.xv
-  The workd \textit{symmetric} is of ancient Greek parentage and means well-proportioned, well-ordered--certainly nothing even remotely chaotic.
-  Yet, paradoxically, self-similarity, the topic of this tome, alone among all the symmetries gives birth to its very antithesis: \textit{chaos},
-  a state of utter confusion and disorder.
+The critical feature of the invariants is that they are not sensitive to initial conditions
+or small perturbations of an orbit, while individual orbits of the system are exponentially
+sensitive to such perturbations. \citep[p.1334]{abarbanel}
 
-\subsection{Lyapunov Exponent}
+\begin{quote}
+In the same way power spectrum with a sharp peak characterizes a linear system, invariants such as Lyapunov exponents, fractal dimension, and (KS or topological) entropy characterize nonlinear systems.
+Each orbit is sensitive to initial conditions; however, these invariants are preserved under small perturbations, which are prevalent in real-life situations.
+\end{quote}
 
-\subsection{Fractal Dimension}
+``[B]road (Fourier) power spectrum is a first indication of chaotic behavior, though it alone does not characterize chaos''\citep[p.1338]{abarbanel}
 
-Aperiodic and unstable orbits (claim by Martelli)
+``We say that motion on an attractor is chaotic if it displays sensitive dependence on initial conditions.'' \citep[p.11]{ott1994}
+Two complementary attributes and quantifiers for these attributes sometimes used to define chaos are \citep[p.379]{abarbanel}, %this is not Ott!Abarbanel, then?
+``[\ldots] two key aspects of chaos are the stretching of infinitesimal displacements and the complex orbit structure in the form of a vast variety of possible orbits.'' \citep[p.31]{ott1994}
+\begin{enumerate}
+  \item exponentially sensitive dependence: the largest Lyapunov exponent 
+  \item complex orbit structure: entropy, (metric, topological, or others)
+\end{enumerate}
 
-\bibliographystyle{pjgsm}
+Although Abarbanel does not include it in his list, an attractor with fractal dimension is a signature of a complex dynamics.
+Note that a treatment of entropy--\textit{topological entropy}, to be specific--will be discussed in a later chapter with a more mathematical rigor.
+
+\section{The Baker's Map}
+I shall briefly describe a two-dimensional map called \textit{the baker's map}, which will facilitate our understandings of Lyapunov exponents and fractal dimension.
+Also, the baker's map will be frequently used to illustrate definitions of chaos in later chapters.
+Familiarity with this map would be helpful throughout the rest of the paper.
+
+\begin{definition}
+  Let $I = [0,1]$, and $0 \leq \alpha, \beta \leq 1$.
+  The baker's map $B_{\alpha, \beta, \gamma, \delta}: \R^2 \to \R^2$ is defined as
+  \begin{equation*}
+    B_{\alpha, \beta, \gamma, \delta}(x,y) = (BX_{\alpha, \beta, \gamma, \delta}(x), BY_{\alpha, \beta, \gamma, \delta}(y)),
+  \end{equation*}
+  where
+  \begin{equation*}
+    BX_{\alpha, \beta, \gamma, \delta}(x) =
+     \begin{cases}
+      \alpha x  &\mbox{ for } y < \gamma \\
+      (1 - \beta) + \beta x  &\mbox{ for } y \geq \gamma,
+    \end{cases}
+  \end{equation*}
+  and
+  \begin{equation*}
+    BY_{\alpha, \beta, \gamma, \delta}(x) =
+     \begin{cases}
+       y/\gamma  &\mbox{ for } y < \gamma \\
+       (y - \gamma)/ \delta  &\mbox{ for } y \geq \gamma.
+    \end{cases}
+  \end{equation*}
+
+  \label{defn:baker}
+  \index{baker's map}
+\end{definition}
+
+\bibliographystyle{../../bibliography/pjgsm}
 \bibliography{../../bibliography/thesis}
 
+\printindex
 \end{document}
