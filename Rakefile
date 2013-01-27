@@ -1,7 +1,8 @@
 #!/usr/bin/env ruby
 # encoding: utf-8
 # global. files to work with.
-files = ['introduction', 'physicists_defn','dimensions','lyapunov_exponents','prelims','devaney','on_sensitivity','conjugacy','wiggins','martelli','li_yorke','marotto','sarkovskii','other_defns']
+files = ['introduction', 'physicists_defn','dimensions','lyapunov_exponents','prelims','devaney','on_sensitivity','conjugacy','wiggins','martelli','li_yorke','marotto']
+appendix = ['sarkovskii','other_defns']
 
 # strip the original and store it in ./src/
 def strip_tex(file)
@@ -28,6 +29,14 @@ task :srcprep do
     puts "\t- #{filename}"
   end
   files.each do |filename|
+    puts "processing #{filename}..."
+    texpath = filename + '/' + filename + '.tex'
+    strip_tex(File.expand_path(texpath,'./essays'))
+  end
+  appendix.each do |filename|
+    puts "\t- #{filename}"
+  end
+  appendix.each do |filename|
     puts "processing #{filename}..."
     texpath = filename + '/' + filename + '.tex'
     strip_tex(File.expand_path(texpath,'./essays'))
@@ -65,16 +74,15 @@ task :genmain do
   main_includeonly.gsub!(/,$/,'')
   main_includeonly += "}\n\n"
 
-  main_tmpl_tail = "%Conclusion. if I need one.
+  main_tmpl_pre_appendix = "%Conclusion. if I need one.
 %\\chapter*{Conclusion}
 %\\addcontentsline{toc}{chapter}{Conclusion}
 %\\chaptermark{Conclusion}
 %\\markboth{Conclusion}{Conclusion}
 
-\\appendix
-\\chapter{The First Appendix}
+\\appendix"
 
-\\backmatter % backmatter makes the index and bibliography appear properly in the t.o.c...
+  main_tmpl_post_appendix = "\\backmatter % backmatter makes the index and bibliography appear properly in the t.o.c...
 
 % Bibliography
 \\renewcommand{\\bibname}{References}
@@ -126,7 +134,11 @@ task :genmain do
     files.each do |name|
       file.puts '\include{./src/src_' + name + "}\n\n"
     end
-    file.puts main_tmpl_tail
+    file.puts main_tmpl_pre_appendix
+    appendix.each do |name|
+      file.puts '\include{./src/src_' + name + "}\n\n"
+    end
+    file.puts main_tmpl_post_appendix
   end
 end
 
