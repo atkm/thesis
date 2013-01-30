@@ -7,27 +7,39 @@
 \chapter{Chaos in Li-Yorke sense}
 
 \section{Period Three Implied Chaos}
-This section follows the treatment in \citet{li-yorke}, a seminal paper in the early era of chaos theory.
+This section follows the treatment in ``Period Three Implies Chaos'' \citep{li-yorke}, a seminal paper in the early era of chaos theory.
+Li and Yorke were the first to use the term ``chaos'' to describe the complex behaviors seen in maps such as those of Lorentz, Henon, and Ueda.
+Robert May, a population biologist who noticed chaotic behavior of the logistic map, popularized the term in his articles \citeyearpar{may1,may2}.
+\footnote{Although ``chaos'' is commonly used in academic papers nowadays, the title of Li and Yorke's paper was considered to be playful and inappropriate.
+Admittedly, a liberal choice of word has to some extent contributed to the popularity that chaos theory currently enjoys \citep[``Exploring Chaos on an Interval'']{ueda-abraham}.}
+This definition inspired many other definitions of chaos.
+dense chaos~\citep{densechaos}, generic chaos~\citep{genericchaos}, extreme chaos~\citep{extremechaos}, distributional chaos, and so on. 
+
 
 \begin{definition}
   (Chaos in Li-Yorke's sense)
-  Let $I$ be an interval and $F: I\to I$ be continuous. $F$ is said to be \textit{Li-Yorke chaotic}, or 
-  \textit{chaotic in Li-Yorke's sense} if there is an uncountable set $S \subseteq I$ containing no
+  Let $X$ be a compact metric space and $F: X\to X$ be continuous. $F$ is said to be \textit{Li-Yorke chaotic}, or 
+  \textit{chaotic in Li-Yorke's sense} if there is an uncountable set $S \subseteq X$ containing no
   periodic points such that each $p,q \in S$ satisfy
-  \begin{equation*}
+  \begin{equation}
     \limsup\limits_{n \to \infty}\; \abs{\itr{F}{n}(p) - \itr{F}{n}(q)} > 0
-  \end{equation*}
+    \label{eqn:liyorke1}
+  \end{equation}
   and
-  \begin{equation*}
+  \begin{equation}
     \liminf\limits_{n \to \infty}\; \abs{\itr{F}{n}(p) - \itr{F}{n}(q)} = 0.
-  \end{equation*}
+    \label{eqn:liyorke2}
+  \end{equation}
   \index{chaos!definition of!Li-Yorke}
 \end{definition}
 
-The definition says that the two points are separated by some (perhaps very small) constant infinitely many times, and, at the same time, come arbitrarily close to each other infinitely many times (the second condition). 
-Thus, even if $p$ and $q$ are very close to each other at some time $t$, after some time, say $t + t_0$, the two points can be far apart.
-The main results of \citet{li-yorke} are theorem~\ref{thm:liyorke1} and theorem~\ref{thm:liyorke2}.
-The hypotheses for the theorems are satisfied if $F$, a continuous map, has a 3-periodic orbit.
+The equation~\eqref{eqn:liyorke2} says that the orbits of two points come arbitrarily close to each other infinitely many times.
+Nevertheless, as equation~\eqref{eqn:liyorke1} states, the same two orbits get separated by some positive constant infinitely often.
+Thus, even if two initial points $p$ and $q$ has come very close to each other at some time $t$, after some time, say $t + t_0$, the two points can be far apart.
+Li and Yorke defined chaos as the existence of \textit{uncountably many} pairs of such points.
+Intuitively, we can expect that the uncountable set would behave in a complex manner under iteration.
+
+\citet{li-yorke} proved that any continuous map with a 3-periodic orbit is chaotic in their sense.
 
 \begin{theorem}
   (Period three implies all periods)
@@ -52,13 +64,15 @@ The hypotheses for the theorems are satisfied if $F$, a continuous map, has a 3-
   \label{thm:liyorke2}
 \end{theorem}
 
-We will prove later that both logistic map and baker's map are Li-Yorke chaotic by showing that the mappings have 3-periodic orbits.
+\noindent We will prove later that both logistic map and baker's map are Li-Yorke chaotic by showing that the mappings have 3-periodic orbits.
+
 One may be surprised that the innocent condition gives rise to a complex behaviour.
-Indeed, there is something special about a 3-periodic orbit.
-Theorem~\ref{thm:liyorke1} was proved by Alexander Sarkovskii, a Soviet mathematician, ten years before the publication \citep{sarkovskii}.
-Sarkovskii's theorem extends Li-Yorke's theorem~\ref{thm:liyorke1} by proving analogous results for period 5, 7, 9, \ldots, and so on.
-Then, Sarkovskii's shows that there exists an ordering of $\mathbb{N}$---called \textit{Sarkovskii's ordering}---such that if a mapping has a $k$-periodic orbit, then it has periodic orbits of \textit{all} periods that come after $k$ in the ordering.
-Appendix contains a proof of Sarkovskii's ordering.
+However, Alexander Sarkovskii, a Soviet mathematician, would tell us to develop a better appreciation of a 3-periodic orbit.
+\citet{sarkovskii} proved a theorem similar to Theorem~\ref{thm:liyorke1} ten years before the publication of ``Period Three Implies Chaos.''
+Sarkovskii's result extends Li-Yorke's Theorem~\ref{thm:liyorke1} by proving analogous results for period 5, 7, 9, \ldots, and so on.
+To be more specific, Sarkovskii's theorem states that there exists an ordering of $\mathbb{N}$---called \textit{Sarkovskii's ordering}---such that if a mapping has a $k$-periodic orbit, then it has periodic orbits of \textit{all} periods that come after $k$ in the ordering.
+Three comes the first in Sarkovskii's ordering, and in this sense, the number three is at the top of the Sarkovskii's hierarchy of the natural numbers.
+Appendix contains the Sarkovskii's ordering and its proof.
 
 Now we proceed to prove Theorem~\ref{thm:liyorke1} and Theorem~\ref{thm:liyorke2}.
 We shall start with proving three lemmas that we require for proving the theorems.
@@ -79,7 +93,9 @@ We shall start with proving three lemmas that we require for proving the theorem
   Let $I$ be an interval, and $F: I\to I$ be a continuous map.
   Suppose that for each $n$, $\seq{I_n}{\infty}{n=0}$ is a sequence of compact intervals with $I_n \subseteq I$ and $I_{n+1} \subseteq F(I_n)$.
   Then, there exists a sequence $\seq{Q_n}{\infty}{n=0}$ of compact intervals such that 
-  \begin{equation*}
+  
+
+\begin{equation*}
     Q_{n+1} \subseteq Q_{n} \subseteq I_0,
   \end{equation*}
 and, for each $n$,
@@ -114,6 +130,7 @@ and, for each $n$,
 
 Lemma~\ref{lem:liyorke2} will be used frequently in the proofs.
 The proof of Theorem~\ref{thm:liyorke1} introduces ideas that are used in proving the other theorem.
+The key observation to make is that we have $K,L \subseteq F(L)$ by $F(b) = c$, $F(c) = d$, and continuity of $F$.
 
 \begin{proof}[Proof of Theorem~\ref{thm:liyorke1}.]
   We will prove the theorem for $d \leq a < b < c$.
@@ -128,7 +145,7 @@ The proof of Theorem~\ref{thm:liyorke1} introduces ideas that are used in provin
   By Lemma~\ref{lem:liyorke2}, there exists a sequence of compact intervals $Q_n$ such that $Q_{n+1} \subseteq Q_{n}$; in particular $Q_k \subseteq Q_0$.
   Also by the lemma, we have $\itr{F}{k}(Q_k) = Q_0$.
   Notice $K, L \subseteq F(L)$.
-  The hypotheses in Lemma~\ref{lem:liyorke3} is satisfied, so $\itr{F}{k}$ has a fixed point $p_k$ in $Q_k$.
+  Thus, the hypotheses in Lemma~\ref{lem:liyorke3} are satisfied, so $\itr{F}{k}$ has a fixed point $p_k \in Q_k$.
   We claim that $p_k$ does not have period less than $k$.
   Otherwise, we would have $\itr{F}{k-1}(p_k) = b$, even though $\itr{F}{k+1}(p_k) \in L$.
   Thus, $p_k$ is a $k$-periodic point for $F$.
@@ -141,7 +158,7 @@ Finally, we prove the main result of this chapter.
 \end{proof}
 
 We already know that points in $S$ are not periodic.
-However, we may draw an even stronger conclusion.
+However, we may draw an even stronger conclusion, that is, the points in $S$ are not even asymptotically periodic.
 \begin{theorem}
   (Points in $S$ are not asymptotically periodic)
   For every $p \in S$ and periodic point $q \in I$,
@@ -151,17 +168,31 @@ However, we may draw an even stronger conclusion.
   \label{thm:liyorke3}
 \end{theorem}
 
-We will see that Marotto's definition is equivalent to Li-Yorke's.
-Moreover, Marotto's definition is generalizable to $n$-space.
+%We will see that Marotto's definition is equivalent to Li-Yorke's.
+%Moreover, Marotto's definition is generalizable to $n$-space.
 
-But this doesn't apply to baker's map, because the transformation is not continuous.
-\begin{definition}
-  (Baker's transformation)
-  Let $I = [0,1]$, and $B: I \to I$. Baker's transformation is
+The theorem does not apply to transformations that are not continuous, such as the sawtooth transformation.
+\begin{example}
+  Let $I = [0,1]$.
+  The sawtooth transformation, $S: I \to I$, defined as
   \begin{equation*}
-    B(x) = 2x - \ceil{2x}.
+    S(x) = 2x - \ceil{2x},
   \end{equation*}
-\end{definition}
+  is chaotic in Devaney's sense,
+   $F$ is not chaotic in Li-Yorke's sense.
+  \begin{proof}
+    Clearly, $F$ is not chaotic, so we cannot apply 
+  \end{proof}
+\end{example}
+
+However, as we have shown in (the chapter on conjugacy), the sawtooth transformation is conjugate to the tent map.
+The tent map is chaotic in Li-Yorke's sense, since it is continuous, and has a 3-periodic orbit.
+
+
+\begin{conjecture}
+  Let $X$ be a compact metric space, and $F: X\to X$ be chaotic in Li-Yorke's sense.
+  If $G$ is conjugate to $F$, then $G$ is chaotic.
+\end{conjecture}
 
 Also, there are mappings  (somewhat pathological) that is chaotic on negligible set.
 \begin{proposition}
@@ -178,10 +209,6 @@ Also, there are mappings  (somewhat pathological) that is chaotic on negligible 
   For each $x_0 \in I$, $O(x_0)$ converges to 0 almost everywhere.
 \end{proposition}
 
-This was the first use of the term ``chaos'', and it was popularized by Robert May, who noticed chaotic behavior of the logistic map. %\cite[p214]{avant-garde}
-(Hence it was a very, very playful title for an academic paper.)
-This definition inspired many other definitions of chaos.
-dense chaos~\citep{densechaos}, generic chaos~\citep{genericchaos}, extreme chaos~\citep{extremechaos}, distributional chaos, and so on. 
 Li-Yorke's definition is limited to one-dimensional maps.
 In the next chapter, we discuss a definition due to Marotto.
 Marotto a similar result was obtained for higher-dimensional systems.
