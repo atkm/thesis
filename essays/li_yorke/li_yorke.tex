@@ -131,7 +131,9 @@ and, for each $n$,
 
 Lemma~\ref{lem:liyorke2} will be especially useful in the proofs.
 The proof of Theorem~\ref{thm:liyorke1} introduces ideas that are used in proving the other theorem.
+For brevity, we call $[a,b]$ and $[b,c]$ as $K$ and $L$, respectively.
 The key observation to make is that we have $K,L \subseteq F(L)$ by $F(b) = c$, $F(c) = d$, and continuity of $F$.
+Then, we can design an orbit that stays in $L$ as long as we wish.
 
 \begin{proof}[Proof of Theorem~\ref{thm:liyorke1}.]
   We will prove the theorem for $d \leq a < b < c$.
@@ -142,13 +144,34 @@ The key observation to make is that we have $K,L \subseteq F(L)$ by $F(b) = c$, 
   Let $k$ be a positive integer.
   For each $k > 1$, let $\set{I_n}$ be the sequence of intervals $I_n = L$ for $n = 0, \ldots, k-2$, and $I_{k-1} = K$.
   Furthermore, define $I_n$ for $n \geq k$ by $I_{n+k} = I_n$.
-  Check hypotheses for Lemma~\ref{lem:liyorke2}.
-  By Lemma~\ref{lem:liyorke2}, there exists a sequence of compact intervals $Q_n$ such that $Q_{n+1} \subseteq Q_{n}$; in particular $Q_k \subseteq Q_0$.
-  Also by the lemma, we have $\itr{F}{k}(Q_k) = Q_0$.
-  Notice $K, L \subseteq F(L)$.
-  Thus, the hypotheses in Lemma~\ref{lem:liyorke3} are satisfied, so $\itr{F}{k}$ has a fixed point $p_k \in Q_k$.
+  We associate this sequence with an orbit of some interval $J$ such that
+  \begin{equation*}
+    \itr{F}{n}(J) \subseteq I_n.
+  \end{equation*}
+  Note that we have 
+  \begin{equation*}
+    K,L \subseteq F(L) \mbox{ and } L \subseteq F(K).
+  \end{equation*}
+  Then, by Lemma~\ref{lem:liyorke2}, there exists a sequence of compact intervals $\set{Q_n}$ such that $Q_{n+1} \subseteq Q_{n}$; in particular $Q_k \subseteq Q_0$.
+  Also by Lemma~\ref{lem:liyorke2}, we have $\itr{F}{k}(Q_k) = I_0 = Q_0$.
+  Since $\itr{F}{k}$ is continuous and $Q_k \subseteq \itr{F}{k}(Q_k)$, we may apply Lemma~\ref{lem:liyorke3} to conclude that $\itr{F}{k}$ has a fixed point $p_k \in Q_k$.
   We claim that $p_k$ does not have period less than $k$.
-  Otherwise, we would have $\itr{F}{k-1}(p_k) = b$, even though $\itr{F}{k+1}(p_k) \in L$.
+  To see this, assume the contrary and let the period of $p_k$ be $t < k$.
+  Since $p_k \in Q_n \subseteq Q_{n-1}$, we have 
+  \begin{equation*}
+    \itr{F}{k-1}(p_k) \in I_{k-1} = K.
+  \end{equation*}
+  Then, since $p_k$ is $t$-periodic, we need 
+  \begin{equation*}
+    \itr{F}{k-1-t}(p_k) \in K.
+  \end{equation*}
+  In addition, we have
+  \begin{equation*}
+    \itr{F}{k-1-t}(p_k) \in I_{k-1-t} = L.
+  \end{equation*}
+  Hence, $\itr{F}{k-1-t}(p_k) \in L \cap K = \set{b}$.
+  It follows that $\itr{F}{k-1}(p_k) = b$, and therefore, $\itr{F}{k+1}(p_k) = a$.
+  This is a contradiction, because by construction, $\itr{F}{k+1}(p_k)$ must be in $L$.
   Thus, $p_k$ is a $k$-periodic point for $F$.
   The other case, $d \leq a < b < c$, can be proved in the same manner.
 \end{proof}
