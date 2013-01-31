@@ -15,7 +15,6 @@ Admittedly, a liberal choice of word has to some extent contributed to the popul
 This definition inspired many other definitions of chaos.
 dense chaos~\citep{densechaos}, generic chaos~\citep{genericchaos}, extreme chaos~\citep{extremechaos}, distributional chaos, and so on. 
 
-
 \begin{definition}
   (Chaos in Li-Yorke's sense)
   Let $X$ be a compact metric space and $F: X\to X$.
@@ -177,8 +176,27 @@ Then, we can design an orbit that stays in $L$ as long as we wish.
 \end{proof}
 
 Next, we prove the main result of this chapter.
+Theorem~\ref{thm:liyorke2} requires a more elaborate design of sequences.
 \begin{proof}[Proof of Theorem~\ref{thm:liyorke2}.]
-  Let $\mathcal{M}$ be the set of sequences $M = \seq{M_n}{n=1}{\infty}$.
+  $K$ and $L$ are defined in the same manner as the preceding proof.
+  Let $\mathcal{J}$ be the set of sequences $\seq{I_n}{ }{n\geq1}$ such that
+  \begin{equation*}
+    I_n = K \mbox{ or } I_n \subseteq L,
+  \end{equation*}
+  and $I_{n+1} \subseteq F(I_n)$.
+  We also require that, if $I_n = K$ then $n$ is the square of an integer.
+  (As in the proof of Theorem~\ref{thm:liyorke1}, we associate this sequence with some orbit.)
+  Since $n+1$ and $n+2$ are not squares, we have $I_{n+1}, I_{n+2} \subseteq L$.
+  For each $\set{I_m} \in \mathcal{J}$, define $P(\set{I_m},n)$ as the number of $1 \leq m \leq n$ for which $I_m = K$.
+  In other words,
+  \begin{equation*}
+    P(\set{I_m},n) = \#\setst{1 \leq m \leq n}{I_m = K}.
+  \end{equation*}
+  Next, for each $r \in (3/4, 1)$, find a sequence $\set{I_m}$ such that
+  \begin{equation*}
+    \lim\limits_{n\to \infty}\frac{P(\set{I_m},n)}{n} = r,
+  \end{equation*}
+  and call this sequence $I^r$.
 \end{proof}
 
 We already know that points in $S$ are not periodic.
@@ -199,6 +217,7 @@ The theorem does not apply to transformations that are not continuous, such as t
 However, as we have shown in the chapter on conjugacy, the sawtooth transformation is conjugate to the tent map by a surjecive, continuous transformation.
 The tent map is chaotic in Li-Yorke's sense, since it is continuous, and has a 3-periodic orbit.
 This observation leads to the following conjecture.
+
 
 \begin{conjecture}
   Let $X$ be a compact metric space, and $F: X\to X$ be chaotic in Li-Yorke's sense.
