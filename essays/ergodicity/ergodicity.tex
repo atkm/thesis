@@ -1,9 +1,13 @@
-\documentclass[11pt]{book}
-\usepackage{thesis}
+\documentclass[12pt,twoside]{book}
+\usepackage{../../thesis}
 
+\makeindex
 \begin{document}
-\chapter{Ergodicity}
+\chapter{Statistical Behaviors of Chaotic Maps}
+Li and Yorke says, in an analogy to the title of their famous article, that ``chaos implies statistical regularity'' \citep[Exploring Chaos on an Interval]{ueda-abraham}.
 
+\section{Absolutely Continuous Measure}
+\citet{sternberg}.
 Let $I = [0,1]$, and partition $I$ into $N$ subintervals given by
 \begin{align*}
   I_k &= \left[\frac{k-1}{N}, \frac{k}{N} \right),\quad (k = 1, \ldots, N-1) \\
@@ -64,5 +68,15 @@ Then we see that $F_*\mu$ has the density on $A$ given by
   \sigma(y) = \sum\limits_{F(x) = y} \frac{\rho(x)}{|F'(x)|},
 \end{equation*}
 which is the desired result.
+
+\section{Mixing}
+\subsection{Weak Mixing}
+Positive topological entropy implies weak mixing, and weak mixing implies chaos in Devaney's sense.
+\subsection{Strong Mixing}
+
+\bibliographystyle{../../bibliography/pjgsm}
+\bibliography{../../bibliography/thesis}
+
+\printindex
 
 \end{document}

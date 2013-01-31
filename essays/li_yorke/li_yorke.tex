@@ -18,7 +18,8 @@ dense chaos~\citep{densechaos}, generic chaos~\citep{genericchaos}, extreme chao
 
 \begin{definition}
   (Chaos in Li-Yorke's sense)
-  Let $X$ be a compact metric space and $F: X\to X$ be continuous. $F$ is said to be \textit{Li-Yorke chaotic}, or 
+  Let $X$ be a compact metric space and $F: X\to X$.
+  $F$ is said to be \textit{Li-Yorke chaotic}, or 
   \textit{chaotic in Li-Yorke's sense} if there is an uncountable set $S \subseteq X$ containing no
   periodic points such that each $p,q \in S$ satisfy
   \begin{equation}
@@ -128,7 +129,7 @@ and, for each $n$,
   \label{lem:liyorke3}
 \end{lemma}
 
-Lemma~\ref{lem:liyorke2} will be used frequently in the proofs.
+Lemma~\ref{lem:liyorke2} will be especially useful in the proofs.
 The proof of Theorem~\ref{thm:liyorke1} introduces ideas that are used in proving the other theorem.
 The key observation to make is that we have $K,L \subseteq F(L)$ by $F(b) = c$, $F(c) = d$, and continuity of $F$.
 
@@ -152,7 +153,7 @@ The key observation to make is that we have $K,L \subseteq F(L)$ by $F(b) = c$, 
   The other case, $d \leq a < b < c$, can be proved in the same manner.
 \end{proof}
 
-Finally, we prove the main result of this chapter.
+Next, we prove the main result of this chapter.
 \begin{proof}[Proof of Theorem~\ref{thm:liyorke2}.]
   Let $\mathcal{M}$ be the set of sequences $M = \seq{M_n}{n=1}{\infty}$.
 \end{proof}
@@ -172,31 +173,20 @@ However, we may draw an even stronger conclusion, that is, the points in $S$ are
 %Moreover, Marotto's definition is generalizable to $n$-space.
 
 The theorem does not apply to transformations that are not continuous, such as the sawtooth transformation.
-\begin{example}
-  Let $I = [0,1]$.
-  The sawtooth transformation, $S: I \to I$, defined as
-  \begin{equation*}
-    S(x) = 2x - \ceil{2x},
-  \end{equation*}
-  is chaotic in Devaney's sense,
-   $F$ is not chaotic in Li-Yorke's sense.
-  \begin{proof}
-    Clearly, $F$ is not chaotic, so we cannot apply 
-  \end{proof}
-\end{example}
-
-However, as we have shown in (the chapter on conjugacy), the sawtooth transformation is conjugate to the tent map.
+However, as we have shown in the chapter on conjugacy, the sawtooth transformation is conjugate to the tent map by a surjecive, continuous transformation.
 The tent map is chaotic in Li-Yorke's sense, since it is continuous, and has a 3-periodic orbit.
-
+This observation leads to the following conjecture.
 
 \begin{conjecture}
   Let $X$ be a compact metric space, and $F: X\to X$ be chaotic in Li-Yorke's sense.
-  If $G$ is conjugate to $F$, then $G$ is chaotic.
+  If $G$ is conjugate to $F$ (by a continuous surjective transformation?), then $G$ is chaotic.
 \end{conjecture}
 
-Also, there are mappings  (somewhat pathological) that is chaotic on negligible set.
-\begin{proposition}
-  Let $I = [0,1]$ and $f: I \to I$ defined as
+Although the definition by Li and Yorke captures our intuitive notion of chaos well, it is by no means free of flaws.
+There are mappings that are chaotic on a negligible set \citep{martelli98}.
+\begin{example}
+  (Chaos on a negligible set)
+  Let $I = [0,1]$ and $F: I \to I$ defined as
   \begin{equation*}
     f(x) =
     \begin{cases}
@@ -206,12 +196,79 @@ Also, there are mappings  (somewhat pathological) that is chaotic on negligible 
       0 \quad & \frac{3}{4} \leq x \leq 1. \\
     \end{cases}
   \end{equation*}
-  For each $x_0 \in I$, $O(x_0)$ converges to 0 almost everywhere.
-\end{proposition}
+  Clearly, $F$ is continuous.
+  Also, $x = 23/65$ is a 3-periodic point:
+  \begin{equation*}
+    \itr{F}{3}\paren{\frac{23}{65}} = \itr{F}{2}\paren{\frac{27}{65}} = F\paren{\frac{43}{65}} = \frac{23}{65}.
+  \end{equation*}
+Hence, by Theorem~\ref{thm:liyorke2}, $F$ is chaotic in Li-Yorke's sense.
+%
+Next, we will show that, for almost every $x_0 \in I$ (with respect to the Lebesgue measure), the orbit $\set{\itr{F}{n}(x_0)}$ converges to 0.
+First, note that 
+\begin{equation*}
+  F^{-1}\paren{\left(\frac{2}{3},1\right]} 
+  = \paren{\frac{5}{12},\frac{7}{12}}.
+\end{equation*}
+Let $I_0 = (5/12, 7/12)$.
+Then, inductively define $I_n (n\geq 1)$ as 
+\begin{equation*}
+  I_n = F^{-1}(I_{n-1}).
+\end{equation*}
+%
+For convenience, we denote the length of an interval as $m(I)$.
+We claim that
+\begin{enumerate}[(1)]
+  \item For $q\neq m$, $I_q \cap I_m = \emptyset$.
+  \item $m(I_n) = 1/(6 \cdot 2^n)$
+\end{enumerate}
+%
+We prove claim (1) by contradiction.
+For any $q,m$, assume there exists $x \in I_q \cap I_m$. 
+Without loss of generality, we may assume that $q > m$.
+By the definition of $I_m$, we have $F^m(x) \in I_0$.
+It follows that $F^{m+1}(x) \in F(I_0) = (2/3, 1]$, and $F^{m+t}(x) \in [0, 1/3)$ for $t \geq 2$.
+However, this is a contradiction, because we must also have $F^q(x) \in I_0$.
+%
+To prove (2), first note that $F$ restricted to $(1/3, 2/3)$ is a piecewise affine transformation.
+Consider $g_1(x) = 4x - 1$ and $g_2(x) = -4x + 3$ restricted to $(1/3,1/2]$ and $[1/2,2/3)$, respectively.
+The inverse functions of $g_1$ and $g_2$ exist, and they are
+\begin{equation*}
+  g_1^{-1}(x) = \frac{1+x}{4}; \quad g_2^{-1} = \frac{3-x}{4}.
+\end{equation*}
+The images of $g_1^{-1}$ and $g_2^{-1}$ are $(1/3,2/3)$, and the inverse functions are continuous.
+It follows that, if we suppose $J$ is an interval in $(1/3,2/3)$, then $J$ is mapped to $(1/3,1/2]$ by $g_1^{-1}$ and to $[1/2,2/3)$ by $g_2^{-1}$, respectively.
+Then, $m(g_1^{-1}(J))$ and $m(g_2^{-1}(J))$ are disjoint (except for the point $x = 1/2$), and also
+\begin{equation*}
+  4 \cdot m(g_1^{-1}(J)) = 4 \cdot m(g_2^{-1}(J)) = m(J).
+\end{equation*}
+Since $m(I_0) = 1/6$, we have
+\begin{equation*}
+  m(I_1) 
+  = m(g_1^{-1}(I_0)) + m(g_2^{-1}(I_0))
+  = 2 * \frac{1}{6} * \frac{1}{4}
+  = \frac{1}{6\cdot 2^1},
+\end{equation*}
+and inductively, we obtain
+\begin{equation*}
+  m(I_n) = \frac{1}{6 \cdot 2^n}.
+\end{equation*}
+%
+Finally, by (1) and (2) we have
+\begin{equation*}
+  \sum\limits_{n\geq 0} m(I_n)
+  = \frac{1}{3} \cdot \sum\limits_{n\geq 0} \frac{1}{2^{n+1}}
+  = \frac{1}{3}.
+\end{equation*}
+Thus, almost every point in $I$ converges to 0 under iteration by $F$.
+\end{example}
 
-Li-Yorke's definition is limited to one-dimensional maps.
-In the next chapter, we discuss a definition due to Marotto.
-Marotto a similar result was obtained for higher-dimensional systems.
+% Quasi continuous function f: X\to Y. If V\subseteq Y is open, then f^{-1}(V) \subseteq X is 'semi-open'.
+% U \subseteq X is semi-open if U \subseteq clo(int(U))
+
+There are other limitations to this definition of chaos.
+Most notably, Li-Yorke's definition is limited to one-dimensional maps.
+Also, there are maps that are chaotic in Li-Yorke's sense, but their topological entropies are zero.
+We will discuss the latter case in more depth in the chapter on topological entropy.
 
 \bibliographystyle{../../bibliography/pjgsm}
 \bibliography{../../bibliography/thesis}
