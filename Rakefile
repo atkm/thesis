@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # encoding: utf-8
 # global. files to work with.
-files = ['introduction', 'physicists_defn','dimensions','lyapunov_exponents','prelims','devaney','on_sensitivity','conjugacy','wiggins','martelli','li_yorke','marotto']
+files = ['introduction','prelims','physicists_defn','dimensions','lyapunov_exponents','devaney','on_sensitivity','conjugacy','wiggins','martelli','li_yorke','marotto','topological_entropy','ergodicity']
 appendix = ['sarkovskii','other_defns']
 
 # strip the original and store it in ./src/

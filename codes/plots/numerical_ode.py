@@ -16,6 +16,22 @@ def logistic_accuracy(x, end, dt, mu):
     points = rk4_1D(logistic, x, end, dt, mu)
     plt.plot(sp.linspace(0, end, len(points)), points)
 
+def Ueda(t, xyz, args):
+    """
+    Duffing Equation
+    d^2 x/dt^2 - k * dx/dt + x^3 = B cos(t) + A
+    which is equivalent to the system of first order diff eqs
+    dx/dt = y
+    dy/dt = -k*y - x^3 + B cos(t) + A
+    """
+    x = xyz[0]
+    y = xyz[1]
+    k = args[0]
+    B = args[1]
+    A = arg[2]
+    return sp.array((y, (-1)*k*y - x**3 + B*sp.cos(t) + A))
+
+
 def Lorenz(t, xyz, args):
     """
     Lorenz system
@@ -38,6 +54,10 @@ def Rossler(t, xyz, args):
     """
     Rossler system
     a chaotic args: (0.432, 2, 4)
+    dx/dt = - y - z
+    dy/dt = x + a*y
+    dz/dt = b + z*(x-c)
+    args = (a, b, c)
     """
     x = xyz[0]
     y = xyz[1]

@@ -19,7 +19,6 @@ def Henon(init, args):
     y = b * x0
     return (x,y)
 
-def Ueda(init, args):
 
 def baker(init, args):
     """
