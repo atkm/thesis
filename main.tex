@@ -1,10 +1,11 @@
-\documentclass[12pt,twoside,draft]{reedthesis}
+\documentclass[12pt,twoside]{reedthesis}
 \usepackage{xthesis}
 \graphicspath{{./images/}}
   
 \makeindex
   
-\title{カオス理論}
+\title{Chaos Theory: Definitions of Chaos}
+%\title{カオス理論}
 \author{Atsuya Kumano - 熊野睦也}
 % The month and year that you submit your FINAL draft TO THE LIBRARY (May or December)
 \date{May 2013}
@@ -17,7 +18,7 @@
 %\approvedforthe{Committee} 
 
 %specify the chapters to be compiled.
-  \includeonly{./src/src_introduction,./src/src_physicists_defn,./src/src_dimensions,./src/src_lyapunov_exponents,./src/src_prelims,./src/src_devaney,./src/src_on_sensitivity,./src/src_conjugacy,./src/src_wiggins,./src/src_martelli,./src/src_li_yorke,./src/src_marotto}
+  \includeonly{./src/src_introduction,./src/src_prelims,./src/src_physicists_defn,./src/src_dimensions,./src/src_lyapunov_exponents,./src/src_devaney,./src/src_on_sensitivity,./src/src_conjugacy,./src/src_wiggins,./src/src_martelli,./src/src_li_yorke,./src/src_marotto,./src/src_topological_entropy,./src/src_ergodicity}
 
 \begin{document}
 % from reed-thesis.tex
@@ -52,13 +53,13 @@
 
 \include{./src/src_introduction}
 
+\include{./src/src_prelims}
+
 \include{./src/src_physicists_defn}
 
 \include{./src/src_dimensions}
 
 \include{./src/src_lyapunov_exponents}
-
-\include{./src/src_prelims}
 
 \include{./src/src_devaney}
 
@@ -73,6 +74,10 @@
 \include{./src/src_li_yorke}
 
 \include{./src/src_marotto}
+
+\include{./src/src_topological_entropy}
+
+\include{./src/src_ergodicity}
 
 %Conclusion. if I need one.
 %\chapter*{Conclusion}

@@ -19,6 +19,7 @@ def Henon(init, args):
     y = b * x0
     return (x,y)
 
+
 def baker(init, args):
     """
     'Unfolded' Baker's transformation (from Scholarpedia)
