@@ -5,48 +5,163 @@
 \begin{document}
 
 \chapter{Devaney's Definition}
+\label{chap:devaney}
 \citet{devaney} defines chaos in topological dynamics using three properties.
-
-\begin{definition}
-  (Topological Transitivity) 
-  $f: J \rar J$ is said to be topologically transitive if for any pair of open sets $U$, $V \subseteq J$ there exists $k > 0$ such that $\itr{f}{k}(U) \cap V \neq \emptyset$.
-  \label{defn:transitivity}
-  \index{topological transitivity}
-\end{definition}
-
-Note that we do \textit{not} require that \textit{all} points near $x$ need eventually separate from $x$ under iteration.
-The existence of one such point in every neighborhood of $x$ suffices in this definition of chaos.
-
-\begin{definition}
-  (Sensitive Dependence on Initial Conditions) 
-  $f: J \rightarrow J$ is said to have sensitive initial conditions if there exists (for any???) $\delta > 0$
-  such that, for any $x \in J$ and any neighborhood $N$ of $x$,
-  there exists $y\in N$ and $n\leq 0$ such that $|\itr{f}{n}(x) - \itr{f}{n}(y)|>\delta$.
-  \label{defn:sdic}
-  \index{sensitive dependence on initial conditions}
-\end{definition}
-
+We first state the definition, and 
+Throughout this chapter, $X$ is a metric space, and $\delta$ is the metric associated with the space.
 \begin{definition}
   (Chaos in the sense of Devaney) 
-  Let $V$ be a set.
-  $f: V\rar V$ is said to be chaotic on $V$ if
+  $F: X\rar X$ is said to be chaotic on $X$ if
   \begin{enumerate}
-    \item $f$ has sensitive dependence on initial conditions.
-    \item $f$ is topologically transitive.
-    \item Periodic points are dense in $V$.
+    \item Periodic points are dense in $X$.
+    \item $F$ is \textit{topologically transitive}.
+    \item $F$ has \textit{sensitive dependence on initial conditions}.
   \end{enumerate}
   \index{definition of chaos!Devaney}
 \end{definition}
+%
+\begin{definition}
+  (Dense Periodic Points) 
+  Let $F: X \to X$.
+  Define $P(F)$ to be the set of periodic points of the map.
+  We say that $F$ has dense periodic points if $P(F)$ is dense in $X$.
+\end{definition}
+%
+\begin{definition}
+  (Topological Transitivity) 
+  $F: X \rar X$ is said to be \textit{topologically transitive} if for any pair of open sets $U$, $V \subseteq X$ there exists $k > 0$ such that $\itr{F}{k}(U) \cap V \neq \emptyset$.
+  \label{defn:transitivity}
+  \index{topological transitivity}
+\end{definition}
+%
+\begin{definition}
+  (Sensitive Dependence on Initial Conditions) 
+  $F: X \rightarrow X$ is said to have \textit{sensitive dependence on initial conditions} if there exists $\epsilon > 0$ such that, for any $x \in X$ and any neighborhood $N$ of $x$, there exists $y\in N$ and $n\geq 0$ such that 
+  \begin{equation*}
+    \metric{\itr{F}{n}(x), \itr{F}{n}(y)} > \epsilon.
+  \end{equation*}
+  \label{defn:sdic}
+  \index{sensitive dependence on initial conditions}
+\end{definition}
+%
+\noindent Note that for sensitive dependence on initial conditions we do \textit{not} require \textit{all} points near $x$ need eventually separate from $x$ under iteration.
+The existence of one such point in every neighborhood of $x$ suffices.
+
+Recall from the previous chapter
+Some mappings qualify to sensitive dependence, even if it seems simple and predictable.
+\begin{example}
+  (Rotation by magnitude is chaotic)
+  Let $D = \set{x \in \R^2: \norm{x} \leq 2}$, and $C_\rho = \set{x \in \R^2: \norm{x} = \rho}$.
+  Define $F: D \to D$, a rotation in $C_\rho$, by
+  \begin{equation*}
+    F(x) = F(\rho, \theta) = (\rho, \theta + \rho).
+  \end{equation*}
+  For every $\rho \in (0,2]$, $C_\rho$ is invariant.
+
+  We claim that the system has in $C_\rho$ sensitive dependence on initial conditions with $r_0 = \rho$.
+  Let $x_0 = (\rho_0, \theta_0)$ and $d > 0$.
+  Choose $n$ large enough that $\frac{\pi}{n} < d$ and $\rho_0 - \frac{\pi}{n} > 0$.
+  Let $y_0 = (\rho_0 - \frac{\pi}{n}, \theta_0)$.
+  Then,
+  \begin{equation*}
+    x_n = (\rho_0, \theta_0 + n\rho_0),\quad
+    y_n = (\rho_0 - \frac{\pi}{n}, \theta_0 + n\rho_0 - \pi),
+  \end{equation*}
+  so
+  \begin{equation*}
+    \norm{x_0 - y_0} < d \quad \mbox{and} \quad \norm{y_n - x_n} = \paren*{\frac{\pi}{n}}^2 + \pi^2 > 2 > r_0.
+  \end{equation*}
+\end{example}
+
+We will show that sensitive dependence on initial conditions can be derived from transivity and dense periodic orbits property if the mapping is continuous and $X$ is a compact, invariant set later in this chapter. \citep{banks}
+
+\begin{proposition}
+  (Topological Transitivity and Dense Periodic Points Imply Sensitivity to Initial Conditions)
+  Let $f: X\rar X$ be a chaotic transformation. Then there is an $\delta > 0$ such that
+  for any $x\in X$ and any open set $J$ containing at least $x$ and another point, there is
+  a point $y\in J$ and $n\in \N$ with
+  \begin{equation*}
+    d(f^n(x),f^n(y)) > \delta.
+  \end{equation*}
+  \label{thm:sensitivity}
+\end{proposition}
+\begin{lemma}
+  Let $f: X\rar X$ be a mapping with (at least) two distinct periodic orbits.
+  Then there is a $c > 0$ such that for any $x\in X$ there exists a periodic
+  point $p$ with the property that for each $k$
+  \begin{equation*}
+    d(x, f^k(p)) > c.
+  \end{equation*}
+\end{lemma}
+\begin{proof}[Proof of the lemma]
+  Let $r$ and $s$ be periodic points with distinct orbits. For each $k$ and $l$ we have
+  \begin{equation*}
+    d(f^k(r), f^l(s)) > 0.
+  \end{equation*}
+  Choose $c$ so that $2c < \min d(f^k(r),f^l(s)) > 0$. Then by the triangle inequality
+  \begin{equation*}
+    2c < d(f^k(r),f^l(s)) \leq d(f^k(r),x) + d(x,f^l(s))
+  \end{equation*}
+  for all $k$ and $l$. Now suppose that $d(f^k(r),x)<c$ and $d(x,f^l(s))<c$. The supposition
+  violates the inequality just derived. Thus $d(f^k(r),x) \geq c$ or $d(x,f^l(s)) \geq c$ must hold.
+\end{proof}
+\begin{proof}[Proof of \ref{thm:sensitivity}]
+  Let $\delta = c/4$. Let $x$ be any point of $X$ and $J$ any open set containing $x$.
+  Since the periodic points of $f$ are dense (in $X$), we may introduce a periodic point
+  $q$ of $f$ in
+  \begin{equation*}
+    U = J\cap B_\delta(x).
+  \end{equation*}
+  Let $n$ be the period of $q$.
+  
+  Let $p$ be a periodic point whose orbit is apart from $x$ by $4\delta$. Define
+  \begin{equation*}
+    W_i := B_i(f^i(p)) \text{ and } V := f^{-1}(W_1) \cap f^{-2}(W_2) \cap \cdots f^{-n}(W_n).
+  \end{equation*}
+  Since $f^i(p) \in W_i$, we see that $V$ is not empty. Note that $V$ is open.
+
+  By the transitivity property, we can find a $z\in U$ and a positive integer $k$ such that
+  $f^k(z) \in V$. Let $j$ be the smallest integer so that $k < nj$. That is,
+  \begin{equation*}
+    1 \leq nj - k \leq n.
+  \end{equation*}
+  Therefore,
+  \begin{equation*}
+    f^{nj - k} (V) = f^{nj - k} (f^k(z)) \in f^{nj-k}(V).
+  \end{equation*}
+  Also,
+  \begin{align*}
+     f^{nj - k}(V) &= f^{nj - k} (f^{-1}(W_1) \cap f^{-2}(W_2) \cap \cdots f^{-n}(W_n))
+     &\subset f^{nj - k}(f^{-(nj - k)} W_{nj-k})
+     &= W_{nj_k}
+  \end{align*}
+  In other words,
+  \begin{equation*}
+    d(f^{nj}(z), f^{nj - k}(p)) < \delta.
+  \end{equation*}
+  Furthermore, $f^{nj}(q) = q$, since $q$ is periodic with period $n$. Hence, 
+  \begin{equation*}
+    d(f^{nj}(q), f^{nj}(z)) = d(q, f^{nj}(z)) 
+  \end{equation*}
+  By the triangle inequality, we have
+  \begin{equation*}
+    d(x, f^{nj-k}(p)) \leq d(x,q) + d(q, f^{nj}(z)) + d(f^{nj}(z), f^{nj - k}(p)).
+  \end{equation*}
+  Finally, 
+  \begin{equation*}
+    d(f^{nj}(q), f^{nj}(z)) = d(q, f^{nj}(z)) \geq  d(x, f^{nj-k}(p)) - d(x,q) - d(f^{nj}(z), f^{nj - k}(p)) = 4\delta - \delta - \delta = 2\delta.
+  \end{equation*}
+  The inequality implies that $d(f^{nj}(x), f^{nj}(z)) \geq \delta$ or $d(f^{nj}(x), f^{nj}(q)) \geq \delta$ must hold.
+
+\end{proof}
 
 
-We will show Sensitive dependence on initial conditions can be derived from transivity and dense property if the mapping is continuous and $X$ is a compact, invariant set later in this chapter. \citep{banks}
 Furthermore, for an interval, \textbf{the only property necessary is
 topological transitivity} (Vellekoop-Berglund, 1994).
 
 A system is chaotic in $X$ in the sense of Devaney if and only if
 for every pair of open sets in $X$ there exists a periodic orbit 
 which visits both sets (Touhey, 1997).
-
 
 \begin{proposition}
   (Conjugacy, Transitivity, and Homeomorphism) 
