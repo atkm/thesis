@@ -1,0 +1,72 @@
+\documentclass[12pt,twoside,draft]{book}
+\usepackage{../../thesis}
+\graphicspath{ {../../images/} }
+
+\makeindex
+\begin{document}
+\chapter{Topological Entropy}
+
+\section{Background}
+Throughout this section, $(X,d)$ is a compact metric space,  and $F$ is a continuous mapping from $X$ to $X$.
+To define topological entropy, 
+
+\begin{lemma}
+  (Lebesgue's Covering Lemma)
+  Let $X$ be a compact metric space, and $\alpha$ be an open cover of $X$.
+  There exists $\delta > 0$ such that, if $B$ is a subset of $X$ whose diameter is less than or equal to $\delta$, i.e. $\diam(B) \leq \delta$, then there exists a member $A$ of $\alpha$ such that $B \subseteq A$.
+  \label{lem:covering}
+  \index{Lebesgue's covering lemma}
+
+  \begin{proof}
+    Proof by contradiction.
+    Consider a sequence $\set{B_n}$ of subsets of $X$ such that $\diam(B_n) = 1/n$, and each $B_n$ is not contained in any member of $\alpha$.
+    For each $B_n$, fix $x_n \in B_n$.
+    Since $X$ is compact, there exists a subsequence of $\set{x_n}$ that converges.
+    Call this subsequence $\set{x_{n_k}}$, and suppose it converges to $x$.
+    Also, suppose $x$ is a member of $A \in \alpha$, and let $D = \diam(A)$.
+    Choose $l$ large enough so that $n_l > \frac{2}{D}$ and $\metric{x_{n_l}, x} < \frac{D}{2}$.
+    Finally, for any point $y$ in $B_{n_l}$, we have
+    \begin{equation*}
+      \metric{y, x_{n_l}}
+      \leq \metric{y,x} + \metric{x, x_{n_l}}
+      < \diam(B_{n_l})  + \frac{D}{2}
+      = \frac{1}{n_l} + \frac{D}{2}
+      = D.
+    \end{equation*}
+    This is a contradiction, since $\metric{y, x_{n_l}} < D$ implies that $B_{n_l}$ is contained in $A$.
+  \end{proof}
+\end{lemma}
+
+\begin{definition}
+  (Topological Entropy)
+  The topological entropy of an open cover is defined as
+  \begin{equation*}
+    h(\alpha) = \log N(\alpha),
+  \end{equation*}
+  where $N(\alpha)$ is the minimum number of 
+  The topological entropy of a mapping $F$ relative to a open cover $\alpha$ is defined as
+  \begin{equation*}
+    h(F,\alpha) = \lim\limits_{n \to \infty} \frac{1}{n} \cdot h\paren{ \bigvee\limits_{i=0}^n \itr{F}{(-i)}(\alpha) }.
+  \end{equation*}
+  
+  Finally, the topological entropy of a mapping $F$, denoted $h(F)$, is defined as the supremum of $h(F, \alpha)$ taken over \textit{all} open covers of $X$:
+  \begin{equation*}
+    h(F) = \sup\limits_\alpha h(F,\alpha).
+  \end{equation*}
+  \label{defn:t-entropy}
+  \index{topological entropy}
+\end{definition}
+
+\section{The Topological Entropy of Logistic Map}
+$h(L_4)$
+\begin{equation*}
+  L_\mu(x) = \mu x (1-x)
+\end{equation*}
+
+
+\bibliographystyle{../../bibliography/pjgsm}
+\bibliography{../../bibliography/thesis}
+
+\printindex
+\end{document}
+
