@@ -5,19 +5,139 @@
 \makeindex
 \begin{document}
 \chapter{Topological Entropy}
+The notion of topological entropy was first introdeced by \citet{akm}.
+Topological entropy mimics the physical notion of entropy employed in statistical mechanics.
+I will first discuss basic properties of topological entropy, then compute topological entroies for some mappings.
+I will also discuss relation of topological entropy to chaos in Li-Yorke's sense.
 
 \section{Background}
-Throughout this section, $(X,d)$ is a compact metric space,  and $F$ is a continuous mapping from $X$ to $X$.
-To define topological entropy, 
+Throughout this section, $(X,d)$ is a compact metric space.
+$F$ is a continuous mapping from $X$ to $X$ unless noted otherwise.
+Our definition of topological entropy uses open covers of a space. 
+
+\begin{definition}
+  (Join of Open Covers)
+  Let $\alpha$ and $\beta$ be open covers of $X$.
+  Their join, denoted $\alpha \vee \beta$, is defined as
+  \begin{equation*}
+    \alpha \vee \beta \ceq \setst{A \cap B}{A \in \alpha, B \in \beta}.
+  \end{equation*}
+  We define the join of a countable collection of open covers in the same manner, and denote it as $\bigvee\limits_{i = 1}^{n} \alpha_i$.
+\end{definition}
+
+\begin{definition}
+  (Refinement of an Open Cover)
+  An open cover $\beta$ is said to be a refinement of another open cover $\alpha$, if for each $A \in \alpha$, there exists $B \in \beta$ such that $B \subseteq A$.
+  Note that $\alpha < \alpha \vee \beta$.
+\end{definition}
+
+\begin{definition}
+  (Preimage of an Open Cover)
+  Let $\alpha$ be an open cover of $X$, and $F: X \to X$ be a continuous mapping.
+  Then $F^{-1}(\alpha)$ is defined as the following:
+  \begin{equation*}
+    F^{-1}(\alpha) \ceq \setst{F^{-1}(A)}{A \in \alpha}.
+  \end{equation*}
+\end{definition}
+\begin{proposition}
+  Let $\alpha$ and $\beta$ be open covers of $X$.
+  We have
+  \begin{enumerate}[(i)]
+    \item $F^{-1}(\alpha \vee  \beta) = F^{-1}(\alpha) \vee F^{-1}(\beta)$
+    \item $\alpha < \beta \Rar F^{-1}(\alpha) < F^{-1}(\beta)$.
+  \end{enumerate}
+  \begin{proof}
+    (i) The statement follows from the fact that $F^{-1}(A \cap B) = F^{-1}(A) \cap F^{-1}(B)$. \\
+    (ii) If $A \subseteq B$ then $F^{-1}(A) \subseteq F^{-1}(B)$.
+  \end{proof}
+\end{proposition}
+
+\begin{definition}
+  (Topological Entropy)
+  The topological entropy of an open cover $\alpha$ is defined as
+  \begin{equation*}
+    h(\alpha) = \log N(\alpha),
+  \end{equation*}
+  where $N(\alpha)$ is the minimum of cardinalities of subcovers of $\alpha$, i.e.
+  \begin{equation*}
+    N(\alpha) \ceq \min\setst{ \#(\beta) }{ \beta \mbox{ is a subcover of } \alpha}.
+  \end{equation*}
+  The topological entropy of a mapping $F$ relative to a open cover $\alpha$ is defined as (prove the existence of this limit)
+  \begin{equation*}
+    h(F,\alpha) = \lim\limits_{n \to \infty} \frac{1}{n} \cdot h\paren{ \bigvee\limits_{i=0}^n \itr{F}{(-i)}(\alpha) }.
+  \end{equation*}
+  Finally, the \textit{topological entropy} of a mapping $F$, denoted $h(F)$, is defined as the supremum of $h(F, \alpha)$ taken over all open covers of $X$:
+  \begin{equation*}
+    h(F) = \sup\limits_\alpha h(F,\alpha).
+  \end{equation*}
+  \label{defn:t-entropy}
+  \index{topological entropy}
+\end{definition}
+
+As we claimed at the beginning of this chapter, the topological entropy is invarant under topological conjugacy.
+The precise statement is the following theorem.
+\begin{theorem}
+  (Topological Entropy is an Invariant of Topological Conjugacy)
+  Let $X_1$ and $X_2$ be metric spaces, and $F_1: X_1 \to X_1$ and $F_2: X_2 \to X_2$ are continuous mappings.
+  If $\phi: X_1 \to X_2$ is a homeomorphism such that $\phi$ is surjective (hence $\phi^{-1}$ is also surjective) and that $\phi F_1 = F_2 \phi$.
+  Then, $h(F_1) = h(F_2)$.
+  \label{thm:t-ent-conj}
+\end{theorem}
+We require a lemma in order to prove the theorem.
+
+\begin{lemma}
+  Let $F: X\to X$ be a continuous mapping.
+  Then $h(F^{-1}(\alpha)) \leq h(\alpha)$.
+  Furthermore, if $F$ is also surjective, then $h(F^{-1}(\alpha)) = h(\alpha)$.
+  \begin{proof}
+    Suppose $n = N(\alpha)$, and $\set{A_1, \ldots, A_{n}}$ is a subcover of $\alpha$ of minimal cardinality.
+    Then, $\set{F^{-1}(A_1), \ldots, F^{-1}(A_{n})}$ is a subcover of $F^{-1}(\alpha)$.
+    This proves the first statement.
+    To prove the second statement, suppose $m = N(F^{-1}(\alpha))$.
+    Let $\set{F^{-1}(A_1), \ldots, F^{-1}(A_{m})}$ be a subcover of $F^{-1}(\alpha)$ of minimal cardinality.
+    If $F$ is surjective, then $\set{A_1, \ldots, A_{m}}$ is a subcover of $\alpha$.
+  Hence $h(F^{-1}(\alpha)) \geq h(\alpha)$.
+  \end{proof}
+  
+\end{lemma}
+
+Now we proceed to prove the theorem.
+\begin{proof}[Proof of Theorem~\ref{thm:t-ent-conj}]
+  Let $\alpha$ be an open cover of $X_2$.
+  We have
+  \begin{align*}
+    h(F_2, \alpha)
+    &= \lim\limits_{n \to \infty} \frac{1}{n} \cdot h \paren{\bigvee\limits_{i = 0}^{n-1} \itr{F_2}{(-i)}(\alpha)} \\
+    &= \lim\limits_{n \to \infty} \frac{1}{n} \cdot h \paren{\phi^{-1}  \bigvee\limits_{i = 0}^{n-1} \itr{F_2}{(-i)}(\alpha)}  \\
+    &= \lim\limits_{n \to \infty} \frac{1}{n} \cdot h \paren{\bigvee\limits_{i = 0}^{n-1} (\phi^{-1} \circ \itr{F_2}{(-i)})(\alpha)} \\
+    &= \lim\limits_{n \to \infty} \frac{1}{n} \cdot h \paren{\bigvee\limits_{i = 0}^{n-1} (\itr{F_1}{(-i)} \circ \phi^{-1})(\alpha)} \\
+    &= h(F_1, \phi^{-1}(\alpha)).
+  \end{align*}
+  %
+  By the lemma, $h(F_2, \alpha) = h(F_1, \phi^{-1}(\alpha)) = h(F_1, \alpha)$. (??? does this make sense)
+\end{proof}
+
+
+The definition of topological entropy calls for computation of $h(F,\alpha)$ for all possible open covers of $X$, and thus, computing $h(F)$ using the definition is untenable.
+
+\begin{definition}
+  (Refining Sequence)
+  A sequence $\set{\alpha_n}$ of open covers of a compact space $X$ is called a \textit{refining sequence}, if it satisfies the following two criteria:
+  \begin{enumerate}[(i)]
+    \item $\alpha_n < \alpha_{n+1}$ for each $n\geq 0$
+    \item if $\beta$ is an open cover of $X$, then there exists $m$ such that $\beta < \alpha_m$.
+  \end{enumerate}
+\end{definition}
+
 
 \begin{lemma}
   (Lebesgue's Covering Lemma)
   Let $X$ be a compact metric space, and $\alpha$ be an open cover of $X$.
   There exists $\delta > 0$ such that, if $B$ is a subset of $X$ whose diameter is less than or equal to $\delta$, i.e. $\diam(B) \leq \delta$, then there exists a member $A$ of $\alpha$ such that $B \subseteq A$.
   \label{lem:covering}
-  \index{Lebesgue's covering lemma}
+    \index{Lebesgue's covering lemma}
 
-  \begin{proof}
+    \begin{proof}
     Proof by contradiction.
     Consider a sequence $\set{B_n}$ of subsets of $X$ such that $\diam(B_n) = 1/n$, and each $B_n$ is not contained in any member of $\alpha$.
     For each $B_n$, fix $x_n \in B_n$.
@@ -36,26 +156,6 @@ To define topological entropy,
     This is a contradiction, since $\metric{y, x_{n_l}} < D$ implies that $B_{n_l}$ is contained in $A$.
   \end{proof}
 \end{lemma}
-
-\begin{definition}
-  (Topological Entropy)
-  The topological entropy of an open cover is defined as
-  \begin{equation*}
-    h(\alpha) = \log N(\alpha),
-  \end{equation*}
-  where $N(\alpha)$ is the minimum number of 
-  The topological entropy of a mapping $F$ relative to a open cover $\alpha$ is defined as
-  \begin{equation*}
-    h(F,\alpha) = \lim\limits_{n \to \infty} \frac{1}{n} \cdot h\paren{ \bigvee\limits_{i=0}^n \itr{F}{(-i)}(\alpha) }.
-  \end{equation*}
-  
-  Finally, the topological entropy of a mapping $F$, denoted $h(F)$, is defined as the supremum of $h(F, \alpha)$ taken over \textit{all} open covers of $X$:
-  \begin{equation*}
-    h(F) = \sup\limits_\alpha h(F,\alpha).
-  \end{equation*}
-  \label{defn:t-entropy}
-  \index{topological entropy}
-\end{definition}
 
 \section{The Topological Entropy of Logistic Map}
 $h(L_4)$
