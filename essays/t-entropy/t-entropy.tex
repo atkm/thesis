@@ -79,8 +79,7 @@ The precise statement is the following theorem.
 \begin{theorem}
   (Topological Entropy is an Invariant of Topological Conjugacy)
   Let $X_1$ and $X_2$ be metric spaces, and $F_1: X_1 \to X_1$ and $F_2: X_2 \to X_2$ are continuous mappings.
-  If $\phi: X_1 \to X_2$ is a homeomorphism such that $\phi$ is surjective (hence $\phi^{-1}$ is also surjective) and that $\phi F_1 = F_2 \phi$.
-  Then, $h(F_1) = h(F_2)$.
+  If $\phi: X_1 \to X_2$ is a homeomorphism, then $h(F_1) = h(F_2)$.
   \label{thm:t-ent-conj}
 \end{theorem}
 We require a lemma in order to prove the theorem.
@@ -109,13 +108,22 @@ Now we proceed to prove the theorem.
     h(F_2, \alpha)
     &= \lim\limits_{n \to \infty} \frac{1}{n} \cdot h \paren{\bigvee\limits_{i = 0}^{n-1} \itr{F_2}{(-i)}(\alpha)} \\
     &= \lim\limits_{n \to \infty} \frac{1}{n} \cdot h \paren{\bigvee\limits_{i = 0}^{n-1} \phi^{-1} \circ \itr{F_1}{(-i)} \circ \phi (\alpha)} \\
+    &= \lim\limits_{n \to \infty} \frac{1}{n} \cdot h \paren{\phi^{-1} \bigvee\limits_{i = 0}^{n-1} \itr{F_1}{(-i)} (\phi (\alpha))} \\
+    &= \lim\limits_{n \to \infty} \frac{1}{n} \cdot h \paren{\bigvee\limits_{i = 0}^{n-1} \itr{F_1}{(-i)} (\phi (\alpha))} \mbox{ (by the lemma)} \\
+    &= h(F_1, \phi(\alpha)).
   \end{align*}
   %
-  By the lemma, $h(F_2, \alpha) = h(F_1, \phi^{-1}(\alpha)) = h(F_1, \alpha)$. (??? does this make sense)
+  As $\alpha$ ranges over all open covers of $X_1$, $\phi(\alpha)$also ranges over all open covers of $X_2$, since $\phi$ is a homeomorphism.
+  Therefore,
+  \begin{equation*}
+    h(F_2) = h(F_1).
+  \end{equation*}
 \end{proof}
 
 
 The definition of topological entropy calls for computation of $h(F,\alpha)$ for all possible open covers of $X$, and thus, computing $h(F)$ using the definition is untenable.
+As a reasonable method for computing $h(F)$, we introduce a theorem, which states that $h(F)$ equals to the limit of the topological entropy of $F$ relative to a sequence of open covers that become finer and finer later in the sequence.
+We call such a sequence a \textit{refining sequence}, defined as follows.
 
 \begin{definition}
   (Refining Sequence)
@@ -126,7 +134,38 @@ The definition of topological entropy calls for computation of $h(F,\alpha)$ for
   \end{enumerate}
 \end{definition}
 
+\begin{theorem}
+  Suppose $\set{\alpha_n}$ is a refining sequence of $X$, and $F:X\to X$ is a continuous mapping.
+  Then,
+  \begin{equation*}
+    h(F) = \lim\limits_{n\to \infty} h(F, \alpha_n).
+  \end{equation*}
+  \label{thm:t-ent-ref-seq}
+  %
+  \begin{proof}
+    Since $h(F) = \sup\limits_{\alpha} h(F, \alpha)$, the inequality
+    \begin{equation*}
+      h(F) \geq \lim\limits_{n\to \infty} h(F, \alpha_n).
+    \end{equation*}
+    holds.
+    To show that the opposite inequality also holds, note that for each open cover $\beta$ of $X$, there exists $k_0$ such that, for each $k > k_0$, $\beta < \alpha_k$.
+    It follows that
+    \begin{equation*}
+      h(F, \beta) \leq h(F, \alpha_k).
+    \end{equation*}
+    Take the supremum over $\beta$ of both sides to obtain
+    \begin{equation*}
+      \sup\limits_{\beta} h(F, \beta) = h(F) \leq h(F, \alpha_k).
+    \end{equation*}
+    Finally, take the limit $k \to \infty$ to get
+    \begin{equation*}
+      h(F) \leq \lim\limits_{k \to \infty} h(F, \alpha_k).
+    \end{equation*}
+    Hence, $h(F) = h(F, \alpha_k)$.
+  \end{proof}
+\end{theorem}
 
+We will use Lebesgue's Covering Lemma in the next section to show that some sequence of open covers satisfies the second condition of the definition of refining sequence.
 \begin{lemma}
   (Lebesgue's Covering Lemma)
   Let $X$ be a compact metric space, and $\alpha$ be an open cover of $X$.
@@ -155,11 +194,14 @@ The definition of topological entropy calls for computation of $h(F,\alpha)$ for
 \end{lemma}
 
 \section{The Topological Entropy of Logistic Map}
-$h(L_4)$
+We saw in the introduction that $L_u$, the logistic map, which is defined as
 \begin{equation*}
-  L_\mu(x) = \mu x (1-x)
+  L_\mu(x) = \mu x (1-x),
 \end{equation*}
-
+ exhibits a sensitive dependence on initial conditions when $\mu$ is greater than a value approximate to $3.57\ldots$ (though there are exceptions. See the bifurcation diagram for $L_\mu$). 
+As a demonstration of topological entropy, we will compute $h(L_\mu)$ for $\mu = 4$.
+Since $L_\mu$ is chaotic when $\mu = 4$, we expect that $h(L_4)$ is positive.
+As we will see, this is indeed the case; by applying Theorem~\ref{thm:t-ent-ref-seq} topological conjugacy and 
 
 \bibliographystyle{../../bibliography/pjgsm}
 \bibliography{../../bibliography/thesis}
