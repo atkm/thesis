@@ -108,10 +108,7 @@ Now we proceed to prove the theorem.
   \begin{align*}
     h(F_2, \alpha)
     &= \lim\limits_{n \to \infty} \frac{1}{n} \cdot h \paren{\bigvee\limits_{i = 0}^{n-1} \itr{F_2}{(-i)}(\alpha)} \\
-    &= \lim\limits_{n \to \infty} \frac{1}{n} \cdot h \paren{\phi^{-1}  \bigvee\limits_{i = 0}^{n-1} \itr{F_2}{(-i)}(\alpha)}  \\
-    &= \lim\limits_{n \to \infty} \frac{1}{n} \cdot h \paren{\bigvee\limits_{i = 0}^{n-1} (\phi^{-1} \circ \itr{F_2}{(-i)})(\alpha)} \\
-    &= \lim\limits_{n \to \infty} \frac{1}{n} \cdot h \paren{\bigvee\limits_{i = 0}^{n-1} (\itr{F_1}{(-i)} \circ \phi^{-1})(\alpha)} \\
-    &= h(F_1, \phi^{-1}(\alpha)).
+    &= \lim\limits_{n \to \infty} \frac{1}{n} \cdot h \paren{\bigvee\limits_{i = 0}^{n-1} \phi^{-1} \circ \itr{F_1}{(-i)} \circ \phi (\alpha)} \\
   \end{align*}
   %
   By the lemma, $h(F_2, \alpha) = h(F_1, \phi^{-1}(\alpha)) = h(F_1, \alpha)$. (??? does this make sense)
