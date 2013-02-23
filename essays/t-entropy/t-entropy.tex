@@ -193,15 +193,104 @@ We will use Lebesgue's Covering Lemma in the next section to show that some sequ
   \end{proof}
 \end{lemma}
 
-\section{The Topological Entropy of Logistic Map}
+\section{The Topological Entropy of The Logistic Map}
 We saw in the introduction that $L_u$, the logistic map, which is defined as
-\begin{equation*}
-  L_\mu(x) = \mu x (1-x),
-\end{equation*}
- exhibits a sensitive dependence on initial conditions when $\mu$ is greater than a value approximate to $3.57\ldots$ (though there are exceptions. See the bifurcation diagram for $L_\mu$). 
+\begin{align*}
+  L_\mu&: I \to I \quad\mbox{ where } I \equiv [0,1] \\
+  L_\mu&: x \mapsto \mu x (1-x),
+\end{align*}
+is chaotic when $\mu = 4$.
 As a demonstration of topological entropy, we will compute $h(L_\mu)$ for $\mu = 4$.
-Since $L_\mu$ is chaotic when $\mu = 4$, we expect that $h(L_4)$ is positive.
-As we will see, this is indeed the case; by applying Theorem~\ref{thm:t-ent-ref-seq} topological conjugacy and 
+We expect that $h(L_4)$ is positive, and as we will see, this is indeed the case. 
+We first show that $L_4$ is topologically conjugate to the tent map, defined as
+\begin{equation*}
+  T(x) = 
+  \begin{cases}
+    2x \mbox{ if } x \in [0,1/2] \\
+    2 - 2x \mbox{ if } x \in [1/2,1].
+  \end{cases}
+\end{equation*}
+Once we establish this conjugacy, by Theorem~\ref{thm:t-ent-conj}, the problem reduces to computation of $h(T)$.
+Let
+\begin{equation*}
+  \phi(x) = \sin^2(\frac{\pi x}{2}).
+\end{equation*}
+Our goal is to show that $L_4 \circ \phi = \phi \circ T$.
+For any $x \in I$, letting $\theta \equiv \frac{\pi x}{2}$ for convenience, we have
+\begin{align*}
+   L_4 \circ \phi(x)
+   &= 4\sin^2\theta(1 - \sin^2\theta) \\
+   &= 4\sin^2\theta \cos^2\theta \\
+   &= \sin^2 2\theta \\
+   &= \sin^2 (\pi x).
+\end{align*}
+For any $x$ in $[0,1/2]$,
+\begin{equation*}
+  \phi \circ T(x)
+  = \sin^2(\pi x),
+\end{equation*}
+and for any $x$ in $[1/2,1]$,
+\begin{align*}
+  \phi \circ T(x)
+  &= \sin^2(\pi - \pi x) \\
+  &= \sin^2(\pi x).
+\end{align*}
+Therefore, $L_4 \circ \phi = \phi \circ T$ on $I$, so that, by Theorem~\ref{thm:t-ent-conj}, we obtain $h(L_4) = h(T)$.
+Our next task is to construct a refining sequence $\set{\alpha_n}$ of $I$.
+Then, we would obtain $h(T)$ by Theorem~\ref{thm:t-ent-ref-seq}.
+Our construction is as follows.
+First, let $\alpha_0 = \set{I}$.
+Then, for $n \geq 1$, recursively define $\alpha_n$ as
+\begin{equation*}
+  \alpha_n = T^{-1}(\alpha_{n-1}).
+\end{equation*}
+%
+This recursive definition can be stated more explicitly as
+\begin{align*}
+  \alpha_n &= T^{-1}(\alpha_{n-1}) \\
+  &= \bigcup\limits_{A \in \alpha_{n-1}} \paren{ \setst{J}{T(J) = I, J \subseteq [0,1/2]} \cup \setst{J}{T(J) = I, J \subseteq [1/2,1]}}.
+\end{align*}
+The expression is motivated by the fact that the tent map is a two-to-one mapping, except for when $x = \frac{1}{2}$.
+For each $x \in I - \set{\frac{1}{2}}$, the preimage of $x$ is given by the formula
+\begin{equation*}
+  T^{-1}(x) = \set{\frac{1}{2} x, 1 - \frac{1}{2} x}.
+\end{equation*}
+Notice that if $\frac{1}{2} x \in [0,1/2)$, then $1 - \frac{1}{2} x \in (1/2,1]$; if $\frac{1}{2} x \in (1/2,1]$, then $1 - \frac{1}{2} x \in [0,1/2)$.
+This observation holds for the preimage of an interval.
+For example,
+\begin{align*}
+  \alpha_1 &= \set{\brac{0,\frac{1}{2}}, \brac{\frac{1}{2}, 1}}, \\
+  \alpha_2 &= \set{\brac{0,\frac{1}{4}}, \brac{\frac{3}{4}, 1}, \brac{\frac{1}{4}, \frac{1}{2}}, \brac{\frac{1}{2}, \frac{3}{4}}},
+\end{align*}
+and so on.
+Thus, $N(\alpha_{n}) = 2^n$.
+Now, we want to show that $\set{\alpha_n}$ is a refining sequence.
+$\set{\alpha_n}$ clearly satisfies the first condition:
+\begin{equation*}
+  \alpha_n < \alpha_{n+1}.
+\end{equation*}
+To show the other condition, that for each open cover $\beta$ of $X$, there exists $k_0$ such that $\beta < \alpha_k$ for each $k \geq k_0$, we invoke Lebesgue's covering lemma.
+Let $\delta > 0$ be the constant given by applying the lemma to $\beta$.
+For each $J_n \in \alpha_n$, we have $\diam(J_n) = 1/{2^n}$.
+Choose $n$ large enough so that $\diam(J_n) \leq \delta$.
+Then, for each $A \in \alpha_n$, the lemma guarantees the existence of $B \in \beta$ such that $A \subseteq B$.
+This implies $\beta < \alpha_n$.
+We conclude that $\set{\alpha_n}$ is a refining sequence.
+Finally, we compute $\lim\limits_{n \to \infty} \frac{1}{n} h(T, \alpha_n)$.
+Recall that $N(\alpha_{n}) = 2^n$.
+Then,
+\begin{align*}
+  h(T, \alpha_n)
+  &= \lim\limits_{m \to \infty} \frac{1}{m} \log N\paren{ \bigvee\limits_{i = 0}^{m-1} T^{-i}(\alpha_n)}  \\
+  &= \lim\limits_{m \to \infty} \frac{1}{m} \log N(\alpha_{n+m-1})  \\
+  &= \lim\limits_{m \to \infty} \frac{1}{m} \log 2^{n + m - 2}  \\
+  &= \lim\limits_{m \to \infty} \frac{n + m - 2}{m} \log 2 \\
+  &= \log 2.
+\end{align*}
+Therefore,
+\begin{equation*}
+  h(L_4) = h(T) = \lim\limits_{n \to \infty} h(T, \alpha_n) = \log 2.
+\end{equation*}
 
 \bibliographystyle{../../bibliography/pjgsm}
 \bibliography{../../bibliography/thesis}
