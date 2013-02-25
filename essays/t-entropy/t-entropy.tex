@@ -86,8 +86,7 @@ The precise statement is the following theorem.
 \begin{theorem}
   (Topological Entropy is an Invariant of Topological Conjugacy)
   Let $X_1$ and $X_2$ be metric spaces, and $F_1: X_1 \to X_1$ and $F_2: X_2 \to X_2$ are continuous mappings.
-  If $\phi: X_1 \to X_2$ is a homeomorphism such that $\phi$ is surjective (hence $\phi^{-1}$ is also surjective) and that $\phi F_1 = F_2 \phi$.
-  Then, $h(F_1) = h(F_2)$.
+  If $\phi: X_1 \to X_2$ is a homeomorphism, then $h(F_1) = h(F_2)$.
   \label{thm:t-ent-conj}
 \end{theorem}
 We require a lemma in order to prove the theorem.
@@ -116,13 +115,22 @@ Now we proceed to prove the theorem.
     h(F_2, \alpha)
     &= \lim\limits_{n \to \infty} \frac{1}{n} \cdot h \paren{\bigvee\limits_{i = 0}^{n-1} \itr{F_2}{(-i)}(\alpha)} \\
     &= \lim\limits_{n \to \infty} \frac{1}{n} \cdot h \paren{\bigvee\limits_{i = 0}^{n-1} \phi^{-1} \circ \itr{F_1}{(-i)} \circ \phi (\alpha)} \\
+    &= \lim\limits_{n \to \infty} \frac{1}{n} \cdot h \paren{\phi^{-1} \bigvee\limits_{i = 0}^{n-1} \itr{F_1}{(-i)} (\phi (\alpha))} \\
+    &= \lim\limits_{n \to \infty} \frac{1}{n} \cdot h \paren{\bigvee\limits_{i = 0}^{n-1} \itr{F_1}{(-i)} (\phi (\alpha))} \mbox{ (by the lemma)} \\
+    &= h(F_1, \phi(\alpha)).
   \end{align*}
   %
-  By the lemma, $h(F_2, \alpha) = h(F_1, \phi^{-1}(\alpha)) = h(F_1, \alpha)$. (??? does this make sense)
+  As $\alpha$ ranges over all open covers of $X_1$, $\phi(\alpha)$also ranges over all open covers of $X_2$, since $\phi$ is a homeomorphism.
+  Therefore,
+  \begin{equation*}
+    h(F_2) = h(F_1).
+  \end{equation*}
 \end{proof}
 
 
 The definition of topological entropy calls for computation of $h(F,\alpha)$ for all possible open covers of $X$, and thus, computing $h(F)$ using the definition is untenable.
+As a reasonable method for computing $h(F)$, we introduce a theorem, which states that $h(F)$ equals to the limit of the topological entropy of $F$ relative to a sequence of open covers that become finer and finer later in the sequence.
+We call such a sequence a \textit{refining sequence}, defined as follows.
 
 \begin{definition}
   (Refining Sequence)
@@ -133,7 +141,38 @@ The definition of topological entropy calls for computation of $h(F,\alpha)$ for
   \end{enumerate}
 \end{definition}
 
+\begin{theorem}
+  Suppose $\set{\alpha_n}$ is a refining sequence of $X$, and $F:X\to X$ is a continuous mapping.
+  Then,
+  \begin{equation*}
+    h(F) = \lim\limits_{n\to \infty} h(F, \alpha_n).
+  \end{equation*}
+  \label{thm:t-ent-ref-seq}
+  %
+  \begin{proof}
+    Since $h(F) = \sup\limits_{\alpha} h(F, \alpha)$, the inequality
+    \begin{equation*}
+      h(F) \geq \lim\limits_{n\to \infty} h(F, \alpha_n).
+    \end{equation*}
+    holds.
+    To show that the opposite inequality also holds, note that for each open cover $\beta$ of $X$, there exists $k_0$ such that, for each $k > k_0$, $\beta < \alpha_k$.
+    It follows that
+    \begin{equation*}
+      h(F, \beta) \leq h(F, \alpha_k).
+    \end{equation*}
+    Take the supremum over $\beta$ of both sides to obtain
+    \begin{equation*}
+      \sup\limits_{\beta} h(F, \beta) = h(F) \leq h(F, \alpha_k).
+    \end{equation*}
+    Finally, take the limit $k \to \infty$ to get
+    \begin{equation*}
+      h(F) \leq \lim\limits_{k \to \infty} h(F, \alpha_k).
+    \end{equation*}
+    Hence, $h(F) = h(F, \alpha_k)$.
+  \end{proof}
+\end{theorem}
 
+We will use Lebesgue's Covering Lemma in the next section to show that some sequence of open covers satisfies the second condition of the definition of refining sequence.
 \begin{lemma}
   (Lebesgue's Covering Lemma)
   Let $X$ be a compact metric space, and $\alpha$ be an open cover of $X$.
@@ -161,12 +200,104 @@ The definition of topological entropy calls for computation of $h(F,\alpha)$ for
   \end{proof}
 \end{lemma}
 
-\section{The Topological Entropy of Logistic Map}
-$h(L_4)$
+\section{The Topological Entropy of The Logistic Map}
+We saw in the introduction that $L_u$, the logistic map, which is defined as
+\begin{align*}
+  L_\mu&: I \to I \quad\mbox{ where } I \equiv [0,1] \\
+  L_\mu&: x \mapsto \mu x (1-x),
+\end{align*}
+is chaotic when $\mu = 4$.
+As a demonstration of topological entropy, we will compute $h(L_\mu)$ for $\mu = 4$.
+We expect that $h(L_4)$ is positive, and as we will see, this is indeed the case. 
+We first show that $L_4$ is topologically conjugate to the tent map, defined as
 \begin{equation*}
-  L_\mu(x) = \mu x (1-x)
+  T(x) = 
+  \begin{cases}
+    2x \mbox{ if } x \in [0,1/2] \\
+    2 - 2x \mbox{ if } x \in [1/2,1].
+  \end{cases}
 \end{equation*}
-
+Once we establish this conjugacy, by Theorem~\ref{thm:t-ent-conj}, the problem reduces to computation of $h(T)$.
+Let
+\begin{equation*}
+  \phi(x) = \sin^2(\frac{\pi x}{2}).
+\end{equation*}
+Our goal is to show that $L_4 \circ \phi = \phi \circ T$.
+For any $x \in I$, letting $\theta \equiv \frac{\pi x}{2}$ for convenience, we have
+\begin{align*}
+   L_4 \circ \phi(x)
+   &= 4\sin^2\theta(1 - \sin^2\theta) \\
+   &= 4\sin^2\theta \cos^2\theta \\
+   &= \sin^2 2\theta \\
+   &= \sin^2 (\pi x).
+\end{align*}
+For any $x$ in $[0,1/2]$,
+\begin{equation*}
+  \phi \circ T(x)
+  = \sin^2(\pi x),
+\end{equation*}
+and for any $x$ in $[1/2,1]$,
+\begin{align*}
+  \phi \circ T(x)
+  &= \sin^2(\pi - \pi x) \\
+  &= \sin^2(\pi x).
+\end{align*}
+Therefore, $L_4 \circ \phi = \phi \circ T$ on $I$, so that, by Theorem~\ref{thm:t-ent-conj}, we obtain $h(L_4) = h(T)$.
+Our next task is to construct a refining sequence $\set{\alpha_n}$ of $I$.
+Then, we would obtain $h(T)$ by Theorem~\ref{thm:t-ent-ref-seq}.
+Our construction is as follows.
+First, let $\alpha_0 = \set{I}$.
+Then, for $n \geq 1$, recursively define $\alpha_n$ as
+\begin{equation*}
+  \alpha_n = T^{-1}(\alpha_{n-1}).
+\end{equation*}
+%
+This recursive definition can be stated more explicitly as
+\begin{align*}
+  \alpha_n &= T^{-1}(\alpha_{n-1}) \\
+  &= \bigcup\limits_{A \in \alpha_{n-1}} \paren{ \setst{J}{T(J) = I, J \subseteq [0,1/2]} \cup \setst{J}{T(J) = I, J \subseteq [1/2,1]}}.
+\end{align*}
+The expression is motivated by the fact that the tent map is a two-to-one mapping, except for when $x = \frac{1}{2}$.
+For each $x \in I - \set{\frac{1}{2}}$, the preimage of $x$ is given by the formula
+\begin{equation*}
+  T^{-1}(x) = \set{\frac{1}{2} x, 1 - \frac{1}{2} x}.
+\end{equation*}
+Notice that if $\frac{1}{2} x \in [0,1/2)$, then $1 - \frac{1}{2} x \in (1/2,1]$; if $\frac{1}{2} x \in (1/2,1]$, then $1 - \frac{1}{2} x \in [0,1/2)$.
+This observation holds for the preimage of an interval.
+For example,
+\begin{align*}
+  \alpha_1 &= \set{\brac{0,\frac{1}{2}}, \brac{\frac{1}{2}, 1}}, \\
+  \alpha_2 &= \set{\brac{0,\frac{1}{4}}, \brac{\frac{3}{4}, 1}, \brac{\frac{1}{4}, \frac{1}{2}}, \brac{\frac{1}{2}, \frac{3}{4}}},
+\end{align*}
+and so on.
+Thus, $N(\alpha_{n}) = 2^n$.
+Now, we want to show that $\set{\alpha_n}$ is a refining sequence.
+$\set{\alpha_n}$ clearly satisfies the first condition:
+\begin{equation*}
+  \alpha_n < \alpha_{n+1}.
+\end{equation*}
+To show the other condition, that for each open cover $\beta$ of $X$, there exists $k_0$ such that $\beta < \alpha_k$ for each $k \geq k_0$, we invoke Lebesgue's covering lemma.
+Let $\delta > 0$ be the constant given by applying the lemma to $\beta$.
+For each $J_n \in \alpha_n$, we have $\diam(J_n) = 1/{2^n}$.
+Choose $n$ large enough so that $\diam(J_n) \leq \delta$.
+Then, for each $A \in \alpha_n$, the lemma guarantees the existence of $B \in \beta$ such that $A \subseteq B$.
+This implies $\beta < \alpha_n$.
+We conclude that $\set{\alpha_n}$ is a refining sequence.
+Finally, we compute $\lim\limits_{n \to \infty} \frac{1}{n} h(T, \alpha_n)$.
+Recall that $N(\alpha_{n}) = 2^n$.
+Then,
+\begin{align*}
+  h(T, \alpha_n)
+  &= \lim\limits_{m \to \infty} \frac{1}{m} \log N\paren{ \bigvee\limits_{i = 0}^{m-1} T^{-i}(\alpha_n)}  \\
+  &= \lim\limits_{m \to \infty} \frac{1}{m} \log N(\alpha_{n+m-1})  \\
+  &= \lim\limits_{m \to \infty} \frac{1}{m} \log 2^{n + m - 2}  \\
+  &= \lim\limits_{m \to \infty} \frac{n + m - 2}{m} \log 2 \\
+  &= \log 2.
+\end{align*}
+Therefore,
+\begin{equation*}
+  h(L_4) = h(T) = \lim\limits_{n \to \infty} h(T, \alpha_n) = \log 2.
+\end{equation*}
 
 \bibliographystyle{../../bibliography/pjgsm}
 \bibliography{../../bibliography/thesis}
