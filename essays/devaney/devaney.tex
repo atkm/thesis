@@ -8,10 +8,10 @@
 \label{chap:devaney}
 \citet{devaney} defines chaos in topological dynamics using three properties.
 We first state the definition, and 
-Throughout this chapter, $X$ is a metric space, and $\delta$ is the metric associated with the space.
+Throughout this chapter, $X$ is a compact metric space, and $d$ is the metric associated with the space.
 \begin{definition}
   (Chaos in the sense of Devaney) 
-  $F: X\rar X$ is said to be chaotic on $X$ if
+  A continuous map $F: X\rar X$ is said to be chaotic on $X$ if
   \begin{enumerate}
     \item Periodic points are dense in $X$.
     \item $F$ is \textit{topologically transitive}.
@@ -48,8 +48,6 @@ Throughout this chapter, $X$ is a metric space, and $\delta$ is the metric assoc
 The existence of one such point in every neighborhood of $x$ suffices.
 
 Recall from the previous chapter that sensitive dependence on initial conditions, measured by Lyapunov expoenents, are regarded as the condition that gives rise to complex behavior.
-However, sensitive dependence on initial condition 
-In the following example, we show that a simple and predictable mapping has sensitive dependence on initial conditions.
 %
 \begin{example}
   (Rotation by magnitude is chaotic)
@@ -86,7 +84,7 @@ In the following example, we show that a simple and predictable mapping has sens
   Hence, the periodic points of $F$ is not dense in $D$ so that $F$ is not chaotic in the sense of Devaney.
 \end{example}
 
-We will show that sensitive dependence on initial conditions can be derived from transivity and dense periodic orbits property if the mapping is continuous and $X$ is a compact, invariant set. \citep{banks}
+\citet{banks} showed that sensitive dependence on initial conditions can be derived from transivity and dense periodic orbits property if the mapping is continuous and $X$ is a compact, invariant set. 
 
 \begin{theorem}
   (Topological Transitivity and Dense Periodic Points Imply Sensitive Dependence on Initial Conditions)
@@ -94,80 +92,106 @@ We will show that sensitive dependence on initial conditions can be derived from
   for any $x\in X$ and any open set $J$ containing at least $x$ and another point, there is
   a point $y\in J$ and $n\in \N$ with
   \begin{equation*}
-    d(f^n(x),f^n(y)) > \epsilon.
+    \metric{\itr{F}{n}(x),\itr{F}{n}(y)} > \epsilon.
   \end{equation*}
   \label{thm:banks}
 \end{theorem}
+First, we shall prove a lemma that is essential to the proof of the theorem.
+Two distincy periodic orbits cannot intersect.
+This observation results in the following lemma.
 \begin{lemma}
-  Let $f: X\rar X$ be a mapping with (at least) two distinct periodic orbits.
+  Let $F: X\rar X$ be a mapping with (at least) two distinct periodic orbits.
   Then there is a $c > 0$ such that for any $x\in X$ there exists a periodic
-  point $p$ with the property that for each $k$
+  point $p$ such that for each $k$
   \begin{equation*}
-    d(x, f^k(p)) > c.
+    \metric{x, \itr{F}{k}(p)} > c.
   \end{equation*}
-\end{lemma}
+  \label{lem:dev1}
 \begin{proof}[Proof of the lemma]
   Let $r$ and $s$ be periodic points with distinct orbits. For each $k$ and $l$ we have
   \begin{equation*}
-    d(f^k(r), f^l(s)) > 0.
+    \metric{\itr{F}{k}(r), \itr{F}{l}(s)} > 0.
   \end{equation*}
-  Choose $c$ so that $2c < \min d(f^k(r),f^l(s)) > 0$. Then by the triangle inequality
+  Choose $c$ so that $2c < \min \metric{\itr{F}{k}(r),\itr{F}{l}(s)}$.
+  Then by the triangle inequality
   \begin{equation*}
-    2c < d(f^k(r),f^l(s)) \leq d(f^k(r),x) + d(x,f^l(s))
+    2c < \metric{\itr{F}{k}(r),\itr{F}{l}(s)} \leq \metric{\itr{F}{k}(r),x} + \metric{x,\itr{F}{l}(s)}
   \end{equation*}
-  for all $k$ and $l$. Now suppose that $d(f^k(r),x)<c$ and $d(x,f^l(s))<c$. The supposition
-  violates the inequality just derived. Thus $d(f^k(r),x) \geq c$ or $d(x,f^l(s)) \geq c$ must hold.
+  for all $k$ and $l$.
+  Now suppose that $\metric{\itr{F}{k}(r),x} \leq c$ and $\metric{x,\itr{F}{l}(s)} \leq c$. The supposition
+  violates the inequality just derived. Thus 
+  \begin{equation*}
+    \metric{\itr{F}{k}(r),x} > c \mbox{ or } \metric{x,\itr{F}{l}(s)} > c
+  \end{equation*}
+  must hold.
 \end{proof}
+\end{lemma}
+%
 \begin{proof}[Proof of \ref{thm:banks}]
-  Let $\epsilon = c/4$. Let $x$ be any point of $X$ and $J$ any open set containing $x$.
+  Let $x$ be any point of $X$ and $J$ any open set containing $x$.
   Since the periodic points of $f$ are dense (in $X$), we may introduce a periodic point
-  $q$ of $f$ in
+  $q$ of $f$ in $U$ defined as
   \begin{equation*}
-    U = J\cap B_\epsilon(x).
+    U \ceq J\cap \oball{\epsilon}{x}.
   \end{equation*}
   Let $n$ be the period of $q$.
-  
-  Let $p$ be a periodic point whose orbit is apart from $x$ by $4\epsilon$. Define
+  Apply Lemma~\ref{lem:dev1} to obtain a periodic orbit $O(p)$ and a constant $c > 0$ such that $\metric{x, O(p)} > c$.
+  Let $\epsilon \ceq c/4$ so that $\metric{x, O(p)} > 4\epsilon$.
+  Define
   \begin{equation*}
-    W_i := B_i(f^i(p)) \text{ and } V := f^{-1}(W_1) \cap f^{-2}(W_2) \cap \cdots f^{-n}(W_n).
+    W_i := \oball{\epsilon}{\itr{F}{i}(p)} \quad\text{ and }\quad V := \bigcap\limits_{i = 1}^{n} \itr{F}{-i}(W_i).
   \end{equation*}
-  Since $f^i(p) \in W_i$, we see that $V$ is not empty. Note that $V$ is open.
-
+  Since $\itr{F}{i}(p) \in W_i$, we see that $p \in V$, and $V$ is not empty. 
+  Also note that $V$ is open.
   By the transitivity property, we can find a $z\in U$ and a positive integer $k$ such that
-  $f^k(z) \in V$. Let $j$ be the smallest integer so that $k < nj$. That is,
+  $\itr{F}{k}(z) \in V$. Let $j$ be the least integer such that $k < nj$. 
+  That is,
   \begin{equation*}
     1 \leq nj - k \leq n.
   \end{equation*}
   Therefore,
   \begin{equation*}
-    f^{nj - k} (V) = f^{nj - k} (f^k(z)) \in f^{nj-k}(V).
+    \itr{F}{nj} (z) = \itr{F}{nj - k} (\itr{F}k(z)) \in \itr{F}{nj-k}(V).
   \end{equation*}
   Also,
-  \begin{align*}
-     f^{nj - k}(V) &= f^{nj - k} (f^{-1}(W_1) \cap f^{-2}(W_2) \cap \cdots f^{-n}(W_n))
-     &\subset f^{nj - k}(f^{-(nj - k)} W_{nj-k})
-     &= W_{nj_k}
-  \end{align*}
-  In other words,
   \begin{equation*}
-    d(f^{nj}(z), f^{nj - k}(p)) < \epsilon.
+     \itr{F}{nj - k}(V) \subset \itr{F}{nj - k}(\itr{F}{-(nj - k)} W_{nj-k}) 
+     = W_{nj-k}
+     \equiv \oball{\epsilon}{\itr{F}{nj-k}(p)}.
   \end{equation*}
-  Furthermore, $f^{nj}(q) = q$, since $q$ is periodic with period $n$. Hence, 
+  The last two equalities imply
   \begin{equation*}
-    d(f^{nj}(q), f^{nj}(z)) = d(q, f^{nj}(z)) 
+    \metric{\itr{F}{nj}(z), \itr{F}{nj - k}(p)} < \epsilon.
+  \end{equation*}
+  Furthermore, $\itr{F}{nj}(q) = q$, since $q$ is a $n$-periodic point 
+  \begin{equation*}
+    \metric{\itr{F}{nj}(q), \itr{F}{nj}(z)} = \metric{q, \itr{F}{nj}(z)}.
   \end{equation*}
   By the triangle inequality, we have
   \begin{equation*}
-    d(x, f^{nj-k}(p)) \leq d(x,q) + d(q, f^{nj}(z)) + d(f^{nj}(z), f^{nj - k}(p)).
+    \metric{x, \itr{F}{nj-k}(p)} \leq \metric{x,q} + \metric{q, \itr{F}{nj}(z)} + \metric{\itr{F}{nj}(z), \itr{F}{nj - k}(p)}.
   \end{equation*}
   Finally, 
+  \begin{align*}
+    \metric{\itr{F}{nj}(q), \itr{F}{nj}(z)} 
+    &= \metric{q, \itr{F}{nj}(z)}  \\
+    &\geq  \metric{x, \itr{F}{nj-k}(p)} - \metric{x,q} - \metric{\itr{F}{nj}(z), \itr{F}{nj - k}(p)}  \\
+    &> 4\epsilon - \epsilon - \epsilon 
+    = 2\epsilon,
+  \end{align*}
+  which implies
   \begin{equation*}
-    d(f^{nj}(q), f^{nj}(z)) = d(q, f^{nj}(z)) \geq  d(x, f^{nj-k}(p)) - d(x,q) - d(f^{nj}(z), f^{nj - k}(p)) = 4\epsilon - \epsilon - \epsilon = 2\epsilon.
+    \metric{\itr{F}{nj}(q), \itr{F}{nj}(x)} + \metric{\itr{F}{nj}(x), \itr{F}{nj}(z)} 
+    \geq \metric{\itr{F}{nj}(q), \itr{F}{nj}(z)}
+    > 2\epsilon.
   \end{equation*}
-  The inequality implies that $d(f^{nj}(x), f^{nj}(z)) \geq \epsilon$ or $d(f^{nj}(x), f^{nj}(q)) \geq \epsilon$ must hold.
+  It follows from the inequality that 
+  \begin{equation*}
+    \metric{\itr{F}{nj}(x), \itr{F}{nj}(z)} \geq \epsilon \quad\mbox{ or }\quad \metric{\itr{F}{nj}(x), \itr{F}{nj}(q)} \geq \epsilon 
+  \end{equation*}
+   must hold.
 
 \end{proof}
-
 
 Furthermore, in an interval, topological transitivity implies the other two (Vellekoop-Berglund, 1994).
 A system is chaotic in $X$ in the sense of Devaney if and only if for every pair of open sets in $X$ there exists a periodic orbit which visits both sets (Touhey, 1997).
