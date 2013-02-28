@@ -10,7 +10,7 @@
 We first state the definition, and 
 Throughout this chapter, $X$ is a compact metric space, and $d$ is the metric associated with the space.
 \begin{definition}
-  (Chaos in the sense of Devaney) 
+  (Chaos in Devaney's sense) 
   A continuous map $F: X\rar X$ is said to be chaotic on $X$ if
   \begin{enumerate}
     \item Periodic points are dense in $X$.
@@ -44,32 +44,49 @@ Throughout this chapter, $X$ is a compact metric space, and $d$ is the metric as
   \index{sensitive dependence on initial conditions}
 \end{definition}
 %
+\citet[p.50]{devaney}
+\begin{quotation}
+  [A] chaotic map possesses three ingredients:
+  unpredictability, indecomposability, and an element of regularity.
+  A chaotic system is unpredictable because of the sensitive dependence on initial conditions.
+  It cannot be broken down or decomposed into two subsystems (two invariant open subsets) which do not interact under $f$ because of topological transitivity.
+  And, in the midst of this random behavior, we nevertheless have an element of regularity, namely the periodic points hwich are dense.
+\end{quotation}
 \noindent Note that for sensitive dependence on initial conditions we do \textit{not} require \textit{all} points near $x$ need eventually separate from $x$ under iteration.
 The existence of one such point in every neighborhood of $x$ suffices.
-
-Recall from the previous chapter that sensitive dependence on initial conditions, measured by Lyapunov expoenents, are regarded as the condition that gives rise to complex behavior.
-%
+We give some examples to illustrate the definition.
+\begin{example}
+  (Devaney, 1987)
+  An irrational rotation of the circle $S^1$ is topologically transitive, but not sensitive to initial conditions.
+  All points remain the same distance apart after iteration.
+\end{example}
+\begin{example}
+  (Devaney, 1987)
+  The doubling map on a $S^1$ is chaotic.
+\end{example}
+\begin{example}
+  The logistic map $L_\mu$ is chaotic on its attractor when $\mu > 2 + \sqrt{5}$.
+\end{example}
 \begin{example}
   (Rotation by magnitude is chaotic)
-  Let $D = \set{x \in \R^2: \norm{x} \leq 2}$, and $C_\rho = \set{x \in \R^2: \norm{x} = \rho}$.
-  Define $F: D \to D$, a rotation in $C_\rho$, by
+  Let $D = \set{x \in \R^2: \norm{x} \leq 2}$, and $C_r = \set{x \in \R^2: \norm{x} = r}$.
+  Define $F: D \to D$, a rotation in $C_r$, by
   \begin{equation*}
-    F(x) = F(\rho, \theta) = (\rho, \theta + \rho).
+    F(x) = F(r, \theta) = (r, \theta + r).
   \end{equation*}
-  For every $\rho \in (0,2]$, $C_\rho$ is invariant.
-
-  We claim that the system has in $C_\rho$ sensitive dependence on initial conditions with $r_0 = \rho$.
-  Let $x_0 = (\rho_0, \theta_0)$ and $d > 0$.
-  Choose $n$ large enough that $\frac{\pi}{n} < d$ and $\rho_0 - \frac{\pi}{n} > 0$.
-  Let $y_0 = (\rho_0 - \frac{\pi}{n}, \theta_0)$.
+  For every $r \in (0,2]$, $C_r$ is invariant.
+  We claim that the system has in $C_r$ sensitive dependence on initial conditions with $r_0 = r$.
+  Let $x_0 = (r_0, \theta_0)$ and $d > 0$.
+  Choose $n$ large enough that $\frac{\pi}{n} < d$ and $r_0 - \frac{\pi}{n} > 0$.
+  Let $y_0 = (r_0 - \frac{\pi}{n}, \theta_0)$.
   Then,
   \begin{equation*}
-    x_n = (\rho_0, \theta_0 + n\rho_0),\quad
-    y_n = (\rho_0 - \frac{\pi}{n}, \theta_0 + n\rho_0 - \pi),
+    x_n = (r_0, \theta_0 + nr_0),\quad
+    y_n = (r_0 - \frac{\pi}{n}, \theta_0 + nr_0 - \pi),
   \end{equation*}
   so
   \begin{equation*}
-    \norm{x_0 - y_0} < d \quad \mbox{and} \quad \norm{y_n - x_n} = \paren*{\frac{\pi}{n}}^2 + \pi^2 > 2 > r_0.
+    \norm{x_0 - y_0} < d \quad\mbox{and}\quad \norm{y_n - x_n} = \paren*{\frac{\pi}{n}}^2 + \pi^2 > 2 > r_0.
   \end{equation*}
 \end{example}
 
@@ -77,13 +94,14 @@ Recall from the previous chapter that sensitive dependence on initial conditions
   Let $D \subseteq \R^2$ a closed disk centered at the origin with radius 1.
   Let $F: D \to D$ be defined as
   \begin{equation*}
-    F: (\rho, \theta) \mapsto (4\rho(1 - \rho), \theta + 1).
+    F: (r, \theta) \mapsto (4r(1 - r), \theta + 1).
   \end{equation*}
   The origin is the only fixed point.
   $F$ does not have a periodic orbit of period greater than 1.
   Hence, the periodic points of $F$ is not dense in $D$ so that $F$ is not chaotic in the sense of Devaney.
 \end{example}
 
+\section{Tidying Up the Definition}
 \citet{banks} showed that sensitive dependence on initial conditions can be derived from transivity and dense periodic orbits property if the mapping is continuous and $X$ is a compact, invariant set. 
 
 \begin{theorem}
@@ -200,23 +218,24 @@ In particular, we mainly consider conjugation by continuous, surjective transfor
 In some cases, we will consider conjugation by homeomorphism.
 \begin{theorem}
   (Transitivity and Conjugacy) 
-  Let $F: X \to X$, $G: Y \to Y$, and $H: X \to Y$.
-  Suppose that $G \compose H = H \compose F$.
+  Let $F: X \to X$, $G: Y \to Y$, and $\phi: X \to Y$.
+  Suppose that $G \compose \phi = \phi \compose F$.
   Suppose $H$ is continuous and surjective, and $F$ is transitive.
   Then $G$ is transitive.
-  If $H$ is a homeomorphism, then $F$ is transitive if and only if $G$ is transitive.
+  If $\phi$ is a homeomorphism, then $F$ is transitive if and only if $G$ is transitive.
 \end{theorem}
 A similar theorem for dense periodic orbits.
 \begin{theorem}
   (Dense Periodic Orbits and Conjugacy) 
-  Suppose that $G \compose H = H \compose F$.
-  Suppose $H$ is continuous and surjective, and $P(F)$ is dense in $X$.
+  Suppose that $G \compose \phi = \phi \compose F$.
+  Suppose $\phi$ is continuous and surjective, and $P(F)$ is dense in $X$.
   Then $P(G)$ is dense in $Y$.
 \end{theorem}
 Note that in the proof, we proved the following
-\begin{theorem}
+\begin{corollary}
   (Period is preserved under conjugacy)
-\end{theorem}
+\end{corollary}
+We obtain the results above when $\phi$ is continuous and surjective.
 
 \bibliographystyle{../../bibliography/pjgsm}
 \bibliography{../../bibliography/thesis}
