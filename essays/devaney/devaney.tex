@@ -1,4 +1,4 @@
-\documentclass[12pt,draft,twoside]{article}
+\documentclass[12pt,draft,twoside]{book}
 \usepackage{../../thesis}
 
 \makeindex
@@ -6,6 +6,7 @@
 
 \chapter{Devaney's Definition}
 \label{chap:devaney}
+\section{Chaos in Devaney's Sense}
 \citet{devaney} defines chaos in topological dynamics using three properties.
 We first state the definition, and 
 Throughout this chapter, $X$ is a compact metric space, and $d$ is the metric associated with the space.
@@ -50,223 +51,241 @@ Throughout this chapter, $X$ is a compact metric space, and $d$ is the metric as
   unpredictability, indecomposability, and an element of regularity.
   A chaotic system is unpredictable because of the sensitive dependence on initial conditions.
   It cannot be broken down or decomposed into two subsystems (two invariant open subsets) which do not interact under $f$ because of topological transitivity.
-  And, in the midst of this random behavior, we nevertheless have an element of regularity, namely the periodic points hwich are dense.
-\end{quotation}
-\noindent Note that for sensitive dependence on initial conditions we do \textit{not} require \textit{all} points near $x$ need eventually separate from $x$ under iteration.
-The existence of one such point in every neighborhood of $x$ suffices.
-We give some examples to illustrate the definition.
-\begin{example}
-  (Devaney, 1987)
-  An irrational rotation of the circle $S^1$ is topologically transitive, but not sensitive to initial conditions.
-  All points remain the same distance apart after iteration.
-\end{example}
-\begin{example}
-  (Devaney, 1987)
-  The doubling map on a $S^1$ is chaotic.
-\end{example}
-\begin{example}
-  The logistic map $L_\mu$ is chaotic on its attractor when $\mu > 2 + \sqrt{5}$.
-\end{example}
-\begin{example}
-  (Rotation by magnitude is chaotic)
-  Let $D = \set{x \in \R^2: \norm{x} \leq 2}$, and $C_r = \set{x \in \R^2: \norm{x} = r}$.
-  Define $F: D \to D$, a rotation in $C_r$, by
-  \begin{equation*}
-    F(x) = F(r, \theta) = (r, \theta + r).
-  \end{equation*}
-  For every $r \in (0,2]$, $C_r$ is invariant.
-  We claim that the system has in $C_r$ sensitive dependence on initial conditions with $r_0 = r$.
-  Let $x_0 = (r_0, \theta_0)$ and $d > 0$.
-  Choose $n$ large enough that $\frac{\pi}{n} < d$ and $r_0 - \frac{\pi}{n} > 0$.
-  Let $y_0 = (r_0 - \frac{\pi}{n}, \theta_0)$.
-  Then,
-  \begin{equation*}
-    x_n = (r_0, \theta_0 + nr_0),\quad
-    y_n = (r_0 - \frac{\pi}{n}, \theta_0 + nr_0 - \pi),
-  \end{equation*}
-  so
-  \begin{equation*}
-    \norm{x_0 - y_0} < d \quad\mbox{and}\quad \norm{y_n - x_n} = \paren*{\frac{\pi}{n}}^2 + \pi^2 > 2 > r_0.
-  \end{equation*}
-\end{example}
+    And, in the midst of this random behavior, we nevertheless have an element of regularity, namely the periodic points which are dense.
+  \end{quotation}
+  \noindent Note that for sensitive dependence on initial conditions we do \textit{not} require \textit{all} points near $x$ need eventually separate from $x$ under iteration.
+  The existence of one such point in every neighborhood of $x$ suffices.
+  We give some examples to illustrate the definition.
+  \begin{example}
+    (Devaney, 1987)
+    An irrational rotation of the circle $S^1$ is topologically transitive, but not sensitive to initial conditions.
+    All points remain the same distance apart after iteration.
+  \end{example}
+  \begin{example}
+    (Devaney, 1987)
+    The doubling map on a $S^1$ is chaotic.
+  \end{example}
+  \begin{example}
+    The logistic map $L_\mu$ is chaotic on its attractor when $\mu > 2 + \sqrt{5}$.
+  \end{example}
+  \begin{example}
+    (Rotation by magnitude is chaotic)
+    Let $D = \set{x \in \R^2: \norm{x} \leq 2}$, and $C_r = \set{x \in \R^2: \norm{x} = r}$.
+    Define $F: D \to D$, a rotation in $C_r$, by
+    \begin{equation*}
+      F(x) = F(r, \theta) = (r, \theta + r).
+    \end{equation*}
+    For every $r \in (0,2]$, $C_r$ is invariant.
+    We claim that the system has in $C_r$ sensitive dependence on initial conditions with $r_0 = r$.
+    Let $x_0 = (r_0, \theta_0)$ and $d > 0$.
+    Choose $n$ large enough that $\frac{\pi}{n} < d$ and $r_0 - \frac{\pi}{n} > 0$.
+    Let $y_0 = (r_0 - \frac{\pi}{n}, \theta_0)$.
+    Then,
+    \begin{equation*}
+      x_n = (r_0, \theta_0 + nr_0),\quad
+      y_n = (r_0 - \frac{\pi}{n}, \theta_0 + nr_0 - \pi),
+    \end{equation*}
+    so
+    \begin{equation*}
+      \norm{x_0 - y_0} < d \quad\mbox{and}\quad \norm{y_n - x_n} = \paren*{\frac{\pi}{n}}^2 + \pi^2 > 2 > r_0.
+    \end{equation*}
+  \end{example}
 
-\begin{example}
-  Let $D \subseteq \R^2$ a closed disk centered at the origin with radius 1.
-  Let $F: D \to D$ be defined as
-  \begin{equation*}
-    F: (r, \theta) \mapsto (4r(1 - r), \theta + 1).
-  \end{equation*}
-  The origin is the only fixed point.
-  $F$ does not have a periodic orbit of period greater than 1.
-  Hence, the periodic points of $F$ is not dense in $D$ so that $F$ is not chaotic in the sense of Devaney.
-\end{example}
+  \begin{example}
+    Let $D \subseteq \R^2$ a closed disk centered at the origin with radius 1.
+    Let $F: D \to D$ be defined as
+    \begin{equation*}
+      F: (r, \theta) \mapsto (4r(1 - r), \theta + 1).
+    \end{equation*}
+    The origin is the only fixed point.
+    $F$ does not have a periodic orbit of period greater than 1.
+    Hence, the periodic points of $F$ is not dense in $D$ so that $F$ is not chaotic in the sense of Devaney.
+  \end{example}
 
-\section{Tidying Up the Definition}
-\citet{banks} showed that sensitive dependence on initial conditions can be derived from transivity and dense periodic orbits property if the mapping is continuous and $X$ is a compact, invariant set. 
+  \section{Tidying Up the Definition}
+  \citet{banks} showed that sensitive dependence on initial conditions can be derived from transivity and dense periodic orbits property if the mapping is continuous and $X$ is a compact, invariant set. 
 
-\begin{theorem}
-  (Topological Transitivity and Dense Periodic Points Imply Sensitive Dependence on Initial Conditions)
-  Let $F: X\rar X$ be a chaotic transformation. Then there is an $\epsilon > 0$ such that
-  for any $x\in X$ and any open set $J$ containing at least $x$ and another point, there is
-  a point $y\in J$ and $n\in \N$ with
-  \begin{equation*}
-    \metric{\itr{F}{n}(x),\itr{F}{n}(y)} > \epsilon.
-  \end{equation*}
-  \label{thm:banks}
-\end{theorem}
-First, we shall prove a lemma that is essential to the proof of the theorem.
-Two distincy periodic orbits cannot intersect.
-This observation results in the following lemma.
-\begin{lemma}
-  Let $F: X\rar X$ be a mapping with (at least) two distinct periodic orbits.
-  Then there is a $c > 0$ such that for any $x\in X$ there exists a periodic
-  point $p$ such that for each $k$
-  \begin{equation*}
-    \metric{x, \itr{F}{k}(p)} > c.
-  \end{equation*}
-  \label{lem:dev1}
-\begin{proof}[Proof of the lemma]
-  Let $r$ and $s$ be periodic points with distinct orbits. For each $k$ and $l$ we have
-  \begin{equation*}
-    \metric{\itr{F}{k}(r), \itr{F}{l}(s)} > 0.
-  \end{equation*}
-  Choose $c$ so that $2c < \min \metric{\itr{F}{k}(r),\itr{F}{l}(s)}$.
-  Then by the triangle inequality
-  \begin{equation*}
-    2c < \metric{\itr{F}{k}(r),\itr{F}{l}(s)} \leq \metric{\itr{F}{k}(r),x} + \metric{x,\itr{F}{l}(s)}
-  \end{equation*}
-  for all $k$ and $l$.
-  Now suppose that $\metric{\itr{F}{k}(r),x} \leq c$ and $\metric{x,\itr{F}{l}(s)} \leq c$. The supposition
-  violates the inequality just derived. Thus 
-  \begin{equation*}
-    \metric{\itr{F}{k}(r),x} > c \mbox{ or } \metric{x,\itr{F}{l}(s)} > c
-  \end{equation*}
-  must hold.
-\end{proof}
-\end{lemma}
-%
-\begin{proof}[Proof of \ref{thm:banks}]
-  Let $x$ be any point of $X$ and $J$ any open set containing $x$.
-  Since the periodic points of $f$ are dense (in $X$), we may introduce a periodic point
-  $q$ of $f$ in $U$ defined as
-  \begin{equation*}
-    U \ceq J\cap \oball{\epsilon}{x}.
-  \end{equation*}
-  Let $n$ be the period of $q$.
-  Apply Lemma~\ref{lem:dev1} to obtain a periodic orbit $O(p)$ and a constant $c > 0$ such that $\metric{x, O(p)} > c$.
-  Let $\epsilon \ceq c/4$ so that $\metric{x, O(p)} > 4\epsilon$.
-  Define
-  \begin{equation*}
-    W_i := \oball{\epsilon}{\itr{F}{i}(p)} \quad\text{ and }\quad V := \bigcap\limits_{i = 1}^{n} \itr{F}{-i}(W_i).
-  \end{equation*}
-  Since $\itr{F}{i}(p) \in W_i$, we see that $p \in V$, and $V$ is not empty. 
-  Also note that $V$ is open.
-  By the transitivity property, we can find a $z\in U$ and a positive integer $k$ such that
-  $\itr{F}{k}(z) \in V$. Let $j$ be the least integer such that $k < nj$. 
-  That is,
-  \begin{equation*}
-    1 \leq nj - k \leq n.
-  \end{equation*}
-  Therefore,
-  \begin{equation*}
-    \itr{F}{nj} (z) = \itr{F}{nj - k} (\itr{F}k(z)) \in \itr{F}{nj-k}(V).
-  \end{equation*}
-  Also,
-  \begin{equation*}
-     \itr{F}{nj - k}(V) \subset \itr{F}{nj - k}(\itr{F}{-(nj - k)} W_{nj-k}) 
-     = W_{nj-k}
-     \equiv \oball{\epsilon}{\itr{F}{nj-k}(p)}.
-  \end{equation*}
-  The last two equalities imply
-  \begin{equation*}
-    \metric{\itr{F}{nj}(z), \itr{F}{nj - k}(p)} < \epsilon.
-  \end{equation*}
-  Furthermore, $\itr{F}{nj}(q) = q$, since $q$ is a $n$-periodic point 
-  \begin{equation*}
-    \metric{\itr{F}{nj}(q), \itr{F}{nj}(z)} = \metric{q, \itr{F}{nj}(z)}.
-  \end{equation*}
-  By the triangle inequality, we have
-  \begin{equation*}
-    \metric{x, \itr{F}{nj-k}(p)} \leq \metric{x,q} + \metric{q, \itr{F}{nj}(z)} + \metric{\itr{F}{nj}(z), \itr{F}{nj - k}(p)}.
-  \end{equation*}
-  Finally, 
-  \begin{align*}
-    \metric{\itr{F}{nj}(q), \itr{F}{nj}(z)} 
-    &= \metric{q, \itr{F}{nj}(z)}  \\
-    &\geq  \metric{x, \itr{F}{nj-k}(p)} - \metric{x,q} - \metric{\itr{F}{nj}(z), \itr{F}{nj - k}(p)}  \\
-    &> 4\epsilon - \epsilon - \epsilon 
-    = 2\epsilon,
-  \end{align*}
-  which implies
-  \begin{equation*}
-    \metric{\itr{F}{nj}(q), \itr{F}{nj}(x)} + \metric{\itr{F}{nj}(x), \itr{F}{nj}(z)} 
-    \geq \metric{\itr{F}{nj}(q), \itr{F}{nj}(z)}
-    > 2\epsilon.
-  \end{equation*}
-  It follows from the inequality that 
-  \begin{equation*}
-    \metric{\itr{F}{nj}(x), \itr{F}{nj}(z)} \geq \epsilon \quad\mbox{ or }\quad \metric{\itr{F}{nj}(x), \itr{F}{nj}(q)} \geq \epsilon 
-  \end{equation*}
-   must hold.
+  \begin{theorem}
+    (Topological Transitivity and Dense Periodic Points Imply Sensitive Dependence on Initial Conditions)
+    Let $F: X\rar X$ be a chaotic transformation. Then there is an $\epsilon > 0$ such that
+    for any $x\in X$ and any open set $J$ containing at least $x$ and another point, there is
+    a point $y\in J$ and $n\in \N$ with
+    \begin{equation*}
+      \metric{\itr{F}{n}(x),\itr{F}{n}(y)} > \epsilon.
+    \end{equation*}
+    \label{thm:banks}
+  \end{theorem}
+  First, we shall prove a lemma that is essential to the proof of the theorem.
+  Two distincy periodic orbits cannot intersect.
+  This observation results in the following lemma.
+  \begin{lemma}
+    Let $F: X\rar X$ be a mapping with (at least) two distinct periodic orbits.
+    Then there is a $c > 0$ such that for any $x\in X$ there exists a periodic
+    point $p$ such that for each $k$
+    \begin{equation*}
+      \metric{x, \itr{F}{k}(p)} > c.
+    \end{equation*}
+    \label{lem:dev1}
+  \begin{proof}[Proof of the lemma]
+    Let $r$ and $s$ be periodic points with distinct orbits. For each $k$ and $l$ we have
+    \begin{equation*}
+      \metric{\itr{F}{k}(r), \itr{F}{l}(s)} > 0.
+    \end{equation*}
+    Choose $c$ so that $2c < \min \metric{\itr{F}{k}(r),\itr{F}{l}(s)}$.
+    Then by the triangle inequality
+    \begin{equation*}
+      2c < \metric{\itr{F}{k}(r),\itr{F}{l}(s)} \leq \metric{\itr{F}{k}(r),x} + \metric{x,\itr{F}{l}(s)}
+    \end{equation*}
+    for all $k$ and $l$.
+    Now suppose that $\metric{\itr{F}{k}(r),x} \leq c$ and $\metric{x,\itr{F}{l}(s)} \leq c$. The supposition
+    violates the inequality just derived. Thus 
+    \begin{equation*}
+      \metric{\itr{F}{k}(r),x} > c \mbox{ or } \metric{x,\itr{F}{l}(s)} > c
+    \end{equation*}
+    must hold.
+  \end{proof}
+  \end{lemma}
+  %
+  \begin{proof}[Proof of \ref{thm:banks}]
+    Let $x$ be any point of $X$ and $J$ any open set containing $x$.
+    Since the periodic points of $f$ are dense (in $X$), we may introduce a periodic point
+    $q$ of $f$ in $U$ defined as
+    \begin{equation*}
+      U \ceq J\cap \oball{\epsilon}{x}.
+    \end{equation*}
+    Let $n$ be the period of $q$.
+    Apply Lemma~\ref{lem:dev1} to obtain a periodic orbit $O(p)$ and a constant $c > 0$ such that $\metric{x, O(p)} > c$.
+    Let $\epsilon \ceq c/4$ so that $\metric{x, O(p)} > 4\epsilon$.
+    Define
+    \begin{equation*}
+      W_i := \oball{\epsilon}{\itr{F}{i}(p)} \quad\text{ and }\quad V := \bigcap\limits_{i = 1}^{n} \itr{F}{-i}(W_i).
+    \end{equation*}
+    Since $\itr{F}{i}(p) \in W_i$, we see that $p \in V$, and $V$ is not empty. 
+    Also note that $V$ is open.
+    By the transitivity property, we can find a $z\in U$ and a positive integer $k$ such that
+    $\itr{F}{k}(z) \in V$. Let $j$ be the least integer such that $k < nj$. 
+    That is,
+    \begin{equation*}
+      1 \leq nj - k \leq n.
+    \end{equation*}
+    Therefore,
+    \begin{equation*}
+      \itr{F}{nj} (z) = \itr{F}{nj - k} (\itr{F}k(z)) \in \itr{F}{nj-k}(V).
+    \end{equation*}
+    Also,
+    \begin{equation*}
+       \itr{F}{nj - k}(V) \subset \itr{F}{nj - k}(\itr{F}{-(nj - k)} W_{nj-k}) 
+       = W_{nj-k}
+       \equiv \oball{\epsilon}{\itr{F}{nj-k}(p)}.
+    \end{equation*}
+    The last two equalities imply
+    \begin{equation*}
+      \metric{\itr{F}{nj}(z), \itr{F}{nj - k}(p)} < \epsilon.
+    \end{equation*}
+    Furthermore, $\itr{F}{nj}(q) = q$, since $q$ is a $n$-periodic point 
+    \begin{equation*}
+      \metric{\itr{F}{nj}(q), \itr{F}{nj}(z)} = \metric{q, \itr{F}{nj}(z)}.
+    \end{equation*}
+    By the triangle inequality, we have
+    \begin{equation*}
+      \metric{x, \itr{F}{nj-k}(p)} \leq \metric{x,q} + \metric{q, \itr{F}{nj}(z)} + \metric{\itr{F}{nj}(z), \itr{F}{nj - k}(p)}.
+    \end{equation*}
+    Finally, 
+    \begin{align*}
+      \metric{\itr{F}{nj}(q), \itr{F}{nj}(z)} 
+      &= \metric{q, \itr{F}{nj}(z)}  \\
+      &\geq  \metric{x, \itr{F}{nj-k}(p)} - \metric{x,q} - \metric{\itr{F}{nj}(z), \itr{F}{nj - k}(p)}  \\
+      &> 4\epsilon - \epsilon - \epsilon 
+      = 2\epsilon,
+    \end{align*}
+    which implies
+    \begin{equation*}
+      \metric{\itr{F}{nj}(q), \itr{F}{nj}(x)} + \metric{\itr{F}{nj}(x), \itr{F}{nj}(z)} 
+      \geq \metric{\itr{F}{nj}(q), \itr{F}{nj}(z)}
+      > 2\epsilon.
+    \end{equation*}
+    It follows from the inequality that 
+    \begin{equation*}
+      \metric{\itr{F}{nj}(x), \itr{F}{nj}(z)} \geq \epsilon \quad\mbox{ or }\quad \metric{\itr{F}{nj}(x), \itr{F}{nj}(q)} \geq \epsilon 
+    \end{equation*}
+     must hold.
+  \end{proof}
 
-\end{proof}
+  Furthermore, a continuous function on an interval, topological transitivity implies the other two (Vellekoop-Berglund, 1994).
+  In general, dense periodic orbit and sensitivity does not imple transitivity (Assaf-Gadbois 1992).
+  A system is chaotic in $X$ in the sense of Devaney if and only if for every pair of open sets in $X$ there exists a periodic orbit which visits both sets (Touhey, 1997).
 
-Furthermore, a continuous function on an interval, topological transitivity implies the other two (Vellekoop-Berglund, 1994).
-In general, dense periodic orbit and sensitivity does not imple transitivity (Assaf-Gadbois 1992).
-A system is chaotic in $X$ in the sense of Devaney if and only if for every pair of open sets in $X$ there exists a periodic orbit which visits both sets (Touhey, 1997).
-
-In particular, we mainly consider conjugation by continuous, surjective transformations.
-In some cases, we will consider conjugation by homeomorphism.
-\begin{theorem}
-  (Transitivity and Conjugacy) 
-  Let $F: X \to X$ and $G: Y \to Y$ be continuous functions, and $\phi: X \to Y$ a continuous, surjective map.
-  Suppose that $G \compose \phi = \phi \compose F$.
-  If $F$ is transitive, then $G$ is transitive.
-  If $\phi$ is a homeomorphism, then $F$ is transitive if and only if $G$ is transitive.
-  \begin{proof}
-    Let $I$ and $J$ be open 
+  Theorems concerning conjugacy.
+  \begin{theorem}
+    (Transitivity and Conjugacy) 
+    Let $F: X \to X$ and $G: Y \to Y$ be continuous functions, and $\phi: X \to Y$ be a continuous, surjective map.
+    Suppose that $G \compose \phi = \phi \compose F$.
+    If $F$ is transitive, then $G$ is transitive.
+    \label{thm:conj-trans}
+    \begin{proof}
+      Let $A$ and $B$ be open sets of $Y$.
+      Since $\phi^{-1}$ is continuous, $\phi^{-1}(A)$ is a union of open sets in $X$.
+      Let $A'$ be one of the open sets constituting $\phi^{-1}(A)$.
+      Similarly, let $B'$ be one of the open sets constituting $\phi^{-1}(B)$.
+      By the transitivity of $F$, there exists a positive integer $n$ and $x \in B'$ such that $\itr{F}{n}(x)\in A'$.
+      Let $y \ceq \phi(x)$.
+      Then, $y \in B$, and 
+      \begin{equation*}
+        \itr{G}{n}(y) 
+        = \itr{G}{n}(\phi(x))
+        = \phi(\itr{F}{n}(x)) \in \phi(A') \subseteq A.
+      \end{equation*}
+      \end{proof}
+  \end{theorem}
+  A similar theorem for dense periodic orbits.
+  \begin{theorem}
+    (Dense Set and Conjugacy) 
+    Let $\phi$ be a continuous and surjective mapping.
+    If $D$ is dense in $X$, then $\phi(D)$ is dense in $Y$.
+    \label{thm:conj-dense}
+    \begin{proof}
+      Let $A \subseteq Y$ be an open set.
+      Since $\phi$ is continuous, $\phi^{-1} (A)$ is a union of open sets.
+      Let $B$ be one of the open sets that constitutes $\phi^{-1}(A)$.
+      The intersection $B \cap D$ is nonempty, because $D$ is dense in $Y$.
+      For each $y \in B \cap D$, we have $\phi(y) \in A \cap \phi(D)$.
     \end{proof}
-\end{theorem}
-A similar theorem for dense periodic orbits.
-\begin{theorem}
-  (Dense Set and Conjugacy) 
-  Let $\phi$ be a continuous and surjective mapping.
-  If $D$ is dense in $X$, then $\phi(D)$ is dense in $Y$.
-  \label{thm:conj-dense}
-  \begin{proof}
-    Let $A \subseteq Y$ be an open set.
-    Since $\phi$ is continuous, $\phi^{-1} (A)$ is a union of open sets.
-    Let $B$ be one of the open sets that constitutes $\phi^{-1}(A)$.
-    The intersection $B \cap D$ is nonempty, because $D$ is dense in $Y$.
-    For each $y \in B \cap D$, we have $\phi(y) \in A \cap \phi(D)$.
-  \end{proof}
-\end{theorem}
-\begin{theorem}
-  (Period Points and Conjugacy)
-  Suppose that $G \compose \phi = \phi \compose F$, where $\phi$ is continuous and surjective mapping.
-  If $p$ is a $n$-periodic point of $F$, then $\phi(p)$ is a $n$-periodic point of $G$.
-  \label{thm:conj-per}
-  \begin{proof}
-    $\itr{F}{n}(p) = p$ implies that $\itr{G}{n}(\phi(p)) = \phi(\itr{F}{n}(p)) = \phi(p)$.
-  \end{proof}
-\end{theorem}
-The last two theorems imply the following.
-\begin{theorem}
-  Suppose that $G \compose \phi = \phi \compose F$, where $\phi$ is continuous and surjective mapping.
-  If $\mathrm{Per}(F)$ is dense in $X$, then $\mathrm{Per}(G)$ is dense in $Y$.
-  \label{thm:conj-dense-per}
-  \begin{proof}
-    It follows from Theorem~\ref{thm:conj-per} that $\phi(\mathrm{Per}(F)) \subseteq \mathrm{Per}(G)$.
-    Then, by Theorem~\ref{thm:conj-dense}, $\mathrm{Per}(G)$ is a dense subset of $Y$.
-  \end{proof}
-\end{theorem}
-Also,
-\begin{theorem}
-  
-  \label{thm:conj-sdic}
-\end{theorem}
+  \end{theorem}
+  \begin{theorem}
+    (Period Points and Conjugacy)
+    Suppose that $G \compose \phi = \phi \compose F$, where $\phi$ is continuous and surjective mapping.
+    If $p$ is a $n$-periodic point of $F$, then $\phi(p)$ is a $n$-periodic point of $G$.
+    \label{thm:conj-per}
+    \begin{proof}
+      $\itr{F}{n}(p) = p$ implies that $\itr{G}{n}(\phi(p)) = \phi(\itr{F}{n}(p)) = \phi(p)$.
+    \end{proof}
+  \end{theorem}
 
-We will call two functions \textit{semi-conjugate} if $\phi$ is continuous and surjective (homeomorphism minus injective).
+  \begin{definition}
+    We say that $G$ is \textit{semi-conjugate} to $F$, if $G\circ\phi = \phi\circ F$, where $\phi$ is continuous and surjective.
+  \end{definition}
+  \textit{Remark:} If $\phi$ were homeomorphism (i.e. $F$ is topologically conjugate to $G$), then $G$ is semi-conjugate to $F$, and at the same time, $F$ is semi-conjugate to $G$.
+  For instance, if $G$ is topologically conjugate to $F$, then $G$ is transitive if and only if $F$ is transitive.
+
+  \begin{corollary}
+    Suppose that $G$ is semi-conjugate to $F$.
+    If $\mathrm{Per}(F)$ is dense in $X$, then $\mathrm{Per}(G)$ is dense in $Y$.
+    \label{cor:conj-dense-per}
+    \begin{proof}
+      It follows from Theorem~\ref{thm:conj-per} that $\phi(\mathrm{Per}(F)) \subseteq \mathrm{Per}(G)$.
+      Then, by Theorem~\ref{thm:conj-dense}, $\mathrm{Per}(G)$ is a dense subset of $Y$.
+    \end{proof}
+\end{corollary}
+Also, notice that
+\begin{corollary}
+  Suppose that $G$ is semi-conjugate to $F$.
+  If $F$ is sensitive to initial conditions, then $G$ is sensitive to initial conditions.
+  \label{cor:conj-sdic}
+  \begin{proof}
+  This follows from Theorem~\ref{thm:banks}, Theorem~\ref{thm:conj-trans}, and Theorem~\ref{thm:conj-dense}.
+  \end{proof}
+\end{corollary}
+
 
 \bibliographystyle{../../bibliography/pjgsm}
 \bibliography{../../bibliography/thesis}
