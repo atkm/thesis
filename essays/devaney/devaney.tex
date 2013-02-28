@@ -1,4 +1,4 @@
-\documentclass[12pt,draft,twoside]{book}
+\documentclass[12pt,draft,twoside]{article}
 \usepackage{../../thesis}
 
 \makeindex
@@ -169,30 +169,62 @@ We will show that sensitive dependence on initial conditions can be derived from
 \end{proof}
 
 
-Furthermore, in an interval, topological transitivity implies the other two (Vellekoop-Berglund, 1994).
+Furthermore, a continuous function on an interval, topological transitivity implies the other two (Vellekoop-Berglund, 1994).
+In general, dense periodic orbit and sensitivity does not imple transitivity (Assaf-Gadbois 1992).
 A system is chaotic in $X$ in the sense of Devaney if and only if for every pair of open sets in $X$ there exists a periodic orbit which visits both sets (Touhey, 1997).
 
 In particular, we mainly consider conjugation by continuous, surjective transformations.
 In some cases, we will consider conjugation by homeomorphism.
 \begin{theorem}
   (Transitivity and Conjugacy) 
-  Let $F: X \to X$, $G: Y \to Y$, and $H: X \to Y$.
-  Suppose that $G \compose H = H \compose F$.
-  Suppose $H$ is continuous and surjective, and $F$ is transitive.
-  Then $G$ is transitive.
-  If $H$ is a homeomorphism, then $F$ is transitive if and only if $G$ is transitive.
+  Let $F: X \to X$ and $G: Y \to Y$ be continuous functions, and $\phi: X \to Y$ a continuous, surjective map.
+  Suppose that $G \compose \phi = \phi \compose F$.
+  If $F$ is transitive, then $G$ is transitive.
+  If $\phi$ is a homeomorphism, then $F$ is transitive if and only if $G$ is transitive.
+  \begin{proof}
+    Let $I$ and $J$ be open 
+    \end{proof}
 \end{theorem}
 A similar theorem for dense periodic orbits.
 \begin{theorem}
-  (Dense Periodic Orbits and Conjugacy) 
-  Suppose that $G \compose H = H \compose F$.
-  Suppose $H$ is continuous and surjective, and $P(F)$ is dense in $X$.
-  Then $P(G)$ is dense in $Y$.
+  (Dense Set and Conjugacy) 
+  Let $\phi$ be a continuous and surjective mapping.
+  If $D$ is dense in $X$, then $\phi(D)$ is dense in $Y$.
+  \label{thm:conj-dense}
+  \begin{proof}
+    Let $A \subseteq Y$ be an open set.
+    Since $\phi$ is continuous, $\phi^{-1} (A)$ is a union of open sets.
+    Let $B$ be one of the open sets that constitutes $\phi^{-1}(A)$.
+    The intersection $B \cap D$ is nonempty, because $D$ is dense in $Y$.
+    For each $y \in B \cap D$, we have $\phi(y) \in A \cap \phi(D)$.
+  \end{proof}
 \end{theorem}
-Note that in the proof, we proved the following
 \begin{theorem}
-  (Period is preserved under conjugacy)
+  (Period Points and Conjugacy)
+  Suppose that $G \compose \phi = \phi \compose F$, where $\phi$ is continuous and surjective mapping.
+  If $p$ is a $n$-periodic point of $F$, then $\phi(p)$ is a $n$-periodic point of $G$.
+  \label{thm:conj-per}
+  \begin{proof}
+    $\itr{F}{n}(p) = p$ implies that $\itr{G}{n}(\phi(p)) = \phi(\itr{F}{n}(p)) = \phi(p)$.
+  \end{proof}
 \end{theorem}
+The last two theorems imply the following.
+\begin{theorem}
+  Suppose that $G \compose \phi = \phi \compose F$, where $\phi$ is continuous and surjective mapping.
+  If $\mathrm{Per}(F)$ is dense in $X$, then $\mathrm{Per}(G)$ is dense in $Y$.
+  \label{thm:conj-dense-per}
+  \begin{proof}
+    It follows from Theorem~\ref{thm:conj-per} that $\phi(\mathrm{Per}(F)) \subseteq \mathrm{Per}(G)$.
+    Then, by Theorem~\ref{thm:conj-dense}, $\mathrm{Per}(G)$ is a dense subset of $Y$.
+  \end{proof}
+\end{theorem}
+Also,
+\begin{theorem}
+  
+  \label{thm:conj-sdic}
+\end{theorem}
+
+We will call two functions \textit{semi-conjugate} if $\phi$ is continuous and surjective (homeomorphism minus injective).
 
 \bibliographystyle{../../bibliography/pjgsm}
 \bibliography{../../bibliography/thesis}
