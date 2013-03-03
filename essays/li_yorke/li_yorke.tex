@@ -218,7 +218,6 @@ However, we may draw an even stronger conclusion, that is, the points in $S$ are
   \label{thm:liyorke3}
 \end{theorem}
 
-
 \begin{theorem}
   Let $X$ be a compact metric space, and $F: X\to X$ be chaotic in Li-Yorke's sense.
   If $G: Y\to Y$ is conjugate to $F$ i.e. $\phi \circ F = G \circ \phi$, then $G$ is chaotic.
@@ -252,7 +251,7 @@ However, we may draw an even stronger conclusion, that is, the points in $S$ are
   \end{equation*}
   Take $(\phi^{-1}\circ G^n)(\phi(q))$ as our $y$.
   For each $\delta$, by definition of limit inferior, as $n$ increases from $0$ to $\infty$, $(\phi^{-1}\circ G^n)(\phi(q))$ comes inside the neighborhood $\oball{\epsilon}{(\phi^{-1}\circ G^n)(\phi(p))}$ infinitely many times.
-  Therefore, for each $\delta$, $\phi(y) \in \oball{\delta}{G^n(\phi(p))}$ holds for infinitely many $n$.
+  Therefore, for each $\delta$, $G^n(\phi(q)) \in \oball{\delta}{G^n(\phi(p))}$ holds for infinitely many $n$.
   We have $\metric{G^n(\phi(p)), G^n(\phi(q))} \geq 0$, so we conclude that
   \begin{equation*}
     \liminf\limits_{n \to \infty}\; \metric{\itr{G}{n}(\phi(p)) , \itr{G}{n}(\phi(q))} = 0.
@@ -271,7 +270,7 @@ However, we may draw an even stronger conclusion, that is, the points in $S$ are
   \label{thm:liyorke-conj}
 \end{theorem}
 
-Although the definition by Li and Yorke captures our intuitive notion of chaos well, it is by no means flawless.
+Although the definition by Li and Yorke captures our intuitive notion of chaos, it is by no means flawless.
 There are mappings that are chaotic on a negligible set \citep{martelli98}.
 \begin{example}
   (Chaos on a negligible set)
@@ -334,7 +333,7 @@ Since $m(I_0) = 1/6$, we have
 \begin{equation*}
   m(I_1) 
   = m(g_1^{-1}(I_0)) + m(g_2^{-1}(I_0))
-  = 2 * \frac{1}{6} * \frac{1}{4}
+  = 2 \cdot \frac{1}{6} \cdot \frac{1}{4}
   = \frac{1}{6\cdot 2^1},
 \end{equation*}
 and inductively, we obtain
