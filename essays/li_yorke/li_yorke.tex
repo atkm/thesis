@@ -238,6 +238,11 @@ However, we may draw an even stronger conclusion, that is, the points in $S$ are
     \begin{equation*}
       \liminf\limits_{n \to \infty}\; \metric{\itr{G}{n}(\phi(p)) , \itr{G}{n}(\phi(q))} = 0.
     \end{equation*}
+    For convenience, let us use the following notation:
+    \begin{equation*}
+      d_{G_n} \ceq \metric{\itr{G}{n}(\phi(p)) , \itr{G}{n}(\phi(q))}.
+    \end{equation*}
+
     Fix $p,q \in S$.
     Let $b \ceq \limsup\limits_{n \to \infty}\; \metric{\itr{F}{n}(p) , \itr{F}{n}(q)} > 0$.
     Since we have $\itr{F}{n} = \phi^{-1}\circ\itr{G}{n}\circ\phi$ by conjugacy,
@@ -253,20 +258,48 @@ However, we may draw an even stronger conclusion, that is, the points in $S$ are
   Take $(\phi^{-1}\circ G^n)(\phi(q))$ as our $y$.
   For each $\delta$, by definition of limit inferior, as $n$ increases from $0$ to $\infty$, $(\phi^{-1}\circ G^n)(\phi(q))$ comes inside the neighborhood $\oball{\epsilon}{(\phi^{-1}\circ G^n)(\phi(p))}$ infinitely many times.
   Therefore, for each $\delta$, $\phi(y) \in \oball{\delta}{G^n(\phi(p))}$ holds for infinitely many $n$.
-  We have $\metric{G^n(\phi(p)), G^n(\phi(q))} \geq 0$, so we conclude that
+  We have $d_{G_n} \geq 0$, so we conclude that
   \begin{equation*}
-    \liminf\limits_{n \to \infty}\; \metric{\itr{G}{n}(\phi(p)) , \itr{G}{n}(\phi(q))} = 0.
+    \liminf\limits_{n \to \infty}\; d_{G_n} = 0.
   \end{equation*}
   Next, we prove
-    \begin{equation*}
-      \limsup\limits_{n \to \infty}\; \metric{\itr{G}{n}(\phi(p)) , \itr{G}{n}(\phi(q))} > 0.
+  \begin{equation*}
+    \limsup\limits_{n \to \infty}\; d_{G_n} > 0
+  \end{equation*}
+  by contradiction.
+  So suppose
+  \begin{equation*}
+    \limsup\limits_{n \to \infty}\; d_{G_n} = 0.
+  \end{equation*}
+  Since we already have
+  \begin{equation*}
+    \liminf\limits_{n \to \infty}\; d_{G_n} = 0,
+  \end{equation*}
+  it follows that 
+  \begin{equation*}
+    \lim\limits_{n \to \infty}\; d_{G_n} = 0.
+  \end{equation*}
+  By continuity of $\phi^{-1}$, for each $\delta > 0$, there exists $\epsilon > 0$ such that
+  \begin{equation*}
+    y \in \oball{\epsilon}{G^n(\phi(p))} \mbox{ implies } \phi^{-1}(y) \in \oball{\delta}{(\phi^{-1} \circ G^n)(\phi(p))}.
+  \end{equation*}
+  Take $G^n(\phi(q))$ as our $y$.
+  Note that, for each $\epsilon$, there are infinitely many $n$ such that $G^n(\phi(q)) \in \oball{\epsilon}{G^n(\phi(p))}$, since 
+  \begin{equation*}
+    \lim\limits_{n \to \infty}\; d_{G_n} = 0.
+  \end{equation*}
+  Then, for each $\delta$, there are infinitely many $n$ such that 
+  \begin{equation*}
+    (\phi^{-1} \circ G^n)(\phi(p)) \in \oball{\delta}{(\phi^{-1} \circ G^n)(\phi(p))}.
+  \end{equation*}
+  In particular, there is $0 < \delta_0 < b$.
+  This contradicts with the assumption that
+  \begin{equation*}
+    \limsup\limits_{n \to \infty}\; \metric{(\phi^{-1}\circ\itr{G}{n})(\phi(p)) , (\phi^{-1}\circ\itr{G}{n})(\phi(q))}
+    = \limsup\limits_{n \to \infty}\; \metric{\itr{F}{n}(p) , \itr{F}{n}(q)} 
+    = b.
     \end{equation*}
-    Notice that 
-    \begin{equation*}
-      G^n(\phi(q)) \not\in \oball{\epsilon}{G^n(\phi(p))}.
-    \end{equation*}
-
-
+  This completes the proof.
   \end{proof}
   \label{thm:liyorke-conj}
 \end{theorem}
