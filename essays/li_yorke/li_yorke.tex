@@ -29,12 +29,12 @@ Hence, Marotto's definition may serve as a condition for chaos in Li-Yorke's sen
   \textit{chaotic in Li-Yorke's sense} if there is an uncountable set $S \subseteq X$ containing no
   periodic points such that each pair $p,q \in S$ satisfies
   \begin{equation}
-    \limsup\limits_{n \to \infty}\; \abs{\itr{F}{n}(p) - \itr{F}{n}(q)} > 0
+    \limsup\limits_{n \to \infty}\; \metric{\itr{F}{n}(p) , \itr{F}{n}(q)} > 0
     \label{eqn:liyorke1}
   \end{equation}
   and
   \begin{equation}
-    \liminf\limits_{n \to \infty}\; \abs{\itr{F}{n}(p) - \itr{F}{n}(q)} = 0.
+    \liminf\limits_{n \to \infty}\; \metric{\itr{F}{n}(p) , \itr{F}{n}(q)} = 0.
     \label{eqn:liyorke2}
   \end{equation}
   \index{chaos!definition of!Li-Yorke}
@@ -213,7 +213,7 @@ However, we may draw an even stronger conclusion, that is, the points in $S$ are
   (Points in $S$ are not asymptotically periodic)
   For every $p \in S$ and periodic point $q \in I$,
   \begin{equation*}
-    \limsup\limits_{n \to \infty}\; \abs{\itr{F}{n}(p) - \itr{F}{n}(q)} > 0.
+    \limsup\limits_{n \to \infty}\; \metric{\itr{F}{n}(p) , \itr{F}{n}(q)} > 0.
   \end{equation*}
   \label{thm:liyorke3}
 \end{theorem}
@@ -225,15 +225,47 @@ However, we may draw an even stronger conclusion, that is, the points in $S$ are
   \begin{proof}
     Let $S \subseteq X$ be an uncountable set given by definition.
     $S$ contains no periodic points, and each pair $p,q \in S$ satisfies
-    \begin{equation}
-      \limsup\limits_{n \to \infty}\; \abs{\itr{F}{n}(p) - \itr{F}{n}(q)} > 0
-    \end{equation}
+    \begin{equation*}
+      \limsup\limits_{n \to \infty}\; \metric{\itr{F}{n}(p) , \itr{F}{n}(q)} > 0
+    \end{equation*}
     and
-    \begin{equation}
-      \liminf\limits_{n \to \infty}\; \abs{\itr{F}{n}(p) - \itr{F}{n}(q)} = 0.
-    \end{equation}
+    \begin{equation*}
+      \liminf\limits_{n \to \infty}\; \metric{\itr{F}{n}(p) , \itr{F}{n}(q)} = b.
+    \end{equation*}
     Let $T \ceq \phi(S) \subseteq Y$.
-    Since $\phi$ is a homeomorphism, $T$ is uncountable, and contains no periodic points (see Theorem~\ref{thm:conj-per}).
+    Since $\phi$ is injective, $T$ is uncountable, and contains no periodic points (see Theorem~\ref{thm:conj-per}).
+    We first prove
+    \begin{equation*}
+      \liminf\limits_{n \to \infty}\; \metric{\itr{G}{n}(\phi(p)) , \itr{G}{n}(\phi(q))} = 0.
+    \end{equation*}
+    Fix $p,q \in S$.
+    Let $b \ceq \limsup\limits_{n \to \infty}\; \metric{\itr{F}{n}(p) , \itr{F}{n}(q)} > 0$.
+    Since we have $\itr{F}{n} = \phi^{-1}\circ\itr{G}{n}\circ\phi$ by conjugacy,
+    \begin{align*}
+      &\limsup\limits_{n \to \infty}\; \metric{\itr{F}{n}(p) , \itr{F}{n}(q)} \\
+      &= \limsup\limits_{n \to \infty}\; \metric{(\phi^{-1}\circ\itr{G}{n})(\phi(p)) , (\phi^{-1}\circ\itr{G}{n})(\phi(q))} \\
+      &= b.
+    \end{align*}
+  By continuity of $\phi$, for each $\delta > 0$ there exists $\epsilon>0$ such that 
+  \begin{equation*}
+    y \in \oball{\epsilon}{(\phi^{-1}\circ G^n)(\phi(p))} \mbox{ implies } \phi(y) \in \oball{\delta}{G^n(\phi(p))}.
+  \end{equation*}
+  Take $(\phi^{-1}\circ G^n)(\phi(q))$ as our $y$.
+  For each $\delta$, by definition of limit inferior, as $n$ increases from $0$ to $\infty$, $(\phi^{-1}\circ G^n)(\phi(q))$ comes inside the neighborhood $\oball{\epsilon}{(\phi^{-1}\circ G^n)(\phi(p))}$ infinitely many times.
+  Therefore, for each $\delta$, $\phi(y) \in \oball{\delta}{G^n(\phi(p))}$ holds for infinitely many $n$.
+  We have $\metric{G^n(\phi(p)), G^n(\phi(q))} \geq 0$, so we conclude that
+  \begin{equation*}
+    \liminf\limits_{n \to \infty}\; \metric{\itr{G}{n}(\phi(p)) , \itr{G}{n}(\phi(q))} = 0.
+  \end{equation*}
+  Next, we prove
+    \begin{equation*}
+      \limsup\limits_{n \to \infty}\; \metric{\itr{G}{n}(\phi(p)) , \itr{G}{n}(\phi(q))} > 0.
+    \end{equation*}
+    Notice that 
+    \begin{equation*}
+      G^n(\phi(q)) \not\in \oball{\epsilon}{G^n(\phi(p))}.
+    \end{equation*}
+
 
   \end{proof}
   \label{thm:liyorke-conj}
