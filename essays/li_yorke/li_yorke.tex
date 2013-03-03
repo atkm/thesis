@@ -12,15 +12,22 @@ Li and Yorke were the first to use the term ``chaos'' to describe the complex be
 Robert May, a population biologist who noticed chaotic behavior of the logistic map, popularized the term in his articles \citeyearpar{may1,may2}.
 \footnote{Although ``chaos'' is commonly used in academic papers nowadays, the title of Li and Yorke's paper was considered to be playful and inappropriate.
 Admittedly, a liberal choice of word has to some extent contributed to the popularity that chaos theory currently enjoys \citep[``Exploring Chaos on an Interval'']{ueda-abraham}.}
-This definition inspired many other definitions of chaos.
-dense chaos~\citep{densechaos}, generic chaos~\citep{genericchaos}, extreme chaos~\citep{extremechaos}, distributional chaos, and so on. 
+This definition inspired many other definitions of chaos, such as $\omega$-chaos~\citep{omegachaos}, distributional chaos~\citep{dchaos1}, and so on \citep{genericchaos,densechaos,extremechaos}, which incorporate analogous conditions (equations \ref{eqn:liyorke1}, \ref{eqn:liyorke2}).
+At the end of chapter, we introduce a definition by Marotto as an example.
+Chaos in Marotto's sense, defined for $\R^n$, implies chaos in Li-Yorke's sense.
+As we will see, there is no simple criterion to determine whether a map is chaotic in Li-Yorke's sense for $\R^n$ where $n \geq 2$.
+Hence, Marotto's definition may serve as a condition for chaos in Li-Yorke's sense that is easier to verify, though it requires an additional structure, namely differentiability.
+
+% F: I \to I a continuous map on a compact interval.
+% Then, F is chaotic in the sense of devaney if and only if positive topological entropy.
+% Furthermore, F has positive topological entropy if and only if omega-chaotic \citep{omegachaos}.
 
 \begin{definition}
   (Chaos in Li-Yorke's sense)
   Let $X$ be a compact metric space and $F: X\to X$.
   $F$ is said to be \textit{Li-Yorke chaotic}, or 
   \textit{chaotic in Li-Yorke's sense} if there is an uncountable set $S \subseteq X$ containing no
-  periodic points such that each $p,q \in S$ satisfy
+  periodic points such that each pair $p,q \in S$ satisfies
   \begin{equation}
     \limsup\limits_{n \to \infty}\; \abs{\itr{F}{n}(p) - \itr{F}{n}(q)} > 0
     \label{eqn:liyorke1}
@@ -211,21 +218,28 @@ However, we may draw an even stronger conclusion, that is, the points in $S$ are
   \label{thm:liyorke3}
 \end{theorem}
 
-%We will see that Marotto's definition is equivalent to Li-Yorke's.
-%Moreover, Marotto's definition is generalizable to $n$-space.
 
-The theorem does not apply to transformations that are not continuous, such as the sawtooth transformation.
-However, as we have shown in the chapter on conjugacy, the sawtooth transformation is conjugate to the tent map by a surjecive, continuous transformation.
-The tent map is chaotic in Li-Yorke's sense, since it is continuous, and has a 3-periodic orbit.
-This observation leads to the following conjecture.
-
-
-\begin{conjecture}
+\begin{theorem}
   Let $X$ be a compact metric space, and $F: X\to X$ be chaotic in Li-Yorke's sense.
-  If $G$ is conjugate to $F$ (by a continuous surjective transformation?), then $G$ is chaotic.
-\end{conjecture}
+  If $G: Y\to Y$ is conjugate to $F$ i.e. $\phi \circ F = G \circ \phi$, then $G$ is chaotic.
+  \begin{proof}
+    Let $S \subseteq X$ be an uncountable set given by definition.
+    $S$ contains no periodic points, and each pair $p,q \in S$ satisfies
+    \begin{equation}
+      \limsup\limits_{n \to \infty}\; \abs{\itr{F}{n}(p) - \itr{F}{n}(q)} > 0
+    \end{equation}
+    and
+    \begin{equation}
+      \liminf\limits_{n \to \infty}\; \abs{\itr{F}{n}(p) - \itr{F}{n}(q)} = 0.
+    \end{equation}
+    Let $T \ceq \phi(S) \subseteq Y$.
+    Since $\phi$ is a homeomorphism, $T$ is uncountable, and contains no periodic points (see Theorem~\ref{thm:conj-per}).
 
-Although the definition by Li and Yorke captures our intuitive notion of chaos well, it is by no means free of flaws.
+  \end{proof}
+  \label{thm:liyorke-conj}
+\end{theorem}
+
+Although the definition by Li and Yorke captures our intuitive notion of chaos well, it is by no means flawless.
 There are mappings that are chaotic on a negligible set \citep{martelli98}.
 \begin{example}
   (Chaos on a negligible set)
