@@ -35,7 +35,7 @@ def Kick(init,param):
     return (x/(2*sp.pi),y/(2*sp.pi))
 
 def vKick(pts, param):
-    return vec2(vKick, pts, param)
+    return vec2(Kick, pts, param)
 
 # Arnold's cat map
 # default param = 2
@@ -52,19 +52,41 @@ def Cat(init,param=2):
 # element-wise application of Cat (for patch representation)
 # Increasing param would increase the x-orientation of the distortion
 def vCat(pts,param=2):
-    return vec2(vCat, pts, param)
+    return vec2(Cat, pts, param)
 
-# baker's map
-def baker(init, args):
+# horseshoe map
+def Horseshoe(init, param):
     """
-    'Unfolded' Baker's transformation (from Scholarpedia)
-    Map I2 \to I2, where I2 = [0,1) X [0,1) 
+    Following Wiggins (p. 421)
+    0 < a < 1/2
+    2 < u
     """
     x0 = init[0]
     y0 = init[1]
-    x = (x0 + np.floor(2* y0))
-    y = 2 * y0 - np.floor(2 * y0)
+    a = param[0] # lambda in Wiggins
+    u = param[1] # mu
+    if (y0 <= 1/u):
+      x = a * x0
+      y = u * y0
+    elif (y0 >= 1 - 1/u):
+      x = 1 - x0 * a
+      y = u * (1 - y0)
+    else: # otherwise collapse it to (0,0)
+      x = 0
+      y = 0
+
     return (x,y)
+
+def vHorseshoe(pts, param):
+    return vec2(Horseshoe, pts, param)
+
+# Outer billard, suggested by ray.
+def Billard(pts, param):
+    # not implemented yet.
+    return (0,0)
+
+def vBillard(pts, param)
+    return vec2(Billard, pts, param)
 
 def IterateList2D(g, init, N, args=()):
     """
