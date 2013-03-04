@@ -3,6 +3,9 @@ import numpy as np
 import scipy.optimize
 import matplotlib.pyplot
 
+def vec2(func, pts, param):
+    return sp.array([func(p,param) for p in pts])
+
 def Henon(init, args):
     """
     args = (a,b)
@@ -19,7 +22,39 @@ def Henon(init, args):
     y = b * x0
     return (x,y)
 
+# Chirikov standard map
+# K > 1 is pretty chaotic. 
+# use K = 0.5 as a default
+def Kick(init,param):
+    k = param
+    x0 = init[0] * 2*sp.pi
+    y0 = init[1] * 2*sp.pi
+    # tweaked from the default: y = sp.mod(y0 + k * sp.sin(x0), 2*sp.pi)
+    y = sp.mod(1.05 * sp.pi + y0 + k * sp.sin(x0), 2*sp.pi)
+    x = sp.mod(x0 + y, 2*sp.pi)
+    return (x/(2*sp.pi),y/(2*sp.pi))
 
+def vKick(pts, param):
+    return vec2(vKick, pts, param)
+
+# Arnold's cat map
+# default param = 2
+def Cat(init,param=2):
+    a  = param
+    b  = a - 1
+    x0 = init[0]
+    y0 = init[1]
+    x  = sp.mod(a*x0 + b*y0, 1)
+    y  = sp.mod(x0 + y0, 1)
+    return (x,y)
+
+# vCat: Arnold's cat map vectorized.
+# element-wise application of Cat (for patch representation)
+# Increasing param would increase the x-orientation of the distortion
+def vCat(pts,param=2):
+    return vec2(vCat, pts, param)
+
+# baker's map
 def baker(init, args):
     """
     'Unfolded' Baker's transformation (from Scholarpedia)
