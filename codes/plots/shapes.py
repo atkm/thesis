@@ -93,22 +93,19 @@ class Shape:
 
 # Basic shape class: boundary point representation of shapes
 class BasicShape:
-    def __init__(self, kind, A, n):
+    def __init__(self, kind, A, n, param=1):
         if kind == 'square':
             model = self.sqshape(A,n)
             self.edge = sp.sqrt(A)
         if kind == 'circle':
             model = self.circshape(A,n)
             self.edge = 2 * sp.sqrt(A/sp.pi)
+        if kind == 'ray':
+            model = self.rayshape(A,param,n)
 
         self.name = 'basic' + kind + '_' + str(A) + '_' + str(n) + '_' + str(round(time.time())) + '.png'
         self.pts = model
         self.resolution = len(self.pts) # total num of points on the base. resolution == 4*n
-
-    # intgrid: return the xy coords of the points (including the walls) converted to integer representations
-    def intgrid(self):
-        n = self.resolution/4.0
-        return sp.array(round_matrix(n * self.pts))
 
     # sqshape == a representation of square by boundary points
     # Create a square of area A with n points on one edge
@@ -122,7 +119,7 @@ class BasicShape:
     #  l       r   
     #  l b b b b   
     #
-    def sqshape(self, A,n):
+    def sqshape(self, A, n):
         edge_len = sp.sqrt(A) # the length of each edge
         base = sp.linspace(0, edge_len, n+1) # n+1 points, equally spaced
         # create left edge
@@ -150,7 +147,36 @@ class BasicShape:
         
         return sp.array(pts)
 
-    def billard(self, )
+    # Shape proposed by Ray
+    def rayshape(self, A, d, n):
+        rad = sp.sqrt(A/sp.pi) # the radius of the base circle
+        base = sp.linspace(-sp.pi/4, sp.pi/4, n+1)[:-1] # split up a quarter of the circumference to n pieces (omitting the point at pi/4)
+        C1 = []
+        for arg in base:
+            x = -d + (rad+d)*sp.cos(arg)
+            y = (rad+d)*sp.sin(arg)
+            C1.append((x,y))
+        # Construct C3, which is the image of C1 by rotation by pi.
+        C3 = []
+        for pt in C1:
+            C3.append((-pt[0] , -pt[1]))
+        # Now construct C2
+        base = sp.linspace(sp.pi/4, 3*sp.pi/4, n+1)[:-1] # split up a quarter of the circumference to n pieces
+        C2 = []
+        for arg in base:
+            x = (rad+d)*sp.cos(arg)
+            y = -d + (rad+d)*sp.sin(arg)
+            C2.append((x,y))
+        # Construct C4 from C2 by applying rotation by pi.
+        C4 = []
+        for pt in C2:
+            C4.append((-pt[0] , -pt[1]))
+
+        return sp.vstack((C1, C2, C3, C4)) # bottom is reversed for consistency
+
+    # apply Horseshoe Map
+    def billard(self, param=(1.0/3, 3.0)):
+        self.pts = vBillard(self.pts, param)
 
     def shplot_nosave(self):
     # plot points
@@ -163,6 +189,11 @@ class BasicShape:
             ptm = sp.vstack((pt1,pt2))
             plt.plot(ptm[:,0], ptm[:,1])
             pt1 = pt2
+
+    # intgrid: return the xy coords of the points (including the walls) converted to integer representations
+    def intgrid(self):
+        n = self.resolution/4.0
+        return sp.array(round_matrix(n * self.pts))
 
     # show plot in interactive mode
     def show(self):

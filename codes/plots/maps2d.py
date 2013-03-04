@@ -85,7 +85,7 @@ def Billard(pts, param):
     # not implemented yet.
     return (0,0)
 
-def vBillard(pts, param)
+def vBillard(pts, param):
     return vec2(Billard, pts, param)
 
 def IterateList2D(g, init, N, args=()):
