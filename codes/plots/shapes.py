@@ -149,8 +149,10 @@ class BasicShape:
 
     # Shape proposed by Ray
     def rayshape(self, A, d, n):
+        # We'll get 4n+4 points, but there are duplicates at the four corners.
+        # So, total = 4n
         rad = sp.sqrt(A/sp.pi) # the radius of the base circle
-        base = sp.linspace(-sp.pi/4, sp.pi/4, n+1)[:-1] # split up a quarter of the circumference to n pieces (omitting the point at pi/4)
+        base = sp.linspace(-sp.pi/4, sp.pi/4, n+1) # split up a quarter of the circumference to n pieces (omitting the point at pi/4)
         C1 = []
         for arg in base:
             x = -d + (rad+d)*sp.cos(arg)
@@ -161,7 +163,7 @@ class BasicShape:
         for pt in C1:
             C3.append((-pt[0] , -pt[1]))
         # Now construct C2
-        base = sp.linspace(sp.pi/4, 3*sp.pi/4, n+1)[:-1] # split up a quarter of the circumference to n pieces
+        base = sp.linspace(sp.pi/4, 3*sp.pi/4, n+1) # split up a quarter of the circumference to n pieces
         C2 = []
         for arg in base:
             x = (rad+d)*sp.cos(arg)
@@ -172,7 +174,7 @@ class BasicShape:
         for pt in C2:
             C4.append((-pt[0] , -pt[1]))
 
-        return sp.vstack((C1, C2, C3, C4)) # bottom is reversed for consistency
+        return sp.vstack((C1, C2, C3, C4)) 
 
     # apply Horseshoe Map
     def billard(self, param=(1.0/3, 3.0)):
