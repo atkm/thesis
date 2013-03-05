@@ -214,7 +214,7 @@ class BasicShape:
         # C1-related
         else:
             for i in range(4):
-                arg = i * sp.pi/2
+                arg = -i * sp.pi/2
                 if self.in_region1(rotation(pt,arg)):
                     return 'region' + str(1 + 2*i)
                 if self.in_region2(rotation(pt,arg)):
@@ -248,7 +248,7 @@ class BasicShape:
         h = self.edge
         if ((y <= self.c1br * (x-h) - h) and (y <= self.c1tr * (x-h) + h)):
             return True
-        elif ((not self.in_C1(pt)) and (y >= self.c1br * (x-h) - h) and (y <= self.c1tr * (x-h) + h)): # take care of the remaining small region
+        elif ((x > self.edge) and (not self.in_C1(pt)) and (y >= self.c1br * (x-h) - h) and (y <= self.c1tr * (x-h) + h)): # take care of the remaining small region
             return True
         else:
             return False
@@ -266,12 +266,19 @@ class BasicShape:
     # for testing
     def draw_regions(self):
         h = self.edge
-        grid = sp.linspace(0,1.5,100)
-        # region 1
+        grid = sp.linspace(-2,2,100)
+        # bottom right
         plt.plot(grid, (lambda x: (self.c1br * (x-h) - h))(grid))
+        plt.plot(grid, (lambda x: (1/self.c1br * (x-h) - h))(grid))
+        # top right
         plt.plot(grid, (lambda x: (self.c1tr * (x-h) + h))(grid))
-        # region 2
         plt.plot(grid, (lambda x: (self.c2tr * (x-h) + h))(grid))
+        # top left
+        plt.plot(grid, (lambda x: (-1/self.c1tr * (x+h) + h))(grid))
+        plt.plot(grid, (lambda x: (-1/self.c2tr * (x+h) + h))(grid))
+        # bottom left
+        plt.plot(grid, (lambda x: (-1/self.c1br * (x+h) - h))(grid))
+        plt.plot(grid, (lambda x: (-self.c1br * (x+h) - h))(grid))
 
 
     def show_billard(self):
