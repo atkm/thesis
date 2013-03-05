@@ -93,7 +93,7 @@ class Shape:
 
 # Basic shape class: boundary point representation of shapes
 class BasicShape:
-    def __init__(self, kind, A, n, param):
+    def __init__(self, kind, A, n):
         if kind == 'square':
             model = self.sqshape(A,n)
             self.edge = sp.sqrt(A)
@@ -101,8 +101,9 @@ class BasicShape:
             model = self.circshape(A,n)
             self.edge = 2 * sp.sqrt(A/sp.pi)
         if kind == 'ray':
-            model = self.rayshape(A,n,param)
-            self.edge = sp.sqrt(A/sp.pi)/sp.sqrt(2) # the x,y coordinate (they are the same) of the corner
+            self.param = A
+            self.edge = (-A + sp.sqrt(A**2 + 4*A + 2))/2 # the x,y coordinates of the corner
+            model = self.rayshape(A,n)
 
         self.name = 'basic' + kind + '_' + str(A) + '_' + str(n) + '_' + str(round(time.time())) + '.png'
         self.pts = model
@@ -149,14 +150,13 @@ class BasicShape:
         return sp.array(pts)
 
     # Shape proposed by Ray
-    def rayshape(self, A, n, d):
-        # We will obtain the shape by constructing C1 then rotating by pi/4 three times.
-        # determine the first corner
-        #rad = sp.sqrt(A/sp.pi) # the radius of the base circle
-        #corner = rad/sp.sqrt(2)
+    #e.g. BasicShape('ray', sp.pi, 10, 0.25)
+    def rayshape(self, d, n):
+        # We will obtain the shape by constructing C1 then rotating by pi/2 three times.
+        # determine the first arc
         C1 = []
-        for y in sp.linspace(-corner, corner, n+1):
-            x = -d + sp.sqrt((1+d)**2 - y**2)
+        for y in sp.linspace(-self.edge, self.edge, n):
+            x = -d + sp.sqrt((1+d)**2 - y**2) # the rad/12 is to make the diagram look better
             pt = (x,y)
             C1.append(pt)
         C2 = vrotation(C1, -sp.pi/2)
@@ -166,20 +166,118 @@ class BasicShape:
         return sp.vstack((C1, C2, C3, C4)) 
 
     # set up the circle for playing billard
+    # also figure out the slopes of the corners
     def billard_setup(self, R):
-        # R determines the ratio of the radius of the circle to the radius of the base circle
-        rad = R * sp.sqrt(2) 
-        # and need to determine the area to utilize the pre-defined function
-        area = sp.pi * rad**2
-        self.balls = self.circshape(area, self.resolution)
+        # R determines the ratio of the radius of the circle to the radius of the base circle (which is one)
+        # need to determine the area to utilize the pre-defined function
+        area = sp.pi * R**2
+        self.balls = self.circshape(area, self.resolution/4)
+        self.corner_slopes()
+
+    def corner_slopes(self):
+        h = self.edge
+        d = self.param
+        # We only need the first three to define the billard!!!
+        # C1 bottom right
+        self.c1br = 1 + d/h
+        # C1 top right
+        self.c1tr = -self.c1br
+        # C2 top right
+        self.c2tr = 1/self.c1tr
+        ## C2 top left
+        #self.c2tl = -self.c2tr
+        ## C3 top left
+        #self.c3tl = 1/self.c2tl
+        ## C3 bottom left
+        #self.c3bl = -self.c3tl
+        ## C4 bottom left
+        #self.c4bl = 1/self.c3bl
+        ## C4 bottom right
+        #self.c4br = -self.c4bl
+
 
     def billard(self):
-        pass        
+        # determine the limit tangent points of the first corner (bottom right)
+        result = []
+        for pt in self.balls:
+            # shoot the ball depending on the region.
+            region = self.get_region(pt)
+            print(pt[0],pt[1],region)
+            #new = shoot(pt,region)
+            #result.append(new)
+        #self.balls = result
+
+    def get_region(self,pt):
+        if self.in_table(pt):
+            # leave it as is if the point is in the table
+            return 'inside'
+        # C1-related
+        else:
+            for i in range(4):
+                arg = i * sp.pi/2
+                if self.in_region1(rotation(pt,arg)):
+                    return 'region' + str(1 + 2*i)
+                if self.in_region2(rotation(pt,arg)):
+                    return 'region' + str(2 + 2*i)
+
+    # inside the table
+    def in_table(self,pt):
+        for i in range(4):
+            arg = i * sp.pi/2
+            if self.in_C1(rotation(pt,arg)):
+                return True
+        return False
+
+    # inside the C1 part of the table
+    def in_C1(self,pt):
+        x = pt[0]
+        y = pt[1]
+        d = self.param
+        h = self.edge
+        # inside the C1 circle and inside the (45deg clockwise rotated) first quadrant
+        if (((x + d)**2 + y**2 <= (1+d)**2) and y <= x and y >= -x):
+            return True
+        else:
+            return False
+    
+            
+    # the region where the ball deflect off C1
+    def in_region1(self,pt):
+        x = pt[0]
+        y = pt[1]
+        h = self.edge
+        if ((y <= self.c1br * (x-h) - h) and (y <= self.c1tr * (x-h) + h)):
+            return True
+        elif ((not self.in_C1(pt)) and (y >= self.c1br * (x-h) - h) and (y <= self.c1tr * (x-h) + h)): # take care of the remaining small region
+            return True
+        else:
+            return False
+
+    # the region where the ball deflect off the top right corner
+    def in_region2(self,pt):
+        x = pt[0]
+        y = pt[1]
+        h = self.edge
+        if ((y >= self.c1tr * (x-h) + h) and (y <= self.c2tr * (x-h) + h)):
+            return True
+        else:
+            return False
+
+    # for testing
+    def draw_regions(self):
+        h = self.edge
+        grid = sp.linspace(0,1.5,100)
+        # region 1
+        plt.plot(grid, (lambda x: (self.c1br * (x-h) - h))(grid))
+        plt.plot(grid, (lambda x: (self.c1tr * (x-h) + h))(grid))
+        # region 2
+        plt.plot(grid, (lambda x: (self.c2tr * (x-h) + h))(grid))
+
 
     def show_billard(self):
     # plot points
         shape = self.balls
-        plt.plot(shape[:,0], shape[:,1],'o', color='blue')
+        plt.plot(shape[:,0], shape[:,1],'o', color='blue',markersize=3)
 
     def shplot_nosave(self):
     # plot points
@@ -205,7 +303,7 @@ class BasicShape:
     def showpts(self):
     # plot points
         shape = self.pts
-        plt.plot(shape[:,0], shape[:,1],'o', color='red')
+        plt.plot(shape[:,0], shape[:,1],'o', color='red',markersize=1)
 
     # save plot in a png
     def save(self):
