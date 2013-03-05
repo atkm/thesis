@@ -80,14 +80,6 @@ def Horseshoe(init, param):
 def vHorseshoe(pts, param):
     return vec2(Horseshoe, pts, param)
 
-# Outer billard, suggested by ray.
-def Billard(pts, param):
-    # not implemented yet.
-    return (0,0)
-
-def vBillard(pts, param):
-    return vec2(Billard, pts, param)
-
 def IterateList2D(g, init, N, args=()):
     """
     Iterate the function g(x, mu) N-1 times, starting at x0, so that the

@@ -93,7 +93,7 @@ class Shape:
 
 # Basic shape class: boundary point representation of shapes
 class BasicShape:
-    def __init__(self, kind, A, n, param=1):
+    def __init__(self, kind, A, n, param):
         if kind == 'square':
             model = self.sqshape(A,n)
             self.edge = sp.sqrt(A)
@@ -101,7 +101,8 @@ class BasicShape:
             model = self.circshape(A,n)
             self.edge = 2 * sp.sqrt(A/sp.pi)
         if kind == 'ray':
-            model = self.rayshape(A,param,n)
+            model = self.rayshape(A,n,param)
+            self.edge = sp.sqrt(A/sp.pi)/sp.sqrt(2) # the x,y coordinate (they are the same) of the corner
 
         self.name = 'basic' + kind + '_' + str(A) + '_' + str(n) + '_' + str(round(time.time())) + '.png'
         self.pts = model
@@ -148,38 +149,32 @@ class BasicShape:
         return sp.array(pts)
 
     # Shape proposed by Ray
-    def rayshape(self, A, d, n):
-        # We'll get 4n+4 points, but there are duplicates at the four corners.
-        # So, total = 4n
+    def rayshape(self, A, n, d):
+        # We will obtain the shape by constructing C1 then rotating by pi/4 three times.
+        # determine the first corner
         rad = sp.sqrt(A/sp.pi) # the radius of the base circle
-        angle = sp.arcsin(1/(sp.sqrt(2) * (1+d))) # each quadrant isn't -pi/4 < theta < pi/4. A bit less than that.
-        base = sp.linspace(-angle, angle, n+1) # split up a quarter of the circumference to n pieces (omitting the point at pi/4)
+        corner = rad/sp.sqrt(2)
         C1 = []
-        for arg in base:
-            x = -d + (rad+d)*sp.cos(arg)
-            y = (rad+d)*sp.sin(arg)
-            C1.append((x,y))
-        # Construct C3, which is the image of C1 by rotation by pi.
-        C3 = []
-        for pt in C1:
-            C3.append((-pt[0] , -pt[1]))
-        # Now construct C2
-        base = sp.linspace(sp.pi/2 - angle, sp.pi/2 + angle, n+1) # split up a quarter of the circumference to n pieces
-        C2 = []
-        for arg in base:
-            x = (rad+d)*sp.cos(arg)
-            y = -d + (rad+d)*sp.sin(arg)
-            C2.append((x,y))
-        # Construct C4 from C2 by applying rotation by pi.
-        C4 = []
-        for pt in C2:
-            C4.append((-pt[0] , -pt[1]))
-
+        for y in sp.linspace(-corner, corner, n+1):
+            x = -d + sp.sqrt((1+d)**2 - y**2)
+            pt = (x,y)
+            C1.append(pt)
+        C2 = vrotation(C1, -sp.pi/2)
+        C3 = vrotation(C2, -sp.pi/2)
+        C4 = vrotation(C3, -sp.pi/2)
+            
         return sp.vstack((C1, C2, C3, C4)) 
 
-    # apply Horseshoe Map
-    def billard(self, param=(1.0/3, 3.0)):
-        self.pts = vBillard(self.pts, param)
+    # set up the circle for playing billard
+    def billard_setup(self, R):
+        # R determines the ratio of the radius of the circle to the radius of the base circle
+        rad = R * sp.sqrt(2) 
+        # and need to determine the area to utilize the pre-defined function
+        area = sp.pi * rad**2
+        self.balls = circshape(area, self.resolution/4)
+
+    def billard(self):
+        pass
 
     def shplot_nosave(self):
     # plot points
@@ -250,7 +245,13 @@ def cvplot_nosave(shape):
     plt.ylim([0,1])
     plt.show()
 
+def rotation(pt,arg):
+    x = pt[0]
+    y = pt[1]
+    return (x * sp.cos(arg) - y * sp.sin(arg), x * sp.sin(arg) + y * sp.cos(arg))
 
+def vrotation(pts,arg):
+    return sp.array([rotation(pt, arg) for pt in pts])
 
 # IterateN: Iterate function g N-times with the initial condition init.
 def IterateN(g, init, N, param):
@@ -292,4 +293,33 @@ def IterRandN(init, N):
         result = IterRand(result)
     return result
 
-
+# Shape proposed by Ray
+def rayshape_old(self, A, d, n):
+    # We'll get 4n+4 points, but there are duplicates at the four corners.
+    # So, total = 4n
+    rad = sp.sqrt(A/sp.pi) # the radius of the base circle
+    angle = sp.arcsin(1/(sp.sqrt(2) * (1+d))) # each quadrant isn't -pi/4 < theta < pi/4. A bit less than that.
+    base = sp.linspace(-angle, angle, n+1) # split up a quarter of the circumference to n pieces (omitting the point at pi/4)
+    C1 = []
+    for arg in base:
+        x = -d + (rad+d)*sp.cos(arg)
+        y = (rad+d)*sp.sin(arg)
+        C1.append((x,y))
+    # Construct C3, which is the image of C1 by rotation by pi.
+    C3 = []
+    for pt in C1:
+        C3.append((-pt[0] , -pt[1]))
+    # Now construct C2
+    base = sp.linspace(sp.pi/2 - angle, sp.pi/2 + angle, n+1) # split up a quarter of the circumference to n pieces
+    C2 = []
+    for arg in base:
+        x = (rad+d)*sp.cos(arg)
+        y = -d + (rad+d)*sp.sin(arg)
+        C2.append((x,y))
+    # Construct C4 from C2 by applying rotation by pi.
+    C4 = []
+    for pt in C2:
+        C4.append((-pt[0] , -pt[1]))
+ 
+    return sp.vstack((C1, C2, C3, C4)) 
+ 
