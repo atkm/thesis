@@ -152,7 +152,8 @@ class BasicShape:
         # We'll get 4n+4 points, but there are duplicates at the four corners.
         # So, total = 4n
         rad = sp.sqrt(A/sp.pi) # the radius of the base circle
-        base = sp.linspace(-sp.pi/4, sp.pi/4, n+1) # split up a quarter of the circumference to n pieces (omitting the point at pi/4)
+        angle = sp.arcsin(1/(sp.sqrt(2) * (1+d))) # each quadrant isn't -pi/4 < theta < pi/4. A bit less than that.
+        base = sp.linspace(-angle, angle, n+1) # split up a quarter of the circumference to n pieces (omitting the point at pi/4)
         C1 = []
         for arg in base:
             x = -d + (rad+d)*sp.cos(arg)
@@ -163,7 +164,7 @@ class BasicShape:
         for pt in C1:
             C3.append((-pt[0] , -pt[1]))
         # Now construct C2
-        base = sp.linspace(sp.pi/4, 3*sp.pi/4, n+1) # split up a quarter of the circumference to n pieces
+        base = sp.linspace(sp.pi/2 - angle, sp.pi/2 + angle, n+1) # split up a quarter of the circumference to n pieces
         C2 = []
         for arg in base:
             x = (rad+d)*sp.cos(arg)
