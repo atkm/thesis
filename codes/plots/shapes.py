@@ -184,17 +184,6 @@ class BasicShape:
         self.c1tr = -self.c1br
         # C2 top right
         self.c2tr = 1/self.c1tr
-        ## C2 top left
-        #self.c2tl = -self.c2tr
-        ## C3 top left
-        #self.c3tl = 1/self.c2tl
-        ## C3 bottom left
-        #self.c3bl = -self.c3tl
-        ## C4 bottom left
-        #self.c4bl = 1/self.c3bl
-        ## C4 bottom right
-        #self.c4br = -self.c4bl
-
 
     def billard(self):
         # determine the limit tangent points of the first corner (bottom right)
@@ -202,23 +191,48 @@ class BasicShape:
         for pt in self.balls:
             # shoot the ball depending on the region.
             region = self.get_region(pt)
-            print(pt[0],pt[1],region)
-            #new = shoot(pt,region)
-            #result.append(new)
-        #self.balls = result
+            new = self.shoot(pt,region)
+            result.append(new)
+        self.balls = sp.array(result)
 
+    def shoot(self,pt,region):
+        quad = region[1] - 1
+        if region == 'inside':
+            return pt
+        elif region[0] == 1:
+            tang = self.find_tang(rotation(pt, -sp.pi/2 * quad))
+            tang = rotation(tang, sp.pi/2 * quad)
+        else:
+            tang = rotation((self.edge, self.edge), sp.pi/2 * quad)
+        new = tang + (tang - pt)
+        return new
+        
+    # find the tangent point for an exterior point in C1
+    def find_tang(self, pt):
+        x = pt[0]
+        y = pt[1]
+        d = self.param
+        k = sp.sqrt((x+d)**2 + y**2 - (1+d)**2)
+        theta = sp.arctan(k/(1+d))
+        phi   = sp.arctan(y/x)
+        arg = theta - phi
+        return sp.array((-d + (1+d)*sp.cos(arg), (1+d)*sp.sin(arg)))
+
+    # returns 'inside' or a tuple of two ints
+    # tuple[0] = 1 means tangent point is on an arc
+    # tuple[0] = 2 means tangent point is a corner
+    # tuple[1] designates which quadrant the point is on
     def get_region(self,pt):
         if self.in_table(pt):
             # leave it as is if the point is in the table
             return 'inside'
-        # C1-related
         else:
             for i in range(4):
                 arg = -i * sp.pi/2
                 if self.in_region1(rotation(pt,arg)):
-                    return 'region' + str(1 + 2*i)
+                    return (1,i+1)
                 if self.in_region2(rotation(pt,arg)):
-                    return 'region' + str(2 + 2*i)
+                    return (2,i+1)
 
     # inside the table
     def in_table(self,pt):
@@ -313,10 +327,8 @@ class BasicShape:
         plt.plot(shape[:,0], shape[:,1],'o', color='red',markersize=1)
 
     # save plot in a png
-    def save(self):
-        #shplot(self,self.name)
-        pass
-
+    def save(self,name):
+        plt.savefig(name)
 
 
 
@@ -363,7 +375,7 @@ def cvplot_nosave(shape):
 def rotation(pt,arg):
     x = pt[0]
     y = pt[1]
-    return (x * sp.cos(arg) - y * sp.sin(arg), x * sp.sin(arg) + y * sp.cos(arg))
+    return sp.array((x * sp.cos(arg) - y * sp.sin(arg), x * sp.sin(arg) + y * sp.cos(arg)))
 
 def vrotation(pts,arg):
     return sp.array([rotation(pt, arg) for pt in pts])
