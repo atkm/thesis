@@ -201,10 +201,10 @@ class BasicShape:
             return pt
         elif region[0] == 1:
             tang = self.find_tang(rotation(pt, -sp.pi/2 * quad))
-            tang = rotation(tang, sp.pi/2 * quad)
+            new = rotation(tang, sp.pi/2 * quad)
         else:
             tang = rotation((self.edge, self.edge), sp.pi/2 * quad)
-        new = tang + (tang - pt)
+            new = tang + (tang - pt)
         return new
         
     # find the tangent point for an exterior point in C1
@@ -214,9 +214,11 @@ class BasicShape:
         d = self.param
         k = sp.sqrt((x+d)**2 + y**2 - (1+d)**2)
         theta = sp.arctan(k/(1+d))
-        phi   = sp.arctan(y/x)
-        arg = theta - phi
-        return sp.array((-d + (1+d)*sp.cos(arg), (1+d)*sp.sin(arg)))
+        # translation by d, rotation by 2*theta, then translate back by d
+        x += d
+        x, y = rotation((x,y), 2*theta)
+        x -= d
+        return sp.array((x,y))
 
     # returns 'inside' or a tuple of two ints
     # tuple[0] = 1 means tangent point is on an arc
