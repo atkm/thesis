@@ -152,8 +152,8 @@ class BasicShape:
     def rayshape(self, A, n, d):
         # We will obtain the shape by constructing C1 then rotating by pi/4 three times.
         # determine the first corner
-        rad = sp.sqrt(A/sp.pi) # the radius of the base circle
-        corner = rad/sp.sqrt(2)
+        #rad = sp.sqrt(A/sp.pi) # the radius of the base circle
+        #corner = rad/sp.sqrt(2)
         C1 = []
         for y in sp.linspace(-corner, corner, n+1):
             x = -d + sp.sqrt((1+d)**2 - y**2)
