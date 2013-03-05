@@ -171,10 +171,15 @@ class BasicShape:
         rad = R * sp.sqrt(2) 
         # and need to determine the area to utilize the pre-defined function
         area = sp.pi * rad**2
-        self.balls = circshape(area, self.resolution/4)
+        self.balls = self.circshape(area, self.resolution)
 
     def billard(self):
-        pass
+        pass        
+
+    def show_billard(self):
+    # plot points
+        shape = self.balls
+        plt.plot(shape[:,0], shape[:,1],'o', color='blue')
 
     def shplot_nosave(self):
     # plot points
@@ -196,6 +201,11 @@ class BasicShape:
     # show plot in interactive mode
     def show(self):
         self.shplot_nosave()
+
+    def showpts(self):
+    # plot points
+        shape = self.pts
+        plt.plot(shape[:,0], shape[:,1],'o', color='red')
 
     # save plot in a png
     def save(self):
