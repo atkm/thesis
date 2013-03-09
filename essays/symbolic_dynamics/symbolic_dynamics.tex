@@ -1,0 +1,71 @@
+\documentclass[12pt,twoside,draft]{book}
+\usepackage{../../thesis}
+\graphicspath{ {../../images/} }
+
+\makeindex
+\begin{document}
+\chapter{Symbolic Dynamics}
+\section{Invariant Set of The Horseshoe Map}
+(\citep{wiggins})
+Recall the Baker's mapping that we defined ealier ref{def:baker}.
+Consider the following variant of this mapping:
+\begin{definition}
+  (Horseshoe Map)
+  Let $D = I \times I$, where $I = [0,1]$.
+  Define a two-parameter map $H_{\lambda, \mu}: D \to \R^2$ as
+  \begin{equation*}
+    H_{\lambda, \mu}(x,y) =
+    \begin{cases}
+      &H_0(x,y) \quad\mbox{ if } 0 \leq y \leq \frac{1}{\mu}   \\
+      &H_1(x,y) \quad\mbox{ if } 1 - \frac{1}{\mu} \leq y \leq 1,
+    \end{cases}
+  \end{equation*}
+  where
+  \begin{align*}
+    H_0(x,y) &= (\lambda x, \mu y)  \\
+    H_0(x,y) &= (1 - \lambda x, \mu(1 - y)) 
+  \end{align*}.
+  $H_{\lambda, \mu}$ is called the horseshoe map.
+  (We will often omit the subscripts.)
+\end{definition}
+
+VISUALIZATION
+
+In the next, section, we will prove the following properties of $H$ and its invariant set:
+\begin{enumerate}[(i)]
+  \item $H$ has a countable infinity of periodic orbits of any period.
+  \item $H$ has an uncountable infinity of non-periodic orbits.
+  \item $H$ has a dense orbit (analogous to transitivity).
+  \item $H$ has a \textit{sensitive dependence on initial condition} on its invariant set.
+\end{enumerate}
+
+\section{Two-Sided Shift}
+($D$, $H$) is conjugate to the \textit{two-sided shift} ($\Sigma$, $\sigma$), defined as follows.
+\begin{definition}
+  (Two-Sided Shift)
+  Let $S$ be a finite set of symbols, and let $\Sigma$ be a set of bi-infinite sequences of the form
+  \begin{equation*}
+    s = \set{ \cdots s_{-n} \cdots s_{-1} * s_0 \cdots s_n \cdots },
+  \end{equation*}
+  where $s_i \in S$, and the asterisk is a placeholder to denote the 0th place (i.e. the symbol after $*$ is the 0th place).
+  In particular, we use $S = \set{0,1}$.
+\end{definition}
+
+\begin{proposition}
+  $d$ is indeed a metric.
+  \label{prop:symb-metric}
+\end{proposition}
+\begin{proposition}
+  $\sigma$ is continuous.
+  \label{prop:symb-sigma-cont}
+\end{proposition}
+As a consequence, ($D$, $H$) possesses any topological property of ($\Sigma$, $\sigma$), and vice versa.
+
+On a related note, the logistic map, tent map, and doubling maps are all conjugate to the \textit{one-sided shift}, the one-dimensional analogoue of the two-sided shift.
+
+\bibliographystyle{../../bibliography/pjgsm}
+\bibliography{../../bibliography/thesis}
+
+\printindex
+\end{document}
+
