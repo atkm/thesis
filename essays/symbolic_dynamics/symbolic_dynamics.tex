@@ -12,7 +12,7 @@ Consider the following variant of this mapping:
 \begin{definition}
   (Horseshoe Map)
   Let $D = I \times I$, where $I = [0,1]$.
-  Define a two-parameter map $H_{\lambda, \mu}: D \to \R^2$ as
+  Define a two-parameter map $F_{\lambda, \mu}: D \to \R^2$ as
   \begin{equation*}
     H_{\lambda, \mu}(x,y) =
     \begin{cases}
@@ -23,15 +23,20 @@ Consider the following variant of this mapping:
   where
   \begin{align*}
     H_0(x,y) &= (\lambda x, \mu y)  \\
-    H_0(x,y) &= (1 - \lambda x, \mu(1 - y)).
+    H_1(x,y) &= (1 - \lambda x, \mu(1 - y)).
   \end{align*}
   $H_{\lambda, \mu}$ is called the horseshoe map.
   (We will often omit the subscripts.)
 \end{definition}
+In this section, we consider the dynamcis of $H$ on the two horizontal rectangles 
+\begin{align*}
+  H_0 &= \setst{(x,y)}{ 0 \leq x \leq 1, 0 \leq y \leq \frac{1}{\mu}}  \\
+  H_1 &= \setst{(x,y)}{ 0 \leq x \leq 1, 1 - \frac{1}{\mu} \leq y \leq 1}.
+\end{align*}
 
 VISUALIZATION
 
-The invariant set of the horseshoe map.
+The \textit{invariant set} of the horseshoe map is a set $\Lambda$ such that $H(\Lambda) = \Lambda$.
 
 The dynamics of the horseshoe map is (geometrically) complicated.
 However, we can understand topological properties of the map by studying the dynamics of \textit{symbols}.
@@ -101,6 +106,7 @@ Before we proceed further, we should first confirm that the definition makes sen
  \end{proof}
 \end{proposition}
 The metric defines the topology on $\Sigma$.
+
 Now we need to check that $\sigma$ is continuous.
 Other properties of $\sigma$ are also easy to see.
 \begin{proposition}

@@ -9,6 +9,17 @@ import random
 import time
 from maps2d import *
 
+"""
+To use the BasicShape
+
+sh = BasicShape('ray', 1.0/3, 64)  # set up the kite with d = 1/3
+sh.show()  # show the kite
+sh.billard_setup(2)  # set up the balls with R=2
+sh.billardN(10)
+sh.show_billard()  # show the balls
+
+"""
+
 # pylab.plot(xaxis, graph) to plot
 # for example xaxis = sp.linspace(0,1,100)
 
@@ -97,6 +108,10 @@ class BasicShape:
         if kind == 'square':
             model = self.sqshape(A,n)
             self.edge = sp.sqrt(A)
+        # Horizontal strips for horseshoe map. Solely for demonstration.
+        if kind == 'horse':
+            model = self.hsshape(A,n)
+            self.edge = sp.sqrt(A)
         if kind == 'circle':
             model = self.circshape(A,n)
             self.edge = 2 * sp.sqrt(A/sp.pi)
@@ -137,6 +152,61 @@ class BasicShape:
         right = sp.transpose(sp.vstack((right_x * sp.ones(n), top_y - base[0:-1])))
         
         return sp.vstack((left, top, right, bottom[::-1])) # bottom is reversed for consistency
+
+    def hsshape(self, A, n):
+        edge_len = sp.sqrt(A) # the length of each edge
+        base = sp.linspace(0, edge_len, n+1) # n+1 points, equally spaced
+        # create vertical lines
+        right1 = sp.transpose(sp.vstack((sp.zeros(n), base[0:-1])) )
+        left1 = sp.transpose(sp.vstack((sp.zeros(n) + edge_len/4.0, base[0:-1])) )
+        # top edge
+        top_y = base[-1] # the height of the square
+        top1 = sp.transpose(sp.vstack((base[0:n/4+1],top_y * sp.ones(n/4+1))))
+        top2 = sp.transpose(sp.vstack((base[::-1][0:n/4+1],top_y * sp.ones(n/4+1))))
+        # bottom edges
+        bottom1 = sp.transpose(sp.vstack((base[0:n/4+1], (sp.zeros(n/4+1)))))
+        bottom2 = sp.transpose((base[::-1][0:n/4+1], sp.vstack((sp.zeros(n/4+1)))))
+
+        # right edges
+        right_x = top_y # the x-coordinate of the right edge
+        right2 = sp.transpose(sp.vstack((right_x * sp.ones(n), top_y - base[0:-1])))
+        left2 = sp.transpose(sp.vstack((right_x * sp.ones(n) - edge_len/4.0, top_y - base[0:-1])))
+        
+        return sp.vstack((left1, top1, right1, bottom1, left2, top2, right2, bottom2)) # bottom is reversed for consistency
+       
+    def horseshoe(self):
+        L = 1.0/4 # lambda
+        M = 3.0 # mu
+        result = []
+        for p in self.pts:
+            x0 = p[0]
+            y0 = p[1]
+            if y0 <= 1/M:
+                x = L*x0
+                y = M*y0
+            elif 1 - 1/M <= y0:
+                x = 1 - L*x0
+                y = M*(1 - y0)
+            result.append(sp.array((x,y)))
+        self.pts = sp.array(result)
+
+    # the inverse of the horseshoe map
+    def invhorseshoe(self):
+        L = 1.0/4 # lambda
+        M = 3.0 # mu
+        result = []
+        for p in self.pts:
+            x0 = p[0]
+            y0 = p[1]
+            if x0 <= 1/M:
+                x = x0/L
+                y = y0/M
+            elif 1 - 1/M <= x0:
+                x = -(x0 - 1)/L
+                y = -(y0 - M)/M
+            result.append(sp.array((x,y)))
+        self.pts = sp.array(result)
+
 
     def circshape(self, A, n):
         rad = sp.sqrt(A/sp.pi) # the radius 
@@ -195,14 +265,20 @@ class BasicShape:
             result.append(new)
         self.balls = sp.array(result)
 
+
+    def billardN(self, N):
+        for i in range(N):
+            self.billard()
+
     def shoot(self,pt,region):
-        quad = region[1] - 1
         if region == 'inside':
             return pt
         elif region[0] == 1:
+            quad = region[1] - 1
             tang = self.find_tang(rotation(pt, -sp.pi/2 * quad))
             new = rotation(tang, sp.pi/2 * quad)
         else:
+            quad = region[1] - 1
             tang = rotation((self.edge, self.edge), sp.pi/2 * quad)
             new = tang + (tang - pt)
         return new
@@ -296,7 +372,6 @@ class BasicShape:
         plt.plot(grid, (lambda x: (-1/self.c1br * (x+h) - h))(grid))
         plt.plot(grid, (lambda x: (-self.c1br * (x+h) - h))(grid))
 
-
     def show_billard(self):
     # plot points
         shape = self.balls
@@ -328,11 +403,27 @@ class BasicShape:
         shape = self.pts
         plt.plot(shape[:,0], shape[:,1],'o', color='red',markersize=1)
 
+    def showhs(self):
+        shape = self.pts
+        half = len(shape)/2
+        first = shape[:half]
+        second = shape[half+1:]
+        plt.xlim([-0.0,1.0])
+        plt.ylim([-0.01,1.01])
+        plt.plot(first[:,0], first[:,1],'*', color='red',markersize=2)
+        plt.plot(second[:,0], second[:,1],'o', color='blue',markersize=2)
+
     # save plot in a png
     def save(self,name):
         plt.savefig(name)
 
 
+# check if each ball is within a certain range
+def bounded(pts, bound):
+    for p in pts:
+        if sp.linalg.norm(p) > bound:
+            return False
+    return True
 
 def round_matrix(pts):
     m = []
