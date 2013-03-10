@@ -108,6 +108,31 @@ Before we proceed further, we should first confirm that the definition makes sen
 The metric defines the topology on $\Sigma$.
 
 Now we need to check that $\sigma$ is continuous.
+We first prove two useful properties of the metric.
+\begin{proposition}
+  \begin{enumerate}
+    \item $d(a,b) < \frac{1}{2^{n+1}}$ implies $a_i = b_i$ for each $\abs{i} \leq n$.
+    \item $a_i = b_i$ for each $\abs{i} \leq n$ implies $d(a,b) \leq \frac{1}{2^{n-1}}$.
+  \end{enumerate}
+  \begin{proof}
+    (i) Proof by contradiction. Suppose there exists $\abs{j} \leq n$ such that $a_j \neq a_j$.
+    Then, 
+    \begin{align*}
+      d(a,b) &\geq \frac{1}{2^j} \frac{\abs{a_j - b_j}}{1 + \abs{a_j - b_j}}  \\
+      &\geq \frac{1}{2^j} \frac{1}{2}  \\
+      &= \frac{1}{2^{j+1}}.
+    \end{align*}
+    This contradicts our hypothesis.  \\
+    (ii) We have
+    \begin{align*}
+      d(a,b) &= \sum\limits_{i = -\infty}^{-(M+1)} \frac{1}{2^i} \frac{\abs{a_i - b_i}}{1 + \abs{a_i - b_i}}  +  \sum\limits_{i = M+1}^{\infty} \frac{1}{2^i} \frac{\abs{a_i - b_i}}{1 + \abs{a_i - b_i}}  \\
+      &= 2 \sum\limits_{i = M+1}^{\infty} \frac{1}{2^i} \frac{\abs{a_i - b_i}}{1 + \abs{a_i - b_i}}  \\
+      &\leq 2 \sum\limits_{i = M+1}^{\infty} \frac{1}{2^i} \cdot 1  \\
+      &= \sum\limits_{i = M+1}^{\infty} \frac{1}{2^{i-1}}   \\
+      &= \frac{1}{2^{i-1}}.
+    \end{align*}
+  \end{proof}
+\end{proposition}
 Other properties of $\sigma$ are also easy to see.
 \begin{proposition}
   ($\sigma$ is a homeomorphism)
@@ -118,14 +143,21 @@ Other properties of $\sigma$ are also easy to see.
   \end{enumerate}
   \begin{proof}
     (i)
-    For each $\delta > 0$, let $\epsilon = $.
+    Fix $\delta > 0$ and $a \in \Sigma$, and suppose that $\delta \geq \frac{1}{2^{n-3}}$ for some $n$.
+    We want to find an $\epsilon$ such that $b \in \oball{\epsilon}{a}$ implies $\sigma(b) \in \oball{\delta}{\sigma(a)}$.
+    Let $\epsilon = \frac{1}{2^{n+1}}$.
+    Then, by the lemma, $a_i = b_i$ for $\abs{i} \leq n$.
+    It follows that $\sigma(a_i) = \sigma(b_i)$ for $\abs{i} \leq n-1$.
+    By the lemma, we have $d(\sigma(a), \sigma(b)) \leq \frac{1}{2^{n-2}} \leq \delta$.  \\
+    (ii) For each $a \in \Sigma$, $\sigma^{-1}(a)$ is nonempty.  \\
+    (iii) This is trivial.
   \end{proof}
   \label{prop:symb-sigma-cont}
 \end{proposition}
 \begin{proposition}
 \end{proposition}
 \begin{proposition}
-\end{proposition}<++>
+\end{proposition}
 Note the following properies of $S$, the set of finite symbols.
 \begin{proposition}
   $S$ equipped with the absolute value metric is compact, totally disconnected, and perfect.
@@ -175,7 +207,20 @@ In this scheme, $\sigma$ corresponds to multiplication of a binary number by $2$
 
 As a consequence, ($D$, $H$) possesses any topological property of ($\Sigma$, $\sigma$), and vice versa.
 
-On a related note, the logistic map, tent map, and doubling maps are all conjugate to the \textit{one-sided shift}, the one-dimensional analogoue of the two-sided shift.
+On a related note, the logistic map, tent map, and doubling maps are all conjugate to the \textit{one-sided shift}, an analogoue of the two-sided shift for non-invertible maps (the logistic map is not one-to-one).
+
+\begin{theorem}
+  (Conley-Moser Condition)
+  Suppose $F$ satisfies the following two conditions.
+  \begin{enumerate}
+    \item $F(H_i) = V_i$ for each $1 \leq i \leq n$.
+          Moreover, $F$ maps the horizontal boundaries of $H_i$ to the horizontal boundaries of $V_i$, and the vertical boundaries of $H_i$ to the vertical boundaries of $V_i$.
+    \item If $H$ is a $\mu_h$-horizontal strip contained in $\bigcup_{i} H_i$, then $F^{-1}(H) \cap H_i$ is a $\mu_h$-horizontal strip for every $i$.
+          Moreover, $d(F^{-1}(H) \cap H_i) \leq \nu_h d(H)$ for some $0 < \nu_h < 1$.
+    \item The same condition for $\mu_v$-vertical strips.
+  \end{enumerate}
+  \label{thm:conley-moser}
+\end{theorem}
 
 \bibliographystyle{../../bibliography/pjgsm}
 \bibliography{../../bibliography/thesis}
