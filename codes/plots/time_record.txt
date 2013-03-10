@@ -1,0 +1,8 @@
+03/09-/10:
+  args:
+  dls = sp.linspace(0.1, 1, 10)
+  Rls = sp.linspace(1.25, 10, 10)
+  bound = 10**3
+  itrnum = 10**3
+  numballs = 128
+  python bound_test.py  19047.61s user 0.59s system 99% cpu 5:17:35.62 total
