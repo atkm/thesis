@@ -1,4 +1,4 @@
-\documentclass[12pt,twoside,draft]{book}
+\documentclass[12pt,twoside]{book}
 \usepackage{../../thesis}
 \graphicspath{ {../../images/} }
 
@@ -34,7 +34,31 @@ In this section, we consider the dynamcis of $H$ on the two horizontal rectangle
   H_1 &= \setst{(x,y)}{ 0 \leq x \leq 1, 1 - \frac{1}{\mu} \leq y \leq 1}.
 \end{align*}
 
-VISUALIZATION
+\begin{figure}[ht]
+  \centering
+    \includegraphics[width=0.45\textwidth]{horseshoe_v1}
+    \hspace{2mm}
+    \includegraphics[width=0.45\textwidth]{horseshoe_v2}
+    \vspace{2mm}
+    \includegraphics[width=0.45\textwidth]{horseshoe_v3}
+  \caption{
+    Iteration of the horseshoe map on vertical strips. Once, twice, and thrice.
+  }
+  \label{fig:horseshoe-vertical}
+\end{figure}
+
+\begin{figure}[ht]
+  \centering
+    \includegraphics[width=0.45\textwidth]{horseshoe_h1}
+    \hspace{2mm}
+    \includegraphics[width=0.45\textwidth]{horseshoe_h2}
+    \hspace{2mm}
+    \includegraphics[width=0.45\textwidth]{horseshoe_h3}
+  \caption{
+    Iteration of the horseshoe map on horizontal strips. Once, twice, and thrice.
+  }
+  \label{fig:horseshoe-horizontal}
+\end{figure}
 
 The \textit{invariant set} of the horseshoe map is a set $\Lambda$ such that $H(\Lambda) = \Lambda$.
 

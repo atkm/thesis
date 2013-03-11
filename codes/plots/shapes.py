@@ -425,6 +425,14 @@ def bounded(pts, bound):
             return False
     return True
 
+def max_norm(pts):
+    m = 0
+    for p in pts:
+        N = sp.linalg.norm(p)
+        if N > m:
+            m = N
+    return m
+
 def round_matrix(pts):
     m = []
     for arr in pts:
@@ -481,6 +489,24 @@ def IterateN(g, init, N, param):
 
     # Return a numpy array
     return result
+
+def bound_test(d, R, bound, itrnum, numballs):
+    #dls = sp.linspace(0.3, 0.7, 2)
+    #Rls = sp.linspace(10, 20, 3)
+    #bound = 10**2
+    #itrnum = 10**2
+    #numballs = 128
+    
+    sh = BasicShape('ray', d, numballs)
+    sh.billard_setup(R)
+    sh.billardN(itrnum)
+    result = bounded(sh.balls, bound)
+    if result:
+      print("BOUNDED.")
+    else:
+      print("NOT bounded.")
+
+
 
 " JUNK ??? "
 
@@ -542,4 +568,5 @@ def rayshape_old(self, A, d, n):
         C4.append((-pt[0] , -pt[1]))
  
     return sp.vstack((C1, C2, C3, C4)) 
+
  
