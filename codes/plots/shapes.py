@@ -219,6 +219,18 @@ class BasicShape:
         
         return sp.array(pts)
 
+    def circquad(self, A, n):
+        rad = sp.sqrt(A/sp.pi) # the radius 
+        base = sp.linspace(0, sp.pi/2, n+1)[:-1]
+        pts = []
+        for arg in base: 
+            x = rad*(sp.cos(arg))
+            y = rad*(sp.sin(arg))
+            pts.append((x,y))
+        
+        return sp.array(pts)
+
+
     # Shape proposed by Ray
     #e.g. BasicShape('ray', sp.pi, 10, 0.25)
     def rayshape(self, d, n):
@@ -235,6 +247,7 @@ class BasicShape:
             
         return sp.vstack((C1, C2, C3, C4)) 
 
+
     # set up the circle for playing billard
     # also figure out the slopes of the corners
     def billard_setup(self, R):
@@ -243,6 +256,13 @@ class BasicShape:
         area = sp.pi * R**2
         self.balls = self.circshape(area, self.resolution/4)
         self.corner_slopes()
+
+    # only setup balls for a quadrant
+    def billard_setup_quad(self, R):
+        area = sp.pi * R**2
+        self.balls = self.circquad(area, self.resolution/4)
+        self.corner_slopes()
+
 
     def corner_slopes(self):
         h = self.edge
@@ -430,6 +450,14 @@ def max_norm(pts):
     for p in pts:
         N = sp.linalg.norm(p)
         if N > m:
+            m = N
+    return m
+
+def min_norm(pts):
+    m = 100
+    for p in pts:
+        N = sp.linalg.norm(p)
+        if N < m:
             m = N
     return m
 
