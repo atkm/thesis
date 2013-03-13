@@ -220,8 +220,8 @@ However, we may draw an even stronger conclusion, that is, the points in $S$ are
 
 
 \begin{theorem}
-  Let $X$ be a compact metric space, and $F: X\to X$ be chaotic in Li-Yorke's sense.
-  If $G: Y\to Y$ is conjugate to $F$ i.e. $\phi \circ F = G \circ \phi$, where $\phi$ is a homeomorphism, then $G$ is chaotic.
+  Let $X$ be a metric space, and $F: X\to X$ be chaotic in Li-Yorke's sense.
+  If $G: Y\to Y$ is conjugate to $F$ i.e. $\phi \circ F = G \circ \phi$, where $\phi: X \to Y$ is a homeomorphism, then $G$ is chaotic.
   \begin{proof}
     Let $S \subseteq X$ be an uncountable set given by definition.
     $S$ contains no periodic points, and each pair $p,q \in S$ satisfies
@@ -230,9 +230,10 @@ However, we may draw an even stronger conclusion, that is, the points in $S$ are
     \end{equation*}
     and
     \begin{equation*}
-      \liminf\limits_{n \to \infty}\; \metric{\itr{F}{n}(p) , \itr{F}{n}(q)} = b.
+      \liminf\limits_{n \to \infty}\; \metric{\itr{F}{n}(p) , \itr{F}{n}(q)} = 0.
     \end{equation*}
     Let $T \ceq \phi(S) \subseteq Y$.
+    Let $b \ceq \limsup\limits_{n \to \infty}\; \metric{\itr{F}{n}(p) , \itr{F}{n}(q)} > 0$.
     Since $\phi$ is injective, $T$ is uncountable, and contains no periodic points (see Theorem~\ref{thm:conj-per}).
     We first prove
     \begin{equation*}
@@ -244,12 +245,11 @@ However, we may draw an even stronger conclusion, that is, the points in $S$ are
     \end{equation*}
 
     Fix $p,q \in S$.
-    Let $b \ceq \limsup\limits_{n \to \infty}\; \metric{\itr{F}{n}(p) , \itr{F}{n}(q)} > 0$.
     Since we have $\itr{F}{n} = \phi^{-1}\circ\itr{G}{n}\circ\phi$ by conjugacy,
     \begin{align*}
-      &\limsup\limits_{n \to \infty}\; \metric{\itr{F}{n}(p) , \itr{F}{n}(q)} \\
-      &= \limsup\limits_{n \to \infty}\; \metric{(\phi^{-1}\circ\itr{G}{n})(\phi(p)) , (\phi^{-1}\circ\itr{G}{n})(\phi(q))} \\
-      &= b.
+      &\liminf\limits_{n \to \infty}\; \metric{\itr{F}{n}(p) , \itr{F}{n}(q)} \\
+      &= \liminf\limits_{n \to \infty}\; \metric{(\phi^{-1}\circ\itr{G}{n})(\phi(p)) , (\phi^{-1}\circ\itr{G}{n})(\phi(q))} \\
+      &= 0.
     \end{align*}
   By continuity of $\phi$, for each $\delta > 0$ there exists $\epsilon>0$ such that 
   \begin{equation*}
@@ -288,11 +288,15 @@ However, we may draw an even stronger conclusion, that is, the points in $S$ are
   \begin{equation*}
     \lim\limits_{n \to \infty}\; d_{G_n} = 0.
   \end{equation*}
-  Then, for each $\delta$, there are infinitely many $n$ such that 
+  Then, for each $\delta$, there exists $N$ such that for each $n \geq N$,
   \begin{equation*}
     (\phi^{-1} \circ G^n)(\phi(p)) \in \oball{\delta}{(\phi^{-1} \circ G^n)(\phi(p))}.
   \end{equation*}
-  In particular, there is $0 < \delta_0 < b$.
+  In particular, we can take $0 < \delta_0 < b$ so that
+  \begin{equation*}
+    \limsup\limits_{n \to \infty}\; \metric{(\phi^{-1}\circ\itr{G}{n})(\phi(p)) , (\phi^{-1}\circ\itr{G}{n})(\phi(q))}
+  \end{equation*}
+  is less than $b$.
   This contradicts with the assumption that
   \begin{equation*}
     \limsup\limits_{n \to \infty}\; \metric{(\phi^{-1}\circ\itr{G}{n})(\phi(p)) , (\phi^{-1}\circ\itr{G}{n})(\phi(q))}
