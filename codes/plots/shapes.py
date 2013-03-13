@@ -285,6 +285,22 @@ class BasicShape:
             result.append(new)
         self.balls = sp.array(result)
 
+    # billard for doing sensitivity test
+    # modify the balls as well as return the new distance between two balls
+    def billard_mod(self):
+        # determine the limit tangent points of the first corner (bottom right)
+        result = []
+        for pt in self.balls:
+            # shoot the ball depending on the region.
+            region = self.get_region(pt)
+            new = self.shoot(pt,region)
+            result.append(new)
+        p1 = self.balls[0]
+        p2 = self.balls[1]
+        dist = sp.linalg.norm(p1-p2)
+        self.balls = sp.array(result)
+        return dist
+
 
     def billardN(self, N):
         for i in range(N):
