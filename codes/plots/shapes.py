@@ -394,7 +394,7 @@ class BasicShape:
     # for testing
     def draw_regions(self):
         h = self.edge
-        grid = sp.linspace(-2,2,100)
+        grid = sp.linspace(-4,4,100)
         # bottom right
         plt.plot(grid, (lambda x: (self.c1br * (x-h) - h))(grid))
         plt.plot(grid, (lambda x: (1/self.c1br * (x-h) - h))(grid))
