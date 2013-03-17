@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 
+# data parsing for bound test
 f = File.open('bound.orig', 'r')
 newf = File.open('bound_R_2-4.dat', 'w')
 lns = f.readlines()
