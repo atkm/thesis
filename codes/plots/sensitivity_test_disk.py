@@ -4,31 +4,38 @@ def sensitivity_test_disk(d, R, delta, bound, itrnum, ballnum):
     # d: The parameter for the inner circle
     # R: The radius of the outer circle
     # bound: what is the minimum distance that the 
-    # dist: the distance between the init and point2.
-    #       measured by angle.
     """
-    Sensitivity Test:
-        Do iterations of two point (nearby or not) under billard map.
+    Sensitivity Test for a Disk:
+        For each point do iterations of the point and a nearby point under billard map.
         Stop as soon as the metric of the two reaches the bound.
         Also record the distances between the two.
     """
     sh = BasicShape('ray', d, 256)
     sh.billard_setup_disk(R, delta, ballnum)
+    testpts = sh.balls # save the initial setup
+    result = []
     maxdist = 0
-    for i in range(itrnum):
-        nrm = sh.billard_mod()
-        if nrm > maxdist:
-            maxdist = nrm
-        if nrm > bound:
-            return True, maxdist
-    # otherwise, the system didn't show sensitive dependence on initial conditions.
-    return False, maxdist
+    eps = sp.finfo(float).eps
+    for b in sh.balls: # test sensitivity for each point
+        other = rotation(b, -eps) # the other point is a point obtained by clockwise rotation by epsilon
+        for i in range(itrnum):
+            nrm = sh.billard_mod()
+            if nrm > maxdist:
+                maxdist = nrm
+            if nrm > bound:
+                result.append(1)
+        # otherwise, the system didn't show sensitive dependence on initial conditions.
+        result.append(0)
+    result = sp.array(result)
+    result = sp.transpose(sp.vstack((testpts[:,0],testpts[:,1],result)))
+    return result
 
 
 def run_test():
     R = 10
     dls = [0.5, 1.0, 1.5, 2.0]
-    delta = 0.05
+    delta = 0.02
+    ballnum = 200
     eps = sp.finfo(float).eps
     bound = 1
     numitr=10000
@@ -52,15 +59,11 @@ def run_test():
             f.write('d: ')
             f.write(str(d))
             f.write(" ")
-            p1 = (R*sp.cos(arg), R*sp.sin(arg))
-            result, maxdist = sensitivity_test(d, R, bound, numitr, p1, dist)
-            if result:
-              f.write('Sensitive ')
-            else:
-              f.write('NotSensitive ')
-            f.write(str(maxdist))
-            f.write("\n")
-    
+            result = sensitivity_test_disk(d, R, delta, bound, itrnum, ballnum)
+            for p in result:
+                f.write(p)
+                f.write("\n")
+   
 
 # MAIN
 #run_test()
