@@ -263,6 +263,23 @@ class BasicShape:
         self.balls = self.circquad(area, self.resolution/4)
         self.corner_slopes()
 
+    # setup balls filling a disk
+    def billard_setup_disk(self, R, d, N):
+        # d = increment of radius
+        # N = number of balls for the unit circle
+        rads = sp.linspace(1, R, (R-1)/d)
+        pts = []
+        for r in rads:
+            num = r * N
+            base = sp.linspace(0, (2-sp.finfo(float).eps)*sp.pi, num) # split up the circumference to num pieces
+            for arg in base: 
+                x = r*(sp.cos(arg))
+                y = r*(sp.sin(arg))
+                pts.append((x,y))
+        
+        self.balls = sp.array(pts)
+        self.corner_slopes()
+
 
     def corner_slopes(self):
         h = self.edge

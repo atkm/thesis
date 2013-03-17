@@ -1,26 +1,26 @@
 # R script to plot the bound.dat
 
 ## Make a data frame from two data set
-#larged = read.table('bound_larged.dat')
-#smalld = read.table('bound_smalld.dat')
-#bd = merge(larged, smalld, all=TRUE) # merge the two tables
+larged = read.table('bound_larged.dat')
+smalld = read.table('bound_smalld.dat')
+bd = merge(larged, smalld, all=TRUE) # merge the two tables
 
 # Plot max and min norm for R = 1, ... , 5
 #bd = read.table('bound_R_2-4.dat')
-#d <- bd[,1]
-#R <- bd[,2]
-#Bound <- bd[,3]
-#library('rgl')
-#rgl.open()
-#bg3d("lightcyan")
-#plot3d(d, Bound, R, size=0.3, type='s', col='darkred') # the z-axis is the second argument in R
+d <- bd[,1]
+R <- bd[,2]
+Bound <- bd[,3]
+library('rgl')
+rgl.open()
+bg3d("lightcyan")
+plot3d(d, Bound, R, size=0.3, type='s', col='darkred') # the z-axis is the second argument in R
 
 # Plot max and min norm for R = 2 (or 4)
-bd = read.table('bound_R2.dat', header=TRUE)
-library('ggplot2')
-print(
-ggplot(bd, aes(x=d, y=Bound)) + geom_point(shape=10, color='darkred', size=0.7)
-)
+#bd = read.table('bound_R4.dat', header=TRUE)
+#library('ggplot2')
+#print(
+#ggplot(bd, aes(x=d, y=Bound)) + geom_point(shape=10, color='darkred', size=0.7)
+#)
 
 
 ### Linear Regression for slices of data sets
