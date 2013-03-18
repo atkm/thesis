@@ -1,6 +1,6 @@
 from shapes import *
 
-def sensitivity_test_disk(d, R, delta, bound, itrnum, ballnum):
+def sensitivity_test_disk(d, R, delta, bound, numitr, ballnum):
     # d: The parameter for the inner circle
     # R: The radius of the outer circle
     # bound: what is the minimum distance that the 
@@ -18,7 +18,7 @@ def sensitivity_test_disk(d, R, delta, bound, itrnum, ballnum):
     eps = sp.finfo(float).eps
     for b in sh.balls: # test sensitivity for each point
         other = rotation(b, -eps) # the other point is a point obtained by clockwise rotation by epsilon
-        for i in range(itrnum):
+        for i in range(numitr):
             nrm = sh.billard_mod()
             if nrm > maxdist:
                 maxdist = nrm
@@ -32,14 +32,21 @@ def sensitivity_test_disk(d, R, delta, bound, itrnum, ballnum):
 
 
 def run_test():
-    R = 10
-    dls = [0.5, 1.0, 1.5, 2.0]
-    delta = 0.02
-    ballnum = 200
+    #R = 10
+    #dls = [0.5, 1.0, 1.5, 2.0]
+    #delta = 0.02
+    #ballnum = 200
+    #eps = sp.finfo(float).eps
+    #bound = 1
+    #numitr=10000
+    R = 4
+    dls = [0.5, 1.0]
+    delta = 0.1
+    ballnum = 10
     eps = sp.finfo(float).eps
     bound = 1
-    numitr=10000
-       
+    numitr=200
+
     f = open('sensitivity_test_disk_result.txt', 'w')
     f.write('R: ')
     f.write(str(R))
@@ -55,16 +62,15 @@ def run_test():
     f.write("\n\n")
     
     for d in dls:
-        for arg in argls:
-            f.write('d: ')
-            f.write(str(d))
-            f.write(" ")
-            result = sensitivity_test_disk(d, R, delta, bound, itrnum, ballnum)
-            for p in result:
-                f.write(p)
-                f.write("\n")
+        f.write('d: ')
+        f.write(str(d))
+        f.write(" ")
+        result = sensitivity_test_disk(d, R, delta, bound, numitr, ballnum)
+        for p in result:
+            f.write(p)
+            f.write("\n")
    
 
 # MAIN
-#run_test()
+run_test()
     
