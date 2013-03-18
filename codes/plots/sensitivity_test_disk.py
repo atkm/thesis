@@ -1,4 +1,5 @@
 from shapes import *
+import pprocess as pproc
 
 def sensitivity_test_disk(d, R, delta, bound, numitr, ballnum):
     # d: The parameter for the inner circle
@@ -17,6 +18,31 @@ def sensitivity_test_disk(d, R, delta, bound, numitr, ballnum):
     maxdist = 0
     eps = sp.finfo(float).eps
     for b in sh.balls: # test sensitivity for each point
+        other = rotation(b, -eps) # the other point is a point obtained by clockwise rotation by epsilon
+        for i in range(numitr):
+            nrm = sh.billard_mod()
+            if nrm > maxdist:
+                maxdist = nrm
+            if nrm > bound:
+                result.append(1)
+        # otherwise, the system didn't show sensitive dependence on initial conditions.
+        result.append(0)
+    result = sp.array(result)
+    result = sp.transpose(sp.vstack((testpts[:,0],testpts[:,1],result)))
+    return result
+
+# parallel version of sensitivity test on a disk
+def p_sensitivity_test(d, R, delta, bound, numitr, ballnum):
+    sh = BasicShape('ray', d, 256)
+    sh.billard_setup_disk(R, delta, ballnum)
+    testpts = sh.balls # save the initial setup
+    result = pproc.Map(limit=limit)
+    p_billard = result.manage(pproc.MakeParallel(p_sensitivity_test_helper))
+    maxdist = 0
+    eps = sp.finfo(float).eps
+    for b in sh.balls: # test sensitivity for each point
+
+def p_sensitivity_test_helper(ball, d, R, delta, bound, numitr, ballnum):
         other = rotation(b, -eps) # the other point is a point obtained by clockwise rotation by epsilon
         for i in range(numitr):
             nrm = sh.billard_mod()
