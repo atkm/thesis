@@ -1,3 +1,4 @@
+
 from shapes import *
 
 def sensitivity_test_disk(d, R, delta, bound, numitr, ballnum):
@@ -16,7 +17,7 @@ def sensitivity_test_disk(d, R, delta, bound, numitr, ballnum):
     result = []
     maxdist = 0
     eps = sp.finfo(float).eps
-    for b in sh.balls: # test sensitivity for each point
+    for b in sh.balls: # test sensitivity for each point # *PARALLELIZE THIS*
         other = rotation(b, -eps) # the other point is a point obtained by clockwise rotation by epsilon
         for i in range(numitr):
             nrm = sh.billard_mod()
@@ -24,28 +25,31 @@ def sensitivity_test_disk(d, R, delta, bound, numitr, ballnum):
                 maxdist = nrm
             if nrm > bound:
                 result.append(1)
+                break
         # otherwise, the system didn't show sensitive dependence on initial conditions.
-        result.append(0)
+        if not(nrm > bound):
+            result.append(0)
+
     result = sp.array(result)
     result = sp.transpose(sp.vstack((testpts[:,0],testpts[:,1],result)))
     return result
 
 
 def run_test():
-    #R = 10
-    #dls = [0.5, 1.0, 1.5, 2.0]
-    #delta = 0.02
-    #ballnum = 200
-    #eps = sp.finfo(float).eps
-    #bound = 1
-    #numitr=10000
-    R = 4
-    dls = [0.5, 1.0]
-    delta = 0.1
-    ballnum = 10
+    R = 10
+    dls = [0.5, 1.0, 1.5, 2.0]
+    delta = 0.02
+    ballnum = 200
     eps = sp.finfo(float).eps
     bound = 1
-    numitr=200
+    numitr=10000
+    #R = 2
+    #dls = [0.5]
+    #delta = 0.5
+    #ballnum = 4
+    #eps = sp.finfo(float).eps
+    #bound = 1
+    #numitr=200
 
     f = open('sensitivity_test_disk_result.txt', 'w')
     f.write('R: ')
@@ -64,10 +68,10 @@ def run_test():
     for d in dls:
         f.write('d: ')
         f.write(str(d))
-        f.write(" ")
+        f.write("\n")
         result = sensitivity_test_disk(d, R, delta, bound, numitr, ballnum)
         for p in result:
-            f.write(p)
+            f.write(str(p))
             f.write("\n")
    
 
