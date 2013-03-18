@@ -73,7 +73,7 @@ def run_test(parallel=False):
     R = 4
     dls = [0.5,1.0]
     delta = 0.2
-    ballnum = 4
+    ballnum = 6
     eps = sp.finfo(float).eps
     bound = 1
     numitr=200
@@ -106,12 +106,14 @@ def run_test(parallel=False):
    
 
 # MAIN
-t = time.time()
-run_test(parallel=True)
-print("Parallel: ")
-print(str(time.time() - t))
-t = time.time()
-run_test()
-print("Not parallel: ")
-print(str(time.time() - t))
+#t = time.time()
+#run_test(parallel=True)
+#print("Parallel: ")
+#print(str(time.time() - t))
+#t = time.time()
+#run_test()
+#print("Not parallel: ")
+#print(str(time.time() - t))
    
+# run it in parallel
+run_test(parallel=True)
