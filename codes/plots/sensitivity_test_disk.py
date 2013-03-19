@@ -1,4 +1,8 @@
 from shapes import *
+import pprocess as pproc
+import time
+
+eps = sp.finfo(float).eps
 
 def sensitivity_test_disk(d, R, delta, bound, numitr, ballnum):
     # d: The parameter for the inner circle
@@ -24,14 +28,41 @@ def sensitivity_test_disk(d, R, delta, bound, numitr, ballnum):
                 maxdist = nrm
             if nrm > bound:
                 result.append(1)
+                break
         # otherwise, the system didn't show sensitive dependence on initial conditions.
-        result.append(0)
+        if not(nrm > bound):
+            result.append(0)
+
     result = sp.array(result)
     result = sp.transpose(sp.vstack((testpts[:,0],testpts[:,1],result)))
     return result
 
+# parallel version of sensitivity test on a disk
+def p_sensitivity_test(d, R, delta, bound, numitr, ballnum):
+    sh = BasicShape('ray', d, 256)
+    sh.billard_setup_disk(R, delta, ballnum)
+    testpts = sh.balls # save the initial setup
+    result = pproc.Map(limit=10, reuse=1)
+    p_billard = result.manage(pproc.MakeReusable(p_sensitivity_test_helper))
+    for b in sh.balls: # test sensitivity for each point
+        p_billard(sh, b, d, delta, bound, numitr)
+    
+    return result
 
-def run_test():
+def p_sensitivity_test_helper(shape, ball, d, delta, bound, numitr):
+        other = rotation(ball, -eps) # the other point is a point obtained by clockwise rotation by epsilon
+        maxdist = 0
+        for i in range(numitr):
+            nrm = shape.billard_mod()
+            if nrm > maxdist:
+                maxdist = nrm
+            if nrm > bound:
+                return 1
+        # otherwise, the system didn't show sensitive dependence on initial conditions.
+        return 0
+
+
+def run_test(parallel=False):
     #R = 10
     #dls = [0.5, 1.0, 1.5, 2.0]
     #delta = 0.02
@@ -40,9 +71,9 @@ def run_test():
     #bound = 1
     #numitr=10000
     R = 4
-    dls = [0.5, 1.0]
-    delta = 0.1
-    ballnum = 10
+    dls = [0.5,1.0]
+    delta = 0.2
+    ballnum = 6
     eps = sp.finfo(float).eps
     bound = 1
     numitr=200
@@ -64,13 +95,25 @@ def run_test():
     for d in dls:
         f.write('d: ')
         f.write(str(d))
-        f.write(" ")
-        result = sensitivity_test_disk(d, R, delta, bound, numitr, ballnum)
+        f.write("\n")
+        if parallel:
+            result = p_sensitivity_test(d, R, delta, bound, numitr, ballnum)
+        else:
+            result = sensitivity_test_disk(d, R, delta, bound, numitr, ballnum)
         for p in result:
-            f.write(p)
+            f.write(str(p))
             f.write("\n")
    
 
 # MAIN
-run_test()
-    
+#t = time.time()
+#run_test(parallel=True)
+#print("Parallel: ")
+#print(str(time.time() - t))
+#t = time.time()
+#run_test()
+#print("Not parallel: ")
+#print(str(time.time() - t))
+   
+# run it in parallel
+run_test(parallel=True)
