@@ -7,9 +7,9 @@
 \chapter{Devaney's Definition}
 \label{chap:devaney}
 \section{Chaos in Devaney's Sense}
-\citet{devaney} defines chaos in topological dynamics using three properties.
-We first state the definition, and 
-Throughout this chapter, $X$ is a compact metric space, and $d$ is the metric associated with the space.
+Throughout this chapter, $X$ is a metric space, and $d$ is the metric associated with the space, $F$ is a continuous map from $X$ to $X$.
+\citet{devaney} defines chaos using three properties.
+We first state the definition of chaos, then define individual terms.
 \begin{definition}
   (Chaos in Devaney's sense) 
   A continuous map $F: X\rar X$ is said to be chaotic on $X$ if
@@ -45,31 +45,46 @@ Throughout this chapter, $X$ is a compact metric space, and $d$ is the metric as
   \index{sensitive dependence on initial conditions}
 \end{definition}
 %
-\citet[p.50]{devaney}
+\noindent Note that for sensitive dependence on initial conditions we do \textit{not} require \textit{all} points near $x$ need eventually separate from $x$ under iteration.
+The existence of one such point in every neighborhood of $x$ suffices.
+
+Devaney states that the motivation for this definition is as follows \citep[p.50]{devaney}:
 \begin{quotation}
   [A] chaotic map possesses three ingredients:
   unpredictability, indecomposability, and an element of regularity.
   A chaotic system is unpredictable because of the sensitive dependence on initial conditions.
   It cannot be broken down or decomposed into two subsystems (two invariant open subsets) which do not interact under $f$ because of topological transitivity.
     And, in the midst of this random behavior, we nevertheless have an element of regularity, namely the periodic points which are dense.
-  \end{quotation}
-  \noindent Note that for sensitive dependence on initial conditions we do \textit{not} require \textit{all} points near $x$ need eventually separate from $x$ under iteration.
-  The existence of one such point in every neighborhood of $x$ suffices.
-  We give some examples to illustrate the definition.
+\end{quotation}
+While topological transitivity and sensitive dependence on initial conditions are natural requirements for chaotic dynamics, what Devaney says in the last sentence of the quote is noteworthy.
+In fact, the definition of chaos by Wiggins simply omits this condition.
+Thus, Devaney's definition is trivially stronger than Wiggins's definition.
+\begin{definition}
+  (Chaos in Wiggins's sense)
+  A continuous map $F: X\rar X$ is said to be chaotic on $X$ if
+  \begin{enumerate}
+    \item $F$ is \textit{topologically transitive}.
+    \item $F$ has \textit{sensitive dependence on initial conditions}.
+  \end{enumerate}
+  \index{definition of chaos!Wiggins}
+\end{definition}
+
+We give some examples to illustrate the two definitions.
   \begin{example}
     (Devaney, 1987)
-    An irrational rotation of the circle $S^1$ is topologically transitive, but not sensitive to initial conditions.
+    An irrational rotation of the unit circle is topologically transitive, but not sensitive to initial conditions.
     All points remain the same distance apart after iteration.
   \end{example}
   \begin{example}
     (Devaney, 1987)
-    The doubling map on a $S^1$ is chaotic.
+    The doubling map on the unit circle is chaotic in Devaney's sense.
   \end{example}
   \begin{example}
-    The logistic map $L_\mu$ is chaotic on its attractor when $\mu > 2 + \sqrt{5}$.
+    The logistic map $L_\mu$ (we defined this mapping in the introduction) is chaotic on its attractor when $\mu > 2 + \sqrt{5}$.
+    Note that we cannot say that $L_\mu$ is chaotic on $I \equiv [0,1]$, since it does not satisfy the second condition, topological transitivity.
   \end{example}
   \begin{example}
-    (Rotation by magnitude is chaotic)
+    (Rotation by magnitude is chaotic \citep{martelli})
     Let $D = \set{x \in \R^2: \norm{x} \leq 2}$, and $C_r = \set{x \in \R^2: \norm{x} = r}$.
     Define $F: D \to D$, a rotation in $C_r$, by
     \begin{equation*}
@@ -92,6 +107,7 @@ Throughout this chapter, $X$ is a compact metric space, and $d$ is the metric as
   \end{example}
 
   \begin{example}
+    \citep{martelliarticle}
     Let $D \subseteq \R^2$ a closed disk centered at the origin with radius 1.
     Let $F: D \to D$ be defined as
     \begin{equation*}
@@ -100,10 +116,15 @@ Throughout this chapter, $X$ is a compact metric space, and $d$ is the metric as
     The origin is the only fixed point.
     $F$ does not have a periodic orbit of period greater than 1.
     Hence, the periodic points of $F$ is not dense in $D$ so that $F$ is not chaotic in the sense of Devaney.
+    However, $F$ is chaotic in the sense of Wiggins.
+    This example raises the question of what we really mean by the term ``chaotic.''
+  \end{example}
+  \begin{example}
+    (Twist Map \citep{wiggins})
   \end{example}
 
-  \section{Tidying Up the Definition}
-  \citet{banks} showed that sensitive dependence on initial conditions can be derived from transivity and dense periodic orbits property if the mapping is continuous and $X$ is a compact, invariant set. 
+\section{Dense Periodic Orbits and Topological Transitivity Implies Sensitivity}
+\citet{silverman} (and later \citet{banks}) showed that sensitive dependence on initial conditions is derived from transivity and dense periodic orbits property if the mapping is continuous and $X$ is a compact, invariant set. 
 
   \begin{theorem}
     (Topological Transitivity and Dense Periodic Points Imply Sensitive Dependence on Initial Conditions)
@@ -211,11 +232,13 @@ Throughout this chapter, $X$ is a compact metric space, and $d$ is the metric as
      must hold.
   \end{proof}
 
-  Furthermore, a continuous function on an interval, topological transitivity implies the other two (Vellekoop-Berglund, 1994).
-  In general, dense periodic orbit and sensitivity does not imple transitivity (Assaf-Gadbois 1992).
-  A system is chaotic in $X$ in the sense of Devaney if and only if for every pair of open sets in $X$ there exists a periodic orbit which visits both sets (Touhey, 1997).
+   Furthermore, a continuous function on a compact interval, topological transitivity implies the other two \citep{silverman}.
+   In general, dense periodic orbit and sensitivity does not imply transitivity (Assaf-Gadbois 1992).
+  %A system is chaotic in $X$ in the sense of Devaney if and only if for every pair of open sets in $X$ there exists a periodic orbit which visits both sets (Touhey, 1997).
 
-  Theorems concerning conjugacy.
+  A nice property of chaos in Devaney's sense is that all conditions are topological invariance, that is, the properties are preserved under conjugation by a continuous mapping.
+  We show that the dense periodic orbits as well as topological transitivity are topological invariants.
+  It follows that sensitive dependence on initial conditions is also a topological invariance.
   \begin{theorem}
     (Transitivity and Conjugacy) 
     Let $F: X \to X$ and $G: Y \to Y$ be continuous functions, and $\phi: X \to Y$ be a continuous, surjective map.
@@ -276,7 +299,7 @@ Throughout this chapter, $X$ is a compact metric space, and $d$ is the metric as
       Then, by Theorem~\ref{thm:conj-dense}, $\mathrm{Per}(G)$ is a dense subset of $Y$.
     \end{proof}
 \end{corollary}
-Also, notice that
+We also have the following as a corollary.
 \begin{corollary}
   Suppose that $G$ is semi-conjugate to $F$.
   If $F$ is sensitive to initial conditions, then $G$ is sensitive to initial conditions.
