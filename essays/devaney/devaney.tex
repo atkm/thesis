@@ -128,8 +128,8 @@ We give some examples to illustrate the two definitions.
     (Twist Map \citep{wiggins})
   \end{example}
 
-\section{Dense Periodic Orbits and Topological Transitivity Implies Sensitivity}
-\citet{silverman} (and later \citet{banks}) showed that sensitive dependence on initial conditions is derived from transivity and dense periodic orbits property if the mapping is continuous and $X$ is a compact (?), invariant set. 
+\section{Redundancy Of The Definition}
+\citet{silverman} (and later \citet{banks}) showed that sensitive dependence on initial conditions is a necessary condition of transivity and dense periodic orbits property.
 From now on, we can regard dense periodic orbits and topological transitivity as sufficient conditions for sensitive dependence on initial conditions.
 
 \begin{theorem}
@@ -140,7 +140,7 @@ From now on, we can regard dense periodic orbits and topological transitivity as
   \begin{equation*}
     \metric{\itr{F}{n}(x),\itr{F}{n}(y)} > \epsilon.
   \end{equation*}
-  \label{thm:banks}
+  \label{thm:silverman}
 \end{theorem}
 First, we prove a lemma, which says two distinct periodic orbits cannot intersect.
 \begin{lemma}
@@ -171,7 +171,7 @@ First, we prove a lemma, which says two distinct periodic orbits cannot intersec
   \end{proof}
 \end{lemma}
   %
-\begin{proof}[Proof of \ref{thm:banks}]
+\begin{proof}[Proof of \ref{thm:silverman}]
   Let $x$ be any point of $X$ and $J$ any open set containing $x$.
   Since the periodic points of $f$ are dense (in $X$), we may introduce a periodic point
   $q$ of $f$ in $U$ defined as
@@ -254,17 +254,15 @@ We obtain a related result when we restrict our space to a compact interval, top
 A nice property of chaos in Devaney's sense is that all conditions are topological invariance, that is, the properties are preserved under conjugation by a continuous mapping.
 Since the properties of our interest are global properties of a space, we also require that the mapping be 
 \begin{definition}
-    We say that $G$ is \textit{semi-conjugate} to $F$, if $\phi\circ F = G\circ\phi$, where $\phi$ is continuous and surjective.
+    We say that $G$ is \textit{semi-conjugate} to $F$ (by $\phi$), if there exists continuous and surjective mapping $\phi$ such that $\phi\circ F = G\circ\phi$.
+    Also, we say that $G$ is \textit{conjugate} to $F$ if $G$ is semi-conjugate to $F$ and vice versa (i.e. $\phi$ is a homeomorphism).
 \end{definition}
-%\noindent\textit{Remark:} If $\phi$ were homeomorphism (i.e. $F$ is topologically conjugate to $G$), then $G$ is semi-conjugate to $F$, and at the same time, $F$ is semi-conjugate to $G$.
-%  For instance, if $G$ is topologically conjugate to $F$, then $G$ is transitive if and only if $F$ is transitive.
 We show that the dense periodic orbits and topological transitivity are topological invariants.
 It follows that sensitive dependence on initial conditions is also a topological invariance.
-We 
   \begin{theorem}
     (Transitivity and Conjugacy) 
-    Let $F: X \to X$ and $G: Y \to Y$ be continuous functions, and $\phi: X \to Y$ be a continuous, surjective map.
-    Suppose that $G \compose \phi = \phi \compose F$.
+    Let $F: X \to X$ and $G: Y \to Y$ be continuous functions.
+    Suppose that $G$ is semi-conjugate to $F$.
     If $F$ is transitive, then $G$ is transitive.
     \label{thm:conj-trans}
     \begin{proof}
@@ -282,7 +280,9 @@ We
       \end{equation*}
       \end{proof}
   \end{theorem}
-  \begin{theorem}
+%%%
+  We prove two lemmas, from which the theorem of our interest immediately follows.
+  \begin{lemma}
     (Dense Set and Conjugacy) 
     Let $\phi$ be a continuous and surjective mapping.
     If $D$ is dense in $X$, then $\phi(D)$ is dense in $Y$.
@@ -294,18 +294,17 @@ We
       The intersection $B \cap D$ is nonempty, because $D$ is dense in $Y$.
       For each $y \in B \cap D$, we have $\phi(y) \in A \cap \phi(D)$.
     \end{proof}
-  \end{theorem}
-  \begin{theorem}
+  \end{lemma}
+  \begin{lemma}
     (Period Points and Conjugacy)
-    Suppose that $G \compose \phi = \phi \compose F$, where $\phi$ is continuous and surjective mapping.
+    Suppose $G$ is semi-conjugate to $F$.
     If $p$ is a $n$-periodic point of $F$, then $\phi(p)$ is a $n$-periodic point of $G$.
     \label{thm:conj-per}
     \begin{proof}
       $\itr{F}{n}(p) = p$ implies that $\itr{G}{n}(\phi(p)) = \phi(\itr{F}{n}(p)) = \phi(p)$.
     \end{proof}
-  \end{theorem}
-
-\begin{corollary}
+  \end{lemma}
+\begin{theorem}
     Suppose that $G$ is semi-conjugate to $F$.
     If $\mathrm{Per}(F)$ is dense in $X$, then $\mathrm{Per}(G)$ is dense in $Y$.
     \label{cor:conj-dense-per}
@@ -313,14 +312,14 @@ We
       It follows from Theorem~\ref{thm:conj-per} that $\phi(\mathrm{Per}(F)) \subseteq \mathrm{Per}(G)$.
       Then, by Theorem~\ref{thm:conj-dense}, $\mathrm{Per}(G)$ is a dense subset of $Y$.
     \end{proof}
-\end{corollary}
-We also have the following as a corollary.
+\end{theorem}
+We also have the following important result as a corollary.
 \begin{corollary}
   Suppose that $G$ is semi-conjugate to $F$.
   If $F$ is sensitive to initial conditions, then $G$ is sensitive to initial conditions.
   \label{cor:conj-sdic}
   \begin{proof}
-  This follows from Theorem~\ref{thm:banks}, Theorem~\ref{thm:conj-trans}, and Theorem~\ref{thm:conj-dense}.
+  This follows from Theorem~\ref{thm:silverman}, Theorem~\ref{thm:conj-trans}, and Theorem~\ref{thm:conj-dense}.
   \end{proof}
 \end{corollary}
 
