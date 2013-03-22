@@ -45,20 +45,25 @@ We first state the definition of chaos, then define individual terms.
   \index{sensitive dependence on initial conditions}
 \end{definition}
 %
-\noindent Note that for sensitive dependence on initial conditions we do \textit{not} require \textit{all} points near $x$ need eventually separate from $x$ under iteration.
+\begin{remark}
+  Note that sensitive dependence on initial conditions does \textit{not} mean that \textit{all} points near $x$ need eventually separate from $x$ under iteration.
 The existence of one such point in every neighborhood of $x$ suffices.
+Therefore, if there were an isolated point in the space, the dynamical system cannot be sensitive to initial conditions.
+\end{remark}
 
-Devaney states that the motivation for this definition is as follows \citep[p.50]{devaney}:
+Devaney motivates his definition as follows \citep[p.50]{devaney}:
 \begin{quotation}
   [A] chaotic map possesses three ingredients:
   unpredictability, indecomposability, and an element of regularity.
   A chaotic system is unpredictable because of the sensitive dependence on initial conditions.
   It cannot be broken down or decomposed into two subsystems (two invariant open subsets) which do not interact under $f$ because of topological transitivity.
-    And, in the midst of this random behavior, we nevertheless have an element of regularity, namely the periodic points which are dense.
+  And, in the midst of this random behavior, we nevertheless have an element of regularity, namely the periodic points which are dense.
 \end{quotation}
-While topological transitivity and sensitive dependence on initial conditions are natural requirements for chaotic dynamics, what Devaney says in the last sentence of the quote is noteworthy.
-In fact, the definition of chaos by Wiggins simply omits this condition.
-Thus, Devaney's definition is trivially stronger than Wiggins's definition.
+While topological transitivity and sensitive dependence on initial conditions are natural requirements for chaotic dynamics, the last sentence about periodic orbits is noteworthy.
+As we will see later in the examples, classical examples of chaotic systems possess dense periodic orbits.
+Nevertheless, whether dense periodic orbits should be included in the definition of chaotic dynamical system should be considered with care.
+In fact, some authors simply omit this condition.
+We attribute this version of definition to Wiggins.
 \begin{definition}
   (Chaos in Wiggins's sense)
   A continuous map $F: X\rar X$ is said to be chaotic on $X$ if
@@ -105,9 +110,9 @@ We give some examples to illustrate the two definitions.
       \norm{x_0 - y_0} < d \quad\mbox{and}\quad \norm{y_n - x_n} = \paren*{\frac{\pi}{n}}^2 + \pi^2 > 2 > r_0.
     \end{equation*}
   \end{example}
-
+  %%%
   \begin{example}
-    \citep{martelliarticle}
+    We give this dynamical system as an example of a system that is topologically transitive and sensitive to initial conditions, but does not have dense periodic orbits \citep{martelli}.
     Let $D \subseteq \R^2$ a closed disk centered at the origin with radius 1.
     Let $F: D \to D$ be defined as
     \begin{equation*}
@@ -124,29 +129,28 @@ We give some examples to illustrate the two definitions.
   \end{example}
 
 \section{Dense Periodic Orbits and Topological Transitivity Implies Sensitivity}
-\citet{silverman} (and later \citet{banks}) showed that sensitive dependence on initial conditions is derived from transivity and dense periodic orbits property if the mapping is continuous and $X$ is a compact, invariant set. 
+\citet{silverman} (and later \citet{banks}) showed that sensitive dependence on initial conditions is derived from transivity and dense periodic orbits property if the mapping is continuous and $X$ is a compact (?), invariant set. 
+From now on, we can regard dense periodic orbits and topological transitivity as sufficient conditions for sensitive dependence on initial conditions.
 
-  \begin{theorem}
-    (Topological Transitivity and Dense Periodic Points Imply Sensitive Dependence on Initial Conditions)
-    Let $F: X\rar X$ be a chaotic transformation. Then there is an $\epsilon > 0$ such that
-    for any $x\in X$ and any open set $J$ containing at least $x$ and another point, there is
-    a point $y\in J$ and $n\in \N$ with
-    \begin{equation*}
-      \metric{\itr{F}{n}(x),\itr{F}{n}(y)} > \epsilon.
-    \end{equation*}
-    \label{thm:banks}
-  \end{theorem}
-  First, we shall prove a lemma that is essential to the proof of the theorem.
-  Two distincy periodic orbits cannot intersect.
-  This observation results in the following lemma.
-  \begin{lemma}
-    Let $F: X\rar X$ be a mapping with (at least) two distinct periodic orbits.
-    Then there is a $c > 0$ such that for any $x\in X$ there exists a periodic
-    point $p$ such that for each $k$
-    \begin{equation*}
-      \metric{x, \itr{F}{k}(p)} > c.
-    \end{equation*}
-    \label{lem:dev1}
+\begin{theorem}
+  (Topological Transitivity and Dense Periodic Points Imply Sensitive Dependence on Initial Conditions)
+  Let $F: X\rar X$ be a chaotic transformation. Then there is an $\epsilon > 0$ such that
+  for any $x\in X$ and any open set $J$ containing at least $x$ and another point, there is
+  a point $y\in J$ and $n\in \N$ with
+  \begin{equation*}
+    \metric{\itr{F}{n}(x),\itr{F}{n}(y)} > \epsilon.
+  \end{equation*}
+  \label{thm:banks}
+\end{theorem}
+First, we prove a lemma, which says two distinct periodic orbits cannot intersect.
+\begin{lemma}
+  Let $F: X\rar X$ be a mapping with (at least) two distinct periodic orbits.
+  Then there is a $c > 0$ such that for any $x\in X$ there exists a periodic
+  point $p$ such that for each $k$
+  \begin{equation*}
+    \metric{x, \itr{F}{k}(p)} > c.
+  \end{equation*}
+  \label{lem:dev1}
   \begin{proof}[Proof of the lemma]
     Let $r$ and $s$ be periodic points with distinct orbits. For each $k$ and $l$ we have
     \begin{equation*}
@@ -158,87 +162,105 @@ We give some examples to illustrate the two definitions.
       2c < \metric{\itr{F}{k}(r),\itr{F}{l}(s)} \leq \metric{\itr{F}{k}(r),x} + \metric{x,\itr{F}{l}(s)}
     \end{equation*}
     for all $k$ and $l$.
-    Now suppose that $\metric{\itr{F}{k}(r),x} \leq c$ and $\metric{x,\itr{F}{l}(s)} \leq c$. The supposition
-    violates the inequality just derived. Thus 
+    We cannot have $\metric{\itr{F}{k}(r),x} \leq c$ and $\metric{x,\itr{F}{l}(s)} \leq c$, since it violates the inequality just derived.
+    Thus,
     \begin{equation*}
       \metric{\itr{F}{k}(r),x} > c \mbox{ or } \metric{x,\itr{F}{l}(s)} > c
     \end{equation*}
     must hold.
   \end{proof}
-  \end{lemma}
+\end{lemma}
   %
-  \begin{proof}[Proof of \ref{thm:banks}]
-    Let $x$ be any point of $X$ and $J$ any open set containing $x$.
-    Since the periodic points of $f$ are dense (in $X$), we may introduce a periodic point
-    $q$ of $f$ in $U$ defined as
-    \begin{equation*}
-      U \ceq J\cap \oball{\epsilon}{x}.
-    \end{equation*}
-    Let $n$ be the period of $q$.
-    Apply Lemma~\ref{lem:dev1} to obtain a periodic orbit $O(p)$ and a constant $c > 0$ such that $\metric{x, O(p)} > c$.
-    Let $\epsilon \ceq c/4$ so that $\metric{x, O(p)} > 4\epsilon$.
-    Define
-    \begin{equation*}
-      W_i := \oball{\epsilon}{\itr{F}{i}(p)} \quad\text{ and }\quad V := \bigcap\limits_{i = 1}^{n} \itr{F}{-i}(W_i).
-    \end{equation*}
-    Since $\itr{F}{i}(p) \in W_i$, we see that $p \in V$, and $V$ is not empty. 
-    Also note that $V$ is open.
-    By the transitivity property, we can find a $z\in U$ and a positive integer $k$ such that
-    $\itr{F}{k}(z) \in V$. Let $j$ be the least integer such that $k < nj$. 
-    That is,
-    \begin{equation*}
-      1 \leq nj - k \leq n.
-    \end{equation*}
-    Therefore,
-    \begin{equation*}
-      \itr{F}{nj} (z) = \itr{F}{nj - k} (\itr{F}k(z)) \in \itr{F}{nj-k}(V).
-    \end{equation*}
-    Also,
-    \begin{equation*}
-       \itr{F}{nj - k}(V) \subset \itr{F}{nj - k}(\itr{F}{-(nj - k)} W_{nj-k}) 
-       = W_{nj-k}
-       \equiv \oball{\epsilon}{\itr{F}{nj-k}(p)}.
-    \end{equation*}
-    The last two equalities imply
-    \begin{equation*}
-      \metric{\itr{F}{nj}(z), \itr{F}{nj - k}(p)} < \epsilon.
-    \end{equation*}
-    Furthermore, $\itr{F}{nj}(q) = q$, since $q$ is a $n$-periodic point 
-    \begin{equation*}
-      \metric{\itr{F}{nj}(q), \itr{F}{nj}(z)} = \metric{q, \itr{F}{nj}(z)}.
-    \end{equation*}
-    By the triangle inequality, we have
-    \begin{equation*}
-      \metric{x, \itr{F}{nj-k}(p)} \leq \metric{x,q} + \metric{q, \itr{F}{nj}(z)} + \metric{\itr{F}{nj}(z), \itr{F}{nj - k}(p)}.
-    \end{equation*}
-    Finally, 
-    \begin{align*}
-      \metric{\itr{F}{nj}(q), \itr{F}{nj}(z)} 
-      &= \metric{q, \itr{F}{nj}(z)}  \\
-      &\geq  \metric{x, \itr{F}{nj-k}(p)} - \metric{x,q} - \metric{\itr{F}{nj}(z), \itr{F}{nj - k}(p)}  \\
-      &> 4\epsilon - \epsilon - \epsilon 
-      = 2\epsilon,
-    \end{align*}
-    which implies
-    \begin{equation*}
-      \metric{\itr{F}{nj}(q), \itr{F}{nj}(x)} + \metric{\itr{F}{nj}(x), \itr{F}{nj}(z)} 
-      \geq \metric{\itr{F}{nj}(q), \itr{F}{nj}(z)}
-      > 2\epsilon.
-    \end{equation*}
-    It follows from the inequality that 
-    \begin{equation*}
-      \metric{\itr{F}{nj}(x), \itr{F}{nj}(z)} \geq \epsilon \quad\mbox{ or }\quad \metric{\itr{F}{nj}(x), \itr{F}{nj}(q)} \geq \epsilon 
-    \end{equation*}
-     must hold.
-  \end{proof}
+\begin{proof}[Proof of \ref{thm:banks}]
+  Let $x$ be any point of $X$ and $J$ any open set containing $x$.
+  Since the periodic points of $f$ are dense (in $X$), we may introduce a periodic point
+  $q$ of $f$ in $U$ defined as
+  \begin{equation*}
+    U \ceq J\cap \oball{\epsilon}{x}.
+  \end{equation*}
+  Let $n$ be the period of $q$.
+  Apply Lemma~\ref{lem:dev1} to obtain a periodic orbit $O(p)$ and a constant $c > 0$ such that $\metric{x, O(p)} > c$.
+  Let $\epsilon \ceq c/4$ so that $\metric{x, O(p)} > 4\epsilon$.
+  Define
+  \begin{equation*}
+    W_i := \oball{\epsilon}{\itr{F}{i}(p)} \quad\text{ and }\quad V := \bigcap\limits_{i = 1}^{n} \itr{F}{-i}(W_i).
+  \end{equation*}
+  Since $\itr{F}{i}(p) \in W_i$, we see that $p \in V$, and $V$ is not empty. 
+  Also note that $V$ is open.
+  By the transitivity property, we can find a $z\in U$ and a positive integer $k$ such that
+  $\itr{F}{k}(z) \in V$. Let $j$ be the least integer such that $k < nj$. 
+  That is,
+  \begin{equation*}
+    1 \leq nj - k \leq n.
+  \end{equation*}
+  Therefore,
+  \begin{equation*}
+    \itr{F}{nj} (z) = \itr{F}{nj - k} (\itr{F}k(z)) \in \itr{F}{nj-k}(V).
+  \end{equation*}
+  Also,
+  \begin{equation*}
+    \itr{F}{nj - k}(V) \subset \itr{F}{nj - k}(\itr{F}{-(nj - k)} W_{nj-k}) 
+    = W_{nj-k}
+    \equiv \oball{\epsilon}{\itr{F}{nj-k}(p)}.
+  \end{equation*}
+  The last two equalities imply
+  \begin{equation*}
+    \metric{\itr{F}{nj}(z), \itr{F}{nj - k}(p)} < \epsilon.
+  \end{equation*}
+  Furthermore, $\itr{F}{nj}(q) = q$, since $q$ is a $n$-periodic point 
+  \begin{equation*}
+    \metric{\itr{F}{nj}(q), \itr{F}{nj}(z)} = \metric{q, \itr{F}{nj}(z)}.
+  \end{equation*}
+  By the triangle inequality, we have
+  \begin{equation*}
+    \metric{x, \itr{F}{nj-k}(p)} \leq \metric{x,q} + \metric{q, \itr{F}{nj}(z)} + \metric{\itr{F}{nj}(z), \itr{F}{nj - k}(p)}.
+  \end{equation*}
+  Finally, 
+  \begin{align*}
+    \metric{\itr{F}{nj}(q), \itr{F}{nj}(z)} 
+    &= \metric{q, \itr{F}{nj}(z)}  \\
+    &\geq  \metric{x, \itr{F}{nj-k}(p)} - \metric{x,q} - \metric{\itr{F}{nj}(z), \itr{F}{nj - k}(p)}  \\
+    &> 4\epsilon - \epsilon - \epsilon 
+    = 2\epsilon,
+  \end{align*}
+  which implies
+  \begin{equation*}
+    \metric{\itr{F}{nj}(q), \itr{F}{nj}(x)} + \metric{\itr{F}{nj}(x), \itr{F}{nj}(z)} 
+    \geq \metric{\itr{F}{nj}(q), \itr{F}{nj}(z)}
+    > 2\epsilon.
+  \end{equation*}
+  It follows from the inequality that 
+  \begin{equation*}
+    \metric{\itr{F}{nj}(x), \itr{F}{nj}(z)} \geq \epsilon \quad\mbox{ or }\quad \metric{\itr{F}{nj}(x), \itr{F}{nj}(q)} \geq \epsilon 
+  \end{equation*}
+  must hold.
+\end{proof}
 
-   Furthermore, a continuous function on a compact interval, topological transitivity implies the other two \citep{silverman}.
-   In general, dense periodic orbit and sensitivity does not imply transitivity (Assaf-Gadbois 1992).
-  %A system is chaotic in $X$ in the sense of Devaney if and only if for every pair of open sets in $X$ there exists a periodic orbit which visits both sets (Touhey, 1997).
+Using this result, we can restate Devaney's definition in a more concise form, since the third condition, sensitive dependence on initial condition, is redundant.
+\begin{definition}
+  (Chaos in Devaney's sense) 
+  A continuous map $F: X\rar X$ is said to be chaotic on $X$ if
+  \begin{enumerate}
+    \item Periodic points are dense in $X$.
+    \item $F$ is \textit{topologically transitive}.
+  \end{enumerate}
+\end{definition}
+%%%
+Also, dense periodic orbit and sensitivity do not in general imply transitivity \citep{assaf}.
+We obtain a related result when we restrict our space to a compact interval, topological transitivity implies the other two \citep{silverman}.
+(Use ``Devaney's chaos revisited'')
+%A system is chaotic in $X$ in the sense of Devaney if and only if for every pair of open sets in $X$ there exists a periodic orbit which visits both sets (Touhey, 1997).
 
-  A nice property of chaos in Devaney's sense is that all conditions are topological invariance, that is, the properties are preserved under conjugation by a continuous mapping.
-  We show that the dense periodic orbits as well as topological transitivity are topological invariants.
-  It follows that sensitive dependence on initial conditions is also a topological invariance.
+A nice property of chaos in Devaney's sense is that all conditions are topological invariance, that is, the properties are preserved under conjugation by a continuous mapping.
+Since the properties of our interest are global properties of a space, we also require that the mapping be 
+\begin{definition}
+    We say that $G$ is \textit{semi-conjugate} to $F$, if $\phi\circ F = G\circ\phi$, where $\phi$ is continuous and surjective.
+\end{definition}
+%\noindent\textit{Remark:} If $\phi$ were homeomorphism (i.e. $F$ is topologically conjugate to $G$), then $G$ is semi-conjugate to $F$, and at the same time, $F$ is semi-conjugate to $G$.
+%  For instance, if $G$ is topologically conjugate to $F$, then $G$ is transitive if and only if $F$ is transitive.
+We show that the dense periodic orbits and topological transitivity are topological invariants.
+It follows that sensitive dependence on initial conditions is also a topological invariance.
+We 
   \begin{theorem}
     (Transitivity and Conjugacy) 
     Let $F: X \to X$ and $G: Y \to Y$ be continuous functions, and $\phi: X \to Y$ be a continuous, surjective map.
@@ -260,7 +282,6 @@ We give some examples to illustrate the two definitions.
       \end{equation*}
       \end{proof}
   \end{theorem}
-  A similar theorem for dense periodic orbits.
   \begin{theorem}
     (Dense Set and Conjugacy) 
     Let $\phi$ be a continuous and surjective mapping.
@@ -284,13 +305,7 @@ We give some examples to illustrate the two definitions.
     \end{proof}
   \end{theorem}
 
-  \begin{definition}
-    We say that $G$ is \textit{semi-conjugate} to $F$, if $G\circ\phi = \phi\circ F$, where $\phi$ is continuous and surjective.
-  \end{definition}
-  \textit{Remark:} If $\phi$ were homeomorphism (i.e. $F$ is topologically conjugate to $G$), then $G$ is semi-conjugate to $F$, and at the same time, $F$ is semi-conjugate to $G$.
-  For instance, if $G$ is topologically conjugate to $F$, then $G$ is transitive if and only if $F$ is transitive.
-
-  \begin{corollary}
+\begin{corollary}
     Suppose that $G$ is semi-conjugate to $F$.
     If $\mathrm{Per}(F)$ is dense in $X$, then $\mathrm{Per}(G)$ is dense in $Y$.
     \label{cor:conj-dense-per}
