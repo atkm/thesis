@@ -90,39 +90,40 @@ We give some examples to illustrate the two definitions.
   \end{example}
   \begin{example}
     (Rotation by magnitude is chaotic \citep{martelli})
-    Let $D = \set{v \in \R^2: \norm{v} \leq 2}$, and $C_r = \set{v \in \R^2: \norm{v} = r}$.
-    Define $F: D \to D$, a rotation in $C_r$, by
+    Let $D$ be a unit disk centered at the origin, and $C_r = \set{v \in \R^2: \norm{v} = r}$.
+    Define $F: D \to D$, a rotation, by
     \begin{equation*}
       F(x) = F(r, \theta) = (r, \theta + r).
     \end{equation*}
-    For every $r \in (0,2]$, $C_r$ is invariant.
-    We claim that the system has in $C_r$ sensitive dependence on initial conditions with $r_0 = r$.
-    Let $x_0 = (r_0, \theta_0)$ and $d > 0$.
-    Choose $n$ large enough that $\frac{\pi}{n} < d$ and $r_0 - \frac{\pi}{n} > 0$.
-    Let $y_0 = (r_0 - \frac{\pi}{n}, \theta_0)$.
-    Then,
-    \begin{equation*}
-      x_n = (r_0, \theta_0 + nr_0),\quad
-      y_n = (r_0 - \frac{\pi}{n}, \theta_0 + nr_0 - \pi),
-    \end{equation*}
-    so
-    \begin{equation*}
-      \norm{x_0 - y_0} < d \quad\mbox{and}\quad \norm{y_n - x_n} = \paren*{\frac{\pi}{n}}^2 + \pi^2 > 2 > r_0.
-    \end{equation*}
+    For every $r \in (0,1]$, $C_r$ is invariant.
+    Clearly, on $C_r$, $F$ does not have sensitive dependence on initial conditions.
+    However, $F$ has sensitive dependence on initial conditions on $D$, which is also an invariant set. 
+    This example shows why we should include topological transitivity in the definition of chaos.
+    %To see this, let $x_0 = (r_0, \theta_0)$ and $d > 0$.
+    %Choose $n$ large enough that $\frac{\pi}{n} < d$ and $r_0 - \frac{\pi}{n} > 0$.
+    %Let $y_0 = (r_0 - \frac{\pi}{n}, \theta_0)$.
+    %Then,
+    %\begin{equation*}
+    %  x_n = (r_0, \theta_0 + nr_0),\quad
+    %  y_n = (r_0 - \frac{\pi}{n}, \theta_0 + nr_0 - \pi),
+    %\end{equation*}
+    %so
+    %\begin{equation*}
+    %  \norm{x_0 - y_0} < d \quad\mbox{and}\quad \norm{y_n - x_n} = \paren*{\frac{\pi}{n}}^2 + \pi^2 > 2 > r_0.
+    %\end{equation*}
   \end{example}
   %%%
   \begin{example}
-    We give this dynamical system as an example of a system that is topologically transitive and sensitive to initial conditions, but does not have dense periodic orbits \citep{martelli}.
-    Let $D \subseteq \R^2$ a closed disk centered at the origin with radius 1.
+    \citep{martelli}
+    This example illustrates a dynamical system that is topologically transitive and sensitive to initial conditions, but does not have dense periodic orbits.
+    Let $D \subseteq \R^2$ a closed unit disk centered at the origin.
     Let $F: D \to D$ be defined as
     \begin{equation*}
       F: (r, \theta) \mapsto (4r(1 - r), \theta + 1).
     \end{equation*}
-    The origin is the only fixed point.
-    $F$ does not have a periodic orbit of period greater than 1.
-    Hence, the periodic points of $F$ is not dense in $D$ so that $F$ is not chaotic in the sense of Devaney.
-    However, $F$ is chaotic in the sense of Wiggins.
-    This example raises the question of what we really mean by the term ``chaotic.''
+    The origin is the only fixed point, and $F$ does not have a periodic orbit of period greater than 1.
+    Hence, the periodic points of $F$ is not dense in $D$ so that $F$ is chaotic in the sense of Wiggins, but not in the sense of Devaney.
+    \label{eg:notdpp}
   \end{example}
   \begin{example}
     (Twist Map \citep{wiggins})
@@ -130,7 +131,6 @@ We give some examples to illustrate the two definitions.
 
 \section{Redundancy Of The Definition}
 \citet{silverman} (and later \citet{banks}) showed that sensitive dependence on initial conditions is a necessary condition of transivity and dense periodic orbits property.
-From now on, we can regard dense periodic orbits and topological transitivity as sufficient conditions for sensitive dependence on initial conditions.
 
 \begin{theorem}
   (Topological Transitivity and Dense Periodic Points Imply Sensitive Dependence on Initial Conditions)
@@ -142,7 +142,7 @@ From now on, we can regard dense periodic orbits and topological transitivity as
   \end{equation*}
   \label{thm:silverman}
 \end{theorem}
-First, we prove a lemma, which says two distinct periodic orbits cannot intersect.
+First, we prove a lemma, which states that two distinct periodic orbits cannot intersect.
 \begin{lemma}
   Let $F: X\rar X$ be a mapping with (at least) two distinct periodic orbits.
   Then there is a $c > 0$ such that for any $x\in X$ there exists a periodic
@@ -171,7 +171,7 @@ First, we prove a lemma, which says two distinct periodic orbits cannot intersec
   \end{proof}
 \end{lemma}
   %
-\begin{proof}[Proof of \ref{thm:silverman}]
+\begin{proof}[Proof of Theorem~\ref{thm:silverman}]
   Let $x$ be any point of $X$ and $J$ any open set containing $x$.
   Since the periodic points of $f$ are dense (in $X$), we may introduce a periodic point
   $q$ of $f$ in $U$ defined as
@@ -236,6 +236,7 @@ First, we prove a lemma, which says two distinct periodic orbits cannot intersec
   must hold.
 \end{proof}
 
+Thus, we can regard dense periodic orbits and topological transitivity as sufficient conditions for sensitive dependence on initial conditions.
 Using this result, we can restate Devaney's definition in a more concise form, since the third condition, sensitive dependence on initial condition, is redundant.
 \begin{definition}
   (Chaos in Devaney's sense) 
@@ -246,11 +247,14 @@ Using this result, we can restate Devaney's definition in a more concise form, s
   \end{enumerate}
 \end{definition}
 %%%
-Also, dense periodic orbit and sensitivity do not in general imply transitivity \citep{assaf}.
-We obtain a related result when we restrict our space to a compact interval, topological transitivity implies the other two \citep{silverman}.
-(Use ``Devaney's chaos revisited'')
+A natural question to raise at this point is whether we can further reduce the definition to one condition, or whether other combinations of two conditions imply the other.
+The answers to these question are negative; \citet{assaf} showed that, in general, dense periodic orbits and sensitivity do not imply transitivity.
+Also, Example~\ref{eg:notdpp} shows that sensitivity and transitivity do not necessarily imply dense periodic orbits.
+However, when we restrict our space to a compact interval, topological transitivity implies the other two \citep{silverman}.
+(See papers referenced in ``Devaney's chaos revisited'')
 %A system is chaotic in $X$ in the sense of Devaney if and only if for every pair of open sets in $X$ there exists a periodic orbit which visits both sets (Touhey, 1997).
 
+\section{Chaos Is A Topological Property}
 A nice property of chaos in Devaney's sense is that all conditions are topological invariance, that is, the properties are preserved under conjugation by a continuous mapping.
 Since the properties of our interest are global properties of a space, we also require that the mapping be 
 \begin{definition}
@@ -313,7 +317,7 @@ It follows that sensitive dependence on initial conditions is also a topological
       Then, by Theorem~\ref{thm:conj-dense}, $\mathrm{P}(G)$ is a dense subset of $Y$.
     \end{proof}
 \end{theorem}
-We also have the following important result as a corollary.
+Finally, we obtain the main result of this section as a corollary.
 \begin{corollary}
   Suppose that $G$ is semi-conjugate to $F$.
   If $F$ is sensitive to initial conditions, then $G$ is sensitive to initial conditions.
@@ -322,6 +326,122 @@ We also have the following important result as a corollary.
   This follows from Theorem~\ref{thm:silverman}, Theorem~\ref{thm:conj-trans}, and Theorem~\ref{thm:conj-dense}.
   \end{proof}
 \end{corollary}
+
+\section{Martelli's Definition}
+
+\begin{definition}
+  (Expansiveness) $f: J\rar J$ is expansive if there exists $\nu > 0$
+  such that, for any $x,y\in J$, there exists $n$ such that
+  $|f^{n}(x)-f^{n}(y)| > \nu$.
+  \index{expansiveness}
+\end{definition}
+
+Let us remind ourselves of the definition of chaos due to Devaney.
+
+It turns out structural stability is equivalent to sensitive dependence on initial conditions.
+\begin{proposition}
+  (Martelli et al., 1998)(Equivalence of stability and transitivity)
+  Let $X\subset R^n$ be compact and $F: X\rar X$ be continuous.
+  Then $F$ is topologically transitive in $X$ if and only if there exists $x_0\in X$ such that $O(x_0)$ is dense in $X$.
+  In addition, $F$ has sensitive dependence on initial conditions with respect to $X$ if and only if $O(x_0)$ is unstable in $X$.
+\end{proposition}
+
+Importantly, theorem still holds if the condition on $F$ is weakened to {\it quasi-continuous} function, a class of functions where baker's map belongs to.
+
+\begin{definition}
+  (Structural Stability) $f: J \rar J$ is said to be $C^r$-structurally
+  stable on $J$, if there exists $\epsilon > 0$ such that whenever
+  $d_r(f,g) < \epsilon$ for $g: J\rar J$, it follows that $f$
+  is topologically conjugate to $g$.
+  \index{structural stability}
+\end{definition}
+
+Then, chaos can be defined in terms of stability.
+
+\begin{definition}
+  (Chaos in Martelli's sense)
+  Let $U$ be open in $\R^n$, $F: U \to \R^n$, and $X\subset U$ be closed, bounded and invariant.
+  Assume that $F$ is continuous in $X$.
+  Then $F$ is said to be \textit{chaotic} in $X$ if there exists $x_0 \in X$ that meets the following conditions
+  \begin{enumerate}
+    \item $O(x_0)$ is dense in $X$.
+    \item $O(x_0)$ is unstable in $X$.
+  \end{enumerate}
+  \label{defn:chaosmartelli}
+  \index{definition of chaos!Martelli}
+\end{definition}
+
+The outline of proof is in \citet{martelli98}.
+\begin{theorem}
+  (Equivalence of Martelli's and Wiggins's definitions)
+  Let $X$ be a compact invariant subset of $\R^n$ and $F: X\to X$ a continuous map.
+  Then $F$ is chaotic in Martelli's sense if and only if $F$ is chaotic in Wiggins's sense.
+  \label{thm:martelliwigginsequiv}
+
+\begin{proof}
+   \begin{enumerate}[(i)]
+    \item $F$ is topologically transitive in $X$ if and only if there exists $x_0 \in X$ such that $L(x_0) = X$.
+
+    It is straightforward to show that topological transitivity implies the existence of an orbit whose limit set is $X$.
+    Suppose $U,V$ are open subsets of $X$.
+    The intersection of $U$ and $L(x_0)$ is clearly non-empty, so let $K = U \cap L(x_0)$.
+    For sufficiently large $n$, we obtain $F^n(K) = L(x_0)$ because $K$ contains a point in $O(x_0)$.
+    Therefore, $F^n(K) \cap V \neq \emptyset$.
+
+    Next, suppose that $L(x_0) = X$.
+    A finite open cover of $X$ exists because $X$ is compact.
+    Choose $m$ points from $X$ such that $X = \bigcup\limits_{i=1}^m N_{1/m}(x_i)$
+    so that the set $\set{N_{1/m}(x_1), \ldots, N_{1/m}(x_m)}$ forms a finite open cover of $X$.
+    (Note that choice of $x_1, \ldots, x_m$ depends on $m$.
+    So, for example, $x_1$ should be written as $x_{1,m}$.
+    However, we omit this $m$ to avoid cluttering up the argument.)
+    Define sets $Y_1, \ldots, Y_m$ as
+    \begin{align*}
+      Y_i &:= F^{n(i)}(N_{1/m}(Y_{i-1})) \cap N_{1/m}(x_{i+1}) \quad (\mbox{for } i \geq 2) \\
+      Y_1 &:= N_{1/m}(x_1),
+    \end{align*}
+    where $n(i)$ is an integer large enough to ensure each $Y_i$ is not empty, which is guaranteed to exist by topological transitivity.
+    Finally, let $T = F^{-\sum\limits_{i=1}^{m}n(i)}(Y_m) \cap Y_1$.
+    By construction, a point in $T$ visits every $N_{1/m}(x_i)$.
+    Furthermore, as we take $m \to \infty$, we may assume that $\set{x_{1,m}}_m$ converges to a point, 
+    since, if it doesn't, we can find a subsequence of $\set{x_{1,m}}_m$ that converges and replace the original sequence with the convergent subsequence.
+    In the limit $m \to \infty$, any point in $T$, say $x_0$, satisfies $L(x_0) = X$.
+
+    \item $F$ has sensitive dependence on initial conditions with respect to $X$ if and only if $O(x_0)$ is unstable with respect to $X$.
+
+      The ``only if'' part is obvious, since sensitive dependence on initial conditions is a stronger condition.
+      Of course, the ``if'' part is not true in general. We will show, however, 
+      that the two conditions are equivalent if $F$ has an unstable orbit
+      whose limit set fills up $X$.
+      So assume that $O(x_0)$ is an unstable orbit such that $L(x_0) = X$,
+      and let $r(x_0)$ be its separation constant.
+      It follows that for each $y_0\in X$ and $d > 0$ there exists $p>0$ such that $\metric{y_0, F^p(x_0)} \leq d/2$.
+      One case is that there exists $n$ such that $\metric{F^n(y_0), F^{p+n}(x_0)} > r(x_0)/2$.
+      In the other case (i.e. for each $n$, $\metric{F^n(y_0), F^{p+n}(x_0)} \leq r(x_0))/2$,
+      there must exist a different point $w_0$ in a neighborhood of $F^p(x_0)$ such that 
+      \begin{equation*}
+        \metric{w_0, F^p(x_0)} \leq \frac{d}{2} \quad \mbox{ and } \quad \metric{F^m(w_0), F^{m+p}(x_0)} > r(x_0).
+      \end{equation*}
+      Note that
+      \begin{equation*}
+        \metric{y_0, w_0} \leq \metric{y_0, F^p(x_0)} + \metric{F^p(x_0), w_0} \leq d
+      \end{equation*}
+      by the triangle inequality.
+      Moreover,
+      \begin{align*}
+        r(x_0) &< \metric{F^m(w_0), F^{m+p}(x_0)} \\
+        &\leq \metric{F^{m+p}(x_0), F^m(y_0)} + \metric{F^m(y_0), F^m(w_0)}  \\
+        &\leq \frac{r(x_0)}{2} + \metric{F^m(y_0), F^m(w_0)}
+      \end{align*}
+      Hence in both cases we have
+      \begin{equation*}
+        \frac{r(x_0)}{2} < \metric{F^m(y_0), F^m(w_0)}.
+      \end{equation*}
+      Thus, $F$ has sensitive dependence on initial conditions with respect to $X$, and 
+      $r(x_0)/2$ is the separation constant for any point in $X$.
+  \end{enumerate}
+\end{proof}
+\end{theorem}
 
 
 \bibliographystyle{../../bibliography/pjgsm}
