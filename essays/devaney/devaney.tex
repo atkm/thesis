@@ -331,30 +331,30 @@ In this final section of the chapter, we introduce a definition that is equivale
 \citet{martellibook}
 
 \begin{definition}
-  (Expansiveness) $F: J\rar J$ is expansive if there exists $\epsilon > 0$
-  such that, for any $x,y\in J$, there exists $n$ such that
-  $\norm{f^{n}(x)-f^{n}(y)} > \epsilon$.
-  \index{expansiveness}
+  (Limit Points of an Orbit/Limit Set)
+  Let $F: X\to X$ be an continuous mapping.
+  Let $O(x_0)$ be the orbit of $x_0 \in X$.
+  $z \in X$ is called a \textit{limit point} of $O(x_0)$, if there exists a subsequence of $O(x_0)$ that converges to $z$.
+  The \textit{limit set} of $O(x_0)$, denoted $L(x_0)$, is the set of limit points $O(x_0)$.
+  \label{def:limset}
+  \index{limit set}
 \end{definition}
-
-It turns out structural stability is equivalent to sensitive dependence on initial conditions.
-\begin{proposition}
-  (Equivalence of stability and transitivity \citep{martelli})
-  Let $X\subset R^n$ be compact and $F: X\rar X$ be continuous.
-  Then $F$ is topologically transitive in $X$ if and only if there exists $x_0\in X$ such that $O(x_0)$ is dense in $X$.
-  In addition, $F$ has sensitive dependence on initial conditions with respect to $X$ if and only if $O(x_0)$ is unstable in $X$.
-\end{proposition}
-
-\begin{definition}
-  (Structural Stability) $F: J \rar J$ is said to be $C^r$-structurally
-  stable on $J$, if there exists $\epsilon > 0$ such that whenever
-  $d_r(f,g) < \epsilon$ for $g: J\rar J$, it follows that $f$
-  is topologically conjugate to $g$.
-  \index{structural stability}
-\end{definition}
+%With the notion of limit sets, we may speak of aympototical periodicity of an orbit.
+%\begin{definition}
+%  (Asymptotically periodic orbit)
+%  An orbit $O(x_0)$ is said to be \textit{asymptotically periodic} if its limit set is a periodic orbit.
+%  \label{def:asymporb}
+%  \index{asymptotically periodic!orbit}
+%\end{definition}
+%
+%\begin{definition}
+%  (Aperiodic orbit)
+%  The orbit $O_F(x_0)$ is said to be \textit{aperiodic} if its limit set $L_F(x_0)$ is not finite.
+%  \label{def:aporbit}
+%  \index{aperiodic!orbit}
+%\end{definition}
 
 Then, chaos can be defined in terms of stability.
-
 \begin{definition}
   (Chaos in Martelli's sense)
   Let $U$ be open in $\R^n$, $F: U \to \R^n$, and $X\subset U$ be closed, bounded and invariant.
@@ -364,30 +364,36 @@ Then, chaos can be defined in terms of stability.
     \item $L(x_0)$ is dense in $X$.
     \item $O(x_0)$ is unstable in $X$.
   \end{enumerate}
-  \label{defn:chaosmartelli}
+  \label{defn:martelli}
   \index{definition of chaos!Martelli}
 \end{definition}
-
-The outline of proof is in \citet{martelli}.
+This definition is equivalent to Wiggins's definition.
 \begin{theorem}
   (Equivalence of Martelli's and Wiggins's definitions)
-  Let $X$ be a compact invariant subset of $\R^n$ and $F: X\to X$ a continuous map.
-  Then $F$ is chaotic in Martelli's sense if and only if $F$ is chaotic in Wiggins's sense.
-  \label{thm:martelliwigginsequiv}
+  Let $F: X \to X$.
+  $F$ is chaotic in Martelli's sense if and only if $F$ is chaotic in Wiggins's sense.
+  \label{thm:martelli-wiggins}
+\end{theorem}
+We prove this theorem in two parts.
+The outline of proof is in \citet{martelli}.
+\begin{lemma}
+  \citep{silverman}
+  Suppose $X$ is a metric space with no isolated point.
+  If $F: X\to X$, a continuous map, has a dense orbit, then $F$ is topologically transitive.
+  \label{lem:dob-transitivity}
+\end{lemma}
+\begin{proposition}
+  Let $X$ be a metric space with no isolated point, and $F: X \to X$ be a continuous mapping.
+  $F$ is topologically transitive in $X$ if and only if there exists $x_0 \in X$ such that $L(x_0) = X$.
+  \begin{proof}
+    We first show that the existence of an orbit whose limit set is $X$ implies topological transitivity.
+    $O(x_0)$ is a dense orbit.
+    By Lemma~\ref{lem:dob-transitivity}, $F$ is topologically transitive.
 
-\begin{proof}
-   \begin{enumerate}[(i)]
-    \item $F$ is topologically transitive in $X$ if and only if there exists $x_0 \in X$ such that $L(x_0) = X$.
-
-    It is straightforward to show that topological transitivity implies the existence of an orbit whose limit set is $X$.
-    Suppose $U,V$ are open subsets of $X$.
-    The intersection of $U$ and $L(x_0)$ is clearly non-empty, so let $K = U \cap L(x_0)$.
-    For sufficiently large $n$, we obtain $F^n(K) = L(x_0)$ because $K$ contains a point in $O(x_0)$.
-    Therefore, $F^n(K) \cap V \neq \emptyset$.
-
-    Next, suppose that $L(x_0) = X$.
-    A finite open cover of $X$ exists because $X$ is compact.
-    Choose $m$ points from $X$ such that $X = \bigcup\limits_{i=1}^m N_{1/m}(x_i)$
+    Next, suppose that $F$ is topologically transitive.
+    A finite open cover $\mathcal{C}$ of $X$ exists because $X$ is compact.
+    Suppose the cardinality of $\mathcal{C}$ is $m$, and let $\mathcal{C} = \set{A_i}_{i = 1}^m$.
+    For each $i$, choose a point $y_i \in A_i$.
     so that the set $\set{N_{1/m}(x_1), \ldots, N_{1/m}(x_m)}$ forms a finite open cover of $X$.
     (Note that choice of $x_1, \ldots, x_m$ depends on $m$.
     So, for example, $x_1$ should be written as $x_{1,m}$.
@@ -403,42 +409,58 @@ The outline of proof is in \citet{martelli}.
     Furthermore, as we take $m \to \infty$, we may assume that $\set{x_{1,m}}_m$ converges to a point, 
     since, if it doesn't, we can find a subsequence of $\set{x_{1,m}}_m$ that converges and replace the original sequence with the convergent subsequence.
     In the limit $m \to \infty$, any point in $T$, say $x_0$, satisfies $L(x_0) = X$.
+  \end{proof}
+\end{proposition}
+\begin{proposition}
+  \begin{proof}
+    $F$ has sensitive dependence on initial conditions with respect to $X$ if and only if $O(x_0)$ is unstable with respect to $X$.
+    The ``only if'' part is obvious, since sensitive dependence on initial conditions is a stronger condition.
+    Of course, the ``if'' part is not true in general. We will show, however, 
+    that the two conditions are equivalent if $F$ has an unstable orbit
+    whose limit set fills up $X$.
+    So assume that $O(x_0)$ is an unstable orbit such that $L(x_0) = X$,
+    and let $r(x_0)$ be its separation constant.
+    It follows that for each $y_0\in X$ and $d > 0$ there exists $p>0$ such that $\metric{y_0, F^p(x_0)} \leq d/2$.
+    One case is that there exists $n$ such that $\metric{F^n(y_0), F^{p+n}(x_0)} > r(x_0)/2$.
+    In the other case (i.e. for each $n$, $\metric{F^n(y_0), F^{p+n}(x_0)} \leq r(x_0))/2$,
+    there must exist a different point $w_0$ in a neighborhood of $F^p(x_0)$ such that 
+    \begin{equation*}
+      \metric{w_0, F^p(x_0)} \leq \frac{d}{2} \quad \mbox{ and } \quad \metric{F^m(w_0), F^{m+p}(x_0)} > r(x_0).
+    \end{equation*}
+    Note that
+    \begin{equation*}
+      \metric{y_0, w_0} \leq \metric{y_0, F^p(x_0)} + \metric{F^p(x_0), w_0} \leq d
+    \end{equation*}
+    by the triangle inequality.
+    Moreover,
+    \begin{align*}
+      r(x_0) &< \metric{F^m(w_0), F^{m+p}(x_0)} \\
+      &\leq \metric{F^{m+p}(x_0), F^m(y_0)} + \metric{F^m(y_0), F^m(w_0)}  \\
+      &\leq \frac{r(x_0)}{2} + \metric{F^m(y_0), F^m(w_0)}
+    \end{align*}
+    Hence in both cases we have
+    \begin{equation*}
+      \frac{r(x_0)}{2} < \metric{F^m(y_0), F^m(w_0)}.
+    \end{equation*}
+    Thus, $F$ has sensitive dependence on initial conditions with respect to $X$, and 
+    $r(x_0)/2$ is the separation constant for any point in $X$.
+  \end{proof}
+\end{proposition}
 
-    \item $F$ has sensitive dependence on initial conditions with respect to $X$ if and only if $O(x_0)$ is unstable with respect to $X$.
 
-      The ``only if'' part is obvious, since sensitive dependence on initial conditions is a stronger condition.
-      Of course, the ``if'' part is not true in general. We will show, however, 
-      that the two conditions are equivalent if $F$ has an unstable orbit
-      whose limit set fills up $X$.
-      So assume that $O(x_0)$ is an unstable orbit such that $L(x_0) = X$,
-      and let $r(x_0)$ be its separation constant.
-      It follows that for each $y_0\in X$ and $d > 0$ there exists $p>0$ such that $\metric{y_0, F^p(x_0)} \leq d/2$.
-      One case is that there exists $n$ such that $\metric{F^n(y_0), F^{p+n}(x_0)} > r(x_0)/2$.
-      In the other case (i.e. for each $n$, $\metric{F^n(y_0), F^{p+n}(x_0)} \leq r(x_0))/2$,
-      there must exist a different point $w_0$ in a neighborhood of $F^p(x_0)$ such that 
-      \begin{equation*}
-        \metric{w_0, F^p(x_0)} \leq \frac{d}{2} \quad \mbox{ and } \quad \metric{F^m(w_0), F^{m+p}(x_0)} > r(x_0).
-      \end{equation*}
-      Note that
-      \begin{equation*}
-        \metric{y_0, w_0} \leq \metric{y_0, F^p(x_0)} + \metric{F^p(x_0), w_0} \leq d
-      \end{equation*}
-      by the triangle inequality.
-      Moreover,
-      \begin{align*}
-        r(x_0) &< \metric{F^m(w_0), F^{m+p}(x_0)} \\
-        &\leq \metric{F^{m+p}(x_0), F^m(y_0)} + \metric{F^m(y_0), F^m(w_0)}  \\
-        &\leq \frac{r(x_0)}{2} + \metric{F^m(y_0), F^m(w_0)}
-      \end{align*}
-      Hence in both cases we have
-      \begin{equation*}
-        \frac{r(x_0)}{2} < \metric{F^m(y_0), F^m(w_0)}.
-      \end{equation*}
-      Thus, $F$ has sensitive dependence on initial conditions with respect to $X$, and 
-      $r(x_0)/2$ is the separation constant for any point in $X$.
-  \end{enumerate}
-\end{proof}
-\end{theorem}
+\begin{definition}
+  (Expansiveness) $F: J\rar J$ is expansive if there exists $\epsilon > 0$
+  such that, for any $x,y\in J$, there exists $n$ such that
+  $\norm{f^{n}(x)-f^{n}(y)} > \epsilon$.
+  \index{defn:expansiveness}
+\end{definition}
+\begin{definition}
+  (Structural Stability) $F: J \rar J$ is said to be $C^r$-structurally
+  stable on $J$, if there exists $\epsilon > 0$ such that whenever
+  $d_r(f,g) < \epsilon$ for $g: J\rar J$, it follows that $f$
+  is topologically conjugate to $g$.
+  \index{defn:structural stability}
+\end{definition}
 
 
 \bibliographystyle{../../bibliography/pjgsm}
