@@ -46,7 +46,7 @@ We first state the definition of chaos, then define individual terms.
 \end{definition}
 %
 \begin{remark}
-  Note that sensitive dependence on initial conditions does \textit{not} mean that \textit{all} points near $x$ need eventually separate from $x$ under iteration.
+  Note that sensitive dependence on initial conditions does \textit{not} mean that \textit{all} points near $x$ eventually separate from $x$ under iteration.
 The existence of one such point in every neighborhood of $x$ suffices.
 Therefore, if there were an isolated point in the space, the dynamical system cannot be sensitive to initial conditions.
 \end{remark}
@@ -90,7 +90,7 @@ We give some examples to illustrate the two definitions.
   \end{example}
   \begin{example}
     (Rotation by magnitude is chaotic \citep{martelli})
-    Let $D = \set{x \in \R^2: \norm{x} \leq 2}$, and $C_r = \set{x \in \R^2: \norm{x} = r}$.
+    Let $D = \set{v \in \R^2: \norm{v} \leq 2}$, and $C_r = \set{v \in \R^2: \norm{v} = r}$.
     Define $F: D \to D$, a rotation in $C_r$, by
     \begin{equation*}
       F(x) = F(r, \theta) = (r, \theta + r).
@@ -307,11 +307,11 @@ We
 
 \begin{corollary}
     Suppose that $G$ is semi-conjugate to $F$.
-    If $\mathrm{Per}(F)$ is dense in $X$, then $\mathrm{Per}(G)$ is dense in $Y$.
+    If $\mathrm{P}(F)$ is dense in $X$, then $\mathrm{P}(G)$ is dense in $Y$.
     \label{cor:conj-dense-per}
     \begin{proof}
-      It follows from Theorem~\ref{thm:conj-per} that $\phi(\mathrm{Per}(F)) \subseteq \mathrm{Per}(G)$.
-      Then, by Theorem~\ref{thm:conj-dense}, $\mathrm{Per}(G)$ is a dense subset of $Y$.
+      It follows from Theorem~\ref{thm:conj-per} that $\phi(\mathrm{P}(F)) \subseteq \mathrm{P}(G)$.
+      Then, by Theorem~\ref{thm:conj-dense}, $\mathrm{P}(G)$ is a dense subset of $Y$.
     \end{proof}
 \end{corollary}
 We also have the following as a corollary.
