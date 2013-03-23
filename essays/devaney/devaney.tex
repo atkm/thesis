@@ -251,7 +251,6 @@ A natural question to raise at this point is whether we can further reduce the d
 The answers to these question are negative; \citet{assaf} showed that, in general, dense periodic orbits and sensitivity do not imply transitivity.
 Also, Example~\ref{eg:notdpp} shows that sensitivity and transitivity do not necessarily imply dense periodic orbits.
 However, when we restrict our space to a compact interval, topological transitivity implies the other two \citep{silverman}.
-(See papers referenced in ``Devaney's chaos revisited'')
 %A system is chaotic in $X$ in the sense of Devaney if and only if for every pair of open sets in $X$ there exists a periodic orbit which visits both sets (Touhey, 1997).
 
 \section{Chaos Is A Topological Property}
@@ -328,28 +327,26 @@ Finally, we obtain the main result of this section as a corollary.
 \end{corollary}
 
 \section{Martelli's Definition}
+In this final section of the chapter, we introduce a definition that is equivalent to Wiggins's definition in $\R^n$.
+\citet{martellibook}
 
 \begin{definition}
-  (Expansiveness) $f: J\rar J$ is expansive if there exists $\nu > 0$
+  (Expansiveness) $F: J\rar J$ is expansive if there exists $\epsilon > 0$
   such that, for any $x,y\in J$, there exists $n$ such that
-  $|f^{n}(x)-f^{n}(y)| > \nu$.
+  $\norm{f^{n}(x)-f^{n}(y)} > \epsilon$.
   \index{expansiveness}
 \end{definition}
 
-Let us remind ourselves of the definition of chaos due to Devaney.
-
 It turns out structural stability is equivalent to sensitive dependence on initial conditions.
 \begin{proposition}
-  (Martelli et al., 1998)(Equivalence of stability and transitivity)
+  (Equivalence of stability and transitivity \citep{martelli})
   Let $X\subset R^n$ be compact and $F: X\rar X$ be continuous.
   Then $F$ is topologically transitive in $X$ if and only if there exists $x_0\in X$ such that $O(x_0)$ is dense in $X$.
   In addition, $F$ has sensitive dependence on initial conditions with respect to $X$ if and only if $O(x_0)$ is unstable in $X$.
 \end{proposition}
 
-Importantly, theorem still holds if the condition on $F$ is weakened to {\it quasi-continuous} function, a class of functions where baker's map belongs to.
-
 \begin{definition}
-  (Structural Stability) $f: J \rar J$ is said to be $C^r$-structurally
+  (Structural Stability) $F: J \rar J$ is said to be $C^r$-structurally
   stable on $J$, if there exists $\epsilon > 0$ such that whenever
   $d_r(f,g) < \epsilon$ for $g: J\rar J$, it follows that $f$
   is topologically conjugate to $g$.
@@ -364,14 +361,14 @@ Then, chaos can be defined in terms of stability.
   Assume that $F$ is continuous in $X$.
   Then $F$ is said to be \textit{chaotic} in $X$ if there exists $x_0 \in X$ that meets the following conditions
   \begin{enumerate}
-    \item $O(x_0)$ is dense in $X$.
+    \item $L(x_0)$ is dense in $X$.
     \item $O(x_0)$ is unstable in $X$.
   \end{enumerate}
   \label{defn:chaosmartelli}
   \index{definition of chaos!Martelli}
 \end{definition}
 
-The outline of proof is in \citet{martelli98}.
+The outline of proof is in \citet{martelli}.
 \begin{theorem}
   (Equivalence of Martelli's and Wiggins's definitions)
   Let $X$ be a compact invariant subset of $\R^n$ and $F: X\to X$ a continuous map.
