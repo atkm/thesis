@@ -1,7 +1,8 @@
 #!/usr/bin/env ruby
 # encoding: utf-8
+# srcprep; genmain; make; all
 # global. files to work with.
-files = ['introduction','prelims','physicists_defn','dimensions','lyapunov_exponents','devaney','on_sensitivity','conjugacy','wiggins','martelli','li_yorke','marotto','topological_entropy','ergodicity']
+files = ['introduction','prelims','devaney','li_yorke','marotto','t-entropy','symbolic_dynamics', 'comparisons','billards']
 appendix = ['sarkovskii','other_defns']
 
 # strip the original and store it in ./src/
