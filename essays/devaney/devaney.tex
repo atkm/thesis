@@ -37,7 +37,7 @@ We first state the definition of chaos, then define individual terms.
 %
 \begin{definition}
   (Sensitive Dependence on Initial Conditions) 
-  $F: X \rightarrow X$ is said to have \textit{sensitive dependence on initial conditions} if there exists $\epsilon > 0$ such that, for any $x \in X$ and any neighborhood $N$ of $x$, there exists $y\in N$ and $n\geq 0$ such that 
+  $F: X \rightarrow X$ is said to have \textit{sensitive dependence on initial conditions} if there exists $\epsilon > 0$, which we refer to as the \textit{separation constant}, such that, for any $x \in X$ and any neighborhood $N$ of $x$, there exists $y\in N$ and $n\geq 0$ such that 
   \begin{equation*}
     \metric{\itr{F}{n}(x), \itr{F}{n}(y)} > \epsilon.
   \end{equation*}
@@ -327,118 +327,195 @@ Finally, we obtain the main result of this section as a corollary.
 \end{corollary}
 
 \section{Martelli's Definition}
-In this final section of the chapter, we introduce a definition that is equivalent to Wiggins's definition in $\R^n$.
-\citet{martellibook}
+In this final section of the chapter, we introduce a definition that is equivalent to Wiggins's definition.
+  \citet{martelli} prove the equivalence when $X = \R^n$, but we present a more general version of the same result, when $X$ is a compact metric space.
+  We first state the definition, then define the terms used in it.
 
-\begin{definition}
-  (Expansiveness) $F: J\rar J$ is expansive if there exists $\epsilon > 0$
-  such that, for any $x,y\in J$, there exists $n$ such that
-  $\norm{f^{n}(x)-f^{n}(y)} > \epsilon$.
-  \index{expansiveness}
+  \begin{definition}
+    (Chaos in Martelli's sense)
+    Let $U$ be open in $\R^n$, $F: U \to \R^n$, and $X\subset U$ be closed, bounded and invariant.
+    Assume that $F$ is continuous in $X$.
+    Then $F$ is said to be \textit{chaotic} in $X$ if there exists $x \in X$ that meets the following conditions
+    \begin{enumerate}
+      \item $L(x)$ is dense in $X$.
+      \item $O(x)$ is unstable in $X$.
+    \end{enumerate}
+    \label{defn:martelli}
+    \index{definition of chaos!Martelli}
+  \end{definition}
+  \begin{definition}
+    (Limit Points of an Orbit/Limit Set)
+    Let $F: X\to X$ be an continuous mapping.
+    Let $O(x)$ be the orbit of $x \in X$.
+    $z \in X$ is called a \textit{limit point} of $O(x)$, if there exists a subsequence of $O(x)$ that converges to $z$.
+    The \textit{limit set} of $O(x)$, denoted $L(x)$, is the set of all limit points $O(x)$.
+    \label{def:limset}
+    \index{limit set}
+  \end{definition}
+  %With the notion of limit sets, we may speak of aympototical periodicity of an orbit.
+  %\begin{definition}
+  %  (Asymptotically periodic orbit)
+  %  An orbit $O(x)$ is said to be \textit{asymptotically periodic} if its limit set is a periodic orbit.
+  %  \label{def:asymporb}
+  %  \index{asymptotically periodic!orbit}
+  %\end{definition}
+  %
+  %\begin{definition}
+  %  (Aperiodic orbit)
+  %  The orbit $O_F(x)$ is said to be \textit{aperiodic} if its limit set $L_F(x)$ is not finite.
+  %  \label{def:aporbit}
+  %  \index{aperiodic!orbit}
+  %\end{definition}
+
+  \begin{definition}
+    (Unstable Point)
+    Let $F: X\to X$ be an continuous mapping, and $x$ be a member of $X$.
+  $x$ is called an \textit{unstable point}, if there exists $\epsilon > 0$, which we refer to as the \textit{separation constant} (as in the definition of sensitivity), such that, for any neighborhood $N$ of $x$, there exists $y \in N$ and a positive integer $n$ such that 
+  \begin{equation*}
+    \metric{\itr{F}{n}(x), \itr{F}{n}(y)} > \epsilon.
+  \end{equation*}
+  \label{defn:unstable-orbit}
+  \index{unstable orbit}
 \end{definition}
+Note that if $F$ has a sensitive dependence on initial conditions on $X$, then all points in $X$ are unstable points, and there exists a globally defined separation constant, by which two nearby points separate from each other.
+Thus, sensitivitiy is a stronger condition than instability.
 
-It turns out structural stability is equivalent to sensitive dependence on initial conditions.
-\begin{proposition}
-  (Equivalence of stability and transitivity \citep{martelli})
-  Let $X\subset R^n$ be compact and $F: X\rar X$ be continuous.
-  Then $F$ is topologically transitive in $X$ if and only if there exists $x_0\in X$ such that $O(x_0)$ is dense in $X$.
-  In addition, $F$ has sensitive dependence on initial conditions with respect to $X$ if and only if $O(x_0)$ is unstable in $X$.
-\end{proposition}
-
-\begin{definition}
-  (Structural Stability) $F: J \rar J$ is said to be $C^r$-structurally
-  stable on $J$, if there exists $\epsilon > 0$ such that whenever
-  $d_r(f,g) < \epsilon$ for $g: J\rar J$, it follows that $f$
-  is topologically conjugate to $g$.
-  \index{structural stability}
-\end{definition}
-
-Then, chaos can be defined in terms of stability.
-
-\begin{definition}
-  (Chaos in Martelli's sense)
-  Let $U$ be open in $\R^n$, $F: U \to \R^n$, and $X\subset U$ be closed, bounded and invariant.
-  Assume that $F$ is continuous in $X$.
-  Then $F$ is said to be \textit{chaotic} in $X$ if there exists $x_0 \in X$ that meets the following conditions
-  \begin{enumerate}
-    \item $L(x_0)$ is dense in $X$.
-    \item $O(x_0)$ is unstable in $X$.
-  \end{enumerate}
-  \label{defn:chaosmartelli}
-  \index{definition of chaos!Martelli}
-\end{definition}
-
-The outline of proof is in \citet{martelli}.
+As I mentioned in the beggining of this section, Martelli's definition is equivalent to Wiggins's.
 \begin{theorem}
   (Equivalence of Martelli's and Wiggins's definitions)
-  Let $X$ be a compact invariant subset of $\R^n$ and $F: X\to X$ a continuous map.
-  Then $F$ is chaotic in Martelli's sense if and only if $F$ is chaotic in Wiggins's sense.
-  \label{thm:martelliwigginsequiv}
-
-\begin{proof}
-   \begin{enumerate}[(i)]
-    \item $F$ is topologically transitive in $X$ if and only if there exists $x_0 \in X$ such that $L(x_0) = X$.
-
-    It is straightforward to show that topological transitivity implies the existence of an orbit whose limit set is $X$.
-    Suppose $U,V$ are open subsets of $X$.
-    The intersection of $U$ and $L(x_0)$ is clearly non-empty, so let $K = U \cap L(x_0)$.
-    For sufficiently large $n$, we obtain $F^n(K) = L(x_0)$ because $K$ contains a point in $O(x_0)$.
-    Therefore, $F^n(K) \cap V \neq \emptyset$.
-
-    Next, suppose that $L(x_0) = X$.
-    A finite open cover of $X$ exists because $X$ is compact.
-    Choose $m$ points from $X$ such that $X = \bigcup\limits_{i=1}^m N_{1/m}(x_i)$
-    so that the set $\set{N_{1/m}(x_1), \ldots, N_{1/m}(x_m)}$ forms a finite open cover of $X$.
-    (Note that choice of $x_1, \ldots, x_m$ depends on $m$.
-    So, for example, $x_1$ should be written as $x_{1,m}$.
-    However, we omit this $m$ to avoid cluttering up the argument.)
-    Define sets $Y_1, \ldots, Y_m$ as
-    \begin{align*}
-      Y_i &:= F^{n(i)}(N_{1/m}(Y_{i-1})) \cap N_{1/m}(x_{i+1}) \quad (\mbox{for } i \geq 2) \\
-      Y_1 &:= N_{1/m}(x_1),
-    \end{align*}
-    where $n(i)$ is an integer large enough to ensure each $Y_i$ is not empty, which is guaranteed to exist by topological transitivity.
-    Finally, let $T = F^{-\sum\limits_{i=1}^{m}n(i)}(Y_m) \cap Y_1$.
-    By construction, a point in $T$ visits every $N_{1/m}(x_i)$.
-    Furthermore, as we take $m \to \infty$, we may assume that $\set{x_{1,m}}_m$ converges to a point, 
-    since, if it doesn't, we can find a subsequence of $\set{x_{1,m}}_m$ that converges and replace the original sequence with the convergent subsequence.
-    In the limit $m \to \infty$, any point in $T$, say $x_0$, satisfies $L(x_0) = X$.
-
-    \item $F$ has sensitive dependence on initial conditions with respect to $X$ if and only if $O(x_0)$ is unstable with respect to $X$.
-
-      The ``only if'' part is obvious, since sensitive dependence on initial conditions is a stronger condition.
-      Of course, the ``if'' part is not true in general. We will show, however, 
-      that the two conditions are equivalent if $F$ has an unstable orbit
-      whose limit set fills up $X$.
-      So assume that $O(x_0)$ is an unstable orbit such that $L(x_0) = X$,
-      and let $r(x_0)$ be its separation constant.
-      It follows that for each $y_0\in X$ and $d > 0$ there exists $p>0$ such that $\metric{y_0, F^p(x_0)} \leq d/2$.
-      One case is that there exists $n$ such that $\metric{F^n(y_0), F^{p+n}(x_0)} > r(x_0)/2$.
-      In the other case (i.e. for each $n$, $\metric{F^n(y_0), F^{p+n}(x_0)} \leq r(x_0))/2$,
-      there must exist a different point $w_0$ in a neighborhood of $F^p(x_0)$ such that 
-      \begin{equation*}
-        \metric{w_0, F^p(x_0)} \leq \frac{d}{2} \quad \mbox{ and } \quad \metric{F^m(w_0), F^{m+p}(x_0)} > r(x_0).
-      \end{equation*}
-      Note that
-      \begin{equation*}
-        \metric{y_0, w_0} \leq \metric{y_0, F^p(x_0)} + \metric{F^p(x_0), w_0} \leq d
-      \end{equation*}
-      by the triangle inequality.
-      Moreover,
-      \begin{align*}
-        r(x_0) &< \metric{F^m(w_0), F^{m+p}(x_0)} \\
-        &\leq \metric{F^{m+p}(x_0), F^m(y_0)} + \metric{F^m(y_0), F^m(w_0)}  \\
-        &\leq \frac{r(x_0)}{2} + \metric{F^m(y_0), F^m(w_0)}
-      \end{align*}
-      Hence in both cases we have
-      \begin{equation*}
-        \frac{r(x_0)}{2} < \metric{F^m(y_0), F^m(w_0)}.
-      \end{equation*}
-      Thus, $F$ has sensitive dependence on initial conditions with respect to $X$, and 
-      $r(x_0)/2$ is the separation constant for any point in $X$.
-  \end{enumerate}
-\end{proof}
+  Let $F: X \to X$, where $X$ is a compact metric space.
+  $F$ is chaotic in Martelli's sense if and only if $F$ is chaotic in Wiggins's sense.
+  \label{thm:martelli-wiggins}
+  \begin{proof}
+    We prove this theorem in two parts, Proposition~\ref{prop:martelli-wiggins1} and Proposition~\ref{prop:martelli-wiggins2}.
+  \end{proof}
 \end{theorem}
+We use the following result in the proof of Proposition~\ref{prop:martelli-wiggins1}.
+\begin{proposition}
+  \citep{silverman}
+  Suppose $X$ is a metric space with no isolated point.
+  If $F: X\to X$, a continuous map, has a dense orbit, then $F$ is topologically transitive.
+  \begin{proof}
+    See \citep{silverman}.
+  \end{proof}
+  \label{lem:dob-transitivity}
+\end{proposition}
+\begin{proposition}
+  Let $X$ be a compact metric space with no isolated point, and $F: X \to X$ be a continuous mapping.
+  $F$ is topologically transitive in $X$ if and only if there exists $x \in X$ such that $L(x) = X$.
+  \label{prop:martelli-wiggins1}
+  \begin{proof}
+    We first show that the existence of an orbit whose limit set is $X$ implies topological transitivity.
+    $O(x)$ is a dense orbit.
+    By Lemma~\ref{lem:dob-transitivity}, $F$ is topologically transitive.
+
+    Next, suppose that $F$ is topologically transitive.
+    Let $\seq{\epsilon_i}{\infty}{i=1}$ be a monotonically decreasing sequence of positive real numbers whose limit is 0.
+    Since $X$ is totally bounded, for each $\epsilon_i$, there exists a finite open cover $\mathcal{C}_i$ of $X$ whose cardinality is $k_i$, say $\mathcal{C}_i \ceq \set{A_{i,1}, \ldots, A_{i, k_i}}$, such that for each $1 \leq j \leq k_i$, $\diam(A_{i,j}) < \epsilon_i$.
+    Define an ordering of $A_{i,j}$ as follows
+    \begin{equation*}
+      A_{1,1}, A_{1,2}, \ldots, A_{1,k_1}, A_{2,1}, \ldots, A_{2,k_2}, A_{3,1}, \ldots.
+    \end{equation*}
+    Since $F$ is topologically transitive, there exists a point $x \in X$ such that some subsequence of its orbit visits each $A_{i,j}$ in this order.
+    Now, choose any point $y \in X$.
+    Since $\mathcal{C}_i$ is an open cover, for each $i$, there exists $j_i$ such that $y \in A_{i,j_i}$.
+    We may introduce a subsequence $\set{\itr{F}{n(i)}(x)}$ of $O(x)$ such that, for each $i$, 
+    \begin{equation*}
+      \itr{F}{n(i)}(x) \in A_{i,j_i}.
+    \end{equation*}
+    By construction, $A_{i,j_i}$ is a sequence of sets whose diameters monotonically decrease. 
+    It follows that $\set{\itr{F}{n(i)}(x)}$ converges to $y$.
+    Since the choice of $y$ was arbitrary, we have $L(x) = X$.
+  \end{proof}
+\end{proposition}
+%%%
+Now we prove the second part of the theorem.
+Trivially, if $F$ has a sensitive dependence on initial conditions on $X$, then for any $x \in X$, $O(x)$ is unstable.
+On the other hand, the existence of an unstable orbit does not, in general, imply sensitivity of $F$.
+However, by requiring an additional condition that the limit set of the same orbit equals the entire space, we obtain the desired result.
+We first show that if $x$ is an unstable point, then any point in its orbit is also unstable.
+Moreover, we show that the separation constant of $x$ is a property belonging to all points in the orbit.
+\begin{proposition}
+  Suppose there exists an unstable point $x \in X$ such that $L(x) = X$.
+  Then, for each positive integer $n$, $\itr{F}{n}(x)$ is also an unstable point, and its separation constant is the same as that of $x$.
+  \label{prop:unstable-orbit}
+  \begin{proof}
+    Let the separation constant of $x$ be $\epsilon$, and suppose that for some $y$ in any neighborhood of $x$, and for some positive integer $p$,
+    \begin{equation*}
+      \metric{\itr{F}{p}(x), \itr{F}{p}(y)} > \epsilon.
+    \end{equation*}
+    For any neighborhood $N$ of $\itr{F}{n}(x)$, choose some point $z \in N$.
+    By Proposition~\ref{prop:martelli-wiggins1}, $F$ is topologically transitive.
+    It follows that, for any $\delta > 0$, there exist positive integers $m$ and $k$ such that
+    \begin{equation*}
+      \itr{F}{n+m}(x) \in \oball{\delta}{x}
+      \quad \mbox{ and } \quad
+      \itr{F}{k}(z) \in \oball{\delta}{y}.
+    \end{equation*}
+    Then, by continuity, we may have $\itr{F}{n+m+p}(x)$ and $\itr{F}{k}(z)$ as close as we wish to $\itr{F}{p}(x)$ and $\itr{F}{p}(y)$, respectively.
+    Hence, $\itr{F}{n}(x)$ is also an unstable point, and its separation constant is $\epsilon$.
+  \end{proof}
+\end{proposition}
+\begin{proposition}
+  Suppose there exists an unstable point $x \in X$ such that $L(x) = X$.
+  Then, $F$ has a sensitive dependence on initial conditions.
+  \label{prop:martelli-wiggins2}
+  \begin{proof}
+    Suppose that $x$ is an unstable point such that $L(x) = X$.
+    Then, for each $y\in X$ and $\delta > 0$ there exists $n>0$ such that 
+    \begin{equation*}
+      \metric{\itr{F}{n}(x), y} \leq \frac{\delta}{2}.
+    \end{equation*}
+    Let $\epsilon$ be its separation constant.
+    We prove that $F$ has a sensitive dependence on initial conditions by showing that there exists at least one point in any neighborhood of $y$ that eventually separates from $y$ by $\epsilon/2$.
+    If there exists $p$ such that 
+    \begin{equation*}
+      \metric{\itr{F}{n+p}(x), \itr{F}{p}(y)} > \frac{\epsilon}{2},
+    \end{equation*}
+    then we are done.
+    So suppose otherwise.
+    By Proposition~\ref{prop:unstable-orbit}, there exists a point $z \in X (z \neq y)$ such that 
+    \begin{equation*}
+      \metric{\itr{F}{n}(x), z} \leq \frac{\delta}{2} 
+      \quad \mbox{ and } \quad
+      \metric{\itr{F}{n+q}(x), \itr{F}{q}(z)} > \epsilon,
+    \end{equation*}
+    for some $q$.
+    Note that
+    \begin{equation*}
+      \metric{y, z} \leq \metric{y, \itr{F}{n}(x)} + \metric{\itr{F}{n}(x), z} \leq \delta,
+    \end{equation*}
+    by the triangle inequality.
+    Moreover,
+    \begin{align*}
+      \epsilon &< \metric{\itr{F}{n+q}(x), \itr{F}{q}(z)} \\
+      &\leq \metric{\itr{F}{n+q}(x), \itr{F}{q}(y)} + \metric{\itr{F}{q}(y), \itr{F}{q}(z)}  \\
+      &\leq \frac{\epsilon}{2} + \metric{\itr{F}{q}(y), \itr{F}{q}(z)}
+    \end{align*}
+    Therefore,
+    \begin{equation*}
+      \metric{\itr{F}{q}(y), \itr{F}{q}(z)} > \frac{\epsilon}{2}.
+    \end{equation*}
+    Since the choice of $y$ and $\delta$ were arbitrary, we conclude that, $F$ has sensitive dependence on initial conditions with respect to $X$, and 
+    $\epsilon/2$ is the separation constant for any point in $X$.
+  \end{proof}
+\end{proposition}
+This completes the proof of Theorem~\ref{thm:martelli-wiggins}.
+
+
+%\begin{definition}
+%  (Expansiveness) $F: J\rar J$ is expansive if there exists $\epsilon > 0$
+%  such that, for any $x,y\in J$, there exists $n$ such that
+%  $\norm{f^{n}(x)-f^{n}(y)} > \epsilon$.
+%  \index{defn:expansiveness}
+%\end{definition}
+%\begin{definition}
+%  (Structural Stability) $F: J \rar J$ is said to be $C^r$-structurally
+%  stable on $J$, if there exists $\epsilon > 0$ such that whenever
+%  $d_r(f,g) < \epsilon$ for $g: J\rar J$, it follows that $f$
+%  is topologically conjugate to $g$.
+%  \index{defn:structural stability}
+%\end{definition}
 
 
 \bibliographystyle{../../bibliography/pjgsm}
