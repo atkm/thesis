@@ -41,7 +41,11 @@
 
 % theorem environment (from amsthm)
 \theoremstyle{definition} % no italics in theorem environment
-% environments
+%%% begin: mess with the paragraph break after theorem environment
+\makeatletter
+\def\@endtheorem{\endtrivlist} 
+\makeatother
+%%% end
 \newtheorem{proposition}{Proposition}
 \newtheorem{example}{Example}
 \newtheorem{conjecture}{Conjecture}
@@ -82,7 +86,7 @@
 \newcommand{\set}[1]{\delimpair{\{}{#1}{\}}}
 \newcommand{\setst}[2]{\delimpair{\{}{#1 \mathrel{} \middle| \mathrel{} #2}{\}}} % set of x such that
 \newcommand{\seq}[3]{\set{#1}^{#2}_{#3}}
-\newcommand{\oball}[2]{N_#1(#2)}
+\newcommand{\oball}[2]{N_{#1}(#2)}
 \newcommand{\cball}[2]{\bar N_#1(#2)}
 \newcommand{\abs}[1]{\delimpair{|}{#1}{|}}
 \newcommand{\paren}[1]{\delimpair{(}{#1}{)}}
