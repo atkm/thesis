@@ -10,3 +10,6 @@
 main.pdf
 src/
 essays/*/*.pdf
+codes/plots/*.dat
+codes/plots/*.rawdat
+images/*
