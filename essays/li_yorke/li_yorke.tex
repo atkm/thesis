@@ -82,21 +82,21 @@ Three comes the first in Sarkovskii's ordering, and in this sense, the number th
 Appendix contains the Sarkovskii's ordering and its proof.
 
 Now we proceed to prove Theorem~\ref{thm:liyorke1} and Theorem~\ref{thm:liyorke2}.
-We shall start with proving three lemmas that we require for proving the theorems.
+We start with proving three results that we require for proving the theorems.
 
-\begin{lemma}
+\begin{proposition}
   Let $I$ be an interval, $F: I \to \R$ a continuous map.
   For each compact interval $I_1 \subseteq F(I)$, there exists a compact interval $Q \subseteq I$ such that $G(Q) = I_1$.
-  \label{lem:liyorke1}
+  \label{prop:liyorke1}
   \begin{proof}
     Suppose $I_1 = [F(p),F(q)]$ for some $p,q \in I$.
     Without loss of generality, we may assume $p < q$, for otherwise, we merely switch the roles of $p$ and $q$ in the proof.
     Let $Q = [r,s]$, where $r$ is the greatest point in $[p,q]$ such that $F(r) = F(p)$, and $s$ is the least point in $(r,q]$ such that $F(s) = F(q)$.
     Since $F$ is continuous, $F(Q) = I_1$.
   \end{proof}
-\end{lemma}
+\end{proposition}
 
-\begin{lemma}
+\begin{proposition}
   Let $I$ be an interval, and $F: I\to I$ be a continuous map.
   Suppose that for each $n$, $\seq{I_n}{\infty}{n=0}$ is a sequence of compact intervals with $I_n \subseteq I$ and $I_{n+1} \subseteq F(I_n)$.
   Then, there exists a sequence $\seq{Q_n}{\infty}{n=0}$ of compact intervals such that 
@@ -113,7 +113,7 @@ and, for each $n$,
   \begin{equation*}
     \itr{F}{n}(x) \in I_n.
   \end{equation*}
-  \label{lem:liyorke2}
+  \label{prop:liyorke2}
   %%%
   \begin{proof}
     Proof by induction.
@@ -121,21 +121,21 @@ and, for each $n$,
     Clearly, we have $\itr{F}{0}(Q_0) = I_0$.
     For each $n$, define $Q_{n-1}$ as a compact interval such that $\itr{F}{n-1}(Q_{n-1}) = I_{n-1}$.
     Note that $I_n \subseteq F(I_{n-1}) = \itr{F}{n}(Q_{n-1})$.
-    Lemma~\ref{lem:liyorke1} applied to $\itr{F}{n}$ on $Q_{n-1}$ proves the existence of a compact interval $Q_n \subseteq Q_{n-1}$ such that $\itr{F}{n}(Q_n) = I_n$.
+    Proposition~\ref{prop:liyorke1} applied to $\itr{F}{n}$ on $Q_{n-1}$ proves the existence of a compact interval $Q_n \subseteq Q_{n-1}$ such that $\itr{F}{n}(Q_n) = I_n$.
   \end{proof}
-\end{lemma}
+\end{proposition}
 
-\begin{lemma}
+\begin{proposition}
   Let $I$ be an interval, and $F: I\to \R$ be a continuous map.
   Suppose $J \subseteq I$ is a compact interval and $J \subseteq F(J)$. 
   Then, there exists a point $p \in I$ such that $G(p) = p$.
   \begin{proof}
     This is a special case of the contraction fixed point theorem proved in Preliminaries.
   \end{proof}
-  \label{lem:liyorke3}
-\end{lemma}
+  \label{prop:liyorke3}
+\end{proposition}
 
-Lemma~\ref{lem:liyorke2} will be especially useful in the proofs.
+Proposition~\ref{prop:liyorke2} will be especially useful in the proofs.
 The proof of Theorem~\ref{thm:liyorke1} introduces ideas that are used in proving the other theorem.
 For brevity, we call $[a,b]$ and $[b,c]$ as $K$ and $L$, respectively.
 The key observation to make is that we have $K,L \subseteq F(L)$ by $F(b) = c$, $F(c) = d$, and continuity of $F$.
@@ -158,9 +158,9 @@ Then, we can design an orbit that stays in $L$ as long as we wish.
   \begin{equation*}
     K,L \subseteq F(L) \mbox{ and } L \subseteq F(K).
   \end{equation*}
-  Then, by Lemma~\ref{lem:liyorke2}, there exists a sequence of compact intervals $\set{Q_n}$ such that $Q_{n+1} \subseteq Q_{n}$; in particular $Q_k \subseteq Q_0$.
-  Also by Lemma~\ref{lem:liyorke2}, we have $\itr{F}{k}(Q_k) = I_0 = Q_0$.
-  Since $\itr{F}{k}$ is continuous and $Q_k \subseteq \itr{F}{k}(Q_k)$, we may apply Lemma~\ref{lem:liyorke3} to conclude that $\itr{F}{k}$ has a fixed point $p_k \in Q_k$.
+  Then, by Proposition~\ref{prop:liyorke2}, there exists a sequence of compact intervals $\set{Q_n}$ such that $Q_{n+1} \subseteq Q_{n}$; in particular $Q_k \subseteq Q_0$.
+  Also by Proposition~\ref{prop:liyorke2}, we have $\itr{F}{k}(Q_k) = I_0 = Q_0$.
+  Since $\itr{F}{k}$ is continuous and $Q_k \subseteq \itr{F}{k}(Q_k)$, we may apply Proposition~\ref{prop:liyorke3} to conclude that $\itr{F}{k}$ has a fixed point $p_k \in Q_k$.
   We claim that $p_k$ does not have period less than $k$.
   To see this, assume the contrary and let the period of $p_k$ be $t < k$.
   Since $p_k \in Q_n \subseteq Q_{n-1}$, we have 
@@ -234,7 +234,7 @@ However, we may draw an even stronger conclusion, that is, the points in $S$ are
     \end{equation*}
     Let $T \ceq \phi(S) \subseteq Y$.
     Let $b \ceq \limsup\limits_{n \to \infty}\; \metric{\itr{F}{n}(p) , \itr{F}{n}(q)} > 0$.
-    Since $\phi$ is injective, $T$ is uncountable, and contains no periodic points (see Theorem~\ref{thm:conj-per}).
+    Since $\phi$ is injective, $T$ is uncountable, and contains no periodic points (see Theorem~(uncomment!)%\ref{thm:conj-per}).
     We first prove
     \begin{equation*}
       \liminf\limits_{n \to \infty}\; \metric{\itr{G}{n}(\phi(p)) , \itr{G}{n}(\phi(q))} = 0.
@@ -395,34 +395,72 @@ There are other limitations to this definition of chaos.
 Most notably, Li-Yorke's definition is limited to one-dimensional maps.
 Also, there are maps that are chaotic in Li-Yorke's sense, but their topological entropies are zero.
 We will discuss the latter case in more depth in the chapter on topological entropy.
+His definition requires the mapping to be differentiable.
+The original definition had a minor technical flaw \citep{shi}, and Marotto later corrects his definition \citep{marotto2}.
+We present Marotto's definition in $\R^n$.
 
 \section{Chaos in Marotto's sense}
-\citep{marotto1,marotto2} 
+\citet{marotto1} has a definition of chaos, which implies chaos in Li-Yorke's sense, using the notion of \textit{snap-back repeller}.
 
 \begin{definition}
   (Repelling fixed point)
-  Let $X \subset \R^n$ be open, and $F: X \to X$ be a continuous mapping. 
-  A fixed point $x_s \in X$ is said to be a repelling if there exists $r > 0$
-  such that 
-  \begin{equation*}
-    0 < \norm{x_s - x_0} \leq r,
-  \end{equation*}
-  where $\norm{.}$ is the Euclidean norm, implies
-\begin{equation*}
-  r \leq \norm{x_s - F^m(x_0)}
-\end{equation*}
-for some $m > 0$.
+  Let $F: \R^n \to \R^n$ be a continuous mapping. 
+  A fixed point $z$ is called a \textit{repelling fixed point} if the magnitudes of all eigenvalues of the Jacobian matrix of $F$ at $z$ are strictly greater than $1$.
+  \index{repelling fixed point}
 \end{definition}
-A repelling fixed point is sometimes referred to as a source.
+(A repelling fixed point is sometimes referred to as a source.)
 
 \begin{definition}
   (Expanding fixed point)
-  Let $X \subset \R^n$ be open, and $F: X \to X$ be a continuous mapping. 
-  A fixed point $x_s \in  X$ is called an expanding fixed point if
-  the magnitudes of all eigenvalues of $J$ the Jacobian matrix of $F$ at $x_s$ are strictly greater than $1$.
+  Let $F: \R^n \to \R^n$ be a continuous mapping, and $d$ be a metric induced by some norm.
+  A fixed point $z$ is said to be \textit{expanding with respect to the norm} if there exists a neighborhood $N$ of $z$ such that, for each $y \in N$, there exists $s > 1$ such that 
+  \begin{equation*}
+    \metric{F(z), F(y)} > s \cdot \metric{z,y}.
+  \end{equation*}
+  \index{expanding fixed point}
 \end{definition}
+%%%
+Next, we show that a fixed point is repelling if and only if it is expanding with respect to some norm.
+This equivalence is not true in general.
+In particular, \citet{shi} point out that, when using the Euclidean norm, a repelling fixed point is not necessarily expanding.
 
-\begin{lemma}
+\begin{proposition}
+  Suppose $z$ is a repelling fixed point of $F$.
+  Then, there exists a norm defined on $\R^n$ and aneighborhood $N$ of $z$ such that $z$ is an expanding fixed point in $N$ with respect to this norm.
+  \begin{proof}
+    See \citet[p. 278-281]{hirsch}.
+  \end{proof}
+  \label{prop:repelling-expanding}
+\end{proposition}
+
+\begin{definition}
+  (Snapback repeller)
+  Let $F: X\to X$ be a $\mathcal{C}^1$-differentiable function, where $X$ is a compact subset of $\R^n$.
+  Suppose $z \in X$ is a repelling fixed point of $F$.
+  By Proposition~\ref{prop:repelling-expanding}, $z$ is an expanding fixed point in some neighborhood $N$ with respect to some norm.
+  $z$ is called a \textit{snap-back repeller} of $F$, if there exist a point $y \in N$ $(y \neq z)$ and a positive integer $n$ such that 
+  \begin{equation*}
+   \itr{F}{n}(y) = z \quad\mbox{ and }\quad \det(J\itr{F}{n}(y)) \neq 0,
+  \end{equation*}
+  where $J\itr{F}{n}$ is the Jacobian matrix of $\itr{F}{k}$.
+  \index{chaos!definition of!Marotto}
+\end{definition}
+%%%
+The terminology comes from the fact that $z$ is a fixed point such that a point in its neighborhood gets repelled away, yet the point eventually ``snaps back'' to $z$.
+
+
+\begin{theorem}
+  Let $F: \R^n \to \R^n$ be differentiable.
+  If there exists a snap-back repeller of $F$, then $F$ is chaotic in Li-Yorke's sense.
+  \label{thm:sbrepeller}
+  \begin{proof}
+    See \citet[Theorem 3.1]{marotto1}
+  \end{proof}
+\end{theorem}
+
+
+
+\begin{proposition}
   (Martelli p115, 128)
   Let $M$ be a square matrix whose eigenvalues have moduli larger than 1.
   Then 
@@ -431,7 +469,7 @@ A repelling fixed point is sometimes referred to as a source.
     \item $\rho(M^{-1}) < 1$, where $\rho(M^{-1})$ denotes the spectral radius of $M^{-1}$.
     \item There exists a norm $\norm{.}_a$ such that $\norm{M}_a < 1$.
   \end{enumerate}
-\end{lemma}
+\end{proposition}
 \begin{proof}
   (i) Since $0$ is not an eigenvalue of $M$, we have $\det M \neq 0$.
   Hence $M$ is invertible.
@@ -451,7 +489,7 @@ A repelling fixed point is sometimes referred to as a source.
   Then $x_s$ is an expanding fixed point.
 \end{proposition}
 \begin{proof}
-  $J$ is invertible because it satisfies the conditions of the preceding lemma.
+  $J$ is invertible because it satisfies the conditions of the preceding proposition.
   Also, we can find a norm $\norm{.}_a$ such that $\norm{M^{-1}}_a < 1$.
   For each $x, y \in \R^n$, we have 
   \begin{equation*}
@@ -468,7 +506,7 @@ A repelling fixed point is sometimes referred to as a source.
     \frac{\norm{F(x) - F(x_s)}_a}{\norm{x - x_s}_a} \geq \frac{K+1}{2}.
   \end{equation*}
   Let $k \equiv \frac{K+1}{2}$.
-  (Lemma begin) Now suppose
+  (Proposition begin) Now suppose
   \begin{equation*}
     0 < \norm{x_0 - x_s}_a \leq r_1.
   \end{equation*}
@@ -480,7 +518,7 @@ A repelling fixed point is sometimes referred to as a source.
     &= \norm{F(F^{n-2}) - x_s}_a \geq \cdots \\
     &\geq k^n \norm{x_0 - x_s}_a.
   \end{align*}
-  (Lemma end)
+  (Proposition end)
   Since $k > 1$, we can find $n$ that satisfies the following inequality
   \begin{equation*}
     \norm{F^n(x_0) - x_s}_a > r_1.
@@ -497,7 +535,7 @@ A repelling fixed point is sometimes referred to as a source.
   \begin{equation*}
     \norm{x_0 - x_s}_a \leq c \norm{x_0 - x_s} \leq cr = r_1.
   \end{equation*}
-  It follows by the lemma that there exists $m > 0$ such that 
+  It follows by the proposition that there exists $m > 0$ such that 
   \begin{equation*}
     c \norm{F^m(x_0) - x_s} \geq \norm{F^m(x_0) - x_s}_a > r_1,
   \end{equation*}
@@ -507,24 +545,13 @@ A repelling fixed point is sometimes referred to as a source.
   \end{equation*}
 \end{proof}
 
-The existence of a periodic point of period 3 for continuous and one-dimensional maps is
-equivalent to the existence of a snapback repeller.
-\begin{definition}
-  (Marotto, Martelli, Snapback repeller)
- $F: R^n\to R^n \in C^1$ in some open ball centered at a stationary state $x_s$
-has uncountably many aperiodic and unstable orbits if $\rho(F'(x_s)) > 1$, and
-there exists $z_1$ in the unstable manifold $M_U$ of $x_s$ such that
-\begin{equation*}
-  det((F^m)'(z_1)) \neq 0, \quad F^m(z_1) = x_s.
-\end{equation*}
- 
-  Such $x_s$ is called a \textit{snapback repeller}.
-\end{definition}
-
 \subsection{Applications of snapback repeller}
-The ease of application of chaos in Marotto's sense is perhaps due to it being a
-generalization of chaos in Li-Yorke sense. The definition has been successfully
-applied to models in ecology and economics.
+The ease of application is perhaps the primary advantage of using Marotto's definition.
+Not only the Henon map \citep{marotto1} and some type of wave equation have been shown to be chaotic in Marotto's sense, (Chaotic vibration of the one-dimensional linear wave equation with a van der Pol nonlinear boundary condition),
+the definition has been successfully applied to models in ecology and economics.
+(Applying snapback repellers in resource budget models)
+(Chaotic solutions in the quadratic integrate-and-fire neuron with adaptation)
+A longer list of applications is in \citet{marotto2}.
 
 % Let $\lambda$ be an eigenvalue of $M$. Note that
 %   \begin{equation*}
