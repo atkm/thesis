@@ -1,4 +1,4 @@
-version = '9-10'
+version = '_1'
 f = 'disk_transformation_result' + version + '.txt'
 target = 'disk_transformation' + version + '.dat'
 command = "echo 'x y' > #{target}"
