@@ -12,4 +12,8 @@ src/
 essays/*/*.pdf
 codes/plots/*.dat
 codes/plots/*.rawdat
+codes/plots/.R*
+codes/plots/__pycache__
 images/*
+articles/*
+**.orig
