@@ -181,7 +181,6 @@ Then, we can design an orbit that stays in $L$ as long as we wish.
   Thus, $p_k$ is a $k$-periodic point for $F$.
   The other case, $d \leq a < b < c$, can be proved in the same manner.
 \end{proof}
-
 Next, we prove the main result of this chapter.
 Theorem~\ref{thm:liyorke2} requires a more elaborate design of sequences.
 \begin{proof}[Proof of Theorem~\ref{thm:liyorke2}.]
@@ -206,7 +205,6 @@ Theorem~\ref{thm:liyorke2} requires a more elaborate design of sequences.
   and call this sequence $I^r$.
   (Proof not complete yet)
 \end{proof}
-
 We already know that points in $S$ are not periodic.
 However, we may draw an even stronger conclusion, that is, the points in $S$ are not even asymptotically periodic.
 \begin{theorem}
@@ -216,9 +214,11 @@ However, we may draw an even stronger conclusion, that is, the points in $S$ are
     \limsup\limits_{n \to \infty}\; \metric{\itr{F}{n}(p) , \itr{F}{n}(q)} > 0.
   \end{equation*}
   \label{thm:liyorke3}
+  \begin{proof}
+    See \citet{li-yorke}.
+  \end{proof}
 \end{theorem}
-
-
+%%%
 \begin{theorem}
   Let $X$ be a metric space, and $F: X\to X$ be chaotic in Li-Yorke's sense.
   If $G: Y\to Y$ is conjugate to $F$ i.e. $\phi \circ F = G \circ \phi$, where $\phi: X \to Y$ is a homeomorphism, then $G$ is chaotic.
@@ -307,7 +307,7 @@ However, we may draw an even stronger conclusion, that is, the points in $S$ are
   \end{proof}
   \label{thm:liyorke-conj}
 \end{theorem}
-
+%%%
 Although the definition by Li and Yorke captures our intuitive notion of chaos well, it is by no means flawless.
 There are mappings that are chaotic on a negligible set \citep{martelli98}.
 \begin{example}
@@ -426,7 +426,7 @@ In particular, \citet{shi} point out that, when using the Euclidean norm, a repe
 
 \begin{proposition}
   Suppose $z$ is a repelling fixed point of $F$.
-  Then, there exists a norm defined on $\R^n$ and aneighborhood $N$ of $z$ such that $z$ is an expanding fixed point in $N$ with respect to this norm.
+  Then, there exists a norm defined on $\R^n$ and a neighborhood $N$ of $z$ such that $z$ is an expanding fixed point in $N$ with respect to this norm.
   \begin{proof}
     See \citet[p. 278-281]{hirsch}.
   \end{proof}
@@ -448,110 +448,103 @@ In particular, \citet{shi} point out that, when using the Euclidean norm, a repe
 %%%
 The terminology comes from the fact that $z$ is a fixed point such that a point in its neighborhood gets repelled away, yet the point eventually ``snaps back'' to $z$.
 
-
 \begin{theorem}
   Let $F: \R^n \to \R^n$ be differentiable.
   If there exists a snap-back repeller of $F$, then $F$ is chaotic in Li-Yorke's sense.
   \label{thm:sbrepeller}
   \begin{proof}
-    See \citet[Theorem 3.1]{marotto1}
+    See \citet[Theorem 3.1]{marotto1}.
+    \citet{martellibook} discusses concepts employed in the proof.
   \end{proof}
 \end{theorem}
-
-
-
-\begin{proposition}
-  (Martelli p115, 128)
-  Let $M$ be a square matrix whose eigenvalues have moduli larger than 1.
-  Then 
-  \begin{enumerate}[(i)]
-    \item $M$ is invertible.
-    \item $\rho(M^{-1}) < 1$, where $\rho(M^{-1})$ denotes the spectral radius of $M^{-1}$.
-    \item There exists a norm $\norm{.}_a$ such that $\norm{M}_a < 1$.
-  \end{enumerate}
-\end{proposition}
-\begin{proof}
-  (i) Since $0$ is not an eigenvalue of $M$, we have $\det M \neq 0$.
-  Hence $M$ is invertible.
-
-  (ii) The result follows naturally from the fact that
-  $\lambda$ is an eigenvalue of $M$ if and only if $\lambda^{-1}$ is an eigenvalue of $M^{1-}$.
-
-  (iii) 
-\end{proof}
-
-\begin{proposition}
-  (Repeller (in Marotto's terminology) implies Source)
-  (Martelli p188)
-  Let $X \subset \R^n$ be open, and let $x_s$ be a repelling fixed point
-  of a continuous function $F: X \to X$. Suppose that $F$ is
-  differentiable in some neighborhood of $x_s$, and the derivative of $F$ at $x_s$ is continuous.
-  Then $x_s$ is an expanding fixed point.
-\end{proposition}
-\begin{proof}
-  $J$ is invertible because it satisfies the conditions of the preceding proposition.
-  Also, we can find a norm $\norm{.}_a$ such that $\norm{M^{-1}}_a < 1$.
-  For each $x, y \in \R^n$, we have 
-  \begin{equation*}
-    \norm{x-y}_a = \norm{M^{-1} M x - M^{-1} M y}_a \leq \norm{M^{-1}}_a \norm{M(x - y)}_a.
-  \end{equation*}
-  It follows that 
-  \begin{equation*}
-    \frac{\norm{M(x-y)}_a}{\norm{x-y}_a} \geq \frac{1}{\norm{M^{-1}}_a}.
-  \end{equation*}
-  For convenience, let $K = 1/\norm{M^{-1}}_a$.
-  Note that $K > 1$.
-  (fill in the blank)
-  \begin{equation*}
-    \frac{\norm{F(x) - F(x_s)}_a}{\norm{x - x_s}_a} \geq \frac{K+1}{2}.
-  \end{equation*}
-  Let $k \equiv \frac{K+1}{2}$.
-  (Proposition begin) Now suppose
-  \begin{equation*}
-    0 < \norm{x_0 - x_s}_a \leq r_1.
-  \end{equation*}
-  ($r_1$ just needs to be small enough that an open ball
-  of radius $r_1$ around $x_s$ does not distend over the
-  neighborhood where $F$ is differentiable.) Then
-  \begin{align*}
-    \norm{F^n(x_0) - x_s}_a &= \norm{F(F^{n-1}) - x_s}_a \geq k \norm{F^{n-1} - x_s}_a     \\
-    &= \norm{F(F^{n-2}) - x_s}_a \geq \cdots \\
-    &\geq k^n \norm{x_0 - x_s}_a.
-  \end{align*}
-  (Proposition end)
-  Since $k > 1$, we can find $n$ that satisfies the following inequality
-  \begin{equation*}
-    \norm{F^n(x_0) - x_s}_a > r_1.
-  \end{equation*}
-  By the equivalence of norms defined in $\R^n$, there exist $0 < b < c$ such that 
-  \begin{equation*}
-    b \norm{x_0 - x_s} \leq \norm{x_0 - x_s}_a \leq c \norm{x_0 - x_s}_a.
-  \end{equation*}
-  Finally, set $r \equiv r_1/c$. If we suppose that 
-  \begin{equation*}
-    \norm{x_0 - x_s} \leq r,
-  \end{equation*}
-  then
-  \begin{equation*}
-    \norm{x_0 - x_s}_a \leq c \norm{x_0 - x_s} \leq cr = r_1.
-  \end{equation*}
-  It follows by the proposition that there exists $m > 0$ such that 
-  \begin{equation*}
-    c \norm{F^m(x_0) - x_s} \geq \norm{F^m(x_0) - x_s}_a > r_1,
-  \end{equation*}
-  which implies
-  \begin{equation*}
-    \norm{F^{m}(x_0) - x_s} > \frac{r_1}{c} = r.
-  \end{equation*}
-\end{proof}
-
-\subsection{Applications of snapback repeller}
 The ease of application is perhaps the primary advantage of using Marotto's definition.
-Not only the Henon map \citep{marotto1} and some type of wave equation have been shown to be chaotic in Marotto's sense, (Chaotic vibration of the one-dimensional linear wave equation with a van der Pol nonlinear boundary condition),
-the definition has been successfully applied to models in ecology and economics.
-(Applying snapback repellers in resource budget models)
-(Chaotic solutions in the quadratic integrate-and-fire neuron with adaptation)
-A longer list of applications is in \citet{marotto2}.
+Not only the Henon map \citep{marotto1} and some type of wave equation have been shown to be chaotic in Marotto's sense, (Chaotic vibration of the one-dimensional linear wave equation with a van der Pol nonlinear boundary condition) \citep{marottoapp1},
+the definition has been successfully applied to models in population biology \citep{marottoapp2} and neuroscience \citep{marottoapp3}.
+A longer list of examples of applications of Marotto's definition is in \citet{marotto2}.
+
+%%% Proof of the theorem.
+%\begin{proposition}
+%  (Martelli p115, 128)
+%  Let $M$ be a square matrix whose eigenvalues have moduli larger than 1.
+%  Then 
+%  \begin{enumerate}[(i)]
+%    \item $M$ is invertible.
+%    \item $\rho(M^{-1}) < 1$, where $\rho(M^{-1})$ denotes the spectral radius of $M^{-1}$.
+%    \item There exists a norm $\norm{.}_a$ such that $\norm{M}_a < 1$.
+%  \end{enumerate}
+%\end{proposition}
+%\begin{proof}
+%  (i) Since $0$ is not an eigenvalue of $M$, we have $\det M \neq 0$.
+%  Hence $M$ is invertible.
+%
+%  (ii) The result follows naturally from the fact that
+%  $\lambda$ is an eigenvalue of $M$ if and only if $\lambda^{-1}$ is an eigenvalue of $M^{1-}$.
+%
+%  (iii) 
+%\end{proof}
+%\begin{proposition}
+%  (Repeller implies expanding fixed point \citep[p. 188]{martellibook})
+%  Let $X \subset \R^n$ be open, and let $x_s$ be a repelling fixed point
+%  of a continuous function $F: X \to X$. Suppose that $F$ is
+%  differentiable in some neighborhood of $x_s$, and the derivative of $F$ at $x_s$ is continuous.
+%  Then $x_s$ is an expanding fixed point.
+%\end{proposition}
+%\begin{proof}
+%  $J$ is invertible because it satisfies the conditions of the preceding proposition.
+%  Also, we can find a norm $\norm{.}_a$ such that $\norm{M^{-1}}_a < 1$.
+%  For each $x, y \in \R^n$, we have 
+%  \begin{equation*}
+%    \norm{x-y}_a = \norm{M^{-1} M x - M^{-1} M y}_a \leq \norm{M^{-1}}_a \norm{M(x - y)}_a.
+%  \end{equation*}
+%  It follows that 
+%  \begin{equation*}
+%    \frac{\norm{M(x-y)}_a}{\norm{x-y}_a} \geq \frac{1}{\norm{M^{-1}}_a}.
+%  \end{equation*}
+%  For convenience, let $K = 1/\norm{M^{-1}}_a$.
+%  Note that $K > 1$.
+%  (fill in the blank)
+%  \begin{equation*}
+%    \frac{\norm{F(x) - F(x_s)}_a}{\norm{x - x_s}_a} \geq \frac{K+1}{2}.
+%  \end{equation*}
+%  Let $k \equiv \frac{K+1}{2}$.
+%  (Proposition begin) Now suppose
+%  \begin{equation*}
+%    0 < \norm{x_0 - x_s}_a \leq r_1.
+%  \end{equation*}
+%  ($r_1$ just needs to be small enough that an open ball
+%  of radius $r_1$ around $x_s$ does not distend over the
+%  neighborhood where $F$ is differentiable.) Then
+%  \begin{align*}
+%    \norm{F^n(x_0) - x_s}_a &= \norm{F(F^{n-1}) - x_s}_a \geq k \norm{F^{n-1} - x_s}_a     \\
+%    &= \norm{F(F^{n-2}) - x_s}_a \geq \cdots \\
+%    &\geq k^n \norm{x_0 - x_s}_a.
+%  \end{align*}
+%  (Proposition end)
+%  Since $k > 1$, we can find $n$ that satisfies the following inequality
+%  \begin{equation*}
+%    \norm{F^n(x_0) - x_s}_a > r_1.
+%  \end{equation*}
+%  By the equivalence of norms defined in $\R^n$, there exist $0 < b < c$ such that 
+%  \begin{equation*}
+%    b \norm{x_0 - x_s} \leq \norm{x_0 - x_s}_a \leq c \norm{x_0 - x_s}_a.
+%  \end{equation*}
+%  Finally, set $r \equiv r_1/c$. If we suppose that 
+%  \begin{equation*}
+%    \norm{x_0 - x_s} \leq r,
+%  \end{equation*}
+%  then
+%  \begin{equation*}
+%    \norm{x_0 - x_s}_a \leq c \norm{x_0 - x_s} \leq cr = r_1.
+%  \end{equation*}
+%  It follows by the proposition that there exists $m > 0$ such that 
+%  \begin{equation*}
+%    c \norm{F^m(x_0) - x_s} \geq \norm{F^m(x_0) - x_s}_a > r_1,
+%  \end{equation*}
+%  which implies
+%  \begin{equation*}
+%    \norm{F^{m}(x_0) - x_s} > \frac{r_1}{c} = r.
+%  \end{equation*}
+%\end{proof}
 
 % Let $\lambda$ be an eigenvalue of $M$. Note that
 %   \begin{equation*}

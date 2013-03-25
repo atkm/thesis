@@ -17,7 +17,7 @@ If $\phi$ is injective, then $h(f) \geq h(g)$.
 If $\phi$ is surjective, then $h(f) \leq h(g)$.
 It follows that, if $\phi$ is bijective, then $h(f) = h(g)$.
 
-\section{Background}
+\section{Definition and properties of topological entropy}
 Throughout this section, $(X,d)$ is a compact metric space.
 $F$ is a continuous mapping from $X$ to $X$ unless noted otherwise.
 Our definition of topological entropy uses open covers of a space. 
@@ -127,7 +127,6 @@ Now we proceed to prove the theorem.
   \end{equation*}
 \end{proof}
 
-
 The definition of topological entropy calls for computation of $h(F,\alpha)$ for all possible open covers of $X$, and thus, computing $h(F)$ using the definition is untenable.
 As a reasonable method for computing $h(F)$, we introduce a theorem, which states that $h(F)$ equals to the limit of the topological entropy of $F$ relative to a sequence of open covers that become finer and finer later in the sequence.
 We call such a sequence a \textit{refining sequence}, defined as follows.
@@ -178,29 +177,36 @@ We will use Lebesgue's Covering Lemma in the next section to show that some sequ
   Let $X$ be a compact metric space, and $\alpha$ be an open cover of $X$.
   There exists $\delta > 0$ such that, if $B$ is a subset of $X$ whose diameter is less than or equal to $\delta$, i.e. $\diam(B) \leq \delta$, then there exists a member $A$ of $\alpha$ such that $B \subseteq A$.
   \label{lem:covering}
-    \index{Lebesgue's covering lemma}
-
-    \begin{proof}
-    Proof by contradiction.
-    Consider a sequence $\set{B_n}$ of subsets of $X$ such that $\diam(B_n) = 1/n$, and each $B_n$ is not contained in any member of $\alpha$.
-    For each $B_n$, fix $x_n \in B_n$.
-    Since $X$ is compact, there exists a subsequence of $\set{x_n}$ that converges.
-    Call this subsequence $\set{x_{n_k}}$, and suppose it converges to $x$.
-    Also, suppose $x$ is a member of $A \in \alpha$, and let $D = \diam(A)$.
-    Choose $l$ large enough so that $n_l > \frac{2}{D}$ and $\metric{x_{n_l}, x} < \frac{D}{2}$.
-    Finally, for any point $y$ in $B_{n_l}$, we have
-    \begin{equation*}
-      \metric{y, x_{n_l}}
-      \leq \metric{y,x} + \metric{x, x_{n_l}}
-      < \diam(B_{n_l})  + \frac{D}{2}
-      = \frac{1}{n_l} + \frac{D}{2}
-      = D.
-    \end{equation*}
-    This is a contradiction, since $\metric{y, x_{n_l}} < D$ implies that $B_{n_l}$ is contained in $A$.
+  \index{Lebesgue's covering lemma}
+  \begin{proof}
+    We omit the proof, since this is a classical result.
+    For example, see \citet{royden}.
+    %  Proof by contradiction.
+    %  Consider a sequence $\set{B_n}$ of subsets of $X$ such that $\diam(B_n) = 1/n$, and each $B_n$ is not contained in any member of $\alpha$.
+    %  For each $B_n$, fix $x_n \in B_n$.
+    %  Since $X$ is compact, there exists a subsequence of $\set{x_n}$ that converges.
+    %  Call this subsequence $\set{x_{n_k}}$, and suppose it converges to $x$.
+    %  Also, suppose $x$ is a member of $A \in \alpha$, and let $D = \diam(A)$.
+    %  Choose $l$ large enough so that $n_l > \frac{2}{D}$ and $\metric{x_{n_l}, x} < \frac{D}{2}$.
+    %  Finally, for any point $y$ in $B_{n_l}$, we have
+    %  \begin{equation*}
+    %    \metric{y, x_{n_l}}
+    %    \leq \metric{y,x} + \metric{x, x_{n_l}}
+    %    < \diam(B_{n_l})  + \frac{D}{2}
+    %    = \frac{1}{n_l} + \frac{D}{2}
+    %    = D.
+    %  \end{equation*}
+    %  This is a contradiction, since $\metric{y, x_{n_l}} < D$ implies that $B_{n_l}$ is contained in $A$.
   \end{proof}
 \end{lemma}
 
 \section{The Topological Entropy of The Logistic Map}
+\begin{definition}
+  (Definition of chaos by topological entropy: chaos in the sense of AKM) 
+  Let $F: X \to X$ be a continuous mapping.
+  If $h(F)$ is positive, then we say that $F$ is \textit{chaotic in the sense of AKM}.
+  (\citet{akm} does not use the term ``chaos,'' but we attribute this definition to the authors.)
+\end{definition}
 We saw in the introduction that $L_u$, the logistic map, which is defined as
 \begin{align*}
   L_\mu&: I \to I \quad\mbox{ where } I \equiv [0,1] \\
