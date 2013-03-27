@@ -7,7 +7,7 @@
     %Define standard arrow tip
     >=stealth',
     %Define style for boxes
-    punkt/.style={
+    box/.style={
            rectangle,
            rounded corners,
            draw=black, very thick,
@@ -19,7 +19,7 @@
            ->,
            thick,
            shorten <=2pt,
-           shorten >=2pt,},
+           shorten >=2pt},
     both/.style={
            <->,
            thick,
@@ -30,7 +30,13 @@
            ->,
            thick,
            shorten <=2pt,
-           shorten >=2pt,},
+           shorten >=2pt},
+    noimply/.style={
+           ->,
+           -o,
+           thick,
+           shorten <=2pt,
+           shorten >=50pt}
 }
 
 \makeindex
@@ -60,41 +66,68 @@ Let $I \subseteq \R$ be a compact interval.
 In this section, we consider the case where $X = I$.
 As it turns out, Devaney's, Block-Coppel's, and positive topological entropy are equivalent conditions, and Li-Yorke's chaos is a weaker condition.
 \begin{figure}[ht]
-\begin{tikzpicture}[node distance=1cm, auto,]
+  \begin{tikzpicture}[node distance=1cm, auto,]
  %nodes
- \node[punkt] (ly) {Li-Yorke};
- \node[punkt, inner sep=5pt,above=1.0cm of ly] (dev) {Devaney};
- \node[punkt, inner sep=5pt,right=1.5cm of dev] (bc) {Block-Coppel};
- \node[punkt, inner sep=5pt,left=1.5cm of dev] (entropy) {Entropy};
+    \node[box] (ly) {Li-Yorke};
+    \node[box, inner sep=5pt,above=1.0cm of ly] (bc) {Block-Coppel};
+    \node[box, inner sep=5pt,left=1.5cm of bc] (dev) {Devaney};
+    \node[box, inner sep=5pt,right=1.5cm of bc] (ent) {Entropy};
+    \node[box, inner sep=5pt,above=1.0cm of dev] (wig) {Wiggins};
  %edges
- \draw[imply] (dev) to node {} (ly); 
- \draw[imply] (entropy) to[bend right=20] node {} (ly); 
- \draw[imply] (bc) to[bend left=20] node {} (ly); 
- \draw[both] (dev) to node {} (entropy); 
- \draw[both] (dev) to node {} (bc); 
- \end{tikzpicture}
-\caption{Relations between definitions for a compact interval.}
+    \draw[imply] (ent) to[bend left=20] node {} (ly); 
+    \draw[imply] (bc) to node {} (ly); 
+    \draw[both] (dev) to[bend left=30] node {} (ent); 
+    \draw[both] (dev) to node {} (bc); 
+    \draw[both] (dev) to node {} (wig); 
+    \draw[both] (bc) to node {} (ent); 
+    \draw[imply] (dev) to node[bend right=20] {} (ly);  %this guy doesn't bend
+  \end{tikzpicture}
+  \label{fig:chaos-interval}
+  \caption{
+    Relations between the four definitions for a compact interval.
+    The three definitions in the first row are all equivalent.
+    Li-Yorke's definition is strictly weaker than the other three.
+  }
 \end{figure}
 
-\citet{aulbach} discuss the equivalence between Devaney's and Block-Coppel's definitions.
+Devaney's and Block-Coppel's definitions are equivalent.
 \begin{theorem}
   \citep{aulbach}
   $(I,F)$ is chaotic in Devaney's sense if and only if it is chaotic in Block-Coppel's sense.
-  \label{devaney-blockcoppel}
+  \begin{proof}
+    \citep{aulbach}
+    (Use \citep{blockcoppel} VI: Proposition 6.)
+    (Or via \citep{blockcoppel} VIII on entropy.)
+  \end{proof}
+  \label{thm:devaney-blockcoppel}
 \end{theorem}
 
-\citet{forti} mentions that the following can be proved using the method in \citet{omegachaos}. (Questionable. See Balibrea, Snoha)
+Devaney's chaos implies positive topological entropy and vice versa.
 \begin{theorem}
+  \citep{forti}
   $(I,F)$ is chaotic in the sense of Devaney if and only if it has positive topological entropy.
   \label{thm:devaney-entropy}
+  \begin{proof}
+    \citet{omegachaos}. (Questionable. See Balibrea, Snoha)
+  \end{proof}
+\end{theorem}
+
+\begin{theorem}
+  $(I,F)$ is chaotic in the sense of Block-Coppel if and only if it has positive topological entropy.
+  \label{thm:entropy-blockcoppel}
+  \begin{proof}
+    This follows from Theorem~\ref{thm:devaney-blockcoppel} and Theorem~\ref{thm:devaney-entropy}.
+    It is also proved in \citet[VII, Theorem 24]{blockcoppel}.
+  \end{proof}
 \end{theorem}
 
 As a side note, let us mentions that, on a compact interval, Devaney's and Wiggins's definitions are equivalent.
+We mentioned in the chapter on Devaney's chaos that dense periodic orbits and topological transitivity imply sensitive dependence on initial conditions in a compact metric space.
+The equivalence of Devaney's and Wiggins's definitions follows from the fact that transitivity implies dense periodic orbits.
 \begin{theorem}
-   $(I,F)$ is chaotic in the sense of Devaney if and only if it is chaotic in the sense of Wiggins.
+  $(I,F)$ is chaotic in the sense of Devaney if and only if it is chaotic in the sense of Wiggins.
   \label{thm:devaney-wiggins}
   \begin{proof}
-    We mentioned that dense periodic orbits and topological transitivity imply sensitive dependence on initial conditions in a compact metric space.
     The same author, \citet{silverman}, has also shown that on a compact interval, topological transitivity implies the existence of dense periodic orbits and sensitive dependence on initial conditions.
   \end{proof}
 \end{theorem}
@@ -118,40 +151,49 @@ As a side note, let us mentions that, on a compact interval, Devaney's and Wiggi
 In summary, Devaney's, Block-Coppel's, and positive topological entropy definitions are equivalent on a compact interval.
 Each of the three equivalent definitions imply chaos in Li-Yorke's sense, but Li-Yorke's definition does not imply others.
 
+%%%
 
 \section{Compact Metric Space}
-
+The landspace in this more general case is more interesting than the compact interval case.
+AKM, Li-Yorke, and Block-Coppel are no longer equivalent.
 \begin{figure}[ht]
   \begin{tikzpicture}[node distance=1cm, auto,]
  %nodes
     \node[] (dummy) {};
-    \node[punkt, inner sep=5pt,above=2.0cm of dummy] (ly) {Li-Yorke};
-    \node[punkt, inner sep=5pt,below=2.0cm of dummy] (dev) {Devaney};
-    \node[punkt, inner sep=5pt,right=2.0cm of dummy] (bc) {Block-Coppel};
-    \node[punkt, inner sep=5pt,left=2.0cm of dummy] (entropy) {Entropy};
+    \node[box, inner sep=5pt,below=2.0cm of dummy] (ly) {Li-Yorke};
+    \node[box, inner sep=5pt,left=2.0cm of dummy] (dev) {Devaney};
+    \node[box, inner sep=5pt,above=2.0cm of dummy] (bc) {Block-Coppel};
+    \node[box, inner sep=5pt,right=2.0cm of dummy] (entropy) {Entropy};
  %edges
-    \draw[induced] (dev) to node {} (ly); 
-    \draw[imply] (entropy) to[bend left=15] node {} (ly); 
-    \draw[imply] (bc) to[bend right=15] node {} (ly); 
-    \draw[imply] (dev) to[bend left=15] node {} (entropy); 
-    \draw[imply] (dev) to[bend right=15] node {} (bc); 
+    \draw[imply] (entropy)[bend left=15] to node {} (ly); 
+    \draw[induced] (bc) to node {} (ly); 
+    \draw[imply] (bc) to[bend left=15] node {} (entropy); 
+    %??? \draw[imply] (bc) to[bend right=15] node {} (dev); 
   \end{tikzpicture}
-  \caption{Relations between definitions for a compact interval.}
+  \label{fig:chaos-metric}
+  \caption{
+    Relations between definitions for a compact metric space.
+    An absence of an arrow means that the particular implication is not necessarily true.
+    For instance, Devaney's chaos does not imply Block-Copple's chaos.
+  }
 \end{figure}
 
-\citet{blanchard} has shown that posivite topological entropy implies chaos in Li-Yorke's sense .
+A system with posivite topological entropy is chaotic in Li-Yorke's sense .
 \begin{theorem}
+  \citep{blanchard}
   If $(X,F)$ has positive topological entropy, then it is chaotic in Li-Yorke's sense.
   \label{thm:entropy-liyorke}
 \end{theorem}
+
+As we have seen for the compact interval case, the converse of the last theorem is not true in general.
+For the same reason, Li-Yorke chaos does not imply Block-Coppel's or Devaney's chaos, either.
 
 There exists a system that is topologically transitive and sensitive to initial conditions, but not chaotic in Li-Yorke's sense.
 \begin{theorem}
   \citep{blanchard}
   Chaos in Wiggins's sense is not a sufficient condition for chaos in Li-Yorke's sense.  
   \begin{proof}
-    Irrational Rotation is topologically transitive, and sensitive to initial conditions.
-    However, it does not have a Li-Yorke pair. 
+    Sturmian System.
   \end{proof}
 \end{theorem}
 
