@@ -1,6 +1,37 @@
 \documentclass[12pt,twoside,draft]{book}
 \usepackage{../../thesis}
 \graphicspath{ {../../images/} }
+\usepackage{tikz}
+\usetikzlibrary{arrows,positioning} 
+\tikzset{
+    %Define standard arrow tip
+    >=stealth',
+    %Define style for boxes
+    punkt/.style={
+           rectangle,
+           rounded corners,
+           draw=black, very thick,
+           text width=6.5em,
+           minimum height=2em,
+           text centered},
+    % Define arrow style
+    imply/.style={
+           ->,
+           thick,
+           shorten <=2pt,
+           shorten >=2pt,},
+    both/.style={
+           <->,
+           thick,
+           shorten <=2pt,
+           shorten >=2pt,},
+    induced/.style={
+           dotted,
+           ->,
+           thick,
+           shorten <=2pt,
+           shorten >=2pt,},
+}
 
 \makeindex
 \begin{document}
@@ -28,6 +59,22 @@ Specifically, we consider the case where $X$ is a compact interval, compact subs
 Let $I \subseteq \R$ be a compact interval.
 In this section, we consider the case where $X = I$.
 As it turns out, Devaney's, Block-Coppel's, and positive topological entropy are equivalent conditions, and Li-Yorke's chaos is a weaker condition.
+\begin{figure}[ht]
+\begin{tikzpicture}[node distance=1cm, auto,]
+ %nodes
+ \node[punkt] (ly) {Li-Yorke};
+ \node[punkt, inner sep=5pt,above=1.0cm of ly] (dev) {Devaney};
+ \node[punkt, inner sep=5pt,right=1.5cm of dev] (bc) {Block-Coppel};
+ \node[punkt, inner sep=5pt,left=1.5cm of dev] (entropy) {Entropy};
+ %edges
+ \draw[imply] (dev) to node {} (ly); 
+ \draw[imply] (entropy) to[bend right=20] node {} (ly); 
+ \draw[imply] (bc) to[bend left=20] node {} (ly); 
+ \draw[both] (dev) to node {} (entropy); 
+ \draw[both] (dev) to node {} (bc); 
+ \end{tikzpicture}
+\caption{Relations between definitions for a compact interval.}
+\end{figure}
 
 \citet{aulbach} discuss the equivalence between Devaney's and Block-Coppel's definitions.
 \begin{theorem}
@@ -36,7 +83,7 @@ As it turns out, Devaney's, Block-Coppel's, and positive topological entropy are
   \label{devaney-blockcoppel}
 \end{theorem}
 
-\citet{forti} mentions that the following can be proved using the method in \citet{omegachaos}.
+\citet{forti} mentions that the following can be proved using the method in \citet{omegachaos}. (Questionable. See Balibrea, Snoha)
 \begin{theorem}
   $(I,F)$ is chaotic in the sense of Devaney if and only if it has positive topological entropy.
   \label{thm:devaney-entropy}
@@ -71,9 +118,26 @@ As a side note, let us mentions that, on a compact interval, Devaney's and Wiggi
 In summary, Devaney's, Block-Coppel's, and positive topological entropy definitions are equivalent on a compact interval.
 Each of the three equivalent definitions imply chaos in Li-Yorke's sense, but Li-Yorke's definition does not imply others.
 
-\section{Compact Subset of $\R^n$}
 
 \section{Compact Metric Space}
+
+\begin{figure}[ht]
+  \begin{tikzpicture}[node distance=1cm, auto,]
+ %nodes
+    \node[] (dummy) {};
+    \node[punkt, inner sep=5pt,above=2.0cm of dummy] (ly) {Li-Yorke};
+    \node[punkt, inner sep=5pt,below=2.0cm of dummy] (dev) {Devaney};
+    \node[punkt, inner sep=5pt,right=2.0cm of dummy] (bc) {Block-Coppel};
+    \node[punkt, inner sep=5pt,left=2.0cm of dummy] (entropy) {Entropy};
+ %edges
+    \draw[induced] (dev) to node {} (ly); 
+    \draw[imply] (entropy) to[bend left=15] node {} (ly); 
+    \draw[imply] (bc) to[bend right=15] node {} (ly); 
+    \draw[imply] (dev) to[bend left=15] node {} (entropy); 
+    \draw[imply] (dev) to[bend right=15] node {} (bc); 
+  \end{tikzpicture}
+  \caption{Relations between definitions for a compact interval.}
+\end{figure}
 
 \citet{blanchard} has shown that posivite topological entropy implies chaos in Li-Yorke's sense .
 \begin{theorem}
