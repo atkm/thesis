@@ -32,8 +32,7 @@ We first state the definition of chaos, then define individual terms.
   (Topological Transitivity) 
   $F: X \rar X$ is said to be \textit{topologically transitive} if for any pair of open sets $U$, $V \subseteq X$ there exists $k > 0$ such that $\itr{F}{k}(U) \cap V \neq \emptyset$.
   \label{defn:transitivity}
-  \index{topological transitivity}
-\end{definition}
+  \index{topological transitivity} \end{definition}
 %
 \begin{definition}
   (Sensitive Dependence on Initial Conditions) 
@@ -48,8 +47,33 @@ We first state the definition of chaos, then define individual terms.
 \begin{remark}
   Note that sensitive dependence on initial conditions does \textit{not} mean that \textit{all} points near $x$ eventually separate from $x$ under iteration.
 The existence of one such point in every neighborhood of $x$ suffices.
+%However, these conditions are more or less the same, since the mapping is continuous.
 Therefore, if there were an isolated point in the space, the dynamical system cannot be sensitive to initial conditions.
 \end{remark}
+We will use the following property of a topologically transitive map frequently.
+\begin{proposition}
+  Let $F: X \to X$ be a topologically transitive, continuous map.
+  Also, let $\seq{A_i}{\infty}{i=1}$ be a sequence of open subsets of $X$.
+  Then, there exist $x \in X$ and a subsequence $\set{\itr{F}{n(i)}(x)}$ of $O(x)$ such that, for each $i$,
+  \begin{equation*}
+    \itr{F}{n(i)}(x) \in A_i
+  \end{equation*}
+  holds.
+  \label{prop:transitivity}
+  \begin{proof}
+    For each $m \geq 1$, define $\mathcal{B}_m \ceq \seq{B_i}{m}{i=1}$ as follows
+    \begin{align*}
+      B_i &\ceq A_{i} \cap \itr{F}{-n(i+1)} (B_{i+1}) \quad (i < m) \\
+      B_m &\ceq A_m,
+    \end{align*}
+    where, for each $m \geq i > 1$, we define $n(i)$ to be a positive integer such that $\itr{F}{n(i)}(A_{i-1}) \cap B_i$ is nonempty.
+    Such $n(i)$ exists because both $A_{i-1}$ and $B_i$ are open.
+    Also, set $n(1) = 0$ so that $\itr{F}{n(1)}(A_1) = A_1$.
+    Now, let $\mathcal{B} \ceq \lim\limits_{m \to \infty} \mathcal{B}_m$.
+    Consider $x \in B_1 \in \mathcal{B}$.
+    By construction, we have $\itr{F}{n(i)}(x) \in A_i$.
+  \end{proof}
+\end{proposition}
 
 Devaney motivates his definition as follows \citep[p.50]{devaney}:
 \begin{quotation}
@@ -179,7 +203,7 @@ First, we prove a lemma, which states that two distinct periodic orbits cannot i
     U \ceq J\cap \oball{\epsilon}{x}.
   \end{equation*}
   Let $n$ be the period of $q$.
-  Apply Lemma~\ref{lem:dev1} to obtain a periodic orbit $O(p)$ and a constant $c > 0$ such that $\metric{x, O(p)} > c$.
+  Apply Proposition~\ref{lem:dev1} to obtain a periodic orbit $O(p)$ and a constant $c > 0$ such that $\metric{x, O(p)} > c$.
   Let $\epsilon \ceq c/4$ so that $\metric{x, O(p)} > 4\epsilon$.
   Define
   \begin{equation*}
@@ -239,7 +263,7 @@ First, we prove a lemma, which states that two distinct periodic orbits cannot i
 Thus, we can regard dense periodic orbits and topological transitivity as sufficient conditions for sensitive dependence on initial conditions.
 Using this result, we can restate Devaney's definition in a more concise form, since the third condition, sensitive dependence on initial condition, is redundant.
 \begin{definition}
-  (Chaos in Devaney's sense) 
+  (Chaos in Devaney's sense, redefined) 
   A continuous map $F: X\rar X$ is said to be chaotic on $X$ if
   \begin{enumerate}
     \item Periodic points are dense in $X$.
@@ -255,7 +279,7 @@ However, when we restrict our space to a compact interval, topological transitiv
 
 \section{Chaos Is A Topological Property}
 A nice property of chaos in Devaney's sense is that all conditions are topological invariance, that is, the properties are preserved under conjugation by a continuous mapping.
-Since the properties of our interest are global properties of a space, we also require that the mapping be 
+Since the properties of our interest are global properties of a space, we also require that the mapping be surjective. 
 \begin{definition}
     We say that $G$ is \textit{semi-conjugate} to $F$ (by $\phi$), if there exists continuous and surjective mapping $\phi$ such that $\phi\circ F = G\circ\phi$.
     Also, we say that $G$ is \textit{conjugate} to $F$ if $G$ is semi-conjugate to $F$ and vice versa (i.e. $\phi$ is a homeomorphism).
@@ -333,11 +357,10 @@ In this final section of the chapter, we introduce a definition that is equivale
 
   \begin{definition}
     (Chaos in Martelli's sense)
-    Let $U$ be open in $\R^n$, $F: U \to \R^n$, and $X\subset U$ be closed, bounded and invariant.
-    Assume that $F$ is continuous in $X$.
+    Suppose $F: X \to X$ is a continuous map, where $X$ is a compact subset of $\R^n$.
     Then $F$ is said to be \textit{chaotic} in $X$ if there exists $x \in X$ that meets the following conditions
     \begin{enumerate}
-      \item $L(x)$ is dense in $X$.
+      \item $L(x) = X$.
       \item $O(x)$ is unstable in $X$.
     \end{enumerate}
     \label{defn:martelli}
@@ -352,21 +375,7 @@ In this final section of the chapter, we introduce a definition that is equivale
     \label{def:limset}
     \index{limit set}
   \end{definition}
-  %With the notion of limit sets, we may speak of aympototical periodicity of an orbit.
-  %\begin{definition}
-  %  (Asymptotically periodic orbit)
-  %  An orbit $O(x)$ is said to be \textit{asymptotically periodic} if its limit set is a periodic orbit.
-  %  \label{def:asymporb}
-  %  \index{asymptotically periodic!orbit}
-  %\end{definition}
-  %
-  %\begin{definition}
-  %  (Aperiodic orbit)
-  %  The orbit $O_F(x)$ is said to be \textit{aperiodic} if its limit set $L_F(x)$ is not finite.
-  %  \label{def:aporbit}
-  %  \index{aperiodic!orbit}
-  %\end{definition}
-
+  %%%
   \begin{definition}
     (Unstable Point)
     Let $F: X\to X$ be an continuous mapping, and $x$ be a member of $X$.
@@ -407,7 +416,7 @@ We use the following result in the proof of Proposition~\ref{prop:martelli-wiggi
   \begin{proof}
     We first show that the existence of an orbit whose limit set is $X$ implies topological transitivity.
     $O(x)$ is a dense orbit.
-    By Lemma~\ref{lem:dob-transitivity}, $F$ is topologically transitive.
+    By Proposition~\ref{lem:dob-transitivity}, $F$ is topologically transitive.
 
     Next, suppose that $F$ is topologically transitive.
     Let $\seq{\epsilon_i}{\infty}{i=1}$ be a monotonically decreasing sequence of positive real numbers whose limit is 0.
@@ -416,7 +425,7 @@ We use the following result in the proof of Proposition~\ref{prop:martelli-wiggi
     \begin{equation*}
       A_{1,1}, A_{1,2}, \ldots, A_{1,k_1}, A_{2,1}, \ldots, A_{2,k_2}, A_{3,1}, \ldots.
     \end{equation*}
-    Since $F$ is topologically transitive, there exists a point $x \in X$ such that some subsequence of its orbit visits each $A_{i,j}$ in this order.
+    Since $F$ is topologically transitive, by Proposition~\ref{prop:transitivity}, there exists a point $x \in X$ such that some subsequence of its orbit visits each $A_{i,j}$ in this order.
     Now, choose any point $y \in X$.
     Since $\mathcal{C}_i$ is an open cover, for each $i$, there exists $j_i$ such that $y \in A_{i,j_i}$.
     We may introduce a subsequence $\set{\itr{F}{n(i)}(x)}$ of $O(x)$ such that, for each $i$, 
@@ -444,7 +453,7 @@ Moreover, we show that the separation constant of $x$ is a property belonging to
     \begin{equation*}
       \metric{\itr{F}{p}(x), \itr{F}{p}(y)} > \epsilon.
     \end{equation*}
-    For any neighborhood $N$ of $\itr{F}{n}(x)$, choose some point $z \in N$.
+    For any neighborhood $M$ of $\itr{F}{n}(x)$, choose some point $z \in M$.
     By Proposition~\ref{prop:martelli-wiggins1}, $F$ is topologically transitive.
     It follows that, for any $\delta > 0$, there exist positive integers $m$ and $k$ such that
     \begin{equation*}
@@ -452,7 +461,7 @@ Moreover, we show that the separation constant of $x$ is a property belonging to
       \quad \mbox{ and } \quad
       \itr{F}{k}(z) \in \oball{\delta}{y}.
     \end{equation*}
-    Then, by continuity, we may have $\itr{F}{n+m+p}(x)$ and $\itr{F}{k}(z)$ as close as we wish to $\itr{F}{p}(x)$ and $\itr{F}{p}(y)$, respectively.
+    Then, by continuity, we may have $\metric{\itr{F}{n+m+p}(x), \itr{F}{p}(x)}$ and $\metric{\itr{F}{k+p}(z), \itr{F}{p}(y)}$ as small as we wish (*elaborate).
     Hence, $\itr{F}{n}(x)$ is also an unstable point, and its separation constant is $\epsilon$.
   \end{proof}
 \end{proposition}
@@ -466,18 +475,16 @@ Moreover, we show that the separation constant of $x$ is a property belonging to
     \begin{equation*}
       \metric{\itr{F}{n}(x), y} \leq \frac{\delta}{2}.
     \end{equation*}
-    Let $\epsilon$ be its separation constant.
-    We prove that $F$ has a sensitive dependence on initial conditions by showing that there exists at least one point in any neighborhood of $y$ that eventually separates from $y$ by $\epsilon/2$.
+    Let $\epsilon$ be the separation constant of $x$.
+    We prove that $F$ has a sensitive dependence on initial conditions by showing that $\itr{F}{n}(x)$ eventually separates from $y$ by $\epsilon/2$.
     If there exists $p$ such that 
     \begin{equation*}
       \metric{\itr{F}{n+p}(x), \itr{F}{p}(y)} > \frac{\epsilon}{2},
     \end{equation*}
     then we are done.
     So suppose otherwise.
-    By Proposition~\ref{prop:unstable-orbit}, there exists a point $z \in X (z \neq y)$ such that 
+    By Proposition~\ref{prop:unstable-orbit}, there exists a point $z \in \oball{\delta/2}{\itr{F}{n}(x)} (z \neq y)$ such that 
     \begin{equation*}
-      \metric{\itr{F}{n}(x), z} \leq \frac{\delta}{2} 
-      \quad \mbox{ and } \quad
       \metric{\itr{F}{n+q}(x), \itr{F}{q}(z)} > \epsilon,
     \end{equation*}
     for some $q$.
@@ -496,8 +503,7 @@ Moreover, we show that the separation constant of $x$ is a property belonging to
     \begin{equation*}
       \metric{\itr{F}{q}(y), \itr{F}{q}(z)} > \frac{\epsilon}{2}.
     \end{equation*}
-    Since the choice of $y$ and $\delta$ were arbitrary, we conclude that, $F$ has sensitive dependence on initial conditions with respect to $X$, and 
-    $\epsilon/2$ is the separation constant for any point in $X$.
+    Since the choice of $y$ and $\delta$ were arbitrary, we conclude that $F$ has sensitive dependence on initial conditions, and $\epsilon/2$ is the separation constant for any point in $X$.
   \end{proof}
 \end{proposition}
 This completes the proof of Theorem~\ref{thm:martelli-wiggins}.
@@ -517,6 +523,20 @@ This completes the proof of Theorem~\ref{thm:martelli-wiggins}.
 %  \index{defn:structural stability}
 %\end{definition}
 
+%With the notion of limit sets, we may speak of aympototical periodicity of an orbit.
+%\begin{definition}
+%  (Asymptotically periodic orbit)
+%  An orbit $O(x)$ is said to be \textit{asymptotically periodic} if its limit set is a periodic orbit.
+%  \label{def:asymporb}
+%  \index{asymptotically periodic!orbit}
+%\end{definition}
+%
+%\begin{definition}
+%  (Aperiodic orbit)
+%  The orbit $O_F(x)$ is said to be \textit{aperiodic} if its limit set $L_F(x)$ is not finite.
+%  \label{def:aporbit}
+%  \index{aperiodic!orbit}
+%\end{definition}
 
 \bibliographystyle{../../bibliography/pjgsm}
 \bibliography{../../bibliography/thesis}
