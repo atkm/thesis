@@ -8,12 +8,14 @@
 In this chapter, we illustrate an example of chaotic map, \textit{outer billiards}.
 The dynamical system is a one-parameter map on $\R^2$, and for two special cases, we prove that the map is not chaotic in any sense.
 For the other vast majority of cases, however, the map seems to be chaotic in some sense.
-We present the result of
+We present the results from numerical simulations.
 
 \section{The Billiard Map and Kite}
 An \textit{outer billiard} is a dynamical system with a simple geometrical interpretation.
 An outer billard is a dynamical system $(X, B_S)$, where $X$ is a set of points in $\R^2$, and $B_S$ is a \textit{billiard map} determined by a \textit{shape} $S$.
-(Make figures)
+Unlike the billiards game that we are familiar with, the points (or balls) move around outside the shape (or table).
+For any given point $p$, if the point is inside or on $S$, then $B_S$ maps $p$ to itself.
+If $p$ is outside the kite, on the other hand, $B_S$ maps $p$ to $q$, where $q$ is a point such that $\overline{pq}$, the line segment between $p$ and $q$, is tangent to $S$, and $\overline{pq}$ intersects $S$ at the midpoint of $\overline{pq}$ (Figure for some polygon and ellipse).
 
 This dynamical system was popularized by Jürgen Moser as a toy model of celestial mechanics~\citep{moser,moserbook}.
 We can interpret the shape as the Sun, and the points as planets orbiting the Sun.
@@ -24,46 +26,111 @@ In an analogy to the Solar system, an unbounded orbit correspond to a planet esc
 Regardless of the legitimacy of his claim, the Moser-Neumann question is an interesting mathematical problem with an intriguing geometrical nature (See Figure).
 %a tried and true technique of mathematics to extract the essential properties of a problem and to idealize it
 \citet{moserbook} showed that an outer billiard on $S$ (the shape) does not have an unbounded orbit provided that $S$ is at least $C^6$ smooth and has positive curvature. 
-\citet{schwartz} studies outer billiards when the shape is a Penrose kite.
+\citet{schwartz} studies outer billiards when the shape is a Penrose kite, and shows that outer billiards for particular Penrose kites have unbounded orbits.
 Other known results are listed in \citet[p. 2]{schwartz}.
 
 In this chapter, we study a family of one-parameter shapes, which we will refer to as \textit{kites}.
-\footnote{The particular shape was suggested by Ray Mayer. Reed College, Portland, OR !ask for permission}
+\footnote{This family of shapes was suggested by Ray Mayer. Reed College, Portland, OR !ask for permission}
+The kites that we study have, unlike the Penrose kites that Schwartz studies, curved edges.
+We only consider kites with symmetries of a square.
 \begin{definition}
   (Kite $S_d$)
-  Let $S_d$ be 
-  We construct $S_d$, a shape with one parameter $d$, as follows.
+  Let $S_d$ be a shape with one parameter $d$ constructed as follows.
   Let $C_1$ be an arc for $\theta \in (\pi/4, 3\pi/4)$ of a circle of radius $1+d$ centered at $(0,-d)$.
   Rotate $C_1$ by $\pi/4$ around the origin to obtain $C_2$.
   Similarly obtain $C_3$ and $C_4$ by rotations by $\pi/4$.
-  Then, let $S_d = C_1 \cup C_2 \cup C_3 \cup C_4$ (See Figure).
+  Then, let $S_d = C_1 \cup C_2 \cup C_3 \cup C_4$ (See Figure~\ref{fig:kiteeg}).
 
-  We define $B_{S_d}$, the corresponding billiard map as follows.
+  We already defined $B_{S_d}$ for any convex shape at the beginning of this chapter, but let us re-iterate the description here.
+  We define $B_{S_d}$, the corresponding billiard map, as follows.
+  For any given point $p$, if the point is inside or on $S_d$, then $B_{S_d}$ maps $p$ to itself.
+  If $p$ is outside the kite, then $B_{S_d}$ maps $p$ to $q$, where $q$ is a point such that $\overline{pq}$, the line segment between $p$ and $q$, is tangent to $S_d$, and $\overline{pq}$ intersects $S_d$ at the midpoint of $\overline{pq}$ (Figure~\ref{fig:kite-regions}).
   We refer to $S_d$ as a \textit{kite}.
+
 \end{definition}
 \begin{figure}[ht]
   \begin{center}
     \includegraphics[width=0.8\textwidth]{kite_d10}
-  \caption{An example of a kite. The kite shown here is $S_d$ for $d = 1.0$.}
-  \label{fig:kiteeg}
+    \caption{An example of a kite. The kite shown here is $S_d$ for $d = 1.0$.}
+    \label{fig:kiteeg}
+  \end{center}
+\end{figure}
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics[width=0.8\textwidth]{kite_w_regions}
+    \caption{The kite for $d = 1.0$ with tangent lines at the four points on the kite where the shape is not smooth.}
+    \label{fig:kite-regions}
   \end{center}
 \end{figure}
 
 \section{Special Case (1): $d = 0$}
-When $d = 0$, the kite is a unit circle (Figure~\ref{fig:kite-circle}).
-
 \begin{figure}[ht]
   \begin{center}
     \includegraphics[width=0.8\textwidth]{kite_d0}
-  \caption{$d = 0$. The kite is a unit circle.}
-  \label{fig:kite-circle}
+    \caption{$d = 0$. The kite is a unit circle.}
+    \label{fig:kite-circle}
   \end{center}
 \end{figure}
-
+%%%
+When $d = 0$, the kite is a unit circle (Figure~\ref{fig:kite-circle}).
 We only consider the dynamics of the points that are outside the kite, since the mapping of points in or on the kite is defined to be the identity map.
-Consider a point $(r, \theta)$ with $r > 1$.
+Consider a point $p = (r, \theta)$ with $r > 1$.
 We show that $r$ determines the dynamics of the point.
-Note that, for each $R \in \R$, the circle $\setst{(r,\theta)}{r = R}$ is an invariant set of the billiard map.
+The billiard map for $p$ is a rotation by $2\phi$, where $\phi = \arccos(1/r)$.
+(Note that, for each $R \in \R$, the circle $\setst{(r,\theta)}{r = R}$ is an invariant set of the billiard map.)
+If there exist $n, k \in \N^+$ such that $n(2\phi) = 2k\pi$, then $p$ is a $n$-periodic point, since 
+\begin{equation*}
+  \itr{B_S}{n} = (r, \theta + 2k\pi) = (r, \theta).
+\end{equation*}
+We can ensure that the period of $p$ is not less than $n$ by choosing an appropriate pair $n,k$.
+Noting that $\phi = \frac{k}{n}\pi$, and $\phi$ must satisfy $0 < \phi < 1/2$, we obtain the following proposition.
+\begin{proposition}
+  Let $p \in \R^2$ be a point whose polar coordinates is $(r,\theta)$, and define $\phi \ceq \arccos(1/r)$.
+  Suppose $\phi = \alpha\pi$ for $0 < \alpha < 1/2$.
+  If $\alpha$ is rational, then $p$ is a periodic point.
+  Otherwise, $p$ is aperiodic.
+\end{proposition}
+%%%
+We have found that $r$ determines $2\phi$, the angle of rotation.
+Next, we want to find values of $r$ for which the corresponding points are periodic.
+We have
+\begin{equation*}
+  \phi = \alpha\pi = \arccos(\frac{1}{r}) 
+  \LRar \cos(\alpha\pi) = \frac{1}{r}
+  \LRar r = \frac{1}{\cos(\alpha\pi)}.
+\end{equation*}
+So consider the set
+\begin{equation*}
+  A = \setst{\frac{1}{\cos(\alpha\pi)}}{0 < \alpha < \frac{1}{2}}.
+\end{equation*}
+It is easy to see that
+\begin{equation*}
+  A = \setst{r}{r > 1, r \in \R}.
+\end{equation*}
+Also consider the set of $r$ for which the corresponding points are periodic
+\begin{equation*}
+  Q = \setst{\frac{1}{\cos(\alpha\pi)}}{0 < \alpha < \frac{1}{2}, \alpha \in \Q}.
+\end{equation*}
+We show that the periodic points are dense in the whole space.
+\begin{proposition}
+  $Q$ is dense in $A$.
+  \begin{proof}
+  The set of rational numbers in $(0,1/2)$ is dense in $(0,1/2)$.
+  Note that the mapping
+    \begin{align*}
+      f: (0,\frac{1}{2}) &\to (1, \infty)  \\
+      \alpha &\mapsto \frac{1}{\cos(\alpha\pi)}
+    \end{align*}
+  is continuous and surjective.
+  It follows that $Q$ is dense in $A$.
+  \end{proof}
+\end{proposition}
+Therefore, periodic points are dense in the space, and, by the same argument, aperiodic points are also dense.
+Finally, let us consider the chaoticity of .
+Note that, if we consider two points with slightly different radii, say $p = (r, \theta)$ and $q = (r + \delta, \theta)$, the two points will be separated by some $\epsilon > 0$.
+Thus, if we consider the dynamics of an annular region, the dynamical system has a sensitive dependence on initial conditions.
+However, it is not chaotic, since so that the map is not topologically transitive.
+
 
 \section{Special Case (2): $d \to \infty$}
 As $d \to \infty$, the kite approaches a square (Figure~\ref{fig:kite-square}).
@@ -71,8 +138,8 @@ As $d \to \infty$, the kite approaches a square (Figure~\ref{fig:kite-square}).
 \begin{figure}[ht]
   \begin{center}
     \includegraphics[width=0.8\textwidth]{kite_d100}
-  \caption{$d = 100$. When $d$ is large, the kite is approximately a square.}
-  \label{fig:kite-square}
+    \caption{$d = 100$. When $d$ is large, the kite is approximately a square.}
+    \label{fig:kite-square}
   \end{center}
 \end{figure}
 
