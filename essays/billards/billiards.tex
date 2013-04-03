@@ -1,0 +1,90 @@
+\documentclass[12pt,twoside,draft]{book}
+\usepackage{../../thesis}
+\graphicspath{ {../../images/} }
+
+\makeindex
+\begin{document}
+\chapter{Outer Billiard}
+In this chapter, we illustrate an example of chaotic map, \textit{outer billiards}.
+The dynamical system is a one-parameter map on $\R^2$, and for two special cases, we prove that the map is not chaotic in any sense.
+For the other vast majority of cases, however, the map seems to be chaotic in some sense.
+We present the result of
+
+\section{The Billiard Map and Kite}
+An \textit{outer billiard} is a dynamical system with a simple geometrical interpretation.
+An outer billard is a dynamical system $(X, B_S)$, where $X$ is a set of points in $\R^2$, and $B_S$ is a \textit{billiard map} determined by a \textit{shape} $S$.
+(Make figures)
+
+This dynamical system was popularized by Jürgen Moser as a toy model of celestial mechanics~\citep{moser,moserbook}.
+We can interpret the shape as the Sun, and the points as planets orbiting the Sun.
+The Moser-Neumann question asks if there is an outer billiard system that has a point whose orbit is unbounded.
+In an analogy to the Solar system, an unbounded orbit correspond to a planet escaping the system.
+\citet{moser} says that the Moser-Neumann question is
+``a very simple geometrical problem that actually contains some of the difficulties of the $n$ body problem and may serve as a crude model for planetary motion.''
+Regardless of the legitimacy of his claim, the Moser-Neumann question is an interesting mathematical problem with an intriguing geometrical nature (See Figure).
+%a tried and true technique of mathematics to extract the essential properties of a problem and to idealize it
+\citet{moserbook} showed that an outer billiard on $S$ (the shape) does not have an unbounded orbit provided that $S$ is at least $C^6$ smooth and has positive curvature. 
+\citet{schwartz} studies outer billiards when the shape is a Penrose kite.
+Other known results are listed in \citet[p. 2]{schwartz}.
+
+In this chapter, we study a family of one-parameter shapes, which we will refer to as \textit{kites}.
+\footnote{The particular shape was suggested by Ray Mayer. Reed College, Portland, OR !ask for permission}
+\begin{definition}
+  (Kite $S_d$)
+  Let $S_d$ be 
+  We construct $S_d$, a shape with one parameter $d$, as follows.
+  Let $C_1$ be an arc for $\theta \in (\pi/4, 3\pi/4)$ of a circle of radius $1+d$ centered at $(0,-d)$.
+  Rotate $C_1$ by $\pi/4$ around the origin to obtain $C_2$.
+  Similarly obtain $C_3$ and $C_4$ by rotations by $\pi/4$.
+  Then, let $S_d = C_1 \cup C_2 \cup C_3 \cup C_4$ (See Figure).
+
+  We define $B_{S_d}$, the corresponding billiard map as follows.
+  We refer to $S_d$ as a \textit{kite}.
+\end{definition}
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics[width=0.8\textwidth]{kite_d10}
+  \caption{An example of a kite. The kite shown here is $S_d$ for $d = 1.0$.}
+  \label{fig:kiteeg}
+  \end{center}
+\end{figure}
+
+\section{Special Case (1): $d = 0$}
+When $d = 0$, the kite is a unit circle (Figure~\ref{fig:kite-circle}).
+
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics[width=0.8\textwidth]{kite_d0}
+  \caption{$d = 0$. The kite is a unit circle.}
+  \label{fig:kite-circle}
+  \end{center}
+\end{figure}
+
+We only consider the dynamics of the points that are outside the kite, since the mapping of points in or on the kite is defined to be the identity map.
+Consider a point $(r, \theta)$ with $r > 1$.
+We show that $r$ determines the dynamics of the point.
+Note that, for each $R \in \R$, the circle $\setst{(r,\theta)}{r = R}$ is an invariant set of the billiard map.
+
+\section{Special Case (2): $d \to \infty$}
+As $d \to \infty$, the kite approaches a square (Figure~\ref{fig:kite-square}).
+
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics[width=0.8\textwidth]{kite_d100}
+  \caption{$d = 100$. When $d$ is large, the kite is approximately a square.}
+  \label{fig:kite-square}
+  \end{center}
+\end{figure}
+
+
+\section{Other Cases: $d \neq 0$, $d < \infty$}
+So far, we solved two special cases that 
+The orbits of any points in a bounded set seem to be bounded.
+But we have no proof for this.
+ 
+\bibliographystyle{../../bibliography/pjgsm}
+\bibliography{../../bibliography/thesis}
+
+\printindex
+\end{document}
+
