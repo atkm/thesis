@@ -6,16 +6,9 @@
 \begin{document}
 \chapter{Topological Entropy}
 The notion of topological entropy was first introdeced by \citet{akm}.
-Topological entropy mimics the physical notion of entropy employed in statistical mechanics.
-I will first discuss basic properties of topological entropy, then compute topological entroies for some mappings.
-I will also discuss relation of topological entropy to chaos in Li-Yorke's sense.
+Topological entropy mimics the notion of entropy employed in statistical mechanics.
+We first discuss basic properties of topological entropy, then compute the topological entropy of the logistic map.
 
-\section{Conjugacy}
-(from Misiurewicz)
-Suppose $f\circ \phi = \phi \circ g$.
-If $\phi$ is injective, then $h(f) \geq h(g)$.
-If $\phi$ is surjective, then $h(f) \leq h(g)$.
-It follows that, if $\phi$ is bijective, then $h(f) = h(g)$.
 
 \section{Definition and properties of topological entropy}
 Throughout this section, $(X,d)$ is a compact metric space.
@@ -85,7 +78,12 @@ As we claimed at the beginning of this chapter, the topological entropy is invar
 The precise statement is the following theorem.
 \begin{theorem}
   (Topological Entropy is an Invariant of Topological Conjugacy)
+  (Misiurewicz)
   Let $X_1$ and $X_2$ be metric spaces, and $F_1: X_1 \to X_1$ and $F_2: X_2 \to X_2$ are continuous mappings.
+  Suppose $f\circ \phi = \phi \circ g$.
+  If $\phi$ is injective, then $h(f) \geq h(g)$.
+  If $\phi$ is surjective, then $h(f) \leq h(g)$.
+  It follows that, if $\phi$ is a homeomorphism, then $h(f) = h(g)$.
   If $\phi: X_1 \to X_2$ is a homeomorphism, then $h(F_1) = h(F_2)$.
   \label{thm:t-ent-conj}
 \end{theorem}
@@ -102,9 +100,9 @@ We require a lemma in order to prove the theorem.
     To prove the second statement, suppose $m = N(F^{-1}(\alpha))$.
     Let $\set{F^{-1}(A_1), \ldots, F^{-1}(A_{m})}$ be a subcover of $F^{-1}(\alpha)$ of minimal cardinality.
     If $F$ is surjective, then $\set{A_1, \ldots, A_{m}}$ is a subcover of $\alpha$.
-  Hence $h(F^{-1}(\alpha)) \geq h(\alpha)$.
+    Hence $h(F^{-1}(\alpha)) \geq h(\alpha)$.
   \end{proof}
-  
+
 \end{lemma}
 
 Now we proceed to prove the theorem.

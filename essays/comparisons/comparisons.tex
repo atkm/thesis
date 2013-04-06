@@ -57,8 +57,8 @@ and their variants
 In this chapter, we discuss the relations between the definitions (i)~(iv).
 (Why omit the latter three?)
 Throughout this chapter, we consider the dynamical system $(X,F)$, where $X$ is a metric space, and $F$ is a continuous mapping.
-Specifically, we consider the case where $X$ is a compact interval, compact subset of $\R^n$, and compact metric space.
-
+More specifically, we consider two cases: a compact interval and compact metric space.
+%%%
 
 \section{Compact Interval}
 Let $I \subseteq \R$ be a compact interval.
@@ -73,13 +73,13 @@ As it turns out, Devaney's, Block-Coppel's, and positive topological entropy are
     \node[box, inner sep=5pt,right=1.5cm of bc] (ent) {Entropy};
     \node[box, inner sep=5pt,above=1.0cm of dev] (wig) {Wiggins};
  %edges
+    \draw[imply] (dev.south) to node[bend right=20] {} (ly.west);  %this guy doesn't bend
     \draw[imply] (ent) to[bend left=20] node {} (ly); 
     \draw[imply] (bc) to node {} (ly); 
     \draw[both] (dev) to[bend left=30] node {} (ent); 
     \draw[both] (dev) to node {} (bc); 
     \draw[both] (dev) to node {} (wig); 
     \draw[both] (bc) to node {} (ent); 
-    \draw[imply] (dev) to node[bend right=20] {} (ly);  %this guy doesn't bend
   \end{tikzpicture}
   \label{fig:chaos-interval}
   \caption{
@@ -138,15 +138,15 @@ The next example shows that the converse of the previous statement is not true i
 
 In summary, Devaney's, Block-Coppel's, and positive topological entropy definitions are equivalent on a compact interval.
 Each of the three equivalent definitions imply chaos in Li-Yorke's sense, but Li-Yorke's definition does not imply others.
-These results can be proved by other means.
+These results can be proved through other means.
 \citet{smital} showed that there exists a Li-Yorke chaotic map that has zero topological entropy.
-Also, Devaney's definition holds if and only if positive topological entropy and vice versa \citep{omegachaos}.
-
+Also, \citet{omegachaos} showed that Devaney's definition holds if and only if positive topological entropy and vice versa .
 %%%
 
 \section{Compact Metric Space}
-The landspace in this more general case is more interesting than the compact interval case.
-AKM, Li-Yorke, and Block-Coppel are no longer equivalent.
+The result in this more general case is more interesting than the compact interval case.
+AKM, Li-Yorke, and Block-Coppel are no longer equivalent to each other.
+Moreover, neither of them implies the others.
 \begin{figure}[ht]
   \begin{tikzpicture}[node distance=1cm, auto,]
  %nodes
@@ -157,8 +157,8 @@ AKM, Li-Yorke, and Block-Coppel are no longer equivalent.
     \node[box, inner sep=5pt,right=2.0cm of dummy] (entropy) {Entropy};
  %edges
     \draw[imply] (entropy)[bend left=15] to node {} (ly); 
-    \draw[induced] (bc) to node {} (ly); 
-    \draw[imply] (bc) to[bend left=15] node {} (entropy); 
+    %? \draw[induced] (bc) to node {} (ly); 
+    %? \draw[imply] (bc) to[bend left=15] node {} (entropy); 
     %??? \draw[imply] (bc) to[bend right=15] node {} (dev); 
   \end{tikzpicture}
   \label{fig:chaos-metric}
@@ -169,26 +169,19 @@ AKM, Li-Yorke, and Block-Coppel are no longer equivalent.
   }
 \end{figure}
 
-A system with posivite topological entropy is chaotic in Li-Yorke's sense .
+A system with posivite topological entropy is chaotic in Li-Yorke's sense.
 \begin{theorem}
   \citep{blanchard}
   If $(X,F)$ has positive topological entropy, then it is chaotic in Li-Yorke's sense.
   \label{thm:entropy-liyorke}
 \end{theorem}
+As we have already seen in the compact interval case that the converse of the last theorem is not true in general.
+For the same reason, LY implies neither Block-Coppel's nor Devaney's chaos.
 
-As we have seen for the compact interval case, the converse of the last theorem is not true in general.
-For the same reason, Li-Yorke chaos does not imply Block-Coppel's or Devaney's chaos, either.
+Even if $F$ is semi-conjugate to $\sigma$, we only have $h(F) \leq h(\sigma)$.
+$h(\sigma)$ is positive, but we can't conclude that $h(F)$ is positive.
 
-There exists a system that is topologically transitive and sensitive to initial conditions, but not chaotic in Li-Yorke's sense.
-\begin{theorem}
-  \citep{blanchard}
-  Chaos in Wiggins's sense is not a sufficient condition for chaos in Li-Yorke's sense.  
-  \begin{proof}
-    Sturmian System.
-  \end{proof}
-\end{theorem}
-
-\citet{aulbach} has shown that Li-Yorke's and Block-Coppel's definitions are weaker than Devaney's definition.
+\citet{aulbach} has shown that neither Li-Yorke's nor Block-Coppel's definition implies Devaney's definition.
 \begin{theorem}
   \citep{aulbach} 
   The adding machine is chaotic in Li-Yorke's sense \textbf{and} in Block-Coppel's sense.
@@ -197,6 +190,15 @@ There exists a system that is topologically transitive and sensitive to initial 
     (Adding machine example)
   \end{proof}
 \end{theorem}
+
+The following example is a system that is chaotic in Wiggins's sense but not in Li-Yorke's sense.
+\begin{example}
+  \citep{blanchard}
+  Sturmian System.
+  Chaos in Wiggins's sense is not a sufficient condition for chaos in Li-Yorke's sense.  
+\end{example}
+Obviously, this does not mean that Devaney's definition is not a sufficient condition for Li-Yorke's definition.
+Is there a system that is topologically transitive and has dense periodic points but not Li-Yorke chaotic?
 
 In summary,
 
