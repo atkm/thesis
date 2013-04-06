@@ -156,7 +156,8 @@ Moreover, neither of them implies the others.
     \node[box, inner sep=5pt,above=2.0cm of dummy] (bc) {Block-Coppel};
     \node[box, inner sep=5pt,right=2.0cm of dummy] (entropy) {Entropy};
  %edges
-    \draw[imply] (entropy)[bend left=15] to node {} (ly); 
+    \draw[imply] (entropy)[bend left=15] to node {} (ly.east); 
+    \draw[imply] (dev)[bend right=15] to node {} (ly.west); 
     %? \draw[induced] (bc) to node {} (ly); 
     %? \draw[imply] (bc) to[bend left=15] node {} (entropy); 
     %??? \draw[imply] (bc) to[bend right=15] node {} (dev); 
@@ -181,7 +182,7 @@ For the same reason, LY implies neither Block-Coppel's nor Devaney's chaos.
 Even if $F$ is semi-conjugate to $\sigma$, we only have $h(F) \leq h(\sigma)$.
 $h(\sigma)$ is positive, but we can't conclude that $h(F)$ is positive.
 
-\citet{aulbach} has shown that neither Li-Yorke's nor Block-Coppel's definition implies Devaney's definition.
+\citet{aulbach} has shown that Block-Coppel's definition does not imply Devaney's definition.
 \begin{theorem}
   \citep{aulbach} 
   The adding machine is chaotic in Li-Yorke's sense \textbf{and} in Block-Coppel's sense.
@@ -198,7 +199,7 @@ The following example is a system that is chaotic in Wiggins's sense but not in 
   Chaos in Wiggins's sense is not a sufficient condition for chaos in Li-Yorke's sense.  
 \end{example}
 Obviously, this does not mean that Devaney's definition is not a sufficient condition for Li-Yorke's definition.
-Is there a system that is topologically transitive and has dense periodic points but not Li-Yorke chaotic?
+\citet{mai} proved that if a mapping is chaotic in Devaney's sense, then it is also chaotic in Li-Yorke's sense.
 
 In summary,
 
