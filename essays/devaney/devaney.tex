@@ -7,17 +7,18 @@
 \chapter{Devaney's Definition}
 \label{chap:devaney}
 \section{Chaos in Devaney's Sense}
-Throughout this chapter, $X$ is a metric space, and $d$ is the metric associated with the space, $F$ is a continuous map from $X$ to $X$.
+Throughout this chapter, $X$ is a metric space, and $d$ is the metric associated with the space, and $F$ is a continuous map from $X$ to $X$.
 \citet{devaney} defines chaos using three properties.
-We first state the definition of chaos, then define individual terms.
+We first state the definition of chaos, then define the properties used in the definition.
 \begin{definition}
   (Chaos in Devaney's sense) 
   A continuous map $F: X\rar X$ is said to be chaotic on $X$ if
   \begin{enumerate}
-    \item Periodic points are dense in $X$.
+    \item \textit{Periodic points are dense} in $X$.
     \item $F$ is \textit{topologically transitive}.
     \item $F$ has \textit{sensitive dependence on initial conditions}.
   \end{enumerate}
+  We will often refer to these conditions as \dpp (dense periodic points), \tt, and \sdic.
   \index{definition of chaos!Devaney}
 \end{definition}
 %
@@ -36,7 +37,7 @@ We first state the definition of chaos, then define individual terms.
 %
 \begin{definition}
   (Sensitive Dependence on Initial Conditions) 
-  $F: X \rightarrow X$ is said to have \textit{sensitive dependence on initial conditions} if there exists $\epsilon > 0$, which we refer to as the \textit{separation constant}, such that, for any $x \in X$ and any neighborhood $N$ of $x$, there exists $y\in N$ and $n\geq 0$ such that 
+  $F: X \rightarrow X$ is said to have \textit{sensitive dependence on initial conditions} if there exists $\epsilon > 0$, which we refer to as the \textit{separation constant}, such that, for any $x \in X$ and any neighborhood $N$ of $x$, there exists $y\in N$ and $n > 0$ such that 
   \begin{equation*}
     \metric{\itr{F}{n}(x), \itr{F}{n}(y)} > \epsilon.
   \end{equation*}
@@ -44,13 +45,12 @@ We first state the definition of chaos, then define individual terms.
   \index{sensitive dependence on initial conditions}
 \end{definition}
 %
-\begin{remark}
-  Note that sensitive dependence on initial conditions does \textit{not} mean that \textit{all} points near $x$ eventually separate from $x$ under iteration.
+\sdic does \textit{not} mean that \textit{all} points near $x$ eventually separate from $x$ under iteration.
 The existence of one such point in every neighborhood of $x$ suffices.
-%However, these conditions are more or less the same, since the mapping is continuous.
-Therefore, if there were an isolated point in the space, the dynamical system cannot be sensitive to initial conditions.
-\end{remark}
-We will use the following property of a topologically transitive map frequently.
+However, since the mapping is continuous, points close to the point that separates from $x$ also move away from $x$ to some extent.
+Also, if there were an isolated point in the space, the dynamical system cannot be sensitive to initial conditions.
+
+We will frequently use the following property of a topologically transitive map.
 \begin{proposition}
   Let $F: X \to X$ be a topologically transitive, continuous map.
   Also, let $\seq{A_i}{\infty}{i=1}$ be a sequence of open subsets of $X$.
@@ -75,6 +75,8 @@ We will use the following property of a topologically transitive map frequently.
   \end{proof}
 \end{proposition}
 
+We informally defined in the introduction that a chaotic mapping is a mapping that has a sensitive dependence on initial conditions, but Devaney's definition consists of properties other than sensitivity.
+Also, there is no reference to the geometry of the mapping in his definition.
 Devaney motivates his definition as follows \citep[p.50]{devaney}:
 \begin{quotation}
   [A] chaotic map possesses three ingredients:
@@ -83,11 +85,12 @@ Devaney motivates his definition as follows \citep[p.50]{devaney}:
   It cannot be broken down or decomposed into two subsystems (two invariant open subsets) which do not interact under $f$ because of topological transitivity.
   And, in the midst of this random behavior, we nevertheless have an element of regularity, namely the periodic points which are dense.
 \end{quotation}
-While topological transitivity and sensitive dependence on initial conditions are natural requirements for chaotic dynamics, the last sentence about periodic orbits is noteworthy.
-As we will see later in the examples, classical examples of chaotic systems possess dense periodic orbits.
-Nevertheless, whether dense periodic orbits should be included in the definition of chaotic dynamical system should be considered with care.
-In fact, some authors simply omit this condition.
-We attribute this version of definition to Wiggins.
+While \tt and \sdic are natural requirements for chaotic dynamics, the last sentence about periodic orbits is noteworthy.
+As we will see later in the examples, classical examples of chaotic systems possess dense periodic points.
+Nevertheless, whether \dpp should be included in the definition of chaotic dynamical system should be considered with care.
+\citet{glasner} suggest that \dpp is too strong a condition, and he replaces the condition with the existence of an invariant measure that is positive on each non-empty open set. 
+Some authors simply omit this condition.
+We attribute this version of definition to Wiggins, though some authors refer to definition as Auslander-Yorke's chaos \citep{blanchard}.
 \begin{definition}
   (Chaos in Wiggins's sense)
   A continuous map $F: X\rar X$ is said to be chaotic on $X$ if
@@ -97,32 +100,33 @@ We attribute this version of definition to Wiggins.
   \end{enumerate}
   \index{definition of chaos!Wiggins}
 \end{definition}
-
+%%%
 We give some examples to illustrate the two definitions.
   \begin{example}
     (Devaney, 1987)
-    An irrational rotation of the unit circle is topologically transitive, but not sensitive to initial conditions.
-    All points remain the same distance apart after iteration.
+    An irrational rotation of the unit circle is topologically transitive, but not sensitive to initial conditions, because all points remain the same distance apart after iteration.
   \end{example}
   \begin{example}
     (Devaney, 1987)
-    The doubling map on the unit circle is chaotic in Devaney's sense.
+    Consider a unit circle, and represent each point on the circle with an angle $\theta$.
+    Define the doubling map to be $\theta \mapsto 2\theta$.
+    Then, the doubling map on the unit circle is chaotic in Devaney's sense.
   \end{example}
   \begin{example}
-    The logistic map $L_\mu$ (we defined this mapping in the introduction) is chaotic on its attractor when $\mu > 2 + \sqrt{5}$.
-    Note that we cannot say that $L_\mu$ is chaotic on $I \equiv [0,1]$, since it does not satisfy the second condition, topological transitivity.
+    The logistic map $L_\mu: x \mapsto \mu x(1-x)$ (the mapping we saw in the introduction) is chaotic in Devaney's sense on its attractor when $\mu > 2 + \sqrt{5}$.
+    Note that we cannot say that $L_\mu$ is chaotic on $I \equiv [0,1]$, because then the mapping does not satisfy the second condition, topological transitivity.
   \end{example}
   \begin{example}
     (Rotation by magnitude is chaotic \citep{martelli})
-    Let $D$ be a unit disk centered at the origin, and $C_r = \set{v \in \R^2: \norm{v} = r}$.
+    Let $D$ be the unit disk centered at the origin, and $C_r = \set{v \in \R^2: \norm{v} = r}$.
     Define $F: D \to D$, a rotation, by
     \begin{equation*}
       F(x) = F(r, \theta) = (r, \theta + r).
     \end{equation*}
     For every $r \in (0,1]$, $C_r$ is invariant.
-    Clearly, on $C_r$, $F$ does not have sensitive dependence on initial conditions.
+    Clearly, $F$ does not have a sensitive dependence on initial conditions on $C_r$.
     However, $F$ has sensitive dependence on initial conditions on $D$, which is also an invariant set. 
-    This example shows why we should include topological transitivity in the definition of chaos.
+    This example also shows why we should include topological transitivity in the definition of chaos.
     %To see this, let $x_0 = (r_0, \theta_0)$ and $d > 0$.
     %Choose $n$ large enough that $\frac{\pi}{n} < d$ and $r_0 - \frac{\pi}{n} > 0$.
     %Let $y_0 = (r_0 - \frac{\pi}{n}, \theta_0)$.
@@ -139,7 +143,7 @@ We give some examples to illustrate the two definitions.
   %%%
   \begin{example}
     \citep{martelli}
-    This example illustrates a dynamical system that is topologically transitive and sensitive to initial conditions, but does not have dense periodic orbits.
+    This example illustrates a dynamical system that is topologically transitive and sensitive to initial conditions, but does not have dense periodic points.
     Let $D \subseteq \R^2$ a closed unit disk centered at the origin.
     Let $F: D \to D$ be defined as
     \begin{equation*}
@@ -147,20 +151,21 @@ We give some examples to illustrate the two definitions.
     \end{equation*}
     The origin is the only fixed point, and $F$ does not have a periodic orbit of period greater than 1.
     Hence, the periodic points of $F$ is not dense in $D$ so that $F$ is chaotic in the sense of Wiggins, but not in the sense of Devaney.
+    This example motivates us to think whether \dpp is necessary for the definition of chaos.
     \label{eg:notdpp}
   \end{example}
-  \begin{example}
-    (Twist Map \citep{wiggins})
-  \end{example}
+%  \begin{example}
+%    (Twist Map \citep{wiggins})
+%  \end{example}
+%%%
 
 \section{Redundancy Of The Definition}
-\citet{silverman} (and later \citet{banks}) showed that sensitive dependence on initial conditions is a necessary condition of transivity and dense periodic orbits property.
-
+\citet{silverman} (and also \citet{banks}) showed that \sdic is a necessary condition of \tt and \dpp.
+%%%
 \begin{theorem}
-  (Topological Transitivity and Dense Periodic Points Imply Sensitive Dependence on Initial Conditions)
-  Let $F: X\rar X$ be a chaotic transformation. Then there is an $\epsilon > 0$ such that
-  for any $x\in X$ and any open set $J$ containing at least $x$ and another point, there is
-  a point $y\in J$ and $n\in \N$ with
+  (\tt and \dd Imply \sdic)
+  Let $F: X\rar X$ be chaotic in Devaney's sense.
+  Then there exists $\epsilon > 0$ such that, for any $x\in X$ and any open set $J$ containing at least $x$ and another point, there is a point $y\in J$ and $n\in \N$ with
   \begin{equation*}
     \metric{\itr{F}{n}(x),\itr{F}{n}(y)} > \epsilon.
   \end{equation*}
@@ -260,34 +265,29 @@ First, we prove a lemma, which states that two distinct periodic orbits cannot i
   must hold.
 \end{proof}
 
-Thus, we can regard dense periodic orbits and topological transitivity as sufficient conditions for sensitive dependence on initial conditions.
+Thus, we can regard \dpp and \tt as sufficient conditions for \sdic.
 Using this result, we can restate Devaney's definition in a more concise form, since the third condition, sensitive dependence on initial condition, is redundant.
 \begin{definition}
   (Chaos in Devaney's sense, redefined) 
   A continuous map $F: X\rar X$ is said to be chaotic on $X$ if
   \begin{enumerate}
-    \item Periodic points are dense in $X$.
+    \item $P(F) = X$.
     \item $F$ is \textit{topologically transitive}.
   \end{enumerate}
 \end{definition}
 %%%
 A natural question to raise at this point is whether we can further reduce the definition to one condition, or whether other combinations of two conditions imply the other.
-The answers to these question are negative; \citet{assaf} showed that, in general, dense periodic orbits and sensitivity do not imply transitivity.
-Also, Example~\ref{eg:notdpp} shows that sensitivity and transitivity do not necessarily imply dense periodic orbits.
-However, when we restrict our space to a compact interval, topological transitivity implies the other two \citep{silverman}.
+The answers to both of these question are negative; \citet{assaf} showed that, in general, \dpp and \sdic do not imply \tt.
+Also, Example~\ref{eg:notdpp} shows that \sdic and \tt do not necessarily imply \dpp.
+However, when we restrict our space to a compact interval, \tt implies the other two \citep{silverman}.
 %A system is chaotic in $X$ in the sense of Devaney if and only if for every pair of open sets in $X$ there exists a periodic orbit which visits both sets (Touhey, 1997).
 
 \section{Chaos Is A Topological Property}
-A nice property of chaos in Devaney's sense is that all conditions are topological invariance, that is, the properties are preserved under conjugation by a continuous mapping.
-Since the properties of our interest are global properties of a space, we also require that the mapping be surjective. 
-\begin{definition}
-    We say that $G$ is \textit{semi-conjugate} to $F$ (by $\phi$), if there exists continuous and surjective mapping $\phi$ such that $\phi\circ F = G\circ\phi$.
-    Also, we say that $G$ is \textit{conjugate} to $F$ if $G$ is semi-conjugate to $F$ and vice versa (i.e. $\phi$ is a homeomorphism).
-\end{definition}
-We show that the dense periodic orbits and topological transitivity are topological invariants.
-It follows that sensitive dependence on initial conditions is also a topological invariance.
+All conditions employed in Devaney's definition are topological invariants, that is, the properties are preserved under conjugacy by a continuous mapping.
+We show that \dpp and \tt are topological invariants.
+It follows that sensitive dependence on initial conditions is also a topological invariant.
   \begin{theorem}
-    (Transitivity and Conjugacy) 
+    (\tt is a topological invariant) 
     Let $F: X \to X$ and $G: Y \to Y$ be continuous functions.
     Suppose that $G$ is semi-conjugate to $F$.
     If $F$ is transitive, then $G$ is transitive.
@@ -310,7 +310,6 @@ It follows that sensitive dependence on initial conditions is also a topological
 %%%
   We prove two lemmas, from which the theorem of our interest immediately follows.
   \begin{lemma}
-    (Dense Set and Conjugacy) 
     Let $\phi$ be a continuous and surjective mapping.
     If $D$ is dense in $X$, then $\phi(D)$ is dense in $Y$.
     \label{thm:conj-dense}
@@ -323,7 +322,7 @@ It follows that sensitive dependence on initial conditions is also a topological
     \end{proof}
   \end{lemma}
   \begin{lemma}
-    (Period Points and Conjugacy)
+    (Periods are preserved under conjugacy)
     Suppose $G$ is semi-conjugate to $F$.
     If $p$ is a $n$-periodic point of $F$, then $\phi(p)$ is a $n$-periodic point of $G$.
     \label{thm:conj-per}
@@ -332,6 +331,7 @@ It follows that sensitive dependence on initial conditions is also a topological
     \end{proof}
   \end{lemma}
 \begin{theorem}
+    (\dpp is a topological invariant)
     Suppose that $G$ is semi-conjugate to $F$.
     If $\mathrm{P}(F)$ is dense in $X$, then $\mathrm{P}(G)$ is dense in $Y$.
     \label{cor:conj-dense-per}
@@ -342,6 +342,7 @@ It follows that sensitive dependence on initial conditions is also a topological
 \end{theorem}
 Finally, we obtain the main result of this section as a corollary.
 \begin{corollary}
+  (\sdic is a topological invariant)
   Suppose that $G$ is semi-conjugate to $F$.
   If $F$ is sensitive to initial conditions, then $G$ is sensitive to initial conditions.
   \label{cor:conj-sdic}
@@ -349,45 +350,47 @@ Finally, we obtain the main result of this section as a corollary.
   This follows from Theorem~\ref{thm:silverman}, Theorem~\ref{thm:conj-trans}, and Theorem~\ref{thm:conj-dense}.
   \end{proof}
 \end{corollary}
+Hence, chaos in Devaney's sense is a topological invariant.
+%%%
 
 \section{Martelli's Definition}
 In this final section of the chapter, we introduce a definition that is equivalent to Wiggins's definition.
-  \citet{martelli} prove the equivalence when $X = \R^n$, but we present a more general version of the same result, when $X$ is a compact metric space.
-  We first state the definition, then define the terms used in it.
-
-  \begin{definition}
-    (Chaos in Martelli's sense)
-    Suppose $F: X \to X$ is a continuous map, where $X$ is a compact subset of $\R^n$.
-    Then $F$ is said to be \textit{chaotic} in $X$ if there exists $x \in X$ that meets the following conditions
-    \begin{enumerate}
-      \item $L(x) = X$.
-      \item $O(x)$ is unstable in $X$.
-    \end{enumerate}
-    \label{defn:martelli}
-    \index{definition of chaos!Martelli}
-  \end{definition}
-  \begin{definition}
-    (Limit Points of an Orbit/Limit Set)
-    Let $F: X\to X$ be an continuous mapping.
-    Let $O(x)$ be the orbit of $x \in X$.
-    $z \in X$ is called a \textit{limit point} of $O(x)$, if there exists a subsequence of $O(x)$ that converges to $z$.
-    The \textit{limit set} of $O(x)$, denoted $L(x)$, is the set of all limit points $O(x)$.
-    \label{def:limset}
-    \index{limit set}
-  \end{definition}
+\citet{martelli} prove the equivalence when $X$ is a compact subset of $\R^n$, but the proof sketched in their paper also works for a more general setting, namely when $X$ is a compact metric space.
+We first state the definition, then define the terms used in it.
+%%%
+\begin{definition}
+  (Chaos in Martelli's sense)
+  Suppose $F: X \to X$ is a continuous map, where $X$ is a compact metric space.
+  Then $F$ is said to be \textit{chaotic} in $X$ if there exists $x \in X$ that meets the following conditions
+  \begin{enumerate}
+    \item $L(x) = X$.
+    \item $O(x)$ is unstable in $X$.
+  \end{enumerate}
+  \label{defn:martelli}
+  \index{definition of chaos!Martelli}
+\end{definition}
+\begin{definition}
+  (Limit Points of an Orbit/Limit Set)
+  Let $F: X\to X$ be an continuous mapping.
+  Let $O(x)$ be the orbit of $x \in X$.
+  $z \in X$ is called a \textit{limit point} of $O(x)$, if there exists a subsequence of $O(x)$ that converges to $z$.
+  The \textit{limit set} of $O(x)$, denoted $L(x)$, is the set of all limit points $O(x)$.
+  \label{def:limset}
+  \index{limit set}
+\end{definition}
   %%%
-  \begin{definition}
-    (Unstable Point)
-    Let $F: X\to X$ be an continuous mapping, and $x$ be a member of $X$.
-  $x$ is called an \textit{unstable point}, if there exists $\epsilon > 0$, which we refer to as the \textit{separation constant} (as in the definition of sensitivity), such that, for any neighborhood $N$ of $x$, there exists $y \in N$ and a positive integer $n$ such that 
+\begin{definition}
+  (Unstable Point)
+  Let $F: X\to X$ be an continuous mapping, and $x$ be a member of $X$.
+  $x$ is called an \textit{unstable point}, if there exists $\epsilon > 0$, which we refer to as the \textit{separation constant} (as in the definition of \sdic), such that, for any neighborhood $N$ of $x$, there exists $y \in N$ and a positive integer $n$ such that 
   \begin{equation*}
     \metric{\itr{F}{n}(x), \itr{F}{n}(y)} > \epsilon.
   \end{equation*}
   \label{defn:unstable-orbit}
   \index{unstable orbit}
 \end{definition}
-Note that if $F$ has a sensitive dependence on initial conditions on $X$, then all points in $X$ are unstable points, and there exists a globally defined separation constant, by which two nearby points separate from each other.
-Thus, sensitivitiy is a stronger condition than instability.
+Note that if $F$ has a sensitive dependence on initial conditions on $X$, then all points in $X$ are unstable points, and there exists a globally defined separation constant.
+Therefore, sensitivitiy is a stronger condition than instability.
 
 As I mentioned in the beggining of this section, Martelli's definition is equivalent to Wiggins's.
 \begin{theorem}
@@ -438,12 +441,13 @@ We use the following result in the proof of Proposition~\ref{prop:martelli-wiggi
   \end{proof}
 \end{proposition}
 %%%
+
 Now we prove the second part of the theorem.
 Trivially, if $F$ has a sensitive dependence on initial conditions on $X$, then for any $x \in X$, $O(x)$ is unstable.
 On the other hand, the existence of an unstable orbit does not, in general, imply sensitivity of $F$.
 However, by requiring an additional condition that the limit set of the same orbit equals the entire space, we obtain the desired result.
 We first show that if $x$ is an unstable point, then any point in its orbit is also unstable.
-Moreover, we show that the separation constant of $x$ is a property belonging to all points in the orbit.
+Moreover, we show that the separation constant of $x$ is a property belonging to all points in the orbit of $x$.
 \begin{proposition}
   Suppose there exists an unstable point $x \in X$ such that $L(x) = X$.
   Then, for each positive integer $n$, $\itr{F}{n}(x)$ is also an unstable point, and its separation constant is the same as that of $x$.
