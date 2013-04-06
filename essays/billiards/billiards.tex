@@ -221,6 +221,20 @@ Hence, the system is not chaotic in Devaney's sense.
 %%%
 As $d \to \infty$, the kite approaches a square (Figure~\ref{fig:kite-square}).
 In this case, a tangent line from a circle to the kite goes through one of the four corners of the square.
+We first disregard points with integer $x$- or $y$-coordinate, i.e. points of the form $(n,y)$ or $(x,n)$ for some $n \in \N$ and $x,y \in \R$, and deal with those points separately later.
+Instead of considering individual points, we group together points into squares labeled as in Figure~\ref{fig:grid}.
+\begin{equation*}
+  S_n \ceq \setst{\mbox{square with label } (a,b)}{\abs{a} + \abs{b} = n}.
+\end{equation*}
+Sets in $S_1$, for instance, have the following dynamics:
+\begin{equation*}
+  (0,1) \mapsto (-1,0) \mapsto (0,-1) \mapsto (1,0) \mapsto (0,1).
+\end{equation*}
+Thus, each square in $S_1$ is a 4-periodic set when considering the dynamics of sets.
+It is easy to verify that each point in $A \in S_1$ is also $4$-periodic.
+We can generalize this observation to $S_n$ for any $n$: each square in $S_n$ is a $4n$-periodic set.
+Furthermore, each point in $A \in S_n$ is a $4n$-periodic point.
+We leave the proof to the reader.
 
 \begin{figure}[ht]
   \centering

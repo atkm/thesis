@@ -54,7 +54,7 @@ and their variants
   \item Martelli (equivalent to Wiggins's in $\R^n$)
   \item Marotto (implies Li-Yorke. Requires differentiability)
 \end{enumerate}
-In this chapter, we discuss the relations between the first four definitions.
+In this chapter, we discuss the relations between the definitions (i)~(iv).
 (Why omit the latter three?)
 Throughout this chapter, we consider the dynamical system $(X,F)$, where $X$ is a metric space, and $F$ is a continuous mapping.
 Specifically, we consider the case where $X$ is a compact interval, compact subset of $\R^n$, and compact metric space.
@@ -63,7 +63,7 @@ Specifically, we consider the case where $X$ is a compact interval, compact subs
 \section{Compact Interval}
 Let $I \subseteq \R$ be a compact interval.
 In this section, we consider the case where $X = I$.
-As it turns out, Devaney's, Block-Coppel's, and positive topological entropy are equivalent conditions, and Li-Yorke's chaos is a weaker condition.
+As it turns out, Devaney's, Block-Coppel's, and positive topological entropy are equivalent conditions, and any of the three implies Li-Yorke's chaos.
 \begin{figure}[ht]
   \begin{tikzpicture}[node distance=1cm, auto,]
  %nodes
@@ -90,27 +90,28 @@ As it turns out, Devaney's, Block-Coppel's, and positive topological entropy are
 \end{figure}
 
 Devaney's and Block-Coppel's definitions are equivalent.
+We already mentioned in the chapter on Devaney's chaos that dense periodic points and topological transitivity imply sensitive dependence on initial conditions in a compact metric space.
+Moreover, on a compact interval, topological transitivity implies the existence of dense periodic points.
+Thus, Devaney's and Wiggins's definitions are equivalent.
+\begin{theorem}
+  $(I,F)$ is chaotic in the sense of Devaney if and only if it is chaotic in the sense of Wiggins.
+  \label{thm:devaney-wiggins}
+  \begin{proof}
+    See \citet{silverman}.
+  \end{proof}
+\end{theorem}
+Using the above result, we prove that Devaney's definition is equivalent to Block-Coppel's definition. 
 \begin{theorem}
   \citep{aulbach}
   $(I,F)$ is chaotic in Devaney's sense if and only if it is chaotic in Block-Coppel's sense.
   \begin{proof}
     \citep{aulbach}
     (Use \citep{blockcoppel} VI: Proposition 6.)
-    (Or via \citep{blockcoppel} VIII on entropy.)
   \end{proof}
   \label{thm:devaney-blockcoppel}
 \end{theorem}
 
-Devaney's chaos implies positive topological entropy and vice versa.
-\begin{theorem}
-  \citep{forti}
-  $(I,F)$ is chaotic in the sense of Devaney if and only if it has positive topological entropy.
-  \label{thm:devaney-entropy}
-  \begin{proof}
-    \citet{omegachaos}. (Questionable. See Balibrea, Snoha)
-  \end{proof}
-\end{theorem}
-
+Furthermore, Block-Coppel's definition is equivalent to a mapping having positive topological entropy.
 \begin{theorem}
   $(I,F)$ is chaotic in the sense of Block-Coppel if and only if it has positive topological entropy.
   \label{thm:entropy-blockcoppel}
@@ -119,18 +120,8 @@ Devaney's chaos implies positive topological entropy and vice versa.
     It is also proved in \citet[VII, Theorem 24]{blockcoppel}.
   \end{proof}
 \end{theorem}
-
-As a side note, let us mentions that, on a compact interval, Devaney's and Wiggins's definitions are equivalent.
-We mentioned in the chapter on Devaney's chaos that dense periodic orbits and topological transitivity imply sensitive dependence on initial conditions in a compact metric space.
-The equivalence of Devaney's and Wiggins's definitions follows from the fact that transitivity implies dense periodic orbits.
-\begin{theorem}
-  $(I,F)$ is chaotic in the sense of Devaney if and only if it is chaotic in the sense of Wiggins.
-  \label{thm:devaney-wiggins}
-  \begin{proof}
-    The same author, \citet{silverman}, has also shown that on a compact interval, topological transitivity implies the existence of dense periodic orbits and sensitive dependence on initial conditions.
-  \end{proof}
-\end{theorem}
-
+Hence, the three definitions---Devaney, Block-Coppel, and positive topological entropy---are equivalent.
+Next, we show that Block-Coppel's definition implies Li-Yorke's definition.
 \begin{theorem}
   \citep{blockcoppel}
   If $(I,F)$ is chaotic in Block-Coppel's sense, then it is chaotic in Li-Yorke's sense.
@@ -139,16 +130,17 @@ The equivalence of Devaney's and Wiggins's definitions follows from the fact tha
     See \citet{blockcoppel} (VI; Proposition 27).
   \end{proof}
 \end{theorem}
-
-\citet{aulbach} and \citet{smital} show that Li-Yorke's chaos does not imply Block-Coppel and positive topological entropy, respectively.
-\begin{theorem}
-  \citep{aulbach, smital}
-  Chaos in Li-Yorke is not a sufficient condition for chaos in Block-Coppel's sense and does not imply positive topological entropy.
-  \label{thm:counterexample1}
-\end{theorem}
+The next example shows that the converse of the previous statement is not true in general.
+\begin{example}
+  \citep{blockcoppel}
+  \label{eg:counterexample}
+\end{example}
 
 In summary, Devaney's, Block-Coppel's, and positive topological entropy definitions are equivalent on a compact interval.
 Each of the three equivalent definitions imply chaos in Li-Yorke's sense, but Li-Yorke's definition does not imply others.
+These results can be proved by other means.
+\citet{smital} showed that there exists a Li-Yorke chaotic map that has zero topological entropy.
+Also, Devaney's definition holds if and only if positive topological entropy and vice versa \citep{omegachaos}.
 
 %%%
 
