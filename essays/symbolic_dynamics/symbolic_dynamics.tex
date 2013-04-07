@@ -5,7 +5,6 @@
 \makeindex
 \begin{document}
 \chapter{Symbolic Dynamics}
-
 \section{Invariant Set of The Horseshoe Map}
 The treatments of the horseshoe map and symbolic dynamics follows \citet{wiggins}.
 Recall the Baker's mapping that we defined ealier ref{def:baker}.
@@ -234,27 +233,35 @@ In this scheme, $\sigma$ corresponds to multiplication of a binary number by $2$
 
 As a consequence, ($D$, $H$) possesses any topological property of ($\Sigma$, $\sigma$), and vice versa.
 
-On a related note, the logistic map, tent map, and doubling maps are all conjugate to the \textit{one-sided shift}, an analogoue of the two-sided shift for non-invertible maps (the logistic map is not one-to-one).
+%\begin{theorem}
+%  (Conley-Moser Condition)
+%  Suppose $F$ satisfies the following two conditions.
+%  \begin{enumerate}
+%    \item $F(H_i) = V_i$ for each $1 \leq i \leq n$.
+%          Moreover, $F$ maps the horizontal boundaries of $H_i$ to the horizontal boundaries of $V_i$, and the vertical boundaries of $H_i$ to the vertical boundaries of $V_i$.
+%    \item If $H$ is a $\mu_h$-horizontal strip contained in $\bigcup_{i} H_i$, then $F^{-1}(H) \cap H_i$ is a $\mu_h$-horizontal strip for every $i$.
+%          Moreover, $d(F^{-1}(H) \cap H_i) \leq \nu_h d(H)$ for some $0 < \nu_h < 1$.
+%    \item The same condition for $\mu_v$-vertical strips.
+%  \end{enumerate}
+%  \label{thm:conley-moser}
+%\end{theorem}
+
+%%%
 
 \section{Definition of Chaos using Symbolic Dynamics}
+The two-sided shift, which we introduced in the previous section, is used for an invertible map (i.e. a function with an inverse).
+\citet{blockcoppel} defines chaos using the one-sided shift, a symbolic dynamics used to encode a non-invertible mapping.
+\begin{definition}
+  One-sided shift.
+\end{definition}
+On a related note, the logistic map, tent map, and doubling maps are all conjugate to the \textit{one-sided shift}, an analogoue of the two-sided shift for non-invertible maps (the logistic map is not one-to-one).
+%%%
 \begin{definition}
   (Chaos in the sense of Block-Coppel \citep{blockcoppel})
-  \label{}
+  \label{defn:blockcoppel}
   \index{definition of chaos!Block-Coppel}
 \end{definition}
 
-\begin{theorem}
-  (Conley-Moser Condition)
-  Suppose $F$ satisfies the following two conditions.
-  \begin{enumerate}
-    \item $F(H_i) = V_i$ for each $1 \leq i \leq n$.
-          Moreover, $F$ maps the horizontal boundaries of $H_i$ to the horizontal boundaries of $V_i$, and the vertical boundaries of $H_i$ to the vertical boundaries of $V_i$.
-    \item If $H$ is a $\mu_h$-horizontal strip contained in $\bigcup_{i} H_i$, then $F^{-1}(H) \cap H_i$ is a $\mu_h$-horizontal strip for every $i$.
-          Moreover, $d(F^{-1}(H) \cap H_i) \leq \nu_h d(H)$ for some $0 < \nu_h < 1$.
-    \item The same condition for $\mu_v$-vertical strips.
-  \end{enumerate}
-  \label{thm:conley-moser}
-\end{theorem}
 
 \bibliographystyle{../../bibliography/pjgsm}
 \bibliography{../../bibliography/thesis}
