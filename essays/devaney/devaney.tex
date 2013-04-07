@@ -12,12 +12,14 @@ Throughout this chapter, $X$ is a metric space, and $d$ is the metric associated
 We first state the definition of chaos, then define the properties used in the definition.
 \begin{definition}
   (Chaos in Devaney's sense) 
-  A continuous map $F: X\rar X$ is said to be chaotic on $X$ if
+  Let $F: X\rar X$ be a continuous map.
+  Suppose there exists a closed and invariant subset $Y \subseteq X$ such that
   \begin{enumerate}
-    \item \textit{Periodic points are dense} in $X$.
-    \item $F$ is \textit{topologically transitive}.
-    \item $F$ has \textit{sensitive dependence on initial conditions}.
+    \item \textit{Periodic points are dense} in $Y$.
+    \item $F$ is \textit{topologically transitive} on $Y$.
+    \item $F$ has \textit{sensitive dependence on initial conditions} in $Y$.
   \end{enumerate}
+  Then, $F$ is said to be chaotic on $Y \subseteq X$.
   We will often refer to these conditions as \dpp (dense periodic points), \tt, and \sdic.
   \index{definition of chaos!Devaney}
 \end{definition}
