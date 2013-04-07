@@ -7,16 +7,17 @@
 \chapter{Chaos in Li-Yorke sense}
 
 \section{Period Three Implies Chaos}
-This section follows the treatment in ``Period Three Implies Chaos'' \citep{li-yorke}, a seminal paper in the early era of chaos theory.
-Li and Yorke were the first to use the term ``chaos'' to describe the complex behaviors seen in maps such as those of Lorentz, Henon, and Ueda.
-Robert May, a population biologist who noticed chaotic behavior of the logistic map, popularized the term in his articles \citeyearpar{may1,may2}.
-\footnote{Although ``chaos'' is commonly used in academic papers nowadays, the title of Li and Yorke's paper was considered to be playful and inappropriate.
-Admittedly, a liberal choice of word has to some extent contributed to the popularity that chaos theory currently enjoys \citep[``Exploring Chaos on an Interval'']{ueda-abraham}.}
-This definition inspired many other definitions of chaos, such as $\omega$-chaos~\citep{omegachaos}, distributional chaos~\citep{dchaos1}, and so on \citep{genericchaos,densechaos,extremechaos}, which incorporate analogous conditions (equations \ref{eqn:liyorke1}, \ref{eqn:liyorke2}).
-At the end of chapter, we introduce a definition by Marotto as an example.
-Chaos in Marotto's sense, defined for $\R^n$, implies chaos in Li-Yorke's sense.
-As we will see, there is no simple criterion to determine whether a map is chaotic in Li-Yorke's sense for $\R^n$ where $n \geq 2$.
-Hence, Marotto's definition may serve as a condition for chaos in Li-Yorke's sense that is easier to verify, though it requires an additional structure, namely differentiability.
+This section is an exposition of a seminal paper, ``Period Three Implies Chaos'' by \citet{li-yorke}.
+Li and Yorke were the first to use the term ``chaos'' to describe complex behaviors seen in maps such as those of Lorentz, Henon, and Ueda.
+Robert May, a population biologist who is known for studying chaotic behaviors of the logistic map, popularized the term in his articles \citeyearpar{may1,may2}.
+\footnote{
+  Although the term ``chaos'' is commonly seen in literature nowadays, back when Li and Yorke's paper was being published, ``chaos'' was not an often used word in academic papers.
+  Some editors considered the title of their paper to be inappropriate for a language used in an academic article.
+  However, some authors admit that the liberal choice of word has to some extent contributed to the popularity that chaos theory currently enjoys \citep[``Exploring Chaos on an Interval'']{ueda-abraham}.}
+Li-Yorke's definition inspired many other definitions of chaos, such as $\omega$-chaos~\citep{omegachaos}, distributional chaos~\citep{dchaos1}, and others \citep{genericchaos,densechaos,extremechaos}, which incorporate analogous conditions (equations \ref{eqn:liyorke1}, \ref{eqn:liyorke2}).
+At the end of this chapter, we introduce a definition by Marotto as an example of a definition of chaos influenced by Li-Yorke's.
+As we will see, determining whether a map is chaotic in Li-Yorke's sense for $\R^n$ for $n \geq 2$ using the definition is not a simple task.
+Chaos in Marotto's sense, defined for $\R^n$, implies chaos in Li-Yorke's sense, and therefore, Marotto's definition may serve as a criterion for chaos in Li-Yorke's sense that is easier to verify, though it requires an additional structure, namely differentiability.
 
 % F: I \to I a continuous map on a compact interval.
 % Then, F is chaotic in the sense of devaney if and only if positive topological entropy.
@@ -39,12 +40,12 @@ Hence, Marotto's definition may serve as a condition for chaos in Li-Yorke's sen
   \end{equation}
   \index{chaos!definition of!Li-Yorke}
 \end{definition}
-
-The equation~\eqref{eqn:liyorke2} says that the orbits of two points come arbitrarily close to each other infinitely many times.
-Nevertheless, as equation~\eqref{eqn:liyorke1} states, the same two orbits get separated by some positive constant infinitely often.
-Thus, even if two initial points $p$ and $q$ has come very close to each other at some time $t$, after some time, say $t + t_0$, the two points can be far apart.
+%%%
+Equation~\eqref{eqn:liyorke2} says that the orbits of two points come arbitrarily close to each other infinitely many times.
+However, as Equation~\eqref{eqn:liyorke1} states, the same two orbits get separated by some positive constant infinitely often.
+Thus, even if two initial points $p$ and $q$ has come very close to each other at some time $t$, after some time, say $t + t_0$, the two points can be far apart, and vice versa.
 Li and Yorke defined chaos as the existence of \textit{uncountably many} pairs of such points.
-Intuitively, we can expect that the uncountable set would behave in a complex manner under iteration.
+At an intuitive level, we can expect that the uncountable set would cause complex behaviors of a system.
 
 \citet{li-yorke} proved that any continuous map with a 3-periodic orbit is chaotic in their sense.
 
@@ -60,26 +61,40 @@ Intuitively, we can expect that the uncountable set would behave in a complex ma
     d \leq a < b < c \quad(\mbox{or } d \geq a > b > c).
   \end{equation*}
   Then $F$ has a periodic orbit of every period.
-  (Note that the hypothesis is satisfied is $F$ has a periodic orbit of period 3.)
+  Note that the hypothesis is satisfied if $F$ has a periodic orbit of period 3.
   \label{thm:liyorke1}
 \end{theorem}
-
+%%%
 \begin{theorem}
   (Period three implies Li-Yorke chaos \citep{li-yorke})
-  Suppose the same hypothesis as theorem~\ref{thm:liyorke1}.
+  Suppose the same hypothesis as Theorem~\ref{thm:liyorke1}.
   Then $F$ is chaotic in Li-Yorke's sense.
   \label{thm:liyorke2}
 \end{theorem}
+%%%
+\begin{example}
+  To illustrate Li-Yorke's definition and their theorem, we show that both the logistic map and tent map are Li-Yorke chaotic by finding 3-periodic points.
+  \citet{saha} proved that if $\mu \geq 1 + 2\sqrt{2}$, then $L_\mu: x \mapsto \mu x(1-x)$ has a 3-periodic orbit.
+  Hence, $L_\mu$ is chaotic for $\mu \geq 1 + 2\sqrt{2}$.
+  Next, the tent map is defined as
+  \begin{equation*}
+    T(x) = 
+    \begin{cases}
+      2x     &\mbox{ if } x \in [0,1/2] \\
+      2 - 2x &\mbox{ if } x \in [1/2,1].
+    \end{cases}
+  \end{equation*}
+  It is easy to see that $2/7$ and $2/9$ are 3-periodic points.
+  This result could have been gleaned from the fact that the logistic map is conjugate to the tent map.
+  We will present the conjugacy in the chapter on topological entropy.
+\end{example}
 
-\noindent We will prove later that both logistic map and baker's map are Li-Yorke chaotic by showing that the mappings have 3-periodic orbits.
-
-One may be surprised that the innocent condition gives rise to a complex behaviour.
-However, Alexander Sarkovskii, a Soviet mathematician, would tell us to develop a better appreciation of a 3-periodic orbit.
-\citet{sarkovskii} proved a theorem similar to Theorem~\ref{thm:liyorke1} ten years before the publication of ``Period Three Implies Chaos.''
+One may be surprised that such an innocent condition gives rise to a complex behaviour.
+\citet{sarkovskii}, a Soviet mathematician, proved a theorem stronger than Theorem~\ref{thm:liyorke1} ten years before the publication of ``Period Three Implies Chaos.''
 Sarkovskii's result extends Li-Yorke's Theorem~\ref{thm:liyorke1} by proving analogous results for period 5, 7, 9, \ldots, and so on.
-To be more specific, Sarkovskii's theorem states that there exists an ordering of $\mathbb{N}$---called \textit{Sarkovskii's ordering}---such that if a mapping has a $k$-periodic orbit, then it has periodic orbits of \textit{all} periods that come after $k$ in the ordering.
+To be more specific, Sarkovskii's theorem states that there exists an ordering of $\mathbb{N}$---called \textit{Sarkovskii's ordering}---such that if a mapping has a $k$-periodic orbit, then it has periodic orbits of period $n$ for \textit{each} integer $n$ that come after $k$ in the ordering.
 Three comes the first in Sarkovskii's ordering, and in this sense, the number three is at the top of the Sarkovskii's hierarchy of the natural numbers.
-Appendix contains the Sarkovskii's ordering and its proof.
+(See the Appendix Sarkovskii's ordering and its proof.)
 
 Now we proceed to prove Theorem~\ref{thm:liyorke1} and Theorem~\ref{thm:liyorke2}.
 We start with proving three results that we require for proving the theorems.
@@ -304,6 +319,7 @@ However, we may draw an even stronger conclusion, that is, the points in $S$ are
   \end{proof}
 \end{theorem}
 %%%
+Next, we check that chaos in Li-Yorke's sense is preserved under conjugacy.
 \begin{theorem}
   (Li-Yorke's chaos is a topological invariant)
   Let $X$ be a metric space, and $F: X\to X$ be chaotic in Li-Yorke's sense.
@@ -395,7 +411,8 @@ However, we may draw an even stronger conclusion, that is, the points in $S$ are
 \end{theorem}
 %%%
 Although the definition by Li and Yorke captures our intuitive notion of chaos well, it is by no means flawless.
-There are mappings that are chaotic on a negligible set \citep{martelli}.
+Most notably, Li-Yorke's theorem (Theorem~\ref{thm:liyorke1}) applies only to one-dimensional maps.
+Also, there are mappings that are chaotic on a negligible set \citep{martelli}.
 \begin{example}
   (Chaos on a negligible set)
   Let $I = [0,1]$ and $F: I \to I$ defined as
@@ -474,20 +491,12 @@ Finally, by (1) and (2) we have
 Thus, almost every point in $I$ converges to 0 under iteration by $F$.
 \end{example}
 
-% Quasi continuous function f: X\to Y. If V\subseteq Y is open, then f^{-1}(V) \subseteq X is 'semi-open'.
-% U \subseteq X is semi-open if U \subseteq clo(int(U))
-
-There are other limitations to this definition of chaos.
-Most notably, Li-Yorke's definition is limited to one-dimensional maps.
-Also, there are maps that are chaotic in Li-Yorke's sense, but their topological entropies are zero.
-We will discuss the latter case in more depth in the chapter on topological entropy.
-His definition requires the mapping to be differentiable.
-The original definition had a minor technical flaw \citep{shi}, and Marotto later corrects his definition \citep{marotto2}.
-We present Marotto's definition in $\R^n$.
 
 \section{Chaos in Marotto's sense}
-\citet{marotto1} has a definition of chaos, which implies chaos in Li-Yorke's sense, using the notion of \textit{snap-back repeller}.
-
+\citet{marotto1} has a definition of chaos, which implies chaos in Li-Yorke's sense, using the notion of \textit{snap-back repeller}, which requires the mapping to be differentiable.
+The original definition had a minor technical flaw \citep{shi}, and Marotto later corrects his definition \citep{marotto2}.
+We present Marotto's definition in $\R^n$.
+%%%
 \begin{definition}
   (Repelling fixed point)
   Let $F: \R^n \to \R^n$ be a continuous mapping. 

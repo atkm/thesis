@@ -5,11 +5,10 @@
 \begin{document}
 
 \chapter{Preliminaries}
-A metric space underlies a dynamical system.
 I will start this chapter with a discussion of metric space.
 Then I will define dynamical systems, and introduce notions that will be used frequently.
 The purpose of this chapter is to introduce concepts and notations used in the subsequent chapters. 
-The reader may prefer to come back to this chapter as he/she encounters unfamiliar notations.
+%The reader may prefer to come back to this chapter as he/she encounters unfamiliar notations.
 
 %%% Metric
 \section{Metric Spaces}
@@ -27,7 +26,7 @@ Also, we prove the contraction fixed point theorem.
   A \textit{metric space} $X$ is a set equipped with a metric.
   \index{metric}
 \end{definition}
-
+%%%
 \begin{definition}
   (Neighborhood)
   Let $X$ be a metric space, and $\delta$ be a metric on $X$.
@@ -37,15 +36,15 @@ Also, we prove the contraction fixed point theorem.
   \end{equation*}
   I shall use the terms ``open ball'' and ``neighborhood'' interchangeably.
 \end{definition}
-
-\begin{definition}
-  (Closed neighborhood)
-  Let $X$ be a metric space, and $\delta$ be a metric on $X$.
-  For $\epsilon \in \R$, and $x,y \in X$, a \textit{closed neighborhood} $\cball{\epsilon}{x}$ is defined as the closure of the corresponding open neighborhood, i.e.
-  \begin{equation*}
-    \cball{\epsilon}{x} \ceq \cl(\oball{\epsilon}{x}).
-  \end{equation*}
-\end{definition}
+%%%
+%\begin{definition}
+%  (Closed neighborhood)
+%  Let $X$ be a metric space, and $\delta$ be a metric on $X$.
+%  For $\epsilon \in \R$, and $x,y \in X$, a \textit{closed neighborhood} $\cball{\epsilon}{x}$ is defined as the closure of the corresponding open neighborhood, i.e.
+%  \begin{equation*}
+%    \cball{\epsilon}{x} \ceq \cl(\oball{\epsilon}{x}).
+%  \end{equation*}
+%\end{definition}
 
 \begin{definition}
   (Lipschitz constant; Contraction)
@@ -63,8 +62,10 @@ Also, we prove the contraction fixed point theorem.
   Furthermore, $F$ is called a \textit{contraction} if $\Lip(F) < 1$.
   \index{Lipschitz constant}
 \end{definition}
+%%%
 
 \begin{theorem}
+  (Contraction Fixed Point Theorem)
   Let $(X,\delta)$ be a complete metric space, and $K: X \to X$ a contraction with $\Lip(K) = C$.
   Then, $K$ has a unique fixed point.
   \label{thm:cfp}
@@ -100,53 +101,55 @@ Also, we prove the contraction fixed point theorem.
     Thus, $x$ is a fixed point for $F$.
   \end{proof}
 \end{theorem}
+%%%
 
-\section{Dynamical Systems}
-
-\begin{definition}
-  (Orbit)
-  Let $F: \R^n \to \R^n$. 
-  The \textbf{orbit of $F$} for (initial value) $x_0$ is defined as a sequence
-  \begin{equation*}
-    \seq{F^n(x_0)}{n\geq 0}{ }
-  \end{equation*}
-  \label{def:orbit}
-  \index{definition of!orbit}
-\end{definition}
-$O_F(x_0)$ will simply be denoted as $O(x_0)$ when there is no ambiguity in the choice of $F$ in the context.
-
-\begin{definition}
-  (Periodic orbits)
-  \label{def:porbit}
-  \index{periodic!orbit}
-\end{definition}
-
+\section{Topological Dynamical Systems}
 Although we have encountered the concept of iteration in the preceding chapter, I formally define the notion here.
 \begin{definition}
   (Iteration)
-  Let $X$ be a metric space, and $F$ a mapping.
+  Let $X$ be a metric space, and $F$ a continuous mapping.
   \textit{The $n$th iteration of F}, denoted $\itr{F}{n}$, is defined as follows
   \begin{equation*}
     \itr{F}{n} \ceq \underbrace{F \circ F \circ \cdots \circ F}_{n} .
   \end{equation*}
 \end{definition}
-%
+%%%
+\begin{definition}
+  (Orbit)
+  Let $F: X \to X$. 
+  The \textit{orbit} of $x_0$ is defined as a sequence
+  \begin{equation*}
+    O_F(x_0) \ceq \seq{\itr{F}{n}(x_0)}{\infty}{n = 0}
+  \end{equation*}
+  $O_F(x_0)$ will simply be denoted as $O(x_0)$ when there is no ambiguity in the choice of $F$ in the context.
+  \label{def:orbit}
+  \index{definition of!orbit}
+\end{definition}
+%%%
+\begin{definition}
+  (Periodic points)
+  If $\itr{F}{n}(p) = p$ for some $n > 0$, and $\itr{F}{m}(p) \neq p$ for each $1 \leq m < n$, then $p$ is called a periodic point of period $n$, or simply a $n$-periodic point.
+  \label{def:porbit}
+  \index{periodic!orbit}
+\end{definition}
+
 It is convenient for our purpose to extend the notion of metric to a point and an orbit.
 \begin{definition}
   (Distance between a point and an orbit)
-  Let $X$ be a metric space, and $F$ a mapping.
-  For each $x,y \in X$, the metric between $O_F(x)$ and $y$ is defined as follows
+  Let $X$ be a metric space, and $F: X \to X$ a continuous mapping.
+  For each $x,y \in X$, the metric between $O(x)$ and $y$ is defined as follows
   \begin{equation*}
-    \metric{O_F(x),y} \ceq \sup\limits_{x' \in O_F(x)} \metric{y,x'}
+    \metric{O(x),y} \ceq \sup\limits_{x' \in O(x)} \metric{x',y}
   \end{equation*}
 \end{definition}
 
-In topological dynamics, we are interested in properties that are preserved under continuous mappings.
-All definitions of chaos that we discuss in this book are topological invariances.
-Since chaos, the propertie of our interest, is a global property of a space, we also require the conjugacy to be surjective. 
+In topological dynamical systems, we are interested in properties that are preserved under continuous mappings.
+Thus, two dynamical systems are ``the same'' when there exists a (homeomorphic) conjugacy between them.
+All definitions of chaos that we discuss in this book are topological invariants.
+Since properties that we are specifically interested are global properies of a given space, we will require a conjugacy to be surjective. 
 \begin{definition}
-    We say that $G$ is \textit{semi-conjugate} to $F$ (by $\phi$), if there exists continuous and surjective mapping $\phi$ such that $\phi\circ F = G\circ\phi$.
-    Also, we say that $G$ is \textit{conjugate} to $F$ if $G$ is semi-conjugate to $F$ and vice versa (i.e. $\phi$ is a homeomorphism).
+  We say that $G$ is \textit{semi-conjugate} to $F$ (by $\phi$), if there exists a continuous and surjective mapping $\phi$ such that $\phi\circ F = G\circ\phi$.
+  Also, we say that $G$ is \textit{conjugate} to $F$ if $G$ is semi-conjugate to $F$ and vice versa (i.e. $\phi$ is a homeomorphism).
 \end{definition}
 
 \bibliographystyle{../../pjgsm}
