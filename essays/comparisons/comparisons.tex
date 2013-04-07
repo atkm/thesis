@@ -43,21 +43,20 @@
 \chapter{Comparisons of Definitions of Chaos}
 We have seen four definitions 
 \begin{enumerate}[(i)]
-  \item Positive topological entropy
-  \item Devaney
-  \item Block-Coppel
-  \item Li-Yorke
+  \item Devaney (\dev)
+  \item Li-Yorke (\liy)
+  \item Block-Coppel (\blcp)
+  \item Positive topological entropy (\pte)
 \end{enumerate}
 and their variants
 \begin{enumerate}[(i)]
-  \item Wiggins's (similar to Devaney)
+  \item Wiggins's (similar to Devaney) (\wig)
   \item Martelli (equivalent to Wiggins's in $\R^n$)
   \item Marotto (implies Li-Yorke. Requires differentiability)
 \end{enumerate}
 In this chapter, we discuss the relations between the definitions (i)~(iv).
-(Why omit the latter three?)
-Throughout this chapter, we consider the dynamical system $(X,F)$, where $X$ is a metric space, and $F$ is a continuous mapping.
-More specifically, we consider two cases: a compact interval and compact metric space.
+Throughout this chapter, we consider the dynamical system $(X,F)$, where $X$ is a compact metric space, and $F$ is a continuous mapping.
+We first discuss a special case when $X$ is a compact interval, then proceed to the general case.
 %%%
 
 \section{Compact Interval}
@@ -83,37 +82,40 @@ As it turns out, Devaney's, Block-Coppel's, and positive topological entropy are
   \end{tikzpicture}
   \label{fig:chaos-interval}
   \caption{
-    Relations between the four definitions for a compact interval.
-    The three definitions in the first row are all equivalent.
+    Relations between the four definitions for the compact interval case.
+    The three definitions in the top row are all equivalent.
     Li-Yorke's definition is strictly weaker than the other three.
   }
 \end{figure}
 
-Devaney's and Block-Coppel's definitions are equivalent.
-We already mentioned in the chapter on Devaney's chaos that dense periodic points and topological transitivity imply sensitive dependence on initial conditions in a compact metric space.
+\subsection*{Devaney and Block-Coppel}
+We already mentioned in the chapter on Devaney's chaos that \dpp and \tt imply \sdic in a compact metric space.
 Moreover, on a compact interval, topological transitivity implies the existence of dense periodic points.
 Thus, Devaney's and Wiggins's definitions are equivalent.
 \begin{theorem}
   $(I,F)$ is chaotic in the sense of Devaney if and only if it is chaotic in the sense of Wiggins.
   \label{thm:devaney-wiggins}
   \begin{proof}
-    See \citet{silverman}.
+    It follows from the fact that \tt implies \dpp on a compact interval.
+    See \citet{silverman} for the proof.
   \end{proof}
 \end{theorem}
-Using the above result, we prove that Devaney's definition is equivalent to Block-Coppel's definition. 
+Using the above result, we prove that \dev is equivalent to \blcp. 
 \begin{theorem}
   \citep{aulbach}
   $(I,F)$ is chaotic in Devaney's sense if and only if it is chaotic in Block-Coppel's sense.
   \begin{proof}
-    \citep{aulbach}
-    (Use \citep{blockcoppel} VI: Proposition 6.)
+    See \citep{aulbach}.
+    The proof uses \citep{blockcoppel} VI: Proposition 6.
   \end{proof}
   \label{thm:devaney-blockcoppel}
 \end{theorem}
+%%%
 
-Furthermore, Block-Coppel's definition is equivalent to a mapping having positive topological entropy.
+\subsection*{Block-Coppel and Positive Topological Entropy}
+Block-Coppel's definition is equivalent to a mapping having positive topological entropy.
 \begin{theorem}
-  $(I,F)$ is chaotic in the sense of Block-Coppel if and only if it has positive topological entropy.
+  $(I,F)$ is chaotic in the sense of Block-Coppel if and only if $F: I \to I$ has positive topological entropy.
   \label{thm:entropy-blockcoppel}
   \begin{proof}
     This follows from Theorem~\ref{thm:devaney-blockcoppel} and Theorem~\ref{thm:devaney-entropy}.
@@ -121,6 +123,9 @@ Furthermore, Block-Coppel's definition is equivalent to a mapping having positiv
   \end{proof}
 \end{theorem}
 Hence, the three definitions---Devaney, Block-Coppel, and positive topological entropy---are equivalent.
+%%%
+
+\subsection*{Block-Coppel and Li-Yorke}
 Next, we show that Block-Coppel's definition implies Li-Yorke's definition.
 \begin{theorem}
   \citep{blockcoppel}
@@ -133,19 +138,22 @@ Next, we show that Block-Coppel's definition implies Li-Yorke's definition.
 The next example shows that the converse of the previous statement is not true in general.
 \begin{example}
   \citep{blockcoppel}
+  Truncated tent map.
   \label{eg:counterexample}
 \end{example}
 
+\subsection*{Result}
 In summary, Devaney's, Block-Coppel's, and positive topological entropy definitions are equivalent on a compact interval.
 Each of the three equivalent definitions imply chaos in Li-Yorke's sense, but Li-Yorke's definition does not imply others.
 These results can be proved through other means.
-\citet{smital} showed that there exists a Li-Yorke chaotic map that has zero topological entropy.
-Also, \citet{omegachaos} showed that Devaney's definition holds if and only if positive topological entropy and vice versa .
+\citet{smital} constructed an example of a Li-Yorke chaotic map that has zero topological entropy.
+\citet{omegachaos} showed the equivalence of \dev and \pte, via his definition of chaos called $\omega$-chaos.
+Also, some of these results are consequences of results in the general compact metric case.
 %%%
 
 \section{Compact Metric Space}
 The result in this more general case is more interesting than the compact interval case.
-AKM, Li-Yorke, and Block-Coppel are no longer equivalent to each other.
+\dev, \blcp, and \pte are no longer equivalent to each other.
 Moreover, neither of them implies the others.
 \begin{figure}[ht]
   \begin{tikzpicture}[node distance=1cm, auto,]
@@ -214,7 +222,8 @@ More specifically, Mai proved that, for a complete metric space $X$ without an i
 Thus, even though \tt and \sdic do not imply Li-Yorke's chaos, \tt and the existence of a single periodic points, which is significantly weaker than \dpp, imply chaos in Li-Yorke's sense.
 We also notice that \sdic and the sensitivity conditions encoded in Li-Yorke's definition do not immediately imply each other.
 
-In summary,
+\subsection*{Result}
+There are open questions.
 
 \bibliographystyle{../../bibliography/pjgsm}
 \bibliography{../../bibliography/thesis}
