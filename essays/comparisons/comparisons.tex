@@ -170,6 +170,7 @@ Moreover, neither of them implies the others.
   }
 \end{figure}
 
+\subsection*{Topological Entropy and Li-Yorke}
 A system with posivite topological entropy is chaotic in Li-Yorke's sense.
 \begin{theorem}
   \citep{blanchard}
@@ -179,19 +180,28 @@ A system with posivite topological entropy is chaotic in Li-Yorke's sense.
 As we have already seen in the compact interval case that the converse of the last theorem is not true in general.
 For the same reason, LY implies neither Block-Coppel's nor Devaney's chaos.
 
+\subsection*{Block-Coppel and Topological Entropy}
 Even if $F$ is semi-conjugate to $\sigma$, we only have $h(F) \leq h(\sigma)$.
 $h(\sigma)$ is positive, but we can't conclude that $h(F)$ is positive.
 
+\subsection*{Block-Coppel and Devaney}
 \citet{aulbach} has shown that Block-Coppel's definition does not imply Devaney's definition.
 \begin{theorem}
   \citep{aulbach} 
-  The adding machine is chaotic in Li-Yorke's sense \textbf{and} in Block-Coppel's sense.
+  The adding machine is chaotic in Li-Yorke's sense \textit{and} in Block-Coppel's sense.
   However, the system is not chaotic in Devaney's sense.
   \begin{proof}
     (Adding machine example)
   \end{proof}
 \end{theorem}
+We do not know whether Block-Coppel implies Devaney.
 
+\subsection*{Block-Coppel and Li-Yorke}
+``it is widely believed that Block-Coppel implies Li-Yorke''
+
+\subsection*{Devaney and Topological Entropy}
+
+\subsection*{Devaney and Li-Yorke}
 The following example is a system that is chaotic in Wiggins's sense but not in Li-Yorke's sense.
 \begin{example}
   \citep{blanchard}
@@ -199,7 +209,10 @@ The following example is a system that is chaotic in Wiggins's sense but not in 
   Chaos in Wiggins's sense is not a sufficient condition for chaos in Li-Yorke's sense.  
 \end{example}
 Obviously, this does not mean that Devaney's definition is not a sufficient condition for Li-Yorke's definition.
-\citet{mai} proved that if a mapping is chaotic in Devaney's sense, then it is also chaotic in Li-Yorke's sense.
+\citet{mai} proved that if a mapping is chaotic in Devaney's sense, then it is also chaotic in Li-Yorke's sense (\citet{huang} proved the same result earlier than Mai for the compact metric space case).
+More specifically, Mai proved that, for a complete metric space $X$ without an isolated point, if $F: X \to X$ is transitive and has a periodic point of any period, then $F$ is chaotic in Li-Yorke's sense.
+Thus, even though \tt and \sdic do not imply Li-Yorke's chaos, \tt and the existence of a single periodic points, which is significantly weaker than \dpp, imply chaos in Li-Yorke's sense.
+We also notice that \sdic and the sensitivity conditions encoded in Li-Yorke's definition do not immediately imply each other.
 
 In summary,
 
