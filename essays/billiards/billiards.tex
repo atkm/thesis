@@ -1,5 +1,6 @@
-\documentclass[12pt,twoside,draft]{book}
+\documentclass[12pt,twoside]{book}
 \usepackage{../../thesis}
+\usepackage{xfrac}
 \graphicspath{ {../../images/} }
 \usetikzlibrary{calc}
 \tikzset{
@@ -221,8 +222,15 @@ Hence, the system is not chaotic in Devaney's sense.
 %%%
 As $d \to \infty$, the kite approaches a square (Figure~\ref{fig:kite-square}).
 In this case, a tangent line from a circle to the kite goes through one of the four corners of the square.
-We first disregard points with integer $x$- or $y$-coordinate, i.e. points of the form $(n,y)$ or $(x,n)$ for some $n \in \N$ and $x,y \in \R$, and deal with those points separately later.
-Instead of considering individual points, we group together points into squares labeled as in Figure~\ref{fig:grid}.
+We disregard points in the set 
+\begin{equation*}
+  G \ceq \setst{(x,y)}{x = n \mbox{ or } y = n \mbox{ for some } n \in \N}
+\end{equation*}
+because the billiard map is not well-defined.
+Similarly, we ignore points on the grid, i.e. points of the form $(n,y)$ or $(x,n)$ for some $n \in \N$ and $x,y \in \R$, because each of these points is eventually mapped to a point in $G$.
+(However, we could set an arbitrary rule for where points in $G$ are mapped to.
+For example, for $p \in G$, we could choose the closest of the four corners of the square to be the midpoint of $p$ and its destination.)
+It is easier to understand the structure of the dynamical system if we group together points into squares labeled as in Figure~\ref{fig:grid} and study the dynamics of squares, instead of considering individual points.
 \begin{equation*}
   S_n \ceq \setst{\mbox{square with label } (a,b)}{\abs{a} + \abs{b} = n}.
 \end{equation*}
@@ -271,11 +279,95 @@ We leave the proof to the reader.
   \label{fig:grid}
 
 \end{figure}
+%%%
 
 \section{Other Cases: $d \neq 0$, $d < \infty$}
-So far, we solved two special cases that 
+So far, we studied the dynamics of the outer billiard system for two particular parameters, which turned out to be fairly simple.
+For general cases, however, the dyanamics is considerably more complicated.
+We show several results of numerical simulations, and make conjectures about the properties of the system.
+However, we have no proof so far for any of the claims that we will make.
+
 The orbits of any points in a bounded set seem to be bounded.
-But we have no proof for this.
+There are periodic points of all periods.
+Periodic points of the same periods are clustered together (similar to $d \to \infty$ case).
+
+\begin{figure}[ht]
+  \begin{center}
+    $
+    \begin{array}{l}
+      \includegraphics[width=0.45\textwidth]{strip2-3_setup}
+    \end{array}
+    $\scalebox{2.0}{$\Rar$}$
+    \begin{array}{l}
+      \includegraphics[width=0.4\textwidth]{strip2-3}
+    \end{array}
+    $
+    \caption{
+      The transformation of an annular region between two circles of radius 2 and 3.
+      $d = ?$.
+      !! Redo the picture on the left in R.
+    }
+    \label{fig:disk2-3}
+  \end{center}
+\end{figure}
+
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics[width=0.45\textwidth]{strip3-4}
+    \includegraphics[width=0.45\textwidth]{strip6-7}
+    \caption{Left: transformation of an annular region between two circles of radii 3 and 4.
+      Right: between radii 6 and 7.
+      $d = ?$.
+    }
+    \label{fig:disk3-4-6-7}
+  \end{center}
+\end{figure}
+
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics[width=0.6\textwidth]{disk10}
+    \caption{Left: transformation of an annular region between two circles of radii 1 and 10.
+      Since the billiard map is the identity map for points inside the kite, we can regard this as a transformation of a disk of radius 10.
+      $d = ?$.
+    }
+    \label{fig:disk10}
+  \end{center}
+\end{figure}
+
+When a point is aperiodic, it seems to be sensitive to initial conditions
+Figure~\ref{fig:sensitivity1} shows the evolution of distances between two nearby points.
+Initially, the distance between the two points is essentially zero, and the two points remain close to each other in the beginning.
+After around 500 iterations, however, the distance between the two starts growing.
+The growth ends when the distance is around 9, which seems to be the upper bound.
+Then, the two points begin to come close to each other again.
+The two points keep distance from each other between 1500-3500 iterations, but starting around 3500th iteration, the distance between the two oscillates between the upper bound and some small value less than 1.
+These two points seem to satisfy the criteria of Li-Yorke pair.
+Also, there seem to be uncountably many such points (Figure~\ref{fig:strip3-4}).
+If these claims turn out to be true, then the system is chaotic in the sense of Li-Yorke.
+
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics[width=0.8\textwidth]{billiard_sensitivity_pi-div-10}
+    \caption{The evolution of distance between $p = (2, \pi/10)$ and the other point $q$, which is initially close to $p$.
+      $q$ was obtained by rotating $p$ by $\epsilon$ radian, where $\epsilon$ is the smallest double available in the precision of the machine.
+      The $x$-axis is the number of iterations, and the $y$-axis is the distance between $p$ and $q$.
+    }
+    \label{fig:sensitivity1}
+  \end{center}
+\end{figure}
+
+In the cluster of periodic points, the distance between two nearby points shows almost no growth.
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics[width=0.8\textwidth]{sensitivity_test_slow_growth_45deg}
+    \caption{The evolution of distance between $p = (2, \pi/4)$ and the other point $q$, which is initially close to $p$.
+      $q$ was obtained by rotating $p$ by $\epsilon$ radian, where $\epsilon$ is the smallest double available in the precision of the machine.
+      The $x$-axis is the number of iterations, and the $y$-axis is the distance between $p$ and $q$.
+      Even after $5.0 \times 10^6$ iterations, the distance between the two points is on the order of $10^{-1}$.
+    }
+    \label{fig:sensitivity2}
+  \end{center}
+\end{figure}
 
 \bibliographystyle{../../bibliography/pjgsm}
 \bibliography{../../bibliography/thesis}
