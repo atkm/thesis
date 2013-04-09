@@ -24,17 +24,21 @@
 \makeindex
 \begin{document}
 \chapter{Outer Billiard}
-In this chapter, we illustrate an example of chaotic map, \textit{outer billiards}.
-The dynamical system is a one-parameter map on $\R^2$, and for two special cases, we prove that the map is not chaotic in any sense.
-For the other vast majority of cases, however, the map seems to be chaotic in some sense.
-We present the results from numerical simulations.
+In this chapter, we illustrate a dynamical system called \textit{outer billiards}.
+The dynamical system is a one-parameter map on $\R^2$, and for two special cases, we prove that the map is not chaotic.
+For the general case, however, the map seems to be chaotic--it seems to satisfy the definition by Li-Yorke or Wiggins (or perhaps Devaney).
+We do no have a proof for the general case being chaotic, but we present results from numerical simulations to make conjectures.
 
 \section{The Billiard Map and Kite}
 An \textit{outer billiard} is a dynamical system with a simple geometrical interpretation.
-An outer billard is a dynamical system $(X, B_S)$, where $X$ is a set of points in $\R^2$, and $B_S$ is a \textit{billiard map} determined by a \textit{shape} $S$.
+An outer billard is defined as $(X, B_S)$, where $X$ is a set of points in $\R^2$, and $B_S$ is a \textit{billiard map} determined by a \textit{shape} $S$.
 Unlike the billiards game that we are familiar with, the points (or balls) move around outside the shape (or table).
 For any given point $p$, if the point is inside or on $S$, then $B_S$ maps $p$ to itself.
 If $p$ is outside the kite, on the other hand, $B_S$ maps $p$ to $q$, where $q$ is a point such that $\overline{pq}$, the line segment between $p$ and $q$, is tangent to $S$, and $\overline{pq}$ intersects $S$ at the midpoint of $\overline{pq}$ (Figure~\ref{fig:billiards}).
+For each point in the space, there are always two tangent lines: ones that go around the shape in the counter-clockwise and clockwise directions.
+We choose the counter-clockwise one to define the billiard map.
+
+
 \begin{figure}[ht]
   \centering
   \begin{tikzpicture}[scale=3,cap=round]
@@ -83,43 +87,44 @@ If $p$ is outside the kite, on the other hand, $B_S$ maps $p$ to $q$, where $q$ 
     \draw [right angle symbol={p}{t}{o}];
   \end{tikzpicture}
   \caption{
-    An example of an billiard on a unit circle.
+    An example of an billiard on the unit circle.
     The red ball in the first quadrant gets mapped to the other (green) ball.
   }
   \label{fig:billiards}
 \end{figure}
-
-There are necessarily two tangent lines: ones that go around the shape in the counter-clockwise and clockwise directions.
-We choose the counter-clockwise one to define the billiard map.
+%%%
 
 This dynamical system was popularized by Jürgen Moser as a toy model of celestial mechanics~\citep{moser,moserbook}.
 We can interpret the shape as the Sun, and the points as planets orbiting the Sun.
-The Moser-Neumann question asks if there is an outer billiard system that has a point whose orbit is unbounded.
+The Moser-Neumann question asks if there is an outer billiard system that has a point whose orbit is unbounded (i.e. the distance from the origin is unbounded).
 In an analogy to the Solar system, an unbounded orbit correspond to a planet escaping the system.
 \citet{moser} says that the Moser-Neumann question is
 ``a very simple geometrical problem that actually contains some of the difficulties of the $n$ body problem and may serve as a crude model for planetary motion.''
-Regardless of the legitimacy of his claim, the Moser-Neumann question is an interesting mathematical problem with an intriguing geometrical nature (See Figure).
+Regardless of the legitimacy of his claim, the Moser-Neumann question is an interesting mathematical problem with an intriguing geometrical nature (See Figure~\ref{fig:strip3-4-6-7}, for instance).
 %a tried and true technique of mathematics to extract the essential properties of a problem and to idealize it
 \citet{moserbook} showed that an outer billiard on $S$ (the shape) does not have an unbounded orbit provided that $S$ is at least $C^6$ smooth and has positive curvature. 
-\citet{schwartz} studies outer billiards when the shape is a Penrose kite, and shows that outer billiards for particular Penrose kites have unbounded orbits.
+\citet{schwartz} studied outer billiards when the shape is a Penrose kite, and showed that outer billiards for particular Penrose kites have unbounded orbits.
 Other known results are listed in \citet[p. 2]{schwartz}.
 
-In this chapter, we study a family of one-parameter shapes, which we will refer to as \textit{kites}.
+In this chapter, we study the outer billiards defined by a family of one-parameter shapes, which we will refer to as \textit{kites}.
 \footnote{This family of shapes was suggested by Ray Mayer. Reed College, Portland, OR !ask for permission}
-The kites that we study have, unlike the Penrose kites that Schwartz studies, curved edges.
+The kites that we study have, unlike the Penrose kites that Schwartz studies, curvilinear sides.
 We only consider kites with symmetries of a square.
+We give a verbal description of the outer billiard dynamical systems below, but the reader would probably find the figures in this chapter more helpful.
 \begin{definition}
-  (Kite $S_d$)
-  Let $S_d$ be a shape with one parameter $d$ constructed as follows.
+  (Kite)
+  Let $S_d$ be a shape parametrized by $d$ constructed as follows.
   Let $C_1$ be an arc for $\theta \in (\pi/4, 3\pi/4)$ of a circle of radius $1+d$ centered at $(0,-d)$.
-  Rotate $C_1$ by $\pi/4$ around the origin to obtain $C_2$.
-  Similarly obtain $C_3$ and $C_4$ by rotations by $\pi/4$.
-  Then, let $S_d = C_1 \cup C_2 \cup C_3 \cup C_4$ (See Figure~\ref{fig:kiteeg}).
+  Rotate $C_1$ by $\pi/2$ around the origin to obtain $C_2$.
+  Similarly obtain $C_3$ and $C_4$ by rotations by $\pi/2$.
+  Then, let $S_d \ceq C_1 \cup C_2 \cup C_3 \cup C_4$ (See Figure~\ref{fig:kiteeg}).
 
-  We already defined $B_{S_d}$ for any convex shape at the beginning of this chapter, but let us re-iterate the description here.
+  We already defined $B_{S_d}$ for any convex shape at the beginning of this chapter, but let us reiterate the description here.
   We define $B_{S_d}$, the corresponding billiard map, as follows.
   For any given point $p$, if the point is inside or on $S_d$, then $B_{S_d}$ maps $p$ to itself.
   If $p$ is outside the kite, then $B_{S_d}$ maps $p$ to $q$, where $q$ is a point such that $\overline{pq}$, the line segment between $p$ and $q$, is tangent to $S_d$, and $\overline{pq}$ intersects $S_d$ at the midpoint of $\overline{pq}$ (Figure~\ref{fig:kite-regions}).
+  Note that, since $S_d$ is not smooth for $d > 0$, there may not be a tangent line from every point in the space.
+  If that is the case for some point $p$, we suitably choose one of the corner points of the shape (the points corresponding to $\theta = \pi/4, 3\pi/4, 5\pi/4, \mbox{ or } 7\pi/4$), and define the tangent line to be the line that passes through $p$ and the corner point that we just picked (Figure~\ref{fig:kite-regions}).
   We refer to $S_d$ as a \textit{kite}.
 
 \end{definition}
@@ -142,20 +147,20 @@ We only consider kites with symmetries of a square.
 \begin{figure}[ht]
   \begin{center}
     \includegraphics[width=0.8\textwidth]{kite_d0}
-    \caption{$d = 0$. The kite is a unit circle.}
+    \caption{$d = 0$. The kite is the unit circle.}
     \label{fig:kite-circle}
   \end{center}
 \end{figure}
 %%%
-When $d = 0$, the kite is a unit circle (Figure~\ref{fig:kite-circle}).
+When $d = 0$, the kite is the unit circle (Figure~\ref{fig:kite-circle}).
 We only consider the dynamics of the points that are outside the kite, since the mapping of points in or on the kite is defined to be the identity map.
 Consider a point $p = (r, \theta)$ with $r > 1$.
 We show that $r$ determines the dynamics of the point.
-The billiard map for $p$ is a rotation by $2\phi$, where $\phi = \arccos(1/r)$.
-(Note that, for each $R \in \R$, the circle $\setst{(r,\theta)}{r = R}$ is an invariant set of the billiard map.)
+We can geometrically find that the billiard map for $p$ is a rotation by $2\phi$, where $\phi = \arccos(1/r)$ (Figure~\ref{fig:billiards}).
+It follows that, for each $R \in \R$, the circle $\setst{(r,\theta)}{r = R}$ is an invariant set of the billiard map.
 If there exist $n, k \in \N^+$ such that $n(2\phi) = 2k\pi$, then $p$ is a $n$-periodic point, since 
 \begin{equation*}
-  \itr{B_S}{n} = (r, \theta + 2k\pi) = (r, \theta).
+  \itr{B_S}{n}(p) = (r, \theta + 2k\pi) = (r, \theta) = p.
 \end{equation*}
 We can ensure that the period of $p$ is not less than $n$ by choosing an appropriate pair $n,k$.
 Noting that $\phi = \frac{k}{n}\pi$, and $\phi$ must satisfy $0 < \phi < 1/2$, we obtain the following proposition.
@@ -170,7 +175,7 @@ We have found that $r$ determines $2\phi$, the angle of rotation.
 Next, we want to find values of $r$ for which the corresponding points are periodic.
 We have
 \begin{equation*}
-  \phi = \alpha\pi = \arccos(\frac{1}{r}) 
+  \phi = \alpha\pi = \arccos\paren{ \frac{1}{r} } 
   \LRar \cos(\alpha\pi) = \frac{1}{r}
   \LRar r = \frac{1}{\cos(\alpha\pi)}.
 \end{equation*}
@@ -186,7 +191,8 @@ Also consider the set of $r$ for which the corresponding points are periodic
 \begin{equation*}
   Q = \setst{\frac{1}{\cos(\alpha\pi)}}{0 < \alpha < \frac{1}{2}, \alpha \in \Q}.
 \end{equation*}
-We show that the periodic points are dense in the whole space.
+Obviously, $Q \subseteq A$.
+Next, we show that the periodic points are dense in the whole space.
 \begin{proposition}
   $Q$ is dense in $A$.
   \begin{proof}
@@ -201,12 +207,12 @@ We show that the periodic points are dense in the whole space.
   \end{proof}
 \end{proposition}
 Therefore, periodic points are dense in the space, and, by the same argument, aperiodic points are also dense.
-Finally, let us consider the chaoticity of the dynamical system using Devaney's definition.
+Finally, we show that the dynamical system is not chaotic in the sense of Devaney.
 Once we fix a radius $R$, the circle of radius $R$ centered at the origin is a closed, invariant set of the mapping.
-Since $B_{S_0}$ is simply a rotation by a fixed angle for each point in the circle, the mapping is not sensitive to initial conditions.
+Since $B_{S_0}$ is simply a rotation by a fixed angle for each point in the circle, the mapping is not sensitive to initial conditions, so not chaotic in Devaney's sense.
 If the $R$ that we picked happen to satisfy $1/R = \cos(\alpha\pi)$ for some rational $\alpha$, then $B_{S_0}$ is not topologically transitive.
 Otherwise, every point on the circle is aperiodic, so the mapping is topologically transitive.
-Note that, if we consider two points with slightly different radii, say $p = (r, \theta)$ and $q = (r + \delta, \theta)$, the two points will be separated by some $\epsilon > 0$.
+Note that, if we consider two points with slightly different radii, say $p = (r, \theta)$ and $q = (r + \delta, \theta)$, the two points will be separated by some $\epsilon > 0$, because the billiard map rotates the two points by a slightly different angle.
 Thus, if we consider the dynamics of an annular region, the dynamical system has a sensitive dependence on initial conditions.
 However, it is not chaotic, since a point never leaves the circle it was originally on, so that the map is not topologically transitive.
 Hence, the system is not chaotic in Devaney's sense.
@@ -226,7 +232,7 @@ We disregard points in the set
 \begin{equation*}
   G \ceq \setst{(x,y)}{x = n \mbox{ or } y = n \mbox{ for some } n \in \N}
 \end{equation*}
-because the billiard map is not well-defined.
+ because the billiard map is not well-defined for these points.
 Similarly, we ignore points on the grid, i.e. points of the form $(n,y)$ or $(x,n)$ for some $n \in \N$ and $x,y \in \R$, because each of these points is eventually mapped to a point in $G$.
 (However, we could set an arbitrary rule for where points in $G$ are mapped to.
 For example, for $p \in G$, we could choose the closest of the four corners of the square to be the midpoint of $p$ and its destination.)
@@ -275,92 +281,105 @@ We leave the proof to the reader.
     \node at (-2.5,-1.5) {(-2,-1)};
   \end{tikzpicture}
 
-  \caption{Our naming scheme of grids.}
+  \caption{Our naming scheme of squares.}
   \label{fig:grid}
 
 \end{figure}
 %%%
 
 \section{Other Cases: $d \neq 0$, $d < \infty$}
-So far, we studied the dynamics of the outer billiard system for two particular parameters, which turned out to be fairly simple.
+So far, we studied the dynamics of the outer billiard system for two particular parameters, which turned out to have simple structures.
 For general cases, however, the dyanamics is considerably more complicated.
-We show several results of numerical simulations, and make conjectures about the properties of the system.
-However, we have no proof so far for any of the claims that we will make.
+We show several results of numerical simulations for a particular parameter, $d = 1.0$ (the choice is arbitrary), and make conjectures about properties of the system.
+However, we have no proof for any of the claims that we will make.
+
 
 The orbits of any points in a bounded set seem to be bounded.
-There are periodic points of all periods.
-Periodic points of the same periods are clustered together (similar to $d \to \infty$ case).
-
-\begin{figure}[ht]
-  \begin{center}
-    $
-    \begin{array}{l}
-      \includegraphics[width=0.45\textwidth]{strip2-3_setup}
-    \end{array}
-    $\scalebox{2.0}{$\Rar$}$
-    \begin{array}{l}
-      \includegraphics[width=0.4\textwidth]{strip2-3}
-    \end{array}
-    $
-    \caption{
-      The transformation of an annular region between two circles of radius 2 and 3.
-      $d = ?$.
-      !! Redo the picture on the left in R.
-    }
-    \label{fig:disk2-3}
-  \end{center}
-\end{figure}
-
-\begin{figure}[ht]
-  \begin{center}
-    \includegraphics[width=0.45\textwidth]{strip3-4}
-    \includegraphics[width=0.45\textwidth]{strip6-7}
-    \caption{Left: transformation of an annular region between two circles of radii 3 and 4.
-      Right: between radii 6 and 7.
-      $d = ?$.
-    }
-    \label{fig:disk3-4-6-7}
-  \end{center}
-\end{figure}
-
+Figure~\ref{fig:disk10} shows that no point, which was initially in the disk of radius 10, escapes to a region far from the origin.
+The points remain in a region resembling a square rotated by $\pi/4$.
 \begin{figure}[ht]
   \begin{center}
     \includegraphics[width=0.6\textwidth]{disk10}
-    \caption{Left: transformation of an annular region between two circles of radii 1 and 10.
+    \caption{Left: transformation of an annular region between two circles of radii 1 and 10 after 500 iterations.
+      $d = 1.0$.
       Since the billiard map is the identity map for points inside the kite, we can regard this as a transformation of a disk of radius 10.
-      $d = ?$.
     }
     \label{fig:disk10}
   \end{center}
 \end{figure}
 
-When a point is aperiodic, it seems to be sensitive to initial conditions
+In Figure~\ref{fig:strip2-3}, we see four hollow circles symmetrically placed around the kite.
+It is easy to see that these circles are mapped to each other, and in a way similar to the $d \to \infty$ case, form groups of points that have period $4$.
+Also in Figure~\ref{fig:strip2-3}, we see eight clusters of ellipse-like regions; these are 8-periodic clusters.
+In the transformations of annular regions of larger radii, we see clusters with higher periods (Figure~\ref{fig:strip3-4-6-7}).
+Thus, periodic points of the same periods are clustered together as in the $d \to \infty$ case, but instead of squares, we have various circular shapes.
+In the plots we have seen so far, we only found periodic clusters of period $4n$.
+It is unknown whether there exists periodic clusters with a period that is not a multiple of four.
+However, for $d = 0.1$, Mayer found periodic clusters of period 3 by a numerical simulation (personal communication).
+
+\begin{figure}[ht]
+  \begin{center}
+    $
+    \begin{array}{l}
+      \includegraphics[width=0.5\textwidth]{strip2-3_setup}
+    \end{array}
+    $\scalebox{1.75}{$\Rar$}$
+    \begin{array}{l}
+      \includegraphics[width=0.5\textwidth]{strip2-3}
+    \end{array}
+    $
+    \caption{
+      The transformation of an annular region between two circles of radius 2 and 3 after 500 iterations.
+      $d = 1.0$.
+    }
+    \label{fig:strip2-3}
+  \end{center}
+\end{figure}
+
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics[width=0.49\textwidth]{strip3-4}
+    \includegraphics[width=0.49\textwidth]{strip6-7}
+    \caption{Left: transformation of an annular region between two circles of radii 3 and 4 after 500 iterations.
+      Right: between radii 6 and 7.
+      $d = 1.0$ for both plots.
+    }
+    \label{fig:strip3-4-6-7}
+  \end{center}
+\end{figure}
+%%%
+
+When a point is aperiodic, its orbit seems to be sensitive to initial conditions.
 Figure~\ref{fig:sensitivity1} shows the evolution of distances between two nearby points.
+The points are $(4,\pi/10)$ and a nearby point obtained by rotating the first point by the smallest possible rotation.
 Initially, the distance between the two points is essentially zero, and the two points remain close to each other in the beginning.
-After around 500 iterations, however, the distance between the two starts growing.
+After around the 500th iteration, however, the distance between the two starts growing.
 The growth ends when the distance is around 9, which seems to be the upper bound.
 Then, the two points begin to come close to each other again.
-The two points keep distance from each other between 1500-3500 iterations, but starting around 3500th iteration, the distance between the two oscillates between the upper bound and some small value less than 1.
+The two points keep distance from each other between 1500-3500 iterations, but after the 3500th iteration, the distance between the two oscillates between the upper bound and some small value less than 1.
 These two points seem to satisfy the criteria of Li-Yorke pair.
-Also, there seem to be uncountably many such points (Figure~\ref{fig:strip3-4}).
+Also, there seem to be uncountably many such points (Figure~\ref{fig:strip2-3},\ref{fig:strip3-4-6-7}).
 If these claims turn out to be true, then the system is chaotic in the sense of Li-Yorke.
+
+In the cluster of periodic points, the distance between two nearby points shows almost no growth.
+The corresponding figure is the plot on the left in Figure~\ref{fig:strip3-4-6-7}.
+Note that the point $(4,\pi/4)$ $(4,\pi/10)$.
 
 \begin{figure}[ht]
   \begin{center}
     \includegraphics[width=0.8\textwidth]{billiard_sensitivity_pi-div-10}
-    \caption{The evolution of distance between $p = (2, \pi/10)$ and the other point $q$, which is initially close to $p$.
+    \caption{The evolution of distance between $p = (4, \pi/10)$ and the other point $q$, which is initially close to $p$.
       $q$ was obtained by rotating $p$ by $\epsilon$ radian, where $\epsilon$ is the smallest double available in the precision of the machine.
       The $x$-axis is the number of iterations, and the $y$-axis is the distance between $p$ and $q$.
     }
     \label{fig:sensitivity1}
   \end{center}
 \end{figure}
-
-In the cluster of periodic points, the distance between two nearby points shows almost no growth.
+%%%
 \begin{figure}[ht]
   \begin{center}
     \includegraphics[width=0.8\textwidth]{sensitivity_test_slow_growth_45deg}
-    \caption{The evolution of distance between $p = (2, \pi/4)$ and the other point $q$, which is initially close to $p$.
+    \caption{The evolution of distance between $p = (4, \pi/4)$ and the other point $q$, which is initially close to $p$.
       $q$ was obtained by rotating $p$ by $\epsilon$ radian, where $\epsilon$ is the smallest double available in the precision of the machine.
       The $x$-axis is the number of iterations, and the $y$-axis is the distance between $p$ and $q$.
       Even after $5.0 \times 10^6$ iterations, the distance between the two points is on the order of $10^{-1}$.

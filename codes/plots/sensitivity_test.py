@@ -58,10 +58,10 @@ def sensitivity_test(d, R, bound, itrnum, init, dist):
 
 def run_test():
     R = 4
-    #dls = (1, 3)
-    #argls = (sp.pi/3, sp.pi/4)
-    dls = sp.linspace(0.01, 3, 11)
-    argls = sp.linspace(0, sp.pi/2, 50)
+    dls = [1]
+    argls = (sp.pi/10, sp.pi/4)
+    #dls = sp.linspace(0.01, 3, 11)
+    #argls = sp.linspace(0, sp.pi/2, 50)
     dist = sp.finfo(float).eps
     #dist = sp.pi # rotated 180 degrees
     # dist = sp.pi/2 # the other side
@@ -107,5 +107,5 @@ def run_test():
     
 
 # MAIN
-#run_test()
+run_test()
     
