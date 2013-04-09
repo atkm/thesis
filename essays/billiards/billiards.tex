@@ -1,6 +1,5 @@
 \documentclass[12pt,twoside]{book}
 \usepackage{../../thesis}
-\usepackage{xfrac}
 \graphicspath{ {../../images/} }
 \usetikzlibrary{calc}
 \tikzset{
@@ -359,11 +358,13 @@ Then, the two points begin to come close to each other again.
 The two points keep distance from each other between 1500-3500 iterations, but after the 3500th iteration, the distance between the two oscillates between the upper bound and some small value less than 1.
 These two points seem to satisfy the criteria of Li-Yorke pair.
 Also, there seem to be uncountably many such points (Figure~\ref{fig:strip2-3},\ref{fig:strip3-4-6-7}).
-If these claims turn out to be true, then the system is chaotic in the sense of Li-Yorke.
+If these claims are true, then the system is chaotic in the sense of Li-Yorke and also in the sense of Wiggins.
 
-In the cluster of periodic points, the distance between two nearby points shows almost no growth.
-The corresponding figure is the plot on the left in Figure~\ref{fig:strip3-4-6-7}.
-Note that the point $(4,\pi/4)$ $(4,\pi/10)$.
+In the cluster of periodic points, on the other hand, the distance between two nearby points shows almost no growth (Figure~\ref{fig:sensitivity2}).
+In this plot, the two points we are looking at are $(4,\pi/4)$ and a nearby point.
+Note that the point $(4,\pi/4)$ is in one of the periodic cluster, while $(4,\pi/10)$ is not (Figure~\ref{fig:strip3-4-6-7}).
+We do not yet know whether points in periodic clusters are periodic, since it is possible that the set of periodic clusters of the same period is a topologically transitive system.
+However, this numerical result suggests that points in periodic clusters are periodic points, as they were in the special case $d \to \infty$.
 
 \begin{figure}[ht]
   \begin{center}
