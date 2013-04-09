@@ -2,7 +2,7 @@
 # encoding: utf-8
 # srcprep; genmain; make; all
 # global. files to work with.
-files = ['introduction','prelims','devaney','li_yorke','marotto','t-entropy','symbolic_dynamics', 'comparisons','billards']
+files = ['introduction','prelims','devaney','li_yorke','t-entropy','symbolic_dynamics','billiards', 'comparisons']
 appendix = ['sarkovskii','other_defns']
 
 # strip the original and store it in ./src/
@@ -47,7 +47,7 @@ end
 
 # create main.tex
 task :genmain do
-  main_tmpl_head = "\\documentclass[12pt,twoside,draft]{reedthesis}
+  main_tmpl_head = "\\documentclass[12pt,twoside]{reedthesis}
 \\usepackage{xthesis}
 \\graphicspath{{./images/}}
   

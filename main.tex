@@ -1,4 +1,4 @@
-\documentclass[12pt,twoside,draft]{reedthesis}
+\documentclass[12pt,twoside]{reedthesis}
 \usepackage{xthesis}
 \graphicspath{{./images/}}
   
@@ -17,7 +17,7 @@
 %\approvedforthe{Committee} 
 
 %specify the chapters to be compiled.
-  \includeonly{./src/src_introduction,./src/src_prelims,./src/src_devaney,./src/src_li_yorke,./src/src_marotto,./src/src_t-entropy,./src/src_symbolic_dynamics,./src/src_comparisons,./src/src_billards}
+  \includeonly{./src/src_introduction,./src/src_prelims,./src/src_devaney,./src/src_li_yorke,./src/src_t-entropy,./src/src_symbolic_dynamics,./src/src_billiards,./src/src_comparisons}
 
 \begin{document}
 % from reed-thesis.tex
@@ -58,15 +58,13 @@
 
 \include{./src/src_li_yorke}
 
-\include{./src/src_marotto}
-
 \include{./src/src_t-entropy}
 
 \include{./src/src_symbolic_dynamics}
 
-\include{./src/src_comparisons}
+\include{./src/src_billiards}
 
-\include{./src/src_billards}
+\include{./src/src_comparisons}
 
 %Conclusion. if I need one.
 %\chapter*{Conclusion}
