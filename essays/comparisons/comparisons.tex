@@ -137,8 +137,106 @@ Next, we show that Block-Coppel's definition implies Li-Yorke's definition.
 \end{theorem}
 The next example shows that the converse of the previous statement is not true in general.
 \begin{example}
-  \citep{blockcoppel}
-  Truncated tent map.
+  (Truncated tent map \citep{aulbach})
+  The tent map is defined as
+  \begin{equation*}
+    T(x) = 
+    \begin{cases}
+      2x     &\mbox{ if } x \in [0,1/2] \\
+      2 - 2x &\mbox{ if } x \in [1/2,1].
+    \end{cases}
+  \end{equation*}
+  We define the \textit{truncated tent map} for $\lambda \in [0,1]$ as 
+  \begin{equation*}
+    T_\lambda(x) = \min\set{\lambda, T(x)}.
+  \end{equation*}
+  (Thus, a truncated tent map is the tent map truncated at the height $\lambda$.
+  Also, $T_1 = T$.)
+  Define a partition of $[0,1]$ by two sets
+  \begin{equation*}
+    J_\lambda \ceq \brac{0, \frac{\lambda}{2}} \cup \brac{1 - \frac{\lambda}{2}, 1} 
+    \quad\mbox{ and }\quad
+    K_\lambda \ceq \paren{\frac{\lambda}{2}, 1- \frac{\lambda}{2}}.
+  \end{equation*}
+  For any $0 \leq \lambda \leq \gamma \leq 1$, $T_\lambda$ and $T_\gamma$ coincide on $J_\lambda$.
+  Furthermore, a point in $J_\lambda$ is a periodic point of $T_\gamma$ if and only if it is a periodic point of $T_\lambda$.
+
+  The (untruncated) tent map $T_1$ has a 3-periodic point (e.g. $\set{2/7, 4/7, 6/7}$), so by Sarkovskii's theorem, $T_1$ has $2^n$-periodic points for all $n \in \N$.
+  For any $n \in \N$, define
+  \begin{equation*}
+    \lambda_n \ceq \min\setst{\lambda \in [0,1]}{\mbox{ a } 2^n\mbox{-periodic orbit is contained in } [0,\lambda]}.
+  \end{equation*}
+  $\lambda_n$ exists for each $n$ because, for each $m \in \N$, the number of $m$-periodic points of $T_1$ is finite.
+  To see this, note that $T_1$ has at most 2 fixed points, $\itr{T_1}{2}$ has at most $2^2$, and so on. 
+  We can inductively show that the number of fixed points for $\itr{T_1}{m}$ is less than or equal to $2^m$. (Diagram)
+  Also note that $\lambda_n$ is a $2^n$-periodic point of $T_1$ by construction.
+
+  Next, we show that 
+  \begin{equation*}
+    O_{T_1}(\lambda_n) \subseteq J_{\lambda_n}.
+  \end{equation*}
+We have $T_1(K_{\lambda_n}) = (\lambda_n, 1]$, but by definition of $\lambda_n$, $O_{T_1}(\lambda_n)$ is contained in $[0,\lambda_n]$.
+It follows that no point of $O_{T_1}(\lambda_n)$ is in $K_{\lambda_n}$, which implies $O_{T_1}(\lambda_n) \subseteq J_{\lambda_n}$.
+Since $T_1$ and $T_{\lambda_n}$ coincide on $J_{\lambda_n}$, $\lambda_n$ is also a $2^n$-periodic point of $T_{\lambda_n}$, and its orbit under iteration by $T_{\lambda_n}$ is also contained in $J_{\lambda_n}$.
+Then, by Sarkovskii's theorem, $T_{\lambda_n}$ has a periodic points of periods
+\begin{equation*}
+  2^n, 2^{n-1}, \ldots, 2, 1.
+\end{equation*}
+Furthermore, we show that no periodic point of $T_{\lambda_n}$ has a period different from these.
+%We first prove that there cannot be more than one periodic point in $\cl(K_{\lambda_n})$ by contradiction. %%% Unnecessary?
+%Suppose there exist $a,b \in \cl(K_{\lambda_n})$ that are periodic points of $T_{\lambda_n}$.
+%Since $T_{\lambda_n}(a) = T_{\lambda_n}(b) = \lambda_n$, $a$ and $b$ are in the orbit of $\lambda_n$, so that the periods of $a$ and $b$ are $2^n$.
+%We may suppose that $\itr{T}{k}(a) = b$ for some $0 < k < 2^n$ without loss of generality.
+%Then,
+%\begin{equation*}
+%  \itr{T}{k}(a) = b 
+%  \Rar 
+%  \itr{T}{k+1}(a) = T(b)
+%  \Rar 
+%  \itr{T}{k}(\lambda_n) = \lambda_n,
+%\end{equation*}
+%which implies that $\lambda_n$ has period less than $2^n$, a contradiction.
+To prove claim, suppose on the contrary that $T_{\lambda_n}$ has a $m$-periodic point $p$, where $m$ is an integer that comes before $2^n$ in the Sarkovskii's ordering.
+Denote $O_{T_{\lambda_n}}(p)$, the orbit of $p$, by $M$.
+Since $T_{\lambda_n}$ can only have periodic points of period $2^n$ in $K_{\lambda_n}$, no point in $M$ is contained in $K_{\lambda_n}$, which means that
+\begin{equation*}
+  M \subseteq J_{\lambda_n}.
+\end{equation*}
+Now, define $\rho \ceq \max M$.
+Since the period of $\rho$ is not $2^n$, it cannot be $\lambda_n$.
+It follows that
+\begin{equation*}
+  \rho < \lambda_n.
+\end{equation*}
+Then, by Sarkovskii's theorem, there exists a $2^n$-periodic point in $[0,\rho] \subsetneq [0, \lambda_n]$.
+This contradicts the fact that $\lambda_n$ is the minimum of such numbers.
+
+To conclude the construction of the mapping, we show that
+\begin{equation*}
+  \lambda^* \ceq \lim\limits_{n \to \infty} \lambda_n
+\end{equation*}
+exists.
+To see that the limit exists, first note that $\seq{\lambda_n}{\infty}{n = 0}$ is a strictly increasing sequence.
+Also, $\seq{\lambda_n}{\infty}{n = 0}$ is bounded above by 1.
+It follows that the sequence converges.
+(\citet{misiurewicz1} showed that $\lambda^* = 0.8249080 \cdots$.)
+
+Next, we show that $T_{\lambda^*}$ is not chaotic in the sense of Block-Coppel.
+The proof is by contradiction.
+By \citet[II, Theorem 14]{blockcoppel}, $T_{\lambda^*}$ has a periodic point whose period is not a power of 2.
+So suppose $p \in [0,1]$ is a periodic point of period $q2^n$ for some $n \geq 0$ and an odd integer $q > 1$.
+Let $\rho \ceq \max O(p)$.
+If $\rho < \lambda^*$, then there exists a positive integer $m$ such that $\lambda_m > \rho$.
+Note that $p$ is also a $q2^n$-periodic point of $T_{\lambda_m}$.
+However, there cannot be a periodic point whose period is not a power of two, so this is a contradiction.
+If, on the other hand, $\rho = \lambda^*$, then by Sarkovskii's theorem, $T_{\lambda^*}$ has a periodic point $p'$ of period $(q+2) 2^n$.
+Since $\max O(p') < \lambda^*$, this case reduces to the first case.
+
+Finally, $T_{\lambda^*}$ is chaotic in the sense of Li-Yorke.
+
+Hence, $T_{\lambda^*}$ is chaotic in the sense of Li-Yorke, but not in the sense of Block-Coppel.
+
+
   \label{eg:counterexample}
 \end{example}
 
