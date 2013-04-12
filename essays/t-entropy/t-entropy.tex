@@ -9,6 +9,8 @@ In the current chapter, we introduce another widely accepted definition of chaos
 The notion of topological entropy was first introdeced by \citet{akm} as a measure of complexity of a system.
 Topological entropy mimics the notion of entropy employed in statistical mechanics.
 We first discuss basic properties of topological entropy, then compute the topological entropy of the logistic map for $\mu = 4$.
+``The topological entropy is indeed a measure of the absolute information content of a transformation, or, equivalently, of the extent to which the transformation scatters points around the space $X$.'' (Petersen)
+Roughly, it measures the exponential growth rate of the number of distinguishable orbits as time advances. (Scholarpedia)
 
 \section{Definition and properties of topological entropy}
 Throughout this section, $(X,d)$ is a compact metric space.
@@ -302,6 +304,9 @@ Therefore,
 \begin{equation*}
   h(L_4) = h(T) = \lim\limits_{n \to \infty} h(T, \alpha_n) = \log 2.
 \end{equation*}
+
+It turns out that full one-sided or two-sided shift with $n$ symbols: $\log n$. \citep[p.177]{walters}
+Since the logistic map is topologically conjugate (by a homeomorphism) to the full one-sided shift of two symbols $\set{0,1}$, we could have gleaned this result.
 
 \bibliographystyle{../../bibliography/pjgsm}
 \bibliography{../../bibliography/thesis}
