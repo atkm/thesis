@@ -11,10 +11,11 @@ Topological entropy mimics the notion of entropy employed in statistical mechani
 We first discuss basic properties of topological entropy, then compute the topological entropy of the logistic map for $\mu = 4$.
 ``The topological entropy is indeed a measure of the absolute information content of a transformation, or, equivalently, of the extent to which the transformation scatters points around the space $X$.'' (Petersen)
 Roughly, it measures the exponential growth rate of the number of distinguishable orbits as time advances. (Scholarpedia)
-
-\section{Definition and properties of topological entropy}
 Throughout this section, $(X,d)$ is a compact metric space.
 $F$ is a continuous mapping from $X$ to $X$ unless noted otherwise.
+$\log$ is the logarithm base $e$ (this choice is arbitrary).
+
+\section{Definition and Properties}
 Our definition of topological entropy uses open covers of a space. 
 
 \begin{definition}
@@ -42,6 +43,7 @@ Our definition of topological entropy uses open covers of a space.
   \end{equation*}
 \end{definition}
 \begin{proposition}
+  (Properties of open covers)
   Let $\alpha$ and $\beta$ be open covers of $X$.
   We have
   \begin{enumerate}[(i)]
@@ -64,17 +66,54 @@ Our definition of topological entropy uses open covers of a space.
   \begin{equation*}
     N(\alpha) \ceq \min\setst{ \#(\beta) }{ \beta \mbox{ is a subcover of } \alpha}.
   \end{equation*}
-  The topological entropy of a mapping $F$ relative to a open cover $\alpha$ is defined as (prove the existence of this limit)
+  The topological entropy of a mapping $F$ relative to a open cover $\alpha$ is defined as
   \begin{equation*}
-    h(F,\alpha) = \lim\limits_{n \to \infty} \frac{1}{n} \cdot h\paren{ \bigvee\limits_{i=0}^n \itr{F}{(-i)}(\alpha) }.
+    h(F,\alpha) = \lim\limits_{n \to \infty} \frac{1}{n} \cdot h\paren{ \bigvee\limits_{i=0}^{n-1} \itr{F}{(-i)}(\alpha) }.
   \end{equation*}
+  For the existence of this limit, see the proposition following this definition.
   Finally, the \textit{topological entropy} of a mapping $F$, denoted $h(F)$, is defined as the supremum of $h(F, \alpha)$ taken over all open covers of $X$:
   \begin{equation*}
     h(F) = \sup\limits_\alpha h(F,\alpha).
   \end{equation*}
+  (We use the same symbol $h$ to denote three things: the topological entropy of an open cover, of an open cover with respect to a mapping, and of a mapping.
+  However, since the meaning of $h$ changes according to its argument(s), there should be no ambiguity.)
   \label{defn:t-entropy}
   \index{topological entropy}
 \end{definition}
+%%%
+\begin{lemma}
+  \citep[Theorem 4.9]{walters}
+  Let $\seq{a_n}{\infty}{n = 0}$ be a sequence of real numbers such that 
+  \begin{equation*}
+    a_{m+n} \leq a_n + a_m \mbox{ for all } m,n.
+  \end{equation*}
+  Then, the limit
+  \begin{equation*}
+    \lim\limits_{n \to \infty} \frac{a_n}{n} 
+  \end{equation*}
+  exists, and its value is $\inf a_n / n$.
+  \begin{proof}
+    For any $m$, let $n \ceq qm + r$ <++>.
+  \end{proof}
+\end{lemma}
+\begin{proposition}
+   \begin{equation*}
+    h(F,\alpha) = \lim\limits_{n \to \infty} \frac{1}{n} \cdot h\paren{ \bigvee\limits_{i=0}^{n-1} \itr{F}{(-i)}(\alpha) }
+  \end{equation*}
+  exists.
+  \begin{proof}
+    Denote $k_n \ceq h(\alpha \vee \cdots \vee \itr{F}{-n+1})$.
+    For any positive integers $n$ and $m$, we have
+    \begin{align*}
+      k_{m+n} &\equiv h(\alpha \vee \cdots \vee \itr{F}{-m-n+1}(\alpha))   \\
+      &= h(\alpha \vee \itr{F}{-m+1}(\alpha) \vee \itr{F}{-m}(\itr{F}{-1}(\alpha) \cdots \vee \itr{F}{-n+1}(\alpha)))   \\
+      &\leq  h(\alpha \vee \itr{F}{-m+1}(\alpha)) + h(\itr{F}{-m}(\itr{F}{-1}(\alpha) \cdots \vee \itr{F}{-n+1}(\alpha)))   \\
+      &\leq  h(\alpha \vee \itr{F}{-m+1}(\alpha)) + h(\itr{F}{-1}(\alpha) \cdots \vee \itr{F}{-n+1}(\alpha)))   \\
+      &\equiv k_m + k_n.
+    \end{align*}
+    It follows from the preceding lemma that
+  \end{proof}
+\end{proposition}
 
 As we claimed at the beginning of this chapter, the topological entropy is invarant under topological conjugacy.
 The precise statement is the following theorem.
@@ -172,12 +211,12 @@ We call such a sequence a \textit{refining sequence}, defined as follows.
 \end{theorem}
 
 We will use Lebesgue's Covering Lemma in the next section to show that some sequence of open covers satisfies the second condition of the definition of refining sequence.
+Also note that this lemma ensures the existence of a refining sequence for any compact metric space.
 \begin{lemma}
   (Lebesgue's Covering Lemma)
   Let $X$ be a compact metric space, and $\alpha$ be an open cover of $X$.
   There exists $\delta > 0$ such that, if $B$ is a subset of $X$ whose diameter is less than or equal to $\delta$, i.e. $\diam(B) \leq \delta$, then there exists a member $A$ of $\alpha$ such that $B \subseteq A$.
   \label{lem:covering}
-  \index{Lebesgue's covering lemma}
   \begin{proof}
     We omit the proof, since this is a classical result.
     For example, see \citet{royden}.
@@ -206,7 +245,9 @@ We will use Lebesgue's Covering Lemma in the next section to show that some sequ
   Let $F: X \to X$ be a continuous mapping.
   If $h(F)$ is positive, then we say that $F$ is \textit{chaotic in the sense of AKM}.
   (\citet{akm} does not use the term ``chaos,'' but we attribute this definition to the authors.)
+  \index{definition of chaos!topological entropy}
 \end{definition}
+%%%
 We saw in the introduction that $L_u$, the logistic map, which is defined as
 \begin{align*}
   L_\mu&: I \to I \quad\mbox{ where } I \equiv [0,1] \\
@@ -305,8 +346,80 @@ Therefore,
   h(L_4) = h(T) = \lim\limits_{n \to \infty} h(T, \alpha_n) = \log 2.
 \end{equation*}
 
-It turns out that full one-sided or two-sided shift with $n$ symbols: $\log n$. \citep[p.177]{walters}
-Since the logistic map is topologically conjugate (by a homeomorphism) to the full one-sided shift of two symbols $\set{0,1}$, we could have gleaned this result.
+\section{Definition of Chaos Using Topological Entropy}
+It turns out that the topological entropy of full one-sided or two-sided shift with $n$ symbols: $\log n$. \citep[p.177]{walters}
+Since the logistic map is topologically conjugate (by a homeomorphism) to the full one-sided shift of two symbols $\set{0,1}$, we could have gleaned the result from the previous section.
+
+Even if a mapping has positive topological entropy, its behavior may be complicated only locally.
+\begin{proposition}
+  Let $F: X \to X$ be continuous, and $Y$ be a closed (hence compact), invariant subset of $X$.
+  Then, $h(F_{|Y}) \leq h(F)$.
+  \label{prop:local-entropy}
+  \begin{proof}
+    Let $\alpha$ be an open cover of $Y$.
+    For each $A \in \alpha$, there exists an open subset $A' \subseteq X$ such that $A = A' \cap Y$.
+    Let $\alpha'$ be the collection of such $A'$.
+    Then, $\beta \ceq \alpha' \cup \set{X\bs Y}$ is an open cover of $X$.
+    Define $G \ceq F_{|Y}$ and let $n$ be any positive integer.
+    Since $\alpha$ is trivially a refinement of $\beta$, we have
+    \begin{equation*}
+      h(\alpha \vee \itr{G}{-1}(\alpha) \vee \cdots \vee \itr{G}{-n+1}(\alpha)) 
+      \leq
+      h(\beta \vee \itr{F}{-1}(\beta) \vee \cdots \vee \itr{F}{-n+1}(\beta)).
+    \end{equation*}
+    It follows that
+    \begin{equation*}
+      h(G, \alpha) \leq h(F, \beta) \leq h(F).
+    \end{equation*}
+    Since the choice of $\alpha$ was arbitrary, we conclude that $h(G) \leq h(F)$.
+  \end{proof}
+\end{proposition}
+%%%
+For example, consider extending the domain of the tent map beyond $[0,1]$.
+\begin{example}
+  Define $\tilde{T}: \R \to \R$ as
+  \begin{equation*}
+    \tilde{T}(x) 
+    \ceq \begin{cases}
+      &T(x) \mbox{ if } (x \in [0,1]) \\
+      &0 \mbox{ otherwise}.
+      \end{cases}
+  \end{equation*}
+  Since $\tilde{T}_{|[0,1]}(x) = T(x)$, we have $h(\tilde{T}_{|[0,1]}(x)) = \log 2$. 
+  By Proposition~\ref{prop:local-entropy}, $h(T) \geq \log 2 > 0$.
+  Clearly, $\tilde{T}: \R \to \R$ is not topologically transitive, but has positive topological entropy.
+\end{example}
+%%%
+We defined a mapping to be chaotic if it has positive topological entropy.
+This is a situation similar to what we encountered in Devaney's definition.
+Thus, we can reformulate the definition as follows to capture its essense.
+\begin{definition}
+  (Chaos using topological entropy, redefined)
+  $F$ is said to be chaotic (in the sense of AKM) if there exits a compact subset $Y \subseteq X$ such that $F: X \to X$ restricted to $Y$ is topologically transitive and $h(F_{|Y})$ is positive.
+  \index{definition of chaos!topological entropy}
+\end{definition}
+%%%
+
+So far, the maps that we have discussed had positive topological entropies.
+Now, we show a few examples of mappings that have zero topological entropies.
+Our first example is an isometry.
+It is easy to see that an isometry cannot exhibit sensitive dependence on initial conditions, and as expected every isometry has zero topological entropy.
+\begin{proposition}
+  \citep{akm}
+  If $F: X \to X$ is an isometry, then $h(F) = 0$.
+\begin{proof}
+  Let $\mathcal{U}_r$ be the family of all open sets of diameter less than $1/r$.
+  Since $F$ is an isometry, we have
+  \begin{equation*}
+    \itr{F}{-1}(\mathcal{U}_r) = \mathcal{U}_r,
+  \end{equation*}
+  which implies that
+  \begin{equation*}
+    \mathcal{U}_r = \mathcal{U}_r \vee \itr{F}{-1}(\mathcal{U}_r) \vee \cdots \vee \itr{F}{-n+1}(\mathcal{U}_r).
+  \end{equation*}
+\end{proof}
+\end{proposition}
+As we will see in a later chapter, a mapping with zero topological entropy can be chaotic in the sense of Li-Yorke, and may exhibit a complex behavior.
 
 \bibliographystyle{../../bibliography/pjgsm}
 \bibliography{../../bibliography/thesis}
