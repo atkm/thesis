@@ -93,12 +93,35 @@ Our definition of topological entropy uses open covers of a space.
   \end{equation*}
   exists, and its value is $\inf a_n / n$.
   \begin{proof}
-    For any $m$, let $n \ceq qm + r$ <++>.
+    For any $m$, each $n > 0$ can be written as $n = km + r$ for some non-negative integers $k,r$ such that $r < m$.
+    By hypothesis, we have 
+    \begin{equation*}
+      \frac{a_n}{n}
+      = \frac{a_{km + r}}{km + r}
+      \leq \frac{a_{km + r}}{km}
+      \leq \frac{a_{km} + a_r}{km}
+      \leq \frac{k a_{m}}{km} + \frac{a_r}{km}
+      = \frac{a_{m}}{m} + \frac{a_r}{km}.
+    \end{equation*}
+    As $n \to \infty$, $k \to \infty$ so that
+    \begin{equation*}
+      \limsup\limits_{n \to \infty} \frac{a_n}{n} \leq \frac{a_m}{m}.
+    \end{equation*}
+    Hence,
+    \begin{equation*}
+      \limsup\limits_{n \to \infty} \frac{a_n}{n} \leq \inf\limits_m \frac{a_m}{m}.
+    \end{equation*}
+    We also have
+    \begin{equation*}
+      \inf\limits_{m \to \infty} \frac{a_m}{m} \leq \liminf\limits_{n \to \infty} \frac{a_n}{n}
+    \end{equation*}
+    by definition of liminf.
+    Therefore the limit $\lim\limits_{n \to \infty} a_n/n$ exists, and equals $\inf a_n/n$.
   \end{proof}
 \end{lemma}
 \begin{proposition}
    \begin{equation*}
-    h(F,\alpha) = \lim\limits_{n \to \infty} \frac{1}{n} \cdot h\paren{ \bigvee\limits_{i=0}^{n-1} \itr{F}{(-i)}(\alpha) }
+    h(F,\alpha) \equiv \lim\limits_{n \to \infty} \frac{1}{n} \cdot h\paren{ \bigvee\limits_{i=0}^{n-1} \itr{F}{(-i)}(\alpha) }
   \end{equation*}
   exists.
   \begin{proof}
@@ -111,8 +134,20 @@ Our definition of topological entropy uses open covers of a space.
       &\leq  h(\alpha \vee \itr{F}{-m+1}(\alpha)) + h(\itr{F}{-1}(\alpha) \cdots \vee \itr{F}{-n+1}(\alpha)))   \\
       &\equiv k_m + k_n.
     \end{align*}
-    It follows from the preceding lemma that
+    Thus, $k_{m+n} \leq k_m + k_n$ for all $m,n$, and it follows from the preceding lemma that the limit exists.
   \end{proof}
+\end{proposition}
+%%%
+Next, we prove some properties of $h$.
+\begin{proposition}
+  Let $F: X \to X$ be continuous, $\alpha$ and $\beta$ be open covers of $X$.
+  \begin{enumerate}
+    \item If $\alpha < \beta$, then $h(\alpha) \leq h(\beta)$.
+    \item If $\alpha < \beta$, then $h(\alpha \vee \beta) = h(\beta)$.
+    \item $h(\alpha \vee \beta) \leq h(\alpha) + h(\beta)$.
+    \item If $\alpha < \beta$, then $h(F, \alpha) \leq h(F, \beta)$.
+    %\item $h(\itr{F}{k}) = k h(F)$.
+  \end{enumerate}
 \end{proposition}
 
 As we claimed at the beginning of this chapter, the topological entropy is invarant under topological conjugacy.
