@@ -7,7 +7,8 @@
 \chapter{Preliminaries}
 I will start this chapter with a discussion of metric space.
 Then I will define dynamical systems, and introduce notions that will be used frequently.
-The purpose of this chapter is to introduce concepts and notations used in the subsequent chapters. 
+The main purpose of this chapter is to introduce notations used in the subsequent chapters. 
+Since each definition of chaos requires different ideas in analysis/dynamical systems, we introduce those ideas as required on the fly.
 %The reader may prefer to come back to this chapter as he/she encounters unfamiliar notations.
 
 %%% Metric
@@ -45,6 +46,15 @@ Also, we prove the contraction fixed point theorem.
 %    \cball{\epsilon}{x} \ceq \cl(\oball{\epsilon}{x}).
 %  \end{equation*}
 %\end{definition}
+
+\begin{definition}
+  (Diameter of an set)
+  We denote the \textit{diameter} of $A \subseteq X$ by $\diam(A)$, and is defined as
+  \begin{equation*}
+    \sup\limits_{x,y \in A} \metric{x,y}.
+  \end{equation*}
+
+\end{definition}
 
 \begin{definition}
   (Lipschitz constant; Contraction)

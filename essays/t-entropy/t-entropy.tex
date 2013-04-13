@@ -17,9 +17,9 @@ $\log$ is the logarithm base $e$ (this choice is arbitrary).
 
 \section{Definition and Properties}
 Our definition of topological entropy uses open covers of a space. 
-
+The material in this section is from \citep{akm}, unless stated otherwise.
 \begin{definition}
-  (Join of Open Covers)
+  (Join of open covers)
   Let $\alpha$ and $\beta$ be open covers of $X$.
   Their join, denoted $\alpha \vee \beta$, is defined as
   \begin{equation*}
@@ -27,9 +27,9 @@ Our definition of topological entropy uses open covers of a space.
   \end{equation*}
   We define the join of a countable collection of open covers in the same manner, and denote it as $\bigvee\limits_{i = 1}^{n} \alpha_i$.
 \end{definition}
-
+%%%
 \begin{definition}
-  (Refinement of an Open Cover)
+  (Refinement of an open cover)
   An open cover $\beta$ is said to be a refinement of another open cover $\alpha$, if for each $A \in \alpha$, there exists $B \in \beta$ such that $B \subseteq A$.
   Note that $\alpha < \alpha \vee \beta$.
 \end{definition}
@@ -66,11 +66,12 @@ Our definition of topological entropy uses open covers of a space.
   \begin{equation*}
     N(\alpha) \ceq \min\setst{ \#(\beta) }{ \beta \mbox{ is a subcover of } \alpha}.
   \end{equation*}
+  We refer to a subcover of $\alpha$ with cardinality $N(\alpha)$ as a \textit{minimal subcover}.
   The topological entropy of a mapping $F$ relative to a open cover $\alpha$ is defined as
   \begin{equation*}
     h(F,\alpha) = \lim\limits_{n \to \infty} \frac{1}{n} \cdot h\paren{ \bigvee\limits_{i=0}^{n-1} \itr{F}{(-i)}(\alpha) }.
   \end{equation*}
-  For the existence of this limit, see the proposition following this definition.
+  For the existence of this limit, see Proposition~\ref{prop:entropy-limit}.
   Finally, the \textit{topological entropy} of a mapping $F$, denoted $h(F)$, is defined as the supremum of $h(F, \alpha)$ taken over all open covers of $X$:
   \begin{equation*}
     h(F) = \sup\limits_\alpha h(F,\alpha).
@@ -81,6 +82,90 @@ Our definition of topological entropy uses open covers of a space.
   \index{topological entropy}
 \end{definition}
 %%%
+We have defined $h(F)$ only for mappings from a compact metric space to itself, but it is possible to extend the definition to any metric space \citep{bowen}.
+  See \citep{walters} for an exposition of this alternate definition of topological entropy.
+In order to prove the existence of the limit in the definition of $h(F, \alpha)$, we need to know a few things about $h(\alpha)$.
+We first prove some properties of $N(\alpha)$.
+\begin{proposition}
+  (Properties of $N(\alpha)$)
+  Let $F: X \to X$ be continuous, $\alpha$ and $\beta$ be open covers of $X$.
+  \begin{enumerate}[(i)]
+    \item 
+      $N(\itr{F}{-1}(\alpha)) \leq N(\alpha)$.
+      The equality holds if $F$ is surjective.
+      %%%
+    \item 
+      If $\alpha < \beta$, then $N(\alpha) \leq N(\beta)$.
+      %%%
+    \item 
+      $N(\alpha \vee \beta) \leq N(\alpha) \cdot N(\beta)$.
+      %%%
+    \item 
+      If $\alpha < \beta$, then $N(\alpha \vee \beta) = N(\beta)$.
+    %\item $h(\itr{F}{k}) = k h(F)$.
+  \end{enumerate}
+  \begin{proof}
+    \begin{enumerate}[(i)]
+      \item 
+        Let $\beta$ be a minimal subcover of $\alpha$.
+        By definition, the cardinality of $\beta$ is $N(\alpha)$.
+        $\itr{F}{-1}(\beta)$ is a subcover of $\itr{F}{-1}(\alpha)$, and its cardinality is also $N(\alpha)$.
+        However, it is possible that there exists a different subcover of $\itr{F}{-1}(\alpha)$ whose cardinality is less than $N(\alpha)$.
+        Hence, 
+        \begin{equation*}
+          N(\itr{F}{-1}(\alpha)) \leq N(\alpha).
+        \end{equation*}
+        Now, suppose that $F$ is surjective.
+        We may assume that for some open cover $\beta$, $\itr{F}{-1}(\beta)$ is a minimal subcover of $\itr{F}{-1}(\alpha)$.
+        Then, $F(\itr{F}{-1}(\beta)) = \beta$ is a subcover of $\alpha$.
+        By the same argument as before, we obtain $N(\itr{F}{-1}(\alpha)) \geq N(\alpha)$.
+        %%%
+      \item
+        Let $\beta_0$ be a minimal subcover of $\beta$.
+        Since $\alpha < \beta$, $\beta_0$ is also a subcover of $\alpha$.
+        Hence, $N(\alpha) \leq N(\beta)$.
+        %%%
+      \item
+        Let $\alpha_0$ and $\beta_0$ be minimal subcovers of $\alpha$ and $\beta$, respectively.
+        Then,
+        \begin{equation*}
+          \gamma \ceq \setst{A_i \cap B_j}{i = 1, \ldots, N(\alpha), j = 1, \ldots, N(\beta)}
+        \end{equation*}
+        is a subcover of $\alpha \vee \beta$.
+        Since the cardinality of $\gamma$ is $N(\alpha) \cdot N(\beta)$, we obtain
+        \begin{equation*}
+          N(\alpha \vee \beta) \leq N(\alpha) \cdot N(\beta).
+        \end{equation*}
+      %%%
+      \item
+        In general, we have $\beta < \alpha \vee \beta$, so $N(\beta) \leq N(\alpha \vee \beta)$.
+        Since $\alpha < \beta$, we also have $\alpha \vee \beta < \beta$.
+        It follows that $N(\beta) \geq N(\alpha \vee \beta)$.
+      %%%
+    \end{enumerate}
+  \end{proof}
+\end{proposition}
+%%%
+Properies of $N(\alpha)$ propagate to $h(\alpha)$.
+The following corollary lists the properties of $h(\alpha)$ that we immediately obtain from the preceding proposition.
+\begin{corollary}
+  (Properties of $h(\alpha)$)
+  Let $F: X \to X$ be continuous, $\alpha$ and $\beta$ be open covers of $X$.
+  \begin{enumerate}[(i)]
+    \item 
+      $h(\itr{F}{-1}(\alpha)) \leq h(\alpha)$.
+      The equality holds if $F$ is surjective.
+    \item 
+      If $\alpha < \beta$, then $h(\alpha) \leq h(\beta)$.
+    \item
+      $h(\alpha \vee \beta) \leq h(\alpha) + h(\beta)$.
+    \item
+      If $\alpha < \beta$, then $h(\alpha \vee \beta) = h(\beta)$.
+  \end{enumerate}
+  \label{cor:ha-props}
+\end{corollary}
+%%%
+We need one more lemma, and we are ready to prove the existence of the limit.
 \begin{lemma}
   \citep[Theorem 4.9]{walters}
   Let $\seq{a_n}{\infty}{n = 0}$ be a sequence of real numbers such that 
@@ -119,11 +204,13 @@ Our definition of topological entropy uses open covers of a space.
     Therefore the limit $\lim\limits_{n \to \infty} a_n/n$ exists, and equals $\inf a_n/n$.
   \end{proof}
 \end{lemma}
+%%%
 \begin{proposition}
-   \begin{equation*}
+  \begin{equation*}
     h(F,\alpha) \equiv \lim\limits_{n \to \infty} \frac{1}{n} \cdot h\paren{ \bigvee\limits_{i=0}^{n-1} \itr{F}{(-i)}(\alpha) }
   \end{equation*}
   exists.
+  \label{prop:entropy-limit}
   \begin{proof}
     Denote $k_n \ceq h(\alpha \vee \cdots \vee \itr{F}{-n+1})$.
     For any positive integers $n$ and $m$, we have
@@ -138,23 +225,63 @@ Our definition of topological entropy uses open covers of a space.
   \end{proof}
 \end{proposition}
 %%%
-Next, we prove some properties of $h$.
+$h(F, \alpha)$ has the following properties.
 \begin{proposition}
+  (Properties of $h(F, \alpha)$)
   Let $F: X \to X$ be continuous, $\alpha$ and $\beta$ be open covers of $X$.
-  \begin{enumerate}
-    \item If $\alpha < \beta$, then $h(\alpha) \leq h(\beta)$.
-    \item If $\alpha < \beta$, then $h(\alpha \vee \beta) = h(\beta)$.
-    \item $h(\alpha \vee \beta) \leq h(\alpha) + h(\beta)$.
+  \begin{enumerate}[(i)]
     \item If $\alpha < \beta$, then $h(F, \alpha) \leq h(F, \beta)$.
-    %\item $h(\itr{F}{k}) = k h(F)$.
+    %%%
+    \item $h(F, \alpha) \leq h(\alpha)$.
+    %%%
   \end{enumerate}
+  \label{hfa-props}
+  \begin{proof}
+   \begin{enumerate}[(i)]
+    \item 
+      $\alpha < \beta$ implies
+      \begin{equation*}
+        \bigvee\limits_{i=0}^{n-1} \itr{F}{-i}(\alpha)
+        <
+        \bigvee\limits_{i=0}^{n-1} \itr{F}{-i}(\beta).
+      \end{equation*}
+      Then, by Corollary~\ref{cor:ha-props}(ii),
+      \begin{equation*}
+        h\paren{ \bigvee\limits_{i=0}^{n-1} \itr{F}{-i}(\alpha) }
+        \leq
+        h\paren{ \bigvee\limits_{i=0}^{n-1} \itr{F}{-i}(\beta) }.
+      \end{equation*}
+      Divide both sides of the last equation by $n$ and take $n \to \infty$.
+      We obtain $h(F, \alpha) \leq h(F, \beta)$.
+    %%%
+    \item 
+      We have
+      \begin{align*}
+        h\paren{ \bigvee\limits_{i=0}^{n-1} \itr{F}{-i}(\alpha) }
+        &\leq \sum\limits_{i=0}^{n-1} h(\itr{F}{-i}(\alpha)) 
+        \mbox{ (by Corollary~\ref{cor:ha-props}(iii))} \\
+        &\leq \sum\limits_{i=0}^{n-1} h(\alpha) 
+        \mbox{ (by Corollary~\ref{cor:ha-props}(i))}  \\
+        &= n h(\alpha).
+      \end{align*}
+      Then, note that
+      \begin{equation*}
+        h\paren{ \bigvee\limits_{i=0}^{n-1} \itr{F}{-i}(\alpha) }
+        \leq n h(\alpha)
+        \Rar 
+        \frac{ h\paren{ \bigvee\limits_{i=0}^{n-1} \itr{F}{-i}(\alpha) } }{n}
+        \leq h(\alpha).
+      \end{equation*}
+      By taking the limit $n \to \infty$, we obtain the desired result.
+    %%%
+  \end{enumerate}
+  \end{proof}
 \end{proposition}
 
 As we claimed at the beginning of this chapter, the topological entropy is invarant under topological conjugacy.
 The precise statement is the following theorem.
 \begin{theorem}
-  (Topological Entropy is an Invariant of Topological Conjugacy)
-  (Misiurewicz)
+  (Topological Entropy is an Invariant of Topological Conjugacy   )
   Let $X_1$ and $X_2$ be metric spaces, and $F_1: X_1 \to X_1$ and $F_2: X_2 \to X_2$ are continuous mappings.
   Suppose $f\circ \phi = \phi \circ g$.
   If $\phi$ is injective, then $h(f) \geq h(g)$.
@@ -163,23 +290,6 @@ The precise statement is the following theorem.
   If $\phi: X_1 \to X_2$ is a homeomorphism, then $h(F_1) = h(F_2)$.
   \label{thm:t-ent-conj}
 \end{theorem}
-We require a lemma in order to prove the theorem.
-
-\begin{lemma}
-  Let $F: X\to X$ be a continuous mapping.
-  Then $h(F^{-1}(\alpha)) \leq h(\alpha)$.
-  Furthermore, if $F$ is also surjective, then $h(F^{-1}(\alpha)) = h(\alpha)$.
-  \begin{proof}
-    Suppose $n = N(\alpha)$, and $\set{A_1, \ldots, A_{n}}$ is a subcover of $\alpha$ of minimal cardinality.
-    Then, $\set{F^{-1}(A_1), \ldots, F^{-1}(A_{n})}$ is a subcover of $F^{-1}(\alpha)$.
-    This proves the first statement.
-    To prove the second statement, suppose $m = N(F^{-1}(\alpha))$.
-    Let $\set{F^{-1}(A_1), \ldots, F^{-1}(A_{m})}$ be a subcover of $F^{-1}(\alpha)$ of minimal cardinality.
-    If $F$ is surjective, then $\set{A_1, \ldots, A_{m}}$ is a subcover of $\alpha$.
-    Hence $h(F^{-1}(\alpha)) \geq h(\alpha)$.
-  \end{proof}
-
-\end{lemma}
 
 Now we proceed to prove the theorem.
 \begin{proof}[Proof of Theorem~\ref{thm:t-ent-conj}]
@@ -190,7 +300,7 @@ Now we proceed to prove the theorem.
     &= \lim\limits_{n \to \infty} \frac{1}{n} \cdot h \paren{\bigvee\limits_{i = 0}^{n-1} \itr{F_2}{(-i)}(\alpha)} \\
     &= \lim\limits_{n \to \infty} \frac{1}{n} \cdot h \paren{\bigvee\limits_{i = 0}^{n-1} \phi^{-1} \circ \itr{F_1}{(-i)} \circ \phi (\alpha)} \\
     &= \lim\limits_{n \to \infty} \frac{1}{n} \cdot h \paren{\phi^{-1} \bigvee\limits_{i = 0}^{n-1} \itr{F_1}{(-i)} (\phi (\alpha))} \\
-    &= \lim\limits_{n \to \infty} \frac{1}{n} \cdot h \paren{\bigvee\limits_{i = 0}^{n-1} \itr{F_1}{(-i)} (\phi (\alpha))} \mbox{ (by the lemma)} \\
+    &= \lim\limits_{n \to \infty} \frac{1}{n} \cdot h \paren{\bigvee\limits_{i = 0}^{n-1} \itr{F_1}{(-i)} (\phi (\alpha))} \mbox{ (by Proposition~\ref{cor:ha-props} (i))} \\
     &= h(F_1, \phi(\alpha)).
   \end{align*}
   %
@@ -202,9 +312,11 @@ Now we proceed to prove the theorem.
 \end{proof}
 
 The definition of topological entropy calls for computation of $h(F,\alpha)$ for all possible open covers of $X$, and thus, computing $h(F)$ using the definition is untenable.
-As a reasonable method for computing $h(F)$, we introduce a theorem, which states that $h(F)$ equals to the limit of the topological entropy of $F$ relative to a sequence of open covers that become finer and finer later in the sequence.
-We call such a sequence a \textit{refining sequence}, defined as follows.
-
+Since the space is compact, we only need to consider finite open covers, but the number of such coverings is still large.
+However, it is possible to reduce the computation to a single sequence called a \textit{refining sequence}.
+Roughly, a refining sequence is a sequence of open covers that become finer and finer.
+Using a refining sequence vastly simplifies the computation of $h(F)$.
+%%%
 \begin{definition}
   (Refining Sequence)
   A sequence $\set{\alpha_n}$ of open covers of a compact space $X$ is called a \textit{refining sequence}, if it satisfies the following two criteria:
@@ -213,7 +325,7 @@ We call such a sequence a \textit{refining sequence}, defined as follows.
     \item if $\beta$ is an open cover of $X$, then there exists $m$ such that $\beta < \alpha_m$.
   \end{enumerate}
 \end{definition}
-
+%%%
 \begin{theorem}
   Suppose $\set{\alpha_n}$ is a refining sequence of $X$, and $F:X\to X$ is a continuous mapping.
   Then,
@@ -223,12 +335,11 @@ We call such a sequence a \textit{refining sequence}, defined as follows.
   \label{thm:t-ent-ref-seq}
   %
   \begin{proof}
-    Since $h(F) = \sup\limits_{\alpha} h(F, \alpha)$, the inequality
+    Since $h(F) = \sup\limits_{\alpha} h(F, \alpha)$, we have the inequality
     \begin{equation*}
       h(F) \geq \lim\limits_{n\to \infty} h(F, \alpha_n).
     \end{equation*}
-    holds.
-    To show that the opposite inequality also holds, note that for each open cover $\beta$ of $X$, there exists $k_0$ such that, for each $k > k_0$, $\beta < \alpha_k$.
+    To show that the inequality in the other direction also holds, note that for each open cover $\beta$ of $X$, there exists $k_0$ such that, $\beta < \alpha_k$ for each $k > k_0$.
     It follows that
     \begin{equation*}
       h(F, \beta) \leq h(F, \alpha_k).
@@ -244,16 +355,18 @@ We call such a sequence a \textit{refining sequence}, defined as follows.
     Hence, $h(F) = h(F, \alpha_k)$.
   \end{proof}
 \end{theorem}
+%%%
 
-We will use Lebesgue's Covering Lemma in the next section to show that some sequence of open covers satisfies the second condition of the definition of refining sequence.
-Also note that this lemma ensures the existence of a refining sequence for any compact metric space.
-\begin{lemma}
+We may not be able to find a refining sequence for any metric space.
+For a compact metric space, however, Lebesgue's covering lemma ensures the existence of a refining sequence.
+\begin{proposition}
   (Lebesgue's Covering Lemma)
   Let $X$ be a compact metric space, and $\alpha$ be an open cover of $X$.
-  There exists $\delta > 0$ such that, if $B$ is a subset of $X$ whose diameter is less than or equal to $\delta$, i.e. $\diam(B) \leq \delta$, then there exists a member $A$ of $\alpha$ such that $B \subseteq A$.
+  There exists $\delta > 0$ such that, if $B$ is a subset of $X$ whose diameter is less than $\delta$, i.e. $\diam(B) < \delta$, then there exists a member $A$ of $\alpha$ such that $B \subseteq A$.
+  We refer to $\delta$ as a \textit{Lebesgue number} of $\alpha$.
   \label{lem:covering}
   \begin{proof}
-    We omit the proof, since this is a classical result.
+    This is a classical result, so we omit the proof.
     For example, see \citet{royden}.
     %  Proof by contradiction.
     %  Consider a sequence $\set{B_n}$ of subsets of $X$ such that $\diam(B_n) = 1/n$, and each $B_n$ is not contained in any member of $\alpha$.
@@ -272,7 +385,49 @@ Also note that this lemma ensures the existence of a refining sequence for any c
     %  \end{equation*}
     %  This is a contradiction, since $\metric{y, x_{n_l}} < D$ implies that $B_{n_l}$ is contained in $A$.
   \end{proof}
-\end{lemma}
+\end{proposition}
+Now, we relate Lebesgue's covering lemma to refining sequences.
+The following corollary is simply a rephrasing of the lemma.
+\begin{corollary}
+  Define the diameter of an open cover $\alpha$ by
+  \begin{equation*}
+    \diam(\alpha) \ceq \sup\limits_{A \in \alpha} \diam(A).
+  \end{equation*}
+  Let $\alpha, \beta$ be open covers of $X$, and $\delta > 0$ be a Lebesgue number of $\alpha$.
+  If $\diam(\beta) < \delta$, then $\alpha < \beta$.
+\end{corollary}
+Hence, we can make the following characterization of a refining sequence.
+\begin{corollary}
+  If $\seq{\alpha_n}{\infty}{n = 1}$ is a sequence of open covers such that
+  \begin{equation*}
+    \alpha_n < \alpha_{n+1} 
+    \quad\mbox{and}\quad
+    \lim\limits_{n \to \infty} \diam(\alpha_n) = 0,
+  \end{equation*}
+  then $\set{\alpha_n}$ is a refining sequence.
+  \begin{proof}
+    It immediately follows from the preceding corollary.
+  \end{proof}
+\end{corollary}
+Finally, we construct a refining sequence for an arbitrary compact metric space.
+\begin{corollary}
+  Any compact metric space has a refining sequence.
+  \begin{proof}
+    For each $n \in \N^+$, define
+    \begin{equation*}
+      \mathcal{\alpha}_n \ceq \setst{\oball{1/n}{x}}{x \in X}.
+    \end{equation*}
+    Clearly, $\mathcal{\alpha}_n$ is an open cover of $X$.
+    We have
+    \begin{equation*}
+      \mathcal{\alpha}_n < \mathcal{\alpha}_{n+1}
+      \quad\mbox{and}\quad
+      \lim\limits_{n \to \infty} \diam(\alpha_n) = 0,
+    \end{equation*}
+    so $\set{\alpha_n}$ is a refining sequence.
+  \end{proof}
+\end{corollary}
+We will use this result extensively in the following sections.
 
 \section{The Topological Entropy of The Logistic Map}
 \begin{definition}
@@ -307,11 +462,11 @@ Let
 Our goal is to show that $L_4 \circ \phi = \phi \circ T$.
 For any $x \in I$, letting $\theta \equiv \frac{\pi x}{2}$ for convenience, we have
 \begin{align*}
-   L_4 \circ \phi(x)
-   &= 4\sin^2\theta(1 - \sin^2\theta) \\
-   &= 4\sin^2\theta \cos^2\theta \\
-   &= \sin^2 2\theta \\
-   &= \sin^2 (\pi x).
+  L_4 \circ \phi(x)
+  &= 4\sin^2\theta(1 - \sin^2\theta) \\
+  &= 4\sin^2\theta \cos^2\theta \\
+  &= \sin^2 2\theta \\
+  &= \sin^2 (\pi x).
 \end{align*}
 For any $x$ in $[0,1/2]$,
 \begin{equation*}
@@ -345,120 +500,170 @@ For each $x \in I - \set{\frac{1}{2}}$, the preimage of $x$ is given by the form
   T^{-1}(x) = \set{\frac{1}{2} x, 1 - \frac{1}{2} x}.
 \end{equation*}
 Notice that if $\frac{1}{2} x \in [0,1/2)$, then $1 - \frac{1}{2} x \in (1/2,1]$; if $\frac{1}{2} x \in (1/2,1]$, then $1 - \frac{1}{2} x \in [0,1/2)$.
-This observation holds for the preimage of an interval.
-For example,
-\begin{align*}
-  \alpha_1 &= \set{\brac{0,\frac{1}{2}}, \brac{\frac{1}{2}, 1}}, \\
-  \alpha_2 &= \set{\brac{0,\frac{1}{4}}, \brac{\frac{3}{4}, 1}, \brac{\frac{1}{4}, \frac{1}{2}}, \brac{\frac{1}{2}, \frac{3}{4}}},
-\end{align*}
-and so on.
-Thus, $N(\alpha_{n}) = 2^n$.
-Now, we want to show that $\set{\alpha_n}$ is a refining sequence.
-$\set{\alpha_n}$ clearly satisfies the first condition:
-\begin{equation*}
-  \alpha_n < \alpha_{n+1}.
-\end{equation*}
-To show the other condition, that for each open cover $\beta$ of $X$, there exists $k_0$ such that $\beta < \alpha_k$ for each $k \geq k_0$, we invoke Lebesgue's covering lemma.
-Let $\delta > 0$ be the constant given by applying the lemma to $\beta$.
-For each $J_n \in \alpha_n$, we have $\diam(J_n) = 1/{2^n}$.
-Choose $n$ large enough so that $\diam(J_n) \leq \delta$.
-Then, for each $A \in \alpha_n$, the lemma guarantees the existence of $B \in \beta$ such that $A \subseteq B$.
-This implies $\beta < \alpha_n$.
-We conclude that $\set{\alpha_n}$ is a refining sequence.
-Finally, we compute $\lim\limits_{n \to \infty} \frac{1}{n} h(T, \alpha_n)$.
-Recall that $N(\alpha_{n}) = 2^n$.
-Then,
-\begin{align*}
-  h(T, \alpha_n)
-  &= \lim\limits_{m \to \infty} \frac{1}{m} \log N\paren{ \bigvee\limits_{i = 0}^{m-1} T^{-i}(\alpha_n)}  \\
-  &= \lim\limits_{m \to \infty} \frac{1}{m} \log N(\alpha_{n+m-1})  \\
-  &= \lim\limits_{m \to \infty} \frac{1}{m} \log 2^{n + m - 2}  \\
-  &= \lim\limits_{m \to \infty} \frac{n + m - 2}{m} \log 2 \\
-  &= \log 2.
-\end{align*}
-Therefore,
-\begin{equation*}
-  h(L_4) = h(T) = \lim\limits_{n \to \infty} h(T, \alpha_n) = \log 2.
-\end{equation*}
-
-\section{Definition of Chaos Using Topological Entropy}
-It turns out that the topological entropy of full one-sided or two-sided shift with $n$ symbols: $\log n$. \citep[p.177]{walters}
-Since the logistic map is topologically conjugate (by a homeomorphism) to the full one-sided shift of two symbols $\set{0,1}$, we could have gleaned the result from the previous section.
-
-Even if a mapping has positive topological entropy, its behavior may be complicated only locally.
-\begin{proposition}
-  Let $F: X \to X$ be continuous, and $Y$ be a closed (hence compact), invariant subset of $X$.
-  Then, $h(F_{|Y}) \leq h(F)$.
-  \label{prop:local-entropy}
-  \begin{proof}
-    Let $\alpha$ be an open cover of $Y$.
-    For each $A \in \alpha$, there exists an open subset $A' \subseteq X$ such that $A = A' \cap Y$.
-    Let $\alpha'$ be the collection of such $A'$.
-    Then, $\beta \ceq \alpha' \cup \set{X\bs Y}$ is an open cover of $X$.
-    Define $G \ceq F_{|Y}$ and let $n$ be any positive integer.
-    Since $\alpha$ is trivially a refinement of $\beta$, we have
-    \begin{equation*}
-      h(\alpha \vee \itr{G}{-1}(\alpha) \vee \cdots \vee \itr{G}{-n+1}(\alpha)) 
-      \leq
-      h(\beta \vee \itr{F}{-1}(\beta) \vee \cdots \vee \itr{F}{-n+1}(\beta)).
-    \end{equation*}
-    It follows that
-    \begin{equation*}
-      h(G, \alpha) \leq h(F, \beta) \leq h(F).
-    \end{equation*}
-    Since the choice of $\alpha$ was arbitrary, we conclude that $h(G) \leq h(F)$.
-  \end{proof}
-\end{proposition}
-%%%
-For example, consider extending the domain of the tent map beyond $[0,1]$.
-\begin{example}
-  Define $\tilde{T}: \R \to \R$ as
+  This observation holds for the preimage of an interval.
+  For example,
+  \begin{align*}
+    \alpha_1 &= \set{\brac{0,\frac{1}{2}}, \brac{\frac{1}{2}, 1}}, \\
+    \alpha_2 &= \set{\brac{0,\frac{1}{4}}, \brac{\frac{3}{4}, 1}, \brac{\frac{1}{4}, \frac{1}{2}}, \brac{\frac{1}{2}, \frac{3}{4}}},
+  \end{align*}
+  and so on.
+  Thus, $N(\alpha_{n}) = 2^n$.
+  Now, we want to show that $\set{\alpha_n}$ is a refining sequence.
+  $\set{\alpha_n}$ clearly satisfies the first condition:
   \begin{equation*}
-    \tilde{T}(x) 
-    \ceq \begin{cases}
-      &T(x) \mbox{ if } (x \in [0,1]) \\
-      &0 \mbox{ otherwise}.
+    \alpha_n < \alpha_{n+1}.
+  \end{equation*}
+  To show the other condition, that for each open cover $\beta$ of $X$, there exists $k_0$ such that $\beta < \alpha_k$ for each $k \geq k_0$, we invoke Lebesgue's covering lemma.
+  Let $\delta > 0$ be the constant given by applying the lemma to $\beta$.
+  For each $J_n \in \alpha_n$, we have $\diam(J_n) = 1/{2^n}$.
+  Choose $n$ large enough so that $\diam(J_n) \leq \delta$.
+  Then, for each $A \in \alpha_n$, the lemma guarantees the existence of $B \in \beta$ such that $A \subseteq B$.
+  This implies $\beta < \alpha_n$.
+  We conclude that $\set{\alpha_n}$ is a refining sequence.
+  Finally, we compute $\lim\limits_{n \to \infty} \frac{1}{n} h(T, \alpha_n)$.
+  Recall that $N(\alpha_{n}) = 2^n$.
+  Then,
+  \begin{align*}
+    h(T, \alpha_n)
+    &= \lim\limits_{m \to \infty} \frac{1}{m} \log N\paren{ \bigvee\limits_{i = 0}^{m-1} T^{-i}(\alpha_n)}  \\
+    &= \lim\limits_{m \to \infty} \frac{1}{m} \log N(\alpha_{n+m-1})  \\
+    &= \lim\limits_{m \to \infty} \frac{1}{m} \log 2^{n + m - 2}  \\
+    &= \lim\limits_{m \to \infty} \frac{n + m - 2}{m} \log 2 \\
+    &= \log 2.
+  \end{align*}
+  Therefore,
+  \begin{equation*}
+    h(L_4) = h(T) = \lim\limits_{n \to \infty} h(T, \alpha_n) = \log 2.
+  \end{equation*}
+
+  \section{Definition of Chaos Using Topological Entropy}
+  It turns out that the topological entropy of full one-sided or two-sided shift with $n$ symbols: $\log n$. \citep[p.177]{walters}
+  Since the logistic map is topologically conjugate (by a homeomorphism) to the full one-sided shift of two symbols $\set{0,1}$, we could have gleaned the result from the previous section.
+
+  Even if a mapping has positive topological entropy, its behavior may be complicated only locally.
+  \begin{proposition}
+    Let $F: X \to X$ be continuous, and $Y$ be a closed (hence compact), invariant subset of $X$.
+    Then, $h(F_{|Y}) \leq h(F)$.
+    \label{prop:local-entropy}
+    \begin{proof}
+      Let $\alpha$ be an open cover of $Y$.
+      For each $A \in \alpha$, there exists an open subset $A' \subseteq X$ such that $A = A' \cap Y$.
+      Let $\alpha'$ be the collection of such $A'$.
+      Then, $\beta \ceq \alpha' \cup \set{X\bs Y}$ is an open cover of $X$.
+      Define $G \ceq F_{|Y}$ and let $n$ be any positive integer.
+      Since $\alpha$ is trivially a refinement of $\beta$, we have
+      \begin{equation*}
+        h(\alpha \vee \itr{G}{-1}(\alpha) \vee \cdots \vee \itr{G}{-n+1}(\alpha)) 
+        \leq
+        h(\beta \vee \itr{F}{-1}(\beta) \vee \cdots \vee \itr{F}{-n+1}(\beta)).
+      \end{equation*}
+      It follows that
+      \begin{equation*}
+        h(G, \alpha) \leq h(F, \beta) \leq h(F).
+      \end{equation*}
+      Since the choice of $\alpha$ was arbitrary, we conclude that $h(G) \leq h(F)$.
+    \end{proof}
+  \end{proposition}
+%%%
+  For example, consider extending the domain of the tent map beyond $[0,1]$.
+  \begin{example}
+    Define $\tilde{T}: \R \to \R$ as
+    \begin{equation*}
+      \tilde{T}(x) 
+      \ceq \begin{cases}
+        &T(x) \mbox{ if } (x \in [0,1]) \\
+        &0 \mbox{ otherwise}.
       \end{cases}
-  \end{equation*}
-  Since $\tilde{T}_{|[0,1]}(x) = T(x)$, we have $h(\tilde{T}_{|[0,1]}(x)) = \log 2$. 
-  By Proposition~\ref{prop:local-entropy}, $h(T) \geq \log 2 > 0$.
-  Clearly, $\tilde{T}: \R \to \R$ is not topologically transitive, but has positive topological entropy.
-\end{example}
+    \end{equation*}
+    Since $\tilde{T}_{|[0,1]}(x) = T(x)$, we have $h(\tilde{T}_{|[0,1]}(x)) = \log 2$. 
+    By Proposition~\ref{prop:local-entropy}, $h(T) \geq \log 2 > 0$.
+    Clearly, $\tilde{T}: \R \to \R$ is not topologically transitive, but has positive topological entropy.
+  \end{example}
 %%%
-We defined a mapping to be chaotic if it has positive topological entropy.
-This is a situation similar to what we encountered in Devaney's definition.
-Thus, we can reformulate the definition as follows to capture its essense.
-\begin{definition}
-  (Chaos using topological entropy, redefined)
-  $F$ is said to be chaotic (in the sense of AKM) if there exits a compact subset $Y \subseteq X$ such that $F: X \to X$ restricted to $Y$ is topologically transitive and $h(F_{|Y})$ is positive.
-  \index{definition of chaos!topological entropy}
-\end{definition}
+  We defined a mapping to be chaotic if it has positive topological entropy.
+  This is a situation similar to what we encountered in Devaney's definition.
+  Thus, we can reformulate the definition as follows to capture its essense.
+  \begin{definition}
+    (Chaos using topological entropy, redefined)
+    $F$ is said to be chaotic (in the sense of AKM) if there exits a compact subset $Y \subseteq X$ such that $F: X \to X$ restricted to $Y$ is topologically transitive and $h(F_{|Y})$ is positive.
+    \index{definition of chaos!topological entropy}
+  \end{definition}
 %%%
 
-So far, the maps that we have discussed had positive topological entropies.
-Now, we show a few examples of mappings that have zero topological entropies.
-Our first example is an isometry.
-It is easy to see that an isometry cannot exhibit sensitive dependence on initial conditions, and as expected every isometry has zero topological entropy.
-\begin{proposition}
-  \citep{akm}
-  If $F: X \to X$ is an isometry, then $h(F) = 0$.
-\begin{proof}
-  Let $\mathcal{U}_r$ be the family of all open sets of diameter less than $1/r$.
-  Since $F$ is an isometry, we have
-  \begin{equation*}
-    \itr{F}{-1}(\mathcal{U}_r) = \mathcal{U}_r,
-  \end{equation*}
-  which implies that
-  \begin{equation*}
-    \mathcal{U}_r = \mathcal{U}_r \vee \itr{F}{-1}(\mathcal{U}_r) \vee \cdots \vee \itr{F}{-n+1}(\mathcal{U}_r).
-  \end{equation*}
-\end{proof}
-\end{proposition}
-As we will see in a later chapter, a mapping with zero topological entropy can be chaotic in the sense of Li-Yorke, and may exhibit a complex behavior.
+  So far, the maps that we have discussed had positive topological entropies.
+  Now, we show a few examples of mappings that have zero topological entropies.
+  Our first example is an isometry.
+  It is easy to see that an isometry cannot exhibit sensitive dependence on initial conditions, and as expected every isometry has zero topological entropy.
+  \begin{proposition}
+    \citep{akm}
+    If $F: X \to X$ is an isometry, then $h(F) = 0$.
+    \begin{proof}
+      Let $\alpha_r$ be the set of all open sets of diameter less than $1/r$.
+      Clearly, $\alpha_r$ is an open cover of $X$.
+      Since $F$ is an isometry (hence injective), and preserves diameters of sets, we have
+      \begin{equation*}
+        \itr{F}{-1}(\alpha_r) = \alpha_r,
+      \end{equation*}
+      which implies that
+      \begin{equation*}
+        \alpha_r = \alpha_r \vee \itr{F}{-1}(\alpha_r) \vee \cdots \vee \itr{F}{-n+1}(\alpha_r).
+      \end{equation*}
+      Then, for each $n$,
+      \begin{equation*}
+        h\paren{ \bigvee\limits_{i=0}^{n-1} \itr{F}{(-i)}(\alpha_r) }   
+        = h\paren{\alpha_r}.
+      \end{equation*}
+      Hence, for each $r$,
+      \begin{equation*}
+        h(F, \alpha_r)
+        = \lim\limits_{n \to \infty} \frac{h\paren{\alpha_r}}{n}.
+        = 0.
+      \end{equation*}
+      Since $\seq{\alpha_r}{\infty}{r = 1}$ is a refining sequence, we conclude that $h(F) = 0$.
+    \end{proof}
+  \end{proposition}
+  Another example is a homeomorphism from a circle to itself.
+  \begin{proposition}
+    \citep{akm}
+    Let $S \ceq \setst{x \in \R^2}{\norm{x} = 1}$.
+    If $F: S \to S$ is a homeomorphism, then $h(F) = 0$.
+    \begin{proof}
+      Let $\alpha_r$ be the set of all open arcs of $S$ of length $1/r$.
+      Then, $\alpha_r$ is an open cover of $S$.
+      Since $F$ is a homeomorphism, 
+      \begin{equation*}
+        \bigvee\limits_{i = 0}^{n-1} \itr{F}{-i}(\alpha_r)
+      \end{equation*}
+      is also a covering of $S$ by open arcs.
+      We have
+      \begin{equation*}
+        N(\itr{F}{-1}(\alpha)) \leq N(\alpha),
+      \end{equation*}
+      which implies
+      \begin{equation*}
+        N\paren{ \bigvee\limits_{i = 0}^{n-1} \itr{F}{-i}(\alpha_r) }
+        \leq \sum\limits_{i = 0}^{n-1} N(\itr{F}{-i}(\alpha_r))
+        \leq \sum\limits_{i = 0}^{n-1} N(\alpha_r)
+        = n N(\alpha_r).
+      \end{equation*}
+      It follows that, for each $r$,
+      \begin{align*}
+        h(F, \alpha_r) 
+        &\equiv \lim\limits_{n \to \infty} \frac{\log N\paren{ \bigvee\limits_{i = 0}^{n-1} \itr{F}{-i}(\alpha_r) }}{n}  \\
+        &\leq \lim\limits_{n \to \infty} \frac{\log (n N(\alpha_r))}{n}  \\
+        &= \lim\limits_{n \to \infty}\paren{ \frac{\log n}{n} + \frac{\log N(\alpha_r)}{n} } \\
+        &= 0.
+      \end{align*}
+      Since $\seq{\alpha_r}{\infty}{r = 1}$ is a refining sequence, we obtain $h(F) = 0$.
+    \end{proof}
+  \end{proposition}
+  Also, a homeomorphism from a compact interval to itself has zero topological entropy \citep[p.180]{walters}.
+  Thus, we have shown that some mappings, we expect to be not chaotic, indeed have zero topological entropy. 
+  However, as we will see in a later chapter, mappings with zero topological entropy can be chaotic in the sense of Li-Yorke, and exhibit complex behaviors.
 
-\bibliographystyle{../../bibliography/pjgsm}
-\bibliography{../../bibliography/thesis}
+  \bibliographystyle{../../bibliography/pjgsm}
+  \bibliography{../../bibliography/thesis}
 
-\printindex
-\end{document}
+  \printindex
+  \end{document}
 
