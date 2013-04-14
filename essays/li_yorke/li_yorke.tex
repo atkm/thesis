@@ -84,6 +84,24 @@ At an intuitive level, we can expect that the uncountable set would cause comple
       2 - 2x &\mbox{ if } x \in [1/2,1].
     \end{cases}
   \end{equation*}
+
+\begin{figure}[th]
+  \centering
+  \begin{tikzpicture}[scale=3.2]
+    \draw[->] (-0.2,0) -- (1.2,0) node[right] {$x$};
+    \draw[->] (0,-0.2) -- (0,1.2) node[above] {$T(x)$};
+    \foreach \x/\xtext in {0.5/\frac{1}{2}, 1/1}
+    \draw[shift={(\x,0)}] (0pt,1pt) -- (0pt,-1pt) node[below] {$\xtext$};
+    \foreach \y/\ytext in {0.5/\frac{1}{2}, 1/1}
+    \draw[shift={(0,\y)}] (1pt,0pt) -- (-1pt,0pt) node[left] {$\ytext$};
+
+    \draw[domain=0:0.5] plot (\x,{2*\x}) node[below right] {};
+    \draw[domain=0.5:1] plot (\x,{2 - 2*\x}) node[below right] {};
+\end{tikzpicture}
+  \label{fig:tent-map}
+  \caption{The tent map, $T(x)$.}
+\end{figure}
+
   It is easy to see that $2/7$ and $2/9$ are 3-periodic points.
   This result could have been gleaned from the fact that the logistic map is conjugate to the tent map.
   We will present the conjugacy in the chapter on topological entropy.

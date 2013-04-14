@@ -1,103 +1,158 @@
-\documentclass[12pt,twoside,draft]{book}
+\documentclass[12pt,twoside]{book}
 \usepackage{../../thesis}
 \graphicspath{ {../../images/} }
 
 \begin{document}
 
 \chapter{Introduction}
-In this chapter, I will introduce the logistic map as an example of a chaotic system, without defining what it means for a system to be ``chaotic''.
-Next, I will discuss the origin of chaos.
+In this chapter, we introduce the logistic map as an example of a system that is ``chaotic.''
+As it turns out, the logistic map is chaotic in all of the four definitions that we will see in later chapters.
+Next, we proceed to the historical the origin of chaos.
 At last, I discuss what ``chaos'' is.
 
 \section{Our First Chaotic Map}
-
-This is the equation for logistic map:
-\begin{equation}
-  L_{\mu}(x) = \mu x(1-x),
-  \label{logistic}
-\end{equation}
-and the ``equivalent'' differential equation:
-\begin{equation}
-  \frac{dx}{dt} = \mu x(1-x)
-  \label{logisticdiffeq}
-\end{equation}
-(In general, we can go between continuous and discrete models
-\begin{align*}
-  \frac{dx(t)}{dt} = G(x(t)) &\quad\mbox{(Continuous)} \\
-  x(t + 1) = F(x(t)) &\quad\mbox{(Discrete)}
-\end{align*}
-by using the following approximation of the differential equation by mapping
+The logistic map $L_\mu$ is defined as 
 \begin{equation*}
-  \frac{dx(t)}{dt} \approx \frac{x(t_0 + (n+1)\Delta t) - x(t_0 + n \Delta t)}{\Delta t},
+  L_{\mu}(x) \ceq \mu x(1-x).
 \end{equation*}
-which leads to an approximation of the mapping by the differential equation
-\begin{equation*}
-  F(x(n)) \approx x(n) + \Delta t \cdot G(x(n))
-\end{equation*}
-.)
-The only difference between equations \pref{logisticdiffeq} and \pref{logistic}
-
-The differential equation \pref{logisticdiffeq} can be easily solved by separation of variables.
-\begin{align*}
-  \frac{dx}{x(1-x)} &= \mu dt \\  
-  \left( \frac{1}{x} + \frac{1}{1-x} \right) dx &= \mu dt
-\end{align*}
-Then, suppose that $x(0) = x_0$, and integrate from $t = 0$ to $T$
-\begin{align*}
-  \int_{x_0}^{x(T)} \frac{1}{x} + \frac{1}{1-x} dx &= \int_0^T \mu dt \\
-  \log{\frac{x(T)}{1-x(T)}} - \log{\frac{x_0}{1-x_0}} &= \mu T \\
-  \frac{x(T)}{1-x(T)} &= \frac{x_0 e^{\mu T}}{1-x_0} \\
-  (1-x_0)x(T) &= x_0 e^{\mu T} (1-x(T)) \\
-  (1-x_0 + x_0 e^{\mu T})x(T) &= x_0 e^{\mu T}
-\end{align*}
-
-Thus, we have (with a slight change of notation)
+The logistic equation
 \begin{equation}
-  x(t) = \frac{x_0 e^{\mu t}}{1 - x_0 + x_0 e^{\mu t}}
-  \label{eq:logisticdiffeqsoln}
+  \frac{dx(t)}{dt} = L_{\mu}(x(t))
+  \label{eqn:lde}
 \end{equation}
-
-Change in the growth rate $\mu$ does not alter the bahaviour.
+is a common model of population growth in ecology and other fields.
+This differential equation can be easily solved by separation of variables, and the solution is
+%First, divide both sides of the equation by $x(1-x)$ then multiply by $dt$ to obtain
+%\begin{align*}
+%  \frac{dx}{x(1-x)} &= \mu dt \\  
+%  \left( \frac{1}{x} + \frac{1}{1-x} \right) dx &= \mu dt
+%\end{align*}
+%Then, suppose that $x(0) = x_0$, and integrate from $t = 0$ to $T$
+%\begin{align*}
+%  \int_{x_0}^{x(T)} \frac{1}{x} + \frac{1}{1-x} dx &= \int_0^T \mu dt \\
+%  \log{\frac{x(T)}{1-x(T)}} - \log{\frac{x_0}{1-x_0}} &= \mu T \\
+%  \frac{x(T)}{1-x(T)} &= \frac{x_0 e^{\mu T}}{1-x_0} \\
+%  (1-x_0)x(T) &= x_0 e^{\mu T} (1-x(T)) \\
+%  (1-x_0 + x_0 e^{\mu T})x(T) &= x_0 e^{\mu T}.
+%\end{align*}
+%Thus, we have (with a slight change of notation)
+\begin{equation}
+  x(t) = \frac{x_0 e^{\mu t}}{1 - x_0 + x_0 e^{\mu t}},
+  \label{eqn:ldesoln}
+\end{equation}
+where $x_0 \equiv x(0)$.
+Note that Equation~\ref{eqn:ldesoln} tells us the value of $x$ for any $t \in \R$.
+But what if we are only interested in the values of $x$ at discrete times, say $t \in \N$?
+Perhaps, we can get a good approximation of the differential equation if we consider
+\begin{equation}
+  x(t + 1) = L_{\mu}(x(t)).
+  \label{eqn:logistic}
+\end{equation}
+Given an initial value $x(0)$, we can calculate $x(1) = L_\mu(x(0))$, then $x(2) = L_\mu(x(1)) = \itr{L_\mu}{2}(x(0))$.
+Continuing in the same manner, we can obtain $x(t)$ for any $t \in \N$, and 
+\begin{equation}
+  x(t) = \itr{L_\mu}{t}(x(0)).
+  \label{eqn:logisticsoln}
+\end{equation}
+This is the \textit{solution} of \pref{eqn:logistic}, the discrete analogue of \pref{eqn:ldesoln}.
+Although \pref{eqn:ldesoln} and \pref{eqn:logisticsoln} look quite dissimilar, we started with the same equation to obtain the exact \pref{eqn:ldesoln} and approximate \pref{eqn:logisticsoln} solutions, so we expect that the behaviors of the two are similar to some extent.
+So, lets start looking at \pref{eqn:ldesoln}.
+If $\mu > 0$, then $e^{\mu t} \to \infty$ as $t \to \infty$, so $x(t)$ converges to the stable state, $x = 1$ (Figure~\ref{fig:lde1}).
 \begin{figure}[ht]
   \begin{center}
-    \includegraphics[scale=0.5]{logistic_diffeq_mu4_varyingx0}
+    \includegraphics[width=0.75\textwidth]{logistic_diffeq_mu4_varyingx0}
   \end{center}
   \caption{
-    Plot of equation \pref{eq:logisticdiffeqsoln} with $\mu = 4$ and various $x_0$. 
-  Note that regardless of the initial value, $x(t)$ converges to $1$.
+    Plot of equation \pref{eqn:ldesoln} with $\mu = 4$ and various initial values. 
+  Regardless of the initial value, $x(t)$ converges to $1$.
 }
-  \label{fig:logistic_diffeq1}
+  \label{fig:lde1}
 \end{figure}
-
-%\begin{figure}[h]
-%  \begin{center}
-%    \includegraphics[scale=0.5]{logistic_diffeq_mu1234_x2}
-%  \end{center}
-%  \caption{
-%    Plot of equation \pref{eq:logisticdiffeqsoln} with $x_0 = 2$ and various $\mu$ (1,2,3,4).
-%    As $\mu$ increases, $x(t)$ converges to $1$ faster.
-%    However, it does not alter the overall behaviour.
-%  }
-%  \label{fig:logistic_diffeq2}
-%\end{figure}
-
+%
+As long as $\mu > 0$, the asymptotic behavior of the solution does not change.
+For any initial value, the solution curve converges faster to the stable state when $\mu$ is larger (Figure~\ref{fig:lde2}).
 \begin{figure}[h]
   \begin{center}
-    \includegraphics[scale=0.5]{logistic_map_mu4_x02}
+    \includegraphics[width=0.75\textwidth]{logistic_diffeq_mu1234_x2}
   \end{center}
   \caption{
-    Chaotic map.
+    Plot of equation \pref{eqn:ldesoln} with $x_0 = 2$ and various $\mu$ ($\mu = 1,2,3,4$).
+    As $\mu$ increases, $x(t)$ converges to $1$ faster.
   }
-  \label{fig:logistic_map_chaotic}
+  \label{fig:lde2}
+\end{figure}
+Now, lets do similar things with the solution of the discretized model.
+For $\mu = 1$, solution curves exhibit similar behavior (Figure~\ref{fig:logistic1}).
+The stable state is $x = 0$, instead of $x = 1$, but for any initial value, the solution curve converges to the stable state.
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics[width=0.75\textwidth]{logistic_map_mu1_varyingx0}
+  \end{center}
+  \caption{
+    Plot of equation \pref{eqn:logisticsoln} with $\mu = 1$ and various initial values. 
+    Regardless of the initial value, $x(t)$ converges to $0$.
+}
+  \label{fig:logistic1}
 \end{figure}
 
+Next, we look at the behavior of the map when $\mu = 4$.
+Something unexpected happened here.
+Let's look at the solution curve of a single initial value.
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics[width=0.75\textwidth]{logistic_map_mu4_x02_100itr}
+  \end{center}
+  \caption{
+    $\mu = 4$. Initial value $x_0 = 0.2$. After 100 iterations.
+  }
+  \label{fig:chaotic_map1}
+\end{figure}
+One might think that this is just a transient behavior, and this erratic beast may calm down after a while.
+However, even after 200 or 500 iterations, the logistic map keeps behaving in the same manner (Figure~\ref{fig:chaotic_map2}).
+This is chaotic.
+\begin{figure}[p]
+  \begin{center}
+    \includegraphics[width=0.75\textwidth]{logistic_map_mu4_x02_200itr}
+    \includegraphics[width=0.75\textwidth]{logistic_map_mu4_x02_500itr}
+  \end{center}
+  \caption{
+    $\mu = 4$. Initial value $x_0 = 0.2$.
+    Top: 200 iterations. Bottom: 500 iterations.
+  }
+  \label{fig:chaotic_map2}
+\end{figure}
+
+In general, we can make a correspondence between continuous and discrete models
+\begin{equation}
+ \begin{aligned}
+  \frac{dx(t)}{dt} = G(x(t)) &\quad\mbox{(Continuous)} \\
+  x(t + 1) = F(x(t)) &\quad\mbox{(Discrete)}
+\end{aligned}
+  \label{eqn:intro2}
+\end{equation}
+by regarding the discrete model as an approximation of the continuous model.
+We can also make the connection by seeing the continuous model as a discrete model where each time step is infinitesimally small.
+The following approximation makes the previous statements more precise:
+\begin{equation*}
+  \frac{dx(t)}{dt} \approx \frac{x(t_0 + (n+1)\Delta t) - x(t_0 + n \Delta t)}{\Delta t}.
+\end{equation*}
+As a result of this approximation, we obtain
+\begin{equation*}
+  F(x(n)) \approx x(n) + \Delta t \cdot G(x(n)).
+\end{equation*}
+We are interested in difference equations, or maps, that exhibit erratic behaviors similar to the logistic map.
+For the time being, our definition of "chaos" is this: a map that's complicated.
+%%%
+\begin{remark}
+  There are many other interesting properties of the logistic map, and expositions on the logistic map can be found at many places.
+  See \citep{may1, may2, devaney}, for example.
+\end{remark}
 
 \section{The Origin of Chaos}
 Edward Lorentz is often regarded as the first discoverer of chaos.
-\begin{figure}[t]
-  \begin{center}
-    \includegraphics[scale=0.5]{golden_lorentz_attractor}
-  \end{center}
+\begin{figure}[ht]
+  \centering
+    \includegraphics[scale=0.35]{golden_lorentz_attractor}
   \caption{Lorentz Attractor}
   \label{fig:lorentz}
 \end{figure}
@@ -226,7 +281,7 @@ Two complementary attributes and quantifiers for these attributes sometimes used
 Although Abarbanel does not include it in his list, an attractor with fractal dimension is a signature of a complex dynamics.
 Note that a treatment of entropy--\textit{topological entropy}, to be specific--will be discussed in a later chapter with a more mathematical rigor.
 
-\section{Geoetric Definition?}
+\section{Geometric Definition?}
 I shall briefly describe a two-dimensional map called \textit{the baker's map}, which will facilitate our understandings of Lyapunov exponents and fractal dimension.
 Also, the baker's map will be frequently used to illustrate definitions of chaos in later chapters.
 Familiarity with this map would be helpful throughout the rest of the paper.
