@@ -152,6 +152,18 @@ task :make do
   system('xelatex main.tex')
 end
 
+# see if it compiles
+task :xelatex do
+  system('xelatex main.tex')
+end
+
+# partially make
+task :test do
+  Rake::Task['srcprep'].execute
+  Rake::Task['genmain'].execute
+  Rake::Task['xelatex'].execute
+end
+
 # do it all at once
 task :all do
   Rake::Task['srcprep'].execute
