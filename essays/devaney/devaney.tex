@@ -109,11 +109,20 @@ We give some examples to illustrate the two definitions.
     An irrational rotation of the unit circle is topologically transitive, but not sensitive to initial conditions, because all points remain the same distance apart after iteration.
   \end{example}
   \begin{example}
+    (Rotation on a circle)
+  \end{example}
+  \begin{example}
     (Devaney, 1987)
     Consider a unit circle, and represent each point on the circle with an angle $\theta$.
     Define the doubling map to be $\theta \mapsto 2\theta$.
+    Points of the form $\theta = \frac{2\pi}{ $
     Then, the doubling map on the unit circle is chaotic in Devaney's sense.
   \end{example}
+  The reader might have raised a question on the appropriateness of labeling the mapping, often called the \textit{dobling map}, as chaotic.
+  We think that we understand such a simple mapping perfectly well; it's geometry is not complicated either.
+  Yet, do we want to call this ``chaotic?''
+
+  The question will be addressed again in the chapter on symbolic dynamics.
   \begin{example}
     The logistic map $L_\mu: x \mapsto \mu x(1-x)$ (the mapping we saw in the introduction) is chaotic in Devaney's sense on its attractor when $\mu > 2 + \sqrt{5}$.
     Note that we cannot say that $L_\mu$ is chaotic on $I \equiv [0,1]$, because then the mapping does not satisfy the second condition, topological transitivity.
@@ -161,133 +170,133 @@ We give some examples to illustrate the two definitions.
 %  \end{example}
 %%%
 
-\section{Redundancy Of The Definition}
-\citet{silverman} (and also \citet{banks}) showed that \sdic is a necessary condition of \tt and \dpp.
+  \section{Redundancy Of The Definition}
+  \citet{silverman} (and also \citet{banks}) showed that \sdic is a necessary condition of \tt and \dpp.
 %%%
-\begin{theorem}
-  (\tt and \dpp Imply \sdic)
-  Let $F: X\rar X$ be chaotic in Devaney's sense.
-  Then there exists $\epsilon > 0$ such that, for any $x\in X$ and any open set $J$ containing at least $x$ and another point, there is a point $y\in J$ and $n\in \N$ with
-  \begin{equation*}
-    \metric{\itr{F}{n}(x),\itr{F}{n}(y)} > \epsilon.
-  \end{equation*}
-  \label{thm:silverman}
-\end{theorem}
-First, we prove a lemma, which states that two distinct periodic orbits cannot intersect.
-\begin{lemma}
-  Let $F: X\rar X$ be a mapping with (at least) two distinct periodic orbits.
-  Then there is a $c > 0$ such that for any $x\in X$ there exists a periodic
-  point $p$ such that for each $k$
-  \begin{equation*}
-    \metric{x, \itr{F}{k}(p)} > c.
-  \end{equation*}
-  \label{lem:dev1}
-  \begin{proof}[Proof of the lemma]
-    Let $r$ and $s$ be periodic points with distinct orbits. For each $k$ and $l$ we have
+  \begin{theorem}
+    (\tt and \dpp Imply \sdic)
+    Let $F: X\rar X$ be chaotic in Devaney's sense.
+    Then there exists $\epsilon > 0$ such that, for any $x\in X$ and any open set $J$ containing at least $x$ and another point, there is a point $y\in J$ and $n\in \N$ with
     \begin{equation*}
-      \metric{\itr{F}{k}(r), \itr{F}{l}(s)} > 0.
+      \metric{\itr{F}{n}(x),\itr{F}{n}(y)} > \epsilon.
     \end{equation*}
-    Choose $c$ so that $2c < \min \metric{\itr{F}{k}(r),\itr{F}{l}(s)}$.
-    Then by the triangle inequality
+    \label{thm:silverman}
+  \end{theorem}
+  First, we prove a lemma, which states that two distinct periodic orbits cannot intersect.
+  \begin{lemma}
+    Let $F: X\rar X$ be a mapping with (at least) two distinct periodic orbits.
+    Then there is a $c > 0$ such that for any $x\in X$ there exists a periodic
+    point $p$ such that for each $k$
     \begin{equation*}
-      2c < \metric{\itr{F}{k}(r),\itr{F}{l}(s)} \leq \metric{\itr{F}{k}(r),x} + \metric{x,\itr{F}{l}(s)}
+      \metric{x, \itr{F}{k}(p)} > c.
     \end{equation*}
-    for all $k$ and $l$.
-    We cannot have $\metric{\itr{F}{k}(r),x} \leq c$ and $\metric{x,\itr{F}{l}(s)} \leq c$, since it violates the inequality just derived.
-    Thus,
+    \label{lem:dev1}
+    \begin{proof}[Proof of the lemma]
+      Let $r$ and $s$ be periodic points with distinct orbits. For each $k$ and $l$ we have
+      \begin{equation*}
+        \metric{\itr{F}{k}(r), \itr{F}{l}(s)} > 0.
+      \end{equation*}
+      Choose $c$ so that $2c < \min \metric{\itr{F}{k}(r),\itr{F}{l}(s)}$.
+      Then by the triangle inequality
+      \begin{equation*}
+        2c < \metric{\itr{F}{k}(r),\itr{F}{l}(s)} \leq \metric{\itr{F}{k}(r),x} + \metric{x,\itr{F}{l}(s)}
+      \end{equation*}
+      for all $k$ and $l$.
+      We cannot have $\metric{\itr{F}{k}(r),x} \leq c$ and $\metric{x,\itr{F}{l}(s)} \leq c$, since it violates the inequality just derived.
+      Thus,
+      \begin{equation*}
+        \metric{\itr{F}{k}(r),x} > c \mbox{ or } \metric{x,\itr{F}{l}(s)} > c
+      \end{equation*}
+      must hold.
+    \end{proof}
+  \end{lemma}
+  %
+  \begin{proof}[Proof of Theorem~\ref{thm:silverman}]
+    Let $x$ be any point of $X$ and $J$ any open set containing $x$.
+    Since the periodic points of $f$ are dense (in $X$), we may introduce a periodic point
+    $q$ of $f$ in $U$ defined as
     \begin{equation*}
-      \metric{\itr{F}{k}(r),x} > c \mbox{ or } \metric{x,\itr{F}{l}(s)} > c
+      U \ceq J\cap \oball{\epsilon}{x}.
+    \end{equation*}
+    Let $n$ be the period of $q$.
+    Apply Proposition~\ref{lem:dev1} to obtain a periodic orbit $O(p)$ and a constant $c > 0$ such that $\metric{x, O(p)} > c$.
+    Let $\epsilon \ceq c/4$ so that $\metric{x, O(p)} > 4\epsilon$.
+    Define
+    \begin{equation*}
+      W_i := \oball{\epsilon}{\itr{F}{i}(p)} \quad\text{ and }\quad V := \bigcap\limits_{i = 1}^{n} \itr{F}{-i}(W_i).
+    \end{equation*}
+    Since $\itr{F}{i}(p) \in W_i$, we see that $p \in V$, and $V$ is not empty. 
+    Also note that $V$ is open.
+    By the transitivity property, we can find a $z\in U$ and a positive integer $k$ such that
+    $\itr{F}{k}(z) \in V$. Let $j$ be the least integer such that $k < nj$. 
+    That is,
+    \begin{equation*}
+      1 \leq nj - k \leq n.
+    \end{equation*}
+    Therefore,
+    \begin{equation*}
+      \itr{F}{nj} (z) = \itr{F}{nj - k} (\itr{F}k(z)) \in \itr{F}{nj-k}(V).
+    \end{equation*}
+    Also,
+    \begin{equation*}
+      \itr{F}{nj - k}(V) \subset \itr{F}{nj - k}(\itr{F}{-(nj - k)} W_{nj-k}) 
+      = W_{nj-k}
+      \equiv \oball{\epsilon}{\itr{F}{nj-k}(p)}.
+    \end{equation*}
+    The last two equalities imply
+    \begin{equation*}
+      \metric{\itr{F}{nj}(z), \itr{F}{nj - k}(p)} < \epsilon.
+    \end{equation*}
+    Furthermore, $\itr{F}{nj}(q) = q$, since $q$ is a $n$-periodic point 
+    \begin{equation*}
+      \metric{\itr{F}{nj}(q), \itr{F}{nj}(z)} = \metric{q, \itr{F}{nj}(z)}.
+    \end{equation*}
+    By the triangle inequality, we have
+    \begin{equation*}
+      \metric{x, \itr{F}{nj-k}(p)} \leq \metric{x,q} + \metric{q, \itr{F}{nj}(z)} + \metric{\itr{F}{nj}(z), \itr{F}{nj - k}(p)}.
+    \end{equation*}
+    Finally, 
+    \begin{align*}
+      \metric{\itr{F}{nj}(q), \itr{F}{nj}(z)} 
+      &= \metric{q, \itr{F}{nj}(z)}  \\
+      &\geq  \metric{x, \itr{F}{nj-k}(p)} - \metric{x,q} - \metric{\itr{F}{nj}(z), \itr{F}{nj - k}(p)}  \\
+      &> 4\epsilon - \epsilon - \epsilon 
+      = 2\epsilon,
+    \end{align*}
+    which implies
+    \begin{equation*}
+      \metric{\itr{F}{nj}(q), \itr{F}{nj}(x)} + \metric{\itr{F}{nj}(x), \itr{F}{nj}(z)} 
+      \geq \metric{\itr{F}{nj}(q), \itr{F}{nj}(z)}
+      > 2\epsilon.
+    \end{equation*}
+    It follows from the inequality that 
+    \begin{equation*}
+      \metric{\itr{F}{nj}(x), \itr{F}{nj}(z)} \geq \epsilon \quad\mbox{ or }\quad \metric{\itr{F}{nj}(x), \itr{F}{nj}(q)} \geq \epsilon 
     \end{equation*}
     must hold.
   \end{proof}
-\end{lemma}
-  %
-\begin{proof}[Proof of Theorem~\ref{thm:silverman}]
-  Let $x$ be any point of $X$ and $J$ any open set containing $x$.
-  Since the periodic points of $f$ are dense (in $X$), we may introduce a periodic point
-  $q$ of $f$ in $U$ defined as
-  \begin{equation*}
-    U \ceq J\cap \oball{\epsilon}{x}.
-  \end{equation*}
-  Let $n$ be the period of $q$.
-  Apply Proposition~\ref{lem:dev1} to obtain a periodic orbit $O(p)$ and a constant $c > 0$ such that $\metric{x, O(p)} > c$.
-  Let $\epsilon \ceq c/4$ so that $\metric{x, O(p)} > 4\epsilon$.
-  Define
-  \begin{equation*}
-    W_i := \oball{\epsilon}{\itr{F}{i}(p)} \quad\text{ and }\quad V := \bigcap\limits_{i = 1}^{n} \itr{F}{-i}(W_i).
-  \end{equation*}
-  Since $\itr{F}{i}(p) \in W_i$, we see that $p \in V$, and $V$ is not empty. 
-  Also note that $V$ is open.
-  By the transitivity property, we can find a $z\in U$ and a positive integer $k$ such that
-  $\itr{F}{k}(z) \in V$. Let $j$ be the least integer such that $k < nj$. 
-  That is,
-  \begin{equation*}
-    1 \leq nj - k \leq n.
-  \end{equation*}
-  Therefore,
-  \begin{equation*}
-    \itr{F}{nj} (z) = \itr{F}{nj - k} (\itr{F}k(z)) \in \itr{F}{nj-k}(V).
-  \end{equation*}
-  Also,
-  \begin{equation*}
-    \itr{F}{nj - k}(V) \subset \itr{F}{nj - k}(\itr{F}{-(nj - k)} W_{nj-k}) 
-    = W_{nj-k}
-    \equiv \oball{\epsilon}{\itr{F}{nj-k}(p)}.
-  \end{equation*}
-  The last two equalities imply
-  \begin{equation*}
-    \metric{\itr{F}{nj}(z), \itr{F}{nj - k}(p)} < \epsilon.
-  \end{equation*}
-  Furthermore, $\itr{F}{nj}(q) = q$, since $q$ is a $n$-periodic point 
-  \begin{equation*}
-    \metric{\itr{F}{nj}(q), \itr{F}{nj}(z)} = \metric{q, \itr{F}{nj}(z)}.
-  \end{equation*}
-  By the triangle inequality, we have
-  \begin{equation*}
-    \metric{x, \itr{F}{nj-k}(p)} \leq \metric{x,q} + \metric{q, \itr{F}{nj}(z)} + \metric{\itr{F}{nj}(z), \itr{F}{nj - k}(p)}.
-  \end{equation*}
-  Finally, 
-  \begin{align*}
-    \metric{\itr{F}{nj}(q), \itr{F}{nj}(z)} 
-    &= \metric{q, \itr{F}{nj}(z)}  \\
-    &\geq  \metric{x, \itr{F}{nj-k}(p)} - \metric{x,q} - \metric{\itr{F}{nj}(z), \itr{F}{nj - k}(p)}  \\
-    &> 4\epsilon - \epsilon - \epsilon 
-    = 2\epsilon,
-  \end{align*}
-  which implies
-  \begin{equation*}
-    \metric{\itr{F}{nj}(q), \itr{F}{nj}(x)} + \metric{\itr{F}{nj}(x), \itr{F}{nj}(z)} 
-    \geq \metric{\itr{F}{nj}(q), \itr{F}{nj}(z)}
-    > 2\epsilon.
-  \end{equation*}
-  It follows from the inequality that 
-  \begin{equation*}
-    \metric{\itr{F}{nj}(x), \itr{F}{nj}(z)} \geq \epsilon \quad\mbox{ or }\quad \metric{\itr{F}{nj}(x), \itr{F}{nj}(q)} \geq \epsilon 
-  \end{equation*}
-  must hold.
-\end{proof}
 
-Thus, we can regard \dpp and \tt as sufficient conditions for \sdic.
-Using this result, we can restate Devaney's definition in a more concise form, since the third condition, sensitive dependence on initial condition, is redundant.
-\begin{definition}
-  (Chaos in Devaney's sense, redefined) 
-  A continuous map $F: X\rar X$ is said to be chaotic on $X$ if
-  \begin{enumerate}
-    \item $P(F) = X$.
-    \item $F$ is \textit{topologically transitive}.
-  \end{enumerate}
-\end{definition}
+  Thus, we can regard \dpp and \tt as sufficient conditions for \sdic.
+  Using this result, we can restate Devaney's definition in a more concise form, since the third condition, sensitive dependence on initial condition, is redundant.
+  \begin{definition}
+    (Chaos in Devaney's sense, redefined) 
+    A continuous map $F: X\rar X$ is said to be chaotic on $X$ if
+    \begin{enumerate}
+      \item $P(F) = X$.
+      \item $F$ is \textit{topologically transitive}.
+    \end{enumerate}
+  \end{definition}
 %%%
-A natural question to raise at this point is whether we can further reduce the definition to one condition, or whether other combinations of two conditions imply the other.
-The answers to both of these question are negative; \citet{assaf} showed that, in general, \dpp and \sdic do not imply \tt.
-Also, Example~\ref{eg:notdpp} shows that \sdic and \tt do not necessarily imply \dpp.
-However, when we restrict our space to a compact interval, \tt implies the other two \citep{silverman}.
+  A natural question to raise at this point is whether we can further reduce the definition to one condition, or whether other combinations of two conditions imply the other.
+  The answers to both of these question are negative; \citet{assaf} showed that, in general, \dpp and \sdic do not imply \tt.
+  Also, Example~\ref{eg:notdpp} shows that \sdic and \tt do not necessarily imply \dpp.
+  However, when we restrict our space to a compact interval, \tt implies the other two \citep{silverman}.
 %A system is chaotic in $X$ in the sense of Devaney if and only if for every pair of open sets in $X$ there exists a periodic orbit which visits both sets (Touhey, 1997).
 
-\section{Chaos Is A Topological Property}
-All conditions employed in Devaney's definition are topological invariants, that is, the properties are preserved under conjugacy by a continuous mapping.
-We show that \dpp and \tt are topological invariants.
-It follows that sensitive dependence on initial conditions is also a topological invariant.
+  \section{Chaos Is A Topological Property}
+  All conditions employed in Devaney's definition are topological invariants, that is, the properties are preserved under conjugacy by a continuous mapping.
+  We show that \dpp and \tt are topological invariants.
+  It follows that sensitive dependence on initial conditions is also a topological invariant.
   \begin{theorem}
     (\tt is a topological invariant) 
     Let $F: X \to X$ and $G: Y \to Y$ be continuous functions.
@@ -307,7 +316,7 @@ It follows that sensitive dependence on initial conditions is also a topological
         = \itr{G}{n}(\phi(x))
         = \phi(\itr{F}{n}(x)) \in \phi(A') \subseteq A.
       \end{equation*}
-      \end{proof}
+    \end{proof}
   \end{theorem}
 %%%
   We prove two lemmas, from which the theorem of our interest immediately follows.
@@ -332,7 +341,7 @@ It follows that sensitive dependence on initial conditions is also a topological
       $\itr{F}{n}(p) = p$ implies that $\itr{G}{n}(\phi(p)) = \phi(\itr{F}{n}(p)) = \phi(p)$.
     \end{proof}
   \end{lemma}
-\begin{theorem}
+  \begin{theorem}
     (\dpp is a topological invariant)
     Suppose that $G$ is semi-conjugate to $F$.
     If $\mathrm{P}(F)$ is dense in $X$, then $\mathrm{P}(G)$ is dense in $Y$.
@@ -341,178 +350,178 @@ It follows that sensitive dependence on initial conditions is also a topological
       It follows from Theorem~\ref{thm:conj-per} that $\phi(\mathrm{P}(F)) \subseteq \mathrm{P}(G)$.
       Then, by Theorem~\ref{thm:conj-dense}, $\mathrm{P}(G)$ is a dense subset of $Y$.
     \end{proof}
-\end{theorem}
-Finally, we obtain the main result of this section as a corollary.
-\begin{corollary}
-  (\sdic is a topological invariant)
-  Suppose that $G$ is semi-conjugate to $F$.
-  If $F$ is sensitive to initial conditions, then $G$ is sensitive to initial conditions.
-  \label{cor:conj-sdic}
-  \begin{proof}
-  This follows from Theorem~\ref{thm:silverman}, Theorem~\ref{thm:conj-trans}, and Theorem~\ref{thm:conj-dense}.
-  \end{proof}
-\end{corollary}
-Hence, chaos in Devaney's sense is a topological invariant.
+  \end{theorem}
+  Finally, we obtain the main result of this section as a corollary.
+  \begin{corollary}
+    (\sdic is a topological invariant)
+    Suppose that $G$ is semi-conjugate to $F$.
+    If $F$ is sensitive to initial conditions, then $G$ is sensitive to initial conditions.
+    \label{cor:conj-sdic}
+    \begin{proof}
+      This follows from Theorem~\ref{thm:silverman}, Theorem~\ref{thm:conj-trans}, and Theorem~\ref{thm:conj-dense}.
+    \end{proof}
+  \end{corollary}
+  Hence, chaos in Devaney's sense is a topological invariant.
 %%%
 
-\section{Martelli's Definition}
-In this final section of the chapter, we introduce a definition that is equivalent to Wiggins's definition.
-\citet{martelli} prove the equivalence when $X$ is a compact subset of $\R^n$, but the proof sketched in their paper also works for a more general setting, namely when $X$ is a compact metric space.
-We first state the definition, then define the terms used in it.
+  \section{Martelli's Definition}
+  In this final section of the chapter, we introduce a definition that is equivalent to Wiggins's definition.
+  \citet{martelli} prove the equivalence when $X$ is a compact subset of $\R^n$, but the proof sketched in their paper also works for a more general setting, namely when $X$ is a compact metric space.
+  We first state the definition, then define the terms used in it.
 %%%
-\begin{definition}
-  (Chaos in Martelli's sense)
-  Suppose $F: X \to X$ is a continuous map, where $X$ is a compact metric space.
-  Then $F$ is said to be \textit{chaotic} in $X$ if there exists $x \in X$ that meets the following conditions
-  \begin{enumerate}
-    \item $L(x) = X$.
-    \item $O(x)$ is unstable in $X$.
-  \end{enumerate}
-  \label{defn:martelli}
-  \index{definition of chaos!Martelli}
-\end{definition}
-\begin{definition}
-  (Limit Points of an Orbit/Limit Set)
-  Let $F: X\to X$ be an continuous mapping.
-  Let $O(x)$ be the orbit of $x \in X$.
-  $z \in X$ is called a \textit{limit point} of $O(x)$, if there exists a subsequence of $O(x)$ that converges to $z$.
-  The \textit{limit set} of $O(x)$, denoted $L(x)$, is the set of all limit points $O(x)$.
-  \label{def:limset}
-  \index{limit set}
-\end{definition}
+  \begin{definition}
+    (Chaos in Martelli's sense)
+    Suppose $F: X \to X$ is a continuous map, where $X$ is a compact metric space.
+    Then $F$ is said to be \textit{chaotic} in $X$ if there exists $x \in X$ that meets the following conditions
+    \begin{enumerate}
+      \item $L(x) = X$.
+      \item $O(x)$ is unstable in $X$.
+    \end{enumerate}
+    \label{defn:martelli}
+    \index{definition of chaos!Martelli}
+  \end{definition}
+  \begin{definition}
+    (Limit Points of an Orbit/Limit Set)
+    Let $F: X\to X$ be an continuous mapping.
+    Let $O(x)$ be the orbit of $x \in X$.
+    $z \in X$ is called a \textit{limit point} of $O(x)$, if there exists a subsequence of $O(x)$ that converges to $z$.
+    The \textit{limit set} of $O(x)$, denoted $L(x)$, is the set of all limit points $O(x)$.
+    \label{def:limset}
+    \index{limit set}
+  \end{definition}
   %%%
-\begin{definition}
-  (Unstable Point)
-  Let $F: X\to X$ be an continuous mapping, and $x$ be a member of $X$.
-  $x$ is called an \textit{unstable point}, if there exists $\epsilon > 0$, which we refer to as the \textit{separation constant} (as in the definition of \sdic), such that, for any neighborhood $N$ of $x$, there exists $y \in N$ and a positive integer $n$ such that 
-  \begin{equation*}
-    \metric{\itr{F}{n}(x), \itr{F}{n}(y)} > \epsilon.
-  \end{equation*}
-  \label{defn:unstable-orbit}
-  \index{unstable orbit}
-\end{definition}
-Note that if $F$ has a sensitive dependence on initial conditions on $X$, then all points in $X$ are unstable points, and there exists a globally defined separation constant.
-Therefore, sensitivitiy is a stronger condition than instability.
-
-As I mentioned in the beggining of this section, Martelli's definition is equivalent to Wiggins's.
-\begin{theorem}
-  (Equivalence of Martelli's and Wiggins's definitions)
-  Let $F: X \to X$, where $X$ is a compact metric space.
-  $F$ is chaotic in Martelli's sense if and only if $F$ is chaotic in Wiggins's sense.
-  \label{thm:martelli-wiggins}
-  \begin{proof}
-    We prove this theorem in two parts, Proposition~\ref{prop:martelli-wiggins1} and Proposition~\ref{prop:martelli-wiggins2}.
-  \end{proof}
-\end{theorem}
-We use the following result in the proof of Proposition~\ref{prop:martelli-wiggins1}.
-\begin{proposition}
-  \citep{silverman}
-  Suppose $X$ is a metric space with no isolated point.
-  If $F: X\to X$, a continuous map, has a dense orbit, then $F$ is topologically transitive.
-  \begin{proof}
-    See \citep{silverman}.
-  \end{proof}
-  \label{lem:dob-transitivity}
-\end{proposition}
-\begin{proposition}
-  Let $X$ be a compact metric space with no isolated point, and $F: X \to X$ be a continuous mapping.
-  $F$ is topologically transitive in $X$ if and only if there exists $x \in X$ such that $L(x) = X$.
-  \label{prop:martelli-wiggins1}
-  \begin{proof}
-    We first show that the existence of an orbit whose limit set is $X$ implies topological transitivity.
-    $O(x)$ is a dense orbit.
-    By Proposition~\ref{lem:dob-transitivity}, $F$ is topologically transitive.
-
-    Next, suppose that $F$ is topologically transitive.
-    Let $\seq{\epsilon_i}{\infty}{i=1}$ be a monotonically decreasing sequence of positive real numbers whose limit is 0.
-    Since $X$ is totally bounded, for each $\epsilon_i$, there exists a finite open cover $\mathcal{C}_i$ of $X$ whose cardinality is $k_i$, say $\mathcal{C}_i \ceq \set{A_{i,1}, \ldots, A_{i, k_i}}$, such that for each $1 \leq j \leq k_i$, $\diam(A_{i,j}) < \epsilon_i$.
-    Define an ordering of $A_{i,j}$ as follows
+  \begin{definition}
+    (Unstable Point)
+    Let $F: X\to X$ be an continuous mapping, and $x$ be a member of $X$.
+    $x$ is called an \textit{unstable point}, if there exists $\epsilon > 0$, which we refer to as the \textit{separation constant} (as in the definition of \sdic), such that, for any neighborhood $N$ of $x$, there exists $y \in N$ and a positive integer $n$ such that 
     \begin{equation*}
-      A_{1,1}, A_{1,2}, \ldots, A_{1,k_1}, A_{2,1}, \ldots, A_{2,k_2}, A_{3,1}, \ldots.
+      \metric{\itr{F}{n}(x), \itr{F}{n}(y)} > \epsilon.
     \end{equation*}
-    Since $F$ is topologically transitive, by Proposition~\ref{prop:transitivity}, there exists a point $x \in X$ such that some subsequence of its orbit visits each $A_{i,j}$ in this order.
-    Now, choose any point $y \in X$.
-    Since $\mathcal{C}_i$ is an open cover, for each $i$, there exists $j_i$ such that $y \in A_{i,j_i}$.
-    We may introduce a subsequence $\set{\itr{F}{n(i)}(x)}$ of $O(x)$ such that, for each $i$, 
-    \begin{equation*}
-      \itr{F}{n(i)}(x) \in A_{i,j_i}.
-    \end{equation*}
-    By construction, $A_{i,j_i}$ is a sequence of sets whose diameters monotonically decrease. 
-    It follows that $\set{\itr{F}{n(i)}(x)}$ converges to $y$.
-    Since the choice of $y$ was arbitrary, we have $L(x) = X$.
-  \end{proof}
-\end{proposition}
+    \label{defn:unstable-orbit}
+    \index{unstable orbit}
+  \end{definition}
+  Note that if $F$ has a sensitive dependence on initial conditions on $X$, then all points in $X$ are unstable points, and there exists a globally defined separation constant.
+  Therefore, sensitivitiy is a stronger condition than instability.
+
+  As I mentioned in the beggining of this section, Martelli's definition is equivalent to Wiggins's.
+  \begin{theorem}
+    (Equivalence of Martelli's and Wiggins's definitions)
+    Let $F: X \to X$, where $X$ is a compact metric space.
+    $F$ is chaotic in Martelli's sense if and only if $F$ is chaotic in Wiggins's sense.
+    \label{thm:martelli-wiggins}
+    \begin{proof}
+      We prove this theorem in two parts, Proposition~\ref{prop:martelli-wiggins1} and Proposition~\ref{prop:martelli-wiggins2}.
+    \end{proof}
+  \end{theorem}
+  We use the following result in the proof of Proposition~\ref{prop:martelli-wiggins1}.
+  \begin{proposition}
+    \citep{silverman}
+    Suppose $X$ is a metric space with no isolated point.
+    If $F: X\to X$, a continuous map, has a dense orbit, then $F$ is topologically transitive.
+    \begin{proof}
+      See \citep{silverman}.
+    \end{proof}
+    \label{lem:dob-transitivity}
+  \end{proposition}
+  \begin{proposition}
+    Let $X$ be a compact metric space with no isolated point, and $F: X \to X$ be a continuous mapping.
+    $F$ is topologically transitive in $X$ if and only if there exists $x \in X$ such that $L(x) = X$.
+    \label{prop:martelli-wiggins1}
+    \begin{proof}
+      We first show that the existence of an orbit whose limit set is $X$ implies topological transitivity.
+      $O(x)$ is a dense orbit.
+      By Proposition~\ref{lem:dob-transitivity}, $F$ is topologically transitive.
+
+      Next, suppose that $F$ is topologically transitive.
+      Let $\seq{\epsilon_i}{\infty}{i=1}$ be a monotonically decreasing sequence of positive real numbers whose limit is 0.
+      Since $X$ is totally bounded, for each $\epsilon_i$, there exists a finite open cover $\mathcal{C}_i$ of $X$ whose cardinality is $k_i$, say $\mathcal{C}_i \ceq \set{A_{i,1}, \ldots, A_{i, k_i}}$, such that for each $1 \leq j \leq k_i$, $\diam(A_{i,j}) < \epsilon_i$.
+      Define an ordering of $A_{i,j}$ as follows
+      \begin{equation*}
+        A_{1,1}, A_{1,2}, \ldots, A_{1,k_1}, A_{2,1}, \ldots, A_{2,k_2}, A_{3,1}, \ldots.
+      \end{equation*}
+      Since $F$ is topologically transitive, by Proposition~\ref{prop:transitivity}, there exists a point $x \in X$ such that some subsequence of its orbit visits each $A_{i,j}$ in this order.
+      Now, choose any point $y \in X$.
+      Since $\mathcal{C}_i$ is an open cover, for each $i$, there exists $j_i$ such that $y \in A_{i,j_i}$.
+      We may introduce a subsequence $\set{\itr{F}{n(i)}(x)}$ of $O(x)$ such that, for each $i$, 
+      \begin{equation*}
+        \itr{F}{n(i)}(x) \in A_{i,j_i}.
+      \end{equation*}
+      By construction, $A_{i,j_i}$ is a sequence of sets whose diameters monotonically decrease. 
+      It follows that $\set{\itr{F}{n(i)}(x)}$ converges to $y$.
+      Since the choice of $y$ was arbitrary, we have $L(x) = X$.
+    \end{proof}
+  \end{proposition}
 %%%
 
-Now we prove the second part of the theorem.
-Trivially, if $F$ has a sensitive dependence on initial conditions on $X$, then for any $x \in X$, $O(x)$ is unstable.
-On the other hand, the existence of an unstable orbit does not, in general, imply sensitivity of $F$.
-However, by requiring an additional condition that the limit set of the same orbit equals the entire space, we obtain the desired result.
-We first show that if $x$ is an unstable point, then any point in its orbit is also unstable.
-Moreover, we show that the separation constant of $x$ is a property belonging to all points in the orbit of $x$.
-\begin{proposition}
-  Suppose there exists an unstable point $x \in X$ such that $L(x) = X$.
-  Then, for each positive integer $n$, $\itr{F}{n}(x)$ is also an unstable point, and its separation constant is the same as that of $x$.
-  \label{prop:unstable-orbit}
-  \begin{proof}
-    Let the separation constant of $x$ be $\epsilon$, and suppose that for some $y$ in any neighborhood of $x$, and for some positive integer $p$,
-    \begin{equation*}
-      \metric{\itr{F}{p}(x), \itr{F}{p}(y)} > \epsilon.
-    \end{equation*}
-    For any neighborhood $M$ of $\itr{F}{n}(x)$, choose some point $z \in M$.
-    By Proposition~\ref{prop:martelli-wiggins1}, $F$ is topologically transitive.
-    It follows that, for any $\delta > 0$, there exist positive integers $m$ and $k$ such that
-    \begin{equation*}
-      \itr{F}{n+m}(x) \in \oball{\delta}{x}
-      \quad \mbox{ and } \quad
-      \itr{F}{k}(z) \in \oball{\delta}{y}.
-    \end{equation*}
-    Then, by continuity, we may have $\metric{\itr{F}{n+m+p}(x), \itr{F}{p}(x)}$ and $\metric{\itr{F}{k+p}(z), \itr{F}{p}(y)}$ as small as we wish (*elaborate).
-    Hence, $\itr{F}{n}(x)$ is also an unstable point, and its separation constant is $\epsilon$.
-  \end{proof}
-\end{proposition}
-\begin{proposition}
-  Suppose there exists an unstable point $x \in X$ such that $L(x) = X$.
-  Then, $F$ has a sensitive dependence on initial conditions.
-  \label{prop:martelli-wiggins2}
-  \begin{proof}
-    Suppose that $x$ is an unstable point such that $L(x) = X$.
-    Then, for each $y\in X$ and $\delta > 0$ there exists $n>0$ such that 
-    \begin{equation*}
-      \metric{\itr{F}{n}(x), y} \leq \frac{\delta}{2}.
-    \end{equation*}
-    Let $\epsilon$ be the separation constant of $x$.
-    We prove that $F$ has a sensitive dependence on initial conditions by showing that $\itr{F}{n}(x)$ eventually separates from $y$ by $\epsilon/2$.
-    If there exists $p$ such that 
-    \begin{equation*}
-      \metric{\itr{F}{n+p}(x), \itr{F}{p}(y)} > \frac{\epsilon}{2},
-    \end{equation*}
-    then we are done.
-    So suppose otherwise.
-    By Proposition~\ref{prop:unstable-orbit}, there exists a point $z \in \oball{\delta/2}{\itr{F}{n}(x)} (z \neq y)$ such that 
-    \begin{equation*}
-      \metric{\itr{F}{n+q}(x), \itr{F}{q}(z)} > \epsilon,
-    \end{equation*}
-    for some $q$.
-    Note that
-    \begin{equation*}
-      \metric{y, z} \leq \metric{y, \itr{F}{n}(x)} + \metric{\itr{F}{n}(x), z} \leq \delta,
-    \end{equation*}
-    by the triangle inequality.
-    Moreover,
-    \begin{align*}
-      \epsilon &< \metric{\itr{F}{n+q}(x), \itr{F}{q}(z)} \\
-      &\leq \metric{\itr{F}{n+q}(x), \itr{F}{q}(y)} + \metric{\itr{F}{q}(y), \itr{F}{q}(z)}  \\
-      &\leq \frac{\epsilon}{2} + \metric{\itr{F}{q}(y), \itr{F}{q}(z)}
-    \end{align*}
-    Therefore,
-    \begin{equation*}
-      \metric{\itr{F}{q}(y), \itr{F}{q}(z)} > \frac{\epsilon}{2}.
-    \end{equation*}
-    Since the choice of $y$ and $\delta$ were arbitrary, we conclude that $F$ has sensitive dependence on initial conditions, and $\epsilon/2$ is the separation constant for any point in $X$.
-  \end{proof}
-\end{proposition}
-This completes the proof of Theorem~\ref{thm:martelli-wiggins}.
+  Now we prove the second part of the theorem.
+  Trivially, if $F$ has a sensitive dependence on initial conditions on $X$, then for any $x \in X$, $O(x)$ is unstable.
+  On the other hand, the existence of an unstable orbit does not, in general, imply sensitivity of $F$.
+  However, by requiring an additional condition that the limit set of the same orbit equals the entire space, we obtain the desired result.
+  We first show that if $x$ is an unstable point, then any point in its orbit is also unstable.
+  Moreover, we show that the separation constant of $x$ is a property belonging to all points in the orbit of $x$.
+  \begin{proposition}
+    Suppose there exists an unstable point $x \in X$ such that $L(x) = X$.
+    Then, for each positive integer $n$, $\itr{F}{n}(x)$ is also an unstable point, and its separation constant is the same as that of $x$.
+    \label{prop:unstable-orbit}
+    \begin{proof}
+      Let the separation constant of $x$ be $\epsilon$, and suppose that for some $y$ in any neighborhood of $x$, and for some positive integer $p$,
+      \begin{equation*}
+        \metric{\itr{F}{p}(x), \itr{F}{p}(y)} > \epsilon.
+      \end{equation*}
+      For any neighborhood $M$ of $\itr{F}{n}(x)$, choose some point $z \in M$.
+      By Proposition~\ref{prop:martelli-wiggins1}, $F$ is topologically transitive.
+      It follows that, for any $\delta > 0$, there exist positive integers $m$ and $k$ such that
+      \begin{equation*}
+        \itr{F}{n+m}(x) \in \oball{\delta}{x}
+        \quad \mbox{ and } \quad
+        \itr{F}{k}(z) \in \oball{\delta}{y}.
+      \end{equation*}
+      Then, by continuity, we may have $\metric{\itr{F}{n+m+p}(x), \itr{F}{p}(x)}$ and $\metric{\itr{F}{k+p}(z), \itr{F}{p}(y)}$ as small as we wish (*elaborate).
+      Hence, $\itr{F}{n}(x)$ is also an unstable point, and its separation constant is $\epsilon$.
+    \end{proof}
+  \end{proposition}
+  \begin{proposition}
+    Suppose there exists an unstable point $x \in X$ such that $L(x) = X$.
+    Then, $F$ has a sensitive dependence on initial conditions.
+    \label{prop:martelli-wiggins2}
+    \begin{proof}
+      Suppose that $x$ is an unstable point such that $L(x) = X$.
+      Then, for each $y\in X$ and $\delta > 0$ there exists $n>0$ such that 
+      \begin{equation*}
+        \metric{\itr{F}{n}(x), y} \leq \frac{\delta}{2}.
+      \end{equation*}
+      Let $\epsilon$ be the separation constant of $x$.
+      We prove that $F$ has a sensitive dependence on initial conditions by showing that $\itr{F}{n}(x)$ eventually separates from $y$ by $\epsilon/2$.
+      If there exists $p$ such that 
+      \begin{equation*}
+        \metric{\itr{F}{n+p}(x), \itr{F}{p}(y)} > \frac{\epsilon}{2},
+      \end{equation*}
+      then we are done.
+      So suppose otherwise.
+      By Proposition~\ref{prop:unstable-orbit}, there exists a point $z \in \oball{\delta/2}{\itr{F}{n}(x)} (z \neq y)$ such that 
+      \begin{equation*}
+        \metric{\itr{F}{n+q}(x), \itr{F}{q}(z)} > \epsilon,
+      \end{equation*}
+      for some $q$.
+      Note that
+      \begin{equation*}
+        \metric{y, z} \leq \metric{y, \itr{F}{n}(x)} + \metric{\itr{F}{n}(x), z} \leq \delta,
+      \end{equation*}
+      by the triangle inequality.
+      Moreover,
+      \begin{align*}
+        \epsilon &< \metric{\itr{F}{n+q}(x), \itr{F}{q}(z)} \\
+        &\leq \metric{\itr{F}{n+q}(x), \itr{F}{q}(y)} + \metric{\itr{F}{q}(y), \itr{F}{q}(z)}  \\
+        &\leq \frac{\epsilon}{2} + \metric{\itr{F}{q}(y), \itr{F}{q}(z)}
+      \end{align*}
+      Therefore,
+      \begin{equation*}
+        \metric{\itr{F}{q}(y), \itr{F}{q}(z)} > \frac{\epsilon}{2}.
+      \end{equation*}
+      Since the choice of $y$ and $\delta$ were arbitrary, we conclude that $F$ has sensitive dependence on initial conditions, and $\epsilon/2$ is the separation constant for any point in $X$.
+    \end{proof}
+  \end{proposition}
+  This completes the proof of Theorem~\ref{thm:martelli-wiggins}.
 
 
 %\begin{definition}
@@ -544,8 +553,8 @@ This completes the proof of Theorem~\ref{thm:martelli-wiggins}.
 %  \index{aperiodic!orbit}
 %\end{definition}
 
-\bibliographystyle{../../bibliography/pjgsm}
-\bibliography{../../bibliography/thesis}
+  \bibliographystyle{../../bibliography/pjgsm}
+  \bibliography{../../bibliography/thesis}
 
-\printindex
-\end{document}
+  \printindex
+  \end{document}
