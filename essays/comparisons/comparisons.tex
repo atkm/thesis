@@ -328,7 +328,7 @@ However, the converse still holds in this general setting.
 \begin{theorem}
   If $(X,F)$ is chaotic in Block-Coppel's sense, then it has positive topological entropy.
   \begin{proof}
-    That $F$ is semi-conjugate to $\sigma: \Sigma \to \Sigma$ implies $h(\sigma) \leq h(F)$.
+    $F$ is semi-conjugate to $\sigma: \Sigma \to \Sigma$, so that by Proposition~\ref{prop:entropy-conj}, $h(\sigma) \leq h(F)$.
     Since $h(\sigma)$ is positive, we conclude that $h(F)$ is positive.
   \end{proof}
   \label{thm:blcp-entropy}
@@ -346,9 +346,12 @@ However, we do not know whether \pte implies \blcp.
   \label{eg:glasner}
 \end{example}
 Hence, \dev does not imply \pte.
-In the other direction, \citet{glasner} also proves that if a system is transitive, has no isolated point, and has positive topological entropy, then it is sensitive to initial conditions.
-Thus, if we can prove that \pte implies the existence of a closed, invariant subset $Y \subseteq X$ on which $F$ is topologically transitive, then \pte implies \dev.
-However, the question is still open.
+We do not know whether \pte implies \dev.
+We have some related results, however.
+\citet{glasner} proved that if a system is transitive, has no isolated point, and has positive topological entropy, then it is sensitive to initial conditions.
+Thus, if we can prove that \pte implies the existence of a closed, invariant subset $Y \subseteq X$ on which $F$ is topologically transitive, then \pte implies \wig.
+On the other hand, in order for \pte to imply \dev, \pte mush imply both \tt and \dpp.
+While it seems plausible that topological transitivity follows from positive topological entropy, it seems unlikely that \pte implies the existence of dense periodic points.
 
 \subsubsection*{Block-Coppel and Devaney/Wiggins}
 \citet{aulbach} constructed an example to show that Block-Coppel's definition does not imply Devaney's definition.
@@ -384,7 +387,7 @@ However, the question is still open.
 The system that we just introduced is not topologically transitive on $\Sigma \times \Sigma$.
 However, it may still be possible to find a subset $Y$ of $\Sigma \times \Sigma$ such that $F_{|Y}$ is topologically transitive.
 In fact, \citet{auslander} proved that it is possible to find such a subset.
-Moreover, \citet{auslander} showed that $F$ restricted to the subset is also sensitive to initial conditions; hence, \blcp implies Wiggins.
+In addition, \citet{auslander} showed that $F$ restricted to the subset is also sensitive to initial conditions; hence, \blcp implies \wig.
 
 On the other hand, \dev does not imply \blcp.
 We can deduce this from the results so far.
@@ -393,14 +396,15 @@ Then \dev implies \pte; however, this is not necessarily the case, as shown in E
 Therefore, \dev does not imply \blcp.
 
 \subsubsection*{Block-Coppel and Li-Yorke}
-\blcp implies \pte, and \pte implies \liy; hence, the implication from \blcp to \liy is induced.
+\blcp implies \pte, and \pte implies \liy; these implications induces the implication from \blcp to \liy.
 However, we know that the converse is not true from the compact interval case.
+Hence, \blcp implies \liy, but the converse is not true.
 
 \subsubsection*{Devaney/Wiggins and Li-Yorke}
 The following example is a system that is chaotic in Wiggins's sense but not in Li-Yorke's sense.
 \begin{example}
-  \citep{blanchard}
-  Sturmian System (incomplete)
+  (Sturmian System \citep{blanchard})
+  (Incomplete)
 \end{example}
 %%%
 \begin{theorem}
@@ -412,16 +416,27 @@ The following example is a system that is chaotic in Wiggins's sense but not in 
   \label{thm:dev-liy}
 \end{theorem}
 More specifically, Mai proved that, for a complete metric space $X$ without an isolated point, if $F: X \to X$ is transitive and has a periodic point of any period, then $F$ is chaotic in Li-Yorke's sense.
-Thus, even though \tt and \sdic do not imply Li-Yorke's chaos, \tt and the existence of a single periodic points, which is significantly weaker than \dpp, imply chaos in Li-Yorke's sense.
-%We also notice that \sdic and the sensitivity conditions encoded in Li-Yorke's definition do not immediately imply each other.
+Thus, even though \tt and \sdic do not imply Li-Yorke's chaos, as we saw in the Sturmian system, \tt and the existence of a \textit{single} periodic point, which is significantly weaker than \dpp, imply chaos in Li-Yorke's sense.
+This result may turn out to be instructive in evaluating whether \dpp in Devaney's definition is appropriate.
+Also, we can make an interesting observation from the fact that \wig and \liy do not imply each other. 
+Recall that, though it is not explicitly called sensitivity, Li-Yorke's definition uses its own version of sensitivity, $\limsup\limits_{n\to \infty} \metric{\itr{F}{n}(x), \itr{F}{n}(y)} > 0$, called the \textit{non-asymptotic relation}, which is different from \sdic used in Devaney's and Wiggins's definitions.
+In the same manner, we can see that the other condition, the \textit{proximal relation}, in Li-Yorke's definition, $\liminf\limits_{n\to \infty} \metric{\itr{F}{n}(x), \itr{F}{n}(y)} = 0$, is similar to topological transitivity.
+The result about \wig and \liy indicates that non-asymptotic and proximal relations are neither stonger nor weaker than \tt and \sdic, even though these conditions contain similar ideas.
+%%%
 
 \subsubsection*{Result}
 As in the compact interval case, \dev, \blcp, and \pte imply \liy.
-However, the three definition that are equivalent for a compact inteval are not equivalent in a more general case.
+However, the three definition that are equivalent for a compact inteval are not equivalent in a general compact metric space.
 Also, there are open questions.
 Does positive topological entropy imply the existence of a subset $Y$ such that $F_{|Y}$ is topological transitive?
-Does topological transitivity imply positive topological entropy?
-Is requiring dense periodic orbits too restrictive? Does periodicity have anything to do with chaos? We saw that a single periodic point + Wiggins is a sufficient condition for Li-Yorke. \citet{glasner} also propose that requiring a dense set of periodic points is too restrictive, and suggests alternative conditions, one of which is the existence of an invariant measure that is positive on each non-empty open set.
+If the answer to this question is positive, then we obtain \pte $\Rar$ \wig.
+We may also be interested in looking at individual conditions in each definition.
+For example, we may ask: does topological transitivity imply positive topological entropy?
+
+There are a lot to ask about Devaney's definition.
+Is requiring dense periodic orbits too restrictive? Does periodicity have anything to do with chaos?
+We saw that a single periodic point + Wiggins is a sufficient condition for Li-Yorke. 
+As we mentioned in the chapter on Devaney's definition, \citet{glasner} proposed that requiring a dense set of periodic points is too restrictive, and suggested alternative conditions, one of which is the existence of an invariant measure that is positive on each non-empty open set.
 
 \bibliographystyle{../../bibliography/pjgsm}
 \bibliography{../../bibliography/thesis}
