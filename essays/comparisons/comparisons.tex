@@ -32,7 +32,7 @@
            shorten >=2pt},
     maybe/.style={
            ->, 
-           -,
+           -o,
            thick,
            shorten <=2pt,
            shorten >=50pt},
@@ -56,20 +56,20 @@ We have seen four definitions
   \item Positive topological entropy (\pte)
 \end{enumerate}
 and their variants
-\begin{enumerate}[(i)]
+\begin{itemize}
   \item Wiggins's (similar to Devaney) (\wig)
   \item Martelli (equivalent to Wiggins's in $\R^n$)
   \item Marotto (implies Li-Yorke. Requires differentiability)
-\end{enumerate}
-In this chapter, we discuss the relations between the definitions (i)~(iv).
+\end{itemize}
+In this chapter, we discuss the relations between the definitions (i)$\sim$(iv) and Wiggins's definition.
 Throughout this chapter, we consider the dynamical system $(X,F)$, where $X$ is a compact metric space, and $F$ is a continuous mapping.
 We first discuss a special case when $X$ is a compact interval, then proceed to the general case.
 %%%
 
 \section{Compact Interval}
 Let $I \subseteq \R$ be a compact interval.
-In this section, we consider the case where $X = I$.
-As it turns out, Devaney's, Block-Coppel's, and positive topological entropy are equivalent conditions, and any of the three implies Li-Yorke's chaos.
+In this section, we consider the case when $X = I$.
+We show that Devaney's, Block-Coppel's, and positive topological entropy are equivalent conditions, and any of the three implies Li-Yorke's chaos.
 \begin{figure}[ht]
   \begin{tikzpicture}[node distance=1cm, auto,]
  %nodes
@@ -95,7 +95,7 @@ As it turns out, Devaney's, Block-Coppel's, and positive topological entropy are
   }
 \end{figure}
 
-\subsection*{Devaney/Wiggins and Block-Coppel}
+\subsubsection*{Devaney/Wiggins and Block-Coppel}
 We already mentioned in the chapter on Devaney's chaos that \dpp and \tt imply \sdic in a compact metric space.
 Moreover, on a compact interval, topological transitivity implies the existence of dense periodic points.
 Thus, Devaney's and Wiggins's definitions are equivalent.
@@ -107,19 +107,18 @@ Thus, Devaney's and Wiggins's definitions are equivalent.
     See \citet{silverman} for the proof.
   \end{proof}
 \end{theorem}
-Using the above result, we prove that \dev is equivalent to \blcp. 
+Also, \dev and \blcp are equivalent.
 \begin{theorem}
-  \citep{aulbach}
   $(I,F)$ is chaotic in Devaney's sense if and only if it is chaotic in Block-Coppel's sense.
   \begin{proof}
-    See \citep{aulbach}.
-    The proof uses \citep[VI: Proposition 6]{blockcoppel} .
+    See \citet{aulbach}.
+    %The proof uses \citep[VI: Proposition 6]{blockcoppel} .
   \end{proof}
   \label{thm:devaney-blockcoppel}
 \end{theorem}
 %%%
 
-\subsection*{Block-Coppel and Positive Topological Entropy}
+\subsubsection*{Block-Coppel and Positive Topological Entropy}
 Block-Coppel's definition is equivalent to a mapping having positive topological entropy.
 \begin{theorem}
   $(I,F)$ is chaotic in the sense of Block-Coppel if and only if $F: I \to I$ has positive topological entropy.
@@ -131,7 +130,7 @@ Block-Coppel's definition is equivalent to a mapping having positive topological
 Hence, the three definitions---Devaney, Block-Coppel, and positive topological entropy---are equivalent.
 %%%
 
-\subsection*{Block-Coppel and Li-Yorke}
+\subsubsection*{Block-Coppel and Li-Yorke}
 Next, we show that Block-Coppel's definition implies Li-Yorke's definition.
 \begin{theorem}
   \citep{blockcoppel}
@@ -141,7 +140,8 @@ Next, we show that Block-Coppel's definition implies Li-Yorke's definition.
     See \citet{blockcoppel} (VI; Proposition 27).
   \end{proof}
 \end{theorem}
-The next example shows that the converse of the previous statement is not true in general.
+However, the coverse of the previous theorem is not true in general.
+The following is an example of a dynamical system that is \liy but not \blcp.
 \begin{example}
   (Truncated tent map \citep{aulbach})
   The tent map is defined as
@@ -257,15 +257,14 @@ Note that $p$ is also a $q\cdot 2^n$-periodic point of $T_{\lambda_m}$.
 However, there cannot be a periodic point whose period is not a power of two, so this is a contradiction.
 If, on the other hand, $\rho = \lambda^*$, then by Sarkovskii's theorem, $T_{\lambda^*}$ has a periodic point $p'$ of period $(q+2)\cdot 2^n$.
 Since $\max O(p') < \lambda^*$, this case reduces to the first case.
-
-\citet[p.146]{blockcoppel} showed that $T_{\lambda^*}$ is chaotic in the sense of Li-Yorke.
+Furthermore, \citet[p.146]{blockcoppel} showed that $T_{\lambda^*}$ is chaotic in the sense of Li-Yorke. $\square$
 \label{eg:counterexample}
 \end{example}
 
-\subsection*{Result}
-It follows from Theorem~\ref{thm:devaney-blockcoppel} and Theorem~\ref{thm:entropy-blockcoppel} that \dev and \pte definitions are also equivalent.
-Hence, \dev, \blcp, and \pte are equivalent to each other on a compact interval.
-Each of the three equivalent definitions imply chaos in Li-Yorke's sense, but Li-Yorke's definition does not imply others.
+\subsubsection*{Result}
+It follows from Theorem~\ref{thm:devaney-blockcoppel} and Theorem~\ref{thm:entropy-blockcoppel} that \dev and \pte are also equivalent.
+Hence, \dev, \wig, \blcp, and \pte are equivalent to each other on a compact interval.
+Each of the four equivalent definitions imply chaos in Li-Yorke's sense, but Li-Yorke's definition does not imply others.
 These results can be proved through other means.
 \citet{smital} constructed an example of a Li-Yorke chaotic map that has zero topological entropy.
 \citet{omegachaos} showed the equivalence of \dev and \pte, via his definition of chaos called $\omega$-chaos.
@@ -273,11 +272,12 @@ Also, some of these results are consequences of results in the general compact m
 %%%
 
 \section{Compact Metric Space}
-The result in this more general case is more interesting than the compact interval case.
-\dev, \blcp, and \pte are no longer equivalent to each other.
+The result in this more general case is more varied than in the compact interval case.
+For instance, \dev, \blcp, and \pte are no longer equivalent to each other.
+Also, there are questions that remain unanswered.
 %Moreover, neither of them implies the others.
 \begin{figure}[ht]
-  \begin{tikzpicture}[node distance=1cm, auto,]
+  \begin{tikzpicture}[node distance=1cm, auto]
  %nodes
     \node[] (dummy) {};
     \node[box, inner sep=5pt,below=2.0cm of dummy] (ly) {Li-Yorke};
@@ -292,40 +292,41 @@ The result in this more general case is more interesting than the compact interv
     \draw[imply] (bc)[bend right=15] to node {} (wig.north); 
     \draw[imply] (bc.east) to [bend left=15] node {} (entropy); 
     \draw[induced] (bc)[bend right=25] to node {} (ly); 
-    \draw[maybe] (entropy)[bend left=15] to node {?} (bc.east); 
-    \draw[maybe] (dev)[bend left=15] to node {?} (bc.west); 
+    \draw[maybe] (entropy)[] to node {?} (bc.east); 
     \draw[maybe] (entropy)[bend right=15] to node {?} (dev); 
-    \draw[noimply] (ly)[] to node {} (entropy); 
-    \draw[noimply] (ly)[] to node {} (dev); 
-    \draw[noimply] (ly)[] to node {} (bc); 
-    \draw[noimply] (bc)[] to node {} (dev); 
-    \draw[noimply] (wig)[bend right=15] to node {} (ly); 
-    \draw[noimply] (dev)[bend right=15] to node {} (entropy); 
+    %\draw[noinduced] (dev)[bend left=15] to node {} (bc.west); 
+    %\draw[noimply] (ly)[] to node {} (entropy); 
+    %\draw[noimply] (ly)[] to node {} (dev); 
+    %\draw[noimply] (ly)[] to node {} (bc); 
+    %\draw[noimply] (bc)[] to node {} (dev); 
+    %\draw[noimply] (wig)[bend right=15] to node {} (ly); 
+    %\draw[noimply] (dev)[bend right=15] to node {} (entropy); 
   \end{tikzpicture}
   \label{fig:chaos-metric}
   \caption{
     Relations between definitions for a compact metric space.
     An absence of an arrow means that the particular implication is not necessarily true.
-    For instance, Devaney's chaos does not imply Block-Copple's chaos.
+    An arrow with a circular head (with a question mark) means it is an open question.
+    An dotted arrow indicates a result that is not directly shown, but induced by other implications.
   }
 \end{figure}
 %%%
 
-\subsection*{Topological Entropy and Li-Yorke}
-A system with positive topological entropy is chaotic in Li-Yorke's sense.
+\subsubsection*{Topological Entropy and Li-Yorke}
+As we have already seen in the compact interval case that \liy does not imply $\pte$.
+However, the converse still holds in this general setting.
 \begin{theorem}
   \citep{blanchard}
   If $(X,F)$ has positive topological entropy, then it is chaotic in Li-Yorke's sense.
   \label{thm:entropy-liyorke}
 \end{theorem}
-As we have already seen in the compact interval case that the converse of the last theorem is not true in general.
-For the same reason, LY implies neither Block-Coppel's nor Devaney's chaos.
+%%%
 
-\subsection*{Block-Coppel and Topological Entropy}
+\subsubsection*{Block-Coppel and Topological Entropy}
 If $F$ is semi-conjugate to $\sigma: \Sigma \to \Sigma$, we have $h(\sigma) \leq h(F)$.
 Since $h(\sigma)$ is positive, we conclude that $h(F)$ is positive.
 
-\subsection*{Block-Coppel and Devaney/Wiggins}
+\subsubsection*{Block-Coppel and Devaney/Wiggins}
 \citet{aulbach} constructed an example to show that Block-Coppel's definition does not imply Devaney's definition.
 \begin{example}
   \citep{aulbach} 
@@ -353,6 +354,7 @@ Since $h(\sigma)$ is positive, we conclude that $h(F)$ is positive.
   However, the system is not chaotic in Devaney's sense, because it doesn't have a periodic point.
   (Moreover, \citet{blockcoppel} proved that the system is also chaotic in Li-Yorke's sense.
   Therefore, \blcp together with \liy do not imply \dev.)
+  $\square$
 \end{example}
 %%%
 The system that we just introduced is not topologically transitive on $\Sigma \times \Sigma$.
@@ -365,10 +367,10 @@ We can prove this by looking at the diagram.
 Suppose \dev implies \blcp.
 Then \dev implies \pte. However, this is not necessarily the case, as shown in \ref{eg:glasner}.
 
-\subsection*{Block-Coppel and Li-Yorke}
+\subsubsection*{Block-Coppel and Li-Yorke}
 \blcp implies \pte, and \pte implies \liy, so \blcp to \liy is induced.
 
-\subsection*{Devaney and Topological Entropy}
+\subsubsection*{Devaney and Topological Entropy}
 \citet{glasner} provides an example of a system that is \dev but has zero entropy.
 \begin{example}
   Some symbolic dynamics crap.
@@ -378,7 +380,7 @@ Hence, \dev does not imply \pte.
 In the other direction, \citet{glasner} also proves that if a system is transitive, has no isolated point, and has positive topological entropy, then it is sensitive to initial conditions.
 Thus, if we can prove that \pte implies the existence of a closed, invariant subset $Y \subseteq X$ on which $F$ is topologically transitive, then \pte implies \dev.
 
-\subsection*{Devaney/Wiggins and Li-Yorke}
+\subsubsection*{Devaney/Wiggins and Li-Yorke}
 The following example is a system that is chaotic in Wiggins's sense but not in Li-Yorke's sense.
 \begin{example}
   \citep{blanchard}
@@ -391,7 +393,7 @@ More specifically, Mai proved that, for a complete metric space $X$ without an i
 Thus, even though \tt and \sdic do not imply Li-Yorke's chaos, \tt and the existence of a single periodic points, which is significantly weaker than \dpp, imply chaos in Li-Yorke's sense.
 We also notice that \sdic and the sensitivity conditions encoded in Li-Yorke's definition do not immediately imply each other.
 
-\subsection*{Result}
+\subsubsection*{Result}
 There are open questions.
 Does positive topological entropy imply the existence of a subset $Y$ such that $F_{|Y}$ is topological transitive?
 Does topological transitivity imply positive topological entropy?
