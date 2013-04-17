@@ -293,7 +293,7 @@ Also, there are questions that remain unanswered.
     \draw[imply] (bc.east) to [bend left=15] node {} (entropy); 
     \draw[induced] (bc)[bend right=25] to node {} (ly); 
     \draw[maybe] (entropy)[] to node {?} (bc.east); 
-    \draw[maybe] (entropy)[bend right=15] to node {?} (dev); 
+    \draw[maybe] (entropy)[bend right=5] to node {?} (dev); 
     %\draw[noinduced] (dev)[bend left=15] to node {} (bc.west); 
     %\draw[noimply] (ly)[] to node {} (entropy); 
     %\draw[noimply] (ly)[] to node {} (dev); 
@@ -313,18 +313,42 @@ Also, there are questions that remain unanswered.
 %%%
 
 \subsubsection*{Topological Entropy and Li-Yorke}
-As we have already seen in the compact interval case that \liy does not imply $\pte$.
+As we have seen in the compact interval case that \liy does not imply $\pte$.
 However, the converse still holds in this general setting.
 \begin{theorem}
-  \citep{blanchard}
   If $(X,F)$ has positive topological entropy, then it is chaotic in Li-Yorke's sense.
   \label{thm:entropy-liyorke}
+  \begin{proof}
+    See \citet{blanchard}.
+  \end{proof}
 \end{theorem}
 %%%
 
 \subsubsection*{Block-Coppel and Topological Entropy}
-If $F$ is semi-conjugate to $\sigma: \Sigma \to \Sigma$, we have $h(\sigma) \leq h(F)$.
-Since $h(\sigma)$ is positive, we conclude that $h(F)$ is positive.
+\begin{theorem}
+  If $(X,F)$ is chaotic in Block-Coppel's sense, then it has positive topological entropy.
+  \begin{proof}
+    That $F$ is semi-conjugate to $\sigma: \Sigma \to \Sigma$ implies $h(\sigma) \leq h(F)$.
+    Since $h(\sigma)$ is positive, we conclude that $h(F)$ is positive.
+  \end{proof}
+  \label{thm:blcp-entropy}
+\end{theorem}
+%
+However, we do not know whether \pte implies \blcp.
+
+%%%
+
+
+\subsubsection*{Devaney and Topological Entropy}
+\citet{glasner} provides an example of a system that is \dev but has zero entropy.
+\begin{example}
+  (Incomplete. The example uses symbolic dynamics)
+  \label{eg:glasner}
+\end{example}
+Hence, \dev does not imply \pte.
+In the other direction, \citet{glasner} also proves that if a system is transitive, has no isolated point, and has positive topological entropy, then it is sensitive to initial conditions.
+Thus, if we can prove that \pte implies the existence of a closed, invariant subset $Y \subseteq X$ on which $F$ is topologically transitive, then \pte implies \dev.
+However, the question is still open.
 
 \subsubsection*{Block-Coppel and Devaney/Wiggins}
 \citet{aulbach} constructed an example to show that Block-Coppel's definition does not imply Devaney's definition.
@@ -363,38 +387,38 @@ In fact, \citet{auslander} proved that it is possible to find such a subset.
 Moreover, \citet{auslander} showed that $F$ restricted to the subset is also sensitive to initial conditions; hence, \blcp implies Wiggins.
 
 On the other hand, \dev does not imply \blcp.
-We can prove this by looking at the diagram.
+We can deduce this from the results so far.
 Suppose \dev implies \blcp.
-Then \dev implies \pte. However, this is not necessarily the case, as shown in \ref{eg:glasner}.
+Then \dev implies \pte; however, this is not necessarily the case, as shown in Example~\ref{eg:glasner}.
+Therefore, \dev does not imply \blcp.
 
 \subsubsection*{Block-Coppel and Li-Yorke}
-\blcp implies \pte, and \pte implies \liy, so \blcp to \liy is induced.
-
-\subsubsection*{Devaney and Topological Entropy}
-\citet{glasner} provides an example of a system that is \dev but has zero entropy.
-\begin{example}
-  Some symbolic dynamics crap.
-  \label{eg:glasner}
-\end{example}
-Hence, \dev does not imply \pte.
-In the other direction, \citet{glasner} also proves that if a system is transitive, has no isolated point, and has positive topological entropy, then it is sensitive to initial conditions.
-Thus, if we can prove that \pte implies the existence of a closed, invariant subset $Y \subseteq X$ on which $F$ is topologically transitive, then \pte implies \dev.
+\blcp implies \pte, and \pte implies \liy; hence, the implication from \blcp to \liy is induced.
+However, we know that the converse is not true from the compact interval case.
 
 \subsubsection*{Devaney/Wiggins and Li-Yorke}
 The following example is a system that is chaotic in Wiggins's sense but not in Li-Yorke's sense.
 \begin{example}
   \citep{blanchard}
-  Sturmian System.
-  Chaos in Wiggins's sense is not a sufficient condition for chaos in Li-Yorke's sense.  
+  Sturmian System (incomplete)
 \end{example}
-Obviously, this does not mean that Devaney's definition is not a sufficient condition for Li-Yorke's definition.
-\citet{mai} proved that if a mapping is chaotic in Devaney's sense, then it is also chaotic in Li-Yorke's sense (\citet{huang} proved the same result earlier than Mai for the compact metric space case).
+%%%
+\begin{theorem}
+  If $(X, F)$ is chaotic in Devaney's sense, then it is chaotic in Li-Yorke's sense.
+  \begin{proof}
+    See \citet{mai}.
+    \citet{huang} also proved the same result.
+  \end{proof}
+  \label{thm:dev-liy}
+\end{theorem}
 More specifically, Mai proved that, for a complete metric space $X$ without an isolated point, if $F: X \to X$ is transitive and has a periodic point of any period, then $F$ is chaotic in Li-Yorke's sense.
 Thus, even though \tt and \sdic do not imply Li-Yorke's chaos, \tt and the existence of a single periodic points, which is significantly weaker than \dpp, imply chaos in Li-Yorke's sense.
-We also notice that \sdic and the sensitivity conditions encoded in Li-Yorke's definition do not immediately imply each other.
+%We also notice that \sdic and the sensitivity conditions encoded in Li-Yorke's definition do not immediately imply each other.
 
 \subsubsection*{Result}
-There are open questions.
+As in the compact interval case, \dev, \blcp, and \pte imply \liy.
+However, the three definition that are equivalent for a compact inteval are not equivalent in a more general case.
+Also, there are open questions.
 Does positive topological entropy imply the existence of a subset $Y$ such that $F_{|Y}$ is topological transitive?
 Does topological transitivity imply positive topological entropy?
 Is requiring dense periodic orbits too restrictive? Does periodicity have anything to do with chaos? We saw that a single periodic point + Wiggins is a sufficient condition for Li-Yorke. \citet{glasner} also propose that requiring a dense set of periodic points is too restrictive, and suggests alternative conditions, one of which is the existence of an invariant measure that is positive on each non-empty open set.
@@ -404,4 +428,3 @@ Is requiring dense periodic orbits too restrictive? Does periodicity have anythi
 
 \printindex
 \end{document}
-
