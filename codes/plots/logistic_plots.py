@@ -85,7 +85,7 @@ def IterateList(g, x0, N, mu):
       result.append(g(result[-1],mu))
 
     # Return a numpy array
-    return np.array(result)
+    return sp.array(result)
 
 def PlotGraph(g, args=()):
     """
@@ -105,8 +105,8 @@ def PlotAttractors(g, xbounds, nTransient, nCycle, arg=()):
     Given a function, xbounds = (xmin, xmax), and N number of iterations,
     plot a histogram of the last M points (=attractors).
     """
-    xarray = np.arange(xbounds[0],xbounds[1],(xbounds[1]-xbounds[0])/1000)
-    result = np.zeros((len(xarray),nCycle))
+    xarray = sp.arange(xbounds[0],xbounds[1],(xbounds[1]-xbounds[0])/1000)
+    result = sp.zeros((len(xarray),nCycle))
     for i in range(len(xarray)):
       x = xarray[i]
       seed = Iterate(g, x, nTransient, arg)
@@ -183,7 +183,7 @@ def PlotLogisticDiffEq(x0,mu,tbound):
     and the end time
     """
     t = sp.linspace(0.0, tbound, 100*tbound)
-    xT = (x0 * np.exp(mu * t)) / (1 - x0 + x0 * np.exp(mu * t))
+    xT = (x0 * sp.exp(mu * t)) / (1 - x0 + x0 * sp.exp(mu * t))
     pylab.plot(xT)
     pylab.show()
 
@@ -194,8 +194,8 @@ def PlotPowerSpectrum(g, x0, N, args=()):
     sig = IterateList(g, x0, N+1000, args)[1000:]
     sig_freq = sp.fftpack.fftfreq(sig.size, d=1)
     sig_fft  = sp.fftpack.fft(sig)
-    pidxs    = np.where(sig_freq > 0)
-    freqs, power = sig_freq[pidxs], np.abs(sig_fft)[pidxs]
+    pidxs    = sp.where(sig_freq > 0)
+    freqs, power = sig_freq[pidxs], sp.abs(sig_fft)[pidxs]
     pylab.plot(freqs, power)
     pylab.xlabel('Frequency [Hz]')
     pylab.ylabel('Power')
