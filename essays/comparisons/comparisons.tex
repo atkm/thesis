@@ -1,3 +1,4 @@
+
 \documentclass[12pt,twoside,draft]{book}
 \usepackage{../../thesis}
 \graphicspath{ {../../images/} }
@@ -276,7 +277,30 @@ The result in this more general case is more varied than in the compact interval
 For instance, \dev, \blcp, and \pte are no longer equivalent to each other.
 Also, there are questions that remain unanswered.
 %Moreover, neither of them implies the others.
-\begin{figure}[ht]
+\begin{figure}[p]
+  \centering
+  \begin{tikzpicture}[node distance=1cm, auto]
+ %nodes
+    \node[] (dummy) {};
+    \node[box, inner sep=5pt,below=2.0cm of dummy] (ly) {Li-Yorke};
+    \node[box, inner sep=5pt,left=2.0cm of dummy] (dev) {Devaney};
+    \node[box, inner sep=5pt,above=2.0cm of dummy] (bc) {Block-Coppel};
+    \node[box, inner sep=5pt,right=2.0cm of dummy] (entropy) {Entropy};
+    \node[below=1.0cm of ly] (dummy2) {};
+ %edges
+    \draw[imply] (entropy)[bend left=15] to node {} (ly.east); 
+    \draw[imply] (dev)[bend right=15] to node {} (ly.west); 
+    \draw[imply] (bc.east) to [bend left=15] node {} (entropy); 
+    \draw[induced] (bc)[bend right=25] to node {} (ly); 
+    \draw[maybe] (entropy)[] to node {?} (bc.east); 
+    \draw[maybe] (entropy)[bend right=5] to node {?} (dev); 
+    %\draw[noinduced] (dev)[bend left=15] to node {} (bc.west); 
+    %\draw[noimply] (ly)[] to node {} (entropy); 
+    %\draw[noimply] (ly)[] to node {} (dev); 
+    %\draw[noimply] (ly)[] to node {} (bc); 
+    %\draw[noimply] (bc)[] to node {} (dev); 
+    %\draw[noimply] (dev)[bend right=15] to node {} (entropy); 
+  \end{tikzpicture}
   \begin{tikzpicture}[node distance=1cm, auto]
  %nodes
     \node[] (dummy) {};
@@ -284,16 +308,11 @@ Also, there are questions that remain unanswered.
     \node[box, inner sep=5pt,left=2.0cm of dummy] (dev) {Devaney};
     \node[box, inner sep=5pt,left=1.0cm of dev] (wig) {Wiggins};
     \node[box, inner sep=5pt,above=2.0cm of dummy] (bc) {Block-Coppel};
-    \node[box, inner sep=5pt,right=2.0cm of dummy] (entropy) {Entropy};
  %edges
-    \draw[imply] (entropy)[bend left=15] to node {} (ly.east); 
     \draw[imply] (dev)[bend right=15] to node {} (ly.west); 
     \draw[imply] (dev)[] to node {} (wig.east); 
     \draw[imply] (bc)[bend right=15] to node {} (wig.north); 
-    \draw[imply] (bc.east) to [bend left=15] node {} (entropy); 
-    \draw[induced] (bc)[bend right=25] to node {} (ly); 
-    \draw[maybe] (entropy)[] to node {?} (bc.east); 
-    \draw[maybe] (entropy)[bend right=5] to node {?} (dev); 
+    \draw[imply] (bc)[] to node {} (ly); 
     %\draw[noinduced] (dev)[bend left=15] to node {} (bc.west); 
     %\draw[noimply] (ly)[] to node {} (entropy); 
     %\draw[noimply] (ly)[] to node {} (dev); 
@@ -311,6 +330,7 @@ Also, there are questions that remain unanswered.
   }
 \end{figure}
 %%%
+
 
 \subsubsection*{Topological Entropy and Li-Yorke}
 As we have seen in the compact interval case that \liy does not imply $\pte$.
@@ -417,26 +437,30 @@ The following example is a system that is chaotic in Wiggins's sense but not in 
 \end{theorem}
 More specifically, Mai proved that, for a complete metric space $X$ without an isolated point, if $F: X \to X$ is transitive and has a periodic point of any period, then $F$ is chaotic in Li-Yorke's sense.
 Thus, even though \tt and \sdic do not imply Li-Yorke's chaos, as we saw in the Sturmian system, \tt and the existence of a \textit{single} periodic point, which is significantly weaker than \dpp, imply chaos in Li-Yorke's sense.
-This result may turn out to be instructive in evaluating whether \dpp in Devaney's definition is appropriate.
+This result may be instructive in evaluating whether \dpp in Devaney's definition is too strong.
 Also, we can make an interesting observation from the fact that \wig and \liy do not imply each other. 
-Recall that, though it is not explicitly called sensitivity, Li-Yorke's definition uses its own version of sensitivity, $\limsup\limits_{n\to \infty} \metric{\itr{F}{n}(x), \itr{F}{n}(y)} > 0$, called the \textit{non-asymptotic relation}, which is different from \sdic used in Devaney's and Wiggins's definitions.
+Recall that, though it is not explicitly called sensitivity, Li-Yorke's definition uses its own version of sensitivity, $\limsup\limits_{n\to \infty} \metric{\itr{F}{n}(x), \itr{F}{n}(y)} > 0$, called the \textit{non-asymptotic relation}.
+The non-asymptotic relation is analogous to, yet different from \sdic used in Devaney's and Wiggins's definitions.
 In the same manner, we can see that the other condition, the \textit{proximal relation}, in Li-Yorke's definition, $\liminf\limits_{n\to \infty} \metric{\itr{F}{n}(x), \itr{F}{n}(y)} = 0$, is similar to topological transitivity.
 The result about \wig and \liy indicates that non-asymptotic and proximal relations are neither stonger nor weaker than \tt and \sdic, even though these conditions contain similar ideas.
 %%%
 
 \subsubsection*{Result}
-As in the compact interval case, \dev, \blcp, and \pte imply \liy.
-However, the three definition that are equivalent for a compact inteval are not equivalent in a general compact metric space.
+As in the compact interval case, each of \dev, \blcp, and \pte implies \liy.
+However, the three definition that are equivalent for a compact inteval are no longer equivalent in a general compact metric space (Figure~\ref{fig:chaos-metric}).
 Also, there are open questions.
-Does positive topological entropy imply the existence of a subset $Y$ such that $F_{|Y}$ is topological transitive?
-If the answer to this question is positive, then we obtain \pte $\Rar$ \wig.
+We do not know whether \pte implies \blcp or \dev.
+We obtain the implication from \pte to \wig if \pte implies the existence of a subset $Y$ such that $F_{|Y}$ is topological transitive.
 We may also be interested in looking at individual conditions in each definition.
 For example, we may ask: does topological transitivity imply positive topological entropy?
 
-There are a lot to ask about Devaney's definition.
-Is requiring dense periodic orbits too restrictive? Does periodicity have anything to do with chaos?
-We saw that a single periodic point + Wiggins is a sufficient condition for Li-Yorke. 
+We have a few more things to say about Devaney's definition now.
+We saw that a single periodic point in addition to \wig is a sufficient condition to imply \liy. 
+This result suggests that requiring the existence of dense periodic points may be too restrictive.
 As we mentioned in the chapter on Devaney's definition, \citet{glasner} proposed that requiring a dense set of periodic points is too restrictive, and suggested alternative conditions, one of which is the existence of an invariant measure that is positive on each non-empty open set.
+Also, the contrast of \dev and \wig seen through their relations with \pte and \liy (Figure~\ref{fig:chaos-metric}; the second diagram) is noteworthy.
+\dev implies \liy, but \wig does not.
+This is because \wig is weaker than \dev, and by the same reason, \blcp implies \wig, but not \dev.
 
 \bibliographystyle{../../bibliography/pjgsm}
 \bibliography{../../bibliography/thesis}
