@@ -5,6 +5,7 @@
 \begin{document}
 
 \chapter{Preliminaries}
+\label{chap:prelim}
 I will start this chapter with a discussion of metric space.
 Then I will define dynamical systems, and introduce notions that will be used frequently.
 The main purpose of this chapter is to introduce notations used in the subsequent chapters. 
@@ -25,7 +26,7 @@ Also, we prove the contraction fixed point theorem.
     \item $\metric{x,y} \leq \metric{x,z} + \metric{z,y}$.
   \end{enumerate}
   A \textit{metric space} $X$ is a set equipped with a metric.
-  \index{metric}
+  %\index{metric}
 \end{definition}
 %%%
 \begin{definition}
@@ -133,14 +134,14 @@ Although we have encountered the concept of iteration in the preceding chapter, 
   \end{equation*}
   $O_F(x_0)$ will simply be denoted as $O(x_0)$ when there is no ambiguity in the choice of $F$ in the context.
   \label{def:orbit}
-  \index{definition of!orbit}
+  \index{orbit}
 \end{definition}
 %%%
 \begin{definition}
   (Periodic points)
   If $\itr{F}{n}(p) = p$ for some $n > 0$, and $\itr{F}{m}(p) \neq p$ for each $1 \leq m < n$, then $p$ is called a periodic point of period $n$, or simply a $n$-periodic point.
   \label{def:porbit}
-  \index{periodic!orbit}
+  \index{periodic points}
 \end{definition}
 
 It is convenient for our purpose to extend the notion of metric to a point and an orbit.

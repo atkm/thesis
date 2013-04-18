@@ -2,7 +2,7 @@
 # encoding: utf-8
 # srcprep; genmain; make; all
 # global. files to work with.
-files = ['introduction','prelims','devaney','li_yorke','t-entropy','symbolic_dynamics','billiards', 'comparisons']
+files = ['introduction','prelims','devaney','li_yorke','t-entropy','symbolic','billiards', 'comparisons']
 appendix = ['sarkovskii','other_defns']
 
 # strip the original and store it in ./src/

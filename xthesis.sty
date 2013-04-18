@@ -18,16 +18,16 @@
 %\usepackage[MnSymbol]{mathspec} % MnSymbol is incompatible with amssymb. It loads amsmath and textcomp
 \usepackage{mathspec}\usepackage{amssymb,amsmath,colonequals} % alternative to line above
 \usepackage{xltxtra}
-\setmainfont[Ligatures=TeX]{Minion Pro}
-\setallsansfonts[Scale=MatchLowercase,Numbers={Lining,Proportional}]{Myriad Pro}
-\setallmonofonts[Scale=MatchLowercase]{Consolas}
-\setmathsfont(Digits,Latin,Greek)[Scale=MatchLowercase,Numbers={Lining,Proportional}]{Minion Pro}
-\setmathrm{Minion Pro}
+%\setmainfont[Ligatures=TeX]{Minion Pro}
+%\setallsansfonts[Scale=MatchLowercase,Numbers={Lining,Proportional}]{Myriad Pro}
+%\setallmonofonts[Scale=MatchLowercase]{Consolas}
+%\setmathsfont(Digits,Latin,Greek)[Scale=MatchLowercase,Numbers={Lining,Proportional}]{Minion Pro}
+%\setmathrm{Minion Pro}
 
 % Japanese language
 \usepackage{xeCJK}
-\setCJKmainfont{IPAMincho} % for \rmfamily
-\setCJKfamilyfont{songti}{SimSun} % used as \CJKfamily{songti}
+%\setCJKmainfont{IPAMincho} % for \rmfamily
+%\setCJKfamilyfont{songti}{SimSun} % used as \CJKfamily{songti}
 
 
 % basic packages
@@ -66,12 +66,19 @@
            thick,
            shorten <=2pt,
            shorten >=2pt},
-    noimply/.style={
-           ->,
+    maybe/.style={
+           ->, 
            -o,
            thick,
            shorten <=2pt,
-           shorten >=50pt}
+           shorten >=50pt},
+    noimply/.style={
+           ->, %inden[
+         -],
+           thick,
+           shorten <=2pt,
+           shorten >=60pt}
+
 }
 \tikzset{
     right angle quadrant/.code={
