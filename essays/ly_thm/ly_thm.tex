@@ -1,0 +1,127 @@
+\documentclass[12pt,draft,twoside]{book}
+\usepackage{../../thesis}
+
+\makeindex
+\begin{document}
+
+\chapter{Chaos in Li-Yorke sense}
+\begin{theorem}
+  (Period three implies Li-Yorke chaos \citep{li-yorke})
+  Suppose the same hypothesis as Theorem~\ref{thm:liyorke1}.
+  Then $F$ is chaotic in Li-Yorke's sense.
+  \label{thm:liyorke2}
+\end{theorem}
+%%%
+Theorem~\ref{thm:liyorke2} requires a more elaborate design of sequences than in the proof of Theorem~\ref{thm:liyorke1}.
+\begin{proof}[Proof of Theorem~\ref{thm:liyorke2}.]
+  $K$ and $L$ are defined in the same manner as the preceding proof.
+  Let $\mathcal{J}$ be the set of sequences $\seq{I_n}{ }{n\geq1}$ such that
+  \begin{equation*}
+    I_n = K \mbox{ or } I_n \subseteq L,
+  \end{equation*}
+  and 
+  \begin{equation*}
+    I_{n+1} \subseteq F(I_n).
+  \end{equation*}
+  We also require that, if $I_n = K$ then $n$ is the square of an integer.
+  As in the proof of Theorem~\ref{thm:liyorke1}, we associate each sequence with some orbit.
+  For each $\set{I_m} \in \mathcal{J}$, define $P(\set{I_m},n)$ as the number of $1 \leq m \leq n$ for which $I_m = K$.
+  In other words,
+  \begin{equation*}
+    P(\set{I_m},n) = \#\setst{1 \leq m \leq n}{I_m = K}.
+  \end{equation*}
+  Next, for each $r \in (3/4, 1)$, \footnote{The choice of the lower bound of this open interval can be arbitrary for the proof of \pref{eqn:liyorke1}, but the lower bound needs to be at least 3/4 for the proof of \pref{eqn:liyorke2}.} find a sequence $\set{I_m}$ such that
+  \begin{equation}
+    \lim\limits_{n\to \infty}\frac{P(\set{I_m},n^2)}{n} = r,
+    \label{eqn:Kratio}
+  \end{equation}
+  and call this sequence $I^r$.
+  
+  To see that $I^r$ exists for each $r$, consider two cases, when $r$ is rational, and when $r$ is irrational.
+  If $r$ is rational, then we can write $r = a/b$ for some relatively prime positive integers $a < b$.
+  We only need to consider the $n^2$-th terms of a sequence, since, if $n$ is a square, then $n+1$ and $n+2$ are not squares.
+  Consider a sequence $\set{I_m}$ such that, the first $a$ square terms are $K$, the next $b-a$ square terms are contained in $L$, the next $a$ square terms are $K$, and so on.
+  Then, we have
+  \begin{equation*}
+    \lim\limits_{n\to \infty}\frac{P(\set{I_m},n^2)}{n} = \frac{a}{b} = r.
+  \end{equation*}
+  Next, suppose $r$ is irrational.
+  Let the decimal expansion of $r$ be $\sum\limits_{i=1}^{\infty} c_i \cdot 10^i$.
+  A sequence such that the first $c_1$ square terms are $K$, the next $10 - c_1$ square terms are contained in $L$, the next $c_2$ square terms are $K$, the next $10^2 - c_2$ square terms are contained in $L$, and so on, satisfies our requirement.
+  Now, note that the set $\setst{I^r}{r \in (3/4, 1)}$ is uncountable, since, if $r_1 \neq r_2$, then $I^{r_1} \neq I^{r_2}$.
+  By Proposition~\ref{prop:liyorke2}, for each $r$, there exists $x_r \in I$ such that $\itr{F}{n}(x_r) \in I_n^r$ for any $n$ ($I_n^r$ refers to the $n$-th term of the sequence $I^r$).
+  Let $S \ceq \setst{x_r}{r \in (3/4, 1)}$.
+  For any $n$ and $r$, $\itr{F}{n}(x_r) \neq b$; otherwise, $K$ would appear periodically in the corresponding sequence $I^r$, and this violates our assumption on $I^r$.
+  It follows that, if $r_1 \neq r_2$, then $x_{r_1} \neq x_{r_2}$, so that $S$ is uncountable.
+  Let $P(x_r, n)$ be the number of $1 \leq m \leq n$ for which $\itr{F}{m}(x) \in K$.
+  Define
+  \begin{equation*}
+    \rho(x_r) \ceq  \lim\limits_{n\to \infty}\frac{P(x_r,n^2)}{n}.
+  \end{equation*}
+  Notice that, for each $r$,
+  \begin{equation*}
+    \rho(x_r)
+    = \lim\limits_{n\to \infty}\frac{P(I^r,n^2)}{n} 
+    = r.
+  \end{equation*}
+  Choose any pair $p, q \in S$ $(p \neq q)$.
+  Without loss of generality, we may assume that $\rho(p) > \rho(q)$.
+  Then, 
+  \begin{equation*}
+    P(p, n) - P(q, n) \to \infty.
+  \end{equation*}
+  It follows that there exist infinitely many $n$ such that $\itr{F}{n}(p) \in K$ and $\itr{F}{n}(q) \in L$ or $\itr{F}{n}(p) \in L$ and $\itr{F}{n}(q) \in K$.
+  Now, fix $n$ so that $\itr{F}{n}(p) \in K$ and $\itr{F}{n}(q) \in L$.
+  We have $\itr{F}{n}(p) < b$, because $\itr{F}{n}(p) \neq b$ for any $n$, and $\itr{F}{n}(p) \in K$.
+  Similarly, $\itr{F}{n}(q) > b$.
+  Hence,
+  \begin{equation*}
+    \metric{\itr{F}{n}(p), \itr{F}{n}(q)} > 0.
+  \end{equation*}
+  It follows that
+  \begin{equation*}
+    \limsup\limits_{n \to \infty} \metric{\itr{F}{n}(p), \itr{F}{n}(q)} > 0,
+  \end{equation*}
+  for any pair $p, q \in S$ $(p \neq q)$.
+
+  Next, we prove \pref{eqn:liyorke2}.
+  In order to do so, we choose specific $I^r$, instead of letting $I^r$ be any sequence that satisfies Equation~\pref{eqn:Kratio}.
+  Since $F([b,c]) \supseteq [b,c]$, we may introduce sequences satisfying the following properties
+  \begin{itemize}
+    \item $[b_0, c_0] \ceq [b,c]$
+    \item $[b_n, c_n] \supseteq [b_{n+1}, c_{n+1}]$ for each $n \geq 0$
+    \item $F(b_{n+1}) = c_n$ and $F(c_{n+1}) = b_n$
+    \item $F(x) \in (b_n, c_n)$ for any $x \in (b_{n+1}, c_{n+1})$.
+  \end{itemize}
+  Let
+  \begin{equation*}
+    A \ceq \bigcap\limits_{n=0}^{\infty} [b_n, c_n].
+  \end{equation*}
+  $A$ is nonempty, because it is the intersection of decreasing compact subsets of $I$.
+  Also let $b^* \ceq \inf A$ and $c^* \ceq \sup A$.
+  Note that we have $F(b^*) = c^*$ and $F(c^*) = b^*$.
+  In addition to the previous requirements, assume that, if $I_n^r = K$ for both $n = m^2$ and $n = (m+1)^2$, then, for $j = 1, \ldots, m$, 
+  \begin{align*}
+    I_n^r &= [b_{2m - (2j - 1)}, b^*] \mbox{ for } n = m^2 + (2j - 1)  \\
+    I_n^r &= [c^*, c_{2m - 2j}] \mbox{ for } n = m^2 + 2j.
+  \end{align*}
+  For any $r, s \in (3/4, 1)$, there exist infinitely many $n$ such that $I_n^r = I_n^s = K$ for both $n = m^2$ and $n = (m+1)^2$. \footnote{This is where we require the lower bound of $r$ to be at least 3/4.}
+  Let $x_r$ and $x_s$ be the members of $S$ corresponding to $I_n^r$ and $I_n^s$.
+  Since $b_n \to b^*$ and $c_n \to c^*$ as $n \to \infty$, for any $\epsilon > 0$, there exists $N$ such that $\metric{b_n, b^*} < \epsilon/2$ and $\metric{c_n, c^*} < \epsilon/2$ for each $n > N$.
+  It follows that, for each $n > N$ such that $I_n^r = I_n^s = K$ for both $n = m^2$ and $n = (m+1)^2$, we have 
+  \begin{equation*}
+    \itr{F}{m^2 + 1}(x_r), \itr{F}{m^2 + 1}(x_s) \in I_{m^2 + 1}^r = [b_{2m - 1}, b^*].
+  \end{equation*}
+  Hence, 
+  \begin{equation*}
+    \metric{\itr{F}{m^2 + 1}(x_r), \itr{F}{m^2 + 1}(x_s)} < \epsilon.
+  \end{equation*}
+  Since there are infinitely many $n$ with this property, we conclude that 
+  \begin{equation*}
+    \liminf\limits_{n \to \infty}\; \metric{\itr{F}{n}(p) , \itr{F}{n}(q)} = 0.
+  \end{equation*}
+\end{proof}
+\bibliographystyle{../../bibliography/pjgsm}
+\bibliography{../../bibliography/thesis}
+\printindex
+\end{document}
