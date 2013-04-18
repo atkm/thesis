@@ -2,8 +2,9 @@
 # encoding: utf-8
 # srcprep; genmain; make; all
 # global. files to work with.
-files = ['introduction','prelims','devaney','li_yorke','t-entropy','symbolic','billiards', 'comparisons']
-appendix = ['sarkovskii','other_defns']
+files = ['abstract','prelims','introduction','devaney','li_yorke','t-entropy','symbolic','billiards', 'comparisons']
+appendix = ['sarkovskii','ly_thm']
+#appendix = ['sarkovskii','other_defns']
 
 # strip the original and store it in ./src/
 def strip_tex(file)
@@ -52,9 +53,11 @@ task :genmain do
 \\graphicspath{{./images/}}
   
 \\makeindex
-  
-\\title{カオス理論}
-\\author{Atsuya Kumano - 熊野睦也}
+
+\\title{Chaotic Dynamics and Definitions of Chaos}
+\\author{Atsuya Kumano}
+%\\title{カオス理論}
+%\\author{Atsuya Kumano - 熊野睦也}
 % The month and year that you submit your FINAL draft TO THE LIBRARY (May or December)
 \\date{May 2013}
 \\division{Mathematics and Natural Sciences}
@@ -83,25 +86,25 @@ task :genmain do
 
 \\appendix"
 
-  main_tmpl_post_appendix = "\\backmatter % backmatter makes the index and bibliography appear properly in the t.o.c...
+main_tmpl_post_appendix = "\\backmatter % backmatter makes the index and bibliography appear properly in the t.o.c...
 
 % Bibliography
 \\renewcommand{\\bibname}{References}
 \\bibliographystyle{bibliography/pjgsm}
 \\nocite{*}
 \\bibliography{./bibliography/thesis}
-  
+
 % Index
 \\printindex
 
 \\end{document}"
 
-  main_file = 'main.tex'
-  puts "Rolling out: #{main_file}."
-  File.open(main_file,'w') do |file|
-    file.puts main_tmpl_head
-    file.puts main_includeonly
-    file.puts "\\begin{document}
+main_file = 'main.tex'
+puts "Rolling out: #{main_file}."
+File.open(main_file,'w') do |file|
+  file.puts main_tmpl_head
+  file.puts main_includeonly
+  file.puts "\\begin{document}
 % from reed-thesis.tex
 \\maketitle
 \\frontmatter % this stuff will be roman-numbered
@@ -118,7 +121,9 @@ task :genmain do
 
 % The abstract is not required if you're writing a creative thesis (but aren't they all?)
 % If your abstract is longer than a page, there may be a formatting issue.
-%    \\chapter*{Abstract}
+\\chapter*{Abstract}
+\\input{./src/src_abstract}
+% 
 %	\\chapter*{Dedication} % You can have a dedication here if you wish.
 
 \\mainmatter % here the regular arabic numbering starts
@@ -133,11 +138,13 @@ task :genmain do
 % end reed-thesis.tex\n\n"
 
     files.each do |name|
-      file.puts '\include{./src/src_' + name + "}\n\n"
+      unless name == 'abstract'
+        file.puts '\input{./src/src_' + name + "}\n\n"
+      end
     end
     file.puts main_tmpl_pre_appendix
     appendix.each do |name|
-      file.puts '\include{./src/src_' + name + "}\n\n"
+      file.puts '\input{./src/src_' + name + "}\n\n"
     end
     file.puts main_tmpl_post_appendix
   end

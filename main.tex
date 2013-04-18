@@ -3,9 +3,11 @@
 \graphicspath{{./images/}}
   
 \makeindex
-  
-\title{カオス理論}
-\author{Atsuya Kumano - 熊野睦也}
+
+\title{Chaotic Dynamics and Definitions of Chaos}
+\author{Atsuya Kumano}
+%\title{カオス理論}
+%\author{Atsuya Kumano - 熊野睦也}
 % The month and year that you submit your FINAL draft TO THE LIBRARY (May or December)
 \date{May 2013}
 \division{Mathematics and Natural Sciences}
@@ -17,7 +19,7 @@
 %\approvedforthe{Committee} 
 
 %specify the chapters to be compiled.
-  \includeonly{./src/src_introduction,./src/src_prelims,./src/src_devaney,./src/src_li_yorke,./src/src_t-entropy,./src/src_symbolic,./src/src_billiards,./src/src_comparisons}
+  \includeonly{./src/src_abstract,./src/src_prelims,./src/src_introduction,./src/src_devaney,./src/src_li_yorke,./src/src_t-entropy,./src/src_symbolic,./src/src_billiards,./src/src_comparisons}
 
 \begin{document}
 % from reed-thesis.tex
@@ -36,7 +38,9 @@
 
 % The abstract is not required if you're writing a creative thesis (but aren't they all?)
 % If your abstract is longer than a page, there may be a formatting issue.
-%    \chapter*{Abstract}
+\chapter*{Abstract}
+\input{./src/src_abstract}
+% 
 %	\chapter*{Dedication} % You can have a dedication here if you wish.
 
 \mainmatter % here the regular arabic numbering starts
@@ -50,21 +54,21 @@
 
 % end reed-thesis.tex
 
-\include{./src/src_introduction}
+\input{./src/src_prelims}
 
-\include{./src/src_prelims}
+\input{./src/src_introduction}
 
-\include{./src/src_devaney}
+\input{./src/src_devaney}
 
-\include{./src/src_li_yorke}
+\input{./src/src_li_yorke}
 
-\include{./src/src_t-entropy}
+\input{./src/src_t-entropy}
 
-\include{./src/src_symbolic}
+\input{./src/src_symbolic}
 
-\include{./src/src_billiards}
+\input{./src/src_billiards}
 
-\include{./src/src_comparisons}
+\input{./src/src_comparisons}
 
 %Conclusion. if I need one.
 %\chapter*{Conclusion}
@@ -73,9 +77,9 @@
 %\markboth{Conclusion}{Conclusion}
 
 \appendix
-\include{./src/src_sarkovskii}
+\input{./src/src_sarkovskii}
 
-\include{./src/src_other_defns}
+\input{./src/src_ly_thm}
 
 \backmatter % backmatter makes the index and bibliography appear properly in the t.o.c...
 
@@ -84,7 +88,7 @@
 \bibliographystyle{bibliography/pjgsm}
 \nocite{*}
 \bibliography{./bibliography/thesis}
-  
+
 % Index
 \printindex
 
