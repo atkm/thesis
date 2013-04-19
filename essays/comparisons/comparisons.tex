@@ -517,9 +517,15 @@ The following example is a system that is chaotic in Wiggins's sense but not in 
   \end{proof}
 \end{proposition}
 \begin{proposition}
-  Let $F: X \to X$ be a continuous map.
-  If $F$ is topologically transitive, then $F: \bar{X} \to \bar{X}$ is also transitive.
+  Let $F: X \to X$ be a continuous map, $Y$ be a subset of $X$.
+  If $F$ restricted to $Y$ is topologically transitive, then $F: \bar{Y} \to \bar{Y}$ is also transitive.
   \label{prop:closure-transitivity}
+  \begin{proof}
+    There exists $n$ such that
+    \begin{equation*}
+      \itr{F}{n}(\int(\bar{U}}) \cap \int(\bar{V}) \neq \emptyset.
+    \end{equation*}
+  \end{proof}
 \end{proposition}
 
 %%%
