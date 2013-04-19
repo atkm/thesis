@@ -1,4 +1,3 @@
-
 \documentclass[12pt,twoside,draft]{book}
 \usepackage{../../thesis}
 \graphicspath{ {../../images/} }
@@ -363,18 +362,15 @@ However, we do not know whether \pte implies \blcp.
 
 
 \subsubsection*{Devaney and Topological Entropy}
-\citet{glasner} provides an example of a system that is \dev but has zero entropy.
-\begin{example}
-  (Incomplete. The example uses symbolic dynamics)
-  \label{eg:glasner}
-\end{example}
+\citet{glasner} provides an example of a symbolic system that is \dev but has zero entropy.
 Hence, \dev does not imply \pte.
-We do not know whether \pte implies \dev.
+On the other hand, we do not know whether \pte implies \dev.
 We have some related results, however.
 \citet{glasner} proved that if a system is transitive, has no isolated point, and has positive topological entropy, then it is sensitive to initial conditions.
 Thus, if we can prove that \pte implies the existence of a closed, invariant subset $Y \subseteq X$ on which $F$ is topologically transitive, then \pte implies \wig.
 On the other hand, in order for \pte to imply \dev, \pte mush imply both \tt and \dpp.
 While it seems plausible that topological transitivity follows from positive topological entropy, it seems unlikely that \pte implies the existence of dense periodic points.
+%%%
 
 \subsubsection*{Block-Coppel and Devaney/Wiggins}
 \citet{aulbach} constructed an example to show that Block-Coppel's definition does not imply Devaney's definition.
@@ -415,7 +411,7 @@ In addition, \citet{auslander} showed that $F$ restricted to the subset is also 
 On the other hand, \dev does not imply \blcp.
 We can deduce this from the results so far.
 Suppose \dev implies \blcp.
-Then \dev implies \pte; however, this is not necessarily the case, as shown in Example~\ref{eg:glasner}.
+Then \dev implies \pte; however, this is not necessarily the case, as shown before.
 Therefore, \dev does not imply \blcp.
 
 \subsubsection*{Block-Coppel and Li-Yorke}
@@ -426,9 +422,106 @@ Hence, \blcp implies \liy, but the converse is not true.
 \subsubsection*{Devaney/Wiggins and Li-Yorke}
 The following example is a system that is chaotic in Wiggins's sense but not in Li-Yorke's sense.
 \begin{example}
-  (Sturmian System \citep{blanchard})
-  (Incomplete)
+  \citep{blanchard}
+  This example employs a \textit{two-sided shift}, a symbolic dynamical system on the set of all bi-infinite sequences.
+  Since a two-sided shift is similar to an one-sided shift, instead of formally defining the dynamical system, we briefly discuss its structure here.
+  Some of the results that we prove in this example are standard results for two-sided dynamical systems.
+  Let $S = \set{0,1}$ be the set of symbols.
+  In a two-sided shift system, $\Sigma \equiv S^\Z$ consists of bi-infinite sequences, i.e. sequences of the form
+  \begin{align*}
+    \cdots s_{-n} \cdots s_{-2} s_{-1} s_0 s_1 s_2 \cdots s_n \cdots.
+  \end{align*}
+  Also, we use the following metric on the space $\Sigma$ instead:
+  \begin{equation*}
+    \metric{a,b} = \frac{\delta_i}{2^{\abs{i}}},
+  \end{equation*}
+  where
+  \begin{equation*}
+    \delta_i = 
+    \begin{cases}
+      &0 \quad \mbox{ if } a_i = b_i  \\
+      &1 \quad \mbox{ otherwise.}
+    \end{cases}
+\end{equation*}
+  %This example uses a dynamical system commonly called the \textit{Sturmian system}.
+
+  Let $S^1 \equiv [0, 1)$ be the unit circle, and let $R_\alpha: S^1 \to S^1$ be the rotation by an irrational number $\alpha \in S^1$. %]
+  Recall that we showed in Chapter~\ref{chap:devaney} that the dynamical system $(S^1, R_\alpha)$ is topologically transitive, and has no periodic point.
+  Note that $R_\alpha: S^1 \to S^1$ is one-to-one.
+  For each point $x \in S^1$, $\phi: S^1 \to \Sigma$ sends $x$ to $s \in \Sigma$ such that
+  \begin{equation*}
+    s = \cdots s_{-n} \cdots s_{-1} s_0 s_1 \cdots s_n \cdots,
+  \end{equation*}
+  where
+  \begin{equation*}
+    s_i = \begin{cases}
+      0& \mbox{ if } \itr{R_\alpha}{i}(x) \in [0, 1-\alpha)  \\
+      1& \mbox{ if } \itr{R_\alpha}{i}(x) \in [1-\alpha, 1). %]
+    \end{cases}
+  \end{equation*}
+  Let $X \ceq \phi(S^1)$.
+  Then, since $\bar{X}$, the closure of $X$, is a closed subset of a compact space $\Sigma$, $\bar{X}$ is also compact.
+
+  Also, $\bar{X}$ is invariant under the shift map $\sigma$.
+  Suppose $s \in \bar{X}$.
+  We may assume that there exists a sequence $\set{s_n} \subseteq X$ such that $\lim\limits_{n \to \infty} s_n = s$.
+  For each $s_n$, there exists $\itr{\sigma}{-1}(s_n)$ that is a member of $\bar{X}$.
+  Since $\sigma$ is homeomorphic, we have $\lim\limits_{n \to \infty} \itr{\sigma}{-1}(s_n) = \itr{\sigma}{-1}(s)$.
+  It follows that $s \in \sigma(\bar{X})$; hence, $\bar{X} \subseteq \sigma(\bar{X})$.
+  A similar argument shows that $\sigma(\bar{X}) \subseteq \bar{X}$.
+  Hence, $\sigma(\bar{X}) = \bar{X}$.
+  (The reason that we proved that $\bar{X}$ is a compact, invariant subset of $\Sigma$ is not only because Wiggins's definition calls for the conditions to be satisfied on a compact set.
+  As it turns out, these conditions are required for a symbolic dynamics to be well-defined.
+  See \citep[p.179]{lind}.)
+  
+  Next, we show that $\phi$ is a continuous mapping.
+  Fix $\epsilon > 0$.
+  We may assume that $2^{-k} < \epsilon$.
+  By Proposition~\ref{prop:two-sided}, which we prove immediately after this example, for any $k$, $\phi(x)_i = \phi(y)_i$ for $0 \leq \abs{i} \leq k+1$ implies that
+  \begin{equation*}
+    \metric{\phi(x),\phi(y)} \leq 2^{-k}.
+  \end{equation*}
+  Therefore, we only need to prove that, for each $x \in S^1$, there exists $y \in S^1$ such that $x_i = y_i$ for $0 \leq \abs{i} \leq k+1$.
+  It is easy to see that $\phi(x)_i \neq \phi(y)_i$ if and only if $0 \in (\phi(x)_i, \phi(y)_i]$ or $1 - \alpha \in (\phi(x)_i, \phi(y)_i]$. %)
+  So for each $x$, let $y = x + \delta$ for some $\delta > 0$.
+  If $0 \in R_\alpha((x, x+\delta])$ or $1 - \alpha \in R_\alpha((x, x+\delta])$, then we can redefine $\delta$ to be a smaller value so that $0, 1-\alpha \not\in R_\alpha((x, x+\delta])$. %)))
+  Inductively, we see that, for any $k \in \N$, if $\delta$ is small enough, then 
+  \begin{equation*}
+    0, 1-\alpha \not\in \itr{R_\alpha}{k+1}(x, x+\delta) 
+  \end{equation*}
+  so that
+  \begin{equation*}
+    \phi(x)_i = \phi(x+\delta)_i \mbox{ for } 0 \leq \abs{i} \leq k+1.
+  \end{equation*}
+  Thus, $\phi$ is continuous.
+
+  The fact that $R_\alpha: X \to X$ is topologically transitive implies that $R_\alpha: \bar{X} \to \bar{X}$ is also topologically transitive (See Proposition~\ref{prop:closure-transitivity}).
+
+  Clearly, for each $x,y \in \Sigma$, there are infinitely many $n$ such that $\metric{\itr{\sigma}{n}(x),\itr{\sigma}{n}(y)} > 0$.
+  Hence, $\liminf\limits_{n \to \infty} (\itr{\sigma}{n}(x), \itr{\sigma}{n}(x+\delta)) > 0$, so that $(\sigma, \bar{X})$ is not chaotic in Li-Yorke's sense.
+  $\square$
 \end{example}
+\begin{proposition}
+  Let $x,y$ be members of $\Sigma$.
+  If $x_i = y_i$ for $0 \leq \abs{i} \leq k$, then $\metric{x,y} \leq 2^{-(k-1)}$.
+  \label{prop:two-sided}
+  \begin{proof}
+    $\metric{x,y}$ achieves its upper bound when $x_i \neq y_i$ for $\abs{i} \geq k+1$.
+    \begin{align*}
+      \metric{x,y}
+      &\leq 2 \cdot \sum\limits_{n = k+1}^{\infty} \frac{1}{2^{\abs{i}}} \\
+      &\leq 2 \cdot \paren{ \sum\limits_{n = 0}^{\infty} \frac{1}{2^{\abs{i}}} - \sum\limits_{n = 0}^{k} \frac{1}{2^{\abs{i}}}} \\
+      &= 2 \cdot (2 - (2 - \frac{1}{2^k})) \\
+      &= \frac{1}{2^{k-1}}.
+    \end{align*}
+  \end{proof}
+\end{proposition}
+\begin{proposition}
+  Let $F: X \to X$ be a continuous map.
+  If $F$ is topologically transitive, then $F: \bar{X} \to \bar{X}$ is also transitive.
+  \label{prop:closure-transitivity}
+\end{proposition}
+
 %%%
 \begin{theorem}
   If $(X, F)$ is chaotic in Devaney's sense, then it is chaotic in Li-Yorke's sense.

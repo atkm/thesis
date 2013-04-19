@@ -18,16 +18,16 @@
 %\usepackage[MnSymbol]{mathspec} % MnSymbol is incompatible with amssymb. It loads amsmath and textcomp
 \usepackage{mathspec}\usepackage{amssymb,amsmath,colonequals} % alternative to line above
 \usepackage{xltxtra}
-%\setmainfont[Ligatures=TeX]{Minion Pro}
-%\setallsansfonts[Scale=MatchLowercase,Numbers={Lining,Proportional}]{Myriad Pro}
-%\setallmonofonts[Scale=MatchLowercase]{Consolas}
-%\setmathsfont(Digits,Latin,Greek)[Scale=MatchLowercase,Numbers={Lining,Proportional}]{Minion Pro}
-%\setmathrm{Minion Pro}
+\setmainfont[Ligatures=TeX]{Minion Pro}
+\setallsansfonts[Scale=MatchLowercase,Numbers={Lining,Proportional}]{Myriad Pro}
+\setallmonofonts[Scale=MatchLowercase]{Consolas}
+\setmathsfont(Digits,Latin,Greek)[Scale=MatchLowercase,Numbers={Lining,Proportional}]{Minion Pro}
+\setmathrm{Minion Pro}
 
 % Japanese language
 \usepackage{xeCJK}
-%\setCJKmainfont{IPAMincho} % for \rmfamily
-%\setCJKfamilyfont{songti}{SimSun} % used as \CJKfamily{songti}
+\setCJKmainfont{IPAMincho} % for \rmfamily
+\setCJKfamilyfont{songti}{SimSun} % used as \CJKfamily{songti}
 
 
 % basic packages
@@ -137,7 +137,7 @@
 \newcommand{\compose}{\circ}
 \newcommand{\ceq}{\colonequals} %coloneqq: come with unicode-math/coloneq: with mnsymbol
 \newcommand{\pref}[1]{(\ref{#1})} % reference with parentheses
-\newcommand{\itr}[2]{#1^{\compose #2}} % \itr{f}{n} = f iterated n times
+\newcommand{\itr}[2]{#1^{#2}} % \itr{f}{n} = f iterated n times
 \newcommand{\cl}{\mathrm{cl}} %closure
 \newcommand{\Lip}{\mathrm{Lip}} %lipschitz constant
 \newcommand{\diam}{\mathrm{diam}} % diameter of a set
