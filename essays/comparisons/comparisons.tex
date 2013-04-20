@@ -1,4 +1,4 @@
-\documentclass[12pt,twoside,draft]{book}
+\documentclass[10pt,twoside,draft]{book}
 \usepackage{../../thesis}
 \graphicspath{ {../../images/} }
 \usetikzlibrary{arrows,positioning} 
@@ -423,6 +423,7 @@ Hence, \blcp implies \liy, but the converse is not true.
 The following example is a system that is chaotic in Wiggins's sense but not in Li-Yorke's sense.
 \begin{example}
   \citep{blanchard}
+  (Note to Rao: this example contains a few glitches, but I think the overall idea is right. I hope to discuss this at some point.)
   This example employs a \textit{two-sided shift}, a symbolic dynamical system on the set of all bi-infinite sequences.
   Since a two-sided shift is similar to an one-sided shift, instead of formally defining the dynamical system, we briefly discuss its structure here.
   Some of the results that we prove in this example are standard results for two-sided dynamical systems.
@@ -484,7 +485,14 @@ The following example is a system that is chaotic in Wiggins's sense but not in 
   Therefore, we only need to prove that, for each $x \in S^1$, there exists $y \in S^1$ such that $x_i = y_i$ for $0 \leq \abs{i} \leq k+1$.
   It is easy to see that $\phi(x)_i \neq \phi(y)_i$ if and only if $0 \in (\phi(x)_i, \phi(y)_i]$ or $1 - \alpha \in (\phi(x)_i, \phi(y)_i]$. %)
   So for each $x$, let $y = x + \delta$ for some $\delta > 0$.
-  If $0 \in R_\alpha((x, x+\delta])$ or $1 - \alpha \in R_\alpha((x, x+\delta])$, then we can redefine $\delta$ to be a smaller value so that $0, 1-\alpha \not\in R_\alpha((x, x+\delta])$. %)))
+  If 
+  \begin{equation*}
+    0 \in R_\alpha((x, x+\delta]) \mbox{ or } 1 - \alpha \in R_\alpha((x, x+\delta]), 
+  \end{equation*}
+   then we can redefine $\delta$ to be a smaller value so that 
+   \begin{equation*}
+     0, 1-\alpha \not\in R_\alpha((x, x+\delta]). %)))
+   \end{equation*}
   Inductively, we see that, for any $k \in \N$, if $\delta$ is small enough, then 
   \begin{equation*}
     0, 1-\alpha \not\in \itr{R_\alpha}{k+1}(x, x+\delta) 
@@ -494,10 +502,17 @@ The following example is a system that is chaotic in Wiggins's sense but not in 
     \phi(x)_i = \phi(x+\delta)_i \mbox{ for } 0 \leq \abs{i} \leq k+1.
   \end{equation*}
   Thus, $\phi$ is continuous.
+  (Incorrect.. $\phi$ isn't continuous at $0 \in S^1$. Need to do something about it.)
 
+  Now, we prove that $(\sigma, \bar{X})$ is chaotic in Wiggins's sense.
   The fact that $R_\alpha: X \to X$ is topologically transitive implies that $R_\alpha: \bar{X} \to \bar{X}$ is also topologically transitive (See Proposition~\ref{prop:closure-transitivity}).
-
-  Clearly, for each $x,y \in \Sigma$, there are infinitely many $n$ such that $\metric{\itr{\sigma}{n}(x),\itr{\sigma}{n}(y)} > 0$.
+  For the system to be chaotic in Wiggins's sense, $\sigma$ needs to be sensitive to initial conditions.
+  Let $0 < \delta < 1$ be our separation constant.
+  
+  Clearly, for each $x,y \in \Sigma$, there are infinitely many $n$ such that 
+  \begin{equation*}
+    \metric{\itr{\sigma}{n}(x),\itr{\sigma}{n}(y)} > 0.
+  \end{equation*}
   Hence, $\liminf\limits_{n \to \infty} (\itr{\sigma}{n}(x), \itr{\sigma}{n}(x+\delta)) > 0$, so that $(\sigma, \bar{X})$ is not chaotic in Li-Yorke's sense.
   $\square$
 \end{example}
@@ -521,9 +536,13 @@ The following example is a system that is chaotic in Wiggins's sense but not in 
   If $F$ restricted to $Y$ is topologically transitive, then $F: \bar{Y} \to \bar{Y}$ is also transitive.
   \label{prop:closure-transitivity}
   \begin{proof}
-    There exists $n$ such that
+    Since $F$ is transitive on $Y$, for each $U, V \subseteq Y$, there exists $n$ such that
     \begin{equation*}
-      \itr{F}{n}(\int(\bar{U}}) \cap \int(\bar{V}) \neq \emptyset.
+      \itr{F}{n}(\interior(\bar{U})) \cap \interior(\bar{V}) \neq \emptyset.
+    \end{equation*}
+    It follows that
+    \begin{equation*}
+      \itr{F}{n}(\bar{U}) \cap \bar{V} \neq \emptyset.
     \end{equation*}
   \end{proof}
 \end{proposition}

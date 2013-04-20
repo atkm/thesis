@@ -28,14 +28,14 @@
 In this chapter, we illustrate a dynamical system called \textit{outer billiards}.
 The dynamical system is a one-parameter map on $\R^2$, and for two special cases, we prove that the map is not chaotic.
 For the general case, however, the map seems to be chaotic--it seems to satisfy the definition by Li-Yorke or Wiggins (or perhaps Devaney).
-We do no have a proof for the general case being chaotic, but we present results from numerical simulations to make conjectures.
+We do not have a proof for the general case being chaotic, but we present results from numerical simulations to make conjectures.
 
-\section{The Billiard Map and Kite}
+\subsection*{The Billiard Map and Kite}
 An \textit{outer billiard} is a dynamical system with a simple geometrical interpretation.
 An outer billard is defined as $(X, B_S)$, where $X$ is a set of points in $\R^2$, and $B_S$ is a \textit{billiard map} determined by a \textit{shape} $S$.
 Unlike the billiards game that we are familiar with, the points (or balls) move around outside the shape (or table).
 For any given point $p$, if the point is inside or on $S$, then $B_S$ maps $p$ to itself.
-If $p$ is outside the kite, on the other hand, $B_S$ maps $p$ to $q$, where $q$ is a point such that $\overline{pq}$, the line segment between $p$ and $q$, is tangent to $S$, and $\overline{pq}$ intersects $S$ at the midpoint of $\overline{pq}$ (Figure~\ref{fig:billiards}).
+If $p$ is outside the shape, on the other hand, $B_S$ maps $p$ to $q$, where $q$ is a point such that $\overline{pq}$, the line segment between $p$ and $q$, is tangent to $S$, and $\overline{pq}$ intersects $S$ at the midpoint of $\overline{pq}$ (Figure~\ref{fig:billiards}).
 For each point in the space, there are always two tangent lines: ones that go around the shape in the counter-clockwise and clockwise directions.
 We choose the counter-clockwise one to define the billiard map.
 
@@ -98,7 +98,7 @@ We choose the counter-clockwise one to define the billiard map.
 This dynamical system was popularized by Jürgen Moser as a toy model of celestial mechanics~\citep{moser,moserbook}.
 We can interpret the shape as the Sun, and the points as planets orbiting the Sun.
 The Moser-Neumann question asks if there is an outer billiard system that has a point whose orbit is unbounded (i.e. the distance from the origin is unbounded).
-In an analogy to the Solar system, an unbounded orbit correspond to a planet escaping the system.
+In an analogy to the Solar system, an unbounded orbit corresponds to a planet escaping the system.
 \citet{moser} says that the Moser-Neumann question is
 ``a very simple geometrical problem that actually contains some of the difficulties of the $n$ body problem and may serve as a crude model for planetary motion.''
 Regardless of the legitimacy of his claim, the Moser-Neumann question is an interesting mathematical problem with an intriguing geometrical nature (See Figure~\ref{fig:strip3-4-6-7}, for instance).
@@ -144,7 +144,7 @@ We give a verbal description of the outer billiard dynamical systems below, but 
   \end{center}
 \end{figure}
 
-\section{Special Case (1): $d = 0$}
+\subsection*{Special Case (1): $d = 0$}
 \begin{figure}[ht]
   \begin{center}
     \includegraphics[width=0.8\textwidth]{kite_d0}
@@ -218,7 +218,7 @@ Thus, if we consider the dynamics of an annular region, the dynamical system has
 However, it is not chaotic, since a point never leaves the circle it was originally on, so that the map is not topologically transitive.
 Hence, the system is not chaotic in Devaney's sense.
 
-\section{Special Case (2): $d \to \infty$}
+\subsection*{Special Case (2): $d \to \infty$}
 \begin{figure}[ht]
   \begin{center}
     \includegraphics[width=0.8\textwidth]{kite_d100}
@@ -288,7 +288,7 @@ We leave the proof to the reader.
 \end{figure}
 %%%
 
-\section{Other Cases: $d \neq 0$, $d < \infty$}
+\subsection*{Other Cases: $d \neq 0$, $d < \infty$}
 So far, we studied the dynamics of the outer billiard system for two particular parameters, which turned out to have simple structures.
 For general cases, however, the dyanamics is considerably more complicated.
 We show several results of numerical simulations for a particular parameter, $d = 1.0$ (the choice is arbitrary), and make conjectures about properties of the system.

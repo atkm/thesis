@@ -48,13 +48,13 @@ end
 
 # create main.tex
 task :genmain do
-  main_tmpl_head = "\\documentclass[12pt,twoside]{reedthesis}
+  main_tmpl_head = "\\documentclass[10pt,twoside]{reedthesis}
 \\usepackage{xthesis}
 \\graphicspath{{./images/}}
   
 \\makeindex
 
-\\title{Chaotic Dynamics and Definitions of Chaos}
+\\title{Definitions of Chaotic Dynamical Systems}
 \\author{Atsuya Kumano}
 %\\title{カオス理論}
 %\\author{Atsuya Kumano - 熊野睦也}
