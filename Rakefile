@@ -2,7 +2,7 @@
 # encoding: utf-8
 # srcprep; genmain; make; all
 # global. files to work with.
-files = ['abstract','prelims','introduction','devaney','li_yorke','t-entropy','symbolic','billiards', 'comparisons']
+files = ['abstract','prelims','introduction','devaney','li_yorke','t-entropy','symbolic','billiards', 'comparisons','conclusion']
 appendix = ['sarkovskii','ly_thm']
 #appendix = ['sarkovskii','other_defns']
 
@@ -55,9 +55,9 @@ task :genmain do
 \\makeindex
 
 \\title{Definitions of Chaotic Dynamical Systems}
-\\author{Atsuya Kumano}
+%\\author{Atsuya Kumano}
 %\\title{カオス理論}
-%\\author{Atsuya Kumano - 熊野睦也}
+\\author{Atsuya Kumano - 熊野睦也}
 % The month and year that you submit your FINAL draft TO THE LIBRARY (May or December)
 \\date{May 2013}
 \\division{Mathematics and Natural Sciences}
@@ -79,10 +79,10 @@ task :genmain do
   main_includeonly += "}\n\n"
 
   main_tmpl_pre_appendix = "%Conclusion. if I need one.
-%\\chapter*{Conclusion}
-%\\addcontentsline{toc}{chapter}{Conclusion}
-%\\chaptermark{Conclusion}
-%\\markboth{Conclusion}{Conclusion}
+\\chapter*{Conclusion}
+\\addcontentsline{toc}{chapter}{Conclusion}
+\\chaptermark{Conclusion}
+\\markboth{Conclusion}{Conclusion}
 
 \\appendix"
 
@@ -138,7 +138,7 @@ File.open(main_file,'w') do |file|
 % end reed-thesis.tex\n\n"
 
     files.each do |name|
-      unless name == 'abstract'
+      unless name == 'abstract' or name == 'conclusion'
         file.puts '\input{./src/src_' + name + "}\n\n"
       end
     end
