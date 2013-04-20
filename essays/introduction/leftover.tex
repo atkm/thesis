@@ -1,0 +1,82 @@
+% About Ueda
+\footnote{Doubtful of Ueda's result, Ueda's mentor did not allow publication of Ueda's result until 1970, seven years after the publication of ``Deterministic Nonperiodic Flow.''
+  Because of the strict hierarchical structure of the Japanese academia, the first author of Ueda's paper, ``On the Behavior of Self-Oscillatory Systems with External Force'', is his mentor.%\cite[p89]{sprott}
+  ``He was the emperor of his laboratory, and yet outwardly he was a mild-mannered gentleman.
+  I believed at that time that his was the most feudalistic of any laboratory in the world, and the wall of his authority was impenetrable during his reign, and I still believe it.
+  But because of that, we were not swept away by worldly concerns and could concentrate on our research, being faithful to our own ideas.''
+  ``After my report, at any rate, Prof. Urabe admonished me personally.
+  'What you saw was simply the essence of quasi-periodic oscillations,' he said.
+  'You are too young to make conceptual observations.'
+% 君が見たのは単に概周期振動にすぎない。概念的な所見を述べるのは、若い君のやることじゃない。
+% Your result is no more than an almost periodic oscillation. Don't form a selfish concept of steady states. \citep[p.141]{gleick} : from 'Random Phenomena Resulting from Nonlinearity in the System Described by Duffing's Equation' (1985) in its postscript
+  The existence of random oscillations (chaos) was so obvious in my mind, that the negative comment did not crush me.
+  Even so, I was deeply disappointed that no one understood it no matter how hard I tried to explain.\citep[p47]{ueda-abraham}
+  Ueda left the following remark: ``Chaos, though common phenomena in the nature, has been dismissed because of the difficulty to grasp its full notion.''\citep[p533]{gleick}
+Either way, vigorous research activities on chaos only started in the 70's.}
+
+%
+%I shall briefly describe a two-dimensional map called \textit{the baker's map}, which will facilitate our understandings of Lyapunov exponents and fractal dimension.
+%Also, the baker's map will be frequently used to illustrate definitions of chaos in later chapters.
+%Familiarity with this map would be helpful throughout the rest of the paper.
+%\begin{definition}
+%  Let $I = [0,1]$, and $0 \leq \alpha, \beta \leq 1$.
+%  The baker's map $B_{\alpha, \beta, \gamma, \delta}: \R^2 \to \R^2$ is defined as
+%  \begin{equation*}
+%    B_{\alpha, \beta, \gamma, \delta}(x,y) = (BX_{\alpha, \beta, \gamma, \delta}(x), BY_{\alpha, \beta, \gamma, \delta}(y)),
+%  \end{equation*}
+%  where
+%  \begin{equation*}
+%    BX_{\alpha, \beta, \gamma, \delta}(x) =
+%     \begin{cases}
+%      \alpha x  &\mbox{ for } y < \gamma \\
+%      (1 - \beta) + \beta x  &\mbox{ for } y \geq \gamma,
+%    \end{cases}
+%  \end{equation*}
+%  and
+%  \begin{equation*}
+%    BY_{\alpha, \beta, \gamma, \delta}(x) =
+%     \begin{cases}
+%       y/\gamma  &\mbox{ for } y < \gamma \\
+%       (y - \gamma)/ \delta  &\mbox{ for } y \geq \gamma.
+%    \end{cases}
+%  \end{equation*}
+%
+%  \label{defn:baker}
+%  \index{baker's map}
+%\end{definition}
+%The name of the map comes from the way it operates on a square area.
+%It is stretching, squeezing, and folding that characterizes the baker's map.
+%And in fact--at least at an intuitive level--that is what produces chaos.
+%The best way to see how this simple map gives rise to the aforementioned characteristics of chaos--sensitive dependence on initial conditions and complex orbit structure--is to compute the transformation of $I \times I$ under iteration.
+%SHOW THE TRANSFORMATION
+
+%\begin{definition}
+%  (Lyapunov number, alternative)
+%  Given a map $F$ and a $p-$periodic point $x_p$, the Lyapunov number of the point $N(x_p)$ is
+%  defined to be the spectral radius of the Jacobian matrix of the map.
+%  \begin{equation*}
+%    N(x_p) = \brac{ \rho \paren{ F^p(x_p)}}^{1/p}
+%  \end{equation*}
+%  \label{def:lyapnum}
+%  \index{Lyapunov number}
+%\end{definition}
+%The alternative definition can be shown to be equivalent to the first definition.
+%
+%In some cases, this yet another alternate definition is more convenient.
+%This version ignores transient states.
+%\begin{definition}
+%  (Lyapunov Number, yet another alternative)
+%  \begin{equation*}
+%    N(x_1, k) = N(x_k)
+%  \end{equation*}
+%  Then the Lyapunov number is defined to be
+%  \begin{equation*}
+%    N(x_1) = \lim\limits_{k \to \infty} N(x_1,k).
+%  \end{equation*}
+%\end{definition}
+%
+
+In the next two sections, we will prove that two nearby initial points are separated from each other exponentially fast by computing the Lyapunov exponent of the map, and show that the limit set of the map has a fractal dimension.
+Also, the characteristics of the baker's map--streching, squeezing, and folding--turn out to be the primary means of providing mathematically rigorous definition of chaotic maps, as we will see in later chapters.
+% Rossler: ``a sausage in a sausage in a sausage in a sausage'
+
