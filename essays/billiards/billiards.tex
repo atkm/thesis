@@ -33,12 +33,14 @@ We do not have a proof for the general case being chaotic, but we present result
 \subsection*{The Billiard Map and Kite}
 An \textit{outer billiard} is a dynamical system with a simple geometrical interpretation.
 An outer billard is defined as $(X, B_S)$, where $X$ is a set of points in $\R^2$, and $B_S$ is a \textit{billiard map} determined by a \textit{shape} $S$.
+A shape is defined to be the boundary of a compact convex set with non-empty interior.
 Unlike the billiards game that we are familiar with, the points (or balls) move around outside the shape (or table).
 For any given point $p$, if the point is inside or on $S$, then $B_S$ maps $p$ to itself.
-If $p$ is outside the shape, on the other hand, $B_S$ maps $p$ to $q$, where $q$ is a point such that $\overline{pq}$, the line segment between $p$ and $q$, is tangent to $S$, and $\overline{pq}$ intersects $S$ at the midpoint of $\overline{pq}$ (Figure~\ref{fig:billiards}).
+If $p$ is outside the shape, on the other hand, $B_S$ maps $p$ to $q$, where $q$ is a point such that $\overline{pq}$, the line segment between $p$ and $q$, intersects $S$ at the midpoint of $\overline{pq}$ (Figure~\ref{fig:billiards}).
+We also require that a tangent line intersect the shape at a single point, and do not contain a line segment.
 For each point in the space, there are always two tangent lines: ones that go around the shape in the counter-clockwise and clockwise directions.
 We choose the counter-clockwise one to define the billiard map.
-
+%%%
 
 \begin{figure}[ht]
   \centering
@@ -76,6 +78,9 @@ We choose the counter-clockwise one to define the billiard map.
 
     \draw[draw=anglecolor] (0.2,0.3) arc (56.31:121.73:0.36cm);
     \draw (80:5mm) node[anglecolor] {$\phi$};
+    \draw[draw=anglecolor] (-0.2,0.3) arc (121.73:187.15:0.36cm);
+    \draw (170:5mm) node[anglecolor] {$\phi$};
+
 %  \draw[draw=anglecolor] (121.73:0.20cm) arc (121.73:187.15:0.20cm);
 %  \draw (160:3.5mm) node[anglecolor] {$\phi$};
 
@@ -108,7 +113,7 @@ Regardless of the legitimacy of his claim, the Moser-Neumann question is an inte
 Other known results are listed in \citet[p. 2]{schwartz}.
 
 In this chapter, we study the outer billiards defined by a family of one-parameter shapes, which we will refer to as \textit{kites}.
-\footnote{This family of shapes was suggested by Ray Mayer. Reed College, Portland, OR !ask for permission}
+\footnote{This family of shapes was suggested by Ray Mayer. Reed College, Portland, OR.}
 The kites that we study have, unlike the Penrose kites that Schwartz studies, curvilinear sides.
 We only consider kites with symmetries of a square.
 We give a verbal description of the outer billiard dynamical systems below, but the reader would probably find the figures in this chapter more helpful.
@@ -124,8 +129,8 @@ We give a verbal description of the outer billiard dynamical systems below, but 
   We define $B_{S_d}$, the corresponding billiard map, as follows.
   For any given point $p$, if the point is inside or on $S_d$, then $B_{S_d}$ maps $p$ to itself.
   If $p$ is outside the kite, then $B_{S_d}$ maps $p$ to $q$, where $q$ is a point such that $\overline{pq}$, the line segment between $p$ and $q$, is tangent to $S_d$, and $\overline{pq}$ intersects $S_d$ at the midpoint of $\overline{pq}$ (Figure~\ref{fig:kite-regions}).
-  Note that, since $S_d$ is not smooth for $d > 0$, there may not be a tangent line from every point in the space.
-  If that is the case for some point $p$, we suitably choose one of the corner points of the shape (the points corresponding to $\theta = \pi/4, 3\pi/4, 5\pi/4, \mbox{ or } 7\pi/4$), and define the tangent line to be the line that passes through $p$ and the corner point that we just picked (Figure~\ref{fig:kite-regions}).
+  Note that, even though $S_d$ is not smooth for $d > 0$, there is always a tangent line from every point in the space, since we define a tangent line to be a line that intersects with the shape at a single point.
+ (Figure~\ref{fig:kite-regions}).
   We refer to $S_d$ as a \textit{kite}.
 
 \end{definition}
@@ -163,8 +168,8 @@ If there exist $n, k \in \N^+$ such that $n(2\phi) = 2k\pi$, then $p$ is a $n$-p
 \begin{equation*}
   \itr{B_S}{n}(p) = (r, \theta + 2k\pi) = (r, \theta) = p.
 \end{equation*}
-We can ensure that the period of $p$ is not less than $n$ by choosing an appropriate pair $n,k$.
-Noting that $\phi = \frac{k}{n}\pi$, and $\phi$ must satisfy $0 < \phi < 1/2$, we obtain the following proposition.
+We can ensure that the period of $p$ is not less than $n$ by choosing an appropriate pair $(n,k)$.
+Noting that $\phi = \frac{k}{n}\pi$, and $\phi$ must satisfy $0 < \phi < \pi/2$, we obtain the following proposition.
 \begin{proposition}
   Let $p \in \R^2$ be a point whose polar coordinates is $(r,\theta)$, and define $\phi \ceq \arccos(1/r)$.
   Suppose $\phi = \alpha\pi$ for $0 < \alpha < 1/2$.
@@ -230,13 +235,24 @@ Hence, the system is not chaotic in Devaney's sense.
 As $d \to \infty$, the kite approaches a square (Figure~\ref{fig:kite-square}).
 In this case, a tangent line from a circle to the kite goes through one of the four corners of the square.
 We disregard points in the set 
-\begin{equation*}
-  G \ceq \setst{(x,y)}{x = n \mbox{ or } y = n \mbox{ for some } n \in \N}
-\end{equation*}
+\begin{align*}
+  G \ceq \{(x,y) &|
+    (x = 1 \mbox{ and } y \leq -1) 
+    \mbox{ or }
+    (x \geq 1 \mbox{ and } y = 1)  \\
+    &\mbox{ or }
+    (x = -1 \mbox{ and } y \geq 1) 
+    \mbox{ or }
+    (x \leq -1 \mbox{ and } y = -1) 
+  \},
+\end{align*}
  because the billiard map is not well-defined for these points.
-Similarly, we ignore points on the grid, i.e. points of the form $(n,y)$ or $(x,n)$ for some $n \in \N$ and $x,y \in \R$, because each of these points is eventually mapped to a point in $G$.
-(However, we could set an arbitrary rule for where points in $G$ are mapped to.
-For example, for $p \in G$, we could choose the closest of the four corners of the square to be the midpoint of $p$ and its destination.)
+Similarly, we ignore points on the grid, i.e. .
+\begin{equation*}
+  \setst{(x,y)}{x = n \mbox{ or } y = n \mbox{ for some } n \in \N \mbox{ and } x,y \in \R},
+\end{equation*}
+because each of these points is eventually mapped to a point in $G$
+% we cannot define the mapping for these point and still make it continuous.
 It is easier to understand the structure of the dynamical system if we group together points into squares labeled as in Figure~\ref{fig:grid} and study the dynamics of squares, instead of considering individual points.
 \begin{equation*}
   S_n \ceq \setst{\mbox{square with label } (a,b)}{\abs{a} + \abs{b} = n}.
@@ -294,10 +310,11 @@ For general cases, however, the dyanamics is considerably more complicated.
 We show several results of numerical simulations for a particular parameter, $d = 1.0$ (the choice is arbitrary), and make conjectures about properties of the system.
 However, we have no proof for any of the claims that we will make.
 
-
 The orbits of any points in a bounded set seem to be bounded.
-Figure~\ref{fig:disk10} shows that no point, which was initially in the disk of radius 10, escapes to a region far from the origin.
+Figure~\ref{fig:disk10} is the disk of radius 10 transformed by 500 iterations of the billiard map.
+This figure shows that no point escapes to a region far from the origin.
 The points remain in a region resembling a square rotated by $\pi/4$.
+Note that, since our mapping is a homeomorphism, the region in the figure is homeomorphic to a disk, even though it does not appear so.
 \begin{figure}[ht]
   \begin{center}
     \includegraphics[width=0.6\textwidth]{disk10}
@@ -310,13 +327,13 @@ The points remain in a region resembling a square rotated by $\pi/4$.
 \end{figure}
 
 In Figure~\ref{fig:strip2-3}, we see four hollow circles symmetrically placed around the kite.
-It is easy to see that these circles are mapped to each other, and in a way similar to the $d \to \infty$ case, form groups of points that have period $4$.
+It is easy to see that these circles are mapped to each other, and in a way similar to the $d \to \infty$ case, form a group of clusters of period $4$.
+Unlike the $d \to \infty$ case, however, each point in a periodic cluster may not have the same period.
 Also in Figure~\ref{fig:strip2-3}, we see eight clusters of ellipse-like regions; these are 8-periodic clusters.
 In the transformations of annular regions of larger radii, we see clusters with higher periods (Figure~\ref{fig:strip3-4-6-7}).
-Thus, periodic points of the same periods are clustered together as in the $d \to \infty$ case, but instead of squares, we have various circular shapes.
-In the plots we have seen so far, we only found periodic clusters of period $4n$.
-It is unknown whether there exists periodic clusters with a period that is not a multiple of four.
-However, for $d = 0.1$, Mayer found periodic clusters of period 3 by a numerical simulation (personal communication).
+Thus, periodic clusters, which were square-shaped in the $d \to \infty$ case, have various circular shapes.
+For $d = 0.1$, Mayer has found periodic clusters of various periods by a numerical simulation (personal communication).
+Unlike the $d \to \infty$ case, the periods are not only those of multiples of four, but also multiples of two and odd periods.
 
 \begin{figure}[ht]
   \begin{center}
@@ -362,9 +379,9 @@ These two points seem to satisfy the criteria of Li-Yorke pair.
 Also, there seem to be uncountably many such points (Figure~\ref{fig:strip2-3},\ref{fig:strip3-4-6-7}).
 If these claims are true, then the system is chaotic in the sense of Li-Yorke and also in the sense of Wiggins.
 
-In the cluster of periodic points, on the other hand, the distance between two nearby points shows almost no growth (Figure~\ref{fig:sensitivity2}).
+In the periodic clusters, on the other hand, the distance between two nearby points shows almost no growth (Figure~\ref{fig:sensitivity2}).
 In this plot, the two points we are looking at are $(4,\pi/4)$ and a nearby point.
-Note that the point $(4,\pi/4)$ is in one of the periodic cluster, while $(4,\pi/10)$ is not (Figure~\ref{fig:strip3-4-6-7}).
+Note that the point $(4,\pi/4)$ is in one of the periodic clusters, while $(4,\pi/10)$ is not (Figure~\ref{fig:strip3-4-6-7}).
 We do not yet know whether points in periodic clusters are periodic, since it is possible that the set of periodic clusters of the same period is a topologically transitive system.
 However, this numerical result suggests that points in periodic clusters are periodic points, as they were in the special case $d \to \infty$.
 
