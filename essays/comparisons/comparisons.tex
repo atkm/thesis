@@ -502,14 +502,35 @@ The following example is a system that is chaotic in Wiggins's sense but not in 
     \phi(x)_i = \phi(x+\delta)_i \mbox{ for } 0 \leq \abs{i} \leq k+1.
   \end{equation*}
   Thus, $\phi$ is continuous.
-  (Incorrect.. $\phi$ isn't continuous at $0 \in S^1$. Need to do something about it.)
+  (Incorrect.. $\phi$ isn't continuous at $0, 1-\alpha \in S^1$. Need to do something about it.
+  One idea is to cover $S^1$ with $[0,1-\alpha]$ and $[1-\alpha, 1]$.
+  )
 
   Now, we prove that $(\sigma, \bar{X})$ is chaotic in Wiggins's sense.
   The fact that $R_\alpha: X \to X$ is topologically transitive implies that $R_\alpha: \bar{X} \to \bar{X}$ is also topologically transitive (See Proposition~\ref{prop:closure-transitivity}).
-  For the system to be chaotic in Wiggins's sense, $\sigma$ needs to be sensitive to initial conditions.
+  For the system to be chaotic in Wiggins's sense, $\sigma$ needs to be sensitive to initial conditions on $\bar{X}$.
   Let $0 < \delta < 1$ be our separation constant.
+  For any given $x \in S^1$, and $\epsilon > 0$, we can find $y \in \oball{\epsilon}{x}$ by the argument we gave in proving the continuity of $\phi$.
+  Without loss of generality, we may assume that $y > x$.
+  Then, let $z$ be the midpoint of the interval $(x,y)$, and $\eta \ceq \frac{\metric{x,y}}{2}$, so that $(z-\eta, z+\eta) = (x,y)$.
+  Since $R_\alpha$ is transitive, there exists $m \geq 0$ such that 
+  \begin{equation*}
+    \itr{R_\alpha}{m}(z) \in \oball{\eta/2}{0}.
+  \end{equation*}
+  $R_\alpha$ is an isometry, so
+  \begin{equation*}
+    \oball{\eta/2}{0} \subseteq \itr{R_\alpha}{m}(z-\eta, z+\eta) 
+    = \itr{R_\alpha}{m}(x,y).
+  \end{equation*}
+  Hence, $0 \in \itr{R_\alpha}{m}(x,y)$.
+  It follows that $\phi(x)_m \neq \phi(y)_m$.
+  Therefore,
+  \begin{equation*}
+    \metric{\itr{\sigma}{m}(x), \itr{\sigma}{m}(y)} \geq 1 > \delta.
+  \end{equation*}
+  Thus, $(\sigma, \bar{X})$ is chaotic in Wiggins's sense.
   
-  Clearly, for each $x,y \in \Sigma$, there are infinitely many $n$ such that 
+  By the same argument in proving \sdic, we see that, for each $x,y \in \bar{X}$, there are infinitely many $n$ such that 
   \begin{equation*}
     \metric{\itr{\sigma}{n}(x),\itr{\sigma}{n}(y)} > 0.
   \end{equation*}
