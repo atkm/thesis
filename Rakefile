@@ -48,7 +48,7 @@ end
 
 # create main.tex
 task :genmain do
-  main_tmpl_head = "\\documentclass[11pt,twoside]{reedthesis}
+  main_tmpl_head = "\\documentclass[12pt,twoside]{reedthesis}
 \\usepackage{xthesis}
 \\graphicspath{{./images/}}
   
@@ -155,6 +155,7 @@ task :make do
   system('xelatex main.tex')
   system('bibtex main')
   system('makeindex main')
+  system('xelatex main.tex')
   system('xelatex main.tex')
   system('xelatex main.tex')
 end
