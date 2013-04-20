@@ -6,8 +6,8 @@
 \begin{document}
 \chapter{Topological Entropy}
 \label{chap:entropy}
-In the current chapter, we introduce another widely accepted notion chaos that is defined using topological entropy.
-The notion was first introduced by \citet{akm} as a measure of complexity of a topological dynamical system, mimicking the measure-theoretic notion of entropy.
+In the current chapter, we introduce another widely accepted notion of chaos that is defined using the topological equivalent of entropy.
+The notion of topological entropy was first introduced by \citet{akm} as a measure of complexity of a topological dynamical system, mimicking the measure-theoretic notion of entropy.
 Roughly, topological entropy measures the extent to which the mapping scatters points around the space.
 %exponential growth rate of the number of distinguishable orbits as time advances. (Scholarpedia)
 %``The topological entropy is indeed a measure of the absolute information content of a transformation, or, equivalently, of the extent to which the transformation scatters points around the space $X$.'' (Petersen)
@@ -16,7 +16,7 @@ Throughout this section, $(X,d)$ is a compact metric space.
 $\log$ is the logarithm base $e$ (the choice of base is arbitrary).
 
 \section{Definition and Properties}
-Topological entropy of a system is defined using open covers of a space. 
+The topological entropy of a system is defined using open covers of a space. 
 The material in this section is from \citep{akm}, unless stated otherwise.
 \begin{definition}
   (Join of open covers)
@@ -101,7 +101,7 @@ Now, we state the definition of chaos that employs topological entropy.
 \end{definition}
 %%%
 
-In order to prove the existence of the limit in the definition of $h(F, \alpha)$, we need to know a few things about $h(\alpha)$.
+In order to prove the existence of the limit in the definition of $h(F, \alpha)$, we need to use a few properties of $h(\alpha)$.
 We first prove some properties of $N(\alpha)$.
 \begin{proposition}
   (Properties of $N(\alpha)$)
@@ -295,10 +295,10 @@ $h(F, \alpha)$ has the following properties.
   \end{proof}
 \end{proposition}
 
-As we claimed at the beginning of this chapter, the topological entropy is invariant under topological conjugacy.
+As we claimed at the beginning of this chapter, the topological entropy is a topological invariant.
 \begin{theorem}
   (Topological Entropy is an Invariant of Topological Conjugacy)
-  Let $X$ and $Y$ be metric spaces, and $F: X \to X$ and $G: Y \to Y$ are continuous mappings.
+  Let $X$ and $Y$ be metric spaces, and $F: X \to X$ and $G: Y \to Y$ be continuous mappings.
   Suppose $G\circ \phi = \phi \circ F$.
   %If $\phi$ is injective, then $h(F) \geq h(G)$.
   If $\phi$ is surjective, then $h(G) \leq h(F)$.
@@ -339,7 +339,7 @@ As we claimed at the beginning of this chapter, the topological entropy is invar
 \end{corollary}
 %%%
 
-The definition of topological entropy calls for computation of $h(F,\alpha)$ for all possible open covers of $X$, and thus, computing $h(F)$ using the definition is untenable.
+The definition of topological entropy calls for computation of $h(F,\alpha)$ for all possible open covers of $X$, so computing $h(F)$ using the definition is untenable.
 Since the space is compact, we only need to consider open covers whose cardinalities are finite, but the number of such coverings is still large.
 However, it is possible to reduce the computation to a single sequence of open covers called a \textit{refining sequence}.
 Roughly, a refining sequence is a sequence of open covers that become finer and finer.
@@ -350,7 +350,7 @@ Using a refining sequence vastly simplifies the computation of $h(F)$.
   A sequence $\seq{\alpha_n}{\infty}{n = 1}$ of open covers of a compact space $X$ is called a \textit{refining sequence}, if it satisfies the following two criteria:
   \begin{enumerate}[(i)]
     \item $\alpha_n < \alpha_{n+1}$ for each $n\geq 1$
-    \item if $\beta$ is an open cover of $X$, then there exists $m$ such that $\beta < \alpha_m$.
+    \item If $\beta$ is an open cover of $X$, then there exists $m$ such that $\beta < \alpha_m$.
   \end{enumerate}
 \end{definition}
 %%%
@@ -452,12 +452,12 @@ Finally, we construct a refining sequence for an arbitrary compact metric space.
   \begin{proof}
     For each $n \in \N^+$, define
     \begin{equation*}
-      \mathcal{\alpha}_n \ceq \setst{\oball{1/n}{x}}{x \in X}.
+      \alpha_n \ceq \setst{\oball{1/n}{x}}{x \in X}.
     \end{equation*}
-    Clearly, $\mathcal{\alpha}_n$ is an open cover of $X$.
+    Clearly, $\alpha_n$ is an open cover of $X$.
     We have
     \begin{equation*}
-      \mathcal{\alpha}_n < \mathcal{\alpha}_{n+1}
+      \alpha_n < \alpha_{n+1}
       \quad\mbox{and}\quad
       \lim\limits_{n \to \infty} \diam(\alpha_n) = 0,
     \end{equation*}
@@ -467,7 +467,7 @@ Finally, we construct a refining sequence for an arbitrary compact metric space.
 We will use this result extensively in the following sections.
 
 
-\section{The Topological Entropy of The Logistic Map}
+\section{Topological Entropy of the Logistic Map}
 %%%
 We saw in the introduction that $L_u$, the logistic map, which is defined as
 \begin{align*}
@@ -475,9 +475,9 @@ We saw in the introduction that $L_u$, the logistic map, which is defined as
   L_\mu&: x \mapsto \mu x (1-x),
 \end{align*}
 is chaotic when $\mu = 4$.
-As a demonstration of topological entropy, we will compute $h(L_\mu)$ for $\mu = 4$.
+%As a demonstration of topological entropy, we will compute $h(L_\mu)$ for $\mu = 4$.
 We expect that $h(L_4)$ is positive, and as we will see, this is indeed the case. 
-We first show that $L_4$ is topologically conjugate to the tent map, defined as
+We first show that $L_4$ is topologically conjugate to the tent map, which we first introduced in Chapter~\ref{chap:liyorke}, defined as
 \begin{equation*}
   T(x) = 
   \begin{cases}
@@ -510,7 +510,8 @@ and for any $x$ in $[1/2,1]$,
   &= \sin^2(\pi - \pi x) \\
   &= \sin^2(\pi x).
 \end{align*}
-Therefore, $L_4 \circ \phi = \phi \circ T$ on $I$, so that, by Theorem~\ref{thm:ent-conj}, we obtain $h(L_4) = h(T)$.
+Therefore, $L_4 \circ \phi = \phi \circ T$ on $I$.
+By Theorem~\ref{thm:ent-conj}, we obtain $h(L_4) = h(T)$.
 Our next task is to construct a refining sequence $\set{\alpha_n}$ of $I$.
 Then, we would obtain $h(T)$ by Theorem~\ref{thm:t-ent-ref-seq}.
 Our construction is as follows.
@@ -526,7 +527,7 @@ This recursive definition can be stated more explicitly as
   &= \bigcup\limits_{A \in \alpha_{n-1}} \paren{ \setst{J}{T(J) = I, J \subseteq [0,1/2]} \cup \setst{J}{T(J) = I, J \subseteq [1/2,1]}}.
 \end{align*}
 The expression is motivated by the fact that the tent map is a two-to-one mapping, except for when $x = \frac{1}{2}$.
-For each $x \in I - \set{\frac{1}{2}}$, the preimage of $x$ is given by the formula
+For each $x \in I \bs \set{\frac{1}{2}}$, the preimage of $x$ is given by the formula
 \begin{equation*}
   T^{-1}(x) = \set{\frac{1}{2} x, 1 - \frac{1}{2} x}.
 \end{equation*}
@@ -568,8 +569,8 @@ Therefore,
 \end{equation*}
 
 \section{Topological Entropy of Other Maps}
-It turns out that the topological entropy of full one-sided or two-sided shift with $n$ symbols is $\log n$ \citep[p.177]{walters}.
-Since the logistic map is topologically conjugate (by a homeomorphism) to the full one-sided shift of two symbols $\set{0,1}$, our result from Chapter~\ref{chap:symbolic} agrees with this property of shift systems.
+The topological entropy of full one-sided or two-sided shift with $n$ symbols is known to be $\log n$ \citep[p.177]{walters}.
+Since the logistic map is conjugate (by a homeomorphism) to the full one-sided shift of two symbols $\set{0,1}$, our result from Chapter~\ref{chap:symbolic} agrees with this property of shift systems.
 One important observation about topological entropy is that, even if a mapping has positive topological entropy, its behavior may be complicated only locally.
 \begin{proposition}
   Let $F: X \to X$ be continuous, and $Y$ be a closed (hence compact), invariant subset of $X$.
@@ -608,6 +609,7 @@ For example, consider extending the domain of the tent map beyond $[0,1]$.
   Since $\tilde{T}_{|[0,1]}(x) = T(x)$, we have $h(\tilde{T}_{|[0,1]}(x)) = \log 2$. 
   By Proposition~\ref{prop:local-entropy}, $h(T) \geq \log 2 > 0$.
   Clearly, $\tilde{T}: \R \to \R$ is not topologically transitive, but has positive topological entropy.
+  $\square$
 \end{example}
 %%%
 We defined a mapping to be chaotic if it has positive topological entropy.
@@ -688,7 +690,7 @@ Another example is a homeomorphism from a circle to itself.
   \end{proof}
 \end{proposition}
 Also, a homeomorphism from a compact interval to itself has zero topological entropy \citep[p.180]{walters}.
-Thus, we have shown that some mappings, we expect to be not chaotic, indeed have zero topological entropy. 
+Thus, these mappings that we expect to be non-chaotic indeed have zero topological entropies. 
 However, as we will see in Chapter~\ref{chap:comparison}, mappings with zero topological entropy can be chaotic in the sense of Li-Yorke, and exhibit complex behaviors.
 
 \bibliographystyle{../../bibliography/pjgsm}

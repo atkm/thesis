@@ -10,14 +10,14 @@
 %\markboth{Introduction}{Introduction}
 \label{chap:intro}
 As mentioned in the preliminaries, this exposition focuses on topological dynamical systems.
-In particular, we are interested in \textit{chaotic dynamical systems}--systems that exhibit erratic behaviors with sensitive dependence on initial conditions.
-To illustrate these terms, we study the logistic map.
-We do not formally defined what it means for a system to be \textit{chaotic}.
-In fact, we never will.
-We instead look for a definition of chaos that makes sense through studying different definitions and examples.
-The present chapter aims to develop descriptive, intuitive ideas of how chaos should be defined, and we will let go of mathematical rigor until the next chapter.
-Next, we proceed to the historical the origin of chaos.
-At last, I discuss how we will go about defining the term 'chaos.'
+In particular, we are interested in \textit{chaotic dynamical systems}.
+To illustrate what it means to be a system to be \textit{chaotic}, we study the logistic map.
+We do not formally define what it means for a system to be chaotic.
+%In fact, we never will.
+%We instead look for a definition of chaos that makes sense through studying different definitions and examples.
+The present chapter aims to develop descriptive, intuitive ideas of how chaos should be defined, while we let go of mathematical rigor until the next chapter.
+%Next, we proceed to the historical the origin of chaos.
+%At last, I discuss how we will go about defining the term 'chaos.'
 %An approximation of a differential equation, which is how we treat $L_\mu$ in the current section, is one way to think about some topological dynamical systems.
 %However, this characterization of a topological dynamical system fails for most systems that we will see, since we do not require our mappings to be differentiable.
 
@@ -97,10 +97,10 @@ As long as $\mu > 0$, however, the asymptotic behavior of the solution does not 
 \end{figure}
 
 Next, we study the solution of the discretized model \pref{eqn:logisticsoln} in the same manner.
-For $\mu = 1$, solution curves exhibit similar behavior as the exact solution (Figure~\ref{fig:logistic1-2}).
-The stable state is $x = 0$, instead of $x = 1$, which was the stable state for \pref{eqn:ldesoln}, but for any initial value, the solution curve converges to the stable state.
+For $\mu = 1$, solution curves exhibit similar behaviors as the exact solution (Figure~\ref{fig:logistic1-2}).
+The stable state has changed to $x = 0$, but for any initial value, the solution curve converges to the stable state.
 When $\mu = 2$, the stable state changes to $x = 0.5$.
-We see that \pref{eqn:logisticsoln} does not behave in the same way that \pref{eqn:ldesoln} does.
+Thus, we see that \pref{eqn:logisticsoln} does not behave in the exact same manner as \pref{eqn:ldesoln} does.
 %\begin{minipage}[t]{0.5\linewidth} <- I could use this.
 \begin{figure}[p]
     \centering
@@ -135,12 +135,12 @@ We see that \pref{eqn:logisticsoln} does not behave in the same way that \pref{e
   \label{fig:logistic4}
 \end{figure}
 %%%
-For higher values of $\mu$, the difference is even more conspicuous.
+For higher values of $\mu$, the contrast between the two solutions is even more conspicuous.
 When $\mu = 3$, the dynamics is almost periodic, but not quite so (Figure~\ref{fig:logistic3}).
-The behavior of the map when $\mu = 4$ is wildly different (Figure~\ref{fig:logistic4}).
+The dynamics for $\mu = 4$ is wildly different (Figure~\ref{fig:logistic4}).
 Every solution curve moves between 0 and 1, and does not settle down to a periodic behavior.
-Moreover, it seems the solution curves are not even asymptotically periodic.
-One might think that this is just a transient behavior, and the solution curves will converge to some values, or at least show some periodic behaviors if we wait long enough.
+Moreover, it seems that the solution curves are not even asymptotically periodic.
+One might think that this is just a transient behavior, and the solution curves will converge to some values, or at least to some periodic behaviors if we wait long enough.
 However, even after 200 or 500 iterations, the logistic map keeps behaving in the same manner (Figure~\ref{fig:chaotic_map}).
 This is chaotic.
 \begin{figure}[p]
@@ -157,12 +157,14 @@ This is chaotic.
 
 This kind of complex behavior arises from the logistic map, one of \textit{the simplest} non-linear equations.
 The logistic map for $\mu = 4$ is also known to exhibit \textit{sensitive dependence on initial conditions}, or sensitivity for short.
-Sensitivity is shown to be a condition that causes the complicated dynamics of the logistic map.
-Also, we will eventually identify the term 'a chaotic map' with a mapping that exhibits sensitivity.
+Sensitivity is considered to be a condition that causes the complicated dynamics of the logistic map.
+%Also, we will eventually identify the term ``a chaotic map'' with a mapping that exhibits sensitivity.
 To see how sensitivity may bring about complex dynamics, consider the orbits of $x_0 = 0.2$ and a nearby point $y_0 = 0.2 + \epsilon$, where $\epsilon$ is a small positive real number.
 Since the two orbits start out close, they remain in the vicinity of each other initially.
-However, the two orbits eventually separate from each other, and show drastically different behaviors (Figure~\ref{fig:logistic_sensitivity}).
+However, the two orbits eventually separate from each other, and the distance between them keep growing (Figure~\ref{fig:logistic_sensitivity}).
 Thus, a minuscule change in the initial value causes a significant difference in the orbit.
+This is not the end of the story.
+After the distance between the two reached its maximum, they come closer and closer again, and repeat this process in an aperiodic manner.
 \begin{figure}[p]
   \centering
   \includegraphics[width=0.75\textwidth]{logistic_map_sensitivity_x02_mu4}
@@ -197,8 +199,8 @@ Thus, a minuscule change in the initial value causes a significant difference in
 %  F(x(n)) \approx x(n) + \Delta t \cdot G(x(n)).
 %\end{equation*}
 
-As it turns out, the logistic map is chaotic in all of the four definitions that we will see in later chapters.
-The logistic map has other interesting properties.
+As it turns out, the logistic map is chaotic in all of the four definitions that we will see.
+The logistic map has other interesting properties, as well.
 Expositions on the logistic map can be found in many sources.
 See \citep{may1, may2, devaney}, for example.
 %%%
