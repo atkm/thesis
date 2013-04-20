@@ -182,4 +182,5 @@ end
 task :clean do
   system('rm main.aux main.log main.dvi main.bbl main.blg main.idx main.ind main.ilg main.toc main.lof main.lot')
   system('rm src/*.aux')
+  system('rm src/*.tex')
 end
