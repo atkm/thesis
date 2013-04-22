@@ -112,16 +112,18 @@ These properties of the underlying space are inherited to the space of infinite 
         Define $t$ by
         \begin{equation*}
           t_i = \begin{cases}
-            &s_i \mbox{ if } i < k  \\
+            &s_i \mbox{ if } i \leq k  \\
             &1 - s_i \mbox{ otherwise.}
           \end{cases}
         \end{equation*}
-        Thus, $t$ agrees with $s$ on the first $k$ symbols, and differs after the $k$-th symbol.
+        Thus, $t$ agrees with $s$ on the first $k+1$ symbols, and differs after the $k+1$-th symbol.
         $t$ is clearly in $\Sigma$.
         Note that
         \begin{equation*}
-          d(s,t) = \sum\limits_{i = k}^{\infty} \frac{1}{2^i}
-          = ,
+          d(s,t) = \sum\limits_{i = k+1}^{\infty} \frac{1}{2^i}
+          = \sum\limits_{i = 0}^{\infty} \frac{1}{2^i} - \sum\limits_{i = 0}^{k} \frac{1}{2^i},
+          = 2 - (2 - \frac{1}{2^{k}})
+          = 2^{-k} < \epsilon.
         \end{equation*}
         so $t \in \oball{\epsilon}{s}$.
         Hence, $\Sigma$ is perfect.
