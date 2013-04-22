@@ -2,7 +2,7 @@
 # encoding: utf-8
 # srcprep; genmain; make; all
 # global. files to work with.
-files = ['abstract','prelims','introduction','devaney','li_yorke','t-entropy','symbolic','billiards', 'comparisons']
+files = ['abstract','prelims','introduction','devaney','li_yorke','symbolic','t-entropy','billiards','comparisons']
 appendix = ['sarkovskii','ly_thm']
 #appendix = ['sarkovskii','other_defns']
 
@@ -155,7 +155,6 @@ task :make do
   system('xelatex main.tex')
   system('bibtex main')
   system('makeindex main')
-  system('xelatex main.tex')
   system('xelatex main.tex')
   system('xelatex main.tex')
 end
