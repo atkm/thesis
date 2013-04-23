@@ -21,13 +21,13 @@ We prove that $(S^1, D)$ is conjugate to the (full) \textit{one-sided shift} ($\
     s = \set{ s_0 s_1 s_2 \cdots s_n \cdots },
   \end{equation*}
   where $s_i \in S$.
-  (We will often denote the $i$-th symbol of $s$ by $s_i$.)
   We take a finite number of integers, $\set{1, \ldots, n}$ as our symbols.
   Also, we put the absolute value metric on $S$.
   Define the metric on $\Sigma$ as follows:
   \begin{equation*}
     d(a,b) \ceq \sum\limits_{i = 0}^{\infty} \frac{\abs{a_i - b_i}}{2^i}.
   \end{equation*}
+  Thus, two infinite sequences are close to each other if they agree on a long frontal block.
   The metric induces the topology on $\Sigma$.
   Let $\sigma: \Sigma \to \Sigma$ defined as:
   \begin{equation*}
@@ -35,16 +35,21 @@ We prove that $(S^1, D)$ is conjugate to the (full) \textit{one-sided shift} ($\
     \mapsto 
     \set{ s_1 s_2 \cdots s_n \cdots }.
   \end{equation*}
-  We call the dynamical system ($\Sigma$, $\sigma$) an \textit{one-sided shift}.
+  We call the dynamical system ($\Sigma$, $\sigma$) the \textit{full one-sided shift}.
+  If $X$ is a (appropriately chosen) subset of $\Sigma$, then $(X, \sigma)$ is called a \textit{subshift}.
   \index{one-sided shift}
 \end{definition}
+For the definition of a subshift to make sense, a $X$ must be an invarient set of $\sigma$, but it is not the only requirement.
+Subshifts provide rich examples of dynamical systems, but we do not discuss them here.
+For discussions on subshifts, refer to \citet{kitchens} and \citet{lind}.
 %%%
-Before we proceed further, we verify the validity of the definition.
+
+Before we proceed further, we verify the validity of the definition of an one-sided shift.
 \begin{proposition}
   $d$ is a metric.
   \label{prop:symb-metric}
   \begin{proof}
-    Clearly, $d(a,b) \geq 0$ for each $a,b \in \Sigma$, and if $a = b$ then $d(a,b) = 0$, which implies that $a_i = b_i$ for each $i$
+    Clearly, $d(a,b) \geq 0$ for each $a,b \in \Sigma$, and if $a = b$ then $d(a,b) = 0$, which implies that $a_i = b_i$ for each $i$.
     Hence $a = b$.
     We are left to prove the triangle inequality.
     Suppose $a,b,c \in \Sigma$.
@@ -75,13 +80,13 @@ Under our assumption that $S = \set{0,1}$, we can bound the distance between two
     \begin{equation*}
       d(s,t) 
       \leq \sum\limits_{i = k+1}^{\infty} \frac{1}{2^i}
-      = \sum\limits_{i = 0}^{\infty} \frac{1}{2^i} - \sum\limits_{i = 0}^{k} \frac{1}{2^i},
+      = \sum\limits_{i = 0}^{\infty} \frac{1}{2^i} - \sum\limits_{i = 0}^{k} \frac{1}{2^i}
       = 2 - (2 - \frac{1}{2^{k}})
       = 2^{-k}.
     \end{equation*}
   \end{proof}
 \end{proposition}
-Conversely, we can infer the length of a block on which two sequences agree from the distance between the two.
+Conversely, we can infer from the distance between the two the length of a block on which two sequences agree.
 \begin{proposition}
   Let $s, t \in \Sigma$.
   If $d(s,t) < 2^{-k}$, then $s_i = t_i$ for $0 \leq i \leq k$.
@@ -222,40 +227,51 @@ Finally, we show that $(X,\sigma)$ is chaotic.
     Since the choice of $s$ was arbitrary, we conclude that $P(\sigma)$ is dense in $\Sigma$.
 
     Next, we show that $\sigma$ is transitive.
+    Fix $s,t \in \Sigma$.
+    Also fix $\epsilon > 0$ and assume that $2^{-k} < \epsilon$ for some $k$.
+    Consider a sequence
+    \begin{equation*}
+      s' = s_0 \cdots s_k t_0 t_1 t_2 \cdots.
+    \end{equation*}
+    Since $s'$ agrees $s$ for the first $k+1$ symbols, $s' \in \oball{\epsilon}{s}$.
+    Note that we have
+    \begin{equation*}
+      \itr{\sigma}{k+1}(s') = t.
+    \end{equation*}
+    Hence, $\sigma$ is transitive.
   \end{proof}
 \end{theorem}
+%%%
 It follows from Theorem~\ref{thm:silverman} that $(X, \sigma)$ is also sensitive to initial conditions.
 However, we present a direct proof below, as symbolic dynamics provides a new perspective to our understanding of sensitive dependence on initial conditions.
 \begin{proposition}
   The full one-sided shift is sensitive.
   \begin{proof}
     Fix $0 < \delta < 1$, the separation constant.
+    Let $s$ be an arbitrary member of $\Sigma$, and for any $\epsilon > 0$, let $\oball{\epsilon}{s}$ be a neighborhood.
+    Let $t \neq s$ be any point in $\oball{\epsilon}{s}$.
+    We may suppose that $s_i \neq t_i$ for some $n \geq 0$.
+    Then,
+    \begin{equation*}
+      \metric{\itr{\sigma}{n}(s), \itr{\sigma}{n}(t)} \geq 1 > \delta.
+    \end{equation*}
   \end{proof}
 \end{proposition}
-
-
 %%%
 
 \section{The Doubling Map is Chaotic}
-In this section, we use $S = \set{0,1}$, so that an element of $\Sigma$ is an infinite sequence of 0 and 1.
-To gain some insights of the dynamics of the one-sided shift, we shall spend some time on discussing what $d$ and $\sigma$ are.
-If $S = \set{0,1}$, then the metric on $d$ can be written as
-\begin{equation*}
-  d(a,b) = \sum\limits_{i = 0}^{\infty} \frac{\delta_{i}}{2^i},
-\end{equation*}
-where
-\begin{equation*}
-  \delta_i = 
-  \begin{cases}
-    &0 \quad \mbox{ if } a_i = b_i  \\
-    &1 \quad \mbox{ otherwise.}
-  \end{cases}
-\end{equation*}
-Thus, two infinite sequences are ``close'' to each other if they agree on a long frontal block.
-We think of an infinite sequence in $\Sigma$ as a binary expansion of some real number.
+The key to construct a conjugacy between $(S^1,D)$ and $(\Sigma, \sigma)$ is to think of an infinite sequence in $\Sigma$ as the binary expansion of some real number.
 In this scheme, $\sigma$ corresponds to multiplication of a binary number by $2$.
-
+Based on this observation, we define the homeomorphism
+\begin{proposition}
+  The doubling map on the unit circle is conjugate to the full one-sided shift.
+  \begin{proof}
+  \end{proof}
+\end{proposition}
+%%%
 As a consequence, ($S^1$, $D$) possesses any topological property of ($\Sigma$, $\sigma$), and vice versa.
+
+On a related note, the logistic map, tent map, and doubling maps are all conjugate to the \textit{one-sided shift}, an analogue of the two-sided shift for non-invertible maps (the logistic map is not one-to-one).
 
 Let us make a few general remarks on symbolic dynamics.
 In this chapter, we only use an one-sided shift, but we can also define the \textit{two-sided shift} by replacing $\Sigma$ with a space of infinite \textit{bi-infinite} sequences (i.e. sequences of the form $s = \set{ \cdots s_{-n} \cdots s_{-1} * s_0 \cdots s_n \cdots }$).
@@ -276,7 +292,6 @@ The two-sided shift, which we introduced in the previous section, is used for an
 \begin{definition}
   One-sided shift.
 \end{definition}
-On a related note, the logistic map, tent map, and doubling maps are all conjugate to the \textit{one-sided shift}, an analogue of the two-sided shift for non-invertible maps (the logistic map is not one-to-one).
 %%%
 \begin{definition}
   (Chaos in the sense of Block-Coppel \citep{blockcoppel})
