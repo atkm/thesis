@@ -260,11 +260,28 @@ However, we present a direct proof below, as symbolic dynamics provides a new pe
 %%%
 
 \section{The Doubling Map is Chaotic}
-The key to construct a conjugacy between $(S^1,D)$ and $(\Sigma, \sigma)$ is to think of an infinite sequence in $\Sigma$ as the binary expansion of some real number.
-In this scheme, $\sigma$ corresponds to multiplication of a binary number by $2$.
+The key to construct a semi-conjugacy between $(S^1,D)$ and $(\Sigma, \sigma)$ is to think of an infinite sequence in $\Sigma$ as the binary expansion of some real number.
+In this scheme, $\sigma$ corresponds to multiplication of a binary number by $2$ (Figure~\ref{fig:doubling}).
+\begin{figure}[ht]
+  \centering
+  \begin{tikzpicture}[scale=3.2]
+    \draw[->] (-0.2,0) -- (1.2,0) node[right] {$x$};
+    \draw[->] (0,-0.2) -- (0,1.2) node[above] {$D(x)$};
+    \foreach \x/\xtext in {0.5/\frac{1}{2}, 1/1}
+    \draw[shift={(\x,0)}] (0pt,1pt) -- (0pt,-1pt) node[below] {$\xtext$};
+    \foreach \y/\ytext in {0.5/\frac{1}{2}, 1/1}
+    \draw[shift={(0,\y)}] (1pt,0pt) -- (-1pt,0pt) node[left] {$\ytext$};
+
+    \draw[domain=0:0.5] plot (\x,{2*\x}) node[below right] {};
+    \draw[domain=0.5:1] plot (\x,{2*\x - 1}) node[below right] {};
+  \end{tikzpicture}
+  \label{fig:doubling}
+  \caption{The doubling map, $D(x)$.}
+\end{figure}
+
 Based on this observation, we define the homeomorphism
 \begin{proposition}
-  The doubling map on the unit circle is conjugate to the full one-sided shift.
+  The full one-sided shift is semi-conjugate to the doubling map on the unit circle.
   \begin{proof}
   \end{proof}
 \end{proposition}
@@ -276,7 +293,7 @@ On a related note, the logistic map, tent map, and doubling maps are all conjuga
 Let us make a few general remarks on symbolic dynamics.
 In this chapter, we only use an one-sided shift, but we can also define the \textit{two-sided shift} by replacing $\Sigma$ with a space of infinite \textit{bi-infinite} sequences (i.e. sequences of the form $s = \set{ \cdots s_{-n} \cdots s_{-1} * s_0 \cdots s_n \cdots }$).
 An one-sided shift is used to study a non-invertible maps, while two-sided shift is used to study an invertible map.
-In the two-sided shift, the shift map is also injective.
+For the two-sided shift, the shift map is also injective.
 It is easy to see that the full two-sided shift $(\Sigma, \sigma)$ is also chaotic in Devaney's sense.
 \citet{wiggins} has a exposition on the dynamics of the horseshoe map using symbolic dynamics.
 The horseshoe map has a geometrically complicated dynamics.
@@ -287,14 +304,25 @@ An one-sided shift can be similarly used to study the dynamics of a mapping.
 %%%
 
 \section{Defining Chaos Using Symbolic Dynamics}
-The two-sided shift, which we introduced in the previous section, is used for an invertible map (i.e. a function with an inverse).
 \citet{blockcoppel} defines chaos using the one-sided shift, a symbolic dynamics used to encode a non-invertible mapping.
-\begin{definition}
-  One-sided shift.
-\end{definition}
 %%%
 \begin{definition}
   (Chaos in the sense of Block-Coppel \citep{blockcoppel})
+  Let $X$ be a metric space, and $F$ be a continuous map.
+  Suppose there exists an invariant compact subset $Y \subseteq X$ and a positive integer $n$ such that $\itr{F}{n}_{|Y}$ is semi-conjugate to the full one-sided shift $(\Sigma, \sigma)$.
+  Then, we say that $(X,F)$ is \textit{chaotic in the sense of Block-Coppel}.
+  \begin{center}
+    \begin{tikzpicture}[node distance=2cm, auto]
+      \node (x1) {$Y$};
+      \node (x2) [right of=x1] {$Y$};
+      \node (y1) [below of=x1] {$\Sigma$};
+      \node (y2) [below of=x2] {$\Sigma$};
+      \draw[->] (x1) to node {$F$} (x2);
+      \draw[->] (x1) to node[swap] {$\phi$} (y1);
+      \draw[->] (y1) to node[swap] {$\sigma$} (y2);
+      \draw[->] (x2) to node {$\phi$} (y2);
+    \end{tikzpicture}
+  \end{center}
   \label{defn:blockcoppel}
   \index{definition of chaos!Block-Coppel}
 \end{definition}

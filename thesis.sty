@@ -35,15 +35,18 @@
 % \usepackage{newtxtext,newtxmath} %this doesn't like mathtools
 
 % no-xelatex font
-%%\usepackage{kpfonts} % nice!
-\renewcommand*\familydefault{\sfdefault}
-\usepackage[scaled]{helvet}
-\linespread{1.05} 
+%\usepackage{kpfonts} % nice!
+%\let\colonapprox\undefined
+%\let\colonsim\undefined
+
 \usepackage[T1]{fontenc}
+\renewcommand*\familydefault{\sfdefault}
+\usepackage{helvet}
 %\usepackage{lmodern}
+\linespread{1.05} 
 % disable ligature
-\usepackage{microtype}
-\DisableLigatures{encoding = *, family = * }
+%\usepackage{microtype}
+%\DisableLigatures{encoding = *, family = * }
 \usepackage{CJKutf8} % enable japanese in latex
 
 % Use NatBiB (the options are default)
