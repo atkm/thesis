@@ -7,13 +7,11 @@
 \chapter{Symbolic Dynamics}
 \label{chap:symbolic}
 Recall that in Chapter~\ref{chap:devaney}, we postponed the proof that the doubling map is chaotic.
-In the present chapter, we complete the proof, and we introduce the technique called the \textit{symbolic dynamics} as we proceed through the proof.
-Then, we introduce a definition of chaos, which is motivated by symbolic dynamics, by Block and Coppel.
+In the present chapter, we introduce the technique called the \textit{symbolic dynamics}, which we use to complete the proof.
+Then, we present a definition of chaos by Block and Coppel, which is motivated by symbolic dynamics.
 %%%
 
 \section{The Shift Map}
-We prove that $(S^1, D)$ is conjugate to the (full) \textit{one-sided shift} ($\Sigma$, $\sigma$), defined as follows.
-
 \begin{definition}
   (One-sided shift)
   Let $S$ be a set of finite number of symbols, and let $\Sigma$ be a set of bi-infinite sequences of the form
@@ -211,7 +209,7 @@ Now we show that $\sigma$ is continuous and surjective.
 %%%
 Finally, we show that $(X,\sigma)$ is chaotic.
 \begin{theorem}
-  \citep{sternberg}
+  %\citep{sternberg}
   The full one-sided shift is chaotic in Devaney's sense.
   \begin{proof}
     First, we prove that the dense periodic points of $\sigma$ is dense in $\Sigma$.
@@ -258,10 +256,10 @@ However, we present a direct proof below, as symbolic dynamics provides a new pe
   \end{proof}
 \end{proposition}
 %%%
+COMMENTS.
 
 \section{The Doubling Map is Chaotic}
-The key to construct a semi-conjugacy between $(S^1,D)$ and $(\Sigma, \sigma)$ is to think of an infinite sequence in $\Sigma$ as the binary expansion of some real number.
-In this scheme, $\sigma$ corresponds to multiplication of a binary number by $2$ (Figure~\ref{fig:doubling}).
+The end result of this section is to prove that $(\Sigma, \sigma)$ is semi-conjugate to $(S^1, D)$, which implies that the doubling map is chaotic in Devaney's sense.
 \begin{figure}[ht]
   \centering
   \begin{tikzpicture}[scale=3.2]
@@ -271,35 +269,93 @@ In this scheme, $\sigma$ corresponds to multiplication of a binary number by $2$
     \draw[shift={(\x,0)}] (0pt,1pt) -- (0pt,-1pt) node[below] {$\xtext$};
     \foreach \y/\ytext in {0.5/\frac{1}{2}, 1/1}
     \draw[shift={(0,\y)}] (1pt,0pt) -- (-1pt,0pt) node[left] {$\ytext$};
-
-    \draw[domain=0:0.5] plot (\x,{2*\x}) node[below right] {};
-    \draw[domain=0.5:1] plot (\x,{2*\x - 1}) node[below right] {};
+    %%% graphs
+    \draw[domain=0:0.492] plot (\x,{2*\x}) node[below right] {};
+    \draw[domain=0.5:0.983] plot (\x,{2*\x - 1}) node[below right] {};
+    \draw[] (0.99,0.99) circle (0.6pt);
+    \draw[] (0.51,1) circle (0.6pt);
   \end{tikzpicture}
   \label{fig:doubling}
   \caption{The doubling map, $D(x)$.}
 \end{figure}
-
-Based on this observation, we define the homeomorphism
-\begin{proposition}
-  The full one-sided shift is semi-conjugate to the doubling map on the unit circle.
-  \begin{proof}
-  \end{proof}
-\end{proposition}
 %%%
-As a consequence, ($S^1$, $D$) possesses any topological property of ($\Sigma$, $\sigma$), and vice versa.
-
-On a related note, the logistic map, tent map, and doubling maps are all conjugate to the \textit{one-sided shift}, an analogue of the two-sided shift for non-invertible maps (the logistic map is not one-to-one).
+The key to construct a semi-conjugacy between $(S^1,D)$ and $(\Sigma, \sigma)$ is to think of an infinite sequence in $\Sigma$ as the binary expansion of some real number.
+As usual, we represent $S^1$ by an interval $[0,1)$, and for each $x \in S^1$, we consider its binary expansion, which is %]
+\begin{equation*}
+  x = \sum\limits_{i = 1}^{\infty} \frac{s_i}{2^i}.
+\end{equation*}
+Then, notice that
+\begin{equation*}
+  D(x) = 2 \cdot \sum\limits_{i = 1}^{\infty} \frac{s_i}{2^i}
+  = \sum\limits_{i = 1}^{\infty} \frac{s_i}{2^{i-1}}
+  = s_1 + \sum\limits_{i = 2}^{\infty} \frac{s_i}{2^{i-1}}
+  = \sum\limits_{i = 2}^{\infty} \frac{s_i}{2^{i-1}}
+  \quad(\mod{1}).
+\end{equation*}
+Therefore, if we represent each point in $S^1$ by its binary expansion, we can describe $D$ as follows
+\begin{equation*}
+  D: 0.s_1 s_2 s_3 \cdots \mapsto 0.s_2 s_3 \cdots,
+\end{equation*}
+which remind us of the shift map.
+Motivated by this observation, we define a mapping $\phi: \Sigma \to S^1$, which assigns
+\begin{equation*}
+  \sum\limits_{i = 1}^{\infty} \frac{s_i}{2^i} \in S^1.
+\end{equation*}
+to
+\begin{equation*}
+  s_1 s_2 s_3 \cdots \in \Sigma.
+\end{equation*}
+By construction, $\phi$ is surjective.
+On the other hand, not every member of $S^1$ has a unique binary expansion. 
+For example, $\frac{1}{2}$ has two expansions, $0.1000\ldots$ and $0.0111\ldots$.
+Therefore, $\phi$ is not an injection.
+To see that $\phi$ is continuous, note that if
+\begin{equation*}
+  d(s,t) < 2^{-k},
+\end{equation*}
+then $s_i = t_i$ for $1 \leq i \leq k+1$ by Proposition~\ref{prop:symbol-bound2}.
+It follows that
+\begin{align*}
+  d(\phi(s), \phi(t))
+  &= \abs{ \sum\limits_{i=1}^{\infty} \frac{s_i}{2^i} - \sum\limits_{i=1}^{\infty} \frac{t_i}{2^i} } \\
+  &= \abs{ \sum\limits_{i=k+2}^{\infty} \frac{s_i}{2^i} - \sum\limits_{i=k+2}^{\infty} \frac{t_i}{2^i} } \\
+  &\leq 2 \cdot \sum\limits_{i=k+2}^{\infty} \frac{s_i}{2^i}  \\
+  &\leq 2 \cdot \sum\limits_{i=k+2}^{\infty} \frac{1}{2^i}
+  = 2^{-(k+1)}.
+\end{align*}
+Thus, we have the desired result.
+\begin{theorem}
+  $(S^1, D)$ is chaotic in Devaney's sense.
+  \begin{proof}
+    Let $(\Sigma, \sigma)$ be the full one-sided shift.
+    Define $\phi: S^1 \to \Sigma$ to be a mapping from a member of $S^1$ to its binary representation.
+    $(\Sigma, \sigma)$ is semi-conjugate to $(S^1, D)$ by $\phi$.
+    Hence, by Theorem~\ref{thm:conj-sdic}, $(S^1, D)$ is chaotic in Devaney's sense.
+  \end{proof}
+\end{theorem}
+%%%
+On a related note, \citet[Chap.4]{sternberg} shows that the full one-sided shift is semi-conjugate to the logistic map and tent map, as well.
+We already mentioned in Chapter~\ref{chap:devaney} that the logistic map is chaotic in Devaney's sense, but we can prove the same result using the technique just presented.
 
 Let us make a few general remarks on symbolic dynamics.
-In this chapter, we only use an one-sided shift, but we can also define the \textit{two-sided shift} by replacing $\Sigma$ with a space of infinite \textit{bi-infinite} sequences (i.e. sequences of the form $s = \set{ \cdots s_{-n} \cdots s_{-1} * s_0 \cdots s_n \cdots }$).
-An one-sided shift is used to study a non-invertible maps, while two-sided shift is used to study an invertible map.
-For the two-sided shift, the shift map is also injective.
+In this chapter, we only use an one-sided shift, but we can also define the \textit{two-sided shift} by replacing $\Sigma$ with a space of infinite \textit{bi-infinite} sequences, i.e. sequences of the form 
+\begin{equation*}
+  \cdots s_{-n} \cdots s_{-1} * s_0 s_1 \cdots s_n \cdots.
+\end{equation*}
+The asterisk ($*$) is used to note the 0th symbol of a sequence, and the shift map $\sigma$ is defined to be the shifting of the 0th position:
+\begin{equation*}
+  \sigma: \cdots s_{-n} \cdots s_{-1} * s_0 s_1 \cdots s_n \cdots
+  \mapsto
+  \cdots s_{-n} \cdots s_{-1} s_0 * s_1 \cdots s_n \cdots.
+\end{equation*}
+Thus, unlike in the one-sided shift, $\sigma$ is one-to-one, and each sequence ``remembers'' its preimage.
+Hence, a two-sided shift is suited for studying an invertible map, while an one-sided shift is used to study a non-invertible maps,
 It is easy to see that the full two-sided shift $(\Sigma, \sigma)$ is also chaotic in Devaney's sense.
 \citet{wiggins} has a exposition on the dynamics of the horseshoe map using symbolic dynamics.
 The horseshoe map has a geometrically complicated dynamics.
 However, we can understand the dynamics of map on its attractor by constructing a conjugacy between the horseshoe map on its attractor and the full two-sided shift.
 An one-sided shift can be similarly used to study the dynamics of a mapping.
-\citet{sternberg} has an exposition on the study of the attractor of the logistic map.
+\citet{sternberg} has an exposition on the study of the logistic map, in which he shows that the attractor of the logistic map is a Cantor set.
 
 %%%
 

@@ -77,7 +77,7 @@ We will frequently use the following property of a topologically transitive map.
   \end{proof}
 \end{proposition}
 
-We informally defined in the introduction that a chaotic mapping is a mapping that has a sensitive dependence on initial conditions, but Devaney's definition consists of properties other than sensitivity.
+We informally defined in the introduction that a chaotic mapping is a mapping that has a sensitive dependence on initial conditions, but Devaney's definition consists of properties besides sensitivity.
 Also, there is no reference to the geometry of the mapping in his definition.
 Devaney motivates his definition as follows \citep[p.50]{devaney}:
 \begin{quotation}
@@ -106,18 +106,18 @@ We attribute this version of definition to Wiggins, though some authors refer to
 We give some examples to illustrate the two definitions.
 \begin{example}
   (Rotation on a circle \citep{devaney})
-  Consider a unit circle $S^1$, and use the polar coordinates $e^{2\pi \theta}$ to represent each point on the circle.
+  Consider a unit circle $S^1$, and use the polar coordinates $e^{2\pi i \theta}$ to represent each point on the circle.
   Then, we can associate a point with an angle $\theta \in [0, 1)$, identify $S^1$ with $[0,1)$. % indent]]
   Define the rotation by $\alpha \in \R$ by
   \begin{equation*}
-    F: \theta \mapsto \theta + \alpha \quad(\mathrm{mod} 1).
+    F: \theta \mapsto \theta + \alpha \quad(\mod{1}).
   \end{equation*}
   We consider two cases: when $\alpha$ is rational and when it is not.
   First, assume that $\alpha$ is rational.
   We may suppose that $\alpha = p/q$ for some $p, q \in \Z$, $q \neq 0$.
   Then, for each $\theta \in [0, 1)$, we have %]
   \begin{equation*}
-    \itr{F}{q}(\theta) = \theta + q \cdot \frac{p}{q} = \theta + p = \theta \quad(\mathrm{mod} 1).
+    \itr{F}{q}(\theta) = \theta + q \cdot \frac{p}{q} = \theta + p = \theta \quad(\mod{1}).
   \end{equation*}
 Therefore, each point in $S^1$ is periodic. %]
   Hence, the periodic points are dense in $S^1$. %]
@@ -132,9 +132,9 @@ Then,
 \begin{equation*}
   \itr{F}{p}(\theta) = \theta 
   \Rar
-  \theta + p\alpha \quad(\mathrm{mod} 1) = \theta
+  \theta + p\alpha \quad(\mod{1}) = \theta
   \Rar
-  p\alpha \quad(\mathrm{mod} 1) = 0
+  p\alpha \quad(\mod{1}) = 0
   \Rar
   p\alpha = k
 \end{equation*}
@@ -155,7 +155,7 @@ Then, by the pigeon hole principle, there exist $1 \leq m,k \leq N$ such that
 Without loss of generality, we may assume that $m > k$.
 It follows that 
 \begin{equation*}
-  \itr{F}{m - k}: \theta \mapsto \theta + \beta \quad(\mathrm{mod} 1),
+  \itr{F}{m - k}: \theta \mapsto \theta + \beta \quad(\mod{1}),
 \end{equation*}
 and $\beta < \epsilon$.
 Since $\beta < \epsilon < 2\epsilon$, there exists $n$ such that
@@ -170,7 +170,7 @@ This shows that $F_\alpha$ is topologically transitive when $\alpha$ is irration
   Define the doubling map to be 
   \begin{align*}
     D: &S^1 \to S^1  \\
-    &\theta \mapsto 2\theta \quad(\mathrm{mod} 1).
+    &\theta \mapsto 2\theta \quad(\mod{1}).
   \end{align*}
   First, we show that $D$ is sensitive to initial conditions. 
   Consider an arbitrary point $\theta \in S^1$, and a nearby point $\theta - \epsilon$ ($\epsilon$ can be arbitrarily small).
@@ -242,7 +242,7 @@ This example shows why we should include topological transitivity in the definit
 %%%
 \begin{theorem}
   (\tt and \dpp Imply \sdic)
-  Let $F: X\rar X$ be chaotic in Devaney's sense.
+  Suppose $F: X\rar X$ is transitive and has dense periodic points in $X$.
   Then there exists $\epsilon > 0$ such that, for any $x\in X$ and any open set $J$ containing at least $x$ and another point, there is a point $y\in J$ and $n\in \N$ with
   \begin{equation*}
     \metric{\itr{F}{n}(x),\itr{F}{n}(y)} > \epsilon.
