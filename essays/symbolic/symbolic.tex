@@ -373,8 +373,7 @@ An one-sided shift can be similarly used to study the dynamics of a mapping.
 %%%
 
 \section{Defining Chaos Using Symbolic Dynamics}
-\citet{blockcoppel} defines chaos using the one-sided shift, a symbolic dynamics used to encode a non-invertible mapping.
-%%%
+\citet{blockcoppel} defines chaos using the full one-sided shift.
 \begin{definition}
   (Chaos in the sense of Block-Coppel \citep{blockcoppel})
   Let $X$ be a metric space, and $F$ be a continuous map.
@@ -395,6 +394,29 @@ An one-sided shift can be similarly used to study the dynamics of a mapping.
   \label{defn:blockcoppel}
   \index{definition of chaos!Block-Coppel}
 \end{definition}
+Their motivation was to study a class of dynamical systems on the compact interval with a \textit{turbulent} mapping.
+\begin{definition}
+  (Turbulent map)
+  Let $I$ be a compact interval, $F: I \to I$ a continuous map.
+  If there exists compact subintervals $J,K \subseteq I$ with $J \cap K = \emptyset \mbox{ or a singleton}$ such that
+  \begin{equation*}
+    J \cup K \subseteq F(J) \cap F(K),
+  \end{equation*}
+  then $F$ is said to be \textit{turbulent}.
+\end{definition}
+For example, the tent map is turbulent.
+\begin{theorem}
+  \citep[Chap.II]{blockcoppel}
+  Let $F: I \to I$, where $I$ is a compact interval.
+  The following conditions are equivalent
+  \begin{enumerate}[(i)]
+    \item $F$ has a periodic point of period not a power of 2.
+    \item There exists a positive integer $n$ such that $\itr{F}{n}$ is turbulent.
+  \end{enumerate}
+  \label{thm:blcpII}
+\end{theorem}
+Note that if $F$ has a periodic point whose period is not a power of $2$, then, by Sarkovskii's theorem, $F$ has periodic points of periods $2^n$ for each $n \in \N$.
+%%%
 
 
 \bibliographystyle{../../bibliography/pjgsm}
