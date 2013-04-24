@@ -368,7 +368,7 @@ It follows that sensitive dependence on initial conditions is also a topological
 \begin{theorem}
   (\tt is a topological invariant) 
   Let $F: X \to X$ and $G: Y \to Y$ be continuous functions.
-  Suppose that $G$ is semi-conjugate to $F$.
+  Suppose that $(X,F)$ is semi-conjugate to $(Y,G)$.
   If $F$ is transitive, then $G$ is transitive.
   \label{thm:conj-trans}
   \begin{proof}
@@ -402,7 +402,7 @@ We prove two lemmas, from which the theorem of our interest immediately follows.
 \end{lemma}
 \begin{lemma}
   (Periods are preserved under conjugacy)
-  Suppose $G$ is semi-conjugate to $F$.
+  Suppose $(X,F)$ is semi-conjugate to $(Y,G)$.
   If $p$ is a $n$-periodic point of $F$, then $\phi(p)$ is a $n$-periodic point of $G$.
   \label{thm:conj-per}
   \begin{proof}
@@ -411,7 +411,7 @@ We prove two lemmas, from which the theorem of our interest immediately follows.
 \end{lemma}
 \begin{theorem}
   (\dpp is a topological invariant)
-  Suppose that $G$ is semi-conjugate to $F$.
+  Suppose that $(X,F)$ is semi-conjugate to $(Y,G)$.
   If $\mathrm{P}(F)$ is dense in $X$, then $\mathrm{P}(G)$ is dense in $Y$.
   \label{cor:conj-dense-per}
   \begin{proof}
@@ -419,17 +419,17 @@ We prove two lemmas, from which the theorem of our interest immediately follows.
     Then, by Theorem~\ref{thm:conj-dense}, $\mathrm{P}(G)$ is a dense subset of $Y$.
   \end{proof}
 \end{theorem}
-Finally, we obtain the main result of this section as a corollary.
+Finally, we obtain the main result of this section, that chaos in Devaney's sense is a topological invariant, as a corollary.
+.
 \begin{corollary}
-  (\sdic is a topological invariant)
-  Suppose that $G$ is semi-conjugate to $F$.
-  If $F$ is sensitive to initial conditions, then $G$ is sensitive to initial conditions.
+  (Chaos in Devaney's sense is a topological invariant)
+  Suppose that $(X,F)$ is semi-conjugate to $(Y,G)$.
+  If $F$ is chaotic in Devaney's sense, then $G$ is also chaotic in Devaney's sense.
   \label{cor:conj-sdic}
   \begin{proof}
     This follows from Theorem~\ref{thm:silverman}, Theorem~\ref{thm:conj-trans}, and Theorem~\ref{thm:conj-dense}.
   \end{proof}
 \end{corollary}
-Hence, chaos in Devaney's sense is a topological invariant.
 %%%
 
 \section{Martelli's Definition}

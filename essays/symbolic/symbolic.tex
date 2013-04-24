@@ -258,8 +258,21 @@ However, we present a direct proof below, as symbolic dynamics provides a new pe
 %%%
 COMMENTS.
 
-\section{The Doubling Map is Chaotic}
+\section{Doubling Map is Chaotic}
 The end result of this section is to prove that $(\Sigma, \sigma)$ is semi-conjugate to $(S^1, D)$, which implies that the doubling map is chaotic in Devaney's sense.
+\begin{center}
+  \begin{tikzpicture}[node distance=2cm, auto]
+    \node (y1) {$\Sigma$};
+    \node (y2) [right of=y1] {$\Sigma$};
+    \node (x1) [below of=y1] {$S^1$};
+    \node (x2) [below of=y2] {$S^1$};
+    \draw[->] (x1) to node[swap] {$D$} (x2);
+    \draw[->] (y1) to node[swap] {$\phi$} (x1);
+    \draw[->] (y1) to node {$\sigma$} (y2);
+    \draw[->] (y2) to node {$\phi$} (x2);
+  \end{tikzpicture}
+\end{center}
+%%%
 \begin{figure}[ht]
   \centering
   \begin{tikzpicture}[scale=3.2]
@@ -389,4 +402,3 @@ An one-sided shift can be similarly used to study the dynamics of a mapping.
 
 \printindex
 \end{document}
-
