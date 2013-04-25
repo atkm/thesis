@@ -440,7 +440,7 @@ The following example is a system that is chaotic in Wiggins's sense but not in 
   (Note to Rao: this example contains a few glitches, but I think the overall idea is right. I hope to discuss this at some point.)
   This example employs a \textit{two-sided shift}, a symbolic dynamical system on the set of all bi-infinite sequences.
   Since a two-sided shift is similar to an one-sided shift, instead of formally defining the dynamical system, we briefly discuss its structure here.
-  Some of the results that we prove in this example are standard results for two-sided dynamical systems.
+  Some of the results that we prove in this example are standard results for two-sided shifts.
   Let $S = \set{0,1}$ be the set of symbols.
   In a two-sided shift system, $\Sigma \equiv S^\Z$ consists of bi-infinite sequences, i.e. sequences of the form
   \begin{align*}
@@ -448,7 +448,7 @@ The following example is a system that is chaotic in Wiggins's sense but not in 
   \end{align*}
   Also, we use the following metric on the space $\Sigma$ instead:
   \begin{equation*}
-    \metric{a,b} = \frac{\delta_i}{2^{\abs{i}}},
+    \metric{a,b} = \sum\limits_{i = -\infty}^{\infty} \frac{\delta_i}{2^{\abs{i}}},
   \end{equation*}
   where
   \begin{equation*}
@@ -457,7 +457,15 @@ The following example is a system that is chaotic in Wiggins's sense but not in 
       &0 \quad \mbox{ if } a_i = b_i  \\
       &1 \quad \mbox{ otherwise.}
     \end{cases}
-\end{equation*}
+  \end{equation*}
+  Also, the shift map $\sigma$ for a two-sided shift is defined as
+  \begin{equation*}
+    \sigma: 
+    \cdots s_{-n} \cdots s_{-2} s_{-1} * s_0 s_1 s_2 \cdots s_n \cdots
+    \mapsto
+    \cdots s_{-n} \cdots s_{-2} s_{-1} s_0 * s_1 s_2 \cdots s_n \cdots,
+  \end{equation*}
+  where $*$ is used to denote the 0th position.
   %This example uses a dynamical system commonly called the \textit{Sturmian system}.
 
   Let $S^1 \equiv [0, 1)$ be the unit circle, and let $R_\alpha: S^1 \to S^1$ be the rotation by an irrational number $\alpha \in S^1$. %]

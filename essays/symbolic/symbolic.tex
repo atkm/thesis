@@ -397,7 +397,8 @@ An one-sided shift can be similarly used to study the dynamics of a mapping.
 \begin{definition}
   (Chaos in the sense of Block-Coppel \citep{blockcoppel})
   Let $X$ be a metric space, and $F$ be a continuous map.
-  Suppose there exists an invariant compact subset $Y \subseteq X$ and a positive integer $n$ such that $\itr{F}{n}_{|Y}$ is semi-conjugate to the full one-sided shift $(\Sigma, \sigma)$.
+  Suppose there exists an invariant compact subset $Y \subseteq X$ and a positive integer $n$ such that $(Y,\itr{F}{n})$ is semi-conjugate to the full one-sided shift $(\Sigma, \sigma)$ by $\phi: Y \to \Sigma$.
+  Moreover, for each $s \in \Sigma$, we require that $\phi^{-1}(s)$ consists of either one or two points.
   Then, we say that $(X,F)$ is \textit{chaotic in the sense of Block-Coppel}.
   \begin{center}
     \begin{tikzpicture}[node distance=2cm, auto]
@@ -414,7 +415,7 @@ An one-sided shift can be similarly used to study the dynamics of a mapping.
   \label{defn:blockcoppel}
   \index{definition of chaos!Block-Coppel}
 \end{definition}
-Their motivation was to study a class of dynamical systems on the compact interval with a \textit{turbulent} mapping.
+Their motivation was to study \textit{turbulent} maps defined on the compact interval.
 \begin{definition}
   (Turbulent map)
   Let $I$ be a compact interval, $F: I \to I$ a continuous map.
@@ -425,18 +426,36 @@ Their motivation was to study a class of dynamical systems on the compact interv
   then $F$ is said to be \textit{turbulent}.
 \end{definition}
 For example, the tent map is turbulent.
+\citet{blockcoppel} proves that a turbulent map has periodic points of all periods, reminiscent of Li-Yorke's definition.
+In fact, Block-Coppel's definition implies Li-Yorke's (Chapter~\ref{chap:comparisons}).
+Block and Coppel initially defined chaos as follows.
 \begin{theorem}
   \citep[Chap.II]{blockcoppel}
   % using this in eg:counterexample
   Let $F: I \to I$, where $I$ is a compact interval.
   The following conditions are equivalent
   \begin{enumerate}[(i)]
-    \item $F$ has a periodic point of period not a power of 2.
     \item There exists a positive integer $n$ such that $\itr{F}{n}$ is turbulent.
+    \item $F$ has a periodic point of period not a power of 2.
   \end{enumerate}
   \label{thm:blcpII}
 \end{theorem}
-Note that if $F$ has a periodic point whose period is not a power of $2$, then, by Sarkovskii's theorem, $F$ has periodic points of periods $2^n$ for each $n \in \N$.
+%Note that if $F$ has a periodic point whose period is not a power of $2$, then, by Sarkovskii's theorem, $F$ has periodic points of periods $2^n$ for each $n \in \N$.
+They prove that the conditions mentioned in the preceding theorem are equivalent to our definition of chaos in Block-Coppel's sense.
+Their intention in establishing the equivalence of the two conditions was to study turbulent maps using symbolic dynamics, as in the following proposition.
+\begin{proposition}
+  Suppose $F: I \to I$ is a mapping such that $\itr{F}{n}$ is turbulent for some $n$.
+  Then, there exist uncountable set of points $S \subseteq I$ such that, for each $x \in S$, the limit set $L(x)$ is uncountable, and contains a periodic point of period $m$ or $2m$ for each $n \in \N$.
+  \begin{proof}
+    There exist uncountably many $s \in \Sigma$ such that $s$ contains every finite sequence once, and hence infinitely often (0 appears twice in 00).
+    For example,
+    \begin{equation*}
+      s = (01*00011011*000 \cdots),
+    \end{equation*}
+    where $*$ denotes an arbitrary finite sequence.
+    For each $t \in \Sigma$, there exists a sequence of positive integers $n_1 < n_2 < \cdots$ such that $\itr{\sigma}{n_k}(s) \to t$ as $k \to \infty$.
+  \end{proof}
+\end{proposition}
 %%%
 
 \bibliographystyle{../../bibliography/pjgsm}
