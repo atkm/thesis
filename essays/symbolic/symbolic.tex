@@ -256,9 +256,26 @@ However, we present a direct proof below, as symbolic dynamics provides a new pe
   \end{proof}
 \end{proposition}
 %%%
-The meaning of sensitive dependence on initial conditions is conspicuously displayed in the proof.
-A slight change in the initial conditions is represented as a .
-
+The meaning of sensitive dependence on initial conditions is explicitly displayed in the proof.
+A slight change in the initial conditions is represented as swapping symbols at positions deep down in the sequence.
+We call the original sequence $x$ and the modified sequence $x'$.
+Suppose $x$ and $x'$ differ \textit{only} at the $p$-th position.
+We can think of $d(\itr{\sigma}{i}(x), \itr{\sigma}{i}(x'))$ as an error of some sort at the $i$-th time step.
+As the system evolves, the $p$-th position comes closer and closer to the 0th position, and the error is doubled at each time step ($d(\sigma(x), \sigma(x')) = 2 \cdot d(x, x')$).
+The error achieves its maximum after $p$ iterations.
+After the $p+1$-th iteration, however, the error remains zero.
+The situation is analogous to the behavior of a pair described in both Devaney's and Li-Yorke's definitions.
+In Devaney's definition, for example, two nearby points separate by $\delta$, the separation constant, but they eventually come close to each other because of transitivity.
+On the other hand, consider a situation where $x'$ agrees with $x$ up to the $k$-th position, but $x'_i$ for $i > k$ are randomly chosen.
+Thus, $x'$ represents $x$ with some random noise.
+As in the previous example, the error increases as the system evolves.
+After the $k$-th iteration, $d(\itr{\sigma}{i}(x), \itr{\sigma}{i}(x'))$ is nothing but random, and does not tell us anything about $x$ and $x'$!
+This observation motivates us to the metric $d'$ defined as
+\begin{equation*}
+  d'(s,t) = 2^{-k},
+\end{equation*}
+where $k$ is the first position at which $s$ and $t$ differ.
+In fact, the metric that we use and this metric $d'$ can be shown to be equivalent metrics.
 %%%
 
 \section{Doubling Map is Chaotic}
