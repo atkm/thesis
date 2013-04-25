@@ -18,7 +18,7 @@ The purpose of this short chapter is to introduce notions of dynamical systems t
   %\index{}
 \end{definition}
 \begin{remark}
-  We will often use a metric space as our topological space.
+  We use a metric space as our topological space.
 \end{remark}
 %
 \begin{definition}
@@ -56,12 +56,25 @@ It is convenient for our purpose to define the notion of a distance between a po
   \end{equation*}
 \end{definition}
 %%%
+Now, we define two kinds of periodic motions.
+Intuivitely speaking, periodic behaviors are tame behaviors that would not be associated with the term chaos.
+However, chaotic and periodic behaviors are not at all mutually exclusive; as we will see, a dynamical system may have both of these elements.
 \begin{definition}
-  (Periodic points)
+  (Periodic point)
   Let $F: X \to X$ be a mapping, and $p$ be a point in $X$.
-  If $\itr{F}{n}(p) = p$ for some $n > 0$, and $\itr{F}{m}(p) \neq p$ for each $1 \leq m < n$, then $p$ is called a periodic point of period $n$, or simply a $n$-periodic point.
+  If $\itr{F}{n}(p) = p$ for some $n > 0$, and $\itr{F}{m}(p) \neq p$ for each $1 \leq m < n$, then $p$ is called a \textit{periodic point} of period $n$, or simply a $n$-periodic point.
   \label{def:porbit}
   \index{periodic points}
+\end{definition}
+\begin{definition}
+  (Asymptotically periodic point)
+  Let $F: X \to X$ be a mapping, and $p$ be a point in $X$.
+  $p$ is said to be a \textit{asymptotically periodic} point, if there exists a periodic point $q \in X$ such that
+  \begin{equation*}
+    \lim\limits_{n \to \infty} d(\itr{F}{n}(x), \itr{F}{n}(y))
+    = 0.
+  \end{equation*}
+  \index{asymtotically periodic points}
 \end{definition}
 %%%
 

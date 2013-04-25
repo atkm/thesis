@@ -104,7 +104,7 @@ Moreover, on a compact interval, topological transitivity implies the existence 
 Thus, Devaney's and Wiggins's definitions are equivalent.
 \begin{theorem}
   $(I,F)$ is chaotic in the sense of Devaney if and only if it is chaotic in the sense of Wiggins.
-  \label{thm:devaney-wiggins}
+  \label{thm:dev-wig}
   \begin{proof}
     It follows from the fact that \tt implies \dpp on a compact interval.
     See \citet{silverman} for the proof.
@@ -117,7 +117,7 @@ Also, \dev and \blcp are equivalent.
     See \citet{aulbach}.
     %The proof uses \citep[VI: Proposition 6]{blockcoppel} .
   \end{proof}
-  \label{thm:devaney-blockcoppel}
+  \label{thm:dev-blcp}
 \end{theorem}
 %%%
 
@@ -125,7 +125,7 @@ Also, \dev and \blcp are equivalent.
 \blcp is equivalent to \pte.
 \begin{theorem}
   $(I,F)$ is chaotic in the sense of Block-Coppel if and only if $F: I \to I$ has a positive topological entropy.
-  \label{thm:entropy-blockcoppel}
+  \label{thm:ent-blcp}
   \begin{proof}
     See \citet[VII, Theorem 24]{blockcoppel}.
   \end{proof}
@@ -134,17 +134,23 @@ Hence, the four definitions are equivalent.
 %%%
 
 \subsubsection*{Block-Coppel and Li-Yorke}
-Next, we show that \blcp implies \liy.
+\blcp implies \liy.
 \begin{theorem}
   \citep{blockcoppel}
   If $(I,F)$ is chaotic in Block-Coppel's sense, then it is chaotic in Li-Yorke's sense.
-  \label{thm:devaney-liyorke}
+  \label{thm:blcp-liy}
   \begin{proof}
     See \citet{blockcoppel} (VI; Proposition 27).
   \end{proof}
 \end{theorem}
 However, the converse of the previous theorem is not true in general.
-The following is an example of a dynamical system that is \liy but not \blcp.
+\begin{theorem}
+  \citep[p.136]{blockcoppel}
+  Suppose $(I,F)$ is not chaotic in Block-Coppel's sense.
+  If there exists an asymptotically periodic point in $I$, then $(I,F)$ is chaotic in Li-Yorke's sense.
+  \label{thm:blcp-per-liy}
+\end{theorem}
+Also, the following is an example of a dynamical system that is \liy but not \blcp.
 \begin{example}
   (Truncated tent map \citep{aulbach})
   The tent map is defined as
@@ -225,7 +231,7 @@ Furthermore, we show that no periodic point of $T_{\lambda_n}$ has a period diff
 %  \itr{T}{k}(\lambda_n) = \lambda_n,
 %\end{equation*}
 %which implies that $\lambda_n$ has period less than $2^n$, a contradiction.
-To prove claim, suppose on the contrary that $T_{\lambda_n}$ has a $m$-periodic point $p$, where $m$ is an integer that comes before $2^n$ in the Sarkovskii's ordering.
+To prove the claim, suppose on the contrary that $T_{\lambda_n}$ has a $m$-periodic point $p$, where $m$ is an integer that comes before $2^n$ in the Sarkovskii's ordering.
 Denote $O_{T_{\lambda_n}}(p)$, the orbit of $p$, by $M$.
 Since $T_{\lambda_n}$ can only have periodic points of period $2^n$ in $K_{\lambda_n}$, no point in $M$ is contained in $K_{\lambda_n}$, which means that
 \begin{equation*}
@@ -255,21 +261,26 @@ It follows that the sequence converges.
 
 Next, we show that $T_{\lambda^*}$ is not chaotic in the sense of Block-Coppel.
 The proof is by contradiction.
-By \citet[II, Theorem 14]{blockcoppel}, $T_{\lambda^*}$ has a periodic point whose period is not a power of 2.
+By Theorem~\ref{thm:blcpII}, $T_{\lambda^*}$, a Block-Coppel chaotic map, has a periodic point whose period is not a power of 2.
 So suppose $p \in [0,1]$ is a periodic point of period $q\cdot 2^n$ for some $n \geq 0$ and an odd integer $q > 1$.
-Let $\rho \ceq \max O(p)$.
+Let 
+\begin{equation*}
+  \rho \ceq \max O(p).
+\end{equation*}
 If $\rho < \lambda^*$, then there exists a positive integer $m$ such that $\lambda_m > \rho$.
 Note that $p$ is also a $q\cdot 2^n$-periodic point of $T_{\lambda_m}$.
-
 However, there cannot be a periodic point whose period is not a power of two, so this is a contradiction.
 If, on the other hand, $\rho = \lambda^*$, then by Sarkovskii's theorem, $T_{\lambda^*}$ has a periodic point $p'$ of period $(q+2)\cdot 2^n$.
-Since $\max O(p') < \lambda^*$, this case reduces to the first case.
-Furthermore, \citet[p.146]{blockcoppel} showed that $T_{\lambda^*}$ is chaotic in the sense of Li-Yorke. $\square$
+Since $\max O(p') < \lambda^*$, this case reduces to the first case, which leads to a contradiction.
+Thus, $T_{\lambda_m}$ is not Block-Coppel chaotic.
+
+Furthermore, \citet[p.146]{blockcoppel} showed that $T_{\lambda^*}$ is chaotic in the sense of Li-Yorke using Theorem~\ref{thm:blcp-per-liy}. $\square$
 \label{eg:counterexample}
 \end{example}
 
+%%%
 \subsubsection*{Result}
-It follows from Theorem~\ref{thm:devaney-blockcoppel} and Theorem~\ref{thm:entropy-blockcoppel} that \dev and \pte are also equivalent.
+It follows from Theorem~\ref{thm:dev-blcp} and Theorem~\ref{thm:ent-blcp} that \dev and \pte are also equivalent.
 Hence, \dev, \wig, \blcp, and \pte are equivalent to each other on a compact interval.
 Each of the four equivalent definitions implies \liy, but \liy does not imply others.
 These results can be proved through other means.
@@ -343,7 +354,7 @@ As we have seen in the compact interval case that \liy does not imply $\pte$.
 The converse still holds in this general setting.
 \begin{theorem}
   If $F: X \to X$ has positive topological entropy, then it is chaotic in Li-Yorke's sense.
-  \label{thm:entropy-liyorke}
+  \label{thm:ent-liy}
   \begin{proof}
     See \citet{blanchard}.
   \end{proof}
@@ -357,7 +368,7 @@ The converse still holds in this general setting.
     $(X,F)$ is semi-conjugate to the full one-sided shift $(\sigma, \Sigma)$, so that by Proposition~\ref{thm:ent-conj}, $h(\sigma) \leq h(F)$.
     Since $h(\sigma)$ is positive, we conclude that $h(F)$ is also positive.
   \end{proof}
-  \label{thm:blcp-entropy}
+  \label{thm:blcp-ent}
 \end{theorem}
 %
 However, we do not know whether \pte implies \blcp.
