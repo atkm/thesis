@@ -443,7 +443,6 @@ The following example is a system that is chaotic in Wiggins's sense but not in 
   Some of the results that we prove in this example are standard results for two-sided shifts.
   Let $S = \set{0,1}$ be the set of symbols.
   In a two-sided shift system, the space $\Sigma \equiv S^\Z$ consists of bi-infinite sequences, i.e. sequences of the form
-
   \begin{align*}
     \cdots s_{-n} \cdots s_{-2} s_{-1} s_0 s_1 s_2 \cdots s_n \cdots.
   \end{align*}
@@ -485,126 +484,176 @@ The following example is a system that is chaotic in Wiggins's sense but not in 
   \end{equation*} %( (
   We call $[0, \alpha)$ and $[\alpha, 1)$ as $C_0$ and $C_1$, respectively. % ] ]
   Let $X \ceq \phi(S^1)$.
-  Then, since $\bar{X}$, the closure of $X$, is a closed subset of a compact space $\Sigma$, $\bar{X}$ is also compact.
-  For $(\bar{X}, \sigma)$ to be a well-defined dynamical system, we need $\bar{X}$ to be invariant under $\sigma$ \citep[p.179]{lind}.
-  It is clear by the construction of $X$ that $\sigma(X) = X = \itr{\sigma}{-1}(X)$.
-  Suppose $s \in \bar{X}$.
-  We may assume that there exists a sequence $\set{s_n} \subseteq X$ such that $\lim\limits_{n \to \infty} s_n = s$.
-  For each $s_n$, there exists $\itr{\sigma}{-1}(s_n)$ that is a member of $X$.
-  Since $\sigma$ is homeomorphic, we have 
-  \begin{equation*}
-    \lim\limits_{n \to \infty} \itr{\sigma}{-1}(s_n) 
-    = \itr{\sigma}{-1}(s) 
-    \in \cl(\itr{\sigma}{-1}(X)) 
-    = \cl(X) 
-    = \bar{X}.
-  \end{equation*}
-  It follows that $s \in \sigma(\bar{X})$; hence, $\bar{X} \subseteq \sigma(\bar{X})$.
-  A similar argument shows that $\sigma(\bar{X}) \subseteq \bar{X}$.
-  Hence, $\sigma(\bar{X}) = \bar{X}$.
+  We consider the dynamical system $(\bar{X}, \sigma)$ ($\bar{X}$ is the closure of $X$).
+  \begin{proposition}
+    $\bar{X}$ is a compact subset of $\Sigma$, and is invariant under $\sigma$.
+    (For $(\bar{X}, \sigma)$ to be a well-defined dynamical system, we need $\bar{X}$ to satisfy these conditions \citep[p.179]{lind}.)
+    \begin{proof}
+      Since $\bar{X}$, the closure of $X$, is a closed subset of a compact space $\Sigma$, $\bar{X}$ is also compact.
+      It is clear by the construction of $X$ that $\sigma(X) = X = \itr{\sigma}{-1}(X)$.
+      Suppose $s \in \bar{X}$.
+      We may assume that there exists a sequence $\set{s_n} \subseteq X$ such that $\lim\limits_{n \to \infty} s_n = s$.
+      For each $s_n$, there exists $\itr{\sigma}{-1}(s_n)$ that is a member of $X$.
+      Since $\sigma$ is homeomorphic, we have 
+      \begin{equation*}
+        \lim\limits_{n \to \infty} \itr{\sigma}{-1}(s_n) 
+        = \itr{\sigma}{-1}(s) 
+        \in \cl(\itr{\sigma}{-1}(X)) 
+        = \cl(X) 
+        = \bar{X}.
+      \end{equation*}
+      It follows that $s \in \sigma(\bar{X})$; hence, $\bar{X} \subseteq \sigma(\bar{X})$.
+      A similar argument shows that $\sigma(\bar{X}) \subseteq \bar{X}$.
+      Hence, $\sigma(\bar{X}) = \bar{X}$.
+    \end{proof}
+  \end{proposition}
+  Next, we prove that $(\bar{X}, \sigma)$ is transitive.
+  We need a few lemmas for the proof.
+  \begin{lemma}
+    For each $x \in S^1$ and any $k \in \N$, there exists $\epsilon > 0$ such that $\oball{\epsilon}{x}$ contains a point $y$ such that 
+    $\phi(x)_i = \phi(y)_i$ for each $0 \leq \abs{i} \leq k$.
+    \label{lem:sturmian1}
+    \begin{proof}
+      It is easy to see that $\phi(x)_i \neq \phi(y)_i$ if and only if
+      \begin{equation*}
+        0 \in (\itr{R_\alpha}{i}(x), \itr{R_\alpha}{i}(y)] \mbox{ or } \alpha \in (\itr{R_\alpha}{i}(x), \itr{R_\alpha}{i}(y)]. %))
+      \end{equation*}
+      So for each $x \in S^1$, let $y = x + \delta$ for some $\delta > 0$.
+      If 
+      \begin{equation*}
+        0 \in R_\alpha((x, x+\delta]) \mbox{ or } \alpha \in R_\alpha((x, x+\delta]), %))
+      \end{equation*}
+      then we can redefine $\delta$ to be a smaller value so that 
+      \begin{equation*} 
+        0, \alpha \not\in R_\alpha((x, x+\delta]). %)
+      \end{equation*}
+      Inductively, we see that, for any $k \in \N$, if $\delta$ is small enough, then 
+      \begin{equation*}
+        0, \alpha \not\in \itr{R_\alpha}{k}((x, x+\delta]) %)
+      \end{equation*}
+      so that
+      \begin{equation*}
+        \phi(x)_i = \phi(x+\delta)_i \mbox{ for } 0 \leq i \leq k.
+      \end{equation*}
+      Repeat the same process for backward iterations of $R_\alpha$ to obtain
+      \begin{equation*}
+        \phi(x)_i = \phi(x+\delta)_i \mbox{ for } -k \leq i \leq 0.
+      \end{equation*}
+      This completes the proof.
+    \end{proof}
+  \end{lemma}
+  %%%
+  \begin{proposition}
+    Let $x,y$ be members of $\Sigma$.
+    If $x_i = y_i$ for $0 \leq \abs{i} \leq k$, then $\metric{x,y} \leq 2^{-(k-1)}$.
+    \label{prop:two-sided}
+    \begin{proof}
+      $\metric{x,y}$ achieves its upper bound when $x_i \neq y_i$ for $\abs{i} \geq k+1$.
+      \begin{align*}
+        \metric{x,y}
+        &\leq 2 \cdot \sum\limits_{n = k+1}^{\infty} \frac{1}{2^{\abs{i}}} \\
+        &\leq 2 \cdot \paren{ \sum\limits_{n = 0}^{\infty} \frac{1}{2^{\abs{i}}} - \sum\limits_{n = 0}^{k} \frac{1}{2^{\abs{i}}}} \\
+        &= 2 \cdot (2 - (2 - \frac{1}{2^k})) \\
+        &= \frac{1}{2^{k-1}}.
+      \end{align*}
+    \end{proof}
+  \end{proposition}
+  %%%
+  \begin{proposition}
+    Let $F: X \to X$ be a continuous map, $Y$ be a subset of $X$.
+    If $F$ restricted to $Y$ is topologically transitive, then $F: \cl(Y) \to \cl(Y)$ is also transitive.
+    \label{prop:closure-transitivity}
+    \begin{proof}
+      We only need to prove that $F$ is transitive for the boundary points of $Y$.
+      For any point $x$ on the boundary of $Y$, and for each neighborhood $N$ of $x$, $N$ contains a point in $Y$.
+      Call that point $y$.
+      Choose $\epsilon$ small enough that $\oball{\epsilon}{y}$ is contained in $N \cap Y$.
+      Applying the transitivity property of $F$ to the open neighborhood gives us the desired result.
+    \end{proof}
+  \end{proposition}
+  %%%
+  \begin{proposition}
+    $(\bar{X}, \sigma)$ is transitive.
+    \begin{proof}
+      By Proposition~\ref{prop:closure-transitivity}, we only need to show that $\sigma$ restricted to $X$, the interior of $\bar{X}$, is transitive.
+      Fix $s, t \in X$, $\epsilon > 0$, and $\delta > 0$.
+      We may assume that $\epsilon = 2^{-j}$ and $\delta = 2^{-k}$ for some $j,k \in \N$.
+      We show that there exists a point $t'$ in $\oball{\epsilon}{t}$ such that, for some $n$, $\itr{\sigma}{n}(t') \in \oball{\delta}{s}$.
+      By Lemma~\ref{lem:sturmian1}, if $\eta > 0$ is small enough, then for any $x \in S^1$, we have $t \ceq \phi(x)$ and $t' \ceq \phi(x + \eta)$ satisfy $t_i = t'_i$ for $0 \leq \abs{i} \leq j$.
+      Furthermore, by Proposition~\ref{prop:two-sided}, $t'$ satisfies
+      \begin{equation*}
+        \metric{t, t'} \leq 2^{-(j-1)} < \epsilon.
+      \end{equation*}
+      Hence, $t'$ is in $\oball{\epsilon}{t}$.
+      Now, let $y \ceq \phi^{-1}(t') \in S^1$.
+      By the transitivity of $R_\alpha$, we may find $m \in \N$ such that
+      \begin{equation*}
+        \itr{R_\alpha}{m}(y) \in \oball{\eta}{\phi^{-1}(s)},
+      \end{equation*}
+      where $\eta > 0$ taken so small that by Lemma~\ref{lem:sturmian1}, we have 
+      $\phi(\itr{R_\alpha}{m}(y))_i = \phi(s)_i$ for $0 \leq \abs{i} \leq k$.
 
-  Now, we prove that $(\sigma, \bar{X})$ is chaotic in Wiggins's sense.
-  By Proposition~\ref{prop:closure-transitivity}), we only need to show that $\sigma$ restricted to $X$, the interior of $\bar{X}$, is transitive.
-
-  For the system to be chaotic in Wiggins's sense, $\sigma$ needs to be sensitive to initial conditions on $\bar{X}$, as well.
-  Let $0 < \delta < 1$ be our separation constant.
-  For any given $x \in S^1$, and $\epsilon > 0$, we can find $y \in \oball{\epsilon}{x}$ by the argument we gave in proving the continuity of $\phi$.
-  Without loss of generality, we may assume that $y > x$.
-  Then, let $z$ be the midpoint of the interval $(x,y)$, and $\eta \ceq \frac{\metric{x,y}}{2}$, so that $(z-\eta, z+\eta) = (x,y)$.
-  Since $R_\alpha$ is transitive, there exists $m \geq 0$ such that 
+  By Lemma~\ref{lem:sturmian2}, there exists $u$
+    \end{proof}
+  \end{proposition}
+  %%%
+  We are left to show that $(\bar{X}, \sigma)$ is sensitive to initial conditions in order to prove that the system is chaotic in Wiggin's sense.
+  \begin{proposition}
+    $(\bar{X}, \sigma)$ is sensitive to initial conditions.
+    \begin{proof}
+      Let $0 < \delta < 1$ be our separation constant.
+      For any given $x \in S^1$, and $\epsilon > 0$, we can find $y \in \oball{\epsilon}{x}$ by the argument we gave in proving the continuity of $\phi$.
+      Without loss of generality, we may assume that $y > x$.
+      Then, let $z$ be the midpoint of the interval $(x,y)$, and $\eta \ceq \frac{\metric{x,y}}{2}$, so that $(z-\eta, z+\eta) = (x,y)$.
+      Since $R_\alpha$ is transitive, there exists $m \geq 0$ such that 
+      \begin{equation*}
+        \itr{R_\alpha}{m}(z) \in \oball{\eta/2}{0}.
+      \end{equation*}
+      $R_\alpha$ is an isometry, so
+      \begin{equation*}
+        \oball{\eta/2}{0} \subseteq \itr{R_\alpha}{m}(z-\eta, z+\eta) 
+        = \itr{R_\alpha}{m}(x,y).
+      \end{equation*}
+      Hence, $0 \in \itr{R_\alpha}{m}(x,y)$.
+      It follows that $\phi(x)_m \neq \phi(y)_m$.
+      Therefore,
+      \begin{equation*}
+        \metric{\itr{\sigma}{m}(x), \itr{\sigma}{m}(y)} \geq 1 > \delta.
+      \end{equation*}
+    \end{proof}
+  \end{proposition}
+  %%%
+  Our next goal is to show that $(\bar{X}, \sigma)$ is not chaotic in Li-Yorke's sense.
+  To do so, we prove 
   \begin{equation*}
-    \itr{R_\alpha}{m}(z) \in \oball{\eta/2}{0}.
+    \liminf\limits_{n \to \infty} (\itr{\sigma}{n}(x), \itr{\sigma}{n}(x+\delta)) > 0$.
   \end{equation*}
-  $R_\alpha$ is an isometry, so
-  \begin{equation*}
-    \oball{\eta/2}{0} \subseteq \itr{R_\alpha}{m}(z-\eta, z+\eta) 
-    = \itr{R_\alpha}{m}(x,y).
-  \end{equation*}
-  Hence, $0 \in \itr{R_\alpha}{m}(x,y)$.
-  It follows that $\phi(x)_m \neq \phi(y)_m$.
-  Therefore,
-  \begin{equation*}
-    \metric{\itr{\sigma}{m}(x), \itr{\sigma}{m}(y)} \geq 1 > \delta.
-  \end{equation*}
-  Thus, $(\sigma, \bar{X})$ is chaotic in Wiggins's sense.
-
-  By the same argument in proving \sdic, we see that, for each $x,y \in \bar{X}$, there are infinitely many $n$ such that 
-  \begin{equation*}
-    \metric{\itr{\sigma}{n}(x),\itr{\sigma}{n}(y)} > 0.
-  \end{equation*}
-  Hence, $\liminf\limits_{n \to \infty} (\itr{\sigma}{n}(x), \itr{\sigma}{n}(x+\delta)) > 0$, so that $(\sigma, \bar{X})$ is not chaotic in Li-Yorke's sense.
-
-  Note that, $\sigma$ cannot have dense periodic points in $\bar{X}$; hence, the system is not chaotic in Devaney's sense.
-  We prove this by contradiction.
-  Suppose $s \in X$ is a periodic point of period $p$, and let $x \ceq \phi^{-1}(s)$. 
-  Without loss of generality, we may assume that $x \in C_0$.
-  Then, for each $k \in \N$, we have $\itr{R_\alpha}{kp}(x) \in C_0$.
-  However, this is impossible because $\itr{R_\alpha}{p}$ is an irrational rotation, and hence transitive.
+  \begin{proposition}
+    $(\bar{X}, \sigma)$ is not chaotic in Li-Yorke's sense.
+    \begin{proof}
+      By the proof of \sdic, we know that eventually $(x, y]$ contains $0$.
+      We extend the result and show that this happen at a certain frequency.
+    \end{proof}
+  \end{proposition}
+  %%%
+  Finally, we show that the system does not have a periodic point.
+  In particular, this implies that $\sigma$ does not have dense periodic points in $\bar{X}$.
+  \begin{proposition}
+    $\sigma$ does not have a periodic point in $\bar{X}$.
+    \begin{proof}
+      Proof by contradiction.
+      Suppose $s \in X$ is a periodic point of period $p$, and let $x \ceq \phi^{-1}(s)$. 
+      Without loss of generality, we may assume that $x \in C_0$.
+      Then, for each $k \in \N$, we have $\itr{R_\alpha}{kp}(x) \in C_0$.
+      However, this is impossible because $\itr{R_\alpha}{p}$ is an irrational rotation, and hence transitive.
+    \end{proof}
+  \end{proposition}
+  %%%
+  Hence, $(\sigma, \bar{X})$ is chaotic in Wiggins's sense, but not in Li-Yorke's sense.
+  The last proposition implies that the system is not chaotic in Devaney's sense.
   $\square$
 \end{example}
 %%%
-\begin{lemma}
-  For each $x \in S^1$ and any $k \in \N$, there exists $\epsilon > 0$ such that $\oball{\epsilon}{x}$ contains a point $y$ such that 
-    $\phi(x)_i = \phi(y)_i$ for each $0 \leq \abs{i} \leq k$.
-  \label{lem:sturmian1}
-  \begin{proof}
-  It is easy to see that $\phi(x)_i \neq \phi(y)_i$ if and only if
-  \begin{equation*} %[[ 
-    0 \in (\itr{R_\alpha}{i}(x), \itr{R_\alpha}{i}(y)] \mbox{ or } \alpha \in (\itr{R_\alpha}{i}(x), \itr{R_\alpha}{i}(y)]. %))
-  \end{equation*}
-  So for each $x \in S^1$, let $y = x + \delta$ for some $\delta > 0$.
-  If 
-  \begin{equation*} %[ [
-    0 \in R_\alpha((x, x+\delta]) \mbox{ or } \alpha \in R_\alpha((x, x+\delta]), %))
-  \end{equation*}
-  then we can redefine $\delta$ to be a smaller value so that 
-  \begin{equation*} %[
-    0, \alpha \not\in R_\alpha((x, x+\delta]). %)
-  \end{equation*}
-  Inductively, we see that, for any $k \in \N$, if $\delta$ is small enough, then 
-  \begin{equation*} %[
-    0, \alpha \not\in \itr{R_\alpha}{k}((x, x+\delta]) %)
-  \end{equation*}
-  so that
-  \begin{equation*}
-    \phi(x)_i = \phi(x+\delta)_i \mbox{ for } 0 \leq i \leq k.
-  \end{equation*}
-  Repeat the same process for backward iterations of $R_\alpha$ to obtain
-  \begin{equation*}
-    \phi(x)_i = \phi(x+\delta)_i \mbox{ for } -k \leq i \leq 0.
-  \end{equation*}
-  This completes the proof.
-\end{proof}
-\end{lemma}
-%%%
-\begin{proposition}
-  Let $x,y$ be members of $\Sigma$.
-  If $x_i = y_i$ for $0 \leq \abs{i} \leq k$, then $\metric{x,y} \leq 2^{-(k-1)}$.
-  \label{prop:two-sided}
-  \begin{proof}
-    $\metric{x,y}$ achieves its upper bound when $x_i \neq y_i$ for $\abs{i} \geq k+1$.
-    \begin{align*}
-      \metric{x,y}
-      &\leq 2 \cdot \sum\limits_{n = k+1}^{\infty} \frac{1}{2^{\abs{i}}} \\
-      &\leq 2 \cdot \paren{ \sum\limits_{n = 0}^{\infty} \frac{1}{2^{\abs{i}}} - \sum\limits_{n = 0}^{k} \frac{1}{2^{\abs{i}}}} \\
-      &= 2 \cdot (2 - (2 - \frac{1}{2^k})) \\
-      &= \frac{1}{2^{k-1}}.
-    \end{align*}
-  \end{proof}
-\end{proposition}
-%%%
-\begin{proposition}
-  Let $F: X \to X$ be a continuous map, $Y$ be a subset of $X$.
-  If $F$ restricted to $Y$ is topologically transitive, then $F: \cl(Y) \to \cl(Y)$ is also transitive.
-  \label{prop:closure-transitivity}
-  \begin{proof}
-    We only need to prove that $F$ is transitive for the boundary points of $Y$.
-    For any point $x$ on the boundary of $Y$, and for each neighborhood $N$ of $x$, $N$ contains a point in $Y$.
-    Call that point $y$.
-    Choose $\epsilon$ small enough that $\oball{\epsilon}{y}$ is contained in $N \cap Y$.
-    Applying the transitivity property of $F$ to the open neighborhood gives us the desired result.
-  \end{proof}
-\end{proposition}
 
 %%%
 \begin{theorem}
