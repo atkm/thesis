@@ -4,44 +4,44 @@
 \usetikzlibrary{arrows,positioning} 
 \tikzset{
     %Define standard arrow tip
-    >=stealth',
+  >=stealth',
     %Define style for boxes
-    box/.style={
-           rectangle,
-           rounded corners,
-           draw=black, very thick,
-           text width=6.5em,
-           minimum height=2em,
-           text centered},
+  box/.style={
+    rectangle,
+    rounded corners,
+    draw=black, very thick,
+    text width=6.5em,
+    minimum height=2em,
+  text centered},
     % Define arrow style
-    imply/.style={
-           ->,
-           thick,
-           shorten <=2pt,
-           shorten >=2pt},
-    both/.style={
-           <->,
-           thick,
-           shorten <=2pt,
-           shorten >=2pt,},
-    induced/.style={
-           dotted,
-           ->,
-           thick,
-           shorten <=2pt,
-           shorten >=2pt},
-    maybe/.style={
-           ->, 
-           -o,
-           thick,
-           shorten <=2pt,
-           shorten >=50pt},
-    noimply/.style={
-           ->, %inden[
-         -],
-           thick,
-           shorten <=2pt,
-           shorten >=60pt}
+  imply/.style={
+    ->,
+    thick,
+    shorten <=2pt,
+  shorten >=2pt},
+  both/.style={
+    <->,
+    thick,
+    shorten <=2pt,
+  shorten >=2pt,},
+  induced/.style={
+    dotted,
+    ->,
+    thick,
+    shorten <=2pt,
+  shorten >=2pt},
+  maybe/.style={
+    ->, 
+    -o,
+    thick,
+    shorten <=2pt,
+  shorten >=50pt},
+  noimply/.style={
+    ->, %inden[
+    -],
+    thick,
+    shorten <=2pt,
+  shorten >=60pt}
 }
 
 
@@ -437,12 +437,13 @@ Hence, \blcp implies \liy, but the converse is not true.
 The following example is a system that is chaotic in Wiggins's sense but not in Li-Yorke's sense.
 \begin{example}
   \citep{blanchard}
-  (Note to Rao: this example contains a few glitches, but I think the overall idea is right. I hope to discuss this at some point.)
   This example employs a \textit{two-sided shift}, a symbolic dynamical system on the set of all bi-infinite sequences.
-  Since a two-sided shift is similar to an one-sided shift, instead of formally defining the dynamical system, we briefly discuss its structure here.
+  As we mentioned in Chapter~\ref{chap:symbolic}, the basic structure of a two-sided shift is similar to an one-sided shift.
+  We note here a few differences that we need for our example.
   Some of the results that we prove in this example are standard results for two-sided shifts.
   Let $S = \set{0,1}$ be the set of symbols.
-  In a two-sided shift system, $\Sigma \equiv S^\Z$ consists of bi-infinite sequences, i.e. sequences of the form
+  In a two-sided shift system, the space $\Sigma \equiv S^\Z$ consists of bi-infinite sequences, i.e. sequences of the form
+
   \begin{align*}
     \cdots s_{-n} \cdots s_{-2} s_{-1} s_0 s_1 s_2 \cdots s_n \cdots.
   \end{align*}
@@ -478,59 +479,34 @@ The following example is a system that is chaotic in Wiggins's sense but not in 
   where
   \begin{equation*}
     s_i = \begin{cases}
-      0& \mbox{ if } \itr{R_\alpha}{i}(x) \in [0, 1-\alpha)  \\
-      1& \mbox{ if } \itr{R_\alpha}{i}(x) \in [1-\alpha, 1). %]
+      0& \mbox{ if } \itr{R_\alpha}{i}(x) \in [0, \alpha)  \\ %]
+      1& \mbox{ if } \itr{R_\alpha}{i}(x) \in [\alpha, 1). %]
     \end{cases}
-  \end{equation*}
+  \end{equation*} %( (
+  We call $[0, \alpha)$ and $[\alpha, 1)$ as $C_0$ and $C_1$, respectively. % ] ]
   Let $X \ceq \phi(S^1)$.
   Then, since $\bar{X}$, the closure of $X$, is a closed subset of a compact space $\Sigma$, $\bar{X}$ is also compact.
-
-  Also, $\bar{X}$ is invariant under the shift map $\sigma$.
+  For $(\bar{X}, \sigma)$ to be a well-defined dynamical system, we need $\bar{X}$ to be invariant under $\sigma$ \citep[p.179]{lind}.
+  It is clear by the construction of $X$ that $\sigma(X) = X = \itr{\sigma}{-1}(X)$.
   Suppose $s \in \bar{X}$.
   We may assume that there exists a sequence $\set{s_n} \subseteq X$ such that $\lim\limits_{n \to \infty} s_n = s$.
-  For each $s_n$, there exists $\itr{\sigma}{-1}(s_n)$ that is a member of $\bar{X}$.
-  Since $\sigma$ is homeomorphic, we have $\lim\limits_{n \to \infty} \itr{\sigma}{-1}(s_n) = \itr{\sigma}{-1}(s)$.
+  For each $s_n$, there exists $\itr{\sigma}{-1}(s_n)$ that is a member of $X$.
+  Since $\sigma$ is homeomorphic, we have 
+  \begin{equation*}
+    \lim\limits_{n \to \infty} \itr{\sigma}{-1}(s_n) 
+    = \itr{\sigma}{-1}(s) 
+    \in \cl(\itr{\sigma}{-1}(X)) 
+    = \cl(X) 
+    = \bar{X}.
+  \end{equation*}
   It follows that $s \in \sigma(\bar{X})$; hence, $\bar{X} \subseteq \sigma(\bar{X})$.
   A similar argument shows that $\sigma(\bar{X}) \subseteq \bar{X}$.
   Hence, $\sigma(\bar{X}) = \bar{X}$.
-  (The reason that we proved that $\bar{X}$ is a compact, invariant subset of $\Sigma$ is not only because Wiggins's definition calls for the conditions to be satisfied on a compact set.
-  As it turns out, these conditions are required for a symbolic dynamics to be well-defined.
-  See \citep[p.179]{lind}.)
-  
-  Next, we show that $\phi$ is a continuous mapping.
-  Fix $\epsilon > 0$.
-  We may assume that $2^{-k} < \epsilon$.
-  By Proposition~\ref{prop:two-sided}, which we prove immediately after this example, for any $k$, $\phi(x)_i = \phi(y)_i$ for $0 \leq \abs{i} \leq k+1$ implies that
-  \begin{equation*}
-    \metric{\phi(x),\phi(y)} \leq 2^{-k}.
-  \end{equation*}
-  Therefore, we only need to prove that, for each $x \in S^1$, there exists $y \in S^1$ such that $x_i = y_i$ for $0 \leq \abs{i} \leq k+1$.
-  It is easy to see that $\phi(x)_i \neq \phi(y)_i$ if and only if $0 \in (\phi(x)_i, \phi(y)_i]$ or $1 - \alpha \in (\phi(x)_i, \phi(y)_i]$. %)
-  So for each $x$, let $y = x + \delta$ for some $\delta > 0$.
-  If 
-  \begin{equation*}
-    0 \in R_\alpha((x, x+\delta]) \mbox{ or } 1 - \alpha \in R_\alpha((x, x+\delta]), 
-  \end{equation*}
-   then we can redefine $\delta$ to be a smaller value so that 
-   \begin{equation*}
-     0, 1-\alpha \not\in R_\alpha((x, x+\delta]). %)))
-   \end{equation*}
-  Inductively, we see that, for any $k \in \N$, if $\delta$ is small enough, then 
-  \begin{equation*}
-    0, 1-\alpha \not\in \itr{R_\alpha}{k+1}(x, x+\delta) 
-  \end{equation*}
-  so that
-  \begin{equation*}
-    \phi(x)_i = \phi(x+\delta)_i \mbox{ for } 0 \leq \abs{i} \leq k+1.
-  \end{equation*}
-  Thus, $\phi$ is continuous.
-  (Incorrect.. $\phi$ isn't continuous at $0, 1-\alpha \in S^1$. Need to do something about it.
-  One idea is to cover $S^1$ with $[0,1-\alpha]$ and $[1-\alpha, 1]$.
-  )
 
   Now, we prove that $(\sigma, \bar{X})$ is chaotic in Wiggins's sense.
-  The fact that $R_\alpha: X \to X$ is topologically transitive implies that $R_\alpha: \bar{X} \to \bar{X}$ is also topologically transitive (See Proposition~\ref{prop:closure-transitivity}).
-  For the system to be chaotic in Wiggins's sense, $\sigma$ needs to be sensitive to initial conditions on $\bar{X}$.
+  By Proposition~\ref{prop:closure-transitivity}), we only need to show that $\sigma$ restricted to $X$, the interior of $\bar{X}$, is transitive.
+
+  For the system to be chaotic in Wiggins's sense, $\sigma$ needs to be sensitive to initial conditions on $\bar{X}$, as well.
   Let $0 < \delta < 1$ be our separation constant.
   For any given $x \in S^1$, and $\epsilon > 0$, we can find $y \in \oball{\epsilon}{x}$ by the argument we gave in proving the continuity of $\phi$.
   Without loss of generality, we may assume that $y > x$.
@@ -551,14 +527,56 @@ The following example is a system that is chaotic in Wiggins's sense but not in 
     \metric{\itr{\sigma}{m}(x), \itr{\sigma}{m}(y)} \geq 1 > \delta.
   \end{equation*}
   Thus, $(\sigma, \bar{X})$ is chaotic in Wiggins's sense.
-  
+
   By the same argument in proving \sdic, we see that, for each $x,y \in \bar{X}$, there are infinitely many $n$ such that 
   \begin{equation*}
     \metric{\itr{\sigma}{n}(x),\itr{\sigma}{n}(y)} > 0.
   \end{equation*}
   Hence, $\liminf\limits_{n \to \infty} (\itr{\sigma}{n}(x), \itr{\sigma}{n}(x+\delta)) > 0$, so that $(\sigma, \bar{X})$ is not chaotic in Li-Yorke's sense.
+
+  Note that, $\sigma$ cannot have dense periodic points in $\bar{X}$; hence, the system is not chaotic in Devaney's sense.
+  We prove this by contradiction.
+  Suppose $s \in X$ is a periodic point of period $p$, and let $x \ceq \phi^{-1}(s)$. 
+  Without loss of generality, we may assume that $x \in C_0$.
+  Then, for each $k \in \N$, we have $\itr{R_\alpha}{kp}(x) \in C_0$.
+  However, this is impossible because $\itr{R_\alpha}{p}$ is an irrational rotation, and hence transitive.
   $\square$
 \end{example}
+%%%
+\begin{lemma}
+  For each $x \in S^1$ and any $k \in \N$, there exists $\epsilon > 0$ such that $\oball{\epsilon}{x}$ contains a point $y$ such that 
+    $\phi(x)_i = \phi(y)_i$ for each $0 \leq \abs{i} \leq k$.
+  \label{lem:sturmian1}
+  \begin{proof}
+  It is easy to see that $\phi(x)_i \neq \phi(y)_i$ if and only if
+  \begin{equation*} %[[ 
+    0 \in (\itr{R_\alpha}{i}(x), \itr{R_\alpha}{i}(y)] \mbox{ or } \alpha \in (\itr{R_\alpha}{i}(x), \itr{R_\alpha}{i}(y)]. %))
+  \end{equation*}
+  So for each $x \in S^1$, let $y = x + \delta$ for some $\delta > 0$.
+  If 
+  \begin{equation*} %[ [
+    0 \in R_\alpha((x, x+\delta]) \mbox{ or } \alpha \in R_\alpha((x, x+\delta]), %))
+  \end{equation*}
+  then we can redefine $\delta$ to be a smaller value so that 
+  \begin{equation*} %[
+    0, \alpha \not\in R_\alpha((x, x+\delta]). %)
+  \end{equation*}
+  Inductively, we see that, for any $k \in \N$, if $\delta$ is small enough, then 
+  \begin{equation*} %[
+    0, \alpha \not\in \itr{R_\alpha}{k}((x, x+\delta]) %)
+  \end{equation*}
+  so that
+  \begin{equation*}
+    \phi(x)_i = \phi(x+\delta)_i \mbox{ for } 0 \leq i \leq k.
+  \end{equation*}
+  Repeat the same process for backward iterations of $R_\alpha$ to obtain
+  \begin{equation*}
+    \phi(x)_i = \phi(x+\delta)_i \mbox{ for } -k \leq i \leq 0.
+  \end{equation*}
+  This completes the proof.
+\end{proof}
+\end{lemma}
+%%%
 \begin{proposition}
   Let $x,y$ be members of $\Sigma$.
   If $x_i = y_i$ for $0 \leq \abs{i} \leq k$, then $\metric{x,y} \leq 2^{-(k-1)}$.
@@ -574,19 +592,17 @@ The following example is a system that is chaotic in Wiggins's sense but not in 
     \end{align*}
   \end{proof}
 \end{proposition}
+%%%
 \begin{proposition}
   Let $F: X \to X$ be a continuous map, $Y$ be a subset of $X$.
-  If $F$ restricted to $Y$ is topologically transitive, then $F: \bar{Y} \to \bar{Y}$ is also transitive.
+  If $F$ restricted to $Y$ is topologically transitive, then $F: \cl(Y) \to \cl(Y)$ is also transitive.
   \label{prop:closure-transitivity}
   \begin{proof}
-    Since $F$ is transitive on $Y$, for each $U, V \subseteq Y$, there exists $n$ such that
-    \begin{equation*}
-      \itr{F}{n}(\interior(\bar{U})) \cap \interior(\bar{V}) \neq \emptyset.
-    \end{equation*}
-    It follows that
-    \begin{equation*}
-      \itr{F}{n}(\bar{U}) \cap \bar{V} \neq \emptyset.
-    \end{equation*}
+    We only need to prove that $F$ is transitive for the boundary points of $Y$.
+    For any point $x$ on the boundary of $Y$, and for each neighborhood $N$ of $x$, $N$ contains a point in $Y$.
+    Call that point $y$.
+    Choose $\epsilon$ small enough that $\oball{\epsilon}{y}$ is contained in $N \cap Y$.
+    Applying the transitivity property of $F$ to the open neighborhood gives us the desired result.
   \end{proof}
 \end{proposition}
 
