@@ -591,9 +591,19 @@ The following example is a system that is chaotic in Wiggins's sense but not in 
         \itr{R_\alpha}{m}(y) \in \oball{\eta}{\phi^{-1}(s)},
       \end{equation*}
       where $\eta > 0$ taken so small that by Lemma~\ref{lem:sturmian1}, we have 
-      $\phi(\itr{R_\alpha}{m}(y))_i = \phi(s)_i$ for $0 \leq \abs{i} \leq k$.
-
-  By Lemma~\ref{lem:sturmian2}, there exists $u$
+      $\phi(\itr{R_\alpha}{m}(y))_i = s_i$ for $0 \leq \abs{i} \leq k$.
+      Note that
+      \begin{equation*}
+        \phi(\itr{R_\alpha}{m}(y)) 
+        = \itr{\sigma}{m}(\phi(y))
+        \equiv \itr{\sigma}{m}(t).
+      \end{equation*}
+      Therefore, $t'_{m+i} = s_i$ for $0 \leq \abs{i} \leq k$.
+      It follows that 
+      \begin{equation*}
+        \metric{\itr{\sigma}{m}(t'), s} \leq 2^{-(k-1)} < \delta.
+      \end{equation*}
+      This completes the proof.
     \end{proof}
   \end{proposition}
   %%%
@@ -626,7 +636,7 @@ The following example is a system that is chaotic in Wiggins's sense but not in 
   Our next goal is to show that $(\bar{X}, \sigma)$ is not chaotic in Li-Yorke's sense.
   To do so, we prove 
   \begin{equation*}
-    \liminf\limits_{n \to \infty} (\itr{\sigma}{n}(x), \itr{\sigma}{n}(x+\delta)) > 0$.
+    \liminf\limits_{n \to \infty} (\itr{\sigma}{n}(x), \itr{\sigma}{n}(x+\delta)) > 0.
   \end{equation*}
   \begin{proposition}
     $(\bar{X}, \sigma)$ is not chaotic in Li-Yorke's sense.
