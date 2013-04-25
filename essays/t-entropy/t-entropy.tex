@@ -30,9 +30,11 @@ The material in this section is from \citep{akm}, unless stated otherwise.
 %%%
 \begin{definition}
   (Refinement of an open cover)
-  An open cover $\beta$ is said to be a refinement of another open cover $\alpha$, if for each $B \in \beta$, there exists $A \in \alpha$ such that $B \subseteq A$.
+  An open cover $\beta$ is said to be a \textit{refinement} of another open cover $\alpha$, if for each $B \in \beta$, there exists $A \in \alpha$ such that $B \subseteq A$.
+  We denote this relation by $\alpha < \beta$.
   Note that for any open covers $\alpha, \beta$, we have $\alpha < \alpha \vee \beta$.
 \end{definition}
+Note that a refinement is different from a subcover, which is defined to be a subset of an open cover.
 
 \begin{definition}
   (Preimage of an Open Cover)
@@ -215,7 +217,7 @@ We need one more lemma, and we are ready to prove the existence of the limit.
     \end{equation*}
     We also have
     \begin{equation*}
-      \inf\limits_{m \to \infty} \frac{a_m}{m} \leq \liminf\limits_{n \to \infty} \frac{a_n}{n}
+      \inf\limits_{m} \frac{a_m}{m} \leq \liminf\limits_{n \to \infty} \frac{a_n}{n}
     \end{equation*}
     by definition of liminf.
     Therefore the limit $\lim\limits_{n \to \infty} a_n/n$ exists, and equals $\inf a_n/n$.

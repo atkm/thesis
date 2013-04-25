@@ -56,7 +56,7 @@ Before we proceed further, we verify the validity of the definition of an one-si
       d(a,b) + d(b,c)
       &\equiv \sum\limits_{i = 0}^{\infty} \frac{\abs{a_i - b_i}}{2^i}  +  \sum\limits_{i = 0}^{\infty} \frac{\abs{b_i - c_i}}{2^i}  \\
       %
-      &= \sum\limits_{i = 0}^{\infty} \frac{\abs{a_i - b_i} - \abs{b_i - c_i}}{2^i}  \\
+      &= \sum\limits_{i = 0}^{\infty} \frac{\abs{a_i - b_i} + \abs{b_i - c_i}}{2^i}  \\
       %
       &\geq \sum\limits_{i = 0}^{\infty} \frac{\abs{a_i - c_i}}{2^i}  \\
       &= d(a,c)
@@ -256,7 +256,10 @@ However, we present a direct proof below, as symbolic dynamics provides a new pe
   \end{proof}
 \end{proposition}
 %%%
-COMMENTS.
+The meaning of sensitive dependence on initial conditions is conspicuously displayed in the proof.
+A slight change in the initial conditions is represented as a .
+
+%%%
 
 \section{Doubling Map is Chaotic}
 The goal of this section is to prove that $(\Sigma, \sigma)$ is semi-conjugate to $(S^1, D)$, which implies that the doubling map is chaotic in Devaney's sense (Theorem~\ref{thm:conj-sdic}).
