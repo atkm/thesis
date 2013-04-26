@@ -519,17 +519,18 @@ The following example is a system that is chaotic in Wiggins's sense but not in 
         0 \in (\itr{R_\alpha}{i}(x), \itr{R_\alpha}{i}(y)] \mbox{ or } \alpha \in (\itr{R_\alpha}{i}(x), \itr{R_\alpha}{i}(y)]. %))
       \end{equation*}
       So for each $x \in S^1$, let $y = x + \delta$ for some $\delta > 0$.
+      Also, let $I \equiv (x, y]$.
       If 
       \begin{equation*}
-        0 \in R_\alpha((x, x+\delta]) \mbox{ or } \alpha \in R_\alpha((x, x+\delta]), %))
+        0 \in R_\alpha(I) \mbox{ or } \alpha \in R_\alpha(I), 
       \end{equation*}
       then we can redefine $\delta$ to be a smaller value so that 
       \begin{equation*} 
-        0, \alpha \not\in R_\alpha((x, x+\delta]). %)
+        0, \alpha \not\in R_\alpha(I).
       \end{equation*}
       Inductively, we see that, for any $k \in \N$, if $\delta$ is small enough, then 
       \begin{equation*}
-        0, \alpha \not\in \itr{R_\alpha}{k}((x, x+\delta]) %)
+        0, \alpha \not\in \itr{R_\alpha}{k}(I)
       \end{equation*}
       so that
       \begin{equation*}
@@ -636,76 +637,101 @@ The following example is a system that is chaotic in Wiggins's sense but not in 
   Our next goal is to show that $(\bar{X}, \sigma)$ is not chaotic in Li-Yorke's sense.
   To do so, we prove 
   \begin{equation*}
-    \liminf\limits_{n \to \infty} (\itr{\sigma}{n}(x), \itr{\sigma}{n}(x+\delta)) > 0.
+    \liminf\limits_{n \to \infty} (\itr{\sigma}{n}(s), \itr{\sigma}{n}(t)) > 0
   \end{equation*}
+  for each $s, t \in \Sigma$.
   \begin{proposition}
     $(\bar{X}, \sigma)$ is not chaotic in Li-Yorke's sense.
     \begin{proof}
-      By the proof of \sdic, we know that eventually $(x, y]$ contains $0$.
-      We extend the result and show that this happen at a certain frequency.
+      From the proof that the system is sensitive, we know that there exists $n$ such that $(\itr{R_\alpha}{n}(x), \itr{R_\alpha}{n}(y)]$ contains $0$. %)
+      We extend the result and show that the interval $(\itr{R_\alpha}{n}(x), \itr{R_\alpha}{n}(y)]$ comes to contain $0$ at a certain frequency under iteration. %)
+      In particular, we prove that it cannot be the case that the number of time steps between the two such occurences is arbitrarily long.
+
+      First, choose any $x,y \in S^1$.
+      Let $b$ be the length of the interval $I \equiv (x,y]$ %)
+      First, consider the case $\alpha \leq b$.
+      In this case, $I \cap R_\alpha(I)$, so as $I$ rotates around $S^1$, it covers all of $S^1$.
+      Let $n$ be the least positive integer such that $n\alpha > 1$.
+      Then, it takes no longer than $n$ iterations until $\itr{R_\alpha}{n}(I)$ contains $0$ again.
+
+      Next, consider the other case $\alpha > b$.
+      There exists a positive integer $m$ such that $m\alpha \leq b \;(\mod{1})$.
+      Then, as in the first case, if we let $n$ be the least positive integer such that $nm\alpha > 1$, then $mn$ is the upper bound for the number of iterations until $\itr{(R_\alpha^{\;m})}{n}(I)$ contains $0$ again.
+
+      Now, consider $s \ceq \phi(x)$ and $t \ceq \phi(y)$.
+      By the discussion so far, each block of length $mn$ contains a position $i$ such that $\phi(x)_{i} \neq \phi(y)_{i}$.
+      It follows that the longest block for which $s$ and $t$ agree with each other cannot be longer than $2mn$.
+      Hence,
+      \begin{equation*}
+        \metric{\itr{\sigma}{i}(x), \itr{\sigma}{i}(y)} 
+        \geq 2 \cdot \frac{1}{2^{mn}}
+        = 2^{1 - mn}.
+      \end{equation*}
+      Thus, $\liminf\limits_{i \to \infty} (\itr{\sigma}{i}(x), \itr{\sigma}{i}(y)) > 0$.
     \end{proof}
-  \end{proposition}
+    \end{proposition}
   %%%
-  Finally, we show that the system does not have a periodic point.
-  In particular, this implies that $\sigma$ does not have dense periodic points in $\bar{X}$.
-  \begin{proposition}
-    $\sigma$ does not have a periodic point in $\bar{X}$.
+    Finally, we show that the system does not have a periodic point.
+    In particular, this implies that $\sigma$ does not have dense periodic points in $\bar{X}$.
+    \begin{proposition}
+      $\sigma$ does not have a periodic point in $\bar{X}$.
+      \begin{proof}
+        Proof by contradiction.
+        Suppose $s \in X$ is a periodic point of period $p$, and let $x \ceq \phi^{-1}(s)$. 
+        Without loss of generality, we may assume that $x \in C_0$.
+        Then, for each $k \in \N$, we have $\itr{R_\alpha}{kp}(x) \in C_0$.
+        However, this is impossible because $\itr{R_\alpha}{p}$ is an irrational rotation, and hence transitive.
+      \end{proof}
+    \end{proposition}
+  %%%
+    Hence, $(\sigma, \bar{X})$ is chaotic in Wiggins's sense, but not in Li-Yorke's sense.
+    The last proposition implies that the system is not chaotic in Devaney's sense.
+    $\square$
+  \end{example}
+%%%
+As we have seen in the example above, \wig does not necessarily imply \liy.
+However, \dev, which is stronger than \wig, implies \liy.
+%%%
+  \begin{theorem}
+    If $(X, F)$ is chaotic in Devaney's sense, then it is chaotic in Li-Yorke's sense.
     \begin{proof}
-      Proof by contradiction.
-      Suppose $s \in X$ is a periodic point of period $p$, and let $x \ceq \phi^{-1}(s)$. 
-      Without loss of generality, we may assume that $x \in C_0$.
-      Then, for each $k \in \N$, we have $\itr{R_\alpha}{kp}(x) \in C_0$.
-      However, this is impossible because $\itr{R_\alpha}{p}$ is an irrational rotation, and hence transitive.
+      See \citet{mai}.
+      \citet{huang} also proved the same result.
     \end{proof}
-  \end{proposition}
-  %%%
-  Hence, $(\sigma, \bar{X})$ is chaotic in Wiggins's sense, but not in Li-Yorke's sense.
-  The last proposition implies that the system is not chaotic in Devaney's sense.
-  $\square$
-\end{example}
+    \label{thm:dev-liy}
+  \end{theorem}
+  More specifically, Mai proved that, for a complete metric space $X$ without an isolated point, if $F: X \to X$ is transitive and has a periodic point of any period, then $F$ is chaotic in Li-Yorke's sense.
+  Thus, even though \tt and \sdic do not imply Li-Yorke's chaos, as we saw in the previous example, \tt and the existence of a \textit{single} periodic point, which is significantly weaker than \dpp, imply chaos in Li-Yorke's sense.
+  This result may be instructive in evaluating whether \dpp in Devaney's definition is appropriate.
+  Also, we can make an interesting observation from the fact that \wig and \liy do not imply each other. 
+  Recall that, though it is not explicitly called sensitivity, Li-Yorke's definition uses its own version of sensitivity, $\limsup\limits_{n\to \infty} \metric{\itr{F}{n}(x), \itr{F}{n}(y)} > 0$, called the \textit{non-asymptotic relation}.
+  The non-asymptotic relation is analogous to, yet different from \sdic.
+  In the same manner, we can see that the other condition in Li-Yorke's definition, $\liminf\limits_{n\to \infty} \metric{\itr{F}{n}(x), \itr{F}{n}(y)} = 0$, called the \textit{proximal relation}, is similar to topological transitivity.
+  The result about \wig and \liy indicates that non-asymptotic and proximal relations are neither stronger nor weaker than \tt and \sdic, even though these conditions contain similar ideas.
 %%%
 
-%%%
-\begin{theorem}
-  If $(X, F)$ is chaotic in Devaney's sense, then it is chaotic in Li-Yorke's sense.
-  \begin{proof}
-    See \citet{mai}.
-    \citet{huang} also proved the same result.
-  \end{proof}
-  \label{thm:dev-liy}
-\end{theorem}
-More specifically, Mai proved that, for a complete metric space $X$ without an isolated point, if $F: X \to X$ is transitive and has a periodic point of any period, then $F$ is chaotic in Li-Yorke's sense.
-Thus, even though \tt and \sdic do not imply Li-Yorke's chaos, as we saw in the previous example, \tt and the existence of a \textit{single} periodic point, which is significantly weaker than \dpp, imply chaos in Li-Yorke's sense.
-This result may be instructive in evaluating whether \dpp in Devaney's definition is appropriate.
-Also, we can make an interesting observation from the fact that \wig and \liy do not imply each other. 
-Recall that, though it is not explicitly called sensitivity, Li-Yorke's definition uses its own version of sensitivity, $\limsup\limits_{n\to \infty} \metric{\itr{F}{n}(x), \itr{F}{n}(y)} > 0$, called the \textit{non-asymptotic relation}.
-The non-asymptotic relation is analogous to, yet different from \sdic.
-In the same manner, we can see that the other condition in Li-Yorke's definition, $\liminf\limits_{n\to \infty} \metric{\itr{F}{n}(x), \itr{F}{n}(y)} = 0$, called the \textit{proximal relation}, is similar to topological transitivity.
-The result about \wig and \liy indicates that non-asymptotic and proximal relations are neither stronger nor weaker than \tt and \sdic, even though these conditions contain similar ideas.
-%%%
+  \subsubsection*{Result}
+  As in the compact interval case, each of \dev, \blcp, and \pte implies \liy.
+  However, \wig is weaker than \dev, and does not imply \liy.
+  Moreover, the equivalences of definitions that we had for a compact interval do not hold (Figure~\ref{fig:chaos-metric}).
+  Also, there are open questions.
+  We do not know whether \pte implies \blcp or \dev.
+  We obtain the implication from \pte to \wig if \pte implies the existence of a subset $Y$ such that $F_{|Y}$ is topological transitive.
+  We may also be interested in looking at individual conditions in each definition.
+  For example, we may ask: does topological transitivity imply positive topological entropy?
 
-\subsubsection*{Result}
-As in the compact interval case, each of \dev, \blcp, and \pte implies \liy.
-However, \wig is weaker than \dev, and does not imply \liy.
-Moreover, the equivalences of definitions that we had for a compact interval do not hold (Figure~\ref{fig:chaos-metric}).
-Also, there are open questions.
-We do not know whether \pte implies \blcp or \dev.
-We obtain the implication from \pte to \wig if \pte implies the existence of a subset $Y$ such that $F_{|Y}$ is topological transitive.
-We may also be interested in looking at individual conditions in each definition.
-For example, we may ask: does topological transitivity imply positive topological entropy?
+  We have a few more things to say about Devaney's definition.
+  We saw that a single periodic point in addition to \wig is a sufficient condition to imply \liy. 
+  This result suggests that the existence of dense periodic points may be unnecessarily strong.
+  As we mentioned in Chapter~\ref{chap:devaney}, \citet{glasner} proposed that requiring a dense set of periodic points is too restrictive, and suggested alternative conditions, one of which is the existence of an invariant measure that is positive on each non-empty open set.
+  Also, the contrast of \dev and \wig seen through their relations with \pte and \liy (Figure~\ref{fig:chaos-metric}; the second diagram) is noteworthy.
+  Because \dev is stronger, \dev implies \liy, but \wig does not.
+  By the same reason, \blcp implies \wig, but not \dev.
 
-We have a few more things to say about Devaney's definition.
-We saw that a single periodic point in addition to \wig is a sufficient condition to imply \liy. 
-This result suggests that the existence of dense periodic points may be unnecessarily strong.
-As we mentioned in Chapter~\ref{chap:devaney}, \citet{glasner} proposed that requiring a dense set of periodic points is too restrictive, and suggested alternative conditions, one of which is the existence of an invariant measure that is positive on each non-empty open set.
-Also, the contrast of \dev and \wig seen through their relations with \pte and \liy (Figure~\ref{fig:chaos-metric}; the second diagram) is noteworthy.
-Because \dev is stronger, \dev implies \liy, but \wig does not.
-By the same reason, \blcp implies \wig, but not \dev.
+  \bibliographystyle{../../bibliography/pjgsm}
+  \bibliography{../../bibliography/thesis}
 
-\bibliographystyle{../../bibliography/pjgsm}
-\bibliography{../../bibliography/thesis}
-
-\printindex
+  \printindex
 
 %\section{Conclusion}
 %Work in progress
@@ -725,4 +751,4 @@ By the same reason, \blcp implies \wig, but not \dev.
 %\end{enumerate}
 
 
-\end{document}
+  \end{document}
