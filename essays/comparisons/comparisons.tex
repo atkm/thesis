@@ -446,7 +446,7 @@ The following example is a system that is chaotic in Wiggins's sense but not in 
   \begin{align*}
     \cdots s_{-n} \cdots s_{-2} s_{-1} s_0 s_1 s_2 \cdots s_n \cdots.
   \end{align*}
-  Also, we use the following metric on the space $\Sigma$ instead:
+  We use the following metric on the space $\Sigma$ instead:
   \begin{equation*}
     \metric{a,b} = \sum\limits_{i = -\infty}^{\infty} \frac{\delta_i}{2^{\abs{i}}},
   \end{equation*}
@@ -458,7 +458,7 @@ The following example is a system that is chaotic in Wiggins's sense but not in 
       &1 \quad \mbox{ otherwise.}
     \end{cases}
   \end{equation*}
-  Also, the shift map $\sigma$ for a two-sided shift is defined as
+  The shift map $\sigma$ for a two-sided shift is defined as
   \begin{equation*}
     \sigma: 
     \cdots s_{-n} \cdots s_{-2} s_{-1} * s_0 s_1 s_2 \cdots s_n \cdots
@@ -470,7 +470,6 @@ The following example is a system that is chaotic in Wiggins's sense but not in 
 
   Let $S^1 \equiv [0, 1)$ be the unit circle, and let $R_\alpha: S^1 \to S^1$ be the rotation by an irrational number $\alpha \in S^1$. %]
   Recall that we showed in Chapter~\ref{chap:devaney} that the dynamical system $(S^1, R_\alpha)$ is topologically transitive, and has no periodic point.
-  Note that $R_\alpha: S^1 \to S^1$ is one-to-one.
   For each point $x \in S^1$, $\phi: S^1 \to \Sigma$ sends $x$ to $s \in \Sigma$ such that
   \begin{equation*}
     s = \cdots s_{-n} \cdots s_{-1} s_0 s_1 \cdots s_n \cdots,
@@ -482,9 +481,40 @@ The following example is a system that is chaotic in Wiggins's sense but not in 
       1& \mbox{ if } \itr{R_\alpha}{i}(x) \in [\alpha, 1). %]
     \end{cases}
   \end{equation*} %( (
-  We call $[0, \alpha)$ and $[\alpha, 1)$ as $C_0$ and $C_1$, respectively. % ] ]
-  Let $X \ceq \phi(S^1)$.
-  We consider the dynamical system $(\bar{X}, \sigma)$ ($\bar{X}$ is the closure of $X$).
+  We show that $\phi$ is injective.
+  First of all, we prove a lemma.
+  %%%
+  \begin{lemma}
+    For each interval $I$ in $S^1$, there exists $n \in \N$ such that $0 \in \itr{R_\alpha}{n}(I)$.
+    \label{lem:sturmian1}
+    \begin{proof}
+      We may assume that $I = (x,y)$, since if $(x,y)$ contains $0$, then $[x,y]$ also contains $0$.
+      Then, let $z$ be the midpoint of the interval $(x,y)$, and $\eta \ceq \frac{\metric{x,y}}{2}$, so that $(z-\eta, z+\eta) = (x,y)$.
+      Since $R_\alpha$ is transitive, there exists $m \geq 0$ such that 
+      \begin{equation*}
+        \itr{R_\alpha}{m}(z) \in \oball{\eta/2}{0}.
+      \end{equation*}
+      Therefore,
+      \begin{equation*}
+        \oball{\eta/2}{0} \subseteq \itr{R_\alpha}{m}(z-\eta, z+\eta) 
+        = \itr{R_\alpha}{m}(x,y),
+      \end{equation*}
+      so that $0 \in \itr{R_\alpha}{m}(x,y)$.
+    \end{proof}
+  \end{lemma}
+  %%%
+  \begin{proposition}
+    $\phi$ is injective.
+    \begin{proof}
+      Suppose $x \neq y \in S^1$.
+      Let $I \ceq (x,y)$.
+      By Lemma~\ref{lem:sturmian1}, there exists $n$ such that $0 \in \itr{R_\alpha}{n}(I)$.
+      Then, $\phi(x)_n \neq \phi(y)_n$.
+      Hence, $\phi(x) = \phi(y)$ implies $x = y$.
+    \end{proof}
+  \end{proposition}
+  Now, let $X \ceq \phi(S^1)$.
+  We consider the dynamical system $(\bar{X}, \sigma)$, where $\bar{X}$ is the closure of $X$.
   \begin{proposition}
     $\bar{X}$ is a compact subset of $\Sigma$, and is invariant under $\sigma$.
     (For $(\bar{X}, \sigma)$ to be a well-defined dynamical system, we need $\bar{X}$ to satisfy these conditions \citep[p.179]{lind}.)
@@ -493,69 +523,70 @@ The following example is a system that is chaotic in Wiggins's sense but not in 
       It is clear by the construction of $X$ that $\sigma(X) = X = \itr{\sigma}{-1}(X)$.
       Suppose $s \in \bar{X}$.
       We may assume that there exists a sequence $\set{s_n} \subseteq X$ such that $\lim\limits_{n \to \infty} s_n = s$.
-      For each $s_n$, there exists $\itr{\sigma}{-1}(s_n)$ that is a member of $X$.
+      For each $s_n$, there exists $\itr{\sigma}{-1}(s_n) \in X$.
       Since $\sigma$ is homeomorphic, we have 
       \begin{equation*}
         \lim\limits_{n \to \infty} \itr{\sigma}{-1}(s_n) 
         = \itr{\sigma}{-1}(s) 
         \in \cl(\itr{\sigma}{-1}(X)) 
-        = \cl(X) 
-        = \bar{X}.
+        = \bar{X},
       \end{equation*}
+      because $X$ is an invariant set of $\sigma$.
       It follows that $s \in \sigma(\bar{X})$; hence, $\bar{X} \subseteq \sigma(\bar{X})$.
       A similar argument shows that $\sigma(\bar{X}) \subseteq \bar{X}$.
       Hence, $\sigma(\bar{X}) = \bar{X}$.
     \end{proof}
   \end{proposition}
   Next, we prove that $(\bar{X}, \sigma)$ is transitive.
-  We need a few lemmas for the proof.
+    %%%
   \begin{lemma}
     For each $x \in S^1$ and any $k \in \N$, there exists $\epsilon > 0$ such that $\oball{\epsilon}{x}$ contains a point $y$ such that 
     $\phi(x)_i = \phi(y)_i$ for each $0 \leq \abs{i} \leq k$.
-    \label{lem:sturmian1}
+    \label{lem:sturmian2}
     \begin{proof}
       It is easy to see that $\phi(x)_i \neq \phi(y)_i$ if and only if
       \begin{equation*}
-        0 \in (\itr{R_\alpha}{i}(x), \itr{R_\alpha}{i}(y)] \mbox{ or } \alpha \in (\itr{R_\alpha}{i}(x), \itr{R_\alpha}{i}(y)]. %))
-      \end{equation*}
-      So for each $x \in S^1$, let $y = x + \delta$ for some $\delta > 0$.
-      Also, let $I \equiv (x, y]$.
-      If 
-      \begin{equation*}
-        0 \in R_\alpha(I) \mbox{ or } \alpha \in R_\alpha(I), 
-      \end{equation*}
-      then we can redefine $\delta$ to be a smaller value so that 
-      \begin{equation*} 
-        0, \alpha \not\in R_\alpha(I).
-      \end{equation*}
-      Inductively, we see that, for any $k \in \N$, if $\delta$ is small enough, then 
-      \begin{equation*}
-        0, \alpha \not\in \itr{R_\alpha}{k}(I)
-      \end{equation*}
-      so that
-      \begin{equation*}
-        \phi(x)_i = \phi(x+\delta)_i \mbox{ for } 0 \leq i \leq k.
-      \end{equation*}
-      Repeat the same process for backward iterations of $R_\alpha$ to obtain
-      \begin{equation*}
-        \phi(x)_i = \phi(x+\delta)_i \mbox{ for } -k \leq i \leq 0.
-      \end{equation*}
-      This completes the proof.
-    \end{proof}
+      0 \in (\itr{R_\alpha}{i}(x), \itr{R_\alpha}{i}(y)] \mbox{ or } \alpha \in (\itr{R_\alpha}{i}(x), \itr{R_\alpha}{i}(y)]. %))
+    \end{equation*}
+    So for each $x \in S^1$, let $y = x + \delta$ for some $\delta > 0$.
+  Also, let $I \equiv (x, y]$.
+  If 
+  \begin{equation*}
+    0 \in R_\alpha(I) \mbox{ or } \alpha \in R_\alpha(I), 
+  \end{equation*}
+  then we can redefine $\delta$ to be a smaller value so that 
+  \begin{equation*} 
+    0, \alpha \not\in R_\alpha(I).
+  \end{equation*}
+  Inductively, we see that, for any $k \in \N$, if $\delta$ is small enough, then 
+  \begin{equation*}
+    0, \alpha \not\in \itr{R_\alpha}{k}(I)
+  \end{equation*}
+  so that
+  \begin{equation*}
+    \phi(x)_i = \phi(x+\delta)_i \mbox{ for } 0 \leq i \leq k.
+  \end{equation*}
+  Repeat the same process for backward iterations of $R_\alpha$ to obtain a sufficiently small $\delta$ such that
+  \begin{equation*}
+    \phi(x)_i = \phi(x+\delta)_i \mbox{ for } -k \leq i \leq 0.
+  \end{equation*}
+  This completes the proof.
+\end{proof}
   \end{lemma}
   %%%
+
   \begin{proposition}
     Let $x,y$ be members of $\Sigma$.
-    If $x_i = y_i$ for $0 \leq \abs{i} \leq k$, then $\metric{x,y} \leq 2^{-(k-1)}$.
+    If $x_i = y_i$ for each $0 \leq \abs{i} \leq k$, then $\metric{x,y} \leq 2^{-(k-1)}$.
     \label{prop:two-sided}
     \begin{proof}
-      $\metric{x,y}$ achieves its upper bound when $x_i \neq y_i$ for $\abs{i} \geq k+1$.
+      $\metric{x,y}$ achieves its upper bound when $x_i \neq y_i$ for each $\abs{i} \geq k+1$.
       \begin{align*}
         \metric{x,y}
-        &\leq 2 \cdot \sum\limits_{n = k+1}^{\infty} \frac{1}{2^{\abs{i}}} \\
-        &\leq 2 \cdot \paren{ \sum\limits_{n = 0}^{\infty} \frac{1}{2^{\abs{i}}} - \sum\limits_{n = 0}^{k} \frac{1}{2^{\abs{i}}}} \\
+        &\leq 2 \cdot \sum\limits_{i = k+1}^{\infty} \frac{1}{2^{\abs{i}}} \\
+        &\leq 2 \cdot \paren{ \sum\limits_{i = 0}^{\infty} \frac{1}{2^{\abs{i}}} - \sum\limits_{i = 0}^{k} \frac{1}{2^{\abs{i}}}} \\
         &= 2 \cdot (2 - (2 - \frac{1}{2^k})) \\
-        &= \frac{1}{2^{k-1}}.
+        &= 2^{-(k-1)}.
       \end{align*}
     \end{proof}
   \end{proposition}
@@ -580,7 +611,7 @@ The following example is a system that is chaotic in Wiggins's sense but not in 
       Fix $s, t \in X$, $\epsilon > 0$, and $\delta > 0$.
       We may assume that $\epsilon = 2^{-j}$ and $\delta = 2^{-k}$ for some $j,k \in \N$.
       We show that there exists a point $t'$ in $\oball{\epsilon}{t}$ such that, for some $n$, $\itr{\sigma}{n}(t') \in \oball{\delta}{s}$.
-      By Lemma~\ref{lem:sturmian1}, if $\eta > 0$ is small enough, then for any $x \in S^1$, we have $t \ceq \phi(x)$ and $t' \ceq \phi(x + \eta)$ satisfy $t_i = t'_i$ for $0 \leq \abs{i} \leq j$.
+      By Lemma~\ref{lem:sturmian2}, if $\eta > 0$ is small enough, then for any $x \in S^1$, we have $t \ceq \phi(x)$ and $t' \ceq \phi(x + \eta)$ satisfy $t_i = t'_i$ for $0 \leq \abs{i} \leq j$.
       Furthermore, by Proposition~\ref{prop:two-sided}, $t'$ satisfies
       \begin{equation*}
         \metric{t, t'} \leq 2^{-(j-1)} < \epsilon.
@@ -591,7 +622,7 @@ The following example is a system that is chaotic in Wiggins's sense but not in 
       \begin{equation*}
         \itr{R_\alpha}{m}(y) \in \oball{\eta}{\phi^{-1}(s)},
       \end{equation*}
-      where $\eta > 0$ taken so small that by Lemma~\ref{lem:sturmian1}, we have 
+      where $\eta > 0$ taken so small that by Lemma~\ref{lem:sturmian2}, we have 
       $\phi(\itr{R_\alpha}{m}(y))_i = s_i$ for $0 \leq \abs{i} \leq k$.
       Note that
       \begin{equation*}
@@ -608,25 +639,14 @@ The following example is a system that is chaotic in Wiggins's sense but not in 
     \end{proof}
   \end{proposition}
   %%%
-  We are left to show that $(\bar{X}, \sigma)$ is sensitive to initial conditions in order to prove that the system is chaotic in Wiggin's sense.
+  We are left to show that $(\bar{X}, \sigma)$ is sensitive to initial conditions in order to prove that the system is chaotic in Wiggins's sense.
   \begin{proposition}
     $(\bar{X}, \sigma)$ is sensitive to initial conditions.
     \begin{proof}
       Let $0 < \delta < 1$ be our separation constant.
-      For any given $x \in S^1$, and $\epsilon > 0$, we can find $y \in \oball{\epsilon}{x}$ by the argument we gave in proving the continuity of $\phi$.
-      Without loss of generality, we may assume that $y > x$.
-      Then, let $z$ be the midpoint of the interval $(x,y)$, and $\eta \ceq \frac{\metric{x,y}}{2}$, so that $(z-\eta, z+\eta) = (x,y)$.
-      Since $R_\alpha$ is transitive, there exists $m \geq 0$ such that 
-      \begin{equation*}
-        \itr{R_\alpha}{m}(z) \in \oball{\eta/2}{0}.
-      \end{equation*}
-      $R_\alpha$ is an isometry, so
-      \begin{equation*}
-        \oball{\eta/2}{0} \subseteq \itr{R_\alpha}{m}(z-\eta, z+\eta) 
-        = \itr{R_\alpha}{m}(x,y).
-      \end{equation*}
-      Hence, $0 \in \itr{R_\alpha}{m}(x,y)$.
-      It follows that $\phi(x)_m \neq \phi(y)_m$.
+      For any given $x \in S^1$, and $\epsilon > 0$, we can find $y \in \oball{\epsilon}{x}$ by Lemma~\ref{lem:sturmian2}.
+      If $y \geq x$, then let $I \ceq (x,y)$; otherwise, let $I \ceq (y,x)$.
+      By Lemma~\ref{lem:sturmian1}, there exists $m \in \N$ such that $\phi(x)_m \neq \phi(y)_m$.
       Therefore,
       \begin{equation*}
         \metric{\itr{\sigma}{m}(x), \itr{\sigma}{m}(y)} \geq 1 > \delta.
@@ -643,95 +663,96 @@ The following example is a system that is chaotic in Wiggins's sense but not in 
   \begin{proposition}
     $(\bar{X}, \sigma)$ is not chaotic in Li-Yorke's sense.
     \begin{proof}
-      From the proof that the system is sensitive, we know that there exists $n$ such that $(\itr{R_\alpha}{n}(x), \itr{R_\alpha}{n}(y)]$ contains $0$. %)
-      We extend the result and show that the interval $(\itr{R_\alpha}{n}(x), \itr{R_\alpha}{n}(y)]$ comes to contain $0$ at a certain frequency under iteration. %)
-      In particular, we prove that it cannot be the case that the number of time steps between the two such occurences is arbitrarily long.
+    By Lemma~\ref{lem:sturmian1}, we know that there exists $n$ such that $(\itr{R_\alpha}{n}(x), \itr{R_\alpha}{n}(y)]$ contains $0$. %)
+  We extend the result and show that the interval $(\itr{R_\alpha}{n}(x), \itr{R_\alpha}{n}(y)]$ comes to contain $0$ at a certain frequency under iteration. %)
+  In particular, we prove that the number of time steps between the two such occurences cannot be arbitrarily long.
 
-      First, choose any $x,y \in S^1$.
-      Let $b$ be the length of the interval $I \equiv (x,y]$ %)
-      First, consider the case $\alpha \leq b$.
-      In this case, $I \cap R_\alpha(I)$, so as $I$ rotates around $S^1$, it covers all of $S^1$.
-      Let $n$ be the least positive integer such that $n\alpha > 1$.
-      Then, it takes no longer than $n$ iterations until $\itr{R_\alpha}{n}(I)$ contains $0$ again.
+  First, choose any $x,y \in S^1$. %[
+  Let $b$ be the length of the interval $I \equiv (x,y]$. %)
+  Because of Lemma~\ref{lem:sturmian1}, we may assume without loss of generality that $I$ contains $0$.
+  First, consider the case $\alpha \leq b$.
+  In this case, $I \cap R_\alpha(I)$, so as $I$ rotates around $S^1$ once, it covers all of $S^1$.
+  Let $n$ be the least positive integer such that $n\alpha > 1$.
+  Then, it takes no longer than $n$ iterations until $I$ contains $0$ again.
 
-      Next, consider the other case $\alpha > b$.
-      There exists a positive integer $m$ such that $m\alpha \leq b \;(\mod{1})$.
-      Then, as in the first case, if we let $n$ be the least positive integer such that $nm\alpha > 1$, then $mn$ is the upper bound for the number of iterations until $\itr{(R_\alpha^{\;m})}{n}(I)$ contains $0$ again.
+  Next, consider the other case $\alpha > b$.
+  There exists a positive integer $m$ such that $m\alpha \leq b \;(\mod{1})$.
+  Then, as in the first case, if we let $n$ be the least positive integer such that $nm\alpha > 1$, then $mn$ is the upper bound for the number of iterations until $\itr{R_\alpha}{m}(I)$ contains $0$ again.
 
-      Now, consider $s \ceq \phi(x)$ and $t \ceq \phi(y)$.
-      By the discussion so far, each block of length $mn$ contains a position $i$ such that $\phi(x)_{i} \neq \phi(y)_{i}$.
-      It follows that the longest block for which $s$ and $t$ agree with each other cannot be longer than $2mn$.
-      Hence,
-      \begin{equation*}
-        \metric{\itr{\sigma}{i}(x), \itr{\sigma}{i}(y)} 
-        \geq 2 \cdot \frac{1}{2^{mn}}
-        = 2^{1 - mn}.
-      \end{equation*}
-      Thus, $\liminf\limits_{i \to \infty} (\itr{\sigma}{i}(x), \itr{\sigma}{i}(y)) > 0$.
+  Now, consider $s \ceq \phi(x)$ and $t \ceq \phi(y)$.
+  By the discussion so far, each block of length $mn$ contains at least one position $i$ such that $\phi(x)_{i} \neq \phi(y)_{i}$.
+  It follows that the longest block for which $s$ and $t$ agree with each other cannot be longer than $2mn$.
+  Hence,
+  \begin{equation*}
+    \metric{\itr{\sigma}{i}(x), \itr{\sigma}{i}(y)} 
+    \geq 2 \cdot \frac{1}{2^{mn}}
+    = 2^{1 - mn}.
+  \end{equation*}
+  Thus, $\liminf\limits_{i \to \infty} (\itr{\sigma}{i}(x), \itr{\sigma}{i}(y)) > 0$.
+\end{proof}
+  \end{proposition}
+  %%%
+  Finally, we show that the system does not have a periodic point.
+  In particular, this implies that $\sigma$ does not have dense periodic points in $\bar{X}$.
+  \begin{proposition}
+    $\sigma$ does not have a periodic point in $\bar{X}$.
+    \begin{proof}
+      Proof by contradiction.
+      Suppose $s \in X$ is a periodic point of period $p$, and let $x \ceq \phi^{-1}(s)$. 
+      Without loss of generality, we may assume that $x \in [0, \alpha)$. %]
+      Then, for each $k \in \N$, we have $\itr{R_\alpha}{kp}(x) \in [0, \alpha)$. %]
+      However, this is impossible because $\itr{R_\alpha}{p}$ is an irrational rotation, and hence transitive.
     \end{proof}
-    \end{proposition}
+  \end{proposition}
   %%%
-    Finally, we show that the system does not have a periodic point.
-    In particular, this implies that $\sigma$ does not have dense periodic points in $\bar{X}$.
-    \begin{proposition}
-      $\sigma$ does not have a periodic point in $\bar{X}$.
-      \begin{proof}
-        Proof by contradiction.
-        Suppose $s \in X$ is a periodic point of period $p$, and let $x \ceq \phi^{-1}(s)$. 
-        Without loss of generality, we may assume that $x \in C_0$.
-        Then, for each $k \in \N$, we have $\itr{R_\alpha}{kp}(x) \in C_0$.
-        However, this is impossible because $\itr{R_\alpha}{p}$ is an irrational rotation, and hence transitive.
-      \end{proof}
-    \end{proposition}
-  %%%
-    Hence, $(\sigma, \bar{X})$ is chaotic in Wiggins's sense, but not in Li-Yorke's sense.
-    The last proposition implies that the system is not chaotic in Devaney's sense.
-    $\square$
-  \end{example}
+  Hence, $(\sigma, \bar{X})$ is chaotic in Wiggins's sense, but not in Li-Yorke's sense.
+  The last proposition implies that the system is not chaotic in Devaney's sense.
+  $\square$
+\end{example}
 %%%
 As we have seen in the example above, \wig does not necessarily imply \liy.
 However, \dev, which is stronger than \wig, implies \liy.
 %%%
-  \begin{theorem}
-    If $(X, F)$ is chaotic in Devaney's sense, then it is chaotic in Li-Yorke's sense.
-    \begin{proof}
-      See \citet{mai}.
-      \citet{huang} also proved the same result.
-    \end{proof}
-    \label{thm:dev-liy}
-  \end{theorem}
-  More specifically, Mai proved that, for a complete metric space $X$ without an isolated point, if $F: X \to X$ is transitive and has a periodic point of any period, then $F$ is chaotic in Li-Yorke's sense.
-  Thus, even though \tt and \sdic do not imply Li-Yorke's chaos, as we saw in the previous example, \tt and the existence of a \textit{single} periodic point, which is significantly weaker than \dpp, imply chaos in Li-Yorke's sense.
-  This result may be instructive in evaluating whether \dpp in Devaney's definition is appropriate.
-  Also, we can make an interesting observation from the fact that \wig and \liy do not imply each other. 
-  Recall that, though it is not explicitly called sensitivity, Li-Yorke's definition uses its own version of sensitivity, $\limsup\limits_{n\to \infty} \metric{\itr{F}{n}(x), \itr{F}{n}(y)} > 0$, called the \textit{non-asymptotic relation}.
-  The non-asymptotic relation is analogous to, yet different from \sdic.
-  In the same manner, we can see that the other condition in Li-Yorke's definition, $\liminf\limits_{n\to \infty} \metric{\itr{F}{n}(x), \itr{F}{n}(y)} = 0$, called the \textit{proximal relation}, is similar to topological transitivity.
-  The result about \wig and \liy indicates that non-asymptotic and proximal relations are neither stronger nor weaker than \tt and \sdic, even though these conditions contain similar ideas.
+\begin{theorem}
+  If $(X, F)$ is chaotic in Devaney's sense, then it is chaotic in Li-Yorke's sense.
+  \begin{proof}
+    See \citet{mai}.
+    \citet{huang} also proved the same result.
+  \end{proof}
+  \label{thm:dev-liy}
+\end{theorem}
+More specifically, Mai proved that, for a complete metric space $X$ without an isolated point, if $F: X \to X$ is transitive and has a periodic point of any period, then $F$ is chaotic in Li-Yorke's sense.
+Thus, even though \tt and \sdic do not imply Li-Yorke's chaos, as we saw in the previous example, \tt and the existence of a \textit{single} periodic point, which is significantly weaker than \dpp, imply chaos in Li-Yorke's sense.
+This result may be instructive in evaluating whether \dpp in Devaney's definition is appropriate.
+Also, we can make an interesting observation from the fact that \wig and \liy do not imply each other. 
+Recall that, though it is not explicitly called sensitivity, Li-Yorke's definition uses its own version of sensitivity, $\limsup\limits_{n\to \infty} \metric{\itr{F}{n}(x), \itr{F}{n}(y)} > 0$, called the \textit{non-asymptotic relation}.
+The non-asymptotic relation is analogous to, yet different from \sdic.
+In the same manner, we can see that the other condition in Li-Yorke's definition, $\liminf\limits_{n\to \infty} \metric{\itr{F}{n}(x), \itr{F}{n}(y)} = 0$, called the \textit{proximal relation}, is similar to topological transitivity.
+The result about \wig and \liy indicates that non-asymptotic and proximal relations are neither stronger nor weaker than \tt and \sdic, even though these conditions contain similar ideas.
 %%%
 
-  \subsubsection*{Result}
-  As in the compact interval case, each of \dev, \blcp, and \pte implies \liy.
-  However, \wig is weaker than \dev, and does not imply \liy.
-  Moreover, the equivalences of definitions that we had for a compact interval do not hold (Figure~\ref{fig:chaos-metric}).
-  Also, there are open questions.
-  We do not know whether \pte implies \blcp or \dev.
-  We obtain the implication from \pte to \wig if \pte implies the existence of a subset $Y$ such that $F_{|Y}$ is topological transitive.
-  We may also be interested in looking at individual conditions in each definition.
-  For example, we may ask: does topological transitivity imply positive topological entropy?
+\subsubsection*{Result}
+As in the compact interval case, each of \dev, \blcp, and \pte implies \liy.
+However, \wig is weaker than \dev, and does not imply \liy.
+Moreover, the equivalences of definitions that we had for a compact interval do not hold (Figure~\ref{fig:chaos-metric}).
+Also, there are open questions.
+We do not know whether \pte implies \blcp or \dev.
+We obtain the implication from \pte to \wig if \pte implies the existence of a subset $Y$ such that $F_{|Y}$ is topological transitive.
+We may also be interested in looking at individual conditions in each definition.
+For example, we may ask: does topological transitivity imply positive topological entropy?
 
-  We have a few more things to say about Devaney's definition.
-  We saw that a single periodic point in addition to \wig is a sufficient condition to imply \liy. 
-  This result suggests that the existence of dense periodic points may be unnecessarily strong.
-  As we mentioned in Chapter~\ref{chap:devaney}, \citet{glasner} proposed that requiring a dense set of periodic points is too restrictive, and suggested alternative conditions, one of which is the existence of an invariant measure that is positive on each non-empty open set.
-  Also, the contrast of \dev and \wig seen through their relations with \pte and \liy (Figure~\ref{fig:chaos-metric}; the second diagram) is noteworthy.
-  Because \dev is stronger, \dev implies \liy, but \wig does not.
-  By the same reason, \blcp implies \wig, but not \dev.
+We have a few more things to say about Devaney's definition.
+We saw that a single periodic point in addition to \wig is a sufficient condition to imply \liy. 
+This result suggests that the existence of dense periodic points may be unnecessarily strong.
+As we mentioned in Chapter~\ref{chap:devaney}, \citet{glasner} proposed that requiring a dense set of periodic points is too restrictive, and suggested alternative conditions, one of which is the existence of an invariant measure that is positive on each non-empty open set.
+Also, the contrast of \dev and \wig seen through their relations with \pte and \liy (Figure~\ref{fig:chaos-metric}; the second diagram) is noteworthy.
+Because \dev is stronger, \dev implies \liy, but \wig does not.
+By the same reason, \blcp implies \wig, but not \dev.
 
-  \bibliographystyle{../../bibliography/pjgsm}
-  \bibliography{../../bibliography/thesis}
+\bibliographystyle{../../bibliography/pjgsm}
+\bibliography{../../bibliography/thesis}
 
-  \printindex
+\printindex
 
 %\section{Conclusion}
 %Work in progress
@@ -751,4 +772,4 @@ However, \dev, which is stronger than \wig, implies \liy.
 %\end{enumerate}
 
 
-  \end{document}
+\end{document}
