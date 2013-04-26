@@ -7,21 +7,28 @@
 \chapter{Symbolic Dynamics}
 \label{chap:symbolic}
 Recall that in Chapter~\ref{chap:devaney}, we postponed the proof that the doubling map is chaotic.
-In the present chapter, we introduce the technique called the \textit{symbolic dynamics}, which we use to complete the proof.
+In the present chapter, we complete the proof using a technique called the \textit{symbolic dynamics}.
 Then, we present a definition of chaos by Block and Coppel, which is motivated by symbolic dynamics.
 %%%
 
-\section{The Shift Map}
+\section{Shift Systems}
+In the previous chapters, our examples consisted of simple yet tangible mappings such as the logistic map and tent map.
+Now, we turn our attention to the dynamics of \textit{symbols}, an abstract system that might appear to be of little use at first sight.
+Nevertheless, symbolic dynamical systems have rich structures and are not only interesting in its own right, but also useful tools for studying other systems, as we will demonstrate in the next section.
+The particular system that we discuss is called the \textit{one-sided shift}.
+The goal of this section is to prove that the full one-sided shift is chaotic in Devaney's sense.
 \begin{definition}
   (One-sided shift)
-  Let $S$ be a set of finite number of symbols, and let $\Sigma$ be a set of bi-infinite sequences of the form
+  Let $S$ be a set of finite number of symbols, and let $\Sigma$ be a set of infinite sequences of the form
   \begin{equation*}
     s = \set{ s_0 s_1 s_2 \cdots s_n \cdots },
   \end{equation*}
   where $s_i \in S$.
-  We take a finite number of integers, $\set{1, \ldots, n}$ as our symbols.
-  Also, we put the absolute value metric on $S$.
-  Define the metric on $\Sigma$ as follows:
+  In other words, $\Sigma \ceq S^\N$.
+  Although the symbols can be anything (Roman alphabets, colors, Chinese characters, etc.), we take a finite number of integers as our symbols.
+  Thus, $S \ceq \set{1, \ldots, n}$.
+  We put the absolute value metric on $S$.
+  Then, define the metric on $\Sigma$ as follows:
   \begin{equation*}
     d(a,b) \ceq \sum\limits_{i = 0}^{\infty} \frac{\abs{a_i - b_i}}{2^i}.
   \end{equation*}
@@ -33,23 +40,27 @@ Then, we present a definition of chaos by Block and Coppel, which is motivated b
     \mapsto 
     \set{ s_1 s_2 \cdots s_n \cdots }.
   \end{equation*}
-  We call the dynamical system ($\Sigma$, $\sigma$) the \textit{full one-sided shift}.
+  Thus, $\sigma$ corresponds to dropping the first symbol of the sequence, and shifting all other symbols to the front.
+  When the space is $\Sigma$, which consists of all possible infinite sequences of symbols, we call the dynamical system ($\Sigma$, $\sigma$) the \textit{full one-sided shift}.
   If $X$ is a (appropriately chosen) subset of $\Sigma$, then $(X, \sigma)$ is called a \textit{subshift}.
   \index{one-sided shift}
 \end{definition}
-For the definition of a subshift to make sense, a $X$ must be an invarient set of $\sigma$, but it is not the only requirement.
+For the definition of a subshift to make sense, $X$ must be an invarient set of $\sigma$, but it is not the only requirement.
+$X$ also needs to be closed in $\Sigma$.
 Subshifts provide rich examples of dynamical systems, but we do not discuss them here.
-For discussions on subshifts, refer to \citet{kitchens} and \citet{lind}.
+For discussions on subshifts refer to \citet{kitchens} and \citet{lind}.
 %%%
 
-Before we proceed further, we verify the validity of the definition of an one-sided shift.
+Before we proceed further, we prove that $d$ is a metric and $\sigma$ is a continuous map to ensure that it defines a topological dynamical system.
+We also study the topology on $\Sigma$.
 \begin{proposition}
   $d$ is a metric.
   \label{prop:symb-metric}
   \begin{proof}
-    Clearly, $d(a,b) \geq 0$ for each $a,b \in \Sigma$, and if $a = b$ then $d(a,b) = 0$, which implies that $a_i = b_i$ for each $i$.
-    Hence $a = b$.
-    We are left to prove the triangle inequality.
+    Clearly, $d(a,b) \geq 0$ for each $a,b \in \Sigma$.
+    If $a = b$ then $d(a,b) = 0$.
+    On the other hand, if $d(a,b) = 0$, then $a_i = b_i$ for each $i$, so we have $a = b$.
+    Thus, we are left to prove the triangle inequality.
     Suppose $a,b,c \in \Sigma$.
     We have
     \begin{align*}
@@ -59,16 +70,15 @@ Before we proceed further, we verify the validity of the definition of an one-si
       &= \sum\limits_{i = 0}^{\infty} \frac{\abs{a_i - b_i} + \abs{b_i - c_i}}{2^i}  \\
       %
       &\geq \sum\limits_{i = 0}^{\infty} \frac{\abs{a_i - c_i}}{2^i}  \\
-      &= d(a,c)
+      &= d(a,c).
     \end{align*}
-    by the triangle equality.
   \end{proof}
 \end{proposition}
 %%%
 It suffices for our purpose to use $S \ceq \set{0,1}$.
-All properties of $(\Sigma, \sigma)$ that we prove in this section also hold when $S$ is any finite set of symbols.
-However, letting $S$ consist of only two symbols greatly simplify proofs, and also we will not require more than two symbols for studying systems in this exposition.
-Under our assumption that $S = \set{0,1}$, we can bound the distance between two symbolic sequences if we know that the two sequences agree in the beginning.
+All properties of $(\Sigma, \sigma)$ that we prove in this section also hold when $S$ is any finite set of symbols, and letting $S$ consist of only two symbols greatly simplify proofs.
+Also, we will not require more than two symbols for studying systems in this exposition.
+Now, we prove two facts about our metric, which we use frequently.
 \begin{proposition}
   Let $s, t \in \Sigma$.
   If $s_i = t_i$ for $0 \leq i \leq k$, then $d(s,t) \leq 2^{-k}$.
@@ -118,7 +128,7 @@ Next, we note the following properties of $S$, the set of finite symbols equippe
   \end{proof}
 \end{proposition}
 %%%
-These properties of the underlying space are inherited to the space of infinite sequences of symbols, $\Sigma$, which is an infinite product of $S$.
+The topology of the underlying space are inherited to the space of infinite sequences of symbols, $\Sigma$, which is an infinite product of $S$.
 \begin{proposition}
   $\Sigma$ equipped with the metric $d$ is 
   \begin{enumerate}[(i)]
@@ -393,6 +403,7 @@ An one-sided shift can be similarly used to study the dynamics of a mapping.
 %%%
 
 \section{Defining Chaos Using Symbolic Dynamics}
+In short, symbolic dynamics can be used to extract 
 \citet{blockcoppel} defines chaos using the full one-sided shift.
 \begin{definition}
   (Chaos in the sense of Block-Coppel \citep{blockcoppel})
