@@ -415,7 +415,7 @@ An one-sided shift can be similarly used to study the dynamics of a mapping.
   \label{defn:blockcoppel}
   \index{definition of chaos!Block-Coppel}
 \end{definition}
-Their motivation was to study \textit{turbulent} maps defined on the compact interval.
+Their motivation in creating this definition of chaos was to study \textit{turbulent} maps defined on the compact interval.
 \begin{definition}
   (Turbulent map)
   Let $I$ be a compact interval, $F: I \to I$ a continuous map.
@@ -427,13 +427,14 @@ Their motivation was to study \textit{turbulent} maps defined on the compact int
 \end{definition}
 For example, the tent map is turbulent.
 \citet{blockcoppel} proves that a turbulent map has periodic points of all periods, reminiscent of Li-Yorke's definition.
-In fact, Block-Coppel's definition implies Li-Yorke's (Chapter~\ref{chap:comparisons}).
-Block and Coppel initially defined chaos as follows.
+In fact, Block-Coppel's definition implies Li-Yorke's (See Chapter~\ref{chap:comparisons}).
+The original definition of chaos by Block and Coppel is different from the one that we stated, although the two are equivalent.
+The original version of Block-Coppel's definition of chaos is the following.
 \begin{theorem}
   \citep[Chap.II]{blockcoppel}
   % using this in eg:counterexample
   Let $F: I \to I$, where $I$ is a compact interval.
-  The following conditions are equivalent
+  $F$ is said to be \textit{chaotic} if it satisfies one of the two equivalent conditions:
   \begin{enumerate}[(i)]
     \item There exists a positive integer $n$ such that $\itr{F}{n}$ is turbulent.
     \item $F$ has a periodic point of period not a power of 2.
@@ -441,7 +442,7 @@ Block and Coppel initially defined chaos as follows.
   \label{thm:blcpII}
 \end{theorem}
 %Note that if $F$ has a periodic point whose period is not a power of $2$, then, by Sarkovskii's theorem, $F$ has periodic points of periods $2^n$ for each $n \in \N$.
-They prove that the conditions mentioned in the preceding theorem are equivalent to our definition of chaos in Block-Coppel's sense.
+Block and Coppel prove that the conditions mentioned in the preceding theorem are equivalent to our definition of chaos in Block-Coppel's sense.
 Their intention in establishing the equivalence of the two conditions was to study turbulent maps using symbolic dynamics, as in the following proposition.
 \begin{proposition}
   Suppose $F: I \to I$ is a mapping such that $\itr{F}{n}$ is turbulent for some $n$.
@@ -452,10 +453,20 @@ Their intention in establishing the equivalence of the two conditions was to stu
     \begin{equation*}
       s = (01*00011011*000 \cdots),
     \end{equation*}
-    where $*$ denotes an arbitrary finite sequence.
+    where each $*$ denotes an arbitrary finite sequence.
     For each $t \in \Sigma$, there exists a sequence of positive integers $n_1 < n_2 < \cdots$ such that $\itr{\sigma}{n_k}(s) \to t$ as $k \to \infty$.
   \end{proof}
 \end{proposition}
+%%%
+Their definition was specifically formulated for one-dimensional maps; they state that
+\begin{quotation}
+  [a]n important reason for studying this problem [an one-dimensional topological dynamical system], in addition to its intrinsic interest, comes from higher-dimensional dynamics.
+  The extremely complicated behaviour of some 3-dimensional flows, or 2-dimensional diffeomorphisms, is also observed in non-invertible 1-dimensional maps.
+  We hope to gain a better understanding of this behaviour by studying 1-dimensional maps, since they are much more amenable to mathematical analysis.
+\end{quotation}
+In Chapter~\ref{lem:comparisons}, we compare this definition to other definitions in the compact interval as well as a general compact metric space.
+It is not at all obvious whether this definition serves as a definition of chaos in a system whose dimension is higher than 1, or in a compact metric space.
+However, our comparisons with other definitions suggest that 
 %%%
 
 \bibliographystyle{../../bibliography/pjgsm}
