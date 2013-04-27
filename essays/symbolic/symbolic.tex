@@ -112,8 +112,8 @@ Next, we note the following properties of $S$, the set of finite symbols equippe
 \begin{proposition}
   $S$ equipped with the absolute value metric is 
   \begin{enumerate}[(i)]
-    \item compact
-    \item totally disconnected
+    \item compact, and
+    \item totally disconnected.
   \end{enumerate}
   \begin{proof}
     \begin{enumerate}
@@ -132,8 +132,8 @@ The topology of the underlying space are inherited to the space of infinite sequ
 \begin{proposition}
   $\Sigma$ equipped with the metric $d$ is 
   \begin{enumerate}[(i)]
-    \item compact
-    \item totally disconnected
+    \item compact,
+    \item totally disconnected, and
     \item perfect.
   \end{enumerate}
   \begin{proof}
@@ -170,7 +170,8 @@ The topology of the underlying space are inherited to the space of infinite sequ
 \end{proposition}
 %%%
 Thus, $\Sigma$ is a \textit{Cantor set}.
-Knowing the structure of $\Sigma$ will prove useful when we construct a conjugacy between the doubling map and the full one-sided shift.
+Knowing the topological structure of $\Sigma$ is useful when constructing a conjugacy between a dynamical system and the full one-sided shift.
+The existence of a conjugacy between $(\Sigma, \sigma)$ and a dynamical system, say $(X, F)$, implies that $X$ is also a Cantor set.
 Also, note that any dynamical system that is conjugate to the full one-sided shift possesses these properties of $\Sigma$ \citep{dugundji}.
 %%%
 Now we show that $\sigma$ is continuous and surjective.
@@ -217,24 +218,25 @@ Now we show that $\sigma$ is continuous and surjective.
   \label{prop:sigma-cont}
 \end{proposition}
 %%%
-Finally, we show that $(X,\sigma)$ is chaotic.
-\begin{theorem}
-  %\citep{sternberg}
-  The full one-sided shift is chaotic in Devaney's sense.
+Finally, we show that the full one-sided shift is chaotic in Devaney's sense.
+\begin{proposition}
+  The periodic points of $\sigma$ is dense in $\Sigma$.
   \begin{proof}
-    First, we prove that the dense periodic points of $\sigma$ is dense in $\Sigma$.
     Let $s$ be a member of $\Sigma$.
     Fix $\epsilon > 0$, and assume that $2^{-k} < \epsilon$ for some $k$.
     Then, construct $t \in \Sigma$ by letting $t_i = s_i$ for $0 \leq i \leq k$, and repeat $t_0 \cdots t_k$ afterwards, i.e.
     \begin{equation*}
-      t = s_0 \cdots s_k s_0 \cdots s_k s_0 \cdots.
+      t = s_0 \cdots s_k s_0 \cdots s_k s_0 \cdots s_k s_0 \cdots.
     \end{equation*}
     By Proposition~\ref{prop:symbol-bound1}, $d(s,t) \leq 2^{-k} < \epsilon$.
     Clearly, $t$ is periodic.
     Hence, each neighborhood of $s$ contains a periodic point.
     Since the choice of $s$ was arbitrary, we conclude that $P(\sigma)$ is dense in $\Sigma$.
-
-    Next, we show that $\sigma$ is transitive.
+  \end{proof}
+\end{proposition}
+\begin{proposition}
+  $(\Sigma, \sigma)$ is transitive. 
+  \begin{proof}
     Fix $s,t \in \Sigma$.
     Also fix $\epsilon > 0$ and assume that $2^{-k} < \epsilon$ for some $k$.
     Consider a sequence
@@ -248,17 +250,20 @@ Finally, we show that $(X,\sigma)$ is chaotic.
     \end{equation*}
     Hence, $\sigma$ is transitive.
   \end{proof}
+\end{proposition}
+The two propositions give the desired result.
+\begin{theorem}
+  The full one-sided shift is chaotic in Devaney's sense.
 \end{theorem}
 %%%
 It follows from Theorem~\ref{thm:silverman} that $(X, \sigma)$ is also sensitive to initial conditions.
-However, we present a direct proof below, as symbolic dynamics provides a new perspective to our understanding of sensitive dependence on initial conditions.
+However, we present a direct proof below, as symbolic dynamics provides a new perspective to our understanding of sensitivity.
 \begin{proposition}
   The full one-sided shift is sensitive.
   \begin{proof}
     Fix $0 < \delta < 1$, the separation constant.
-    Let $s$ be an arbitrary member of $\Sigma$, and for any $\epsilon > 0$, let $\oball{\epsilon}{s}$ be a neighborhood.
-    Let $t \neq s$ be any point in $\oball{\epsilon}{s}$.
-    We may suppose that $s_i \neq t_i$ for some $n \geq 0$.
+    Let $s$ be an arbitrary member of $\Sigma$, and for any $\epsilon > 0$, let $t \neq s$ be any point in $\oball{\epsilon}{s}$.
+    We may suppose that $s_n \neq t_n$ for some $n \geq 0$.
     Then,
     \begin{equation*}
       \metric{\itr{\sigma}{n}(s), \itr{\sigma}{n}(t)} \geq 1 > \delta.
@@ -270,16 +275,17 @@ The meaning of sensitive dependence on initial conditions is explicitly displaye
 A slight change in the initial conditions is represented as swapping symbols at positions deep down in the sequence.
 We call the original sequence $x$ and the modified sequence $x'$.
 Suppose $x$ and $x'$ differ \textit{only} at the $p$-th position.
-We can think of $d(\itr{\sigma}{i}(x), \itr{\sigma}{i}(x'))$ as an error of some sort at the $i$-th time step.
+We can think of $\metric{x, x'}$ as an error of some sort.
+Similarly, $\metric{\itr{\sigma}{i}(x), \itr{\sigma}{i}(x')}$ is the observed error at $i$-th time step.
 As the system evolves, the $p$-th position comes closer and closer to the 0th position, and the error is doubled at each time step ($d(\sigma(x), \sigma(x')) = 2 \cdot d(x, x')$).
-The error achieves its maximum after $p$ iterations.
+The error achieves its maximum at the $p$-th time step.
 After the $p+1$-th iteration, however, the error remains zero.
 The situation is analogous to the behavior of a pair described in both Devaney's and Li-Yorke's definitions.
 In Devaney's definition, for example, two nearby points separate by $\delta$, the separation constant, but they eventually come close to each other because of transitivity.
 On the other hand, consider a situation where $x'$ agrees with $x$ up to the $k$-th position, but $x'_i$ for $i > k$ are randomly chosen.
 Thus, $x'$ represents $x$ with some random noise.
 As in the previous example, the error increases as the system evolves.
-After the $k$-th iteration, $d(\itr{\sigma}{i}(x), \itr{\sigma}{i}(x'))$ is nothing but random, and does not tell us anything about $x$ and $x'$!
+After the $k$-th iteration, $d(\itr{\sigma}{i}(x), \itr{\sigma}{i}(x'))$ is nothing but random, and does not tell us anything about the initial states, $x$ and $x'$!
 This observation motivates us to the metric $d'$ defined as
 \begin{equation*}
   d'(s,t) = 2^{-k},
@@ -366,18 +372,18 @@ It follows that
   &\leq 2 \cdot \sum\limits_{i=k+2}^{\infty} \frac{1}{2^i}
   = 2^{-(k+1)}.
 \end{align*}
-Thus, we have the desired result.
+To summarize, we have the following.
 \begin{theorem}
   $(S^1, D)$ is chaotic in Devaney's sense.
   \begin{proof}
     Let $(\Sigma, \sigma)$ be the full one-sided shift.
-    Define $\phi: S^1 \to \Sigma$ to be a mapping from a member of $S^1$ to its binary representation.
+    Define $\phi: \Sigma \to S^1$ to be a mapping from an infinite sequence of 0 and 1 to a binary representation of a real number.
     $(\Sigma, \sigma)$ is semi-conjugate to $(S^1, D)$ by $\phi$.
     Hence, by Theorem~\ref{thm:conj-sdic}, $(S^1, D)$ is chaotic in Devaney's sense.
   \end{proof}
 \end{theorem}
 %%%
-On a related note, \citet[Chap.4]{sternberg} shows that the full one-sided shift is semi-conjugate to the logistic map and tent map, as well.
+\citet[Chap.4]{sternberg} shows that the full one-sided shift is semi-conjugate to the logistic map and tent map, as well.
 We already mentioned in Chapter~\ref{chap:devaney} that the logistic map is chaotic in Devaney's sense, but we can prove the same result using the technique just presented.
 
 Let us make a few general remarks on symbolic dynamics.
@@ -396,15 +402,17 @@ Hence, a two-sided shift is suited for studying an invertible map, while an one-
 It is easy to see that the full two-sided shift $(\Sigma, \sigma)$ is also chaotic in Devaney's sense.
 \citet{wiggins} has a exposition on the dynamics of the horseshoe map using symbolic dynamics.
 The horseshoe map has a geometrically complicated dynamics.
-However, we can understand the dynamics of map on its attractor by constructing a conjugacy between the horseshoe map on its attractor and the full two-sided shift.
-An one-sided shift can be similarly used to study the dynamics of a mapping.
+However, we can understand the structure of its attractor, which turns out to be a Cantor set, by constructing a conjugacy between the horseshoe map on its attractor and the full two-sided shift.
+An one-sided shift can be similarly used to study the dynamics of a non-invertible mapping.
 \citet{sternberg} has an exposition on the study of the logistic map, in which he shows that the attractor of the logistic map is a Cantor set.
-
 %%%
 
 \section{Defining Chaos Using Symbolic Dynamics}
-In short, symbolic dynamics can be used to extract 
-\citet{blockcoppel} defines chaos using the full one-sided shift.
+In the last section, we established a semi-conjugacy of the full one-sided shift to another dynamical system.
+However, the other direction, establishing a semi-conjugacy to $(\Sigma, \sigma)$, is also a commonly used technique, which is often called \textit{coding}.
+In short, coding is used to extract aspects of a dynamical system and describe them using symbolic dynamics, which may be easier to study.
+We have an example of coding in Chapter~\ref{chap:comparisons} \pref{eg:blanchard}, although the purpose is not to study a dynamical system, but to construct a system with desired properties.
+\citet{blockcoppel} defines chaos as a system that can be coded using the full one-sided shift.
 \begin{definition}
   (Chaos in the sense of Block-Coppel \citep{blockcoppel})
   Let $X$ be a metric space, and $F$ be a continuous map.
@@ -426,7 +434,8 @@ In short, symbolic dynamics can be used to extract
   \label{defn:blockcoppel}
   \index{definition of chaos!Block-Coppel}
 \end{definition}
-Their motivation in creating this definition of chaos was to study \textit{turbulent} maps defined on the compact interval.
+Block and Coppel made this definition only for one-dimensional systems; however, we consider the extended version of the definition in order to compare it with other definitions.
+Their motivation in formulating this definition of chaos was to study \textit{turbulent} maps defined on the compact interval.
 \begin{definition}
   (Turbulent map)
   Let $I$ be a compact interval, $F: I \to I$ a continuous map.
@@ -440,12 +449,12 @@ For example, the tent map is turbulent.
 \citet{blockcoppel} proves that a turbulent map has periodic points of all periods, reminiscent of Li-Yorke's definition.
 In fact, Block-Coppel's definition implies Li-Yorke's (See Chapter~\ref{chap:comparisons}).
 The original definition of chaos by Block and Coppel is different from the one that we stated, although the two are equivalent.
-The original version of Block-Coppel's definition of chaos is the following.
+The original version of Block-Coppel's definition of chaos is the following, which is equivalent to our definition of chaos in Block-Coppel's sense.
 \begin{theorem}
   \citep[Chap.II]{blockcoppel}
   % using this in eg:counterexample
   Let $F: I \to I$, where $I$ is a compact interval.
-  $F$ is said to be \textit{chaotic} if it satisfies one of the two equivalent conditions:
+  $F$ is chaotic in the sense of Block-Coppel if and only if $F$ satisfies one of the two equivalent conditions:
   \begin{enumerate}[(i)]
     \item There exists a positive integer $n$ such that $\itr{F}{n}$ is turbulent.
     \item $F$ has a periodic point of period not a power of 2.
@@ -453,7 +462,6 @@ The original version of Block-Coppel's definition of chaos is the following.
   \label{thm:blcpII}
 \end{theorem}
 %Note that if $F$ has a periodic point whose period is not a power of $2$, then, by Sarkovskii's theorem, $F$ has periodic points of periods $2^n$ for each $n \in \N$.
-Block and Coppel prove that the conditions mentioned in the preceding theorem are equivalent to our definition of chaos in Block-Coppel's sense.
 Their intention in establishing the equivalence of the two conditions was to study turbulent maps using symbolic dynamics, as in the following proposition.
 \begin{proposition}
   Suppose $F: I \to I$ is a mapping such that $\itr{F}{n}$ is turbulent for some $n$.
@@ -469,7 +477,8 @@ Their intention in establishing the equivalence of the two conditions was to stu
   \end{proof}
 \end{proposition}
 %%%
-Their definition was specifically formulated for one-dimensional maps; they state that
+Their definition was specifically formulated for one-dimensional maps.
+They state that
 \begin{quotation}
   [a]n important reason for studying this problem [an one-dimensional topological dynamical system], in addition to its intrinsic interest, comes from higher-dimensional dynamics.
   The extremely complicated behaviour of some 3-dimensional flows, or 2-dimensional diffeomorphisms, is also observed in non-invertible 1-dimensional maps.
@@ -478,6 +487,11 @@ Their definition was specifically formulated for one-dimensional maps; they stat
 In Chapter~\ref{lem:comparisons}, we compare this definition to other definitions in the compact interval as well as a general compact metric space.
 It is not at all obvious whether this definition serves as a definition of chaos in a system whose dimension is higher than 1, or in a compact metric space.
 However, our comparisons with other definitions suggest that 
+
+Also, recall that $\Sigma$ is a Cantor set.
+We mentioned in the introduction that the fractal dimension is informally regarded as a signature of chaos, a claim that we dismissed.
+The definition of chaos by Block-Coppel suggests that sensitivity and geometry of dynamics are not unrelated.
+
 %%%
 
 \bibliographystyle{../../bibliography/pjgsm}
