@@ -464,16 +464,32 @@ The original version of Block-Coppel's definition of chaos is the following, whi
 %Note that if $F$ has a periodic point whose period is not a power of $2$, then, by Sarkovskii's theorem, $F$ has periodic points of periods $2^n$ for each $n \in \N$.
 Their intention in establishing the equivalence of the two conditions was to study turbulent maps using symbolic dynamics, as in the following proposition.
 \begin{proposition}
-  Suppose $F: I \to I$ is a mapping such that $\itr{F}{n}$ is turbulent for some $n$.
-  Then, there exist uncountable set of points $S \subseteq I$ such that, for each $x \in S$, the limit set $L(x)$ is uncountable, and contains a periodic point of period $m$ or $2m$ for each $n \in \N$.
+  Suppose $F: I \to I$ is a continuous mapping such that $\itr{F}{n}$ is turbulent for some $n$.
+  Then, there exist uncountable set of points $S \subseteq I$ such that, for each $x \in S$, the limit set $L(x)$ is uncountable.
   \begin{proof}
-    There exist uncountably many $s \in \Sigma$ such that $s$ contains every finite sequence once, and hence infinitely often (0 appears twice in 00).
-    For example,
+    Let $A \subseteq \Sigma$ be the set of all sequences that contain every finite sequence once in the following manner
     \begin{equation*}
-      s = (01*00011011*000 \cdots),
+      \underbrace{0\; 1}_{\mbox{length } 1} **\quad \underbrace{00\; 01\; 10\; 11}_{\mbox{length } 2} \quad**\quad \underbrace{000\; 001\; 010\; 011\; 100\; 101\; 111}_{\mbox{finite sequences of length } 3} \quad** \cdots,
     \end{equation*}
-    where each $*$ denotes an arbitrary finite sequence.
-    For each $t \in \Sigma$, there exists a sequence of positive integers $n_1 < n_2 < \cdots$ such that $\itr{\sigma}{n_k}(s) \to t$ as $k \to \infty$.
+    where each $**$ denotes an arbitrary finite sequence.
+    Since there are uncountably many ways of choosing the arbitrary finite sequences, $A$ is uncountable.
+    Now, consider $s$, an arbitrary member of $A$.
+    %Note that, by construction, $s$ contains every finite sequence infinitely many times.
+    For each $t \in \Sigma$ and any $m \in \N$, there exists a positive integer $n$ such that $\itr{\sigma}{n}(s)_i = t_i$ for $0 \leq i \leq m$.
+    Hence, there exists a sequence of positive integers $\set{n_k}$ such that $\itr{\sigma}{n_k}(s) \to t$ as $k \to \infty$.
+    Thus, $L(s) = \Sigma$.
+
+    By the hypothesis, $(I, F)$ is semi-conjugate to $(\Sigma, \sigma)$ by $\phi$.
+    Since $\phi$ is two-to-one for some points and one-to-one for the others, we may discard some points from $I$ to obtain $I'$ such that $\phi$ restricted to $I'$ is one-to-one.
+    For each $k$, find $x_k \in I'$ such that $\phi(x_k) = \itr{\sigma}{n_k}(s)$.
+    Such $x_k$ exists because $\phi$ is surjective.
+    It follows that
+    \begin{equation*}
+      x_k = \phi_{|_{I'}}^{-1}(\itr{\sigma}{n_k}(s)),
+    \end{equation*}
+    and $x_k \to \phi_{|_{I'}}^{-1}(t)$ as $k \to \infty$.
+    Since $I' = \phi_{|_{I'}}^{-1}(\Sigma)$, we conclude that $L(x_0) = I'$.
+    Also, by the discussion so far, it is clear that $\phi^{-1}(A) \subseteq I$ is uncountable.
   \end{proof}
 \end{proposition}
 %%%
@@ -481,11 +497,11 @@ Their definition was specifically formulated for one-dimensional maps.
 One-dimensional systems are ``more amenable to study,'' yet ``[t]he extremely complicated behaviour of some 3-dimensional flows, or 2-dimensional diffeomorphisms, is also observed in non-invertible 1-dimensional maps.''
 The hope is that we can gain better understanding of higher-dimensional systems by studying behaviors in one-dimensional system.
 In Chapter~\ref{lem:comparisons}, we compare this definition to other definitions in the compact interval as well as a general compact metric space.
-It is not at all obvious whether this definition serves as a definition of chaos in a system whose dimension is higher than 1, or in a compact metric space.
-However, our comparisons with other definitions suggest that this definition is stronger than other definitions.
+It is not at all obvious whether this definition serves as a definition of chaos in non-one-dimensional systems.
+However, in the comparisons with other definitions, we will see that this definition is stronger than Li-Yorke's definition.
 
 Also, recall that $\Sigma$ is a Cantor set.
-We mentioned in the introduction that the fractal dimension is informally regarded as a signature of chaos, a claim that we dismissed.
+We mentioned in the introduction that the fractal dimension is sometimes regarded as a signature of chaos.
 The definition of chaos by Block-Coppel suggests that sensitivity and geometry of dynamics are not unrelated.
 
 %%%
