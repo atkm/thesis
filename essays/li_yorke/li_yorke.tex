@@ -9,11 +9,11 @@
 
 \section{Period Three Implies Chaos}
 This section is an exposition of a seminal paper, ``Period Three Implies Chaos'' by \citet{li-yorke}.
-As it has been mentioned in the introduction, Li and Yorke were the first to use the term ``chaos'' to describe complex behaviors seen in maps such as those of Lorentz, Henon, and Ueda.
-Li-Yorke's definition inspired many other definitions of chaos, such as $\omega$-chaos~\citep{omegachaos}, distributional chaos~\citep{dchaos1}, and others \citep{genericchaos,densechaos,extremechaos}, which incorporate analogous conditions (equations \ref{eqn:liyorke1}, \ref{eqn:liyorke2}).
+As has been mentioned in the introduction, Li and Yorke were the first to use the term ``chaos'' to describe complex behaviors seen in maps such as those of Lorentz, Henon, and Ueda.
+Li-Yorke's definition inspired many other definitions of chaos, such as $\omega$-chaos~\citep{omegachaos}, distributional chaos~\citep{dchaos1}, and others \citep{genericchaos,densechaos,extremechaos}, which incorporate analogous conditions.
 At the end of this chapter, we introduce a definition by Marotto as an example of a definition of chaos influenced by Li-Yorke's.
 As we will see, determining whether a map is chaotic in Li-Yorke's sense for $\R^n$ for $n \geq 2$ using the definition is not a simple task.
-Chaos in Marotto's sense, defined for $\R^n$, implies chaos in Li-Yorke's sense, and therefore, Marotto's definition may serve as a criterion for chaos in Li-Yorke's sense that is easier to verify, though it requires an additional structure, namely differentiability.
+Chaos in Marotto's sense, defined for $\R^n$, implies chaos in Li-Yorke's sense, and therefore, Marotto's definition may serve as a criterion for chaos in Li-Yorke's sense that is easier to verify, although it requires an additional structure, namely differentiability.
 
 % F: I \to I a continuous map on a compact interval.
 % Then, F is chaotic in the sense of devaney if and only if positive topological entropy.
@@ -22,8 +22,7 @@ Chaos in Marotto's sense, defined for $\R^n$, implies chaos in Li-Yorke's sense,
 \begin{definition}
   (Chaos in Li-Yorke's sense)
   Let $X$ be a compact metric space and $F: X\to X$.
-  $F$ is said to be \textit{Li-Yorke chaotic}, or 
-  \textit{chaotic in Li-Yorke's sense} if there is an uncountable set $S \subseteq X$ containing no
+  $F$ is said to be \textit{chaotic in Li-Yorke's sense} if there is an uncountable set $S \subseteq X$ containing no
   periodic points such that each pair $p,q \in S$ satisfies
   \begin{equation}
     \limsup\limits_{n \to \infty}\; \metric{\itr{F}{n}(p) , \itr{F}{n}(q)} > 0
@@ -34,16 +33,23 @@ Chaos in Marotto's sense, defined for $\R^n$, implies chaos in Li-Yorke's sense,
     \liminf\limits_{n \to \infty}\; \metric{\itr{F}{n}(p) , \itr{F}{n}(q)} = 0.
     \label{eqn:liyorke2}
   \end{equation}
-  \index{chaos!definition of!Li-Yorke}
+  $\square$
+  \index{definition of chaos!Li-Yorke}
 \end{definition}
 %%%
 Equation~\eqref{eqn:liyorke2} says that the orbits of two points come arbitrarily close to each other infinitely many times.
 However, as Equation~\eqref{eqn:liyorke1} states, the same two orbits get separated by some positive constant infinitely often.
 Thus, even if two initial points $p$ and $q$ has come very close to each other at some time $t$, after some time, say $t + t_0$, the two points can be far apart, and vice versa.
+This is the \textit{sensitivity} in the sense of Li-Yorke, although we do not refer the condition as sensitivity to avoid confusion with \sdic. 
+We will show in Chapter~\ref{comparisons} that \sdic and Li-Yorke's sensitivity are not equivalent.
+However, their notion of sensitivity also captures our intuitive understanding of sensitivity.
+\index{sensitive dependence on initial conditions}
 Li and Yorke defined chaos as the existence of \textit{uncountably many} pairs of such points.
-At an intuitive level, we can expect that the uncountable set would cause complex behaviors of a system.
+At least at an intuitive level, it is not hard to imagine that the uncountable set may cause complex behaviors of a system.
 
 \citet{li-yorke} proved that any continuous map with a 3-periodic orbit is chaotic in their sense.
+In addition to chaos, such a map has periodic points of all periods.
+We see in this particular case that chaos and periodicity are intertwined with each other, as in Devaney's claim.
 
 \begin{theorem}
   (Period three implies all periods \citep{li-yorke})
@@ -70,6 +76,8 @@ At an intuitive level, we can expect that the uncountable set would cause comple
 %%%
 \begin{example}
   To illustrate Li-Yorke's definition and their theorem, we show that both the logistic map and tent map are Li-Yorke chaotic by finding 3-periodic points.
+  \index{logistic map}
+  \index{tent map}
   \citet{saha} proved that if $\mu \geq 1 + 2\sqrt{2}$, then $L_\mu: x \mapsto \mu x(1-x)$ has a 3-periodic orbit.
   Hence, $L_\mu$ is chaotic for $\mu \geq 1 + 2\sqrt{2}$.
   Next, the tent map is defined as
@@ -100,6 +108,7 @@ At an intuitive level, we can expect that the uncountable set would cause comple
   It is easy to see that $2/7$ and $2/9$ are 3-periodic points.
   This result could have been gleaned from the fact that the logistic map is conjugate to the tent map.
   We will present the conjugacy in Chapter~\ref{chap:entropy}.
+  $\square$
 \end{example}
 
 One may be surprised that such an innocent condition gives rise to a complex behavior.
@@ -108,25 +117,22 @@ Sarkovskii's result extends Li-Yorke's Theorem~\ref{thm:liyorke1} by proving ana
 To be more specific, Sarkovskii's theorem states that there exists an ordering of $\mathbb{N}$---called \textit{Sarkovskii's ordering}---such that if a mapping has a $k$-periodic orbit, then it has periodic orbits of period $n$ for \textit{each} integer $n$ that come after $k$ in the ordering.
 Three comes the first in Sarkovskii's ordering, and in this sense, the number three is at the top of the Sarkovskii's hierarchy of the natural numbers.
 (See the Appendix for Sarkovskii's ordering.)
+\index{Sarkovskii's ordering}
 
 Now we proceed to prove Theorem~\ref{thm:liyorke1}. 
-(The proof for Theorem~\ref{thm:liyorke2} uses ideas similar to those in Theorem~\ref{thm:liyorke1}.
-However, the proof is longer and tedious.
-For those who are interested in the proof, it is contained in the appendix.
-)
-We start with proving three results that we require for proving the theorems.
+We start with proving three facts that we require for proving the theorems.
 
-\begin{proposition}
+\begin{lemma}
   Let $I$ be an interval, $F: I \to \R$ a continuous map.
   For each compact interval $I_1 \subseteq F(I)$, there exists a compact interval $Q \subseteq I$ such that $G(Q) = I_1$.
-  \label{prop:liyorke1}
+  \label{lem:liyorke1}
   \begin{proof}
     Suppose $I_1 = [F(p),F(q)]$ for some $p,q \in I$.
     Without loss of generality, we may assume $p < q$, for otherwise, we merely switch the roles of $p$ and $q$ in the proof.
     Let $Q = [r,s]$, where $r$ is the greatest point in $[p,q]$ such that $F(r) = F(p)$, and $s$ is the least point in $(r,q]$ such that $F(s) = F(q)$.
     Since $F$ is continuous, $F(Q) = I_1$.
   \end{proof}
-\end{proposition}
+\end{lemma}
 %%%
 \begin{proposition}
   Let $I$ be an interval, and $F: I\to I$ be a continuous map.
@@ -151,7 +157,7 @@ and, for each $n$,
     Clearly, we have $\itr{F}{0}(Q_0) = I_0$.
     For each $n$, define $Q_{n-1}$ as a compact interval such that $\itr{F}{n-1}(Q_{n-1}) = I_{n-1}$.
     Note that $I_n \subseteq F(I_{n-1}) = \itr{F}{n}(Q_{n-1})$.
-    Proposition~\ref{prop:liyorke1} applied to $\itr{F}{n}$ on $Q_{n-1}$ proves the existence of a compact interval $Q_n \subseteq Q_{n-1}$ such that $\itr{F}{n}(Q_n) = I_n$.
+    Lemma~\ref{lem:liyorke1} applied to $\itr{F}{n}$ on $Q_{n-1}$ proves the existence of a compact interval $Q_n \subseteq Q_{n-1}$ such that $\itr{F}{n}(Q_n) = I_n$.
   \end{proof}
 \end{proposition}
 %%%
@@ -165,7 +171,6 @@ and, for each $n$,
   \end{proof}
   \label{prop:liyorke3}
 \end{proposition}
-Proposition~\ref{prop:liyorke2} will be especially useful in the proofs.
 For brevity, we call $[a,b]$ and $[b,c]$ as $K$ and $L$, respectively.
 The key observation to make is that we have $K,L \subseteq F(L)$ by $F(b) = c$, $F(c) = d$, and continuity of $F$.
 Then, we can design an orbit that stays in $L$ as long as we wish.
@@ -211,7 +216,11 @@ Then, we can design an orbit that stays in $L$ as long as we wish.
   The other case, $d \leq a < b < c$, can be proved in the same manner.
 \end{proof}
 %%%
-We already know that points in $S$ are not periodic.
+The proof for Theorem~\ref{thm:liyorke2} uses ideas similar to those in Theorem~\ref{thm:liyorke1}.
+However, the proof is longer and tedious.
+For those who are interested in the proof, it is contained in the appendix.
+%%%
+By definition, points in $S$, the uncoutable set containing Li-Yorke pairs, are not periodic.
 However, we may draw an even stronger conclusion, that is, the points in $S$ are not even asymptotically periodic.
 \begin{theorem}
   (Points in $S$ are not asymptotically periodic \citep{li-yorke})
@@ -226,9 +235,8 @@ However, we may draw an even stronger conclusion, that is, the points in $S$ are
   \end{proof}
 \end{theorem}
 %%%
-Next, we check that chaos in Li-Yorke's sense is preserved under conjugacy.
+Next, we check that chaos in Li-Yorke's sense is a topological invariant.
 \begin{theorem}
-  (Li-Yorke's chaos is a topological invariant)
   Let $X$ be a metric space, and $F: X\to X$ be chaotic in Li-Yorke's sense.
   If $G: Y\to Y$ is conjugate to $F$ i.e. $\phi \circ F = G \circ \phi$, where $\phi: X \to Y$ is a homeomorphism, then $G$ is chaotic.
   \begin{proof}
@@ -351,7 +359,7 @@ Then, inductively define $I_n (n\geq 1)$ as
   I_n = F^{-1}(I_{n-1}).
 \end{equation*}
 %
-For convenience, we denote the length of an interval as $m(I)$.
+We denote the length of an interval as $m(I)$.
 We claim that
 \begin{enumerate}[(1)]
   \item For $q\neq m$, $I_q \cap I_m = \emptyset$.
@@ -396,6 +404,7 @@ Finally, by (1) and (2) we have
   = \frac{1}{3}.
 \end{equation*}
 Thus, almost every point in $I$ converges to 0 under iteration by $F$.
+$\square$
 \end{example}
 
 
@@ -445,7 +454,7 @@ In particular, \citet{shi} point out that, when using the Euclidean norm, a repe
    \itr{F}{n}(y) = z \quad\mbox{ and }\quad \det(J\itr{F}{n}(y)) \neq 0,
   \end{equation*}
   where $J\itr{F}{n}$ is the Jacobian matrix of $\itr{F}{k}$.
-  \index{chaos!definition of!Marotto}
+  \index{definition of chaos!Marotto}
 \end{definition}
 %%%
 The terminology comes from the fact that $z$ is a fixed point such that a point in its neighborhood gets repelled away, yet the point eventually ``snaps back'' to $z$.
@@ -453,7 +462,7 @@ The terminology comes from the fact that $z$ is a fixed point such that a point 
 \begin{theorem}
   \citep{marotto1,marotto2}
   Let $F: \R^n \to \R^n$ be differentiable.
-  If there exists a snap-back repeller of $F$, then $F$ is chaotic in Li-Yorke's sense.
+  If $F$ has a snap-back repeller, then $F$ is chaotic in Li-Yorke's sense.
   \label{thm:sbrepeller}
   \begin{proof}
     See \citet[Theorem 3.1]{marotto1}.
