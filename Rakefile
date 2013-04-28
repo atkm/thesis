@@ -2,7 +2,7 @@
 # encoding: utf-8
 # srcprep; genmain; make; all
 # global. files to work with.
-files = ['abstract','prelims','introduction','billiards','devaney','li_yorke','symbolic','t-entropy','comparisons']
+files = ['abstract','prelims','logistic','billiards','devaney','li_yorke','symbolic','t-entropy','comparisons']
 appendix = ['sarkovskii','ly_thm']
 #appendix = ['sarkovskii','other_defns']
 

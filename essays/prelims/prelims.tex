@@ -4,17 +4,15 @@
 \makeindex
 \begin{document}
 
-\chapter{Preliminaries}
+\chapter{Preliminaries: Topological Dynamical Systems}
 \label{chap:prelim}
 The purpose of this short chapter is to introduce notions of dynamical systems that will be used throughout the exposition.
-%Since each definition of chaos uses different ideas, rather than to introduce them here all at once, we introduce those ideas as required on the fly.
-%The reader may prefer to come back to this chapter as he/she encounters unfamiliar notations.
+The definitions that we present employ disparate sets of concepts, so those are introduced in respective chapters.
 
-\section{Topological Dynamical Systems}
 \begin{definition}
   (Dynamical System)
   Let $X$ be a topological space, and $F: X \to X$ be a continuous mapping.
-  A (topological) dynamical system is defined to be $(X, F)$.
+  A (topological) dynamical system is defined to be a tuple $(X, F)$.
   %\index{}
 \end{definition}
 \begin{remark}
@@ -24,14 +22,14 @@ The purpose of this short chapter is to introduce notions of dynamical systems t
 \begin{definition}
   (Iteration)
   Let $F: X \to X$ be a mapping.
-  \textit{The $n$th iteration of F}, denoted $\itr{F}{n}$, is defined as follows
+  \textit{The $n$-th iteration of F}, denoted $\itr{F}{n}$, is defined as follows
   \begin{equation*}
     \itr{F}{n} \ceq \underbrace{F \circ F \circ \cdots \circ F}_{n} .
   \end{equation*}
   Note that, if $F$ is continuous, then $\itr{F}{n}$ is continuous for any $n \in \N$.
 \end{definition}
 \begin{remark}
-  We will never use the superscript notation to denote the exponentiation of a value of a function (as in $F(x) = 2x$, then $F^2(x) = 4x^2$).
+  We will never use the superscript notation to denote the exponentiation of a value of a function (as in $F(x) = 2x$, then $\itr{F}{2}(x) = 4x^2$).
 \end{remark}
 %%%
 \begin{definition}
@@ -56,7 +54,7 @@ It is convenient for our purpose to define the notion of a distance between a po
   \end{equation*}
 \end{definition}
 %%%
-Now, we define two kinds of periodic motions.
+Now, we define two kinds of periodic behaviors.
 Intuivitely speaking, periodic behaviors are tame behaviors that would not be associated with the term chaos.
 However, chaotic and periodic behaviors are not at all mutually exclusive; as we will see, a dynamical system may have both of these elements.
 \begin{definition}
@@ -71,15 +69,14 @@ However, chaotic and periodic behaviors are not at all mutually exclusive; as we
   Let $F: X \to X$ be a mapping, and $p$ be a point in $X$.
   $p$ is said to be a \textit{asymptotically periodic} point, if there exists a periodic point $q \in X$ such that
   \begin{equation*}
-    \lim\limits_{n \to \infty} d(\itr{F}{n}(x), \itr{F}{n}(y))
+    \lim\limits_{n \to \infty} d(\itr{F}{n}(p), \itr{F}{n}(q))
     = 0.
   \end{equation*}
   \index{asymtotically periodic points}
 \end{definition}
 %%%
-
-In topological dynamical systems, we are interested in properties that are preserved under continuous mappings.
-All definitions of chaos that we discuss in this book are topological invariants.
+In topological dynamics, we are interested in properties that are preserved under continuous mappings.
+All definitions of chaos that we discuss in the exposition are topological invariants.
 %Since properties that we are specifically interested are global properties of a given space, we will require a conjugacy to be surjective. 
 \begin{definition}
   (Conjugacy)
@@ -100,7 +97,7 @@ All definitions of chaos that we discuss in this book are topological invariants
     \draw[->] (y1) to node[swap] {$G$} (y2);
     \draw[->] (x2) to node {$\phi$} (y2);
   \end{tikzpicture}
-  \caption{Conjugacy between $(X,F)$ and $(Y,G)$ via $\phi: X \to Y$.}
+  \caption{Conjugacy between $(X,F)$ and $(Y,G)$ by $\phi: X \to Y$.}
   \label{fig:conj}
 \end{figure}
 %%%
