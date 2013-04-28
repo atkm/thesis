@@ -24,7 +24,6 @@ The present chapter aims to develop intuitive ideas of how chaos should be defin
 %For the time being, our definition of "chaos" is this: a map that's complicated.
 %%%
 
-\section{Our First Chaotic Map}
 The logistic map $L_\mu$ is defined as 
 \begin{equation*}
   L_{\mu}: x \mapsto \mu x(1-x).
@@ -182,11 +181,14 @@ After the distance between the two reached its maximum, they come closer and clo
 \begin{figure}[p]
   \centering
   \includegraphics[width=0.75\textwidth]{logistic_map_sensitivity_x02_mu4}
+  %eps = sp.finfo('float').eps
+  %plot(IterateList(f, 0.2, 100, (1.0)), 'o-', markersize=8); plot(IterateList(f, 0.2+eps, 100, (1.0)), '>:', markersize=9)
   \includegraphics[width=0.75\textwidth]{logistic_map_sensitivity_x02_mu4_dist}
+  % plot(sp.absolute(IterateList(f, 0.2, 100, (1.0)) - IterateList(f, 0.2+eps, 100, (1.0))))
   \caption{
     $\mu = 4$. 100 iterations.
     Initial values: $x_0 = 0.2$ and $y_0 = 0.2 + \epsilon$, where $\epsilon$ is the smallest float that was available.
-    The orbit of $x_0$ is plotted with dashed lines and star-shaped points.
+    The orbit of $x_0$ is plotted with dashed lines and triangular points.
     The orbit of $y_0$ is plotted with solid lines and circular points.
     The top figure shows the two orbits, and the bottom shows the evolution of distance between them.
   }
