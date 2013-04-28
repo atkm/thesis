@@ -6,20 +6,29 @@
 
 \chapter{Devaney's Definition}
 \label{chap:devaney}
-\section{Chaos in Devaney's Sense}
+Starting in this chapter, we begin to formally defining what it means for a system to be chaotic.
+The two systems, the logistic map and outer billiards, exhibit behaviors that are geometrically complicated.
+We cannot, however, call a system to be chaotic solely based on its geometry, since such an approach lacks mathematical rigor.
+Moreoever, complexity of the geometry was not the only information that we could glean from numerical simulations.
+Both systems exhibit sensitive dependence on initial condititons: nearby points separate from each other.
+Also, we saw that a single point can move around indiscriminately to fill up the space under iteration.
+Devaney's definition, which we introduce in this chapter, formalizes these observations.
 Throughout this chapter, $X$ is a metric space, and $d$ is the metric associated with the space.
 \citet{devaney} defines chaos using three properties.
+
+%%%
+\section{Chaos in Devaney's Sense}
 We first state his definition of chaos, then define the terms used in the definition.
 \begin{definition}
   (Chaos in Devaney's sense) 
   Let $F: X\rar X$ be a continuous map.
-  Suppose there exists a closed and invariant subset $Y \subseteq X$ such that
+  Suppose there exists a compact and invariant subset $Y \subseteq X$ such that
   \begin{enumerate}
-    \item \textit{Periodic points are dense} in $Y$.
-    \item $F$ is \textit{topologically transitive} on $Y$.
-    \item $F$ has \textit{sensitive dependence on initial conditions} in $Y$.
+    \item \textit{Periodic points of} $F_{|Y}$ \textit{are dense} in $Y$.
+    \item $F_{|Y}$ is \textit{topologically transitive}.
+    \item $F_{|Y}$ has \textit{sensitive dependence on initial conditions}.
   \end{enumerate}
-  Then, $F$ is said to be chaotic on $Y \subseteq X$.
+  Then, $F$ is said to be \textit{chaotic in Devaney's sense} on $Y \subseteq X$.
   We will often refer to these conditions as \dpp (dense periodic points), \tt, and \sdic.
   \index{definition of chaos!Devaney}
 \end{definition}
@@ -27,8 +36,8 @@ We first state his definition of chaos, then define the terms used in the defini
 \begin{definition}
   (Dense Periodic Points) 
   Let $F: X \to X$.
-  Define $P(F)$ to be the set of periodic points of the map.
-  We say that $F$ has dense periodic points if $P(F)$ is dense in $X$.
+  Define $P(F)$ to be the set of periodic points of $F$.
+  We say that $F$ has dense periodic points in $X$ if $P(F)$ is dense in $X$.
 \end{definition}
 %
 \begin{definition}
@@ -39,14 +48,17 @@ We first state his definition of chaos, then define the terms used in the defini
 %
 \begin{definition}
   (Sensitive Dependence on Initial Conditions) 
-  $F: X \rightarrow X$ is said to have \textit{sensitive dependence on initial conditions} if there exists $\epsilon > 0$, which we refer to as the \textit{separation constant}, such that, for any $x \in X$ and any neighborhood $N$ of $x$, there exists $y\in N$ and $n > 0$ such that 
+  $F: X \rightarrow X$ is said to have \textit{sensitive dependence on initial conditions} if there exists $\delta > 0$, which we refer to as the \textit{separation constant}, such that, for any $x \in X$ and any neighborhood $N$ of $x$, there exists $y\in N$ and $n > 0$ such that 
   \begin{equation*}
-    \metric{\itr{F}{n}(x), \itr{F}{n}(y)} > \epsilon.
+    \metric{\itr{F}{n}(x), \itr{F}{n}(y)} > \delta.
   \end{equation*}
   \label{defn:sdic}
   \index{sensitive dependence on initial conditions}
 \end{definition}
 %
+This definition of \sdic first appeared in \citet{guckenheimer}'s study of one-dimensional maps.
+As much as there are different definitions of chaos, this is not the only definition of sensitivity.
+In the next chapter, we introduce another definition of sensitivity.
 \sdic does \textit{not} mean that \textit{all} points near $x$ eventually separate from $x$ under iteration.
 The existence of one such point in every neighborhood of $x$ suffices.
 However, since the mapping is continuous, points close to the point that separates from $x$ also move away from $x$ to some extent.
