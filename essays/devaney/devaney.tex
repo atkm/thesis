@@ -3,7 +3,6 @@
 
 \makeindex
 \begin{document}
-
 \chapter{Devaney's Definition}
 \label{chap:devaney}
 Starting in this chapter, we begin to formally defining what it means for a system to be chaotic.
@@ -61,33 +60,32 @@ As much as there are different definitions of chaos, this is not the only defini
 In the next chapter, we introduce another definition of sensitivity.
 \sdic does \textit{not} mean that \textit{all} points near $x$ eventually separate from $x$ under iteration.
 The existence of one such point in every neighborhood of $x$ suffices.
-However, since the mapping is continuous, points close to the point that separates from $x$ also move away from $x$ to some extent.
-Also, if there were an isolated point in the space, the dynamical system cannot be sensitive to initial conditions.
-
-We will frequently use the following property of a topologically transitive map.
+However, since the mapping is continuous, points that are close to the point that separates from $x$ also move away from $x$ to some extent.
+Also, notice that if there were an isolated point in the space, the dynamical system cannot be sensitive to initial conditions.
+Transitivity is stated using two open sets, but the condition implies that a point eventually gets mapped to inside any open set.
+We will frequently use this property of a topologically transitive map along with its definition.
 \begin{proposition}
-  Let $F: X \to X$ be a topologically transitive, continuous map.
-  Also, let $\seq{A_i}{\infty}{i=1}$ be a sequence of open subsets of $X$.
-  Then, there exist $x \in X$ and a subsequence $\set{\itr{F}{n(i)}(x)}$ of $O(x)$ such that, for each $i$,
+  Let $F: X \to X$ be a continuous, $x \in X$ be an arbitrary member, and $U \subseteq X$ be any open set.
+  If $F$ is transitive, then there exists $n > 0$ such that
   \begin{equation*}
-    \itr{F}{n(i)}(x) \in A_i
+    \itr{F}{n}(x) \in U.
   \end{equation*}
-  holds.
-  \label{prop:transitivity}
   \begin{proof}
-    For each $m \geq 1$, define $\mathcal{B}_m \ceq \seq{B_i}{m}{i=1}$ as follows
-    \begin{align*}
-      B_i &\ceq A_{i} \cap \itr{F}{-n(i+1)} (B_{i+1}) \quad (i < m) \\
-      B_m &\ceq A_m,
-    \end{align*}
-    where, for each $m \geq i > 1$, we define $n(i)$ to be a positive integer such that $\itr{F}{n(i)}(A_{i-1}) \cap B_i$ is nonempty.
-    Such $n(i)$ exists because both $A_{i-1}$ and $B_i$ are open.
-    Also, set $n(1) = 0$ so that $\itr{F}{n(1)}(A_1) = A_1$.
-    Now, let $\mathcal{B} \ceq \lim\limits_{m \to \infty} \mathcal{B}_m$.
-    Consider $x \in B_1 \in \mathcal{B}$.
-    By construction, we have $\itr{F}{n(i)}(x) \in A_i$.
+    Pick $y \in U$.
+    Choose $\delta > 0$ so that $\oball{\delta}{y}$ is contained in $U$.
+    For each $\epsilon > 0$ and $\delta > 0$, there exists $n > 0$ such that
+    \begin{equation*}
+      \itr{F}{n}(\oball{\epsilon}{x}) \cap \oball{\delta}{y} \neq \emptyset.
+    \end{equation*}
+    Since $F$ is continuous, we can make $\diam(\itr{F}{n}(\oball{\epsilon}{x}))$ as small as we wish by making $\epsilon$ sufficiently small.
+    It follows that, if we choose sufficiently small $\epsilon$ and $\delta$, then 
+    \begin{equation*}
+      \itr{F}{n}(\oball{\epsilon}{x}) \cup \oball{\delta}{y} \subseteq U.
+    \end{equation*}
+    Hence, $\itr{F}{n}(x) \in U$.
   \end{proof}
 \end{proposition}
+%%%
 
 We informally defined in the introduction that a chaotic mapping is a mapping that has sensitive dependence on initial conditions, but Devaney's definition consists of properties besides sensitivity.
 Also, there is no reference to the geometry of the mapping in his definition.
@@ -100,17 +98,17 @@ Devaney motivates his definition as follows \citep[p.50]{devaney}:
   And, in the midst of this random behavior, we nevertheless have an element of regularity, namely the periodic points which are dense.
 \end{quotation}
 While \tt and \sdic are natural requirements for chaotic dynamics, the last sentence about periodic orbits is noteworthy.
-As we will see later in the examples, classical examples of chaotic systems possess dense periodic points.
+As we will see later in the examples, classical examples of chaotic systems possess dense periodic points, or at least some element of periodicity.
 Nevertheless, whether \dpp should be included in the definition of chaotic dynamical system should be considered with care.
-\citet{glasner} suggest that \dpp is too strong a condition, and he replaces the condition with the existence of an invariant measure that is positive on each non-empty open set. 
+\citet{glasner} suggest that \dpp is too strong a condition, and he replaces the condition with the existence of an invariant measure of the mapping that is positive on each non-empty open set. 
 Some authors simply omit this condition.
 We attribute this version of definition to Wiggins, though some authors refer to definition as Auslander-Yorke's chaos \citep{blanchard}.
 \begin{definition}
   (Chaos in Wiggins's sense)
-  A continuous map $F: X\rar X$ is said to be chaotic on $X$ if
+  A continuous map $F: X\rar X$ is said to be chaotic on $X$ if there exists a compact, invariant subset $Y \subset X$ such that
   \begin{enumerate}
-    \item $F$ is \textit{topologically transitive}.
-    \item $F$ has \textit{sensitive dependence on initial conditions}.
+    \item $F_{|Y}$ is \textit{topologically transitive}.
+    \item $F_{|Y}$ has \textit{sensitive dependence on initial conditions}.
   \end{enumerate}
   \index{definition of chaos!Wiggins}
 \end{definition}
@@ -118,63 +116,74 @@ We attribute this version of definition to Wiggins, though some authors refer to
 We give some examples to illustrate the two definitions.
 \begin{example}
   (Rotation on a circle \citep{devaney})
+  \index{rotation on the unit circle}
   Consider a unit circle $S^1$, and use the polar coordinates $e^{2\pi i \theta}$ to represent each point on the circle.
   Then, we can associate a point with an angle $\theta \in [0, 1)$, identify $S^1$ with $[0,1)$. % indent]]
   Define the rotation by $\alpha \in \R$ by
   \begin{equation*}
-    F: \theta \mapsto \theta + \alpha \quad(\mod{1}).
+    F_\alpha: \theta \mapsto \theta + \alpha \quad(\mod{1}).
   \end{equation*}
   We consider two cases: when $\alpha$ is rational and when it is not.
   First, assume that $\alpha$ is rational.
-  We may suppose that $\alpha = p/q$ for some $p, q \in \Z$, $q \neq 0$.
-  Then, for each $\theta \in [0, 1)$, we have %]
-  \begin{equation*}
-    \itr{F}{q}(\theta) = \theta + q \cdot \frac{p}{q} = \theta + p = \theta \quad(\mod{1}).
-  \end{equation*}
-Therefore, each point in $S^1$ is periodic. %]
-  Hence, the periodic points are dense in $S^1$. %]
-  However, the mapping is not sensitive to initial conditions, since the distance between any pair of points $\theta, \phi \in [0,1)$ remain the same under iterations by $F$.  %]
-  Thus, $F_\alpha$ is not chaotic when $\alpha$ is rational.
+  \begin{proposition}
+    If $\alpha$ is rational, then $(S^1, F_\alpha)$ is \dpp but not \tt or \sdic.
+    \begin{proof}
+      We may suppose that $\alpha = p/q$ for some $p, q \in \Z$, $q \neq 0$.
+      Then, for each $\theta \in [0, 1)$, we have %]
+      \begin{equation*}
+        \itr{F}{q}(\theta) = \theta + q \cdot \frac{p}{q} = \theta + p = \theta \quad(\mod{1}).
+      \end{equation*}
+      Therefore, each point in $S^1$ is periodic.
+      Hence, the periodic points are dense in $S^1$.
+      However, the mapping is not sensitive to initial conditions, since the distance between any pair of points $\theta, \phi \in [0,1)$ remain the same under iterations by $F$.  %]
+    \end{proof}
+  \end{proposition}
+  Thus, $F_\alpha$ is not chaotic in Devaney's (or Wiggins's) sense when $\alpha$ is rational.
 
   Next, assume that $\alpha$ is irrational.
-  As in the previous case, $F_\alpha$ is not sensitive to initial conditions.
-In this case, however, the mapping has no periodic point, the set of periodic points is not dense in $S^1$. %]
-The argument for this is by contradiction: suppose that there exists a periodic point $\theta$ whose period is $p$.
-Then,
-\begin{equation*}
-  \itr{F}{p}(\theta) = \theta 
-  \Rar
-  \theta + p\alpha \quad(\mod{1}) = \theta
-  \Rar
-  p\alpha \quad(\mod{1}) = 0
-  \Rar
-  p\alpha = k
-\end{equation*}
-for some $k \in \Z$.
-The last equality implies that $\alpha = \frac{k}{p}$, but this is a contradiction because $\alpha$ is not a rational number.
-Therefore, $F_\alpha$ is not chaotic for any $\alpha$.
+  \begin{proposition}
+    If $\alpha$ is irrational, then $(S^1, F_\alpha)$ is \tt but not \dpp or \sdic.
+    \begin{proof}
+      As in the previous case, $F_\alpha$ is not sensitive to initial conditions.
+      Therefore, $F_\alpha$ is not chaotic for any $\alpha$.
+      In this case, however, the mapping has no periodic point, so clearly the set of periodic points is not dense in $S^1$.
+      We prove it by contradiction: suppose that there exists a periodic point $\theta$ whose period is $p$.
+      Then,
+      \begin{equation*}
+        \itr{F}{p}(\theta) = \theta 
+        \Rar
+        \theta + p\alpha \quad(\mod{1}) = \theta
+        \Rar
+        p\alpha \quad(\mod{1}) = 0
+        \Rar
+        p\alpha = k
+      \end{equation*}
+      for some $k \in \Z$.
+      The last equality implies that $\alpha = \frac{k}{p}$, but this is a contradiction because $\alpha$ is not a rational number.
 
-On the other hand, an irrational rotation of the unit circle is topologically transitive.
-To see this, consider two points $\theta, \phi \in S^1$, and a neighborhood $U = \oball{\epsilon}{\phi}$ for any $\epsilon$.
-If there exists $n$ such that $\itr{F_\alpha}{n}(\theta) \in U$, then $F_\alpha$ is topologically transitive.
-Let us begin by choosing a $N > 0$ such that $1/N < \epsilon$.
-Then, pick $N$ points from the orbit $O(\theta)$, and call them $\theta_1, \ldots, \theta_N$.
-Since $\theta$ is not a periodic point, $\theta_1, \ldots, \theta_N$ are distinct.
-Then, by the pigeon hole principle, there exist $1 \leq m,k \leq N$ such that
-\begin{equation*}
-  \abs{ \theta_m - \theta_k } \leq \frac{1}{N} < \epsilon.
-\end{equation*}
-Without loss of generality, we may assume that $m > k$.
-It follows that 
-\begin{equation*}
-  \itr{F}{m - k}: \theta \mapsto \theta + \beta \quad(\mod{1}),
-\end{equation*}
-and $\beta < \epsilon$.
-Since $\beta < \epsilon < 2\epsilon$, there exists $n$ such that
-\begin{equation*}
-  \itr{F}{n(m-k)}(\theta) \in U.
-\end{equation*}
-This shows that $F_\alpha$ is topologically transitive when $\alpha$ is irrational.
+      On the other hand, an irrational rotation of the unit circle is topologically transitive.
+      To see this, consider two points $\theta, \phi \in S^1$, and a neighborhood $U = \oball{\epsilon}{\phi}$ for any $\epsilon$.
+      If there exists $n$ such that $\itr{F_\alpha}{n}(\theta) \in U$, then $F_\alpha$ is topologically transitive.
+      Let us begin by choosing a $N > 0$ such that $1/N < \epsilon$.
+      Then, pick $N$ points from the orbit $O(\theta)$, and call them $\theta_1, \ldots, \theta_N$.
+      Since $\theta$ is not a periodic point, $\theta_1, \ldots, \theta_N$ are distinct.
+      Then, by the pigeon hole principle, there exist $1 \leq k,m \leq N$ such that
+      \begin{equation*}
+        \abs{ \theta_m - \theta_k } \leq \frac{1}{N} < \epsilon.
+      \end{equation*}
+      Without loss of generality, we may assume that $m > k$.
+      It follows that 
+      \begin{equation*}
+        \itr{F}{m - k}: \theta \mapsto \theta + \beta \quad(\mod{1}),
+      \end{equation*}
+      where $\beta < \epsilon$.
+      Since $\beta < \epsilon < 2\epsilon$, there exists $n$ such that
+      \begin{equation*}
+        \itr{F}{n(m-k)}(\theta) \in U \equiv \oball{\epsilon}{\phi}.
+      \end{equation*}
+      This shows that $F_\alpha$ is topologically transitive.
+    \end{proof}
+  \end{proposition}
 \end{example}
 %%%
 \begin{example}
@@ -194,7 +203,8 @@ This shows that $F_\alpha$ is topologically transitive when $\alpha$ is irration
   \end{equation*}
   Therefore, for any separation constant $0 < \delta < 1$, there exists $n$ such that $\abs{ \itr{D}{n}(\theta) - \itr{D}{n}(\theta - \epsilon) } > \delta$.
   To show that the doubling map has a dense set of periodic points and is topologically transitive, we use a technique called \textit{symbolic dynamics}.
-  Chapter~\ref{chap:symbolic} will include the proof that the doubling map is chaotic in Devaney's sense.
+  We postpone the proof until Chapter~\ref{chap:symbolic} when we discuss the technique.
+  $\square$
 \end{example}
 The reader might have raised a question on the appropriateness of labeling the doubling map as chaotic.
 We think we understand such a simple mapping perfectly well; it's geometry is not complicated either.
@@ -208,15 +218,19 @@ The question will be addressed again in Chapter~\ref{chap:symbolic}.
 \end{example} 
 \begin{example}
   (Rotation by magnitude \citep{martelli})
+  The dynamics of this system is the same as the outer billiards system for $S_d$ when $d = 0$.
+  \index{outer billiards}
   Let $D$ be the unit disk centered at the origin, and $C_r = \set{v \in \R^2: \norm{v} = r}$.
   Define $F: D \to D$, a rotation, by 
   \begin{equation*}
     F(x) = F(r, \theta) = (r, \theta + r).
   \end{equation*}
-For every $r \in (0,1]$, $C_r$ is invariant.
-Clearly, $F$ does not have sensitive dependence on initial conditions on $C_r$.
-However, $F$ has sensitive dependence on initial conditions on $D$, which is also an invariant set. 
-This example shows why we should include topological transitivity in the definition of chaos.
+  For every $r \in (0,1]$, $C_r$ is invariant.
+  Clearly, $F$ does not have sensitive dependence on initial conditions on $C_r$.
+  $F$ has sensitive dependence on initial conditions on $D$, which is also an invariant set; however, $F$ is not transitive on $D$.
+  Whether this system should be called chaotic is up for debate.
+  However, this example shows how a system as simple as a rotation by a fixed angle can be labeled as chaotic if we do not include topological transitivity in the definition of chaos.
+  $\square$
 %To see this, let $x_0 = (r_0, \theta_0)$ and $d > 0$.
 %Choose $n$ large enough that $\frac{\pi}{n} < d$ and $r_0 - \frac{\pi}{n} > 0$.
 %Let $y_0 = (r_0 - \frac{\pi}{n}, \theta_0)$.
@@ -230,6 +244,16 @@ This example shows why we should include topological transitivity in the definit
 %  \norm{x_0 - y_0} < d \quad\mbox{and}\quad \norm{y_n - x_n} = \paren*{\frac{\pi}{n}}^2 + \pi^2 > 2 > r_0.
 %\end{equation*}
 \end{example}
+\begin{example}
+  Here is another example to motivate the inclusion of transitivity to a definition of chaos.
+  Consider $(\R, F)$, where $F: x \mapsto 2x$.
+  The system is clearly not topologically transitive.
+  For any $\delta > 0$, we have
+  \begin{equation*}
+    \metric{\itr{F}{n}(x), \itr{F}{n}(x+\delta)} = 2^n \delta,
+  \end{equation*}
+  so $F$ is sensitive.
+\end{example}
   %%%
 \begin{example}
   \citep{martelli}
@@ -237,9 +261,11 @@ This example shows why we should include topological transitivity in the definit
   Let $D \subseteq \R^2$ a closed unit disk centered at the origin.
   Let $F: D \to D$ be defined as
   \begin{equation*}
-    F: (r, \theta) \mapsto (4r(1 - r), \theta + 1).
+    F: (r, \theta) \mapsto (4r(1 - r), \theta + 1)
   \end{equation*}
-  The origin is the only fixed point, and $F$ does not have a periodic orbit of period greater than 1.
+  in polar coordinates.
+  The origin is the only fixed point, and $F$ does not have a periodic orbit of period greater than 1, because of the second component of the map.
+  Note that the first component of the map is the logistic map, so that the map is \sdic.
   Hence, the periodic points of $F$ is not dense in $D$ so that $F$ is chaotic in the sense of Wiggins, but not in the sense of Devaney.
   This example motivates us to think whether \dpp is necessary for the definition of chaos.
   \label{eg:notdpp}
@@ -250,16 +276,17 @@ This example shows why we should include topological transitivity in the definit
 %%%)
 
 \section{Redundancy of the Definition}
-\citet{silverman} (and also \citet{banks}) showed that \sdic is a necessary condition of \tt and \dpp.
+\sdic is a part of the definition by Devaney, because it is considered to be an essential component of chaos.
+However, \citet{silverman} showed that \sdic is a necessary condition of \tt and \dpp.
+\footnote{\citet{banks} proved the same result.}
+This means that we can omit \sdic from the definition.
 %%%
 \begin{theorem}
   (\tt and \dpp Imply \sdic)
   Suppose $F: X\rar X$ is transitive and has dense periodic points in $X$.
-  Then there exists $\epsilon > 0$ such that, for any $x\in X$ and any open set $J$ containing at least $x$ and another point, there is a point $y\in J$ and $n\in \N$ with
-  \begin{equation*}
-    \metric{\itr{F}{n}(x),\itr{F}{n}(y)} > \epsilon.
-  \end{equation*}
+  Then $F$ is sensitive to initial conditions on $X$.
   \label{thm:silverman}
+  \index{sensitive dependence on initial conditions}
 \end{theorem}
 
 First, we prove a lemma, which states that two distinct periodic orbits cannot intersect.
@@ -272,35 +299,36 @@ First, we prove a lemma, which states that two distinct periodic orbits cannot i
   \end{equation*}
   \label{lem:dev1}
   \begin{proof}[Proof of the lemma]
-    Let $r$ and $s$ be periodic points with distinct orbits. For each $k$ and $l$ we have
+    Let $p$ and $q$ be periodic points with distinct orbits. For each $j$ and $k$ we have
     \begin{equation*}
-      \metric{\itr{F}{k}(r), \itr{F}{l}(s)} > 0.
+      \metric{\itr{F}{j}(p), \itr{F}{k}(q)} > 0.
     \end{equation*}
-    Choose $c$ so that $2c < \min \metric{\itr{F}{k}(r),\itr{F}{l}(s)}$.
+    Choose $c$ so that $2c < \min \metric{\itr{F}{j}(p),\itr{F}{k}(q)}$.
     Then by the triangle inequality
     \begin{equation*}
-      2c < \metric{\itr{F}{k}(r),\itr{F}{l}(s)} \leq \metric{\itr{F}{k}(r),x} + \metric{x,\itr{F}{l}(s)}
+      2c < \metric{\itr{F}{j}(p),\itr{F}{k}(q)} \leq \metric{\itr{F}{j}(p),x} + \metric{x,\itr{F}{k}(q)}
     \end{equation*}
-    for all $k$ and $l$.
-    We cannot have $\metric{\itr{F}{k}(r),x} \leq c$ and $\metric{x,\itr{F}{l}(s)} \leq c$, since it violates the inequality just derived.
+    for all $j$ and $k$.
+    We cannot have $\metric{\itr{F}{j}(p),x} \leq c$ and $\metric{x,\itr{F}{k}(q)} \leq c$, since it violates the inequality just derived.
     Thus,
     \begin{equation*}
-      \metric{\itr{F}{k}(r),x} > c \mbox{ or } \metric{x,\itr{F}{l}(s)} > c
+      \metric{\itr{F}{j}(p),x} > c \mbox{ or } \metric{x,\itr{F}{k}(q)} > c
     \end{equation*}
     must hold.
   \end{proof}
 \end{lemma}
   %
 \begin{proof}[Proof of Theorem~\ref{thm:silverman}]
-  Let $x$ be any point of $X$ and $J$ any open set containing $x$.
-  Since the periodic points of $f$ are dense (in $X$), we may introduce a periodic point
-  $q$ of $f$ in $U$ defined as
-  \begin{equation*}
-    U \ceq J\cap \oball{\epsilon}{x}.
-  \end{equation*}
-  Let $n$ be the period of $q$.
-  Apply Proposition~\ref{lem:dev1} to obtain a periodic orbit $O(p)$ and a constant $c > 0$ such that $\metric{x, O(p)} > c$.
+  Let $x$ be any point of $X$
+  Apply Lemma~\ref{lem:dev1} to obtain a periodic orbit $O(p)$ and a constant $c > 0$ such that $\metric{x, O(p)} > c$.
   Let $\epsilon \ceq c/4$ so that $\metric{x, O(p)} > 4\epsilon$.
+  Let $J$ be any neighborhood of $x$, and define $U$ as
+  \begin{equation*}
+    U \ceq J \cap \oball{\epsilon}{x}.
+  \end{equation*}
+  Since the periodic points of $F$ are dense in $X$, we may introduce a periodic point
+  $q \in U$ of $F$.
+  Let $n$ be the period of $q$.
   Define
   \begin{equation*}
     W_i := \oball{\epsilon}{\itr{F}{i}(p)} \quad\text{ and }\quad V := \bigcap\limits_{i = 1}^{n} \itr{F}{-i}(W_i).
@@ -351,20 +379,21 @@ First, we prove a lemma, which states that two distinct periodic orbits cannot i
   \end{equation*}
   It follows from the inequality that 
   \begin{equation*}
-    \metric{\itr{F}{nj}(x), \itr{F}{nj}(z)} \geq \epsilon \quad\mbox{ or }\quad \metric{\itr{F}{nj}(x), \itr{F}{nj}(q)} \geq \epsilon 
+    \metric{\itr{F}{nj}(x), \itr{F}{nj}(z)} > \epsilon \quad\mbox{ or }\quad \metric{\itr{F}{nj}(x), \itr{F}{nj}(q)} > \epsilon 
   \end{equation*}
   must hold.
 \end{proof}
 
-Thus, we can regard \dpp and \tt as sufficient conditions for \sdic.
+Thus, \dpp and \tt are sufficient conditions for \sdic.
 Using this result, we can restate Devaney's definition in a more concise form, since the third condition, sensitive dependence on initial condition, is redundant.
 \begin{definition}
   (Chaos in Devaney's sense, redefined) 
-  A continuous map $F: X\rar X$ is said to be chaotic on $X$ if
+  A continuous map $F: X\rar X$ is said to be chaotic on $X$ if there exists a compact and invariant subset $Y \subseteq X$ such that
   \begin{enumerate}
-    \item $\cl(P(F)) = X$.
-    \item $F$ is \textit{topologically transitive}.
+    \item $\cl(P(F_{|Y})) = Y$.
+    \item $F_{|Y}$ is \textit{topologically transitive}.
   \end{enumerate}
+  \index{definition of chaos!Devaney}
 \end{definition}
 %%%
 A natural question to raise at this point is whether we can further reduce the definition to one condition, or whether other combinations of two conditions imply the other.
@@ -376,13 +405,14 @@ However, when we restrict our space to a compact interval, \tt implies the other
 \section{Chaos is a Topological Property}
 All conditions employed in Devaney's definition are topological invariants, that is, the properties are preserved under conjugacy by a continuous mapping.
 We show that \dpp and \tt are topological invariants.
-It follows that sensitive dependence on initial conditions is also a topological invariant.
-\begin{theorem}
+It follows that \sdic is also a topological invariant.
+\begin{proposition}
   (\tt is a topological invariant) 
+  \index{topological transitivity}
   Let $F: X \to X$ and $G: Y \to Y$ be continuous functions.
   Suppose that $(X,F)$ is semi-conjugate to $(Y,G)$ by $\phi$.
   If $F$ is transitive, then $G$ is transitive.
-  \label{thm:conj-trans}
+  \label{prop:conj-trans}
   \begin{proof}
     Let $A$ and $B$ be open sets of $Y$.
     Since $\phi^{-1}$ is continuous, $\phi^{-1}(A)$ and $\phi^{-1}(B)$ are open $X$.
@@ -395,13 +425,13 @@ It follows that sensitive dependence on initial conditions is also a topological
       = \phi(\itr{F}{n}(x)) \in \phi(\phi^{-1}(A)) = A.
     \end{equation*}
   \end{proof}
-\end{theorem}
+\end{proposition}
 %%%
 We prove two lemmas, from which the theorem of our interest immediately follows.
 \begin{lemma}
   Suppose that $(X,F)$ is semi-conjugate to $(Y,G)$ by $\phi$.
   If $D$ is dense in $X$, then $\phi(D)$ is dense in $Y$.
-  \label{thm:conj-dense}
+  \label{lem:conj-dense}
   \begin{proof}
     Let $A \subseteq Y$ be an open set.
     The intersection $\phi^{-1} (A) \cap D$ is nonempty, because $D$ is dense in $X$.
@@ -410,24 +440,24 @@ We prove two lemmas, from which the theorem of our interest immediately follows.
   \end{proof}
 \end{lemma}
 \begin{lemma}
-  (Periods are preserved under conjugacy)
   Suppose $(X,F)$ is semi-conjugate to $(Y,G)$ by $\phi$.
   If $p$ is a $n$-periodic point of $F$, then $\phi(p)$ is a $n$-periodic point of $G$.
-  \label{thm:conj-per}
+  \label{lem:conj-per}
   \begin{proof}
     $\itr{F}{n}(p) = p$ implies that $\itr{G}{n}(\phi(p)) = \phi(\itr{F}{n}(p)) = \phi(p)$.
   \end{proof}
 \end{lemma}
-\begin{theorem}
+\begin{proposition}
   (\dpp is a topological invariant)
+  \index{dense periodic points}
   Suppose that $(X,F)$ is semi-conjugate to $(Y,G)$ by $\phi$.
   If $\mathrm{P}(F)$ is dense in $X$, then $\mathrm{P}(G)$ is dense in $Y$.
-  \label{cor:conj-dense-per}
+  \label{prop:conj-dense-per}
   \begin{proof}
-    It follows from Theorem~\ref{thm:conj-per} that $\phi(\mathrm{P}(F)) \subseteq \mathrm{P}(G)$.
-    Then, by Theorem~\ref{thm:conj-dense}, $\mathrm{P}(G)$ is a dense subset of $Y$.
+    It follows from Lemma~\ref{lem:conj-per} that $\phi(\mathrm{P}(F)) \subseteq \mathrm{P}(G)$.
+    Then, by Lemma~\ref{lem:conj-dense}, $\mathrm{P}(G)$ is a dense subset of $Y$.
   \end{proof}
-\end{theorem}
+\end{proposition}
 Finally, we obtain the main result of this section, that chaos in Devaney's sense is a topological invariant, as a corollary.
 .
 \begin{corollary}
@@ -436,14 +466,14 @@ Finally, we obtain the main result of this section, that chaos in Devaney's sens
   If $F$ is chaotic in Devaney's sense, then $G$ is also chaotic in Devaney's sense.
   \label{cor:conj-sdic}
   \begin{proof}
-    This follows from Theorem~\ref{thm:silverman}, Theorem~\ref{thm:conj-trans}, and Theorem~\ref{thm:conj-dense}.
+    This follows from Theorem~\ref{thm:silverman}, Proposition~\ref{prop:conj-trans}, and Proposition~\ref{prop:conj-dense-per}.
   \end{proof}
 \end{corollary}
 %%%
 
 \section{Martelli's Definition}
 In this final section of the chapter, we introduce a definition that is equivalent to Wiggins's definition.
-\citet{martelli} prove the equivalence when $X$ is a compact subset of $\R^n$, but the proof sketched in their paper also works for a more general setting, namely when $X$ is a compact metric space.
+\citet{martelli} prove the equivalence when $X$ is a compact subset of $\R^n$, but the proof outlined in their paper also works for a more general setting, namely when $X$ is a compact metric space.
 We first state the definition, then define the terms used in it.
 %%%
 \begin{definition}
@@ -470,15 +500,15 @@ We first state the definition, then define the terms used in it.
 \begin{definition}
   (Unstable Point)
   Let $F: X\to X$ be an continuous mapping, and $x$ be a member of $X$.
-  $x$ is called an \textit{unstable point}, if there exists $\epsilon > 0$, which we refer to as the \textit{separation constant} (as in the definition of \sdic), such that, for any neighborhood $N$ of $x$, there exists $y \in N$ and a positive integer $n$ such that 
+  $x$ is called an \textit{unstable point}, if there exists $\delta > 0$, which we refer to as the \textit{separation constant} (as in the definition of \sdic), such that, for any neighborhood $N$ of $x$, there exists $y \in N$ and a positive integer $n$ such that 
   \begin{equation*}
-    \metric{\itr{F}{n}(x), \itr{F}{n}(y)} > \epsilon.
+    \metric{\itr{F}{n}(x), \itr{F}{n}(y)} > \delta.
   \end{equation*}
   \label{defn:unstable-orbit}
   \index{unstable orbit}
 \end{definition}
 Note that if $F$ has sensitive dependence on initial conditions on $X$, then all points in $X$ are unstable points, and there exists a globally defined separation constant.
-Therefore, sensitivity is a stronger condition than instability.
+Therefore, sensitivity is a stronger than instability.
 
 As I mentioned in the beginning of this section, Martelli's definition is equivalent to Wiggins's.
 \begin{theorem}
@@ -490,7 +520,7 @@ As I mentioned in the beginning of this section, Martelli's definition is equiva
     We prove this theorem in two parts, Proposition~\ref{prop:martelli-wiggins1} and Proposition~\ref{prop:martelli-wiggins2}.
   \end{proof}
 \end{theorem}
-We use the following result in the proof of Proposition~\ref{prop:martelli-wiggins1}.
+We use the following results in the proof of Proposition~\ref{prop:martelli-wiggins1}.
 \begin{proposition}
   \citep{silverman}
   Suppose $X$ is a perfect metric space.
@@ -498,16 +528,41 @@ We use the following result in the proof of Proposition~\ref{prop:martelli-wiggi
   \begin{proof}
     See \citep{silverman}.
   \end{proof}
-  \label{lem:dob-transitivity}
+  \label{prop:dob-transitivity}
 \end{proposition}
+%%%
 \begin{proposition}
+  Let $F: X \to X$ be a continuous map that is topologically transitive.
+  Also, let $\seq{U_i}{\infty}{i=1}$ be a sequence of open subsets of $X$.
+  Then, there exist $x \in X$ and a subsequence $\set{\itr{F}{n(i)}(x)}$ of $O(x)$ such that, for each $i$,
+  \begin{equation*}
+    \itr{F}{n(i)}(x) \in U_i
+  \end{equation*}
+  holds.
+  \label{prop:transitivity}
+  \begin{proof}
+    For each $m \geq 1$, define $\mathcal{V}_m \ceq \seq{V_i}{m}{i=1}$ as follows
+    \begin{align*}
+      V_i &\ceq U_{i} \cap \itr{F}{-n(i+1)} (V_{i+1}) \quad (i < m) \\
+      V_m &\ceq U_m,
+    \end{align*}
+    where, for each $m \geq i > 1$, we define $n(i)$ to be a positive integer such that $\itr{F}{n(i)}(U_{i-1}) \cap V_i$ is nonempty.
+    Such $n(i)$ exists because both $U_{i-1}$ and $V_i$ are open.
+    Also, set $n(1) = 0$ so that $\itr{F}{n(1)}(U_1) = U_1$.
+    Now, let $\mathcal{V} \ceq \lim\limits_{m \to \infty} \mathcal{V}_m$.
+    Consider $x \in V_1 \in \mathcal{V}$.
+    By construction, we have $\itr{F}{n(i)}(x) \in U_i$ for each $i$.
+  \end{proof}
+\end{proposition}
+%%%
+\begin{proposition}
+  \index{topological transitivity}
   Let $X$ be a compact metric space with no isolated point, and $F: X \to X$ be a continuous mapping.
   $F$ is topologically transitive in $X$ if and only if there exists $x \in X$ such that $L(x) = X$.
   \label{prop:martelli-wiggins1}
   \begin{proof}
-    We first show that the existence of an orbit whose limit set is $X$ implies topological transitivity.
-    $O(x)$ is a dense orbit.
-    By Proposition~\ref{lem:dob-transitivity}, $F$ is topologically transitive.
+    If $L(x) = X$, then $O(x)$ is a dense orbit.
+    By Proposition~\ref{prop:dob-transitivity}, $F$ is topologically transitive.
 
     Next, suppose that $F$ is topologically transitive.
     Let $\seq{\epsilon_i}{\infty}{i=1}$ be a monotonically decreasing sequence of positive real numbers whose limit is 0.
@@ -538,7 +593,7 @@ We first show that if $x$ is an unstable point, then any point in its orbit is a
 Moreover, we show that the separation constant of $x$ is a property belonging to all points in the orbit of $x$.
 \begin{proposition}
   Suppose there exists an unstable point $x \in X$ such that $L(x) = X$.
-  Then, for each positive integer $n$, $\itr{F}{n}(x)$ is also an unstable point, and its separation constant is the same as that of $x$.
+  Then, for each positive integer $n$, $\itr{F}{n}(x)$ is also an unstable point, and its separation constant is the same as $x$.
   \label{prop:unstable-orbit}
   \begin{proof}
     Let the separation constant of $x$ be $\epsilon$, and suppose that for some $y$ in any neighborhood of $x$, and for some positive integer $p$,
@@ -558,17 +613,17 @@ Moreover, we show that the separation constant of $x$ is a property belonging to
   \end{proof}
 \end{proposition}
 \begin{proposition}
+  \index{sensitive dependence on initial conditions}
   Suppose there exists an unstable point $x \in X$ such that $L(x) = X$.
   Then, $F$ has sensitive dependence on initial conditions.
   \label{prop:martelli-wiggins2}
   \begin{proof}
-    Suppose that $x$ is an unstable point such that $L(x) = X$.
-    Then, for each $y\in X$ and $\delta > 0$ there exists $n>0$ such that 
+    Since $L(x) = X$, for each $y\in X$ and $\delta > 0$ there exists $n>0$ such that 
     \begin{equation*}
       \metric{\itr{F}{n}(x), y} \leq \frac{\delta}{2}.
     \end{equation*}
     Let $\epsilon$ be the separation constant of $x$.
-    We prove that $F$ has sensitive dependence on initial conditions by showing that $\itr{F}{n}(x)$ eventually separates from $y$ by $\epsilon/2$.
+    We prove that $F$ has sensitive dependence on initial conditions by showing that there exists a point in any neighborhood of $y$ that eventually separates from $y$ by $\epsilon/2$.
     If there exists $p$ such that 
     \begin{equation*}
       \metric{\itr{F}{n+p}(x), \itr{F}{p}(y)} > \frac{\epsilon}{2},
