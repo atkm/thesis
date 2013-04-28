@@ -1,4 +1,4 @@
-\documentclass[10pt,twoside,draft]{book}
+\documentclass[10pt,twoside]{book}
 \usepackage{../../thesis}
 \graphicspath{ {../../images/} }
 \usetikzlibrary{calc}
@@ -119,7 +119,7 @@ Regardless of the legitimacy of his claim, the Moser-Neumann question is an inte
 \citet{schwartz} studied outer billiards when the shape is a Penrose kite, for which Moser's result do not apply, because the shape is not smooth (Figure~\ref{fig:penrosekite}).
 \begin{figure}[ht]
   \begin{center}
-    \includegraphics[width=0.75\textwidth]{penrosekite}
+    \includegraphics[width=0.25\textwidth]{penrosekite}
     \caption{Penrose kite. \citet{schwartz} considered the family of kites parametrized as in the figure.}
     \label{fig:penrosekite}
   \end{center}
@@ -144,7 +144,7 @@ We give a formal definition of the outer billiard dynamical systems below, but t
   We already defined the billiard map for any convex shape at the beginning of this chapter, but let us reiterate the description here.
   We define $B_{S_d}$, the billiard map for $S_d$, as follows.
   For any given point $p$, if the point is inside or on $S_d$, then $B_{S_d}$ maps $p$ to itself.
-  If $p$ is outside the kite, then $B_{S_d}$ maps $p$ to $q$, where $q$ is a point such that $\overline{pq}$, the line segment between $p$ and $q$, is tangent to $S_d$, and $\overline{pq}$ intersects $S_d$ at the midpoint of $\overline{pq}$ (Figure~\ref{fig:kite-regions}).
+  If $p$ is outside the kite, then $B_{S_d}$ maps $p$ to $q$, where $q$ is a point such that $\overline{pq}$, the line segment between $p$ and $q$, is tangent to $S_d$, and $\overline{pq}$ intersects $S_d$ at the midpoint of $\overline{pq}$ (Figure~\ref{fig:billiards}).
   Note that, even though $S_d$ is not smooth for $d > 0$, we define a tangent line to be a line that intersects with the shape at a single point, so that there is always a tangent line from every point in the space. 
   (Figure~\ref{fig:kite-regions}).
   We refer to $S_d$ as a \textit{kite}, and $(\R^2, B_{S_d})$ is the outer billiards system that we consider in this chapter.
@@ -343,6 +343,7 @@ Thus, every point in $(\R^2 \bs G, S_\infty)$ is periodic, and we do not conside
 So far, we have studied the dynamics of the outer billiard system for two particular parameters, which turned out to have simple structures.
 For general cases, however, the dynamics is considerably more complicated.
 We show several results of numerical simulations for a particular parameter, $d = 1.0$ (the choice is arbitrary).
+The kite is now a shape somewhere in between a circle and square (Figure~\ref{fig:kiteeg}).
 The orbits of any points in a bounded set seem to be bounded.
 Figure~\ref{fig:disk10} is the disk of radius 10 transformed by 500 iterations of the billiard map.
 The plot shows that no point escapes to a region far from the origin.
@@ -362,14 +363,15 @@ Note that, since the billiard mapping is a homeomorphism, the region in the figu
 Figure~\ref{fig:strip2-3} shows a transformation of an annular region between circles of radii 2 and 3.
 We see four hollow circles symmetrically placed around the kite.
 It is easy to see that these circles are mapped to each other, and in a way similar to the $d \to \infty$ case, form a group of clusters of period $4$.
+Periodic clusters, which were square-shaped in the $d \to \infty$ case, have various circular shapes.
 Unlike the $d \to \infty$ case, however, a point may not have the same period as the cluster it belongs to.
 Also in Figure~\ref{fig:strip2-3}, we see eight clusters of ellipse-like regions; these are 8-periodic clusters.
 In the transformations of annular regions of larger radii, we see clusters with higher periods (Figure~\ref{fig:strip3-4-6-7}).
-Thus, periodic clusters, which were square-shaped in the $d \to \infty$ case, have various circular shapes.
+Periods are not necessarily multiples of four, however.
 For $d = 0.1$, Mayer has found periodic clusters of various periods, including those that are not multiples of 4, by a numerical simulation (personal communication).
 Unlike the $d \to \infty$ case, the periods are not only those of multiples of four, but also multiples of two and odd periods.
 
-\begin{figure}[ht]
+\begin{figure}[p]
   \begin{center}
     $
     \begin{array}{l}
@@ -388,7 +390,7 @@ Unlike the $d \to \infty$ case, the periods are not only those of multiples of f
   \end{center}
 \end{figure}
 
-\begin{figure}[ht]
+\begin{figure}[p]
   \begin{center}
     \includegraphics[width=0.49\textwidth]{strip3-4}
     \includegraphics[width=0.49\textwidth]{strip6-7}
@@ -403,27 +405,27 @@ Unlike the $d \to \infty$ case, the periods are not only those of multiples of f
 
 When a point is aperiodic, its orbit seems to be sensitive to initial conditions.
 Figure~\ref{fig:sensitivity1} shows the evolution of distance between two nearby points.
-The points are $(4,\pi/10)$ and a nearby point obtained by rotating the first point by the smallest possible angle (on the order of $10^{-16}$.
+The points are $(3.55,\pi/10)$ and a nearby point obtained by rotating the first point by the smallest possible angle (on the order of $10^{-16}$).
 Initially, the distance between the two points is essentially zero, and the two points remain close to each other in the beginning.
 After around the 500th iteration, however, the distance between the two starts growing.
-The growth ends when the distance is around 9, which seems to be the upper bound.
+The growth ends when the distance is around 7, which seems to be the upper bound.
 Then, the two points begin to come close to each other again.
-The two points keep distance from each other between 1500-3500 iterations, but after the 3500th iteration, the distance between the two oscillates between the upper bound and some small value less than 1.
+Thereafter, the distance between the two oscillates between the upper bound and some small value less than 1.
 %These two points seem to satisfy the criteria of Li-Yorke pair.
-Also, there seem to be uncountably many such points (Figure~\ref{fig:strip2-3},\ref{fig:strip3-4-6-7}).
+Also, there seem to be uncountably many points that are sensitive: there are regions of chaos between periodic clusters (Figure~\ref{fig:strip2-3},\ref{fig:strip3-4-6-7}).
 %If these claims are true, then the system is chaotic in the sense of Li-Yorke and also in the sense of Wiggins.
 
 In the periodic clusters, on the other hand, the distance between two nearby points shows almost no growth (Figure~\ref{fig:sensitivity2}).
-In this plot, the two points we are looking at are $(4,\pi/4)$ and a nearby point.
-Note that the point $(4,\pi/4)$ is in one of the periodic clusters, while $(4,\pi/10)$ is not (Figure~\ref{fig:strip3-4-6-7}).
-We do not know whether points in periodic clusters are periodic.
+In this plot, the two points we are looking at are $(3.55,\pi/4)$ and a nearby point.
+Note that the point $(3.55,\pi/4)$ is in one of the periodic clusters, while $(3.55,\pi/10)$ is not (Figure~\ref{fig:strip3-4-6-7}).
+%We do not know whether points in periodic clusters are periodic.
 %%%
 
 \begin{figure}[ht]
   \begin{center}
-    \includegraphics[width=0.8\textwidth]{billiard_sensitivity_pi-div-10}
-    \caption{The evolution of distance between $p = (4, \pi/10)$ and the other point $q$, which is initially close to $p$.
-      $q$ was obtained by rotating $p$ by $\epsilon$ radian, where $\epsilon$ is the smallest double available in the precision of the machine.
+    \includegraphics[width=0.8\textwidth]{billiard_sensitive}
+    \caption{The evolution of distance between $p = (3.55, \pi/10)$ and the other point $q$, which is initially close to $p$.
+      $q$ was obtained by rotating $p$ by $\epsilon$ radian, where $\epsilon$ is on the order of $10^{-16}$.
       The $x$-axis is the number of iterations, and the $y$-axis is the distance between $p$ and $q$.
     }
     \label{fig:sensitivity1}
@@ -432,11 +434,11 @@ We do not know whether points in periodic clusters are periodic.
 %%%
 \begin{figure}[ht]
   \begin{center}
-    \includegraphics[width=0.8\textwidth]{sensitivity_test_slow_growth_45deg}
-    \caption{The evolution of distance between $p = (4, \pi/4)$ and the other point $q$, which is initially close to $p$.
-      $q$ was obtained by rotating $p$ by $\epsilon$ radian, where $\epsilon$ is the smallest double available in the precision of the machine.
+    \includegraphics[width=0.8\textwidth]{billiard_not-sensitive}
+    \caption{The evolution of distance between $p = (3.55, \pi/4)$ and the other point $q$, which is initially close to $p$.
+      $q$ was obtained by rotating $p$ by $\epsilon$ radian, where $\epsilon$ is on the order of $10^{16}$
       The $x$-axis is the number of iterations, and the $y$-axis is the distance between $p$ and $q$.
-      Even after $5.0 \times 10^6$ iterations, the distance between the two points is on the order of $10^{-1}$.
+      After $10000$ iterations, the distance between the two points is on the order of $10^{-13}$.
     }
     \label{fig:sensitivity2}
   \end{center}
