@@ -73,6 +73,11 @@ This is the \textit{solution} of \pref{eqn:logistic}, the discrete analogue of \
 \begin{figure}[ht]
   \begin{center}
     \includegraphics[width=0.75\textwidth]{logistic_diffeq_mu4_varyingx0}
+    % for x in (2.0, 1.1, 1.0, 0.8, 0.3):
+    %   res = rk4_1D(logistic, x, 2.0, 0.01, (4))
+    %   plot(sp.linspace(0,2,201), res)
+    % xlim([0,2]); ylim([0,2.01]); xticks(fontsize=24); yticks(fontsize=24)
+    % xlabel(r't (time)', fontsize=26); ylabel(r'x(t)', fontsize=26)
   \end{center}
   \caption{
     Plot of equation \pref{eqn:ldesoln} with $\mu = 4$ and various initial values. 
@@ -88,6 +93,11 @@ As long as $\mu > 0$, however, the asymptotic behavior of the solution does not 
 \begin{figure}[h]
   \begin{center}
     \includegraphics[width=0.75\textwidth]{logistic_diffeq_mu1234_x2}
+    % for mu in (1,2,3,4):
+    %   res = rk4_1D(logistic, 2.0, 5.0, 0.01, (mu))
+    %   plot(sp.linspace(0,5,501), res)
+    % xlim([0,5]); ylim([0.99,2.01]); xticks(fontsize=24); yticks(fontsize=24)
+    % xlabel(r't (time)', fontsize=26); ylabel(r'x(t)', fontsize=26)
   \end{center}
   \caption{
     Plot of equation \pref{eqn:ldesoln} with $x_0 = 2$ and various $\mu$ ($\mu = 1,2,3,4$).
@@ -106,6 +116,11 @@ Thus, we see that \pref{eqn:logisticsoln} does not behave in the exact same mann
     \centering
     \includegraphics[width=0.75\textwidth]{logistic_map_mu1_varyingx0}
     \includegraphics[width=0.75\textwidth]{logistic_map_mu2_varyingx0}
+    % for x in (0.8,0.6,0.4,0.2):
+    %   res = IterateList(f, x, 25, (0.25))
+    %   plot(res,'o-')
+    % xticks(fontsize=24); yticks(fontsize=24)
+    % xlabel(r't (time)', fontsize=26); ylabel(r'x(t)', fontsize=26)
     \caption{
       Plot of Equation~\pref{eqn:logisticsoln} for 25 iterations with $\mu = 1$ (top) and $\mu = 2$ (bottom).
       Initial values are $x_0 = 0.2, 0.4, 0.6, 0.8$.
@@ -126,7 +141,6 @@ Thus, we see that \pref{eqn:logisticsoln} does not behave in the exact same mann
 \begin{figure}[p]
   \centering
   \includegraphics[width=0.75\textwidth]{logistic_map_mu4_varyingx0}
-
   \includegraphics[width=0.75\textwidth]{logistic_map_mu4_chaos}
   \caption{
     Plot of equation \pref{eqn:logisticsoln} with $\mu = 4$ for 25 (top) and 100 (bottom) iterations.
