@@ -406,6 +406,7 @@ The asterisk ($*$) is used to note the 0th symbol of a sequence, and the shift m
 \end{equation*}
 Thus, unlike in the one-sided shift, $\sigma$ is one-to-one, and each sequence ``remembers'' its preimage.
 Hence, a two-sided shift is suited for studying an invertible map, while an one-sided shift is used to study a non-invertible maps,
+\index{two-sided shift}
 It is easy to see that the full two-sided shift $(\Sigma, \sigma)$ is also chaotic in Devaney's sense.
 \citet{wiggins} has a exposition on the dynamics of the horseshoe map using symbolic dynamics.
 The horseshoe map has a geometrically complicated dynamics.
@@ -424,7 +425,6 @@ We have an example of coding in Chapter~\ref{chap:comparison} (Example~\ref{eg:b
   (Chaos in the sense of Block-Coppel \citep{blockcoppel})
   Let $X$ be a metric space, and $F$ be a continuous map.
   Suppose there exists an invariant compact subset $Y \subseteq X$ and a positive integer $n$ such that $(Y,\itr{F}{n})$ is semi-conjugate to the full one-sided shift $(\Sigma, \sigma)$ by $\phi: Y \to \Sigma$.
-  Moreover, for each $s \in \Sigma$, we require that $\phi^{-1}(s)$ consists of either one or two points.
   Then, we say that $(X,F)$ is \textit{chaotic in the sense of Block-Coppel}.
   \begin{center}
     \begin{tikzpicture}[node distance=2cm, auto]
@@ -442,6 +442,36 @@ We have an example of coding in Chapter~\ref{chap:comparison} (Example~\ref{eg:b
   \index{definition of chaos!Block-Coppel}
 \end{definition}
 Block and Coppel made this definition only for one-dimensional systems; however, we consider the extended version of the definition in order to compare it with other definitions.
+
+\begin{theorem}
+  Suppose $(X, F)$ is semi-conjugate to $(Y, G)$.
+  If $(Y, G)$ is chaotic in Block-Coppel's sense, then $(X, F)$ is also chaotic in Block-Coppel's sense.
+  \begin{proof}
+    Suppose that $(Y, G)$ is semi-conjugate to $(\Sigma, \sigma)$ by $\psi$, and that $(X, F)$ is semi-conjugate to $(Y, G)$ by $\phi$.
+    It is easy to see that $(X, G)$ is semi-conjugate to $(\Sigma, \sigma)$ by $\phi \circ \psi$.
+  \end{proof}
+  \begin{center}
+    \begin{tikzpicture}[node distance=2cm, auto]
+      \node (x1) {$X$};
+      \node (x2) [right of=x1] {$X$};
+      \node (y1) [below of=x1] {$Y$};
+      \node (y2) [below of=x2] {$Y$};
+      \node (s1) [below of=y1] {$\Sigma$};
+      \node (s2) [below of=y2] {$\Sigma$};
+      \draw[->] (x1) to node {$F$} (x2);
+      \draw[->] (x1) to node[swap] {$\phi$} (y1);
+      \draw[->] (y1) to node[swap] {$G$} (y2);
+      \draw[->] (x2) to node {$\phi$} (y2);
+      \draw[->] (y1) to node[swap] {$\psi$} (s1);
+      \draw[->] (y2) to node {$\psi$} (s2);
+      \draw[->] (s1) to node[swap] {$\sigma$} (s2);
+    \end{tikzpicture}
+  \end{center}
+\end{theorem}
+\begin{corollary}
+  Suppose $(X, F)$ is conjugate to $(Y, G)$.
+  $(X, F)$ is chaotic in Block-Coppel's sense if and only if $(Y, G)$ is chaotic in Block-Coppel's sense.
+\end{corollary}
 Their motivation in formulating this definition of chaos was to study \textit{turbulent} maps defined on the compact interval.
 \begin{definition}
   (Turbulent map)
@@ -472,7 +502,10 @@ The original version of Block-Coppel's definition of chaos is the following, whi
 Their intention in establishing the equivalence of the two conditions was to study turbulent maps using symbolic dynamics, as in the following proposition.
 \begin{proposition}
   Suppose $F: I \to I$ is a continuous mapping such that $\itr{F}{n}$ is turbulent for some $n$.
+  It follows that $(I, \itr{F}{m})$ is semi-conjugate to $(\Sigma, \sigma)$, the full one-sided shift, for some $m$.
+  Assume that the conjugacy $\phi: I \to \Sigma$ is one-to-one for some points and two-to-one for the others.
   Then, there exist uncountable set of points $S \subseteq I$ such that, for each $x \in S$, the limit set $L(x)$ is uncountable.
+  \index{limit set}
   \begin{proof}
     Let $A \subseteq \Sigma$ be the set of all sequences that contain every finite sequence once in the following manner
     \begin{equation*}
