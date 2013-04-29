@@ -21,9 +21,9 @@ The goal of this section is to prove that the full one-sided shift is chaotic in
   (One-sided shift)
   Let $S$ be a set of finite number of symbols, and let $\Sigma$ be a set of infinite sequences of the form
   \begin{equation*}
-    s = \set{ s_0 s_1 s_2 \cdots s_n \cdots },
+    s = s_0 s_1 s_2 \cdots s_n \cdots,
   \end{equation*}
-  where $s_i \in S$.
+  where $s_i \in S$ for each $i$.
   In other words, $\Sigma \ceq S^\N$.
   Although the symbols can be anything (Roman alphabets, colors, Chinese characters, etc.), we take a finite number of integers as our symbols.
   Thus, $S \ceq \set{1, \ldots, n}$.
@@ -36,19 +36,20 @@ The goal of this section is to prove that the full one-sided shift is chaotic in
   The metric induces the topology on $\Sigma$.
   Let $\sigma: \Sigma \to \Sigma$ defined as:
   \begin{equation*}
-    \sigma: \set{ s_0 s_1 s_2 \cdots s_n \cdots } 
+    \sigma: s_0 s_1 s_2 \cdots s_n \cdots
     \mapsto 
-    \set{ s_1 s_2 \cdots s_n \cdots }.
+    s_1 s_2 \cdots s_n \cdots.
   \end{equation*}
   Thus, $\sigma$ corresponds to dropping the first symbol of the sequence, and shifting all other symbols to the front.
   When the space is $\Sigma$, which consists of all possible infinite sequences of symbols, we call the dynamical system ($\Sigma$, $\sigma$) the \textit{full one-sided shift}.
   If $X$ is a (appropriately chosen) subset of $\Sigma$, then $(X, \sigma)$ is called a \textit{subshift}.
   \index{one-sided shift}
+  \index{shift map}
 \end{definition}
 For the definition of a subshift to make sense, $X$ must be an invarient set of $\sigma$, but it is not the only requirement.
 $X$ also needs to be closed in $\Sigma$.
 Subshifts provide rich examples of dynamical systems, but we do not discuss them here.
-For discussions on subshifts refer to \citet{kitchens} and \citet{lind}.
+For discussions on subshifts, refer to \citet{kitchens} and \citet{lind}.
 %%%
 
 Before we proceed further, we prove that $d$ is a metric and $\sigma$ is a continuous map to ensure that it defines a topological dynamical system.
@@ -104,7 +105,7 @@ Conversely, we can infer from the distance between the two the length of a block
     \begin{equation*}
       d(s,t) \geq \frac{1}{2^i} \geq 2^{-k}.
     \end{equation*}
-    Hence, it must hold that $s_i = t_i$ for each $0 \leq i \leq k$.
+    Hence, it must be the case that $s_i = t_i$ for each $0 \leq i \leq k$.
   \end{proof}
 \end{proposition}
 %%%
@@ -172,7 +173,7 @@ The topology of the underlying space are inherited to the space of infinite sequ
 Thus, $\Sigma$ is a \textit{Cantor set}.
 Knowing the topological structure of $\Sigma$ is useful when constructing a conjugacy between a dynamical system and the full one-sided shift.
 The existence of a conjugacy between $(\Sigma, \sigma)$ and a dynamical system, say $(X, F)$, implies that $X$ is also a Cantor set.
-Also, note that any dynamical system that is conjugate to the full one-sided shift possesses these properties of $\Sigma$ \citep{dugundji}.
+Also, note that any dynamical system that is conjugate to the full one-sided shift possesses these properties of $\Sigma$.
 %%%
 Now we show that $\sigma$ is continuous and surjective.
 \begin{proposition}
@@ -216,6 +217,7 @@ Now we show that $\sigma$ is continuous and surjective.
     \end{enumerate}
   \end{proof}
   \label{prop:sigma-cont}
+  \index{shift map}
 \end{proposition}
 %%%
 Finally, we show that the full one-sided shift is chaotic in Devaney's sense.
@@ -233,6 +235,7 @@ Finally, we show that the full one-sided shift is chaotic in Devaney's sense.
     Hence, each neighborhood of $s$ contains a periodic point.
     Since the choice of $s$ was arbitrary, we conclude that $P(\sigma)$ is dense in $\Sigma$.
   \end{proof}
+  \index{dense periodic points}
 \end{proposition}
 \begin{proposition}
   $(\Sigma, \sigma)$ is transitive. 
@@ -250,6 +253,7 @@ Finally, we show that the full one-sided shift is chaotic in Devaney's sense.
     \end{equation*}
     Hence, $\sigma$ is transitive.
   \end{proof}
+  \index{topological transitivity}
 \end{proposition}
 The two propositions give the desired result.
 \begin{theorem}
@@ -269,6 +273,7 @@ However, we present a direct proof below, as symbolic dynamics provides a new pe
       \metric{\itr{\sigma}{n}(s), \itr{\sigma}{n}(t)} \geq 1 > \delta.
     \end{equation*}
   \end{proof}
+  \index{sensitive dependence on initial conditions}
 \end{proposition}
 %%%
 The meaning of sensitive dependence on initial conditions is explicitly displayed in the proof.
@@ -296,6 +301,8 @@ In fact, the metric that we use and this metric $d'$ can be shown to be equivale
 
 \section{Doubling Map is Chaotic}
 The goal of this section is to prove that $(\Sigma, \sigma)$ is semi-conjugate to $(S^1, D)$, which implies that the doubling map is chaotic in Devaney's sense (Corollary~\ref{cor:conj-sdic}).
+\index{doubling map}
+\index{conjugacy}
 \begin{center}
   \begin{tikzpicture}[node distance=2cm, auto]
     \node (y1) {$\Sigma$};
@@ -308,25 +315,6 @@ The goal of this section is to prove that $(\Sigma, \sigma)$ is semi-conjugate t
     \draw[->] (y2) to node {$\phi$} (x2);
   \end{tikzpicture}
 \end{center}
-%%%
-\begin{figure}[ht]
-  \centering
-  \begin{tikzpicture}[scale=3.2]
-    \draw[->] (-0.2,0) -- (1.2,0) node[right] {$x$};
-    \draw[->] (0,-0.2) -- (0,1.2) node[above] {$D(x)$};
-    \foreach \x/\xtext in {0.5/\frac{1}{2}, 1/1}
-    \draw[shift={(\x,0)}] (0pt,1pt) -- (0pt,-1pt) node[below] {$\xtext$};
-    \foreach \y/\ytext in {0.5/\frac{1}{2}, 1/1}
-    \draw[shift={(0,\y)}] (1pt,0pt) -- (-1pt,0pt) node[left] {$\ytext$};
-    %%% graphs
-    \draw[domain=0:0.492] plot (\x,{2*\x}) node[below right] {};
-    \draw[domain=0.5:0.983] plot (\x,{2*\x - 1}) node[below right] {};
-    \draw[] (0.99,0.99) circle (0.6pt);
-    \draw[] (0.51,1) circle (0.6pt);
-  \end{tikzpicture}
-  \label{fig:doubling}
-  \caption{The doubling map, $D(x)$.}
-\end{figure}
 %%%
 The key to construct a semi-conjugacy between $(S^1,D)$ and $(\Sigma, \sigma)$ is to think of an infinite sequence in $\Sigma$ as the binary expansion of some real number.
 As usual, we represent $S^1$ by an interval $[0,1)$, and for each $x \in S^1$, we consider its binary expansion, which is %]
@@ -346,6 +334,25 @@ Therefore, if we represent each point in $S^1$ by its binary expansion, we can d
   D: 0.s_1 s_2 s_3 \cdots \mapsto 0.s_2 s_3 \cdots,
 \end{equation*}
 which remind us of the shift map.
+\begin{figure}[ht]
+  \centering
+  \begin{tikzpicture}[scale=3.2]
+    \draw[->] (-0.2,0) -- (1.2,0) node[right] {$x$};
+    \draw[->] (0,-0.2) -- (0,1.2) node[above] {$D(x)$};
+    \foreach \x/\xtext in {0.5/\frac{1}{2}, 1/1}
+    \draw[shift={(\x,0)}] (0pt,1pt) -- (0pt,-1pt) node[below] {$\xtext$};
+    \foreach \y/\ytext in {0.5/\frac{1}{2}, 1/1}
+    \draw[shift={(0,\y)}] (1pt,0pt) -- (-1pt,0pt) node[left] {$\ytext$};
+    %%% graphs
+    \draw[domain=0:0.492] plot (\x,{2*\x}) node[below right] {};
+    \draw[domain=0.5:0.983] plot (\x,{2*\x - 1}) node[below right] {};
+    \draw[] (0.99,0.99) circle (0.6pt);
+    \draw[] (0.51,1) circle (0.6pt);
+  \end{tikzpicture}
+  \label{fig:doubling}
+  \caption{The doubling map, $D(x)$.}
+\end{figure}
+%%%
 Motivated by this observation, we define a mapping $\phi: \Sigma \to S^1$, which assigns
 \begin{equation*}
   \sum\limits_{i = 1}^{\infty} \frac{s_i}{2^i} \in S^1.
@@ -355,9 +362,8 @@ to
   s_1 s_2 s_3 \cdots \in \Sigma.
 \end{equation*}
 By construction, $\phi$ is surjective.
-On the other hand, not every member of $S^1$ has a unique binary expansion. 
+On the other hand, $\phi$ is not an injection, since not every member of $S^1$ has a unique binary expansion. 
 For example, $\frac{1}{2}$ has two expansions, $0.1000\ldots$ and $0.0111\ldots$.
-Therefore, $\phi$ is not an injection.
 To see that $\phi$ is continuous, note that if
 \begin{equation*}
   d(s,t) < 2^{-k},
@@ -381,6 +387,7 @@ To summarize, we have the following.
     $(\Sigma, \sigma)$ is semi-conjugate to $(S^1, D)$ by $\phi$.
     Hence, by Corollary~\ref{cor:conj-sdic}, $(S^1, D)$ is chaotic in Devaney's sense.
   \end{proof}
+  \index{definition of chaos!Devaney}
 \end{theorem}
 %%%
 \citet[Chap.4]{sternberg} shows that the full one-sided shift is semi-conjugate to the logistic map and tent map, as well.
@@ -409,7 +416,7 @@ An one-sided shift can be similarly used to study the dynamics of a non-invertib
 
 \section{Defining Chaos Using Symbolic Dynamics}
 In the last section, we established a semi-conjugacy of the full one-sided shift to another dynamical system.
-However, the other direction, establishing a semi-conjugacy to $(\Sigma, \sigma)$, is also a commonly used technique, which is often called \textit{coding}.
+However, the other direction, establishing a semi-conjugacy to $(\Sigma, \sigma)$, is also a common technique, which is often called \textit{coding}.
 In short, coding is used to extract aspects of a dynamical system and describe them using symbolic dynamics, which may be easier to study.
 We have an example of coding in Chapter~\ref{chap:comparison} (Example~\ref{eg:blanchard}), although the purpose is not to study a dynamical system, but to construct a system with desired properties.
 \citet{blockcoppel} defines chaos as a system that can be coded using the full one-sided shift.
@@ -469,7 +476,7 @@ Their intention in establishing the equivalence of the two conditions was to stu
   \begin{proof}
     Let $A \subseteq \Sigma$ be the set of all sequences that contain every finite sequence once in the following manner
     \begin{equation*}
-      \underbrace{0\; 1}_{\mbox{length } 1} **\quad \underbrace{00\; 01\; 10\; 11}_{\mbox{length } 2} \quad**\quad \underbrace{000\; 001\; 010\; 011\; 100\; 101\; 111}_{\mbox{finite sequences of length } 3} \quad** \cdots,
+      \underbrace{0\; 1}_{\mbox{length 1}} **\quad \underbrace{00\; 01\; 10\; 11}_{\mbox{length 2}} \quad**\quad \underbrace{000\; 001\; 010\; 011\; 100\; 101\; 111}_{\mbox{finite sequences of length 3}} \quad** \cdots,
     \end{equation*}
     where each $**$ denotes an arbitrary finite sequence.
     Since there are uncountably many ways of choosing the arbitrary finite sequences, $A$ is uncountable.
@@ -495,13 +502,13 @@ Their intention in establishing the equivalence of the two conditions was to stu
 %%%
 Their definition was specifically formulated for one-dimensional maps.
 One-dimensional systems are ``more amenable to study,'' yet ``[t]he extremely complicated behaviour of some 3-dimensional flows, or 2-dimensional diffeomorphisms, is also observed in non-invertible 1-dimensional maps.''
-The hope is that we can gain better understanding of higher-dimensional systems by studying behaviors in one-dimensional system.
+The hope is that we can gain better understanding of higher-dimensional systems by studying behaviors in one-dimensional systems.
 In Chapter~\ref{chap:comparison}, we compare this definition to other definitions in the compact interval as well as a general compact metric space.
-It is not at all obvious whether this definition serves as a definition of chaos in non-one-dimensional systems.
+It is not obvious whether this definition serves as a definition of chaos for systems that are not one-dimensional.
 However, in the comparisons with other definitions, we will see that this definition is stronger than Li-Yorke's definition.
 
 Also, recall that $\Sigma$ is a Cantor set.
-We mentioned in the introduction that the fractal dimension is sometimes regarded as a signature of chaos.
+We mentioned in the introduction that the fractal dimensionality of an attractor is sometimes regarded as a signature of chaos.
 The definition of chaos by Block-Coppel suggests that sensitivity and geometry of dynamics are not unrelated.
 
 %%%
