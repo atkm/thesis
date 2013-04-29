@@ -1,0 +1,100 @@
+\documentclass[10pt,twoside,draft]{book}
+\usepackage{../../thesis}
+\graphicspath{ {../../images/} }
+
+\begin{document}
+Lyapunov exponent, however, gives some mathematical content to the word sensitive dependence on initial conditions, and also illustrates the idea of invariants.
+%Lyapunov exponents are sometimes called characteristic exponents.
+%Also, \citet{young} gave a lower bound of the Hausdorff dimension in terms of the Lyapunov numbers, so the geometry of a dynamical system is not unrelated to sensitive dependence on initial conditions.
+\begin{definition}
+  (Lyapunov exponent)
+  Let $F: \R \to \R$ be a differentiable mapping, and $x_0 \in \R$.
+  We define the Lyapunov exponent of $O(x_0)$.
+  We use the following notation $x_i \ceq \itr{F}{i}(x_0)$.
+  Define Jacobian matrices
+  \begin{equation*}
+    A_0 \ceq F'(x_0),
+    \; A_1 \ceq F'(x_1),
+    \; \ldots,
+    \; A_n \ceq F'(x_n).
+  \end{equation*}
+  Then, denote the spectral radii (i.e. the maximum of the absolute values of eigenvalues) of $A_i$ by $\rho_i(x_0)$.
+  Then the Lyapunov number $N(x_0)$ of $O(x_0)$ is defined as 
+  \begin{equation*}
+    N(x_0) = \lim\limits_{n \to \infty} (\rho_n(x_0))^{1/n}.
+  \end{equation*}
+  Then, we define the Lyapunov exponent to be the log of the Lyapunov number.
+  \begin{equation*}
+    \Lambda(x_1) = \log N(x_1).
+  \end{equation*}
+  In particular,
+  \begin{equation*}
+    \Lambda(x_1) = \lim\limits_{n \to \infty} \paren{\log\abs{F'(x_n)} + \log\abs{F'(x_{n-1})} + \cdots + \log\abs{F'(x_1)}}
+  \end{equation*}
+  \index{Lyapunov number}
+\end{definition}
+%(Lyapunov exponent is computationally preferable to the Lyapunov number.)
+%It can be shown that the Lyapunov exponent of a map is (almost everywhere) equivalent to the Lyapunov exponent of any orbit of a map (Lyapunov exponent is independent of orbit).
+\begin{proposition}
+  Suppose $h'(x) \neq 0$ and
+  \begin{equation*}
+    \lim\limits_{n\to \infty} \frac{\log\abs{h'(x_n)}}{n} = 0.
+  \end{equation*}
+  Then, the Lyapunov numbers of one-dimensional dynamical systems that are conjugate is the same 
+  \label{prop:lyap-conj}
+  \begin{proof}
+    \begin{equation*}
+      h'(x_{n+1})F'(x_n)\ldots F'(x_1) = G'(y_n)\ldots G'(y_1)h'(x_1).
+    \end{equation*}
+    Then 
+    \begin{align*}
+      \Lambda(x_1) &= \lim\limits_{n\to \infty} \frac{1}{n}\paren{\log\abs{F'(x_n)} + \cdots + \log\abs{F'(x_n)} } \\
+      &= \lim\limits_{n\to \infty} \frac{1}{n}\left(\log\abs{F'(x_n)} + \cdots + \log\abs{F'(x_n)} + \log\abs{h'(x_{n+1})}\right) \\
+      &= \lim\limits_{n\to \infty} \frac{1}{n} \paren{ \log\abs{G'(x_n)} + \cdots + \log\abs{G'(x_n)} + \log\abs{h'(x_1)} } \\
+      &= \lim\limits_{n\to \infty} \frac{1}{n} \paren{ \log\abs{G'(x_n)} + \cdots + \log\abs{G'(x_n)} } \\
+      &= \Lambda(y_1),
+    \end{align*} 
+    as desired.
+  \end{proof}
+\end{proposition}
+%%%
+Lyapunov exponent is a convenient method of seeing if a system is sensitive to initial conditions, and it is widely used in experimental settings.
+Even so, Lyapunov exponent should be treated with some care, as the next example suggests.
+\begin{example}
+  \citep{wiggins}
+  Consider the following vector field:
+  \begin{equation*}
+    \dot{x} = ax,
+  \end{equation*}
+  where $x \in \R$, and $a \in \R$ is a constant.
+  The Lyapunov exponent of each orbit is $a > 0$.
+\end{example}
+\bibliographystyle{../../bibliography/pjgsm}
+\bibliography{../../bibliography/thesis}
+
+\end{document}
+%\begin{definition}
+%  (Lyapunov number, alternative)
+%  Given a map $F$ and a $p-$periodic point $x_p$, the Lyapunov number of the point $N(x_p)$ is
+%  defined to be the spectral radius of the Jacobian matrix of the map.
+%  \begin{equation*}
+%    N(x_p) = \brac{ \rho \paren{ F^p(x_p)}}^{1/p}
+%  \end{equation*}
+%  \label{def:lyapnum}
+%  \index{Lyapunov number}
+%\end{definition}
+%The alternative definition can be shown to be equivalent to the first definition.
+%
+%In some cases, this yet another alternate definition is more convenient.
+%This version ignores transient states.
+%\begin{definition}
+%  (Lyapunov Number, yet another alternative)
+%  \begin{equation*}
+%    N(x_1, k) = N(x_k)
+%  \end{equation*}
+%  Then the Lyapunov number is defined to be
+%  \begin{equation*}
+%    N(x_1) = \lim\limits_{k \to \infty} N(x_1,k).
+%  \end{equation*}
+%\end{definition}
+
