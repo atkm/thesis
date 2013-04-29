@@ -2,7 +2,7 @@
 # encoding: utf-8
 # srcprep; genmain; make; all
 # global. files to work with.
-files = ['abstract','prelims','logistic','billiards','devaney','li_yorke','symbolic','t-entropy','comparisons']
+files = ['abstract','introduction','prelims','logistic','billiards','devaney','li_yorke','symbolic','t-entropy','comparisons']
 appendix = ['sarkovskii','ly_thm']
 #appendix = ['sarkovskii','other_defns']
 
@@ -130,15 +130,16 @@ File.open(main_file,'w') do |file|
 \\pagestyle{fancyplain} % turns page numbering back on
 
 %Introduction. If I need one.
-%\\chapter*{Introduction}
-%\\addcontentsline{toc}{chapter}{Introduction}
-%\\chaptermark{Introduction}
-%\\markboth{Introduction}{Introduction}
+\\chapter*{Introduction}
+\\addcontentsline{toc}{chapter}{Introduction}
+\\chaptermark{Introduction}
+\\markboth{Introduction}{Introduction}
+\\input{./src/src_introduction}
 
 % end reed-thesis.tex\n\n"
 
     files.each do |name|
-      unless name == 'abstract' or name == 'conclusion'
+      unless name == 'abstract' or name == 'introduction' or name == 'conclusion'
         file.puts '\input{./src/src_' + name + "}\n\n"
       end
     end

@@ -19,7 +19,7 @@
 %\approvedforthe{Committee} 
 
 %specify the chapters to be compiled.
-  \includeonly{./src/src_abstract,./src/src_prelims,./src/src_logistic,./src/src_billiards,./src/src_devaney,./src/src_li_yorke,./src/src_symbolic,./src/src_t-entropy,./src/src_comparisons}
+  \includeonly{./src/src_abstract,./src/src_introduction,./src/src_prelims,./src/src_logistic,./src/src_billiards,./src/src_devaney,./src/src_li_yorke,./src/src_symbolic,./src/src_t-entropy,./src/src_comparisons}
 
 \begin{document}
 % from reed-thesis.tex
@@ -47,10 +47,11 @@
 \pagestyle{fancyplain} % turns page numbering back on
 
 %Introduction. If I need one.
-%\chapter*{Introduction}
-%\addcontentsline{toc}{chapter}{Introduction}
-%\chaptermark{Introduction}
-%\markboth{Introduction}{Introduction}
+\chapter*{Introduction}
+\addcontentsline{toc}{chapter}{Introduction}
+\chaptermark{Introduction}
+\markboth{Introduction}{Introduction}
+\input{./src/src_introduction}
 
 % end reed-thesis.tex
 
