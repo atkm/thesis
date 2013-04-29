@@ -7,8 +7,8 @@
 \chapter{Topological Entropy}
 \label{chap:entropy}
 In the current chapter, we introduce another widely accepted notion of chaos that is defined using the topological equivalent of entropy.
-The notion of topological entropy was first introduced by \citet{akm} as a measure of complexity of a topological dynamical system, mimicking the measure-theoretic notion of entropy.
-Roughly, topological entropy measures the extent to which the mapping scatters points around the space.
+The notion of topological entropy was first introduced by \citet{akm} as a measure of complexity of topological dynamical systems, mimicking the measure-theoretic notion of entropy.
+Roughly, the topological entropy of a map measures the extent to which the mapping scatters points around the space.
 %exponential growth rate of the number of distinguishable orbits as time advances. (Scholarpedia)
 %``The topological entropy is indeed a measure of the absolute information content of a transformation, or, equivalently, of the extent to which the transformation scatters points around the space $X$.'' (Petersen)
 We first discuss basic properties of topological entropy, then compute the topological entropy of the logistic map for $\mu = 4$.
@@ -26,6 +26,7 @@ The material in this section is from \citep{akm}, unless stated otherwise.
     \alpha \vee \beta \ceq \setst{A \cap B}{A \in \alpha, B \in \beta}.
   \end{equation*}
   We define the join of a countable collection of open covers in the same manner, and denote it $\bigvee\limits_{i = 1}^{n} \alpha_i$.
+  \index{open cover!join}
 \end{definition}
 %%%
 \begin{definition}
@@ -33,6 +34,7 @@ The material in this section is from \citep{akm}, unless stated otherwise.
   An open cover $\beta$ is said to be a \textit{refinement} of another open cover $\alpha$, if for each $B \in \beta$, there exists $A \in \alpha$ such that $B \subseteq A$.
   We denote this relation by $\alpha < \beta$.
   Note that for any open covers $\alpha, \beta$, we have $\alpha < \alpha \vee \beta$.
+  \index{open cover!refinement}
 \end{definition}
 Note that a refinement is different from a subcover, which is defined to be a subset of an open cover.
 
@@ -86,16 +88,17 @@ Note that a refinement is different from a subcover, which is defined to be a su
   \end{equation*}
   We use $h$ to denote three things: the topological entropy of an open cover, of an open cover with respect to a mapping, and of a mapping.
   However, since the meaning of $h$ changes according to its argument(s), there should be no ambiguity.
+  $\square$
   \label{defn:t-entropy}
   \index{topological entropy}
   \index{minimal subcover}
 \end{definition}
 %%%
 We have defined $h(F)$ only for mappings from a compact metric space to itself, but it is possible to extend the definition to any metric space \citep{bowen}.
-See \citep{walters} for an exposition of this alternate definition of topological entropy.
+See \citep{walters} for an exposition of the alternate definition of topological entropy.
 Now, we state the definition of chaos that employs topological entropy.
 \begin{definition}
-  (Definition of chaos by topological entropy: chaos in the sense of AKM) 
+  (Chaos in the sense of AKM: positive topolgical entropy) 
   Let $F: X \to X$ be a continuous mapping.
   If $h(F)$ is positive, then we say that $F$ is \textit{chaotic in the sense of AKM}.
   (\citet{akm} does not use the term ``chaos,'' but we attribute this definition to the authors.)
@@ -186,7 +189,7 @@ The following corollary lists the properties of $h(\alpha)$ that we immediately 
 %%%
 We need one more lemma, and we are ready to prove the existence of the limit.
 \begin{lemma}
-  \citep[Theorem 4.9]{walters}
+  \citep{walters}
   Let $\seq{a_n}{\infty}{n = 0}$ be a sequence of real numbers such that 
   \begin{equation*}
     a_{m+n} \leq a_n + a_m \mbox{ for all } m,n.
@@ -220,7 +223,7 @@ We need one more lemma, and we are ready to prove the existence of the limit.
       \inf\limits_{m} \frac{a_m}{m} \leq \liminf\limits_{n \to \infty} \frac{a_n}{n}
     \end{equation*}
     by definition of liminf.
-    Therefore the limit $\lim\limits_{n \to \infty} a_n/n$ exists, and equals $\inf a_n/n$.
+    Therefore the limit $\lim\limits_{n \to \infty} a_n/n$ exists, and equals $\inf\limits_{n} a_n/n$.
   \end{proof}
 \end{lemma}
 %%%
@@ -235,12 +238,15 @@ We need one more lemma, and we are ready to prove the existence of the limit.
     For any positive integers $n$ and $m$, we have
     \begin{align*}
       k_{m+n} &\equiv h(\alpha \vee \cdots \vee \itr{F}{-m-n+1}(\alpha))   \\
-      &= h(\alpha \vee \itr{F}{-m+1}(\alpha) \vee \itr{F}{-m}(\itr{F}{-1}(\alpha) \cdots \vee \itr{F}{-n+1}(\alpha)))   \\
-      &\leq  h(\alpha \vee \itr{F}{-m+1}(\alpha)) + h(\itr{F}{-m}(\itr{F}{-1}(\alpha) \cdots \vee \itr{F}{-n+1}(\alpha)))   \\
-      &\leq  h(\alpha \vee \itr{F}{-m+1}(\alpha)) + h(\itr{F}{-1}(\alpha) \cdots \vee \itr{F}{-n+1}(\alpha)))   \\
+      &= h(\alpha \vee \cdots \vee \itr{F}{-m+1}(\alpha) \vee \itr{F}{-m}(\alpha \vee \cdots \vee \itr{F}{-n+1}(\alpha)))   \\
+      &\leq  h(\alpha \vee \cdots \vee \itr{F}{-m+1}(\alpha)) + h(\itr{F}{-m}(\alpha \vee\cdots \vee \itr{F}{-n+1}(\alpha)))   \\
+      &\leq  h(\alpha \vee \cdots \vee \itr{F}{-m+1}(\alpha)) + h(\alpha \vee \cdots \vee \itr{F}{-n+1}(\alpha)))   \\
       &\equiv k_m + k_n.
     \end{align*}
-    Thus, $k_{m+n} \leq k_m + k_n$ for all $m,n$, and it follows from the preceding lemma that the limit exists.
+    Thus, $k_{m+n} \leq k_m + k_n$ for all $m,n$, and it follows from the preceding lemma that the limit exists, and the limit is
+    \begin{equation*}
+      \inf\limits_{n} \frac{1}{n} \cdot h\paren{ \bigvee\limits_{i=0}^{n-1} \itr{F}{(-i)}(\alpha) }.
+    \end{equation*}
   \end{proof}
 \end{proposition}
 %%%
@@ -278,9 +284,9 @@ $h(F, \alpha)$ has the following properties.
       \begin{align*}
         h\paren{ \bigvee\limits_{i=0}^{n-1} \itr{F}{-i}(\alpha) }
         &\leq \sum\limits_{i=0}^{n-1} h(\itr{F}{-i}(\alpha)) 
-        \mbox{ (by Corollary~\ref{cor:ha-props}(iii))} \\
+        \quad\mbox{ (by Corollary~\ref{cor:ha-props}(iii))} \\
         &\leq \sum\limits_{i=0}^{n-1} h(\alpha) 
-        \mbox{ (by Corollary~\ref{cor:ha-props}(i))}  \\
+        \quad\mbox{ (by Corollary~\ref{cor:ha-props}(i))}  \\
         &= n h(\alpha).
       \end{align*}
       Then, note that
@@ -299,12 +305,13 @@ $h(F, \alpha)$ has the following properties.
 
 As we claimed at the beginning of this chapter, the topological entropy is a topological invariant.
 \begin{theorem}
-  (Topological Entropy is an Invariant of Topological Conjugacy)
+  (Topological entropy is a topological invariant)
   Let $X$ and $Y$ be metric spaces, and $F: X \to X$ and $G: Y \to Y$ be continuous mappings.
   Suppose $G\circ \phi = \phi \circ F$.
   %If $\phi$ is injective, then $h(F) \geq h(G)$.
   If $\phi$ is surjective, then $h(G) \leq h(F)$.
   \label{thm:ent-conj}
+  \index{conjugacy}
   \begin{proof}[Proof of Theorem~\ref{thm:ent-conj}]
     Let $\alpha$ be an open cover of $X_2$.
     We have
@@ -314,7 +321,7 @@ As we claimed at the beginning of this chapter, the topological entropy is a top
       &= \lim\limits_{n \to \infty} \frac{1}{n} \cdot h \paren{\phi^{-1} \bigvee\limits_{i = 0}^{n-1} \itr{G}{(-i)} (\alpha)} \\
       &= \lim\limits_{n \to \infty} \frac{1}{n} \cdot h \paren{\bigvee\limits_{i = 0}^{n-1} (\phi^{-1} \circ \itr{G}{(-i)}) (\alpha)} \\
       &= \lim\limits_{n \to \infty} \frac{1}{n} \cdot h \paren{ \bigvee\limits_{i = 0}^{n-1} (\itr{F}{(-i)} \circ \itr{\phi}{-1}) (\alpha))} \\
-      &= \lim\limits_{n \to \infty} \frac{1}{n} \cdot h \paren{\bigvee\limits_{i = 0}^{n-1} \itr{F}{(-i)} (\itr{\phi}{-1} (\alpha))} \mbox{ (by Corollary~\ref{cor:ha-props} (i))} \\
+      &= \lim\limits_{n \to \infty} \frac{1}{n} \cdot h \paren{\bigvee\limits_{i = 0}^{n-1} \itr{F}{(-i)} (\itr{\phi}{-1} (\alpha))} \quad\mbox{ (by Corollary~\ref{cor:ha-props} (i))} \\
       &\equiv h(F, \itr{\phi}{-1}(\alpha)).
     \end{align*}
   %
@@ -354,6 +361,7 @@ Using a refining sequence vastly simplifies the computation of $h(F)$.
     \item $\alpha_n < \alpha_{n+1}$ for each $n\geq 1$
     \item If $\beta$ is an open cover of $X$, then there exists $m$ such that $\beta < \alpha_m$.
   \end{enumerate}
+  \index{refining sequence}
 \end{definition}
 %%%
 \begin{theorem}
@@ -477,6 +485,7 @@ We saw in the introduction that $L_u$, the logistic map, which is defined as
   L_\mu&: x \mapsto \mu x (1-x),
 \end{align*}
 is chaotic when $\mu = 4$.
+\index{logistic map}
 %As a demonstration of topological entropy, we will compute $h(L_\mu)$ for $\mu = 4$.
 We expect that $h(L_4)$ is positive, and as we will see, this is indeed the case. 
 We first show that $L_4$ is topologically conjugate to the tent map, which we first introduced in Chapter~\ref{chap:liyorke}, defined as
@@ -493,6 +502,7 @@ Let
   \phi(x) = \sin^2(\frac{\pi x}{2}).
 \end{equation*}
 Our goal is to show that $L_4 \circ \phi = \phi \circ T$.
+\index{conjugacy}
 For any $x \in I$, letting $\theta \equiv \frac{\pi x}{2}$ for convenience, we have
 \begin{align*}
   L_4 \circ \phi(x)
@@ -515,6 +525,7 @@ and for any $x$ in $[1/2,1]$,
 Therefore, $L_4 \circ \phi = \phi \circ T$ on $I$.
 By Theorem~\ref{thm:ent-conj}, we obtain $h(L_4) = h(T)$.
 Our next task is to construct a refining sequence $\set{\alpha_n}$ of $I$.
+\index{refining sequence}
 Then, we would obtain $h(T)$ by Theorem~\ref{thm:t-ent-ref-seq}.
 Our construction is as follows.
 First, let $\alpha_0 = \set{I}$.
@@ -572,6 +583,7 @@ Therefore,
 
 \section{Topological Entropy of Other Maps}
 The topological entropy of a full one-sided or two-sided shift with $n$ symbols is known to be $\log n$ \citep[p.177]{walters}.
+\index{full one-sided shift}
 We could have anticipated the result from the previous section, since the logistic map on its attractor is conjugate to an one-sided shift of two symbols $\set{0,1}$ \citep{sternberg}.
 One important observation about topological entropy is that, even if a mapping has positive topological entropy, its behavior may be complicated only locally.
 \begin{proposition}
@@ -599,6 +611,8 @@ One important observation about topological entropy is that, even if a mapping h
 \end{proposition}
 %%%
 For example, consider extending the domain of the tent map beyond $[0,1]$.
+\index{tent map}
+\index{topological transitivity}
 \begin{example}
   Define $\tilde{T}: \R \to \R$ as
   \begin{equation*}
@@ -614,12 +628,11 @@ For example, consider extending the domain of the tent map beyond $[0,1]$.
   $\square$
 \end{example}
 %%%
-We defined a mapping to be chaotic if it has positive topological entropy.
-This situation is similar to what we encountered in Devaney's definition, which requires the existence of a compact subset on which the conditions are satisfied.
-Thus, we can reformulate the definition as follows to capture its essence.
+The situation is similar to what we encountered in Devaney's definition, which requires the existence of a compact subset on which the conditions are satisfied.
+Thus, we can restate the definition as follows to capture its essence.
 \begin{definition}
   (Chaos in the sense of AKM, redefined)
-  $F$ is said to be chaotic in the sense of AKM if there exits a compact subset $Y \subseteq X$ such that $F: X \to X$ restricted to $Y$ is topologically transitive and $h(F_{|Y})$ is positive.
+  $F$ is said to be chaotic in the sense of AKM if there exits a compact, invariant subset $Y \subseteq X$ such that $h(F_{|Y})$ is positive.
   \index{definition of chaos!topological entropy}
 \end{definition}
 %%%
