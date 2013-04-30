@@ -396,13 +396,13 @@ We already mentioned in Chapter~\ref{chap:devaney} that the logistic map is chao
 Let us make a few general remarks on symbolic dynamics.
 In this chapter, we only use an one-sided shift, but we can also define the \textit{two-sided shift} by replacing $\Sigma$ with a space of infinite \textit{bi-infinite} sequences, i.e. sequences of the form 
 \begin{equation*}
-  \cdots s_{-n} \cdots s_{-1} * s_0 s_1 \cdots s_n \cdots.
+  \cdots s_{-n} \cdots s_{-1} \overset{*}s_0 s_1 \cdots s_n \cdots.
 \end{equation*}
 The asterisk ($*$) is used to note the 0th symbol of a sequence, and the shift map $\sigma$ is defined to be the shifting of the 0th position:
 \begin{equation*}
-  \sigma: \cdots s_{-n} \cdots s_{-1} * s_0 s_1 \cdots s_n \cdots
+  \sigma: \cdots s_{-n} \cdots s_{-1} \overset{*}s_0 s_1 \cdots s_n \cdots
   \mapsto
-  \cdots s_{-n} \cdots s_{-1} s_0 * s_1 \cdots s_n \cdots.
+  \cdots s_{-n} \cdots s_{-1} s_0 \overset{*}s_1 \cdots s_n \cdots.
 \end{equation*}
 Thus, unlike in the one-sided shift, $\sigma$ is one-to-one, and each sequence ``remembers'' its preimage.
 Hence, a two-sided shift is suited for studying an invertible map, while an one-sided shift is used to study a non-invertible maps,
