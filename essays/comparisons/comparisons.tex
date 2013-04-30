@@ -76,14 +76,16 @@ We show that \dev, \wig, \blcp, and \akm are equivalent, and any of the four imp
   \centering
   \begin{tikzpicture}[node distance=1cm, auto,]
  %nodes
-    \node[box] (ly) {Li-Yorke};
-    \node[box, inner sep=5pt,above=1.0cm of ly] (bc) {Block-Coppel};
-    \node[box, inner sep=5pt,left=1.5cm of bc] (dev) {Devaney};
-    \node[box, inner sep=5pt,right=1.5cm of bc] (ent) {Entropy};
-    \node[box, inner sep=5pt,above=1.0cm of dev] (wig) {Wiggins};
+    \node[] (dummy) {};
+    \node[box, inner sep=5pt,below=1.0cm of dummy] (ly) {Li-Yorke};
+    \node[box, inner sep=5pt,right=0.5cm of dummy] (bc) {Block-Coppel};
+    \node[box, inner sep=5pt,left=0.5cm of dummy] (dev) {Devaney};
+    \node[box, inner sep=5pt,right=1.0cm of bc] (ent) {Entropy};
+    \node[box, inner sep=5pt,left=1.0cm of dev] (wig) {Wiggins};
  %edges
-    \draw[imply] (dev.south) to node[bend right=20] {} (ly.west);  %this guy doesn't bend
+    \draw[imply] (dev) to node[bend right=20] {} (ly);  %this guy doesn't bend
     \draw[imply] (ent) to[bend left=20] node {} (ly); 
+    \draw[imply] (wig) to[bend right=20] node {} (ly); 
     \draw[imply] (bc) to node {} (ly); 
     %\draw[both] (dev) to[bend left=30] node {} (ent); 
     \draw[both] (dev) to node {} (bc); 

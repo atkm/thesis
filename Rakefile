@@ -2,7 +2,7 @@
 # encoding: utf-8
 # srcprep; genmain; make; all
 # global. files to work with.
-files = ['abstract','introduction','prelims','logistic','billiards','devaney','li_yorke','symbolic','t-entropy','comparisons']
+files = ['abstract','prelims','logistic','billiards','devaney','li_yorke','symbolic','t-entropy','comparisons']
 appendix = ['sarkovskii','ly_thm']
 #appendix = ['sarkovskii','other_defns']
 
@@ -54,7 +54,7 @@ task :genmain do
   
 \\makeindex
 
-\\title{Definitions of Chaotic Dynamical Systems}
+\\title{Seeking Unpredictability in Deterministic Systems:\\\\Definitions of Chaos in Topological Dynamics}
 %\\author{Atsuya Kumano}
 %\\title{カオス理論}
 \\author{Atsuya Kumano - 熊野睦也}
@@ -62,11 +62,11 @@ task :genmain do
 \\date{May 2013}
 \\division{Mathematics and Natural Sciences}
 \\advisor{Thomas W. Wieting}
-\\altadvisor{Rao V. Potluri}
+\\altadvisor{V. Rao Potluri}
 \\department{Mathematics}
 % if you want the approval page to say \"Approved for the Committee\",
 % uncomment the next line
-%\\approvedforthe{Committee} \n\n"
+\\approvedforthe{Committee} \n\n"
 
   main_includeonly = "%specify the chapters to be compiled.
   \\includeonly{"
@@ -83,6 +83,7 @@ task :genmain do
 \\addcontentsline{toc}{chapter}{Conclusion}
 \\chaptermark{Conclusion}
 \\markboth{Conclusion}{Conclusion}
+%\\input{./src/src_conclusion}
 
 \\appendix"
 
@@ -111,7 +112,7 @@ File.open(main_file,'w') do |file|
 \\pagestyle{empty} % this removes page numbers from the frontmatter
 
 \\chapter*{Acknowledgements}
-皆さんどーもありがとう。
+\\input{./acknowledgements.tex}
 
 \\tableofcontents
 % if you want a list of tables, optional
@@ -134,7 +135,7 @@ File.open(main_file,'w') do |file|
 \\addcontentsline{toc}{chapter}{Introduction}
 \\chaptermark{Introduction}
 \\markboth{Introduction}{Introduction}
-\\input{./src/src_introduction}
+%\\input{./src/src_introduction}
 
 % end reed-thesis.tex\n\n"
 
