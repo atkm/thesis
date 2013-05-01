@@ -1,0 +1,35 @@
+\begin{document}
+% from reed-thesis.tex
+\maketitle
+\frontmatter % this stuff will be roman-numbered
+\pagestyle{empty} % this removes page numbers from the frontmatter
+
+\chapter*{Acknowledgements}
+\input{./acknowledgements.tex}
+
+\tableofcontents
+% if you want a list of tables, optional
+%\listoftables
+% if you want a list of figures, also optional
+%\listoffigures
+
+% The abstract is not required if you're writing a creative thesis (but aren't they all?)
+% If your abstract is longer than a page, there may be a formatting issue.
+\chapter*{Abstract}
+\input{./src/src_abstract}
+% 
+%	\\chapter*{Dedication} % You can have a dedication here if you wish.
+
+\mainmatter % here the regular arabic numbering starts
+\pagestyle{fancyplain} % turns page numbering back on
+
+%Introduction. If I need one.
+\chapter*{Introduction}
+\addcontentsline{toc}{chapter}{Introduction}
+\chaptermark{Introduction}
+\markboth{Introduction}{Introduction}
+%\input{./src/src_introduction}
+
+% end reed-thesis.tex
+
+

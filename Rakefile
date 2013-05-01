@@ -20,7 +20,7 @@ def strip_tex(file)
   src = orig.take_while do |line|
     not line.strip.include?('bibliographystyle{')
   end
-  
+
   File.open(File.expand_path(src_name,'./src'), 'w') {|file| file.puts src}
 end
 
@@ -48,26 +48,7 @@ end
 
 # create main.tex
 task :genmain do
-  main_tmpl_head = "\\documentclass[12pt,twoside]{reedthesis}
-\\usepackage{xthesis}
-\\graphicspath{{./images/}}
-  
-\\makeindex
-
-\\title{Seeking Unpredictability in Deterministic Systems:\\\\Definitions of Chaos in Topological Dynamics}
-%\\author{Atsuya Kumano}
-%\\title{カオス理論}
-\\author{Atsuya Kumano - 熊野睦也}
-% The month and year that you submit your FINAL draft TO THE LIBRARY (May or December)
-\\date{May 2013}
-\\division{Mathematics and Natural Sciences}
-\\advisor{Thomas W. Wieting}
-\\altadvisor{V. Rao Potluri}
-\\department{Mathematics}
-% if you want the approval page to say \"Approved for the Committee\",
-% uncomment the next line
-\\approvedforthe{Committee} \n\n"
-
+  main_tmpl_head = "\\input{header_main.tex}"
   main_includeonly = "%specify the chapters to be compiled.
   \\includeonly{"
   files.each do |name|
@@ -77,7 +58,7 @@ task :genmain do
   end
   main_includeonly.gsub!(/,$/,'')
   main_includeonly += "}\n\n"
-
+  main_begin_document = "\\input{begin_main.tex}"
   main_tmpl_pre_appendix = "%Conclusion. if I need one.
 \\chapter*{Conclusion}
 \\addcontentsline{toc}{chapter}{Conclusion}
@@ -105,51 +86,19 @@ puts "Rolling out: #{main_file}."
 File.open(main_file,'w') do |file|
   file.puts main_tmpl_head
   file.puts main_includeonly
-  file.puts "\\begin{document}
-% from reed-thesis.tex
-\\maketitle
-\\frontmatter % this stuff will be roman-numbered
-\\pagestyle{empty} % this removes page numbers from the frontmatter
+  file.puts main_begin_document
 
-\\chapter*{Acknowledgements}
-\\input{./acknowledgements.tex}
-
-\\tableofcontents
-% if you want a list of tables, optional
-%\\listoftables
-% if you want a list of figures, also optional
-%\\listoffigures
-
-% The abstract is not required if you're writing a creative thesis (but aren't they all?)
-% If your abstract is longer than a page, there may be a formatting issue.
-\\chapter*{Abstract}
-\\input{./src/src_abstract}
-% 
-%	\\chapter*{Dedication} % You can have a dedication here if you wish.
-
-\\mainmatter % here the regular arabic numbering starts
-\\pagestyle{fancyplain} % turns page numbering back on
-
-%Introduction. If I need one.
-\\chapter*{Introduction}
-\\addcontentsline{toc}{chapter}{Introduction}
-\\chaptermark{Introduction}
-\\markboth{Introduction}{Introduction}
-%\\input{./src/src_introduction}
-
-% end reed-thesis.tex\n\n"
-
-    files.each do |name|
-      unless name == 'abstract' or name == 'introduction' or name == 'conclusion'
-        file.puts '\input{./src/src_' + name + "}\n\n"
-      end
-    end
-    file.puts main_tmpl_pre_appendix
-    appendix.each do |name|
+  files.each do |name|
+    unless name == 'abstract' or name == 'introduction' or name == 'conclusion'
       file.puts '\input{./src/src_' + name + "}\n\n"
     end
-    file.puts main_tmpl_post_appendix
   end
+  file.puts main_tmpl_pre_appendix
+  appendix.each do |name|
+    file.puts '\input{./src/src_' + name + "}\n\n"
+  end
+  file.puts main_tmpl_post_appendix
+end
 end
 
 # compile main.pdf by xelatex
