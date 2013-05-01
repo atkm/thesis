@@ -441,6 +441,8 @@ However, we know that the converse is not true from the compact interval case.
 Hence, \blcp implies \liy, but the converse is not true.
 
 \subsubsection*{Devaney/Wiggins and Li-Yorke}
+\liy implies neither \dev nor \wig by the results from the compact interval case.
+\wig does not necessarily imply \liy in a compact metric space, unlike in the compact interval case.
 The following example is a system that is chaotic in Wiggins's sense but not in Li-Yorke's sense.
 \begin{example}
   \citep{blanchard}
@@ -736,9 +738,11 @@ More specifically, Mai proved that, for a complete metric space $X$ without an i
 Thus, even though \tt and \sdic do not imply Li-Yorke's chaos, as we saw in the previous example, Wiggins's conditions the existence of a \textit{single} periodic point, which is significantly weaker than \dpp, imply chaos in Li-Yorke's sense.
 This result may be instructive in evaluating whether \dpp in Devaney's definition is appropriate.
 Also, we can make an interesting observation from the fact that \wig and \liy do not imply each other. 
-Recall that, though it is not explicitly called sensitivity, Li-Yorke's definition uses its own version of sensitivity, $\limsup\limits_{n\to \infty} \metric{\itr{F}{n}(x), \itr{F}{n}(y)} > 0$, called the \textit{non-asymptotic relation}.
+Recall that, though it is not explicitly called sensitivity, Li-Yorke's definition uses its own version of sensitivity, $\limsup\limits_{n\to \infty} \metric{\itr{F}{n}(x), \itr{F}{n}(y)} > 0$, the non-asymptotic relation.
+\index{non-asymptotic relation}
 The non-asymptotic relation is analogous to, yet different from \sdic.
-In the same manner, we can see that the other condition in Li-Yorke's definition, $\liminf\limits_{n\to \infty} \metric{\itr{F}{n}(x), \itr{F}{n}(y)} = 0$, called the \textit{proximal relation}, is similar to topological transitivity.
+In the same manner, we can see that the other condition in Li-Yorke's definition, $\liminf\limits_{n\to \infty} \metric{\itr{F}{n}(x), \itr{F}{n}(y)} = 0$, the proximal relation, is similar to topological transitivity.
+\index{proximal relation}
 The result about \wig and \liy indicates that non-asymptotic and proximal relations are neither stronger nor weaker than \tt and \sdic, even though these definitions contain similar conditions.
 %%%
 

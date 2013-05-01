@@ -64,7 +64,7 @@ task :genmain do
 \\addcontentsline{toc}{chapter}{Conclusion}
 \\chaptermark{Conclusion}
 \\markboth{Conclusion}{Conclusion}
-%\\input{./src/src_conclusion}
+\\input{./src/src_conclusion}
 
 \\appendix"
 

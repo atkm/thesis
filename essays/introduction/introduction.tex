@@ -23,12 +23,6 @@ Yoshisuke Ueda, though lesser known, was also one of the first scientists to rec
 In 1961 (a sketch of the ``Japanese Attractor''), while Lorentz's paper was published in 1963.
 David Ruelle, a prominent French chaos researcher, introduced Ueda in \citep{ruelle}.
 
-\begin{quotation}
-As I look back, I feel that after those long exhausting vigils in front of the analog computer, staring at its output, chaos had become a totally natural, everyday phenomenon in my mind.
-People call chaos a new phenomenon, but it has always been around.
-There's nothing new about it--only people did not notice it.
-\citep[p.27]{ueda-abraham}
-\end{quotation}
 %%%
 While Lorentz's discovery of chaos was in a computer simulation, Ueda's was in an analog computer, a physical system.
 \citet[p.383]{campbell}
@@ -46,33 +40,15 @@ Also, the logistic map, which we present in the first chapter, is used to model 
 NH3 laser is known to show chaotic behaviors \citep{kantz-schreiber}.
 B-Z reaction
 The outer billiards system that we study in Chapter~\ref{chap:billiards} is a model of celestial mechanics.
+The goal of this exposition is to mathematically characterize these ``chaotic'' behaviors, or, in other words, to find the definition of chaos.
 
 
-We tend to label a dynamical systems as ``chaotic'' on an intuitive ground, as we saw in defining chaos by fractal dimensions, or by the complicate appearances of attractors.
-The definition of chaos by \textit{fractal dimension} has such an attitude.
-If the orbit looks complicated, the system is called chaotic.
-
-
-\citet{ruelle} defines ``strange attractors.'' 
-A strange attractor is, in short, an attractor on which the dynamics exhibits sensitive dependence on initial conditions. \citep[p.11]{ott1994}
-Boris Chirikov and Felix Izrailev, Russian physicists, famously said that ``a strange attractor seems strange only to a stranger.'' \citep{lorentzbook}
-Labeling a system as ``chaotic'' shows our ignorance about the system.
-
-
-We are looking for invariants of a topological dynamical system that characterizes chaos.
-\citet[p.xiii-xv]{schroeder} phrases
-``By symmetry we mean an invariance against change: something stays the same, in spite of some potentially consequential alteration.''
-Dimension is an invariant of dynamical systems.
-\textit{Lyapunov exponents} is the other common invariant that characterizes chaos.
-The technique of Lyapunov exponents was developed by Alexander M. Lyapunov to study stability of solutions for systems of differential equations.
-Although positive Lyapunov exponent is commonly regarded as the definition of chaos \citep{kantz-schreiber} in physics, we do not discuss it in detail, since the Lyapunov exponent is only defined for differentiable mappings.
-Since our focus is on topolgical dynamics, we do not go into a great detail explaning Lyapunov exponent.
-
-
-Motivations to study chaos come also from practical purposes.
-Chaos time series obtained from a non-linear system could not be analyzed in the same way as linear systems are analyzed.
-Sensitive dependence on initial conditions has an interesting interplay with noises, which are inevitable products in experimental settings.
-\citet[p.51]{kantz-schreiber}:
+The first step in defining chaos is to \textit{recognize it}.
+Laplacian determinism 
+\footnote{``We may regard the present state of the universe as the effect of its past and the cause of its future. An intellect which at a certain moment would know all forces that set nature in motion, and all positions of all items of which nature is composed, if this intellect were also vast enough to submit these data to analysis, it would embrace in a single formula the movements of the greatest bodies of the universe and those of the tiniest atom; for such an intellect nothing would be uncertain and the future just like the past would be present before its eyes.''
+  (Pierre Simon Laplace, \textit{A Philosophical Essay on Probabilities})}
+\citep{stone} and the belief that linearization can give a good approximation for any system precluded from acknowledging
+\citet[p.51]{kantz-schreiber}
 \begin{quotation}
   Noise reduction means that one tries to decompose a time series into two components, one of which supposedly contains the signal and the other one contains random fluctuations.
   Thus we always assume that the data can be thought of as an additive superposition of two different components which have to be distinguishable by some objective criterion.
@@ -84,6 +60,37 @@ Sensitive dependence on initial conditions has an interesting interplay with noi
   Even if parts of the spectrum can be clearly associated with the signal, a separation into signal and noise fails for most parts of the frequency domain.
   Chaotic deterministic systems are of particular interest because the determinism yields an alternative criterion to distinguish the signal and the noise. 
 \end{quotation}
+
+\begin{quotation}
+As I look back, I feel that after those long exhausting vigils in front of the analog computer, staring at its output, chaos had become a totally natural, everyday phenomenon in my mind.
+People call chaos a new phenomenon, but it has always been around.
+There's nothing new about it--only people did not notice it.
+\citep[p.27]{ueda-abraham}
+\end{quotation}
+
+based on an intuitive ground.
+by the complicate appearances of attractors.
+The definition of chaos by \textit{fractal dimension} has such an attitude.
+If the orbit looks complicated, the system is called chaotic.
+A step forward from defining chaos to be a dynamics with complicated appearance is to give additional requirements to it.
+\citet{ruelle} defines ``strange attractors.'' 
+A strange attractor is, in short, an attractor with a fractal dimension on which the dynamics exhibits sensitive dependence on initial conditions. \citep[p.11]{ott1994}
+
+Boris Chirikov and Felix Izrailev, Russian physicists, famously said that ``a strange attractor seems strange only to a stranger.'' \citep{lorentzbook}
+Labeling a system as ``chaotic'' shows our ignorance about the system.
+
+
+We are looking for invariants of a topological dynamical system that characterizes chaos.
+Dimension is an invariant of dynamical systems.
+\textit{Lyapunov exponents} is the other common invariant that characterizes chaos.
+The technique of Lyapunov exponents was developed by Alexander M. Lyapunov to study stability of solutions for systems of differential equations.
+Although positive Lyapunov exponent is commonly regarded as the definition of chaos \citep{kantz-schreiber} in physics, we do not discuss it in detail, since the Lyapunov exponent is only defined for differentiable mappings.
+Since our focus is on topolgical dynamics, we do not go into a great detail explaning Lyapunov exponent.
+
+
+Motivations to study chaos come also from practical purposes.
+Chaos time series obtained from a non-linear system could not be analyzed in the same way as linear systems are analyzed.
+Sensitive dependence on initial conditions has an interesting interplay with noises, which are inevitable products in experimental settings.
 %%%
 The critical feature of the invariants is that they are not sensitive to initial conditions or small perturbations of an orbit, while individual orbits of the system are exponentially sensitive to such perturbations. \citep[p.1334]{abarbanel}
 \begin{quote}
