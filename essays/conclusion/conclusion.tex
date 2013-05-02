@@ -30,16 +30,31 @@ Through our exploration of definitions of chaos, we learned what elements are co
 Finding an appropriate definition is a prerequisite for the next steps, which may be developments of a control theory of chaotic systems \citep{openproblems, chaos-frontiers}, data analysis techniques of chaotic time-series \citep{kantz-schreiber, sprott, abarbanel}, or other applications, such as digital communications \citep{chaos-communication}.
 The result of our comparisons in a compact interval indicates that it does not really matter which definition we use--they are more or less the same, with the exception of Li-Yorke's definition.
 Therefore, for one-dimensional systems, we can use any of the definitions to characterize chaotic systems, while we must be aware that there are outliers, which are chaotic in Li-Yorke's sense but not others \citep{smital, misiurewicz1}.
+For systems defined for more general metric spaces, however, the situation is not as simple (Figure~\ref{fig:chaos-metric}).
+As mentioned earlier, \wig and \liy are not equivalent.
+Both \dev and \akm imply \liy, but neither of them implies the other.
+\blcp, which is stronger than \akm, has the same relation with \dev: neither \blcp nor \akm implies the other.
+
 
 Finally, let us remark on some problems that we left open as well as possible directions to extend the work presented in this exposition.
-Whether positive topological entropy implies transitivity. 
-If this is true, then \akm implies \wig.
+We do no know whether positive topological entropy implies \wig or \blcp.
+A closely related question is whether positive topological entropy implies transitivity. 
+Since positivie topological entropy implies sensitivity, if this is true, then \akm implies \wig.
 Chaotic systems are known to exhibit statistical properties.
+Lacosta-Yorke: "On the existence of invariant measures for piecewise monotonic transformations"
+(aka "chaos implies statistical regularity")
+-> Li found how to compute the invariant measure in "Finite approximation for the Frobenius-Perron operator"
+(Chaos Avant-Garde)
+For example, the logistic map is known to po \citep{sternberg}.
 Although we concentrated on topological dynamics, it is entirely possible that measure-theoretic dynamics or differentiable dynamics may be the right setting to define chaos.
-Steve Silverman (the author of Theorem~{thm:silverman}) asks whether the following example exhibits sensitivity:\footnote{Personal communication, March 2013}
+Stephen Silverman (the author of Theorem~\ref{thm:silverman}) asks whether the following example exhibits sensitivity.\footnote{Personal communication, March 2013}
 \begin{example}
-  
+  Let $X$ be a perfect metric space, and $F: X \to X$ be a continuous map.
+  Suppose $X$ can be written as $X = O(x) \cup \set{p}$, where $O(x)$ is the orbit of some point in the space and $p$ is a fixed point.
+  Does $F$ exhibit sensitivity on $X$?
+  $\square$
 \end{example}
+If this system turns out to be sensitive, it would be the simplest chaotic system.
 
 \bibliographystyle{../../bibliography/pjgsm}
 \bibliography{../../bibliography/thesis}

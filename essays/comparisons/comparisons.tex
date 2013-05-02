@@ -300,48 +300,32 @@ The results in this more general case are more varied than the compact interval 
 For instance, \dev, \wig, \blcp, and \akm are no longer equivalent to each other.
 Also, there are questions that remain unanswered.
 %Moreover, neither of them implies the others.
-\begin{figure}[p]
+\begin{figure}[ht]
   \centering
   \begin{tikzpicture}[node distance=1cm, auto]
  %nodes
-    \node[] (dummy) {};
-    \node[box, inner sep=5pt,below=2.0cm of dummy] (ly) {Li-Yorke};
-    \node[box, inner sep=5pt,left=2.0cm of dummy] (dev) {Devaney};
-    \node[box, inner sep=5pt,above=2.0cm of dummy] (bc) {Block-Coppel};
-    \node[box, inner sep=5pt,right=2.0cm of dummy] (entropy) {Entropy};
-    \node[below=1.0cm of ly] (dummy2) {};
+    \node[] (dummy1) {};
+    \node[below=3.0cm of dummy1] (dummy2) {};
+    \node[box, inner sep=5pt,below=2.0cm of dummy2] (ly) {Li-Yorke};
+    \node[box, inner sep=5pt,left=2.0cm of dummy2] (dev) {Devaney};
+    \node[box, inner sep=5pt,right=2.0cm of dummy2] (entropy) {Entropy};
+    \node[box, inner sep=5pt,right=1.0cm of dummy1] (bc) {Block-Coppel};
+    \node[box, inner sep=5pt,left=1.0cm of dummy1] (wig) {Wiggins};
+    \node[below=1.0cm of ly] (dummy3) {};
  %edges
-    \draw[imply] (entropy)[bend left=15] to node {} (ly.east); 
-    \draw[imply] (dev)[bend right=15] to node {} (ly.west); 
-    \draw[imply] (bc.east) to [bend left=15] node {} (entropy); 
-    \draw[imply] (bc)[bend right=25] to node {} (ly); 
-    \draw[maybe] (entropy)[] to node {?} (bc.east); 
-    \draw[maybe] (entropy)[bend right=5] to node {?} (dev); 
+    \draw[imply] (entropy)[bend left=20] to node {} (ly.east); 
+    \draw[imply] (dev)[bend right=20] to node {} (ly.west); 
+    \draw[imply] (dev)[bend left=15] to node {} (wig); 
+    \draw[imply] (bc) to [bend left=15] node {} (entropy); 
+    \draw[imply] (bc)[bend right=10] to node {} (ly); 
+    \draw[imply] (bc)[bend right=35] to node {} (wig); 
+    \draw[maybe] (entropy.east)[swap] to node {?} (bc.east); 
+    \draw[maybe] (entropy)[swap,bend right=5] to node {?} (wig); 
     %\draw[noinduced] (dev)[bend left=15] to node {} (bc.west); 
     %\draw[noimply] (ly)[] to node {} (entropy); 
     %\draw[noimply] (ly)[] to node {} (dev); 
     %\draw[noimply] (ly)[] to node {} (bc); 
     %\draw[noimply] (bc)[] to node {} (dev); 
-    %\draw[noimply] (dev)[bend right=15] to node {} (entropy); 
-  \end{tikzpicture}
-  \begin{tikzpicture}[node distance=1cm, auto]
- %nodes
-    \node[] (dummy) {};
-    \node[box, inner sep=5pt,below=2.0cm of dummy] (ly) {Li-Yorke};
-    \node[box, inner sep=5pt,left=2.0cm of dummy] (dev) {Devaney};
-    \node[box, inner sep=5pt,left=1.0cm of dev] (wig) {Wiggins};
-    \node[box, inner sep=5pt,above=2.0cm of dummy] (bc) {Block-Coppel};
- %edges
-    \draw[imply] (dev)[bend right=15] to node {} (ly.west); 
-    \draw[imply] (dev)[] to node {} (wig.east); 
-    \draw[imply] (bc)[bend right=15] to node {} (wig.north); 
-    \draw[imply] (bc)[] to node {} (ly); 
-    %\draw[noinduced] (dev)[bend left=15] to node {} (bc.west); 
-    %\draw[noimply] (ly)[] to node {} (entropy); 
-    %\draw[noimply] (ly)[] to node {} (dev); 
-    %\draw[noimply] (ly)[] to node {} (bc); 
-    %\draw[noimply] (bc)[] to node {} (dev); 
-    %\draw[noimply] (wig)[bend right=15] to node {} (ly); 
     %\draw[noimply] (dev)[bend right=15] to node {} (entropy); 
   \end{tikzpicture}
   \label{fig:chaos-metric}
@@ -352,7 +336,6 @@ Also, there are questions that remain unanswered.
   }
 \end{figure}
 %%%
-
 
 \subsubsection*{Entropy and Li-Yorke}
 As we saw in the compact interval case that \liy does not necessarily imply $\akm$.
@@ -377,19 +360,6 @@ The converse still holds in this general setting.
 \end{theorem}
 %
 However, we do not know whether \akm implies \blcp.
-%%%
-
-\subsubsection*{Devaney and Entropy}
-\citet{glasner} provides an example of a symbolic system that is \dev but has zero entropy.
-Hence, \dev does not imply \akm.
-We do not know whether \akm implies \dev, either.
-We have some related results, however.
-\citet{glasner} proved that if a system is transitive, has no isolated point, and has positive topological entropy, then it is sensitive to initial conditions.
-Thus, if we can prove that \akm implies the existence of a closed, invariant subset $Y \subseteq X$ on which $F$ is topologically transitive, then \akm implies \wig.
-On the other hand, in order for \akm to imply \dev, \akm mush imply both \tt and \dpp.
-While it seems plausible that topological transitivity follows from positive topological entropy, whether it implies the existence of dense periodic points is questionable.
-\index{dense periodic points}
-\index{topological transitivity}
 %%%
 
 \subsubsection*{Block-Coppel and Devaney/Wiggins}
@@ -434,6 +404,23 @@ Suppose \dev implies \blcp.
 Then \dev implies \akm; however, this is not necessarily the case, as shown in the comparison of \dev and \akm.
 This is a contradiction. 
 Hence, \dev does not imply \blcp.
+%%%
+
+\subsubsection*{Devaney/Wiggins and Entropy}
+\citet{glasner} provides an example of a symbolic system that is \dev but has zero entropy.
+Hence, \dev does not imply \akm.
+We see that \akm does not imply \dev, arguing by contradiction.
+If \akm implies \dev, then \blcp implies \dev, but this is a contradiction, since \blcp does not necessarily imply \dev.
+
+We do not know whether \blcp implies \wig, however, although we have some related results.
+\citet{glasner} proved that if a system is transitive, has no isolated point, and has positive topological entropy, then it is sensitive to initial conditions.
+Thus, if we can prove that \akm implies the existence of a closed, invariant subset $Y \subseteq X$ on which $F$ is topologically transitive, then \akm implies \wig.
+On the other hand, in order for \akm to imply \dev, \akm mush imply both \tt and \dpp.
+While it seems plausible that topological transitivity follows from positive topological entropy, whether it implies the existence of dense periodic points is questionable.
+\index{dense periodic points}
+\index{topological transitivity}
+%%%
+
 
 \subsubsection*{Block-Coppel and Li-Yorke}
 \blcp implies \akm, and \akm implies \liy; these implications induces the implication from \blcp to \liy.
@@ -751,7 +738,7 @@ As in the compact interval case, each of \dev, \blcp, and \akm implies \liy.
 However, \wig is weaker than \dev, and does not imply \liy.
 Moreover, the equivalences of definitions that we had for a compact interval do not hold (Figure~\ref{fig:chaos-metric}).
 Also, there are open questions.
-We do not know whether \akm implies \blcp or \dev.
+We do not know whether \akm implies \blcp or \wig.
 We obtain the implication from \akm to \wig if \akm implies the existence of a subset $Y$ such that $F_{|Y}$ is topological transitive.
 We may also be interested in relations between individual conditions in each definition.
 For example, we may ask: does topological transitivity imply positive topological entropy?
