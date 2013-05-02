@@ -129,7 +129,7 @@ Next, we note the following properties of $S$, the set of finite symbols equippe
   \end{proof}
 \end{proposition}
 %%%
-The topology of the underlying space are inherited to the space of infinite sequences of symbols, $\Sigma$, which is an infinite product of $S$.
+The topology of the underlying space is inherited to the space of infinite sequences of symbols, $\Sigma$, which is an infinite product of $S$.
 \begin{proposition}
   $\Sigma$ equipped with the metric $d$ is 
   \begin{enumerate}[(i)]
@@ -161,6 +161,7 @@ The topology of the underlying space are inherited to the space of infinite sequ
             &1 - s_i \mbox{ otherwise.}
           \end{cases}
         \end{equation*}
+        (Recall that $S \equiv \set{0,1}$.)
         Thus, $t$ agrees with $s$ on the first $k+1$ symbols, and differs after the $k+1$-th symbol.
         $t$ is clearly in $\Sigma$.
         Then, by Proposition~\ref{prop:symbol-bound1}, $d(s,t) \leq 2^{-k} < \epsilon$, so that $t \in \oball{\epsilon}{s}$.
@@ -282,7 +283,7 @@ We call the original sequence $x$ and the modified sequence $x'$.
 Suppose $x$ and $x'$ differ \textit{only} at the $p$-th position.
 We can think of $\metric{x, x'}$ as an error of some sort.
 Similarly, $\metric{\itr{\sigma}{i}(x), \itr{\sigma}{i}(x')}$ is the observed error at $i$-th time step.
-As the system evolves, the $p$-th position comes closer and closer to the 0th position, and the error is doubled at each time step ($d(\sigma(x), \sigma(x')) = 2 \cdot d(x, x')$).
+As the system evolves, the $p$-th position comes closer and closer to the 0-th position, and the error is doubled at each time step ($d(\sigma(x), \sigma(x')) = 2 \cdot d(x, x')$).
 The error achieves its maximum at the $p$-th time step.
 After the $p+1$-th iteration, however, the error remains zero.
 The situation is analogous to the behavior of a pair described in both Devaney's and Li-Yorke's definitions.
@@ -374,9 +375,9 @@ It follows that
   d(\phi(s), \phi(t))
   &= \abs{ \sum\limits_{i=1}^{\infty} \frac{s_i}{2^i} - \sum\limits_{i=1}^{\infty} \frac{t_i}{2^i} } \\
   &= \abs{ \sum\limits_{i=k+2}^{\infty} \frac{s_i}{2^i} - \sum\limits_{i=k+2}^{\infty} \frac{t_i}{2^i} } \\
-  &\leq 2 \cdot \sum\limits_{i=k+2}^{\infty} \frac{s_i}{2^i}  \\
-  &\leq 2 \cdot \sum\limits_{i=k+2}^{\infty} \frac{1}{2^i}
-  = 2^{-(k+1)}.
+  &\leq \sum\limits_{i=k+2}^{\infty} \frac{\abs{s_i - t_i}}{2^i}  \\
+  &\leq \sum\limits_{i=k+2}^{\infty} \frac{1}{2^i}
+  = 2^{-k}.
 \end{align*}
 To summarize, we have the following.
 \begin{theorem}
@@ -398,7 +399,7 @@ In this chapter, we only use an one-sided shift, but we can also define the \tex
 \begin{equation*}
   \cdots s_{-n} \cdots s_{-1} \overset{*}s_0 s_1 \cdots s_n \cdots.
 \end{equation*}
-The asterisk ($*$) is used to note the 0th symbol of a sequence, and the shift map $\sigma$ is defined to be the shifting of the 0th position:
+The asterisk ($*$) is used to note the 0-th symbol of a sequence, and the shift map $\sigma$ is defined to be the shifting of the 0-th position:
 \begin{equation*}
   \sigma: \cdots s_{-n} \cdots s_{-1} \overset{*}s_0 s_1 \cdots s_n \cdots
   \mapsto
@@ -408,7 +409,7 @@ Thus, unlike in the one-sided shift, $\sigma$ is one-to-one, and each sequence `
 Hence, a two-sided shift is suited for studying an invertible map, while an one-sided shift is used to study a non-invertible maps,
 \index{two-sided shift}
 It is easy to see that the full two-sided shift $(\Sigma, \sigma)$ is also chaotic in Devaney's sense.
-\citet{wiggins} has a exposition on the dynamics of the horseshoe map using symbolic dynamics.
+\citet{wiggins} has an exposition on the dynamics of the horseshoe map using symbolic dynamics.
 The horseshoe map has a geometrically complicated dynamics.
 However, we can understand the structure of its attractor, which turns out to be a Cantor set, by constructing a conjugacy between the horseshoe map on its attractor and the full two-sided shift.
 An one-sided shift can be similarly used to study the dynamics of a non-invertible mapping.
@@ -423,7 +424,7 @@ We have an example of coding in Chapter~\ref{chap:comparison} (Example~\ref{eg:b
 \citet{blockcoppel} defines chaos as a system that can be coded using the full one-sided shift.
 \begin{definition}
   (Chaos in the sense of Block-Coppel \citep{blockcoppel})
-  Let $X$ be a metric space, and $F$ be a continuous map.
+  Let $X$ be a metric space, and $F: X \to X$ be a continuous map.
   Suppose there exists an invariant compact subset $Y \subseteq X$ and a positive integer $n$ such that $(Y,\itr{F}{n})$ is semi-conjugate to the full one-sided shift $(\Sigma, \sigma)$ by $\phi: Y \to \Sigma$.
   Then, we say that $(X,F)$ is \textit{chaotic in the sense of Block-Coppel}.
   \begin{center}
@@ -448,7 +449,7 @@ Block and Coppel made this definition only for one-dimensional systems; however,
   If $(Y, G)$ is chaotic in Block-Coppel's sense, then $(X, F)$ is also chaotic in Block-Coppel's sense.
   \begin{proof}
     Suppose that $(Y, G)$ is semi-conjugate to $(\Sigma, \sigma)$ by $\psi$, and that $(X, F)$ is semi-conjugate to $(Y, G)$ by $\phi$.
-    It is easy to see that $(X, G)$ is semi-conjugate to $(\Sigma, \sigma)$ by $\phi \circ \psi$.
+    It is easy to see that $(X, F)$ is semi-conjugate to $(\Sigma, \sigma)$ by $\phi \circ \psi$.
   \end{proof}
   \begin{center}
     \begin{tikzpicture}[node distance=2cm, auto]
