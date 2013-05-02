@@ -596,20 +596,41 @@ Moreover, we show that the separation constant of $x$ is a property belonging to
   Then, for each positive integer $n$, $\itr{F}{n}(x)$ is also an unstable point, and its separation constant is the same as $x$.
   \label{prop:unstable-orbit}
   \begin{proof}
-    Let the separation constant of $x$ be $\epsilon$, and suppose that for some $y$ in any neighborhood of $x$, and for some positive integer $p$,
+    Let $\delta > 0$ be the separation constant of $x$.
+    For each $\epsilon > 0$, consider $\oball{\epsilon}{\itr{F}{n}(x)}$.
+    We may assume that $\epsilon \leq \delta$.
+    Define
     \begin{equation*}
-      \metric{\itr{F}{p}(x), \itr{F}{p}(y)} > \epsilon.
+      M \ceq \bigcap\limits_{i = 1}^n \itr{F}{-i}(\oball{\epsilon}{\itr{F}{i}(x)}).
     \end{equation*}
-    For any neighborhood $M$ of $\itr{F}{n}(x)$, choose some point $z \in M$.
-    By Proposition~\ref{prop:martelli-wiggins1}, $F$ is topologically transitive.
-    It follows that, for any $\delta > 0$, there exist positive integers $m$ and $k$ such that
+    $M$ is a nonempty neighborhood of $x$, because for each $i$, $\itr{F}{-i}(\oball{\epsilon}{\itr{F}{i}(x)})$ is a neigborhood of $x$.
+    Since $x$ is an unstable point, there exists $y \in M$ such that
     \begin{equation*}
-      \itr{F}{n+m}(x) \in \oball{\delta}{x}
-      \quad \mbox{ and } \quad
-      \itr{F}{k}(z) \in \oball{\delta}{y}.
+      \metric{ \itr{F}{m}(x), \itr{F}{m}(y) } > \delta.
     \end{equation*}
-    Then, by continuity, we may have $\metric{\itr{F}{n+m+p}(x), \itr{F}{p}(x)}$ and $\metric{\itr{F}{k+p}(z), \itr{F}{p}(y)}$ as small as we wish (*elaborate).
-    Hence, $\itr{F}{n}(x)$ is also an unstable point, and its separation constant is $\epsilon$.
+    $m$ cannot be less than or equal to $n$, because, for each $1 \leq i \leq n$, we have
+    \begin{equation*}
+      \metric{ \itr{F}{i}(x), \itr{F}{i}(y) } < \epsilon \leq \delta
+    \end{equation*}
+    by the condition on $M$.
+    Hence, $\itr{F}{n}(y) \in \oball{\epsilon}{\itr{F}{n}(x)}$, and
+    \begin{equation*}
+      \metric{ \itr{F}{m-n}(\itr{F}{n}(x)), \itr{F}{m-n}(\itr{F}{n}(y)) } > \delta.
+    \end{equation*}
+%    Let the separation constant of $x$ be $\epsilon$, and suppose that for some $y$ in any neighborhood of $x$, and for some positive integer $p$,
+%    \begin{equation*}
+%      \metric{\itr{F}{p}(x), \itr{F}{p}(y)} > \epsilon.
+%    \end{equation*}
+%    For any neighborhood $M$ of $\itr{F}{n}(x)$, choose some point $z \in M$.
+%    By Proposition~\ref{prop:martelli-wiggins1}, $F$ is topologically transitive.
+%    It follows that, for any $\delta > 0$, there exist positive integers $m$ and $k$ such that
+%    \begin{equation*}
+%      \itr{F}{n+m}(x) \in \oball{\delta}{x}
+%      \quad \mbox{ and } \quad
+%      \itr{F}{k}(z) \in \oball{\delta}{y}.
+%    \end{equation*}
+%    Then, by continuity, we may have $\metric{\itr{F}{n+m+p}(x), \itr{F}{p}(x)}$ and $\metric{\itr{F}{k+p}(z), \itr{F}{p}(y)}$ as small as we wish.
+%    Hence, $\itr{F}{n}(x)$ is also an unstable point, and its separation constant is $\epsilon$.
   \end{proof}
 \end{proposition}
 \begin{proposition}
