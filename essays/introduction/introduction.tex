@@ -72,7 +72,7 @@ Laplacian determinism, which denies the possibility of any randomness in the phy
 \end{quotation}
 %%%
 Henri Poincare, one of the greatest mathematicians who is best-known for his work on the $n$-body problem, had a contrasting world-view that is exactly the philosophy behind chaos theory.
-Some of Poincare's results had major roles in the development of chaos theory \citep[p.202]{ueda-abraham}.
+Some of Poincare's results had vital roles in the development of chaos theory \citep[p.202]{ueda-abraham}.
 \begin{quotation}
   If we knew exactly the laws of nature and the situation of the universe at the initial moment, we could predict exactly the situation of that same universe at a succeeding moment. But even if it were the case that the natural laws had no longer any secret for us, we could still only know the initial situation approximately. If that enabled us to predict the succeeding situation with the same approximation, that is all we require, and we should say that the phenomenon had been predicted, that it is governed by laws. But it is not always so; it may happen that small differences in the initial conditions produce very great ones in the final phenomena. A small error in the former will produce an enormous error in the latter. Prediction becomes impossible, and we have the fortuitous phenomenon.
   (Henri Poincare, \textit{Science and Method})
@@ -95,16 +95,15 @@ One simple-minded definition of chaos is to call systems with attractors that ha
 \textit{Fractal dimension} makes this geometric definition of chaos a little more precise.
 In fact, it is often the case that an attractor of a chaotic system has a non-integer Hausdorff dimension, and for the Lorentz attractor and Japanese attractor, this is indeed the case.
 A step forward from defining chaos to be a dynamics with complicated appearances is to give additional requirements to the geometry.
-\citet{ruelle} defines ``strange attractors.'' 
-A strange attractor is, in short, an attractor with a fractal dimension on which the dynamics exhibits sensitive dependence on initial conditions \citep[p.11]{ott1994}.
-Boris Chirikov and Felix Izrailev, Russian physicists, famously said that ``a strange attractor seems strange only to a stranger'' \citep{lorentzbook}.
-Labeling a system as ``chaotic'' shows our ignorance about the system.
+\citet{ruelle} introduced the notion of a ``strange attractor,'' which he defined as a fractal dimensional attractor that exhibits \textit{sensitive dependence on initial conditions}, or sensitivity for short \citep[p.11]{ott1994}.
+Sensitivity, the phenomenon that a small error in the initial state produces an enormous error in later states, occupies a central position in the exposition.
+Recognizing sensitivity as a major cause of chaos was a significant step in the understanding of the phenomenon.
+Boris Chirikov and Felix Izrailev famously said that ``a strange attractor seems strange only to a stranger'' \citep{lorentzbook}.
 
 
-Motivations to study chaos come also from practical purposes.
-Chaos time series obtained from a non-linear system could not be analyzed in the same way as linear systems are analyzed.
-Sensitive dependence on initial conditions has an interesting interplay with noises, which are inevitable products in experimental settings.
-\citet[p.51]{kantz-schreiber}
+Sensitivity has an interesting interplay with noises, which are particularly important in experimental settings.
+ inevitable 
+Because of this, time series obtained from non-linear systems cannot be analyzed in the same way as those from linear systems are analyzed: 
 \begin{quotation}
   Noise reduction means that one tries to decompose a time series into two components, one of which supposedly contains the signal and the other one contains random fluctuations.
   Thus we always assume that the data can be thought of as an additive superposition of two different components which have to be distinguishable by some objective criterion.
@@ -115,13 +114,11 @@ Sensitive dependence on initial conditions has an interesting interplay with noi
   This approach fails for deterministic chaotic dynamics because the output of such systems usually leads to broad band spectra itself and thus possesses spectral properties generally attributed to random noise.
   Even if parts of the spectrum can be clearly associated with the signal, a separation into signal and noise fails for most parts of the frequency domain.
   Chaotic deterministic systems are of particular interest because the determinism yields an alternative criterion to distinguish the signal and the noise. 
+  \citep[p.51]{kantz-schreiber}
 \end{quotation}
+
 Although a broad Fourier power spectrum is a first indication of chaotic behavior, it alone does not characterize chaos \citep{abarbanel}.
-
-
-\citet[p.31]{abarbanel,ott1994} state that the two key aspects of chaos are  %abarbanel: p379, ott: p31.
-%``[\ldots] two key aspects of chaos are the stretching of infinitesimal displacements and the complex orbit structure in the form of a vast variety of possible orbits.'' 
-``the stretching of infinitesimal displacement'' (or sensitive dependence on initial condition) and ``complex orbit structure.''
+\citet[p.31]{abarbanel,ott1994} state that the two key aspects of chaos are ``the stretching of infinitesimal displacement'' (equivalent to sensitivity) and ``complex orbit structure.'' %abarbanel: p379, ott: p31.
 \citet[p.104]{sprott} says that ``there is no universally accepted definition of chaos,'' but ``most experts would concur that chaos is the ''aperiodic, long-term behavior of a bounded, deterministic system that exhibits sensitive dependence on initial conditions.''
 \citet[p.103]{berge}:
 \begin{quotation}
@@ -139,7 +136,7 @@ Although a broad Fourier power spectrum is a first indication of chaotic behavio
   The distinction between the theoretical and practical impossibility of prediction is also problematic.
   But given the current state of knowledge, it would be premature to try to do better.
 \end{quotation}
-Listening to the experts' opinions, we have found three things: complicated orbits, sensitive dependence on initial conditions, and that there is no universally accepted definition of chaos.
+Listening to the experts' opinions, we have learned two things: that chaos probably consists of complex orbit and sensitivity, and that there is no universally accepted definition of chaos.
 
 We are looking for invariants of a topological dynamical system that characterizes chaos.
 The critical feature of the invariants is that they are not sensitive to initial conditions or small perturbations of an orbit, while individual orbits of the system are exponentially sensitive to such perturbations \citep{abarbanel}. %p1334
@@ -155,7 +152,7 @@ Since our focus is on topolgical dynamics, we do not go into a great detail expl
 
 
 Finally, let us have a few words on the name given to the phenomenon of our interest, ``chaos.''
-Although the term ``chaos'' is commonly seen in literature nowadays, back when Li and Yorke's paper was being published, ``chaos'' was not an often used word in academic papers.
+Although the term is commonly seen in literature today, back when Li and Yorke's paper was being published, ``chaos'' was not an often used word in academic papers.
 Some editors considered the title of their paper to be inappropriate for a language used in an academic article.
 Robert May, a population biologist who is known for his studies of the logistic map, popularized the term used by Li and Yorke in his articles \citeyearpar{may1,may2} and talks \citep[p.205]{ueda-abraham}.
 Some authors acknowledge that the liberal choice of word has to some extent contributed to the popularity that chaos theory currently enjoys \citep[``Exploring Chaos on an Interval'']{ueda-abraham}.
