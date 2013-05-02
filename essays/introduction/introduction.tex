@@ -1,66 +1,75 @@
-\documentclass[10pt,twoside,draft]{book}
+\documentclass[10pt,twoside]{book}
 \usepackage{../../thesis}
 \graphicspath{ {../../images/} }
 
 \begin{document}
 Chaos is a natural phenomenon that commonly occurs in nonlinear systems.
 The Royal Society held an international conference on chaos in 1986 and defined ``chaos'' as ``stochastic behavior occurring in a deterministic system'' \citep{stewart}.
-Edward Lorentz is often regarded as the first discoverer of chaos.
-In his seminal article ``Deterministic Nonperiodic Flow'', Lorentz discusses the chaotic behavior of a system of three differential equations, which were reduced from the original twelve equations, which were meant to be a simplified model for the dynamics of the atmosphere.
+``Deterministic'' and ``stochastic'' are usually not used to describe a single phenomenon.
+It is not at all obvious how a deterministic system can possess randomness.
+Theoretically, a deterministic system cannot act randomly.
+However, a remarkable property of chaotic systems is that they exhibit unpredictable behaviors in the presence of small noises, no matter how small.
+Nevertheless, chaos is prevalent in the nature.
+The logistic map, which we present in the first chapter, is used to model population dynamics.
+The outer billiards system that we study in Chapter~\ref{chap:billiards} is a model of celestial mechanics.
+Albert Libchaber confirmed a particular type of chaos in a Rayleigh–Benard system \citep{libchaber}.
+The Belousov-Zhabotinsky reaction \citep{zhang} and NH3 laser used in NMR analysis \citep{kantz-schreiber} are known to exhibit chaotic behaviors.
+One goal of the exposition is to mathematically characterize chaotic systems, or deterministic systems with elements of unpredictability.
+
+Edward Lorentz is often regarded as the first discoverer of chaos, or at least he was the first to recognize that an unpredictable behavior is possible in deterministic system.
+In his seminal article ``Deterministic Nonperiodic Flow'', Lorentz discusses the chaotic behavior of a system of three differential equations, which were reduced from the original twelve equations, which were meant to be a simplified model to simulate the earth's atmosphere.
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=0.8\textwidth]{golden_lorentz_attractor}
-  \caption{The Lorentz Attractor}
+  \includegraphics[width=0.9\textwidth]{golden_lorentz_attractor}
+  \caption{The Lorentz Attractor.}
   \label{fig:lorentz}
 \end{figure}
-He found extremely complicated behaviors through his numerical simulations.
+He found extremely complicated behaviors in his numerical simulations of the model.
 The plot shown in Figure~\ref{fig:lorentz} is the orbit of an arbitrary point in the space.
-The orbit moves towards the butterfly-shaped attractor.
+We see that the orbit moves towards the butterfly-shaped set, which is the attractor of the system.
 Moreover, as an orbit moves closer and closer to the attractor, it never crosses itself.
-The attractor does not have a simple structure that we might usually expect.
-It is known to have a fractal dimension.
+The attractor, which has a fractal dimension, does not have a simple structure that we usually expect from simple equations.
 
 Yoshisuke Ueda, though lesser known, was also one of the first scientists to recognize chaotic behaviors.
-In 1961 (a sketch of the ``Japanese Attractor''), while Lorentz's paper was published in 1963.
-David Ruelle, a prominent French chaos researcher, introduced Ueda in \citep{ruelle}.
-
-%%%
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.5\textwidth]{ja}
+  \caption{The Japanese Attractor.}
+  \label{fig:ja}
+\end{figure}
+While studying the Duffing equation using an analog computer, Ueda found that the system shows an unpredictable behavior for particular parameters.
+Figure~\ref{fig:ja} shows 
+David Ruelle, a prominent French chaos researcher, introduced Ueda in his article, and named the attractor the ``Japanese attractor'' \citep{ruelle}.
 While Lorentz's discovery of chaos was in a computer simulation, Ueda's was in an analog computer, a physical system.
-\citet[p.383]{campbell}
+In addition to the fact that his discovery of the Japanese attractor was even earlier than Lorentz's publication of his article,
+\footnote{Ueda's plot of the attractor was made in 1961, while Lorentz's paper was published in 1963.}
+the nature of his discovery is noteworthy.
 \begin{quotation}
-  analog computeres solve coupled nonlinear equations by mimicking a physical system.
+  [A]nalog computers solve coupled nonlinear equations by mimicking a physical system.
   The error properties of a particular digital integration scheme need not ever be considered.
   Indeed, within the range of accuracy limited by the tolerance of the components, the unsystematic errors caused by the thermal fluctuations and electronic noise in an analog simulation can actually be useful; this is the case, for example, in qualitative studies of chaotic dynamical systems.
 % Crutchfiled, Farmer, Huberman 'Fluctuations and simple chaotic dynamics'
 % Crutchfield, Packard 'Symbolic dynamics of one dimensional maps: Entropies, finite precision, and noise'
   Specifically, these fluctuations obliterate the detailed fine structure found in the mathematical description of chaos and thus effectively mimic the coarse-grained behavior that is observed in actual physical experiments in, for example, convecting fluids or nonlinear electronic circuits.
+  \citep[p.383]{campbell}
 \end{quotation}
 %%%
-Besides Lorentz and Ueda, Albert Libchaber experimentally confirmed a particular type of chaos using Helium \citep{gleick}.
-Also, the logistic map, which we present in the first chapter, is used to model population dynamics.
-NH3 laser used in NMR analysis is known to show chaotic behaviors \citep{kantz-schreiber}.
-B-Z reaction \citep{zhang}
-The outer billiards system that we study in Chapter~\ref{chap:billiards} is a model of celestial mechanics.
-The goal of this exposition is to mathematically characterize these ``chaotic'' behaviors, or, in other words, to find the definition of chaos.
 
 
+How can we define chaos?
 The first step in defining chaos is to \textit{recognize it}.
-Laplacian determinism 
-\footnote{``We may regard the present state of the universe as the effect of its past and the cause of its future. An intellect which at a certain moment would know all forces that set nature in motion, and all positions of all items of which nature is composed, if this intellect were also vast enough to submit these data to analysis, it would embrace in a single formula the movements of the greatest bodies of the universe and those of the tiniest atom; for such an intellect nothing would be uncertain and the future just like the past would be present before its eyes.''
-  (Pierre Simon Laplace, \textit{A Philosophical Essay on Probabilities})}
-"If we knew exactly the laws of nature and the situation of the universe at the
-initial moment, we could predict exactly the situation of that same universe
-at a suceeding moment. But even if it were the case that the natural laws
-had no longer any secret for us, we could still only know the initial situation
-approximately. If that enabled us to predict the succeeding situation with
-the same approximation, that is all we require, and we should say that the
-phenomenon had been predicted, that it is governed by laws. But it is no
-always so; it may happen that small differences in the initial conditions
-produce very great ones in the final phenomena. A small error in the former
-will produce an enormous error in the latter. Prediction becomes impossible,
-and we have the fortuitous phenomenon." -- Henri Poincare
+Founders of chaos theory, such as 
+Laplacian determinism is the first obstacle \citep{stone}.
+\begin{quotation}
+ We may regard the present state of the universe as the effect of its past and the cause of its future. An intellect which at a certain moment would know all forces that set nature in motion, and all positions of all items of which nature is composed, if this intellect were also vast enough to submit these data to analysis, it would embrace in a single formula the movements of the greatest bodies of the universe and those of the tiniest atom; for such an intellect nothing would be uncertain and the future just like the past would be present before its eyes.
+  (Pierre Simon Laplace, \textit{A Philosophical Essay on Probabilities})
+\end{quotation}
+\begin{quotation}
+  If we knew exactly the laws of nature and the situation of the universe at the initial moment, we could predict exactly the situation of that same universe at a suceeding moment. But even if it were the case that the natural laws had no longer any secret for us, we could still only know the initial situation approximately. If that enabled us to predict the succeeding situation with the same approximation, that is all we require, and we should say that the phenomenon had been predicted, that it is governed by laws. But it is no always so; it may happen that small differences in the initial conditions produce very great ones in the final phenomena. A small error in the former will produce an enormous error in the latter. Prediction becomes impossible, and we have the fortuitous phenomenon.
+  -- Henri Poincare
+\end{quotation}
 
-\citep{stone} and the belief that linearization can give a good approximation for any system had precluded from acknowledging a phenomenon that defies both beliefs.
+Also, the belief that linearization can give a good approximation for any system had precluded from acknowledging chaos.
 Doubtful of Ueda's result, Ueda's mentor did not allow publication of Ueda's result for nine years.
 Ueda left the following remark: ``Chaos, though common phenomena in the nature, has been dismissed because of the difficulty to grasp its full notion'' \citep[p533]{gleick}.
 %As I look back, I feel that after those long exhausting vigils in front of the analog computer, staring at its output, chaos had become a totally natural, everyday phenomenon in my mind.
