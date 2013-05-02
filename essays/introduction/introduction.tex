@@ -1,4 +1,4 @@
-\documentclass[10pt,twoside]{book}
+\documentclass[10pt,twoside,draft]{book}
 \usepackage{../../thesis}
 \graphicspath{ {../../images/} }
 
@@ -8,14 +8,15 @@ The Royal Society held an international conference on chaos in 1986 and defined 
 ``Deterministic'' and ``stochastic'' are usually not used together to describe a single phenomenon.
 It is not at all obvious how a deterministic system can possess randomness.
 As a matter of fact, a deterministic system cannot act in a random manner.
-However, a remarkable property of chaotic systems is that they exhibit unpredictable behaviors in the presence of small noises, no matter how minuscule.
+However, a remarkable property of a chaotic system is that it exhibits unpredictable behaviors in the presence of small noises, no matter how minuscule.
 Chaos is prevalent in the nature.
 The logistic map, which we present in the first chapter, is used to model population dynamics.
 The outer billiards system that we study in Chapter~\ref{chap:billiards} is a simple model of celestial mechanics.
 Albert Libchaber confirmed a particular type of chaos in a Rayleigh–Benard system \citep{libchaber}.
-The Belousov-Zhabotinsky reaction \citep{zhang} and NH3 laser used in NMR analysis \citep{kantz-schreiber} are known to exhibit chaotic behaviors.
+The Belousov-Zhabotinsky reaction \citep{zhang} and NH3 laser used in NMR analysis \citep{kantz-schreiber} are known to exhibit chaotic behaviors, as well.
 
-Edward Lorentz is often regarded as the first discoverer of chaos, or at least he was the first to recognize that an unpredictable behavior is possible in a deterministic system.
+
+Edward Lorentz is often regarded as the first discoverer of chaos, or at least he was one of the first to recognize that an unpredictable behavior is possible in a deterministic system.
 In his seminal article ``Deterministic Nonperiodic Flow'', Lorentz discusses the chaotic behavior of a system of three differential equations, which were meant to be a simplified model to simulate the earth's atmosphere.
 \begin{figure}[ht]
   \centering
@@ -26,7 +27,7 @@ In his seminal article ``Deterministic Nonperiodic Flow'', Lorentz discusses the
 He found extremely complicated behaviors in his numerical simulations of the model.
 The plot shown in Figure~\ref{fig:lorentz} is an arbitrarily chosen orbit of the Lorentz system.
 We see that the orbit moves towards the butterfly-shaped set, which is the attractor of the system.
-Remarkably, even though the orbit moves closer and closer to the attractor, it never crosses itself.
+Remarkably, as the orbit moves closer and closer to the attractor, it never crosses itself.
 The attractor, which has a fractal dimension, does not have a simple structure that we would expect from a system of three simple differential equations.
 
 Yoshisuke Ueda, though lesser known, was also one of the first scientists to recognize unpredictable behaviors in deterministic systems.
@@ -38,7 +39,7 @@ Yoshisuke Ueda, though lesser known, was also one of the first scientists to rec
 \end{figure}
 While studying the Duffing equation using an analog computer, Ueda found that the system was chaotic for particular parameters.
 Figure~\ref{fig:ja} shows the attractor of the Duffing system that Ueda studied, which David Ruelle, a prominent French chaos researcher, named the ``Japanese attractor'' \citep{ruelle}.
-While Lorentz's discovery of chaos was in a computer simulation, Ueda's was in an analog computer, a physical system.
+While Lorentz's discovery of chaos was in a digital computer simulation, Ueda's was in an analog computer, a physical system.
 In addition to the fact that his discovery of the Japanese attractor was earlier than Lorentz's publication of his article,
 \footnote{Ueda's plot of the attractor was made in 1961, while Lorentz's paper was published in 1963.}
 the nature of his discovery is noteworthy.
@@ -53,7 +54,7 @@ the nature of his discovery is noteworthy.
 \end{quotation}
 
 
-One goal of the exposition is to mathematically characterize chaotic systems, deterministic systems with elements of unpredictability.
+One goal of the exposition is to mathematically characterize chaotic systems, which we temporarily define to be deterministic systems with elements of unpredictability.
 What we are looking for is a set of conditions that guarantee the kind of complex dynamics observed in the Lorentz system, Ueda's Duffing system, and systems that we will encounter later, and that captures our intuition about chaos.
 We first review the historical development of the definition of chaos.
 
@@ -61,8 +62,8 @@ We first review the historical development of the definition of chaos.
 Historically, the first step in defining chaos was to \textit{recognize it}.
 Founders of chaos theory often resent the dismissive attitudes that they received from their contemporaries.
 Ueda, who saw chaos as ``a totally natural, everyday phenomenon,'' for instance, said that chaos ``has been dismissed because of the difficulty to grasp its full notion'' \citep[p.533]{gleick}.
-Ueda's mentor, doubtful of Ueda's result, did not allow publication of Ueda's result for nine years.
-Laplacian determinism, which denies the possibility of any randomness in the physical world, was a major obstacle \citep{stone}.
+Ueda's mentor, doubtful of Ueda's result, did not allow publication of Ueda's result for nine years after his findings.
+Laplacian determinism, which denies the possibility of randomness in the physical world, was one of the major obstacles \citep{stone}.
 \begin{quotation}
   We may regard the present state of the universe as the effect of its past and the cause of its future. An intellect which at a certain moment would know all forces that set nature in motion, and all positions of all items of which nature is composed, if this intellect were also vast enough to submit these data to analysis, it would embrace in a single formula the movements of the greatest bodies of the universe and those of the tiniest atom; for such an intellect nothing would be uncertain and the future just like the past would be present before its eyes.
   (Pierre Simon Laplace, \textit{A Philosophical Essay on Probabilities})
@@ -77,20 +78,21 @@ Some of Poincare's results had vital roles in the development of chaos theory \c
 %%%
 
 The belief that linearization can give a good approximation for any system also precluded researchers from acknowledging chaos.
-Chaotic behaviors can occur in the simplest non-linear systems, but they are not possible in linear systems.
+Chaotic behaviors can occur in the simplest non-linear systems, but they are not possible in linear ones.
 Once a system is approximated linearly, chaotic behaviors, which might have been present in the original system, vanish.
 Thus, to acknowledge chaos was to reject the omnipotence of linear approximations.
-Chaos, however, is prevalent in the nature, and could not be ignored forever.
+Chaos, however, is prevalent in the nature, and could not be ignored indefinitely.
 As significant progresses had been made to the theory, it began to gain traction in academia \citep{gleick}.
-Stephen Smale, one of the biggest contributer to the development of chaos theory, says that chaos is ``a new science which establishes the omnipresence of unpredictability as a fundamental feature of common experience'' \citep[p.16]{ueda-abraham}.
-Ueda shared a similar attitude towards chaos:``[p]eople call chaos a new phenomenon, but it has always been around.
+Stephen Smale, one of the biggest contributers to the development of chaos theory, says that chaos is ``a new science which establishes the omnipresence of unpredictability as a fundamental feature of common experience'' \citep[p.16]{ueda-abraham}.
+Ueda shared a similar attitude towards chaos: ``[p]eople call chaos a new phenomenon, but it has always been around.
 There's nothing new about it--only people did not notice it''
 \citep[p.27]{ueda-abraham}.
 %%%
 
-One simple-minded definition of chaos is to call systems with attractors that have complicated geometric features as chaotic systems.
+One simple-minded definition of chaos is to call systems with attractors that have complicated geometric features, those seen in the Lorentz and Japanese attractors, as chaotic systems.
 \textit{Fractal dimension} makes this geometric definition of chaos a little more precise.
-In fact, it is often the case that an attractor of a chaotic system has a non-integer Hausdorff dimension, and for the Lorentz attractor and Japanese attractor, this is indeed the case.
+In fact, an attractor of a chaotic system often has a non-integer Hausdorff dimension. 
+For the two attractors that we introduced earlier, this is indeed the case.
 A step forward from this definition of chaos is to give additional requirements to the geometry.
 \citet{ruelle} introduced the notion of a ``strange attractor,'' which he defined as a fractal dimensional attractor that exhibits \textit{sensitive dependence on initial conditions}, or sensitivity for short \citep[p.11]{ott1994}.
 Sensitivity, the phenomenon that a small error in the initial state produces an enormous error in later states, is the hallmark of chaos.
@@ -98,9 +100,10 @@ Recognizing sensitivity as a major cause of chaos was a significant step in the 
 Boris Chirikov and Felix Izrailev famously said that ``a strange attractor seems strange only to a stranger'' \citep{lorentzbook}.
 
 
-Sensitivity means that any small noise, which is inevitable in experimental settings, is not negligible.
-Since it is impossible to completely suppress errors in every physical situation, chaos is unavoidable.
-For this reason, time series obtained from non-linear systems cannot be analyzed in the same way as those from linear systems are analyzed: 
+When working with a system with sensitivity to initial conditions, small noises, which are inevitable in an experimental setting, are not negligible.
+Since it is impossible to completely suppress errors in any physical situation, chaos is unavoidable.
+This nature of chaos has motivated experimentalists to intensive studies of the phonomenon, and the first definitions of chaos were tailored to data analysis.
+Time series obtained from non-linear systems cannot be analyzed in the same way as those from linear systems are analyzed: 
 \begin{quotation}
   Noise reduction means that one tries to decompose a time series into two components, one of which supposedly contains the signal and the other one contains random fluctuations.
   Thus we always assume that the data can be thought of as an additive superposition of two different components which have to be distinguishable by some objective criterion.
@@ -115,10 +118,10 @@ For this reason, time series obtained from non-linear systems cannot be analyzed
 \end{quotation}
 
 
-A broad power spectrum is an indication of chaotic behavior; however, it alone does not characterize chaos \citep{abarbanel}.
+A broad power spectrum is an indication of chaotic behavior; however, it alone does not characterize chaos.
 According to \citet[p.31]{ott1994}, the two key aspects of chaos are ``the stretching of infinitesimal displacement'' (equivalent to sensitivity) and a ``complex orbit structure.'' %abarbanel: p379, ott: p31.
 \citet[p.104]{sprott} says that ``there is no universally accepted definition of chaos,'' but ``most experts would concur that chaos is the ''aperiodic, long-term behavior of a bounded, deterministic system that exhibits sensitive dependence on initial conditions.''
-\citet[p.103]{berge} has a similar, yet more elaborate stance:
+\citet[p.103]{berge} has a similar, yet more elaborate stance on the definition of chaos:
 \begin{quotation}
   Given that no precise scientific definition exists for the noun ``chaos'' or for the adjective ``chaotic,'' we will consider these words to be synonymous with certain typical properties.
   We will say that a dynamical regime is chaotic if its power spectrum contains a continuous part---a broad band---regardless of the possible presence of peaks.
@@ -128,10 +131,15 @@ According to \citet[p.31]{ott1994}, the two key aspects of chaos are ``the stret
   Essentially, this means that we are making unpredictability the quality which defines chaos.
   The characterization is pragmatic; it lacks rigor and contains unavoidable ambiguities.
   The boundary separating predictability from unpredictability is unclear, leaving open questions such as:
-  - On what time scale must the flow be predictable?
-  - How precise must the prediction be?
-  - Can we allow a statistical prediction?
-  The distinction between the theoretical and practical impossibility of prediction is also problematic.
+  \begin{itemize}
+    \item 
+      On what time scale must the flow be predictable?
+    \item 
+      How precise must the prediction be?
+    \item
+      Can we allow a statistical prediction?
+\end{itemize}
+    The distinction between the theoretical and practical impossibility of prediction is also problematic.
   But given the current state of knowledge, it would be premature to try to do better.
 \end{quotation}
 Listening to the experts' opinions, we have learned two things: that chaos consists of complex orbit structures and sensitivity, and that there is no universally accepted definition of chaos.
@@ -139,30 +147,30 @@ The latter point is the subject matter of the exposition.
 
 
 We are in the search for invariants that capture these properties of chaos.
-A critical feature that the invariants must have is that they are not sensitive to initial conditions or small perturbations of an orbit.
+A critical feature that the invariants must possess is that they are not sensitive to initial conditions or small perturbations.
 Thus, we need to focus on the global features of system, rather than properties of individual points, which are sensitive to perturbations.
 Fractal dimension, which we mentioned earlier, is one such example.
 The \textit{Lyapunov exponent} is the other common invariant that is used to characterize chaos.
 The technique of Lyapunov exponents was developed by Alexander M. Lyapunov to study stability of solutions for systems of differential equations.
-Entropy is another invariant.
+Entropy, which we discuss in Chapter~\ref{chap:entropy}, is another invariant.
 In the same way power spectrum with a sharp peak characterizes a linear system, invariants such as Lyapunov exponents, fractal dimension, and entropy characterize nonlinear systems.
 
 
-Specifically, we study topological properties that characterizes chaos, and our setting is topological dynamical systems.
+Specifically, we study topological dynamical systems and look for topological properties that characterize chaos.
 Other possible settings are measure-theoretic and differentiable dynamics, which would give us more structure to work with.
-For example, the Jacobian matrices are used to study structural stability of systems.
+For example, Jacobian matrices are used to study structural stability of systems.
 The hope is that the framework of topological dynamics is sufficient to define chaos.
 The expectation seems justifiable, since neither ``unpredictability,'' ``complex orbits structures,'' nor ``sensitive dependence on initial conditions'' appears to require structures that are absent in topological dynamics.
-We will temporarily forget that most mappings that we encounter in real-life situations are differentiable.
-For this reason, we do not discuss the Lyapunov exponent in detail, although positive Lyapunov exponent is the definition of chaos that perhaps enjoy the most popularity especially in physics \citep{kantz-schreiber}.
+Since in topological dynamics, we only require a transformation of a space to be continuous, we will temporarily forget that most mappings that we encounter in real-life situations are differentiable.
+For this reason, we do not discuss the Lyapunov exponent in detail, although positive Lyapunov exponent is the definition of chaos that perhaps enjoy the most popularity, especially in physics \citep{kantz-schreiber}.
 
 
 Finally, let us have a few words on the name given to the phenomenon of our interest, ``chaos.''
 Although the term is commonly seen in literature today, back when Li and Yorke's paper was being published, ``chaos'' was not an often used word in academic papers.
 Some editors considered the title of their paper to be inappropriate for a language used in an academic article.
-Robert May, a population biologist who is known for his studies of the logistic map, popularized the term used by Li and Yorke in his articles \citeyearpar{may1,may2} and talks \citep[p.205]{ueda-abraham}.
+Robert May, a population biologist who is known for his studies of the logistic map, popularized the term by using it in his articles \citeyearpar{may1,may2} and talks \citep[p.205]{ueda-abraham}.
 Some authors acknowledge that the liberal choice of word has to some extent contributed to the popularity that chaos theory currently enjoys \citep[``Exploring Chaos on an Interval'']{ueda-abraham}.
-However, Ueda concedes that he does not find the term ``appropriate as an academic term,'' since ``the original meaning of chaos, I feel, is a 'total disorder and ultimate unpredictability,''' and ``as scientific terminology, the word 'chaos' seems to overemphasize the unpredictability alone'' \citet[p.24]{ueda-abraham}.
+However, Ueda concedes that he does not find the term ``appropriate as an academic term,'' since ``the original meaning of chaos, I feel, is a 'total disorder and ultimate unpredictability,''' and ``as scientific terminology, the word 'chaos' seems to overemphasize the unpredictability alone'' \citep[p.24]{ueda-abraham}.
 
 What should it be called then?
 A concise term that replaces ``stochastic behavior occurring in a deterministic system'' and ``complex orbit structures with sensitive dependence on initial conditions'' is not so easy to find.
@@ -176,32 +184,28 @@ Ueda's proposal has been ``randomly transitional phenomena'' \citep[p.24]{ueda-a
     \item Although the phenomena are irregular and unpredictable, chaos does have a definite structure.
   \end{itemize}
 \end{quotation}
-Even so, Ueda says he has to use the word ``chaos,'' because
-\begin{quotation}
-  [i]t is a concise expression which has already filtered into people's minds, and therefore I have decided it is rather pointless to resist it.
-\end{quotation}
+Even so, Ueda says he has to use the word ``chaos,'' since ``[i]t is a concise expression which has already filtered into people's minds, and therefore I have decided it is rather pointless to resist it.''
 %As use of the word 'chaos' spread, it became a word people loved to hate: they didn't have a better word but didn't like chaos \citep[p.205]{ueda-abraham}.
 Ueda's attitude towards the terminology is the one that we adopt in the exposition.
-The purpose of our study of chaotic systems is not to watch the gigantic mess that a simple system produces with an expression of awe, but to understand why such behaviors occur.
-
+The purpose of our study of chaotic systems is not to observe the ``complete disorder'' that a simple system produces with an expression of awe, but to understand why such behaviors occur.
+%%%
 
 \subsection*{Outline}
 Chapter~\ref{chap:logistic} and Chapter~\ref{chap:billiards} introduce two examples of system that exhibit complex orbit structures and sensitive dependence on initial conditions.
 The purpose of the first two chapters is to develop an understanding of what it means for a system to be chaotic at an intuitive level.
 In Chapters~\ref{chap:devaney} and \ref{chap:liyorke}, we study two definitions of chaos, both of which characterize chaos by sensitive dependence on initial conditions.
-We introduce the technique of symbolic dynamics in Chapter~\ref{chap:symbolic}.
+We introduce the technique of symbolic dynamics in Chapter~\ref{chap:symbolic}, and a unique definition of chaos using dynamics on symbols.
 Chapter~\ref{chap:entropy} is a discussion of topological entropy, which is a measure of the complexity of an orbit structure. 
-Chapter~\ref{chap:comparisons}
+Chapter~\ref{chap:comparisons} concludes the exposition by comparing the definitions introduced in preceding chapters.
 
 Although chaotic dynamical systems is an enormous field, the field of dynamical systems in general is even larger.
-To ask whether a system is chaotic is, in some sense, a heuristic way of thinking that neglect the intricacies that a system may have.
-In dynamical systems, one asks whether a given system is stable or periodic, and so on.
-Thus, labeling a system as chaotic should only be a beginning of the study.
+To ask whether a system is chaotic is, in some sense, a heuristic way of thinking that neglects the intricacies that a system may have.
+Labeling a system as chaotic should only be a beginning of the study.
 Instead of putting them all together in a single category, we may gain better understandings of chaotic systems by classifying them into subcategories.
-\citet{devaney}, for example, discusses different types of chaos arrived via different ``routes.''
-It may be possible that different deterministic systems are unpredictable in different senses.
-As we will see, there are systems that are chaotic in some sense but not so in others.
-The goal of this exposition is to locate perhaps more than one appropriate definitions of chaos.
+\citet{devaney}, for example, discusses different types of chaos produced via different ``routes.''
+It may be possible that different deterministic systems are unpredictable in different senses, which is what we will see later.
+There are systems that are chaotic by some definitions but not by others.
+Through comparisons of different definitions and studies of particular examples, we aim to locate a set of conditions that give rise to chaos, and if appropriate, we call it the definition of chaos.
 
 \bibliographystyle{../../bibliography/pjgsm}
 \bibliography{../../bibliography/thesis}
