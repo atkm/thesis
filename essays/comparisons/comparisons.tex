@@ -48,8 +48,8 @@
 \makeindex
 
 \begin{document}
-\label{chap:comparison}
 \chapter{Comparisons of Definitions}
+\label{chap:comparison}
 We have seen four definitions 
 \begin{enumerate}[(i)]
   \item Devaney (\dev)
@@ -364,6 +364,21 @@ The converse still holds in this general setting.
 However, we do not know whether \akm implies \blcp.
 %%%
 
+\subsubsection*{Devaney/Wiggins and Entropy}
+\citet{glasner} provide an example of a symbolic system that is \dev but has zero entropy.
+Hence, \dev does not imply \akm.
+We see that \akm does not imply \dev, arguing by contradiction.
+If \akm implies \dev, then \blcp implies \dev, but this is a contradiction, since \blcp does not necessarily imply \dev.
+
+We do not know whether \blcp implies \wig, although we have some related results.
+\citet{glasner} proved that if a system is transitive, has no isolated point, and has positive topological entropy, then it is sensitive to initial conditions.
+Thus, if we can prove that \akm implies the existence of a closed, invariant subset $Y \subseteq X$ on which $F$ is topologically transitive, then \akm implies \wig.
+On the other hand, in order for \akm to imply \dev, \akm mush imply both \tt and \dpp.
+While it seems plausible that topological transitivity follows from positive topological entropy, whether it implies the existence of dense periodic points is questionable.
+\index{dense periodic points}
+\index{topological transitivity}
+%%%
+
 \subsubsection*{Block-Coppel and Devaney/Wiggins}
 \citet{aulbach} constructed an example to show that \blcp does not imply \dev.
 \begin{example}
@@ -406,21 +421,6 @@ Suppose \dev implies \blcp.
 Then \dev implies \akm; however, this is not necessarily the case, as shown in the comparison of \dev and \akm.
 This is a contradiction. 
 Hence, \dev does not imply \blcp.
-%%%
-
-\subsubsection*{Devaney/Wiggins and Entropy}
-\citet{glasner} provides an example of a symbolic system that is \dev but has zero entropy.
-Hence, \dev does not imply \akm.
-We see that \akm does not imply \dev, arguing by contradiction.
-If \akm implies \dev, then \blcp implies \dev, but this is a contradiction, since \blcp does not necessarily imply \dev.
-
-We do not know whether \blcp implies \wig, however, although we have some related results.
-\citet{glasner} proved that if a system is transitive, has no isolated point, and has positive topological entropy, then it is sensitive to initial conditions.
-Thus, if we can prove that \akm implies the existence of a closed, invariant subset $Y \subseteq X$ on which $F$ is topologically transitive, then \akm implies \wig.
-On the other hand, in order for \akm to imply \dev, \akm mush imply both \tt and \dpp.
-While it seems plausible that topological transitivity follows from positive topological entropy, whether it implies the existence of dense periodic points is questionable.
-\index{dense periodic points}
-\index{topological transitivity}
 %%%
 
 

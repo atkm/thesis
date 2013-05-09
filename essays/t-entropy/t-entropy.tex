@@ -313,7 +313,7 @@ As we claimed at the beginning of this chapter, the topological entropy is a top
   \label{thm:ent-conj}
   \index{conjugacy}
   \begin{proof}[Proof of Theorem~\ref{thm:ent-conj}]
-    Let $\alpha$ be an open cover of $X_2$.
+    Let $\alpha$ be an open cover of $Y$.
     We have
     \begin{align*}
       h(G, \alpha)
@@ -325,13 +325,8 @@ As we claimed at the beginning of this chapter, the topological entropy is a top
       &\equiv h(F, \itr{\phi}{-1}(\alpha)).
     \end{align*}
   %
-    Since $\phi^{-1}(\alpha) < \alpha$, by Proposition~\ref{prop:hfa-props}(i), we obtain
-    \begin{equation*}
-      h(G,\alpha) 
-      = h(F,\itr{\phi}{-1}(\alpha))
-      \leq h(F, \alpha).
-    \end{equation*}
-    This implies
+    As $\alpha$ varies over all open covers of $Y$, there may be an open cover of $X$ that cannot be written as $\phi^{-1}(\alpha)$.
+    Hence,
     \begin{equation*}
       h(G) \leq h(F).
     \end{equation*}
@@ -584,7 +579,7 @@ Therefore,
 \section{Topological Entropy of Other Maps}
 The topological entropy of a full one-sided or two-sided shift with $n$ symbols is known to be $\log n$ \citep[p.177]{walters}.
 \index{one-sided shift}
-We could have anticipated the result from the previous section, since the logistic map on its attractor is conjugate to an one-sided shift of two symbols $\set{0,1}$ \citep{sternberg}.
+We could have anticipated the result from the previous section, since the logistic map on its attractor is conjugate to a one-sided shift of two symbols $\set{0,1}$ \citep{sternberg}.
 One important observation about topological entropy is that, even if a mapping has positive topological entropy, its behavior may be complicated only locally.
 \begin{proposition}
   Let $F: X \to X$ be continuous, and $Y$ be a closed (hence compact), invariant subset of $X$.

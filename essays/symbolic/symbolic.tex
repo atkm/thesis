@@ -19,7 +19,7 @@ The particular system that we discuss is called the \textit{one-sided shift}.
 The goal of this section is to prove that the full one-sided shift is chaotic in Devaney's sense.
 \begin{definition}
   (One-sided shift)
-  Let $S$ be a set of finite number of symbols, and let $\Sigma$ be a set of infinite sequences of the form
+  Let $S$ be a set of a finite number of symbols, and let $\Sigma$ be a set of infinite sequences of the form
   \begin{equation*}
     s = s_0 s_1 s_2 \cdots s_n \cdots,
   \end{equation*}
@@ -46,7 +46,7 @@ The goal of this section is to prove that the full one-sided shift is chaotic in
   \index{one-sided shift}
   \index{shift map}
 \end{definition}
-For the definition of a subshift to make sense, $X$ must be an invarient set of $\sigma$, but it is not the only requirement.
+For the definition of a subshift to make sense, $X$ must be an invariant set of $\sigma$, but it is not the only requirement.
 $X$ also needs to be closed in $\Sigma$.
 Subshifts provide rich examples of dynamical systems, but we do not discuss them here.
 For discussions on subshifts, refer to \citet{kitchens} and \citet{lind}.
@@ -223,7 +223,7 @@ Now we show that $\sigma$ is continuous and surjective.
 %%%
 Finally, we show that the full one-sided shift is chaotic in Devaney's sense.
 \begin{proposition}
-  The periodic points of $\sigma$ is dense in $\Sigma$.
+  The periodic points of $\sigma$ are dense in $\Sigma$.
   \begin{proof}
     Let $s$ be a member of $\Sigma$.
     Fix $\epsilon > 0$, and assume that $2^{-k} < \epsilon$ for some $k$.
@@ -300,7 +300,7 @@ where $k$ is the first position at which $s$ and $t$ differ.
 In fact, the metric that we use and this metric $d'$ can be shown to be equivalent metrics.
 %%%
 
-\section{Doubling Map is Chaotic}
+\section{The Doubling Map is Chaotic}
 The goal of this section is to prove that $(\Sigma, \sigma)$ is semi-conjugate to $(S^1, D)$, which implies that the doubling map is chaotic in Devaney's sense (Corollary~\ref{cor:conj-sdic}).
 \index{doubling map}
 \index{conjugacy}
@@ -395,7 +395,7 @@ To summarize, we have the following.
 We already mentioned in Chapter~\ref{chap:devaney} that the logistic map is chaotic in Devaney's sense, but we can prove the same result using the technique just presented.
 
 Let us make a few general remarks on symbolic dynamics.
-In this chapter, we only use an one-sided shift, but we can also define the \textit{two-sided shift} by replacing $\Sigma$ with a space of infinite \textit{bi-infinite} sequences, i.e. sequences of the form 
+In this chapter, we only use a one-sided shift, but we can also define the \textit{two-sided shift} by replacing $\Sigma$ with a space of infinite \textit{bi-infinite} sequences, i.e. sequences of the form 
 \begin{equation*}
   \cdots s_{-n} \cdots s_{-1} \overset{*}s_0 s_1 \cdots s_n \cdots.
 \end{equation*}
@@ -406,13 +406,13 @@ The asterisk ($*$) is used to note the 0-th symbol of a sequence, and the shift 
   \cdots s_{-n} \cdots s_{-1} s_0 \overset{*}s_1 \cdots s_n \cdots.
 \end{equation*}
 Thus, unlike in the one-sided shift, $\sigma$ is one-to-one, and each sequence ``remembers'' its preimage.
-Hence, a two-sided shift is suited for studying an invertible map, while an one-sided shift is used to study a non-invertible maps,
+Hence, a two-sided shift is suited for studying an invertible map, while a one-sided shift is used to study a non-invertible maps,
 \index{two-sided shift}
 It is easy to see that the full two-sided shift $(\Sigma, \sigma)$ is also chaotic in Devaney's sense.
 \citet{wiggins} has an exposition on the dynamics of the horseshoe map using symbolic dynamics.
 The horseshoe map has a geometrically complicated dynamics.
 However, we can understand the structure of its attractor, which turns out to be a Cantor set, by constructing a conjugacy between the horseshoe map on its attractor and the full two-sided shift.
-An one-sided shift can be similarly used to study the dynamics of a non-invertible mapping.
+A one-sided shift can be similarly used to study the dynamics of a non-invertible mapping.
 \citet{sternberg} has an exposition on the study of the logistic map, in which he shows that the attractor of the logistic map is a Cantor set.
 %%%
 
