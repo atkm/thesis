@@ -62,29 +62,6 @@ In the next chapter, we introduce another definition of sensitivity.
 The existence of one such point in every neighborhood of $x$ suffices.
 However, since the mapping is continuous, points that are close to the point that separates from $x$ also move away from $x$ to some extent.
 Also, notice that if there were an isolated point in the space, the dynamical system cannot be sensitive to initial conditions.
-Transitivity is stated using two open sets, but the condition implies that a point eventually gets mapped to inside any open set.
-We will frequently use this property of a topologically transitive map along with its definition.
-\begin{proposition}
-  Let $F: X \to X$ be a continuous, $x \in X$ be an arbitrary member, and $U \subseteq X$ be any open set.
-  If $F$ is transitive, then there exists $n > 0$ such that
-  \begin{equation*}
-    \itr{F}{n}(x) \in U.
-  \end{equation*}
-  \begin{proof}
-    Pick $y \in U$.
-    Choose $\delta > 0$ so that $\oball{\delta}{y}$ is contained in $U$.
-    For each $\epsilon > 0$ and $\delta > 0$, there exists $n > 0$ such that
-    \begin{equation*}
-      \itr{F}{n}(\oball{\epsilon}{x}) \cap \oball{\delta}{y} \neq \emptyset.
-    \end{equation*}
-    Since $F$ is continuous, we can make $\diam(\itr{F}{n}(\oball{\epsilon}{x}))$ as small as we wish by making $\epsilon$ sufficiently small.
-    It follows that, if we choose sufficiently small $\epsilon$ and $\delta$, then 
-    \begin{equation*}
-      \itr{F}{n}(\oball{\epsilon}{x}) \cup \oball{\delta}{y} \subseteq U.
-    \end{equation*}
-    Hence, $\itr{F}{n}(x) \in U$.
-  \end{proof}
-\end{proposition}
 %%%
 
 We informally defined in the introduction that a chaotic mapping is a mapping that has sensitive dependence on initial conditions, but Devaney's definition consists of properties besides sensitivity.
@@ -199,7 +176,7 @@ We give some examples to illustrate the two definitions.
   \begin{equation*}
     \abs{ \itr{D}{n}(\theta) - \itr{D}{n}(\theta - \epsilon) } 
     = 
-    n\epsilon.
+    n\epsilon \quad(\mod{1}).
   \end{equation*}
   Therefore, for any separation constant $0 < \delta < 1$, there exists $n$ such that $\abs{ \itr{D}{n}(\theta) - \itr{D}{n}(\theta - \epsilon) } > \delta$.
   To show that the doubling map has a dense set of periodic points and is topologically transitive, we use a technique called \textit{symbolic dynamics}.
