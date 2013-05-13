@@ -77,6 +77,7 @@ main_tmpl_post_appendix = "\\backmatter % backmatter makes the index and bibliog
 \\bibliography{./bibliography/thesis}
 
 % Index
+\\cleardoublepage
 \\printindex
 
 \\end{document}"
